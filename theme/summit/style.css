@@ -5,3 +5,10 @@ Author: Gregory Gray
 Description: Custom theme for Summit Communication Group
 Version: 1.0
 */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #111;
+    background: #fff;
+}

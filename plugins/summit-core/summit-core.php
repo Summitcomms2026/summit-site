@@ -17,3 +17,4 @@ define('SUMMIT_CORE_URL', plugin_dir_url(__FILE__));
 
 require_once SUMMIT_CORE_PATH . 'post-types.php';
 require_once SUMMIT_CORE_PATH . 'taxonomies.php';
+require_once plugin_dir_path(__FILE__) . 'acf-fields.php';

@@ -1,0 +1,2 @@
+<?php
+// Summit theme functions

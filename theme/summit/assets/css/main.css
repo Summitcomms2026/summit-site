@@ -1,0 +1,27 @@
+/*
+ * Summit Theme — Main CSS Entry Point
+ * assets/css/main.css
+ *
+ * Import order is intentional:
+ *   1. tokens    — custom properties (no rules, no selectors)
+ *   2. base      — reset, body, global typography, links, a11y
+ *   3. layout    — containers, grid, section spacing
+ *   4. components — buttons, filters, breadcrumbs, meta, subscribe, CTA
+ *   5. cards     — article, case study, episode, season, featured blocks
+ *   6. singles   — wysiwyg, and all single-template layouts
+ *
+ * WordPress enqueues this single file via functions.php.
+ * The @import statements are resolved at build time if a build step
+ * is introduced. In the current plain-CSS setup, WordPress enqueues
+ * each file individually (see functions.php for the enqueue list).
+ *
+ * This file exists as documentation of the intended load order.
+ * It is not directly enqueued — see functions.php.
+ */
+
+@import "tokens.css";
+@import "base.css";
+@import "layout.css";
+@import "components.css";
+@import "cards.css";
+@import "singles.css";

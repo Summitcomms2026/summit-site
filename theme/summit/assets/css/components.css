@@ -1,0 +1,480 @@
+/*
+ * Summit Theme — Components
+ * assets/css/components.css
+ *
+ * Reusable UI components:
+ *   - Buttons
+ *   - Archive filter nav
+ *   - Breadcrumb
+ *   - Eyebrow / label
+ *   - Metadata row
+ *   - Subscribe module
+ *   - CTA footer block
+ *   - Platform link list
+ *   - Archive hero
+ */
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* BUTTONS                                                                */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-8);
+  font-family: var(--font-sans);
+  font-size: var(--text-small);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-base) var(--ease-out),
+    color            var(--duration-base) var(--ease-out),
+    border-color     var(--duration-base) var(--ease-out),
+    transform        var(--duration-fast)  var(--ease-out);
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--colour-ink);
+  outline-offset: 3px;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* Primary — solid ink */
+.btn--primary {
+  background-color: var(--colour-ink);
+  color: var(--colour-paper);
+  border-color: var(--colour-ink);
+}
+
+.btn--primary:hover {
+  background-color: transparent;
+  color: var(--colour-ink);
+}
+
+/* Secondary — outline ink */
+.btn--secondary {
+  background-color: transparent;
+  color: var(--colour-ink);
+  border-color: var(--colour-ink);
+}
+
+.btn--secondary:hover {
+  background-color: var(--colour-ink);
+  color: var(--colour-paper);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* ARCHIVE FILTERS                                                        */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.archive-filters {
+  padding-block: var(--space-6);
+  border-bottom: var(--border-hairline);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.archive-filters::-webkit-scrollbar {
+  display: none;
+}
+
+.archive-filters__list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.archive-filters__btn {
+  display: inline-block;
+  padding: var(--space-2) var(--space-5);
+  font-size: var(--text-small);
+  font-weight: 400;
+  letter-spacing: var(--tracking-normal);
+  color: var(--colour-ink-60);
+  white-space: nowrap;
+  text-decoration: none;
+  border: 1px solid var(--colour-ink-10);
+  border-radius: var(--radius-full);
+  transition:
+    color            var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out),
+    border-color     var(--duration-fast) var(--ease-out);
+}
+
+.archive-filters__btn:hover {
+  border-color: var(--colour-ink-30);
+  color: var(--colour-ink);
+  text-decoration: none;
+}
+
+.archive-filters__btn.is-active {
+  background-color: var(--colour-ink);
+  border-color: var(--colour-ink);
+  color: var(--colour-paper);
+  font-weight: 500;
+}
+
+.archive-filters__btn.is-active:hover {
+  opacity: 0.88;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* BREADCRUMB                                                             */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+/*
+ * Used in: cs-hero, article-hero, episode-hero, season-hero,
+ *          archive-hero, download-hero
+ */
+
+[class$="__breadcrumb"],
+[class*="__breadcrumb "] {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+  font-size: var(--text-small);
+  color: var(--colour-ink-60);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+[class$="__breadcrumb"] a,
+[class*="__breadcrumb "] a {
+  color: var(--colour-ink-60);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+[class$="__breadcrumb"] a:hover,
+[class*="__breadcrumb "] a:hover {
+  color: var(--colour-ink);
+}
+
+[class$="__breadcrumb"] span[aria-hidden],
+[class*="__breadcrumb "] span[aria-hidden] {
+  color: var(--colour-ink-30);
+  font-size: 0.7em;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+[class$="__breadcrumb"] span[aria-current],
+[class*="__breadcrumb "] span[aria-current] {
+  color: var(--colour-ink);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* EYEBROW / LABEL                                                        */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+/*
+ * Used for: archive-hero__eyebrow, podcast-hero__eyebrow,
+ *           featured-article__eyebrow, season-block__label,
+ *           season-hero__label, episode-hero__label,
+ *           featured-episode__eyebrow
+ */
+
+[class$="__eyebrow"],
+[class$="__label"],
+[class*="__eyebrow "],
+[class*="__label "] {
+  display: block;
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--colour-ink-60);
+  margin-bottom: var(--space-4);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* METADATA ROW                                                           */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+/*
+ * Horizontal strip of small metadata items.
+ * Used in: article-meta, episode-card__meta, featured-article__meta
+ */
+
+.article-meta,
+[class$="__meta"],
+[class*="__meta "] {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+  font-size: var(--text-small);
+  color: var(--colour-ink-60);
+}
+
+/* Bullet separator between metadata items */
+.article-meta > * + *::before,
+.article-card__meta > * + *::before,
+.featured-article__meta > * + *::before,
+.episode-card__meta > * + *::before {
+  content: "·";
+  margin-right: var(--space-4);
+  color: var(--colour-ink-30);
+}
+
+.article-meta__cornerstone {
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--colour-ink);
+  border: 1px solid var(--colour-ink-10);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+}
+
+/* Remove bullet before badge-style items */
+.article-meta__cornerstone::before {
+  content: none !important;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* ARCHIVE HERO BLOCK                                                     */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.archive-hero {
+  padding-block: var(--space-section-xl);
+  border-bottom: var(--border-hairline);
+}
+
+.archive-hero__header {
+  /* Nothing — breadcrumb and eyebrow handle their own spacing */
+}
+
+.archive-hero__title {
+  font-size: var(--text-display-l);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-6);
+}
+
+.archive-hero__sub {
+  font-size: var(--text-body-l);
+  color: var(--colour-ink-60);
+  line-height: var(--leading-body);
+  max-width: 64ch;
+  margin-bottom: 0;
+}
+
+.archive-hero__intro {
+  font-size: var(--text-body-l);
+  color: var(--colour-ink-60);
+  max-width: 64ch;
+  margin-top: var(--space-4);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* SUBSCRIBE MODULE                                                       */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.subscribe-module {
+  padding-block: var(--space-section);
+  border-top: var(--border-hairline);
+}
+
+.subscribe-module__inner {
+  max-width: 56ch;
+}
+
+.subscribe-module__heading {
+  font-size: var(--text-h3);
+  font-weight: 400;
+  letter-spacing: var(--tracking-tight);
+  margin-bottom: var(--space-4);
+}
+
+.subscribe-module__sub {
+  font-size: var(--text-body);
+  color: var(--colour-ink-60);
+  line-height: var(--leading-body);
+  margin-bottom: var(--space-8);
+}
+
+.subscribe-module__form {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.subscribe-module__input {
+  flex: 1;
+  min-width: 240px;
+  padding: var(--space-4) var(--space-5);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  color: var(--colour-ink);
+  background: var(--colour-paper-pure);
+  border: 1px solid var(--colour-ink-30);
+  border-radius: var(--radius-full);
+  appearance: none;
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+.subscribe-module__input::placeholder {
+  color: var(--colour-ink-30);
+}
+
+.subscribe-module__input:focus {
+  outline: none;
+  border-color: var(--colour-ink);
+}
+
+.subscribe-module__btn {
+  flex-shrink: 0;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* CTA FOOTER BLOCK                                                       */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.cta-footer-block {
+  padding-block: var(--space-section-xl);
+  border-top: var(--border-hairline);
+  background-color: var(--colour-ink);
+  color: var(--colour-paper);
+}
+
+.cta-footer-block__inner {
+  max-width: 56ch;
+}
+
+.cta-footer-block__headline {
+  font-size: var(--text-display-l);
+  font-weight: 400;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  color: var(--colour-paper);
+  margin-bottom: var(--space-6);
+}
+
+.cta-footer-block__sub {
+  font-size: var(--text-body-l);
+  color: rgba(250, 250, 248, 0.65); /* --colour-paper at 65% */
+  line-height: var(--leading-body);
+  margin-bottom: var(--space-10);
+  max-width: 52ch;
+}
+
+/* Invert button colours inside dark CTA block */
+.cta-footer-block .btn--primary {
+  background-color: var(--colour-paper);
+  color: var(--colour-ink);
+  border-color: var(--colour-paper);
+}
+
+.cta-footer-block .btn--primary:hover {
+  background-color: transparent;
+  color: var(--colour-paper);
+  border-color: var(--colour-paper);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* PLATFORM LINK LIST                                                     */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.platform-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+}
+
+.season-platforms .platform-list {
+  margin-top: 0;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* PULL QUOTE BLOCK                                                       */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.pull-quote-block {
+  padding-block: var(--space-16);
+  border-top: var(--border-hairline);
+  border-bottom: var(--border-hairline);
+  margin-block: var(--space-12);
+}
+
+.pull-quote-block__quote {
+  margin: 0;
+  padding: 0;
+  border-left: none;
+}
+
+.pull-quote-block__quote p {
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 2.5vw, 2rem);
+  font-style: italic;
+  line-height: var(--leading-snug);
+  letter-spacing: -0.01em;
+  color: var(--colour-ink);
+  max-width: 60ch;
+  margin-bottom: var(--space-6);
+}
+
+.pull-quote-block__quote cite {
+  display: block;
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: var(--text-small);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--colour-ink-60);
+}
+
+.pull-quote-block__quote cite::before {
+  content: "— ";
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* RELATED SECTIONS — wrapper headers                                     */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.related-reading,
+.related-work,
+.related-episodes {
+  padding-block: var(--space-section);
+  border-top: var(--border-hairline);
+}
+
+.related-reading__header,
+.related-work__header,
+.related-episodes__header {
+  margin-bottom: var(--space-10);
+}
+
+.related-reading__heading,
+.related-work__heading,
+.related-episodes__heading {
+  font-size: var(--text-h3);
+  font-weight: 400;
+  letter-spacing: var(--tracking-tight);
+}

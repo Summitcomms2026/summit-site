@@ -1,29 +1,27 @@
 <?php
+/**
+ * Summit Theme Functions
+ */
 
-if (!defined('ABSPATH')) {
-    exit;
+defined( 'ABSPATH' ) || exit;
+
+require_once get_template_directory() . '/inc/seo.php';
+require_once get_template_directory() . '/inc/nav-functions.php';
+
+add_action( 'wp_enqueue_scripts', 'summit_enqueue_styles' );
+
+function summit_enqueue_styles(): void {
+
+    $v = wp_get_theme()->get( 'Version' );
+    $p = get_template_directory_uri() . '/assets/css/';
+
+    wp_enqueue_style( 'summit-tokens',     $p . 'tokens.css',     [],                      $v );
+    wp_enqueue_style( 'summit-base',       $p . 'base.css',       [ 'summit-tokens' ],     $v );
+    wp_enqueue_style( 'summit-layout',     $p . 'layout.css',     [ 'summit-base' ],       $v );
+    wp_enqueue_style( 'summit-components', $p . 'components.css', [ 'summit-layout' ],     $v );
+    wp_enqueue_style( 'summit-cards',      $p . 'cards.css',      [ 'summit-components' ], $v );
+    wp_enqueue_style( 'summit-singles',    $p . 'singles.css',    [ 'summit-cards' ],      $v );
+    wp_enqueue_style( 'summit-utilities',  $p . 'utilities.css',  [ 'summit-singles' ],    $v );
+    wp_enqueue_style( 'summit-navigation', $p . 'navigation.css', [ 'summit-utilities' ],  $v );
+
 }
-
-function summit_theme_setup() {
-    add_theme_support('title-tag');
-    add_theme_support('post-thumbnails');
-    add_theme_support('editor-styles');
-    add_theme_support('wp-block-styles');
-    add_theme_support('responsive-embeds');
-
-    register_nav_menus([
-        'primary' => __('Primary Menu', 'summit'),
-        'footer'  => __('Footer Menu', 'summit'),
-    ]);
-}
-add_action('after_setup_theme', 'summit_theme_setup');
-
-function summit_enqueue_assets() {
-    wp_enqueue_style(
-        'summit-style',
-        get_stylesheet_uri(),
-        [],
-        wp_get_theme()->get('Version')
-    );
-}
-add_action('wp_enqueue_scripts', 'summit_enqueue_assets');

@@ -1,0 +1,259 @@
+/*
+ * Summit Theme — Layout
+ * assets/css/layout.css
+ *
+ * Container system, section spacing, site-main wrapper.
+ * Three container widths match the governance spec:
+ *   narrow  — editorial reading column
+ *   medium  — strategic content
+ *   wide    — cinematic / full grid
+ */
+
+
+/* ── Containers ───────────────────────────────────────────────────────── */
+
+.container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.container--narrow {
+  max-width: var(--container-narrow);
+}
+
+.container--medium {
+  max-width: var(--container-medium);
+}
+
+.container--wide {
+  max-width: var(--container-wide);
+}
+
+/* Bleed: full-viewport width with no padding — for image panels */
+.container--bleed {
+  max-width: none;
+  padding-inline: 0;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --container-padding: var(--space-10);
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --container-padding: var(--space-12);
+  }
+}
+
+
+/* ── Site Main ────────────────────────────────────────────────────────── */
+
+.site-main {
+  display: block;
+  /* Clearance below the fixed/sticky navigation — adjust when nav height is known */
+  padding-top: 0;
+}
+
+/* Body-level classes added by WordPress for context */
+.admin-bar .site-main {
+  /* WordPress admin bar is 32px on desktop, 46px on mobile */
+}
+
+
+/* ── Section Spacing ──────────────────────────────────────────────────── */
+
+/*
+ * Sections carry their own top/bottom padding.
+ * The vertical rhythm between sections is created by consistent
+ * use of --space-section and --space-section-xl.
+ *
+ * Pattern:
+ *   Regular content sections: var(--space-section)
+ *   Hero / cinematic sections: var(--space-section-xl)
+ */
+
+section {
+  /* No default padding — applied per component for control */
+}
+
+/* Shared section rhythm class for page templates */
+.section--padded {
+  padding-block: var(--space-section);
+}
+
+.section--padded-xl {
+  padding-block: var(--space-section-xl);
+}
+
+
+/* ── Dividers between major sections ──────────────────────────────────── */
+
+.section-divider {
+  border: none;
+  border-top: var(--border-hairline);
+  margin-block: 0;
+}
+
+
+/* ── Archive Grid — base layout ───────────────────────────────────────── */
+
+/*
+ * Generic n-column responsive grid. Applied to .article-grid,
+ * .case-study-grid, .episode-grid, .season-grid.
+ * Child items control their own appearance; this handles the layout only.
+ */
+
+.archive-grid {
+  padding-block: var(--space-section);
+}
+
+.archive-grid__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-6);
+  margin-bottom: var(--space-10);
+  padding-bottom: var(--space-6);
+  border-bottom: var(--border-hairline);
+}
+
+.archive-grid__heading {
+  font-size: var(--text-h3);
+  font-weight: 400;
+  letter-spacing: var(--tracking-tight);
+}
+
+.archive-grid__count {
+  font-size: var(--text-small);
+  color: var(--colour-ink-60);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Three-column card grids — articles, episodes, case studies */
+.article-grid,
+.case-study-grid,
+.episode-grid,
+.season-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--grid-gap-cards);
+}
+
+@media (min-width: 640px) {
+  .article-grid,
+  .episode-grid,
+  .season-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .case-study-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .article-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .episode-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .case-study-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .season-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Related grids — slightly denser */
+.article-grid--related,
+.case-study-grid--related,
+.episode-grid--related {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .article-grid--related,
+  .episode-grid--related {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .article-grid--related,
+  .episode-grid--related {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+/* ── Pagination ───────────────────────────────────────────────────────── */
+
+.archive-pagination {
+  margin-top: var(--space-16);
+  padding-top: var(--space-8);
+  border-top: var(--border-hairline);
+}
+
+.archive-pagination .page-numbers {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.archive-pagination .page-numbers a,
+.archive-pagination .page-numbers span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  padding-inline: var(--space-4);
+  font-size: var(--text-small);
+  color: var(--colour-ink-60);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: background-color var(--duration-fast) var(--ease-out),
+              color var(--duration-fast) var(--ease-out);
+}
+
+.archive-pagination .page-numbers a:hover {
+  background-color: var(--colour-ink-05);
+  color: var(--colour-ink);
+}
+
+.archive-pagination .page-numbers .current {
+  background-color: var(--colour-ink);
+  color: var(--colour-paper);
+  font-weight: 500;
+}
+
+.archive-pagination .page-numbers .dots {
+  color: var(--colour-ink-30);
+  min-width: auto;
+  padding-inline: var(--space-2);
+}
+
+
+/* ── Archive Empty State ──────────────────────────────────────────────── */
+
+.archive-empty {
+  padding: var(--space-20) 0;
+  text-align: center;
+}
+
+.archive-empty__message {
+  font-size: var(--text-body-l);
+  color: var(--colour-ink-60);
+  margin-bottom: var(--space-8);
+  max-width: none;
+}

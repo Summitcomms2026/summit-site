@@ -1,0 +1,200 @@
+/*
+ * Summit Theme — Design Tokens
+ * assets/css/tokens.css
+ *
+ * Single source of truth for all design values.
+ * Every other CSS file imports from here.
+ * Do not put layout or component rules in this file.
+ *
+ * Governance: summit_design_system.md
+ * Palette: neutral-led, near-black to off-white, restrained accent
+ * Typography: SF Pro Display → system-ui → geometric sans fallback stack
+ *             Big Caslon → Georgia → high-quality serif fallback stack
+ */
+
+:root {
+
+  /* ── Colour ────────────────────────────────────────────────────────── */
+
+  /* Neutrals — the foundation of Summit's restrained palette */
+  --colour-ink:          #1A1A18;   /* Near-black — primary text, dark panels */
+  --colour-ink-60:       #666660;   /* 60% ink — secondary text, captions */
+  --colour-ink-30:       #B3B3AE;   /* 30% ink — disabled, very quiet UI */
+  --colour-ink-10:       #E8E8E5;   /* 10% ink — borders, dividers */
+  --colour-ink-05:       #F4F4F2;   /* 5% ink — surface tints, zebra rows */
+
+  --colour-paper:        #FAFAF8;   /* Warm near-white — primary background */
+  --colour-paper-pure:   #FFFFFF;   /* Pure white — card surfaces */
+
+  /* Accent — used only where it earns its place */
+  --colour-accent:       #1A1A18;   /* In v1.0 the accent is simply ink.
+                                       Introduce a true accent when brand
+                                       identity is finalised. */
+
+  /* Semantic */
+  --colour-error:        #C0392B;
+  --colour-success:      #1A6B3C;
+
+  /* ── Typography — Font Stacks ──────────────────────────────────────── */
+
+  /*
+   * Primary sans: SF Pro Display on Apple, Segoe UI on Windows,
+   * then neutral geometric fallbacks.
+   * Summit's governance requests SF Pro Display; this stack provides it
+   * where the OS supplies it (Apple devices) and degrades gracefully.
+   */
+  --font-sans:
+    "SF Pro Display",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    system-ui,
+    sans-serif;
+
+  /*
+   * Serif emphasis: Big Caslon FB Bold Italic — for occasional editorial
+   * emphasis in headlines. Falls back to high-quality system serifs.
+   * Used sparingly, never as body text.
+   */
+  --font-serif:
+    "Big Caslon FB",
+    "Big Caslon",
+    "Book Antiqua",
+    Georgia,
+    serif;
+
+  /* Monospace — for code or transcript speaker labels if needed */
+  --font-mono:
+    "SF Mono",
+    "Fira Code",
+    "Consolas",
+    monospace;
+
+  /* ── Typography — Scale ────────────────────────────────────────────── */
+
+  /*
+   * Fluid scale: values are clamped between a mobile minimum and
+   * a desktop maximum using clamp(). The middle value is a viewport
+   * percentage that produces a smooth intermediate.
+   *
+   * Base size: 1rem = 16px (browser default, never overridden).
+   */
+
+  --text-display-xl: clamp(3rem,    6vw, 5.5rem);   /* 48–88px  Hero statements */
+  --text-display-l:  clamp(2.25rem, 4vw, 3.75rem);  /* 36–60px  Section heroes */
+  --text-h1:         clamp(2rem,    3.5vw, 3rem);    /* 32–48px  Page H1s */
+  --text-h2:         clamp(1.5rem,  2.5vw, 2.25rem); /* 24–36px  Section H2s */
+  --text-h3:         clamp(1.25rem, 2vw,  1.75rem);  /* 20–28px  Sub-section H3s */
+  --text-h4:         clamp(1.0625rem, 1.5vw, 1.25rem); /* 17–20px H4s */
+  --text-body-l:     1.1875rem;   /* 19px  Lead paragraph / standfirst */
+  --text-body:       1rem;        /* 16px  Standard body */
+  --text-small:      0.875rem;    /* 14px  Captions, metadata */
+  --text-micro:      0.75rem;     /* 12px  Labels, eyebrows, legal */
+
+  /* ── Typography — Rhythm ───────────────────────────────────────────── */
+
+  --leading-tight:    1.15;   /* Headlines */
+  --leading-snug:     1.35;   /* Sub-headings, UI labels */
+  --leading-body:     1.7;    /* Body copy — editorial, generous */
+  --leading-relaxed:  1.85;   /* Transcript, long-form prose */
+
+  --tracking-tight:  -0.025em;  /* Hero headlines */
+  --tracking-normal:  0;
+  --tracking-wide:    0.06em;   /* Eyebrows, labels (uppercase or small caps) */
+  --tracking-wider:   0.12em;   /* Micro utility text */
+
+  --measure-narrow:  62ch;   /* Editorial reading width — articles */
+  --measure-medium:  80ch;   /* Strategic layout — page content */
+  --measure-wide:    none;   /* Cinematic — no measure constraint */
+
+  /* ── Spacing — Modular Scale ───────────────────────────────────────── */
+
+  /*
+   * Base unit: 8px. All spacing derives from multiples.
+   * Named semantically so values can be changed without hunting.
+   */
+
+  --space-1:    0.25rem;   /*  4px */
+  --space-2:    0.5rem;    /*  8px */
+  --space-3:    0.75rem;   /* 12px */
+  --space-4:    1rem;      /* 16px */
+  --space-5:    1.25rem;   /* 20px */
+  --space-6:    1.5rem;    /* 24px */
+  --space-8:    2rem;      /* 32px */
+  --space-10:   2.5rem;    /* 40px */
+  --space-12:   3rem;      /* 48px */
+  --space-16:   4rem;      /* 64px */
+  --space-20:   5rem;      /* 80px */
+  --space-24:   6rem;      /* 96px */
+  --space-32:   8rem;      /* 128px */
+  --space-40:   10rem;     /* 160px */
+
+  /* Semantic aliases */
+  --space-component-gap:    var(--space-8);   /* Between components in a section */
+  --space-section:          var(--space-24);  /* Vertical section padding */
+  --space-section-xl:       var(--space-32);  /* Hero/cinematic section padding */
+  --space-inline:           var(--space-4);   /* Inline element gap */
+  --space-card-pad:         var(--space-6);   /* Card internal padding */
+
+  /* ── Layout — Container Widths ─────────────────────────────────────── */
+
+  --container-narrow:  720px;    /* Editorial reading column */
+  --container-medium:  1040px;   /* Strategic content */
+  --container-wide:    1320px;   /* Cinematic / full grid */
+  --container-bleed:   100%;     /* Full viewport */
+  --container-padding: var(--space-6);  /* Horizontal gutter inside containers */
+
+  /* ── Grid ──────────────────────────────────────────────────────────── */
+
+  --grid-columns:   12;
+  --grid-gap:       var(--space-6);
+  --grid-gap-cards: var(--space-8);
+
+  /* ── Radius ─────────────────────────────────────────────────────────── */
+
+  --radius-sm:   2px;
+  --radius-md:   4px;
+  --radius-full: 999px;
+
+  /* ── Borders ─────────────────────────────────────────────────────────── */
+
+  --border-hairline:  1px solid var(--colour-ink-10);
+  --border-medium:    1px solid var(--colour-ink-30);
+  --border-strong:    1px solid var(--colour-ink-60);
+
+  /* ── Motion ──────────────────────────────────────────────────────────── */
+
+  /*
+   * Motion must feel calm and deliberate — never flashy.
+   * All durations and easing match the governance principle:
+   * "fast enough to feel modern, slow enough to feel considered".
+   */
+
+  --ease-out:   cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in:    cubic-bezier(0.64, 0, 0.78, 0);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --duration-fast:   120ms;
+  --duration-base:   220ms;
+  --duration-slow:   360ms;
+
+  /* ── Z-Index ─────────────────────────────────────────────────────────── */
+
+  --z-base:     0;
+  --z-raised:   10;
+  --z-overlay:  100;
+  --z-sticky:   200;
+  --z-top:      300;
+}
+
+/*
+ * Reduced motion: respect system preference.
+ * Disable transitions and animations for users who prefer it.
+ */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast:  0ms;
+    --duration-base:  0ms;
+    --duration-slow:  0ms;
+  }
+}

@@ -1,0 +1,216 @@
+/*
+ * Summit Theme — Utilities and Gap Rules
+ * assets/css/utilities.css
+ *
+ * Two purposes:
+ *   1. Explicit rules for classes identified by the coverage check
+ *      that are not covered by block or modifier inheritance.
+ *   2. Utility classes used across multiple templates.
+ *
+ * Keep this file short. If a section grows beyond ~20 rules,
+ * it should be promoted to its own file.
+ */
+
+
+/* ── Archive filter item (list wrapper) ───────────────────────────────── */
+
+.archive-filters__item {
+  flex-shrink: 0;
+}
+
+/* All-items button — no visual difference from .archive-filters__btn
+   but included as an explicit selector for clarity and future theming */
+.archive-filters__btn--all {
+  /* Inherits all .archive-filters__btn styles */
+}
+
+
+/* ── Article metadata element rules ──────────────────────────────────── */
+
+/* Individual elements inherit .article-meta (the parent flex row)
+   but need explicit rules for the separator pseudo-element behaviour */
+
+.article-meta__author {
+  font-weight: 500;
+  color: var(--colour-ink);
+}
+
+.article-meta__date {
+  /* Inherits colour from parent .article-meta */
+}
+
+.article-meta__read-time {
+  /* Inherits colour from parent .article-meta */
+}
+
+
+/* ── Download hero body ───────────────────────────────────────────────── */
+
+.download-hero__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+
+/* ── Download CTA button alias ────────────────────────────────────────── */
+
+/* .download-cta__btn is a .btn --primary in templates.
+   This rule exists as a documentation hook only. */
+.download-cta__btn {
+  /* Styled by .btn and .btn--primary — no override needed */
+}
+
+
+/* ── Episode hero date and duration ──────────────────────────────────── */
+
+.episode-hero__date,
+.episode-hero__duration {
+  /* Inherits .episode-hero__meta flex row styles */
+}
+
+
+/* ── Episode player embed wrapper ────────────────────────────────────── */
+
+.episode-player__embed {
+  width: 100%;
+}
+
+
+/* ── Featured article and episode body ───────────────────────────────── */
+
+.featured-article__body,
+.featured-episode__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: var(--space-4);
+}
+
+
+/* ── Featured episode meta spans ─────────────────────────────────────── */
+
+.featured-episode__number {
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--colour-ink-60);
+}
+
+.featured-episode__duration {
+  font-size: var(--text-micro);
+  color: var(--colour-ink-30);
+}
+
+
+/* ── Platform list button ─────────────────────────────────────────────── */
+
+/* .platform-list__btn is a .btn --secondary in templates */
+.platform-list__btn {
+  /* Styled by .btn and .btn--secondary — no override needed */
+}
+
+
+/* ── Podcast hero structural wrappers ────────────────────────────────── */
+
+.podcast-hero__header {
+  margin-bottom: var(--space-10);
+}
+
+.podcast-hero__platforms {
+  margin-top: var(--space-8);
+}
+
+
+/* ── Season block structural wrappers ────────────────────────────────── */
+
+.season-block__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.season-block__cta {
+  /* .btn --primary in templates — no additional rules needed */
+  margin-top: var(--space-8);
+  align-self: flex-start;
+}
+
+.season-block__trailer {
+  margin-bottom: var(--space-8);
+}
+
+
+/* ── Season hero header ───────────────────────────────────────────────── */
+
+.season-hero__header {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* ── Season thesis trailer (alias for embed wrap) ────────────────────── */
+
+.season-thesis__trailer {
+  margin-top: var(--space-8);
+}
+
+
+/* ── Show notes body ──────────────────────────────────────────────────── */
+
+.show-notes__body {
+  /* wysiwyg handles typography — this exists for layout context */
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/* UTILITY CLASSES                                                         */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* Visually hidden (already in base.css; re-declared here for completeness) */
+/* .screen-reader-text — defined in base.css */
+
+/* Text alignment */
+.text-center  { text-align: center; }
+.text-left    { text-align: left; }
+.text-right   { text-align: right; }
+
+/* Spacing helpers — use sparingly; prefer component-level spacing */
+.mt-auto { margin-top: auto; }
+.mb-0    { margin-bottom: 0; }
+
+/* Display helpers */
+.block   { display: block; }
+.flex    { display: flex; }
+.hidden  { display: none; }
+
+/* Border bottom divider */
+.border-bottom { border-bottom: var(--border-hairline); }
+
+/*
+ * Dark section modifier — applied to cta-footer-block and any future
+ * dark-background panels. Inverts text colour for legibility.
+ */
+.section--dark {
+  background-color: var(--colour-ink);
+  color: var(--colour-paper);
+}
+
+.section--dark h1,
+.section--dark h2,
+.section--dark h3,
+.section--dark h4,
+.section--dark p {
+  color: var(--colour-paper);
+}
+
+.section--tinted {
+  background-color: var(--colour-ink-05);
+}
+
+/* ── Aspect ratio helpers for media placeholders ─────────────────────── */
+
+.aspect-16-9 { aspect-ratio: 16 / 9; }
+.aspect-4-3  { aspect-ratio: 4 / 3;  }
+.aspect-1-1  { aspect-ratio: 1;      }

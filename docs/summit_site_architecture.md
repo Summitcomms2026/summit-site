@@ -110,8 +110,9 @@ The architecture should be implemented through reusable templates, controlled fi
 
 ## Global Information Architecture
 
+Brand routes to Home, so Home is omitted from the mega-menu primary list.
+
 ### Primary Navigation
-- Home
 - Who We Are
 - What We Do
 - Work Showcase
@@ -227,8 +228,8 @@ URLs should be clean, durable and human-readable.
 - /
 - /who-we-are
 - /what-we-do
-- /work-showcase
-- /the-future-of-luxury
+- /work
+- /future-of-luxury
 - /design-tomorrow
 - /careers
 - /client-lounge
@@ -240,10 +241,10 @@ URLs should be clean, durable and human-readable.
 - /what-we-do/digital-transformation
 
 ### Work Archive and Child Structure
-- /work-showcase/[project-slug]
+- /work/[project-slug]
 
 ### Editorial Archive and Child Structure
-- /the-future-of-luxury/[article-slug]
+- /future-of-luxury/[article-slug]
 
 ### Podcast Structure on Summit
 - /tastemakers/[season-slug]
@@ -287,7 +288,7 @@ Purpose:
 The Future of Luxury editorial articles
 
 Slug base:
-- /the-future-of-luxury/[article-slug]
+- /future-of-luxury/[article-slug]
 
 #### 3. Podcast Seasons
 Purpose:

@@ -6,7 +6,7 @@
  * Outputs the document <head> and the global site header, which consists of:
  *   1. Sticky top navigation (normal state) — Menu | Brand | Design Tomorrow
  *   2. Mega menu overlay — full navigation environment, hidden until triggered
- *   3. Sticky bottom utility bar — positioning statement | CTA | London +61 430 388 662
+ *   3. Sticky bottom utility bar — positioning statement | CTA | London +44
  *
  * The <title> tag is NOT manually written here.
  * inc/seo.php calls add_theme_support('title-tag') and WordPress outputs
@@ -70,7 +70,7 @@ $menu_articles = summit_get_menu_articles();
             </a>
 
             <!-- Primary CTA (right) -->
-            <a href="<?php echo esc_url( home_url( '/lets-talk' ) ); ?>"
+            <a href="<?php echo esc_url( home_url( '/design-tomorrow' ) ); ?>"
                class="site-nav__cta btn btn--primary">
                 Design Tomorrow
             </a>
@@ -123,7 +123,7 @@ $menu_articles = summit_get_menu_articles();
                     <?php get_template_part( 'parts/global/logo' ); ?>
                 </a>
 
-                <a href="<?php echo esc_url( home_url( '/index.php' ) ); ?>"
+                <a href="<?php echo esc_url( home_url( '/design-tomorrow' ) ); ?>"
                    class="site-nav__cta btn btn--primary"
                    tabindex="-1">
                     Design Tomorrow
@@ -178,7 +178,7 @@ $menu_articles = summit_get_menu_articles();
                             </li>
 
                             <li class="mega-menu__primary-item <?php echo is_page( 'design-tomorrow' ) ? 'is-current' : ''; ?>">
-                                <a href="<?php echo esc_url( home_url( '/index.php' ) ); ?>"
+                                <a href="<?php echo esc_url( home_url( '/design-tomorrow' ) ); ?>"
                                    class="mega-menu__primary-link mega-menu__primary-link--cta"
                                    <?php echo is_page( 'design-tomorrow' ) ? 'aria-current="page"' : ''; ?>>
                                     Let's Talk
@@ -297,7 +297,7 @@ $menu_articles = summit_get_menu_articles();
                     Independent design consultancy for luxury brands.
                 </p>
                 <div class="mega-menu__bottom-actions">
-                    <a href="<?php echo esc_url( home_url( '/lets-talk' ) ); ?>"
+                    <a href="<?php echo esc_url( home_url( '/design-tomorrow' ) ); ?>"
                        class="mega-menu__bottom-cta">
                         Start a Conversation
                     </a>
@@ -327,12 +327,12 @@ $menu_articles = summit_get_menu_articles();
         </p>
 
         <div class="sticky-bottom-bar__actions">
-            <a href="<?php echo esc_url( home_url( '/lets-talk' ) ); ?>"
+            <a href="<?php echo esc_url( home_url( '/design-tomorrow' ) ); ?>"
                class="sticky-bottom-bar__cta">
                 Start a Conversation
             </a>
             <span class="sticky-bottom-bar__separator" aria-hidden="true">/</span>
-            <a href="tel:+61 430 388 662" class="sticky-bottom-bar__location">
+            <a href="tel:+44" class="sticky-bottom-bar__location">
                 London&nbsp;+44
             </a>
         </div>

@@ -18,91 +18,102 @@
  * templates can offset content correctly (e.g. padding-top on site-main).
  */
 
+
 :root {
-    --nav-height:        52px;    /* tighter, more editorial */
+    --nav-height: 56px;
     --bottom-bar-height: 42px;
+    --menu-edge: 38px;
+    --menu-top: 64px;
+    --menu-bottom: 20px;
 }
 
-@media (min-width: 768px) {
+
+@media (max-width: 767px) {
     :root {
-        --nav-height:        56px;
-        --bottom-bar-height: 42px;
+        --nav-height: 52px;
+        --bottom-bar-height: 40px;
+        --menu-edge: 18px;
+        --menu-top: 32px;
+        --menu-bottom: 18px;
     }
 }
 
 
-/* ══════════════════════════════════════════════════════════════════════
-   STICKY TOP NAVIGATION — NORMAL STATE
-   ══════════════════════════════════════════════════════════════════════ */
+/* ──────────────────────────────────────────────────────────
+   Sticky header shell
+   ────────────────────────────────────────────────────────── */
+
 
 .site-header {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    inset: 0 0 auto 0;
     z-index: var(--z-sticky);
-    /* Pointer events on header only — not the overlay area below */
     pointer-events: none;
 }
 
-/* When the menu is open, the header needs full pointer events for close */
+
 .site-header.menu-is-open {
     pointer-events: auto;
-    /* Raise above other sticky elements */
     z-index: var(--z-top);
 }
+
 
 .site-nav {
     position: relative;
     z-index: var(--z-sticky);
     height: var(--nav-height);
     pointer-events: auto;
-    background-color: var(--colour-paper);
+    background: var(--colour-paper);
     border-bottom: var(--border-hairline);
-    transition: border-color var(--duration-base) var(--ease-out),
-                background-color var(--duration-base) var(--ease-out);
+    transition:
+        background-color var(--duration-base) var(--ease-out),
+        border-color var(--duration-base) var(--ease-out);
 }
 
-/* When menu is open: nav bar merges with the dark overlay */
+
 .site-header.menu-is-open .site-nav {
-    background-color: var(--colour-ink);
-    border-bottom-color: transparent;
+    background: var(--colour-paper);
+    border-bottom: var(--border-hairline);
 }
 
-.site-nav__inner {
+
+.site-nav__inner,
+.mega-menu__nav-bar-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 100%;
-    padding-inline: 8px;
+    padding-inline: var(--menu-edge);
     max-width: none;
-    margin-inline: 0;
+    margin: 0;
 }
 
-/* ── Menu button ──────────────────────────────────────────────────────── */
 
 .site-nav__menu-btn {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 0;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-family: var(--font-sans);
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.11em;
-    text-transform: uppercase;
-    color: var(--colour-ink);
-    transition: color var(--duration-fast) var(--ease-out);
     min-height: 40px;
     min-width: 40px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    color: var(--colour-ink);
+    transition: color var(--duration-fast) var(--ease-out);
 }
 
-.site-nav__menu-btn:hover {
+
+.site-nav__menu-btn:hover,
+.site-nav__menu-btn:focus-visible {
     color: var(--colour-ink-60);
 }
+
 
 .site-nav__menu-btn:focus-visible {
     outline: 2px solid currentColor;
@@ -110,10 +121,6 @@
     border-radius: var(--radius-sm);
 }
 
-/* When menu is open: invert button colour */
-.site-header.menu-is-open .site-nav__menu-btn {
-    color: var(--colour-paper);
-}
 
 .site-nav__menu-icon {
     display: flex;
@@ -124,35 +131,35 @@
     flex-shrink: 0;
 }
 
+
 .site-nav__menu-icon span {
     display: block;
-    height: 1px;
     width: 100%;
-    background-color: currentColor;
-    transition: transform var(--duration-base) var(--ease-out),
-                opacity   var(--duration-base) var(--ease-out);
-    transform-origin: center;
+    height: 1px;
+    background: currentColor;
 }
 
-/* ── Brand / wordmark ─────────────────────────────────────────────────── */
 
 .site-nav__brand {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: var(--colour-ink);
-    transition: color var(--duration-fast) var(--ease-out);
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 0.8rem;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--colour-ink);
+    font-size: 0.84rem;
     font-weight: 500;
     letter-spacing: 0;
+    transition: color var(--duration-fast) var(--ease-out);
 }
 
-.site-nav__brand:hover {
+
+.site-nav__brand:hover,
+.site-nav__brand:focus-visible {
     color: var(--colour-ink-60);
 }
+
 
 .site-nav__brand:focus-visible {
     outline: 2px solid var(--colour-ink);
@@ -160,52 +167,61 @@
     border-radius: var(--radius-sm);
 }
 
-/* When menu is open: invert brand colour */
-.site-header.menu-is-open .site-nav__brand {
-    color: var(--colour-paper);
-}
-
-/* ── Primary CTA ──────────────────────────────────────────────────────── */
 
 .site-nav__cta {
-    font-size: 0.64rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    padding: 9px 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 10px 18px;
     border-radius: 999px;
-}
-
-/* When menu is open: CTA inverts */
-.site-header.menu-is-open .site-nav__cta.btn--primary {
-    background-color: var(--colour-paper);
-    color: var(--colour-ink);
-    border-color: var(--colour-paper);
-}
-
-.site-header.menu-is-open .site-nav__cta.btn--primary:hover {
-    background-color: transparent;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    background: var(--colour-ink);
     color: var(--colour-paper);
+    border: 1px solid var(--colour-ink);
+    text-decoration: none;
 }
 
-/* ── Logo ─────────────────────────────────────────────────────────────── */
+
+.site-nav__cta:hover {
+    opacity: 0.9;
+}
+
+
+.site-header.menu-is-open .site-nav__menu-btn,
+.site-header.menu-is-open .site-nav__brand {
+    color: var(--colour-ink);
+}
+
+
+.site-header.menu-is-open .site-nav__cta.btn--primary {
+    background: var(--colour-ink);
+    color: var(--colour-paper);
+    border-color: var(--colour-ink);
+}
+
 
 .site-logo {
-    display: flex;
+    display: inline-flex;
     align-items: center;
 }
 
+
 .site-logo__svg {
-    height: 18px;
-    width: auto;
     display: block;
+    width: auto;
+    height: 18px;
     overflow: visible;
 }
 
-/* ── Admin bar offset ─────────────────────────────────────────────────── */
 
 .admin-bar .site-header {
     top: 32px;
 }
+
 
 @media screen and (max-width: 782px) {
     .admin-bar .site-header {
@@ -214,96 +230,63 @@
 }
 
 
-/* ══════════════════════════════════════════════════════════════════════
-   MEGA MENU OVERLAY
-   ══════════════════════════════════════════════════════════════════════
+/* ──────────────────────────────────────────────────────────
+   Overlay
+   ────────────────────────────────────────────────────────── */
 
-   State model:
-     Default:   aria-hidden="true"  → visibility:hidden, opacity:0, pointer-events:none
-     Open:      aria-hidden="false" → visibility:visible, opacity:1, pointer-events:auto
-
-   CSS responds to the aria-hidden attribute — no JS class toggling needed
-   for the visual state. JS toggles the aria attributes; CSS does the rest.
-   ══════════════════════════════════════════════════════════════════════ */
 
 .mega-menu {
     position: fixed;
     inset: 0;
-    /*
-     * Stacking context:
-     * .mega-menu and .site-nav are both children of .site-header,
-     * so their z-index values compete within the same parent stacking context.
-     *
-     *   .site-nav         z-index: var(--z-sticky) = 200  ← nav bar sits above overlay
-     *   .mega-menu        z-index: var(--z-overlay) = 100  ← overlay sits below nav bar
-     *
-     * Page content has no z-index (auto), so the overlay (inside .site-header
-     * which is z-sticky=200 / z-top=300 when open) always covers it.
-     *
-     * WordPress admin bar: z-index 99999 — unaffected, always on top.
-     * The .site-header top offset (32px / 46px) accounts for the admin bar.
-     *
-     * --z-overlay (100) is the correct semantic token for an overlay-level element.
-     * calc(--z-sticky - 1) was functionally equivalent but brittle and misleading.
-     */
     z-index: var(--z-overlay);
-    background-color: var(--colour-ink);
-    color: var(--colour-paper);
     display: flex;
     flex-direction: column;
-
-    /* Hidden state */
+    background: var(--colour-paper);
+    color: var(--colour-ink);
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
+    overflow: hidden;
     transition:
-        opacity     var(--duration-slow) var(--ease-out),
-        visibility  0s linear var(--duration-slow);
+        opacity var(--duration-slow) var(--ease-out),
+        visibility 0s linear var(--duration-slow);
 }
 
-/* Open state — driven by aria-hidden on the element itself */
+
 .mega-menu[aria-hidden="false"] {
     visibility: visible;
     opacity: 1;
     pointer-events: auto;
     transition:
-        opacity     var(--duration-slow) var(--ease-out),
-        visibility  0s linear 0s;
+        opacity var(--duration-slow) var(--ease-out),
+        visibility 0s linear 0s;
 }
 
-/* ── Preserved nav bar inside overlay ────────────────────────────────── */
 
 .mega-menu__nav-bar {
     height: var(--nav-height);
-    border-bottom: 1px solid rgba(250, 250, 248, 0.12); /* --colour-paper at 12% */
     flex-shrink: 0;
+    border-bottom: var(--border-hairline);
+    background: var(--colour-paper);
 }
 
-.mega-menu__nav-bar-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
-    padding-inline: 8px;
-    max-width: none;
-    margin-inline: 0;
-}
 
-/* Close button inherits .site-nav__menu-btn styles */
 .mega-menu__close-btn {
-    color: var(--colour-paper);
+    color: var(--colour-ink);
 }
+
 
 .mega-menu__close-btn:hover {
-    color: rgba(250, 250, 248, 0.6);
+    color: var(--colour-ink-60);
 }
 
-/* Cross icon for close button */
+
 .site-nav__menu-icon--cross {
     position: relative;
-    height: 16px;
     width: 16px;
+    height: 16px;
 }
+
 
 .site-nav__menu-icon--cross span {
     position: absolute;
@@ -311,169 +294,184 @@
     left: 0;
     width: 100%;
     height: 1px;
+    background: currentColor;
 }
+
 
 .site-nav__menu-icon--cross span:first-child {
     transform: rotate(45deg);
 }
 
+
 .site-nav__menu-icon--cross span:last-child {
     transform: rotate(-45deg);
 }
 
-/* ── Mega menu body ───────────────────────────────────────────────────── */
+
+/* ──────────────────────────────────────────────────────────
+   Overlay body layout
+   ────────────────────────────────────────────────────────── */
+/* ──────────────────────────────────────────────────────────
+   Overlay body layout
+   ────────────────────────────────────────────────────────── */
 
 .mega-menu__body {
     flex: 1;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    display: flex;
-    align-items: flex-start;
+    overflow: hidden;
 }
 
 .mega-menu__body-inner {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 38px;
     width: 100%;
     max-width: none;
-    margin-inline: 0;
-    padding: 18px 8px 20px;
+    margin: 0;
+    padding: 52px var(--menu-edge) calc(var(--bottom-bar-height) + 18px);
     align-items: start;
 }
 
-/* ── Primary navigation ───────────────────────────────────────────────── */
+@media (min-width: 960px) {
+    .summit-has-articles .mega-menu__body-inner {
+        grid-template-columns: 400px minmax(620px, 1fr);
+        gap: 64px;
+    }
+}
 
-.mega-menu__nav-col {
+/* ──────────────────────────────────────────────────────────
+   Left column
+   ────────────────────────────────────────────────────────── */
+
+.mega-menu__nav-col,
+.mega-menu__editorial-col {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    min-height: calc(100vh - var(--nav-height) - var(--bottom-bar-height) - 52px);
+    min-height: calc(100vh - var(--nav-height) - var(--bottom-bar-height) - var(--menu-top) - var(--menu-bottom) - 56px);
+    padding-bottom: 0;
 }
 
 .mega-menu__primary-list {
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 14px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .mega-menu__primary-link,
 .mega-menu__primary-link--cta {
     display: block;
     font-family: var(--font-sans);
-    font-size: clamp(0.74rem, 0.95vw, 0.98rem);
+    font-size: clamp(1.28rem, 2vw, 2.05rem);
     font-weight: 400;
-    letter-spacing: -0.04em;
-    line-height: 0.94;
-    color: rgba(250, 250, 248, 0.88);
+    line-height: 1.04;
+    letter-spacing: -0.045em;
+    color: var(--colour-ink);
     text-decoration: none;
-    padding-block: 0;
-    margin-top: 0;
-    padding-top: 0;
-    border-top: none;
+    padding: 0;
+    margin: 0;
+    border: 0;
     transition: color var(--duration-fast) var(--ease-out);
 }
 
-.mega-menu__primary-link--cta:hover {
-    color: var(--colour-paper);
+.mega-menu__primary-link:hover,
+.mega-menu__primary-link--cta:hover,
+.mega-menu__primary-link[aria-current="page"],
+.mega-menu__primary-link--cta[aria-current="page"] {
+    color: var(--colour-ink-60);
 }
 
-/* ── Secondary navigation ─────────────────────────────────────────────── */
+.mega-menu__secondary-nav {
+    margin-top: auto;
+    padding-top: 34px;
+}
 
 .mega-menu__secondary-list {
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    margin-top: 10px;
+    gap: 14px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .mega-menu__secondary-link {
     display: block;
-    font-size: 0.58rem;
+    font-size: clamp(0.92rem, 1.15vw, 1.08rem);
     font-weight: 500;
+    line-height: 1.16;
     letter-spacing: 0.01em;
     text-transform: none;
-    color: rgba(250, 250, 248, 0.44);
     text-decoration: none;
-    padding-block: 0;
+    color: var(--colour-ink);
     transition: color var(--duration-fast) var(--ease-out);
 }
 
 .mega-menu__secondary-link:hover,
 .mega-menu__secondary-link[aria-current="page"] {
-    color: rgba(250, 250, 248, 0.8);
+    color: var(--colour-ink-60);
 }
 
-/* ── Editorial feed column ────────────────────────────────────────────── */
+/* ──────────────────────────────────────────────────────────
+   Right editorial rail
+   ────────────────────────────────────────────────────────── */
 
 .mega-menu__editorial-col {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-top: 0;
-    border-left: none;
-    padding-left: 0;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.mega-menu__editorial-label,
+.mega-menu__editorial-list,
+.mega-menu__editorial-all {
+    width: 100%;
+    max-width: 700px;
 }
 
 .mega-menu__editorial-label {
-    font-size: 0.62rem;
+    margin: 0 0 18px;
+    font-size: 0.74rem;
     font-weight: 600;
-    letter-spacing: 0.14em;
+    line-height: 1.1;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: rgba(250, 250, 248, 0.42);
-    margin-bottom: 18px;
-    max-width: none;
-}
-
-.mega-menu__editorial-label a {
-    color: inherit;
-    text-decoration: none;
-    transition: color var(--duration-fast) var(--ease-out);
-}
-
-.mega-menu__editorial-label a:hover {
-    color: rgba(250, 250, 248, 0.7);
+    color: var(--colour-ink-40);
 }
 
 .mega-menu__editorial-list {
     display: flex;
     flex-direction: column;
     gap: 0;
-    flex: 1;
-    border-top: none;
-    max-width: 470px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .mega-menu__editorial-item {
-    padding: 10px 0;
-    border-bottom: none;
+    padding: 15px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .mega-menu__editorial-link {
     display: grid;
-    grid-template-columns: 78px 1fr;
+    grid-template-columns: 108px 1fr auto;
     grid-template-areas:
-        "thumb meta"
-        "thumb title"
-        "thumb cat";
-    column-gap: 12px;
-    row-gap: 2px;
+        "thumb meta cat"
+        "thumb title cat";
+    column-gap: 18px;
+    row-gap: 4px;
     align-items: start;
     text-decoration: none;
     color: inherit;
 }
 
-.mega-menu__editorial-link.no-thumb {
-    display: block;
-}
-
 .mega-menu__editorial-thumb {
     grid-area: thumb;
-    width: 78px;
+    width: 108px;
     aspect-ratio: 4 / 3;
     overflow: hidden;
-    border-radius: 0;
-    background: rgba(250, 250, 248, 0.06);
+    background: rgba(0, 0, 0, 0.04);
 }
 
 .mega-menu__editorial-thumb img {
@@ -486,126 +484,132 @@
 .mega-menu__editorial-meta {
     grid-area: meta;
     display: flex;
-    gap: 8px;
+    gap: 10px;
     align-items: center;
-    margin-bottom: 2px;
-    font-size: 0.54rem;
-    color: rgba(250, 250, 248, 0.34);
+    font-size: 0.74rem;
+    line-height: 1.1;
     letter-spacing: 0.01em;
+    color: var(--colour-ink-40);
 }
 
 .mega-menu__editorial-title {
     grid-area: title;
-    font-size: 0.74rem;
+    font-size: 1.06rem;
     font-weight: 400;
-    line-height: 1.28;
-    color: rgba(250, 250, 248, 0.82);
-    max-width: 32ch;
+    line-height: 1.22;
+    color: var(--colour-ink);
+    max-width: 36ch;
 }
 
 .mega-menu__editorial-cat {
     grid-area: cat;
-    display: block;
-    margin-top: 2px;
-    font-size: 0.52rem;
-    line-height: 1.2;
+    align-self: center;
+    justify-self: end;
+    white-space: nowrap;
+    font-size: 0.8rem;
+    line-height: 1.1;
+    color: var(--colour-ink-40);
+}
+
+.mega-menu__editorial-all {
+    margin-top: 8px;
+    font-size: 0.84rem;
+    font-weight: 500;
+    line-height: 1.1;
     letter-spacing: 0.01em;
-    color: rgba(250, 250, 248, 0.34);
+    text-transform: none;
+    color: var(--colour-ink-60);
+    text-decoration: none;
 }
 
-.mega-menu__editorial-link:hover .mega-menu__editorial-title {
-    color: rgba(250, 250, 248, 0.96);
+.mega-menu__editorial-all:hover {
+    color: var(--colour-ink);
 }
 
-/* ── Mega menu bottom utility bar ─────────────────────────────────────── */
+/* ──────────────────────────────────────────────────────────
+   Overlay bottom utility bar
+   ────────────────────────────────────────────────────────── */
 
 .mega-menu__bottom-bar {
-    border-top: none;
-    padding-block: 8px;
     flex-shrink: 0;
+    padding-block: 10px;
+    border-top: none;
 }
 
 .mega-menu__bottom-bar-inner {
     display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-    padding-inline: 8px;
-    max-width: none;
-    margin-inline: 0;
-}
-
-@media (min-width: 960px) {
-    .summit-has-articles .mega-menu__body-inner {
-        grid-template-columns: minmax(420px, 1fr) minmax(360px, 460px);
-        gap: clamp(44px, 5vw, 80px);
-    }
-}
-
-.mega-menu__bottom-positioning {
-    font-size: 0.62rem;
-    color: rgba(250, 250, 248, 0.28);
-    letter-spacing: 0.02em;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    padding-inline: var(--menu-edge);
     max-width: none;
     margin: 0;
 }
 
+.mega-menu__bottom-positioning {
+    margin: 0;
+    font-size: 0.84rem;
+    line-height: 1.25;
+    letter-spacing: 0.01em;
+    color: var(--colour-ink-40);
+}
+
 .mega-menu__bottom-actions {
     display: flex;
-    align-items: center;
-    gap: var(--space-6);
-    flex-shrink: 0;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 2px;
+    margin-left: auto;
+}
+
+.mega-menu__bottom-cta,
+.mega-menu__bottom-location {
+    font-size: 0.84rem;
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    text-decoration: none;
 }
 
 .mega-menu__bottom-cta {
-    font-size: 0.58rem;
+    color: var(--colour-ink);
     font-weight: 500;
-    letter-spacing: 0.01em;
-    text-transform: none;
-    color: rgba(250, 250, 248, 0.70);
-    text-decoration: none;
-    transition: color var(--duration-fast) var(--ease-out);
-}
-
-.mega-menu__bottom-cta:hover {
-    color: var(--colour-paper);
-    text-decoration-color: rgba(250, 250, 248, 0.5);
 }
 
 .mega-menu__bottom-location {
-    font-size: 0.58rem;
-    letter-spacing: 0.01em;
-    text-transform: none;
-    color: rgba(250, 250, 248, 0.32);
+    color: var(--colour-ink-40);
     white-space: nowrap;
 }
 
-
-/* ══════════════════════════════════════════════════════════════════════
-   BACKDROP
-   ══════════════════════════════════════════════════════════════════════ */
-
 .mega-menu-backdrop {
-    display: none; /* Not needed — mega menu covers full viewport */
+    display: none;
 }
 
+/* ──────────────────────────────────────────────────────────
+   Sticky bottom utility bar
+   ────────────────────────────────────────────────────────── */
 
-/* ══════════════════════════════════════════════════════════════════════
-   STICKY BOTTOM UTILITY BAR
-   ══════════════════════════════════════════════════════════════════════ */
+:root {
+    --bottom-bar-height: 64px;
+}
+
+@media (max-width: 767px) {
+    :root {
+        --bottom-bar-height: 52px;
+    }
+}
 
 .sticky-bottom-bar {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    inset: auto 0 0 0;
     z-index: var(--z-sticky);
     height: var(--bottom-bar-height);
-    background-color: var(--colour-paper);
+    background: var(--colour-paper);
     border-top: var(--border-hairline);
     pointer-events: auto;
 }
 
-/* Hide bottom bar when mega menu is open to avoid visual conflict */
 .menu-is-open .sticky-bottom-bar {
     opacity: 0;
     pointer-events: none;
@@ -614,91 +618,72 @@
 
 .sticky-bottom-bar__inner {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     height: 100%;
-    padding-inline: 8px;
+    padding-inline: var(--menu-edge);
+    padding-top: 8px;
     max-width: none;
-    margin-inline: 0;
+    margin: 0;
 }
 
 .sticky-bottom-bar__positioning {
-    font-size: var(--text-micro);
-    color: var(--colour-ink-30);
-    letter-spacing: var(--tracking-normal);
     margin: 0;
-    max-width: none;
-    /* Hide on very small screens — actions are what matter */
-    display: none;
-}
-
-@media (min-width: 480px) {
-    .sticky-bottom-bar__positioning {
-        display: block;
-    }
+    font-size: 0.84rem;
+    line-height: 1.25;
+    letter-spacing: 0.01em;
+    color: var(--colour-ink-40);
 }
 
 .sticky-bottom-bar__actions {
     display: flex;
-    align-items: center;
-    gap: var(--space-5);
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 2px;
     margin-left: auto;
 }
 
-.sticky-bottom-bar__cta {
-    font-size: 0.58rem;
-    font-weight: 500;
+.sticky-bottom-bar__separator {
+    display: none;
+}
+
+.sticky-bottom-bar__cta,
+.sticky-bottom-bar__location {
+    font-size: 0.84rem;
+    line-height: 1.15;
     letter-spacing: 0.01em;
     text-transform: none;
-    color: var(--colour-ink);
     text-decoration: none;
-    transition: color var(--duration-fast) var(--ease-out);
 }
 
-.sticky-bottom-bar__cta:hover {
-    color: var(--colour-ink-60);
-}
-
-.sticky-bottom-bar__separator {
-    color: var(--colour-ink-30);
-    font-size: var(--text-micro);
-    user-select: none;
+.sticky-bottom-bar__cta {
+    color: var(--colour-ink);
+    font-weight: 500;
 }
 
 .sticky-bottom-bar__location {
-    font-size: 0.58rem;
+    color: var(--colour-ink-40);
+    white-space: nowrap;
+}
+
+.sticky-bottom-bar__cta:hover,
+.sticky-bottom-bar__location:hover,
+.mega-menu__bottom-cta:hover {
     color: var(--colour-ink-60);
-    text-decoration: none;
-    letter-spacing: 0.01em;
-    text-transform: none;
-    transition: color var(--duration-fast) var(--ease-out);
-}
-
-.sticky-bottom-bar__location:hover {
-    color: var(--colour-ink);
-}
-
-/* Admin bar offset */
-.admin-bar .sticky-bottom-bar {
-    /* Admin bar is at top — no offset needed at bottom */
 }
 
 
-/* ══════════════════════════════════════════════════════════════════════
-   SITE CONTENT OFFSET
-   Pushes page content below the sticky nav and above the sticky bottom bar.
-   Applied to .site-content — the wrapper opened in header.php.
-   ══════════════════════════════════════════════════════════════════════ */
+/* ──────────────────────────────────────────────────────────
+   Content offset + footer
+   ────────────────────────────────────────────────────────── */
+
 
 .site-content {
-    padding-top: calc(var(--nav-height) - 2px);
+    padding-top: var(--nav-height);
     padding-bottom: var(--bottom-bar-height);
 }
 
-
-/* ══════════════════════════════════════════════════════════════════════
-   SITE FOOTER
-   ══════════════════════════════════════════════════════════════════════ */
 
 .site-footer {
     background-color: var(--colour-ink-05);
@@ -706,6 +691,7 @@
     padding-top: clamp(56px, 8vw, 96px);
     padding-bottom: clamp(40px, 6vw, 72px);
 }
+
 
 .site-footer__inner {
     display: grid;
@@ -715,6 +701,7 @@
     border-bottom: var(--border-hairline);
 }
 
+
 @media (min-width: 640px) {
     .site-footer__inner {
         grid-template-columns: auto 1fr;
@@ -722,7 +709,7 @@
     }
 }
 
-/* Brand column */
+
 .site-footer__brand {
     display: inline-flex;
     align-items: center;
@@ -732,24 +719,26 @@
     transition: opacity var(--duration-fast) var(--ease-out);
 }
 
+
 .site-footer__brand:hover {
     opacity: 0.7;
 }
 
+
 .site-footer__tagline {
-    font-size: var(--text-small);
-    color: var(--colour-ink-60);
-    line-height: 1.5;
-    max-width: 30ch;
     margin: 0;
+    max-width: 30ch;
+    line-height: 1.5;
+    color: var(--colour-ink-60);
 }
 
-/* Nav columns */
+
 .site-footer__nav-cols {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-8);
 }
+
 
 @media (min-width: 480px) {
     .site-footer__nav-cols {
@@ -757,14 +746,15 @@
     }
 }
 
+
 .site-footer__nav-heading {
+    margin-bottom: var(--space-5);
     font-size: var(--text-micro);
     font-weight: 500;
     letter-spacing: var(--tracking-wider);
-    text-transform: uppercase;
     color: var(--colour-ink-30);
-    margin-bottom: var(--space-5);
 }
+
 
 .site-footer__nav-list {
     display: flex;
@@ -772,24 +762,26 @@
     gap: var(--space-3);
 }
 
+
 .site-footer__nav-link {
-    font-size: var(--text-small);
     color: var(--colour-ink-60);
     text-decoration: none;
     transition: color var(--duration-fast) var(--ease-out);
 }
 
+
 .site-footer__nav-link:hover {
     color: var(--colour-ink);
 }
 
-/* Footer base row */
+
 .site-footer__base {
     display: flex;
     flex-direction: column;
     gap: var(--space-4);
     padding-top: var(--space-8);
 }
+
 
 @media (min-width: 640px) {
     .site-footer__base {
@@ -799,18 +791,21 @@
     }
 }
 
+
 .site-footer__copyright {
-    font-size: var(--text-micro);
-    color: var(--colour-ink-30);
     margin: 0;
     max-width: none;
+    font-size: var(--text-micro);
+    color: var(--colour-ink-30);
 }
+
 
 .site-footer__legal-list {
     display: flex;
-    gap: var(--space-6);
     align-items: center;
+    gap: var(--space-6);
 }
+
 
 .site-footer__legal-link {
     font-size: var(--text-micro);
@@ -819,9 +814,12 @@
     transition: color var(--duration-fast) var(--ease-out);
 }
 
+
 .site-footer__legal-link:hover {
     color: var(--colour-ink-60);
 }
+
+
 
 
 /* ══════════════════════════════════════════════════════════════════════
@@ -830,6 +828,7 @@
    No CSS rule needed here — JS handles it via inline styles.
    ══════════════════════════════════════════════════════════════════════ */
 
+
 /*
  * Prevent flash of unstyled menu on initial page load.
  * The mega-menu is aria-hidden by default; this ensures it is
@@ -837,4 +836,3 @@
  */
 .mega-menu[aria-hidden="true"] {
     /* Already handled by the default state rules above */
-}

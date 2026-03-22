@@ -1,0 +1,45 @@
+[16-Mar-2026 01:47:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function summit_core_register_post_types() in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/plugins/summit-core/summit-core.php:84
+Stack trace:
+#0 /Users/gregorygray/Local Sites/summitsite/app/public/wp-includes/class-wp-hook.php(341): summit_core_activate(false)
+#1 /Users/gregorygray/Local Sites/summitsite/app/public/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#2 /Users/gregorygray/Local Sites/summitsite/app/public/wp-includes/plugin.php(522): WP_Hook->do_action(Array)
+#3 /Users/gregorygray/Local Sites/summitsite/app/public/wp-admin/includes/plugin.php(703): do_action('activate_summit...', false)
+#4 /Users/gregorygray/Local Sites/summitsite/app/public/wp-admin/plugins.php(60): activate_plugin('summit-core/sum...', 'http://summitsi...', false)
+#5 {main}
+  thrown in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/plugins/summit-core/summit-core.php on line 84
+[16-Mar-2026 01:48:05 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function summit_core_register_post_types() in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/plugins/summit-core/summit-core.php:84
+Stack trace:
+#0 /Users/gregorygray/Local Sites/summitsite/app/public/wp-includes/class-wp-hook.php(341): summit_core_activate(false)
+#1 /Users/gregorygray/Local Sites/summitsite/app/public/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#2 /Users/gregorygray/Local Sites/summitsite/app/public/wp-includes/plugin.php(522): WP_Hook->do_action(Array)
+#3 /Users/gregorygray/Local Sites/summitsite/app/public/wp-admin/includes/plugin.php(703): do_action('activate_summit...', false)
+#4 /Users/gregorygray/Local Sites/summitsite/app/public/wp-admin/plugins.php(60): activate_plugin('summit-core/sum...', 'http://summitsi...', false)
+#5 {main}
+  thrown in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/plugins/summit-core/summit-core.php on line 84
+[16-Mar-2026 22:39:35 UTC] PHP Parse error:  Unmatched '}' in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/theme/summit/inc/seo.php on line 73
+[16-Mar-2026 22:39:40 UTC] PHP Parse error:  Unmatched '}' in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/theme/summit/inc/seo.php on line 73
+[16-Mar-2026 22:39:47 UTC] PHP Parse error:  Unmatched '}' in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/theme/summit/inc/seo.php on line 73
+[16-Mar-2026 22:40:10 UTC] PHP Parse error:  Unmatched '}' in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/theme/summit/inc/seo.php on line 73
+[16-Mar-2026 22:44:06 UTC] PHP Parse error:  Unmatched '}' in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/theme/summit/inc/seo.php on line 188
+[16-Mar-2026 22:44:06 UTC] PHP Parse error:  Unmatched '}' in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/theme/summit/inc/seo.php on line 188
+[16-Mar-2026 22:44:08 UTC] PHP Parse error:  Unmatched '}' in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/theme/summit/inc/seo.php on line 188
+[16-Mar-2026 22:44:08 UTC] PHP Parse error:  Unmatched '}' in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/theme/summit/inc/seo.php on line 188
+[16-Mar-2026 22:44:09 UTC] PHP Parse error:  Unmatched '}' in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/theme/summit/inc/seo.php on line 188
+[16-Mar-2026 22:44:09 UTC] PHP Parse error:  Unmatched '}' in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/theme/summit/inc/seo.php on line 188
+[16-Mar-2026 22:44:09 UTC] PHP Parse error:  Unmatched '}' in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/theme/summit/inc/seo.php on line 188
+[16-Mar-2026 22:44:10 UTC] PHP Parse error:  Unmatched '}' in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/theme/summit/inc/seo.php on line 188
+[16-Mar-2026 22:44:17 UTC] PHP Parse error:  Unmatched '}' in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/theme/summit/inc/seo.php on line 188
+[16-Mar-2026 22:44:17 UTC] PHP Parse error:  Unmatched '}' in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/theme/summit/inc/seo.php on line 188
+[16-Mar-2026 22:44:17 UTC] PHP Parse error:  Unmatched '}' in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/theme/summit/inc/seo.php on line 188
+[16-Mar-2026 22:44:17 UTC] PHP Parse error:  Unmatched '}' in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/theme/summit/inc/seo.php on line 188
+[16-Mar-2026 22:44:19 UTC] PHP Parse error:  Unmatched '}' in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/theme/summit/inc/seo.php on line 188
+[16-Mar-2026 22:44:19 UTC] PHP Parse error:  Unmatched '}' in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/theme/summit/inc/seo.php on line 188
+[16-Mar-2026 22:44:28 UTC] PHP Parse error:  Unmatched '}' in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/theme/summit/inc/seo.php on line 188
+[16-Mar-2026 22:44:28 UTC] PHP Parse error:  Unmatched '}' in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/theme/summit/inc/seo.php on line 188
+[18-Mar-2026 02:32:36 UTC] PHP Parse error:  syntax error, unexpected identifier "s", expecting ")" in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/theme/summit/header.php on line 181
+[18-Mar-2026 02:32:36 UTC] PHP Parse error:  syntax error, unexpected identifier "s", expecting ")" in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/theme/summit/header.php on line 181
+[18-Mar-2026 02:32:39 UTC] PHP Parse error:  syntax error, unexpected identifier "s", expecting ")" in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/theme/summit/header.php on line 181
+[18-Mar-2026 02:32:49 UTC] PHP Parse error:  syntax error, unexpected identifier "s", expecting ")" in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/theme/summit/header.php on line 181
+[18-Mar-2026 02:32:52 UTC] PHP Parse error:  syntax error, unexpected identifier "s", expecting ")" in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/theme/summit/header.php on line 181
+[18-Mar-2026 02:39:04 UTC] PHP Parse error:  syntax error, unexpected identifier "s", expecting ")" in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/theme/summit/header.php on line 181
+[18-Mar-2026 02:39:06 UTC] PHP Parse error:  syntax error, unexpected identifier "s", expecting ")" in /Users/gregorygray/Summit Dropbox/Greg Gray/projects/summit-site/theme/summit/header.php on line 181

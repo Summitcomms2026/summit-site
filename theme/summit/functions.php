@@ -25,4 +25,8 @@ function summit_enqueue_styles(): void {
     wp_enqueue_style( 'summit-utilities',  $p . 'utilities.css',  [ 'summit-singles' ],    $v );
     wp_enqueue_style( 'summit-navigation', $p . 'navigation.css', [ 'summit-utilities' ],  $v );
 
+    if ( is_front_page() ) {
+        wp_enqueue_style( 'summit-homepage', $p . 'homepage.css', [ 'summit-components' ], $v );
+    }
+
 }

@@ -12,6 +12,7 @@ function summit_core_register_taxonomies() {
             'singular_name' => 'Sector',
         ),
         'public' => true,
+        'publicly_queryable' => false,
         'hierarchical' => true,
         'show_in_rest' => true,
         'rewrite' => array('slug' => 'sector'),
@@ -23,6 +24,7 @@ function summit_core_register_taxonomies() {
             'singular_name' => 'Service Type',
         ),
         'public' => true,
+        'publicly_queryable' => false,
         'hierarchical' => true,
         'show_in_rest' => true,
         'rewrite' => array('slug' => 'service-type'),
@@ -36,7 +38,7 @@ function summit_core_register_taxonomies() {
         'public' => true,
         'hierarchical' => true,
         'show_in_rest' => true,
-        'rewrite' => array('slug' => 'article-category'),
+        'rewrite' => array('slug' => 'topic'),
     ));
 
     register_taxonomy('format', array('case_study', 'download'), array(
@@ -45,6 +47,7 @@ function summit_core_register_taxonomies() {
             'singular_name' => 'Format',
         ),
         'public' => true,
+        'publicly_queryable' => false,
         'hierarchical' => true,
         'show_in_rest' => true,
         'rewrite' => array('slug' => 'format'),
@@ -58,7 +61,7 @@ function summit_core_register_taxonomies() {
         'public' => true,
         'hierarchical' => true,
         'show_in_rest' => true,
-        'rewrite' => array('slug' => 'podcast-theme'),
+        'rewrite' => array('slug' => 'theme'),
     ));
 }
 add_action('init', 'summit_core_register_taxonomies');

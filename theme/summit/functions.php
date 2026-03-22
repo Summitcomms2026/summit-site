@@ -7,6 +7,7 @@ defined( 'ABSPATH' ) || exit;
 
 require_once get_template_directory() . '/inc/seo.php';
 require_once get_template_directory() . '/inc/nav-functions.php';
+require_once get_template_directory() . '/inc/page-guards.php';
 
 add_action( 'wp_enqueue_scripts', 'summit_enqueue_styles' );
 

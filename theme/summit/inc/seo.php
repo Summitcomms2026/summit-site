@@ -134,9 +134,64 @@ function summit_seo_get_data(): array {
     return $cache;
 }
 
+function summit_seo_get_taxonomy_data(): array {
+    static $cache = null;
+
+    if ( $cache !== null ) {
+        return $cache;
+    }
+
+    if ( ! summit_seo_should_run() ) {
+        $cache = [];
+        return $cache;
+    }
+
+    if ( ! is_tax( 'article_category' ) && ! is_tax( 'podcast_theme' ) ) {
+        $cache = [];
+        return $cache;
+    }
+
+    $term = get_queried_object();
+    if ( ! $term instanceof WP_Term ) {
+        $cache = [];
+        return $cache;
+    }
+
+    $term_link = get_term_link( $term );
+    if ( is_wp_error( $term_link ) ) {
+        $cache = [];
+        return $cache;
+    }
+
+    if ( $term->description ) {
+        $description = wp_strip_all_tags( $term->description );
+    } elseif ( $term->taxonomy === 'article_category' ) {
+        $description = 'Insights on ' . $term->name . ' from Summit';
+    } else {
+        $description = 'Episodes exploring ' . $term->name . ' — Tastemakers';
+    }
+
+    if ( mb_strlen( $description ) > 160 ) {
+        $description = mb_substr( $description, 0, 157 ) . '…';
+    }
+
+    $cache = [
+        'term_name'   => $term->name,
+        'description' => $description,
+        'url'         => $term_link,
+    ];
+
+    return $cache;
+}
+
 add_filter( 'pre_get_document_title', function ( $title ) {
     if ( ! summit_seo_should_run() ) {
         return $title;
+    }
+
+    $tax_data = summit_seo_get_taxonomy_data();
+    if ( ! empty( $tax_data ) ) {
+        return $tax_data['term_name'] . ' | ' . get_bloginfo( 'name' );
     }
 
     $data = summit_seo_get_data();
@@ -155,6 +210,19 @@ add_filter( 'pre_get_document_title', function ( $title ) {
 
 add_action( 'wp_head', function () {
     if ( ! summit_seo_should_run() ) {
+        return;
+    }
+
+    // Taxonomy archive SEO.
+    $tax_data = summit_seo_get_taxonomy_data();
+    if ( ! empty( $tax_data ) ) {
+        echo '<meta name="description" content="' . esc_attr( $tax_data['description'] ) . '">' . "\n";
+        echo '<link rel="canonical" href="' . esc_url( $tax_data['url'] ) . '">' . "\n";
+        echo '<meta property="og:title" content="' . esc_attr( $tax_data['term_name'] ) . '">' . "\n";
+        echo '<meta property="og:type" content="website">' . "\n";
+        echo '<meta property="og:url" content="' . esc_url( $tax_data['url'] ) . '">' . "\n";
+        echo '<meta property="og:description" content="' . esc_attr( $tax_data['description'] ) . '">' . "\n";
+        echo '<meta property="og:site_name" content="' . esc_attr( get_bloginfo( 'name' ) ) . '">' . "\n";
         return;
     }
 

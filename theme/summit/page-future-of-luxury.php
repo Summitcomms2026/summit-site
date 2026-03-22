@@ -16,7 +16,10 @@
  *   3. Category navigation → links to taxonomy-article_category.php archives
  *   4. Article grid (standard WP_Query)
  *   5. Pagination
- *   6. Subscribe module → parts/global/subscribe.php
+ *   6. Download panel → parts/archive/download-panel.php
+ *   7. Tastemakers panel → parts/archive/tastemakers-panel.php
+ *   8. Subscribe module → parts/global/subscribe.php
+ *   9. CTA footer → parts/global/cta-footer.php
  *
  * SEO & Schema — not injected here.
  * Output handled in inc/seo.php via standard page SEO logic.
@@ -245,12 +248,68 @@ $article_cats = get_terms( [ 'taxonomy' => 'article_category', 'hide_empty' => t
         </div>
     </section>
 
-    <!-- ── 6. Subscribe ─────────────────────────────────────────────────── -->
+    <!-- ── 6. Download panel ──────────────────────────────────────────── -->
+    <?php
+    // Resolve featured download: editor-curated field → fallback to most recent.
+    $fol_page_id  = get_the_ID();
+    $fol_download = get_field( 'fol_featured_download', $fol_page_id );
+    if ( ! $fol_download ) {
+        $dl_fallback_q = new WP_Query( [
+            'post_type'      => 'download',
+            'posts_per_page' => 1,
+            'orderby'        => 'date',
+            'order'          => 'DESC',
+            'no_found_rows'  => true,
+        ] );
+        $fol_download = $dl_fallback_q->have_posts() ? $dl_fallback_q->posts[0] : null;
+        wp_reset_postdata();
+    }
+    if ( $fol_download ) :
+        set_query_var( 'summit_download_post',    $fol_download );
+        set_query_var( 'summit_download_heading',  'Download' );
+        get_template_part( 'parts/archive/download-panel' );
+    endif;
+    ?>
+
+    <!-- ── 7. Tastemakers panel ────────────────────────────────────────── -->
+    <?php
+    // Resolve featured season: ps_is_featured flag → fallback to most recent.
+    $tm_season_q = new WP_Query( [
+        'post_type'      => 'podcast_season',
+        'posts_per_page' => 1,
+        'meta_key'       => 'ps_is_featured',
+        'meta_value'     => '1',
+        'meta_compare'   => '=',
+        'no_found_rows'  => true,
+    ] );
+    if ( ! $tm_season_q->have_posts() ) {
+        $tm_season_q = new WP_Query( [
+            'post_type'      => 'podcast_season',
+            'posts_per_page' => 1,
+            'orderby'        => 'date',
+            'order'          => 'DESC',
+            'no_found_rows'  => true,
+        ] );
+    }
+    $tm_season = $tm_season_q->have_posts() ? $tm_season_q->posts[0] : null;
+    wp_reset_postdata();
+
+    if ( $tm_season ) :
+        set_query_var( 'summit_tm_season',  $tm_season );
+        set_query_var( 'summit_tm_heading', 'From Tastemakers' );
+        get_template_part( 'parts/archive/tastemakers-panel' );
+    endif;
+    ?>
+
+    <!-- ── 8. Subscribe ─────────────────────────────────────────────────── -->
     <?php
     set_query_var( 'summit_subscribe_heading', 'Subscribe to The Future of Luxury' );
     set_query_var( 'summit_subscribe_sub',     'Thinking on luxury, culture and the forces shaping how sophisticated audiences assign value — delivered directly.' );
     get_template_part( 'parts/global/subscribe' );
     ?>
+
+    <!-- ── 9. CTA footer ──────────────────────────────────────────────── -->
+    <?php get_template_part( 'parts/global/cta-footer' ); ?>
 
 </main>
 

@@ -14,6 +14,8 @@
  *   4. summit_podcast_episode_fields — podcast_episode post type
  *   5. summit_download_fields       — download post type
  *   6. summit_enquiry_fields        — enquiry post type (private admin object)
+ *   7. summit_page_fol_fields       — Future of Luxury page (page-level fields)
+ *   8. summit_page_work_fields      — Work Showcase page (page-level fields)
  *
  * Governance:
  *   summit_content_model.md         — field specifications and validation rules
@@ -50,6 +52,8 @@ function summit_core_register_acf_fields(): void {
 	summit_acf_podcast_episode();
 	summit_acf_download();
 	summit_acf_enquiry();
+	summit_acf_page_fol();
+	summit_acf_page_work();
 }
 
 
@@ -1708,6 +1712,211 @@ function summit_acf_enquiry(): void {
 			'tags',
 			'send-trackbacks',
 		],
+		'active'                => true,
+	] );
+}
+
+
+// ═════════════════════════════════════════════════════════════════════════════
+// 7. FUTURE OF LUXURY — PAGE-LEVEL FIELDS
+// Page slug: future-of-luxury | URL: /future-of-luxury
+// ═════════════════════════════════════════════════════════════════════════════
+
+function summit_acf_page_fol(): void {
+	acf_add_local_field_group( [
+		'key'                   => 'group_summit_page_fol',
+		'title'                 => 'Future of Luxury — Archive Settings',
+		'fields'                => [
+
+			// ── Tab: Archive Panels ──────────────────────────────────────
+
+			[
+				'key'   => 'field_fol_tab_panels',
+				'label' => 'Archive Panels',
+				'type'  => 'tab',
+				'placement' => 'top',
+			],
+			[
+				'key'          => 'field_fol_msg_panels',
+				'label'        => '',
+				'type'         => 'message',
+				'message'      => 'Optional content used to populate governed components on the Future of Luxury archive landing. Leave fields empty to rely on automatic fallbacks.',
+			],
+			[
+				'key'           => 'field_fol_featured_download',
+				'label'         => 'Featured Download',
+				'name'          => 'fol_featured_download',
+				'type'          => 'post_object',
+				'required'      => 0,
+				'instructions'  => 'Select a download to feature on the archive landing. If empty, the most recent published download is used. If no downloads exist, the panel is omitted.',
+				'post_type'     => [ 'download' ],
+				'taxonomy'      => [],
+				'allow_null'    => 1,
+				'multiple'      => 0,
+				'return_format' => 'object',
+				'ui'            => 1,
+			],
+
+		],
+		'location'              => [
+			[ [ 'param' => 'page', 'operator' => '==', 'value' => 'future-of-luxury' ] ],
+		],
+		'menu_order'            => 10,
+		'position'              => 'normal',
+		'style'                 => 'seamless',
+		'label_placement'       => 'top',
+		'instruction_placement' => 'label',
+		'active'                => true,
+	] );
+}
+
+
+// ═════════════════════════════════════════════════════════════════════════════
+// 8. WORK SHOWCASE — PAGE-LEVEL FIELDS
+// Page slug: work | URL: /work
+// ═════════════════════════════════════════════════════════════════════════════
+
+function summit_acf_page_work(): void {
+	acf_add_local_field_group( [
+		'key'                   => 'group_summit_page_work',
+		'title'                 => 'Work Showcase — Archive Settings',
+		'fields'                => [
+
+			// ── Tab: Showreel ────────────────────────────────────────────
+
+			[
+				'key'   => 'field_work_tab_showreel',
+				'label' => 'Showreel',
+				'type'  => 'tab',
+				'placement' => 'top',
+			],
+			[
+				'key'           => 'field_work_showreel_embed',
+				'label'         => 'Showreel Embed',
+				'name'          => 'work_showreel_embed',
+				'type'          => 'oembed',
+				'required'      => 0,
+				'instructions'  => 'Paste a JW Player, Vimeo or YouTube URL. Rendered as a responsive 16:9 embed below the case study grid. If empty, the showreel panel is omitted.',
+			],
+			[
+				'key'           => 'field_work_showreel_caption',
+				'label'         => 'Showreel Caption',
+				'name'          => 'work_showreel_caption',
+				'type'          => 'text',
+				'required'      => 0,
+				'instructions'  => 'Optional one-line caption displayed below the showreel embed.',
+				'placeholder'   => 'e.g. Summit Showreel 2025',
+			],
+
+			// ── Tab: Approach ────────────────────────────────────────────
+
+			[
+				'key'   => 'field_work_tab_approach',
+				'label' => 'Approach',
+				'type'  => 'tab',
+				'placement' => 'top',
+			],
+			[
+				'key'           => 'field_work_approach_heading',
+				'label'         => 'Approach Heading',
+				'name'          => 'work_approach_heading',
+				'type'          => 'text',
+				'required'      => 0,
+				'instructions'  => 'Heading for the strategic framing panel. If both heading and body are empty, the panel is omitted.',
+				'placeholder'   => 'e.g. How We Approach Work',
+			],
+			[
+				'key'           => 'field_work_approach_body',
+				'label'         => 'Approach Body',
+				'name'          => 'work_approach_body',
+				'type'          => 'wysiwyg',
+				'required'      => 0,
+				'instructions'  => 'Rich text body for the approach panel. Frames the curated work on display.',
+				'tabs'          => 'basic',
+				'toolbar'       => 'basic',
+				'media_upload'  => 0,
+			],
+
+			// ── Tab: Download ────────────────────────────────────────────
+
+			[
+				'key'   => 'field_work_tab_download',
+				'label' => 'Download',
+				'type'  => 'tab',
+				'placement' => 'top',
+			],
+			[
+				'key'           => 'field_work_featured_download',
+				'label'         => 'Featured Download',
+				'name'          => 'work_featured_download',
+				'type'          => 'post_object',
+				'required'      => 0,
+				'instructions'  => 'Select a download to feature (e.g. a visual essay or credentials deck). If empty, the most recent published download is used. If no downloads exist, the panel is omitted.',
+				'post_type'     => [ 'download' ],
+				'taxonomy'      => [],
+				'allow_null'    => 1,
+				'multiple'      => 0,
+				'return_format' => 'object',
+				'ui'            => 1,
+			],
+
+			// ── Tab: Sector Signals ──────────────────────────────────────
+
+			[
+				'key'   => 'field_work_tab_sectors',
+				'label' => 'Sector Signals',
+				'type'  => 'tab',
+				'placement' => 'top',
+			],
+			[
+				'key'          => 'field_work_msg_sectors',
+				'label'        => '',
+				'type'         => 'message',
+				'message'      => 'Add client or sector logos to signal category adjacency. If no logos are added, the panel is omitted.',
+			],
+			[
+				'key'           => 'field_work_sector_logos',
+				'label'         => 'Sector Logos',
+				'name'          => 'work_sector_logos',
+				'type'          => 'repeater',
+				'required'      => 0,
+				'instructions'  => 'Add logos for sectors or clients Summit works with. Grid displays automatically.',
+				'max'           => 16,
+				'layout'        => 'table',
+				'button_label'  => 'Add Logo',
+				'sub_fields'    => [
+					[
+						'key'           => 'field_work_logo_image',
+						'label'         => 'Logo Image',
+						'name'          => 'logo_image',
+						'type'          => 'image',
+						'required'      => 1,
+						'return_format' => 'array',
+						'preview_size'  => 'thumbnail',
+						'library'       => 'all',
+						'min_width'     => 200,
+					],
+					[
+						'key'           => 'field_work_logo_label',
+						'label'         => 'Label',
+						'name'          => 'logo_label',
+						'type'          => 'text',
+						'required'      => 1,
+						'instructions'  => 'Used as alt text and screen reader label.',
+						'placeholder'   => 'e.g. Hospitality & Travel',
+					],
+				],
+			],
+
+		],
+		'location'              => [
+			[ [ 'param' => 'page', 'operator' => '==', 'value' => 'work' ] ],
+		],
+		'menu_order'            => 10,
+		'position'              => 'normal',
+		'style'                 => 'seamless',
+		'label_placement'       => 'top',
+		'instruction_placement' => 'label',
 		'active'                => true,
 	] );
 }

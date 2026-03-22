@@ -15,7 +15,11 @@
  *   2. Filter bar — service_type, sector, format (URL-driven)
  *   3. Case study grid
  *   4. Pagination
- *   5. CTA footer → parts/global/cta-footer.php
+ *   5. Showreel panel → parts/archive/showreel-panel.php
+ *   6. Approach panel → parts/archive/approach-panel.php
+ *   7. Download panel → parts/archive/download-panel.php
+ *   8. Sector signals → parts/archive/sector-signals.php
+ *   9. CTA footer → parts/global/cta-footer.php
  *
  * Filter mechanism:
  * Filtering is URL-driven using taxonomy query vars. Clicking a filter
@@ -222,7 +226,60 @@ $cs_query = new WP_Query( $cs_args );
         </div>
     </section>
 
-    <!-- ── 5. CTA footer ────────────────────────────────────────────────── -->
+    <!-- ── 5. Showreel panel ──────────────────────────────────────────── -->
+    <?php
+    $work_page_id       = get_the_ID();
+    $work_showreel      = get_field( 'work_showreel_embed', $work_page_id );
+    $work_showreel_cap  = get_field( 'work_showreel_caption', $work_page_id );
+    if ( $work_showreel ) :
+        set_query_var( 'summit_showreel_embed',   $work_showreel );
+        set_query_var( 'summit_showreel_caption',  $work_showreel_cap );
+        get_template_part( 'parts/archive/showreel-panel' );
+    endif;
+    ?>
+
+    <!-- ── 6. Approach panel ───────────────────────────────────────────── -->
+    <?php
+    $work_approach_h = get_field( 'work_approach_heading', $work_page_id );
+    $work_approach_b = get_field( 'work_approach_body',    $work_page_id );
+    if ( $work_approach_h || $work_approach_b ) :
+        set_query_var( 'summit_approach_heading', $work_approach_h );
+        set_query_var( 'summit_approach_body',    $work_approach_b );
+        get_template_part( 'parts/archive/approach-panel' );
+    endif;
+    ?>
+
+    <!-- ── 7. Download panel ───────────────────────────────────────────── -->
+    <?php
+    $work_download = get_field( 'work_featured_download', $work_page_id );
+    if ( ! $work_download ) {
+        $work_dl_q = new WP_Query( [
+            'post_type'      => 'download',
+            'posts_per_page' => 1,
+            'orderby'        => 'date',
+            'order'          => 'DESC',
+            'no_found_rows'  => true,
+        ] );
+        $work_download = $work_dl_q->have_posts() ? $work_dl_q->posts[0] : null;
+        wp_reset_postdata();
+    }
+    if ( $work_download ) :
+        set_query_var( 'summit_download_post',   $work_download );
+        set_query_var( 'summit_download_heading', 'Download' );
+        get_template_part( 'parts/archive/download-panel' );
+    endif;
+    ?>
+
+    <!-- ── 8. Sector signals ──────────────────────────────────────────── -->
+    <?php
+    $work_logos = get_field( 'work_sector_logos', $work_page_id );
+    if ( $work_logos ) :
+        set_query_var( 'summit_sector_logos', $work_logos );
+        get_template_part( 'parts/archive/sector-signals' );
+    endif;
+    ?>
+
+    <!-- ── 9. CTA footer ──────────────────────────────────────────────── -->
     <?php get_template_part( 'parts/global/cta-footer' ); ?>
 
 </main>

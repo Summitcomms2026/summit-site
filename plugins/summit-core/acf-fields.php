@@ -14,6 +14,7 @@
  *   4. summit_podcast_episode_fields — podcast_episode post type
  *   5. summit_download_fields       — download post type
  *   6. summit_enquiry_fields        — enquiry post type (private admin object)
+ *   7. summit_homepage_fields       — front page (page_type == front_page)
  *
  * Governance:
  *   summit_content_model.md         — field specifications and validation rules
@@ -50,6 +51,7 @@ function summit_core_register_acf_fields(): void {
 	summit_acf_podcast_episode();
 	summit_acf_download();
 	summit_acf_enquiry();
+	summit_acf_homepage();
 }
 
 
@@ -1706,6 +1708,431 @@ function summit_acf_enquiry(): void {
 			'page_attributes',
 			'featured_image',
 			'tags',
+			'send-trackbacks',
+		],
+		'active'                => true,
+	] );
+}
+
+
+// ═════════════════════════════════════════════════════════════════════════════
+// 7. HOMEPAGE
+// Page type: front_page | URL: /
+// ═════════════════════════════════════════════════════════════════════════════
+
+function summit_acf_homepage(): void {
+	acf_add_local_field_group( [
+		'key'                   => 'group_summit_homepage',
+		'title'                 => 'Homepage Fields',
+		'fields'                => [
+
+			// ── Tab: Hero ─────────────────────────────────────────────────
+
+			[
+				'key'   => 'field_home_tab_hero',
+				'label' => 'Hero',
+				'type'  => 'tab',
+				'placement' => 'top',
+			],
+			[
+				'key'           => 'field_home_hero_eyebrow',
+				'label'         => 'Eyebrow',
+				'name'          => 'home_hero_eyebrow',
+				'type'          => 'text',
+				'required'      => 0,
+				'instructions'  => 'Small label above the headline. Leave blank to omit.',
+				'placeholder'   => 'e.g. Summit Communication Group',
+			],
+			[
+				'key'           => 'field_home_hero_headline',
+				'label'         => 'Headline',
+				'name'          => 'home_hero_headline',
+				'type'          => 'text',
+				'required'      => 0,
+				'instructions'  => 'Primary H1 headline. Leave blank for default.',
+			],
+			[
+				'key'           => 'field_home_hero_body',
+				'label'         => 'Body',
+				'name'          => 'home_hero_body',
+				'type'          => 'textarea',
+				'required'      => 0,
+				'instructions'  => 'One to three sentences below the headline. Leave blank for default.',
+				'rows'          => 3,
+				'new_lines'     => 'wpautop',
+			],
+			[
+				'key'           => 'field_home_hero_cta_label',
+				'label'         => 'Primary CTA Label',
+				'name'          => 'home_hero_cta_label',
+				'type'          => 'text',
+				'required'      => 0,
+				'placeholder'   => 'Design Tomorrow',
+				'wrapper'       => [ 'width' => '50' ],
+			],
+			[
+				'key'           => 'field_home_hero_cta_url',
+				'label'         => 'Primary CTA URL',
+				'name'          => 'home_hero_cta_url',
+				'type'          => 'url',
+				'required'      => 0,
+				'placeholder'   => '/design-tomorrow',
+				'wrapper'       => [ 'width' => '50' ],
+			],
+			[
+				'key'           => 'field_home_hero_cta2_label',
+				'label'         => 'Secondary CTA Label',
+				'name'          => 'home_hero_cta2_label',
+				'type'          => 'text',
+				'required'      => 0,
+				'placeholder'   => 'Explore Our Work',
+				'wrapper'       => [ 'width' => '50' ],
+			],
+			[
+				'key'           => 'field_home_hero_cta2_url',
+				'label'         => 'Secondary CTA URL',
+				'name'          => 'home_hero_cta2_url',
+				'type'          => 'url',
+				'required'      => 0,
+				'placeholder'   => '/work',
+				'wrapper'       => [ 'width' => '50' ],
+			],
+
+			// ── Tab: Showreel ─────────────────────────────────────────────
+
+			[
+				'key'   => 'field_home_tab_showreel',
+				'label' => 'Showreel',
+				'type'  => 'tab',
+				'placement' => 'top',
+			],
+			[
+				'key'           => 'field_home_showreel_headline',
+				'label'         => 'Headline',
+				'name'          => 'home_showreel_headline',
+				'type'          => 'text',
+				'required'      => 0,
+				'placeholder'   => 'See the Work',
+			],
+			[
+				'key'           => 'field_home_showreel_body',
+				'label'         => 'Body',
+				'name'          => 'home_showreel_body',
+				'type'          => 'textarea',
+				'required'      => 0,
+				'rows'          => 2,
+				'new_lines'     => 'wpautop',
+			],
+			[
+				'key'           => 'field_home_showreel_embed',
+				'label'         => 'Video Embed URL',
+				'name'          => 'home_showreel_embed',
+				'type'          => 'oembed',
+				'required'      => 0,
+				'instructions'  => 'Paste a YouTube, Vimeo, or other oEmbed-compatible URL. Section is hidden when empty.',
+			],
+
+			// ── Tab: Value Proposition ────────────────────────────────────
+
+			[
+				'key'   => 'field_home_tab_vp',
+				'label' => 'Value Proposition',
+				'type'  => 'tab',
+				'placement' => 'top',
+			],
+			[
+				'key'           => 'field_home_vp_headline',
+				'label'         => 'Headline',
+				'name'          => 'home_vp_headline',
+				'type'          => 'text',
+				'required'      => 0,
+				'instructions'  => 'Leave blank for default.',
+			],
+			[
+				'key'           => 'field_home_vp_body',
+				'label'         => 'Body',
+				'name'          => 'home_vp_body',
+				'type'          => 'wysiwyg',
+				'required'      => 0,
+				'instructions'  => 'One to two paragraphs. Leave blank for default.',
+				'tabs'          => 'all',
+				'toolbar'       => 'basic',
+				'media_upload'  => 0,
+				'delay'         => 1,
+			],
+
+			// ── Tab: Capabilities ─────────────────────────────────────────
+
+			[
+				'key'   => 'field_home_tab_capabilities',
+				'label' => 'Capabilities',
+				'type'  => 'tab',
+				'placement' => 'top',
+			],
+			[
+				'key'           => 'field_home_cap_intro',
+				'label'         => 'Section Intro',
+				'name'          => 'home_cap_intro',
+				'type'          => 'textarea',
+				'required'      => 0,
+				'rows'          => 2,
+				'new_lines'     => 'wpautop',
+				'instructions'  => 'Optional introductory sentence above the three pillars.',
+			],
+			// Pillar 1
+			[
+				'key'           => 'field_home_cap_1_title',
+				'label'         => 'Pillar 1 — Title',
+				'name'          => 'home_cap_1_title',
+				'type'          => 'text',
+				'required'      => 0,
+				'placeholder'   => 'Brand Strategy',
+				'wrapper'       => [ 'width' => '33' ],
+			],
+			[
+				'key'           => 'field_home_cap_1_desc',
+				'label'         => 'Pillar 1 — Description',
+				'name'          => 'home_cap_1_desc',
+				'type'          => 'textarea',
+				'required'      => 0,
+				'rows'          => 3,
+				'new_lines'     => 'wpautop',
+			],
+			[
+				'key'           => 'field_home_cap_1_url',
+				'label'         => 'Pillar 1 — URL',
+				'name'          => 'home_cap_1_url',
+				'type'          => 'url',
+				'required'      => 0,
+				'placeholder'   => '/what-we-do/brand-strategy',
+			],
+			// Pillar 2
+			[
+				'key'           => 'field_home_cap_2_title',
+				'label'         => 'Pillar 2 — Title',
+				'name'          => 'home_cap_2_title',
+				'type'          => 'text',
+				'required'      => 0,
+				'placeholder'   => 'Experience Design',
+				'wrapper'       => [ 'width' => '33' ],
+			],
+			[
+				'key'           => 'field_home_cap_2_desc',
+				'label'         => 'Pillar 2 — Description',
+				'name'          => 'home_cap_2_desc',
+				'type'          => 'textarea',
+				'required'      => 0,
+				'rows'          => 3,
+				'new_lines'     => 'wpautop',
+			],
+			[
+				'key'           => 'field_home_cap_2_url',
+				'label'         => 'Pillar 2 — URL',
+				'name'          => 'home_cap_2_url',
+				'type'          => 'url',
+				'required'      => 0,
+				'placeholder'   => '/what-we-do/experience-design',
+			],
+			// Pillar 3
+			[
+				'key'           => 'field_home_cap_3_title',
+				'label'         => 'Pillar 3 — Title',
+				'name'          => 'home_cap_3_title',
+				'type'          => 'text',
+				'required'      => 0,
+				'placeholder'   => 'Digital Transformation',
+				'wrapper'       => [ 'width' => '33' ],
+			],
+			[
+				'key'           => 'field_home_cap_3_desc',
+				'label'         => 'Pillar 3 — Description',
+				'name'          => 'home_cap_3_desc',
+				'type'          => 'textarea',
+				'required'      => 0,
+				'rows'          => 3,
+				'new_lines'     => 'wpautop',
+			],
+			[
+				'key'           => 'field_home_cap_3_url',
+				'label'         => 'Pillar 3 — URL',
+				'name'          => 'home_cap_3_url',
+				'type'          => 'url',
+				'required'      => 0,
+				'placeholder'   => '/what-we-do/digital-transformation',
+			],
+
+			// ── Tab: Selected Work ────────────────────────────────────────
+
+			[
+				'key'   => 'field_home_tab_work',
+				'label' => 'Selected Work',
+				'type'  => 'tab',
+				'placement' => 'top',
+			],
+			[
+				'key'           => 'field_home_work_headline',
+				'label'         => 'Headline',
+				'name'          => 'home_work_headline',
+				'type'          => 'text',
+				'required'      => 0,
+				'placeholder'   => 'Selected Work',
+			],
+			[
+				'key'           => 'field_home_work_cases',
+				'label'         => 'Featured Case Studies',
+				'name'          => 'home_work_cases',
+				'type'          => 'relationship',
+				'required'      => 0,
+				'instructions'  => 'Choose up to 4 case studies. Leave empty to show the 3 most recent automatically.',
+				'post_type'     => [ 'case_study' ],
+				'filters'       => [ 'search' ],
+				'min'           => 0,
+				'max'           => 4,
+				'return_format' => 'object',
+			],
+
+			// ── Tab: Tastemakers ──────────────────────────────────────────
+
+			[
+				'key'   => 'field_home_tab_tastemakers',
+				'label' => 'Tastemakers',
+				'type'  => 'tab',
+				'placement' => 'top',
+			],
+			[
+				'key'           => 'field_home_tastemakers_headline',
+				'label'         => 'Headline',
+				'name'          => 'home_tastemakers_headline',
+				'type'          => 'text',
+				'required'      => 0,
+				'placeholder'   => 'Tastemakers',
+			],
+			[
+				'key'           => 'field_home_tastemakers_body',
+				'label'         => 'Body',
+				'name'          => 'home_tastemakers_body',
+				'type'          => 'textarea',
+				'required'      => 0,
+				'rows'          => 2,
+				'new_lines'     => 'wpautop',
+			],
+			[
+				'key'           => 'field_home_tastemakers_season',
+				'label'         => 'Featured Season',
+				'name'          => 'home_tastemakers_season',
+				'type'          => 'post_object',
+				'required'      => 0,
+				'instructions'  => 'Choose a season to feature. Leave empty to show the latest automatically.',
+				'post_type'     => [ 'podcast_season' ],
+				'return_format' => 'object',
+				'allow_null'    => 1,
+			],
+
+			// ── Tab: Download ─────────────────────────────────────────────
+
+			[
+				'key'   => 'field_home_tab_download',
+				'label' => 'Download',
+				'type'  => 'tab',
+				'placement' => 'top',
+			],
+			[
+				'key'           => 'field_home_download_headline',
+				'label'         => 'Headline',
+				'name'          => 'home_download_headline',
+				'type'          => 'text',
+				'required'      => 0,
+				'placeholder'   => 'The Characteristics of Luxury',
+			],
+			[
+				'key'           => 'field_home_download_body',
+				'label'         => 'Body',
+				'name'          => 'home_download_body',
+				'type'          => 'textarea',
+				'required'      => 0,
+				'rows'          => 2,
+				'new_lines'     => 'wpautop',
+			],
+			[
+				'key'           => 'field_home_download_item',
+				'label'         => 'Featured Download',
+				'name'          => 'home_download_item',
+				'type'          => 'post_object',
+				'required'      => 0,
+				'instructions'  => 'Choose a download to feature. Leave empty to show the latest automatically.',
+				'post_type'     => [ 'download' ],
+				'return_format' => 'object',
+				'allow_null'    => 1,
+			],
+
+			// ── Tab: Featured Article ─────────────────────────────────────
+
+			[
+				'key'   => 'field_home_tab_article',
+				'label' => 'Featured Article',
+				'type'  => 'tab',
+				'placement' => 'top',
+			],
+			[
+				'key'           => 'field_home_article_headline',
+				'label'         => 'Section Headline',
+				'name'          => 'home_article_headline',
+				'type'          => 'text',
+				'required'      => 0,
+				'placeholder'   => 'The Future of Luxury',
+			],
+			[
+				'key'           => 'field_home_article_item',
+				'label'         => 'Featured Article',
+				'name'          => 'home_article_item',
+				'type'          => 'post_object',
+				'required'      => 0,
+				'instructions'  => 'Choose an article to feature. Leave empty to show the latest automatically.',
+				'post_type'     => [ 'article' ],
+				'return_format' => 'object',
+				'allow_null'    => 1,
+			],
+
+			// ── Tab: Sectors ──────────────────────────────────────────────
+
+			[
+				'key'   => 'field_home_tab_sectors',
+				'label' => 'Sectors',
+				'type'  => 'tab',
+				'placement' => 'top',
+			],
+			[
+				'key'           => 'field_home_sectors_headline',
+				'label'         => 'Headline',
+				'name'          => 'home_sectors_headline',
+				'type'          => 'text',
+				'required'      => 0,
+				'placeholder'   => 'The Luxury Economy',
+			],
+			[
+				'key'           => 'field_home_sectors_body',
+				'label'         => 'Body',
+				'name'          => 'home_sectors_body',
+				'type'          => 'textarea',
+				'required'      => 0,
+				'rows'          => 2,
+				'new_lines'     => 'wpautop',
+			],
+
+		],
+		'location'              => [
+			[ [ 'param' => 'page_type', 'operator' => '==', 'value' => 'front_page' ] ],
+		],
+		'menu_order'            => 0,
+		'position'              => 'normal',
+		'style'                 => 'seamless',
+		'label_placement'       => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen'        => [
+			'the_content',
+			'excerpt',
+			'discussion',
+			'comments',
 			'send-trackbacks',
 		],
 		'active'                => true,

@@ -14,6 +14,7 @@
  *   4. summit_podcast_episode_fields — podcast_episode post type
  *   5. summit_download_fields       — download post type
  *   6. summit_enquiry_fields        — enquiry post type (private admin object)
+ *   7. summit_homepage_fields       — front page (static front page)
  *
  * Governance:
  *   summit_content_model.md         — field specifications and validation rules
@@ -50,6 +51,7 @@ function summit_core_register_acf_fields(): void {
 	summit_acf_podcast_episode();
 	summit_acf_download();
 	summit_acf_enquiry();
+	summit_acf_homepage();
 }
 
 
@@ -1708,6 +1710,315 @@ function summit_acf_enquiry(): void {
 			'tags',
 			'send-trackbacks',
 		],
+		'active'                => true,
+	] );
+}
+
+
+// ═════════════════════════════════════════════════════════════════════════════
+// 7. HOMEPAGE
+// Front page (static front page set in Settings → Reading)
+// Template: front-page.php
+// ═════════════════════════════════════════════════════════════════════════════
+
+function summit_acf_homepage(): void {
+	acf_add_local_field_group( [
+		'key'                   => 'group_summit_homepage',
+		'title'                 => 'Homepage Fields',
+		'fields'                => [
+
+			// ── Hero ──────────────────────────────────────────────────────
+
+			[
+				'key'   => 'field_hp_tab_hero',
+				'label' => 'Hero',
+				'type'  => 'tab',
+				'placement' => 'top',
+			],
+			[
+				'key'           => 'field_hp_hero_headline',
+				'label'         => 'Hero Headline',
+				'name'          => 'hp_hero_headline',
+				'type'          => 'text',
+				'required'      => 1,
+				'instructions'  => 'Primary homepage headline. Keep under 60 characters.',
+				'maxlength'     => 80,
+				'placeholder'   => 'e.g. Design Tomorrow',
+			],
+			[
+				'key'           => 'field_hp_hero_subline',
+				'label'         => 'Hero Subline',
+				'name'          => 'hp_hero_subline',
+				'type'          => 'textarea',
+				'required'      => 0,
+				'instructions'  => 'Supporting sentence beneath the headline. 1–2 sentences.',
+				'rows'          => 2,
+				'new_lines'     => '',
+			],
+			[
+				'key'           => 'field_hp_hero_cta_label',
+				'label'         => 'Hero CTA Label',
+				'name'          => 'hp_hero_cta_label',
+				'type'          => 'text',
+				'required'      => 0,
+				'default_value' => 'Design Tomorrow',
+			],
+			[
+				'key'           => 'field_hp_hero_cta_url',
+				'label'         => 'Hero CTA URL',
+				'name'          => 'hp_hero_cta_url',
+				'type'          => 'url',
+				'required'      => 0,
+				'default_value' => '/design-tomorrow',
+			],
+			[
+				'key'           => 'field_hp_hero_secondary_cta_label',
+				'label'         => 'Hero Secondary CTA Label',
+				'name'          => 'hp_hero_secondary_cta_label',
+				'type'          => 'text',
+				'required'      => 0,
+				'default_value' => 'Explore Our Work',
+				'instructions'  => 'V4: secondary action beneath the hero headline.',
+			],
+			[
+				'key'           => 'field_hp_hero_secondary_cta_url',
+				'label'         => 'Hero Secondary CTA URL',
+				'name'          => 'hp_hero_secondary_cta_url',
+				'type'          => 'url',
+				'required'      => 0,
+				'default_value' => '/work',
+			],
+
+			// ── Showreel ──────────────────────────────────────────────────
+
+			[
+				'key'   => 'field_hp_tab_showreel',
+				'label' => 'Showreel',
+				'type'  => 'tab',
+				'placement' => 'top',
+			],
+			[
+				'key'           => 'field_hp_showreel_headline',
+				'label'         => 'Showreel Headline',
+				'name'          => 'hp_showreel_headline',
+				'type'          => 'text',
+				'required'      => 0,
+				'instructions'  => 'V4: "A Studio Shaping the Future of Luxury"',
+			],
+			[
+				'key'           => 'field_hp_showreel_embed',
+				'label'         => 'Showreel Embed',
+				'name'          => 'hp_showreel_embed',
+				'type'          => 'textarea',
+				'required'      => 0,
+				'instructions'  => 'JW Player embed code or iframe. Leave blank to hide the showreel section.',
+				'rows'          => 3,
+				'new_lines'     => '',
+			],
+			[
+				'key'   => 'field_hp_tab_value',
+				'label' => 'Value Proposition',
+				'type'  => 'tab',
+				'placement' => 'top',
+			],
+			[
+				'key'           => 'field_hp_value_headline',
+				'label'         => 'Value Headline',
+				'name'          => 'hp_value_headline',
+				'type'          => 'text',
+				'required'      => 0,
+				'instructions'  => 'Short strategic headline for the value proposition section.',
+			],
+			[
+				'key'           => 'field_hp_value_body',
+				'label'         => 'Value Body',
+				'name'          => 'hp_value_body',
+				'type'          => 'textarea',
+				'required'      => 0,
+				'instructions'  => '2–3 sentences. What Summit does and why it matters.',
+				'rows'          => 3,
+				'new_lines'     => '',
+			],
+			[
+				'key'   => 'field_hp_tab_services',
+				'label' => 'Services',
+				'type'  => 'tab',
+				'placement' => 'top',
+			],
+			[
+				'key'           => 'field_hp_services_headline',
+				'label'         => 'Services Headline',
+				'name'          => 'hp_services_headline',
+				'type'          => 'text',
+				'required'      => 0,
+				'default_value' => 'What We Do',
+			],
+			[
+				'key'           => 'field_hp_services_intro',
+				'label'         => 'Services Intro',
+				'name'          => 'hp_services_intro',
+				'type'          => 'text',
+				'required'      => 0,
+				'instructions'  => 'One-line intro above the services triptych.',
+			],
+
+			// ── Curated Content ───────────────────────────────────────────
+
+			[
+				'key'   => 'field_hp_tab_curated',
+				'label' => 'Curated Content',
+				'type'  => 'tab',
+				'placement' => 'top',
+			],
+			[
+				'key'          => 'field_hp_curated_message',
+				'label'        => '',
+				'type'         => 'message',
+				'message'      => 'Select specific content to feature on the homepage. If left empty, the homepage will fall back to the most recent published entries.',
+			],
+			[
+				'key'           => 'field_hp_featured_cases',
+				'label'         => 'Selected Work',
+				'name'          => 'hp_featured_cases',
+				'type'          => 'relationship',
+				'required'      => 0,
+				'instructions'  => 'Choose up to 4 case studies. Fallback: 4 most recent.',
+				'post_type'     => [ 'case_study' ],
+				'filters'       => [ 'search' ],
+				'return_format' => 'object',
+				'min'           => 0,
+				'max'           => 4,
+			],
+			[
+				'key'           => 'field_hp_featured_episode',
+				'label'         => 'Featured Episode',
+				'name'          => 'hp_featured_episode',
+				'type'          => 'post_object',
+				'required'      => 0,
+				'instructions'  => 'Pin one episode. Fallback: latest from featured season.',
+				'post_type'     => [ 'podcast_episode' ],
+				'return_format' => 'object',
+				'allow_null'    => 1,
+			],
+			[
+				'key'           => 'field_hp_featured_articles',
+				'label'         => 'Featured Articles',
+				'name'          => 'hp_featured_articles',
+				'type'          => 'relationship',
+				'required'      => 0,
+				'instructions'  => 'Choose up to 3 articles. Fallback: 3 most recent.',
+				'post_type'     => [ 'article' ],
+				'filters'       => [ 'search' ],
+				'return_format' => 'object',
+				'min'           => 0,
+				'max'           => 3,
+			],
+
+			// ── Download ──────────────────────────────────────────────────
+
+			[
+				'key'   => 'field_hp_tab_download',
+				'label' => 'Download',
+				'type'  => 'tab',
+				'placement' => 'top',
+			],
+			[
+				'key'           => 'field_hp_download_headline',
+				'label'         => 'Download Section Headline',
+				'name'          => 'hp_download_headline',
+				'type'          => 'text',
+				'required'      => 0,
+				'instructions'  => 'e.g. "The Characteristics of Luxury"',
+			],
+			[
+				'key'           => 'field_hp_download_body',
+				'label'         => 'Download Section Body',
+				'name'          => 'hp_download_body',
+				'type'          => 'textarea',
+				'required'      => 0,
+				'rows'          => 2,
+				'new_lines'     => '',
+			],
+			[
+				'key'           => 'field_hp_download_asset',
+				'label'         => 'Download Asset',
+				'name'          => 'hp_download_asset',
+				'type'          => 'post_object',
+				'required'      => 0,
+				'instructions'  => 'Link to a download entry. The CTA label comes from the download\'s own field.',
+				'post_type'     => [ 'download' ],
+				'return_format' => 'object',
+				'allow_null'    => 1,
+			],
+			[
+				'key'   => 'field_hp_tab_sectors',
+				'label' => 'Sectors',
+				'type'  => 'tab',
+				'placement' => 'top',
+			],
+			[
+				'key'           => 'field_hp_sectors_headline',
+				'label'         => 'Sectors Headline',
+				'name'          => 'hp_sectors_headline',
+				'type'          => 'text',
+				'required'      => 0,
+				'default_value' => 'Luxury Sectors',
+				'instructions'  => 'Headline for the sector grid. The sectors themselves are structural (hardcoded in the template).',
+			],
+			[
+				'key'   => 'field_hp_tab_cta',
+				'label' => 'Closing CTA',
+				'type'  => 'tab',
+				'placement' => 'top',
+			],
+			[
+				'key'           => 'field_hp_cta_headline',
+				'label'         => 'CTA Headline',
+				'name'          => 'hp_cta_headline',
+				'type'          => 'text',
+				'required'      => 0,
+				'default_value' => "Let's Design Tomorrow",
+			],
+			[
+				'key'           => 'field_hp_cta_body',
+				'label'         => 'CTA Body',
+				'name'          => 'hp_cta_body',
+				'type'          => 'textarea',
+				'required'      => 0,
+				'rows'          => 2,
+				'new_lines'     => '',
+			],
+			[
+				'key'           => 'field_hp_cta_label',
+				'label'         => 'CTA Button Label',
+				'name'          => 'hp_cta_label',
+				'type'          => 'text',
+				'required'      => 0,
+				'default_value' => 'Start a Conversation',
+			],
+			[
+				'key'           => 'field_hp_cta_url',
+				'label'         => 'CTA Button URL',
+				'name'          => 'hp_cta_url',
+				'type'          => 'url',
+				'required'      => 0,
+				'default_value' => '/design-tomorrow',
+			],
+		],
+		'location'              => [
+			[
+				[
+					'param'    => 'page_type',
+					'operator' => '==',
+					'value'    => 'front_page',
+				],
+			],
+		],
+		'menu_order'            => 0,
+		'position'              => 'normal',
+		'style'                 => 'default',
+		'label_placement'       => 'top',
+		'instruction_placement' => 'label',
 		'active'                => true,
 	] );
 }

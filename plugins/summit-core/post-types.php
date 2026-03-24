@@ -53,7 +53,7 @@ function summit_core_register_post_types() {
         'public' => true,
         'show_in_rest' => true,
         'has_archive' => false,
-        'rewrite' => array('slug' => 'tastemakers/episodes'),
+        'rewrite' => array('slug' => 'episodes'),
         'menu_icon' => 'dashicons-microphone',
         'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'custom-fields'),
     ));

@@ -1,58 +1,39 @@
 <?php
 /**
- * Part: Selected Work Panel
- * Location: parts/blocks/selected-work.php
+ * Part: Related Case Studies
+ * Location: parts/related/case-studies.php
  *
- * Displays curated or auto-queried case studies on the homepage.
- * Reuses the case-study-card markup from page-work.php.
+ * Renders a related case study grid from a supplied array of WP_Post objects.
+ * Guard: suppresses output if no posts provided.
  *
- * Curated first: uses home_work_cases relationship field.
- * Auto fallback: queries 3 most recent case_study posts.
- * Guard: section is not rendered when no case studies exist.
- *
- * ACF fields (from front page):
- *   home_work_headline text         optional
- *   home_work_cases    relationship  optional — case_study, max 4
+ * Usage:
+ *   get_template_part( 'parts/related/case-studies', null, [
+ *       'posts'    => $related_cases,
+ *       'headline' => 'Related Work',
+ *   ] );
  *
  * @package SummitTheme
  */
 
 defined( 'ABSPATH' ) || exit;
 
-$headline = get_field( 'home_work_headline' ) ?: 'Selected Work';
+$posts    = $args['posts']    ?? [];
+$headline = $args['headline'] ?? 'Related Work';
 
-// Curated selection — ACF relationship field returns array of WP_Post objects.
-$cases = get_field( 'home_work_cases' );
-
-// Auto fallback — 3 most recent case studies.
-if ( empty( $cases ) ) {
-    $fallback_query = new WP_Query( [
-        'post_type'      => 'case_study',
-        'posts_per_page' => 3,
-        'orderby'        => [ 'menu_order' => 'ASC', 'date' => 'DESC' ],
-        'no_found_rows'  => true,
-    ] );
-    $cases = $fallback_query->posts;
-    wp_reset_postdata();
-}
-
-// Guard — do not render when no case studies exist.
-if ( empty( $cases ) ) {
+if ( empty( $posts ) ) {
     return;
 }
 ?>
 
-<section class="selected-work section--padded" aria-labelledby="selected-work-heading">
+<section class="related-section section--tinted section--padded" aria-labelledby="related-cases-heading">
     <div class="container container--wide">
 
-        <header class="selected-work__header">
-            <h2 class="selected-work__headline" id="selected-work-heading">
-                <?php echo esc_html( $headline ); ?>
-            </h2>
-        </header>
+        <h2 class="related-section__headline" id="related-cases-heading">
+            <?php echo esc_html( $headline ); ?>
+        </h2>
 
-        <ul class="case-study-grid" role="list">
-            <?php foreach ( $cases as $case ) :
+        <ul class="related-grid" role="list">
+            <?php foreach ( $posts as $case ) :
                 $cs_id     = $case->ID;
                 $summary   = get_field( 'cs_summary', $cs_id );
                 $client    = get_field( 'cs_client', $cs_id );
@@ -73,7 +54,6 @@ if ( empty( $cases ) ) {
                     <?php endif; ?>
 
                     <div class="case-study-card__body">
-
                         <div class="case-study-card__meta">
                             <?php if ( $svc_label ) : ?>
                             <span class="case-study-card__service"><?php echo esc_html( $svc_label ); ?></span>
@@ -82,31 +62,19 @@ if ( empty( $cases ) ) {
                             <span class="case-study-card__year"><?php echo absint( $year ); ?></span>
                             <?php endif; ?>
                         </div>
-
                         <h3 class="case-study-card__title"><?php echo esc_html( get_the_title( $cs_id ) ); ?></h3>
-
                         <?php if ( $client ) : ?>
                         <p class="case-study-card__client"><?php echo esc_html( $client ); ?></p>
                         <?php endif; ?>
-
                         <?php if ( $summary ) : ?>
                         <p class="case-study-card__summary"><?php echo esc_html( $summary ); ?></p>
                         <?php endif; ?>
-
                         <span class="case-study-card__cta" aria-hidden="true">View Project</span>
-
                     </div>
-
                 </a>
             </li>
             <?php endforeach; ?>
         </ul>
-
-        <footer class="selected-work__footer">
-            <a href="<?php echo esc_url( get_post_type_archive_link( 'case_study' ) ); ?>" class="btn btn--secondary">
-                Explore Our Work
-            </a>
-        </footer>
 
     </div>
 </section>

@@ -14,7 +14,7 @@
  *   home_hero_cta_label  text     optional — default: Design Tomorrow
  *   home_hero_cta_url    url      optional — default: /design-tomorrow
  *   home_hero_cta2_label text     optional — default: Explore Our Work
- *   home_hero_cta2_url   url      optional — default: /work
+ *   home_hero_cta2_url   url      optional — default: /work-showcase
  *
  * @package SummitTheme
  */
@@ -27,7 +27,7 @@ $body      = get_field( 'home_hero_body' )        ?: 'We partner with luxury and
 $cta_label = get_field( 'home_hero_cta_label' )   ?: 'Design Tomorrow';
 $cta_url   = get_field( 'home_hero_cta_url' )     ?: home_url( '/design-tomorrow' );
 $cta2_label = get_field( 'home_hero_cta2_label' ) ?: 'Explore Our Work';
-$cta2_url   = get_field( 'home_hero_cta2_url' )   ?: home_url( '/work' );
+$cta2_url   = get_field( 'home_hero_cta2_url' )   ?: get_post_type_archive_link( 'case_study' );
 ?>
 
 <section class="home-hero section--padded-xl" aria-labelledby="home-hero-title">

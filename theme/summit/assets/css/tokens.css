@@ -1,0 +1,89 @@
+/*
+ * Summit Theme — Design Tokens
+ * assets/css/tokens.css
+ *
+ * All design tokens as CSS custom properties.
+ * No selectors targeting elements — :root only.
+ */
+
+:root {
+
+  /* ── Colour ────────────────────────────────────────────────── */
+
+  --colour-ink:        #1a1a1a;
+  --colour-paper:      #fafaf8;
+  --colour-paper-pure: #ffffff;
+
+  /* Ink tints (ink on paper backgrounds) */
+  --colour-ink-05:  rgba(26, 26, 26, 0.05);
+  --colour-ink-10:  rgba(26, 26, 26, 0.10);
+  --colour-ink-60:  rgba(26, 26, 26, 0.60);
+  --colour-ink-80:  rgba(26, 26, 26, 0.80);
+
+  /* Paper tints (paper on ink backgrounds) */
+  --colour-paper-05: rgba(250, 250, 248, 0.05);
+  --colour-paper-10: rgba(250, 250, 248, 0.10);
+  --colour-paper-50: rgba(250, 250, 248, 0.50);
+  --colour-paper-65: rgba(250, 250, 248, 0.65);
+  --colour-paper-80: rgba(250, 250, 248, 0.80);
+
+  /* ── Typography ────────────────────────────────────────────── */
+
+  --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                      Roboto, Oxygen, Ubuntu, Cantarell,
+                      'Helvetica Neue', Arial, sans-serif;
+
+  /* Scale — fluid sizing with clamp */
+  --text-display-xl: clamp(2.5rem, 1.8rem + 3.5vw, 4.5rem);
+  --text-display-l:  clamp(2rem, 1.5rem + 2.5vw, 3.25rem);
+  --text-h2:         clamp(1.75rem, 1.4rem + 1.75vw, 2.5rem);
+  --text-h3:         clamp(1.25rem, 1.1rem + 0.75vw, 1.625rem);
+  --text-body-l:     clamp(1.125rem, 1.05rem + 0.375vw, 1.3125rem);
+  --text-body:       1rem;
+  --text-small:      0.875rem;
+  --text-micro:      0.75rem;
+
+  /* Leading */
+  --leading-tight: 1.1;
+  --leading-snug:  1.25;
+  --leading-body:  1.65;
+
+  /* Tracking */
+  --tracking-tight:  -0.02em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.05em;
+  --tracking-wider:   0.08em;
+
+  /* ── Spacing ───────────────────────────────────────────────── */
+
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.5rem;
+  --space-6:  2rem;
+  --space-7:  2.5rem;
+  --space-8:  3rem;
+  --space-9:  3.5rem;
+  --space-10: 4rem;
+  --space-11: 5rem;
+  --space-12: 6rem;
+
+  /* ── Layout ────────────────────────────────────────────────── */
+
+  --container-max:   1400px;
+  --container-wide:  1280px;
+  --container-med:   960px;
+  --container-narrow: 680px;
+
+  --grid-gap-cards: var(--space-6);
+
+  --measure-narrow: 56ch;
+
+  /* ── Misc ──────────────────────────────────────────────────── */
+
+  --radius-md: 0.5rem;
+
+  --duration-fast: 180ms;
+  --ease-out: cubic-bezier(0.25, 0, 0.25, 1);
+}

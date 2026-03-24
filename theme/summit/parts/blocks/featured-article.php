@@ -120,7 +120,7 @@ $cat_label   = ( ! is_wp_error( $cat_terms ) && ! empty( $cat_terms ) )
         </div>
 
         <footer class="home-article__footer">
-            <a href="<?php echo esc_url( home_url( '/future-of-luxury' ) ); ?>" class="btn btn--secondary">
+            <a href="<?php echo esc_url( get_post_type_archive_link( 'article' ) ); ?>" class="btn btn--secondary">
                 View All Articles
             </a>
         </footer>

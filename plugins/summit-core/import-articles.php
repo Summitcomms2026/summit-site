@@ -227,6 +227,47 @@ echo "[OK] All " . count( $required_cats ) . " article_category terms exist.\n";
 echo "\n── All preflight checks passed ───────────────────────────\n\n";
 
 // ─────────────────────────────────────────────────────────────────────────────
+// PRE-IMPORT RECONCILIATION
+// Detect existing articles that match manifest titles but lack _summit_import_slug.
+// Trash them to prevent duplicate content. Trashed posts are recoverable.
+// ─────────────────────────────────────────────────────────────────────────────
+echo "── Pre-import reconciliation ─────────────────────────────\n\n";
+
+$trashed = 0;
+foreach ( $manifest as $entry ) {
+	$import_slug = $entry['import_slug'];
+	$record      = $dataset_index[ $import_slug ];
+	$title       = $record['article_title'] ?? '';
+
+	if ( empty( $title ) ) {
+		continue;
+	}
+
+	// Check for existing articles with the same title but no import slug.
+	$existing = get_posts( [
+		'post_type'   => 'article',
+		'post_status' => [ 'publish', 'draft', 'pending' ],
+		'title'       => $title,
+		'numberposts' => 5,
+	] );
+
+	foreach ( $existing as $ex ) {
+		$has_meta = get_post_meta( $ex->ID, '_summit_import_slug', true );
+		if ( ! $has_meta ) {
+			wp_trash_post( $ex->ID );
+			echo "  [trashed] ID {$ex->ID} — \"{$ex->post_title}\" (pre-existing duplicate)\n";
+			$trashed++;
+		}
+	}
+}
+
+if ( $trashed > 0 ) {
+	echo "\n  Trashed {$trashed} pre-existing duplicate(s).\n\n";
+} else {
+	echo "  No pre-existing duplicates found.\n\n";
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // IMPORT PASS
 // ─────────────────────────────────────────────────────────────────────────────
 echo "── Importing articles ────────────────────────────────────\n\n";

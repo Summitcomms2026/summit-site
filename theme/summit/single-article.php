@@ -1,11 +1,24 @@
 <?php
 /**
- * Template: Article Single
+ * Template: Single Article
  * Location: single-article.php
  * URL: /the-future-of-luxury/[slug]
  *
- * Renders a single editorial article with prose content,
- * metadata, and related content.
+ * Component sequence:
+ *   1. Article hero — breadcrumb, headline, subtitle, standfirst, featured image
+ *   2. Metadata bar — author, date, read time, cornerstone badge
+ *   3. Article body (the_content)
+ *   4. Source note
+ *   5. Author module
+ *   6. Related articles   → parts/related/articles.php
+ *   7. Related case study → parts/related/case-studies.php
+ *   8. Related episode    → parts/related/episodes.php
+ *   9. Related download   → parts/related/downloads.php
+ *  10. Subscribe module   → parts/global/subscribe.php
+ *  11. CTA footer         → parts/global/cta-footer.php
+ *
+ * SEO & Schema — not injected here.
+ * Output handled in inc/seo.php.
  *
  * ACF fields: art_* prefix (see acf-fields.php)
  *
@@ -15,30 +28,54 @@
 defined( 'ABSPATH' ) || exit;
 
 get_header();
-the_post();
 
-$art_id      = get_the_ID();
-$standfirst  = get_field( 'art_standfirst' );
-$read_time   = get_field( 'art_read_time' );
-$source_note = get_field( 'art_source_note' );
+while ( have_posts() ) :
+    the_post();
 
-// Taxonomy.
-$cat_terms = get_the_terms( $art_id, 'article_category' );
-$cat_label = ( ! is_wp_error( $cat_terms ) && ! empty( $cat_terms ) )
-             ? $cat_terms[0]->name : '';
+    // ── Field retrieval ───────────────────────────────────────────────────
+    $art_id           = get_the_ID();
+    $standfirst       = get_field( 'art_standfirst' );
+    $read_time        = get_field( 'art_read_time' );
+    $cornerstone      = get_field( 'art_cornerstone' );
+    $source_note      = get_field( 'art_source_note' );
+    $subscribe_on     = get_field( 'art_subscribe_prompt' );
+    $related_articles = get_field( 'art_related_articles' ); // relationship → array
+    $related_case     = get_field( 'art_related_case' );     // post_object → WP_Post|null
+    $related_episode  = get_field( 'art_related_episode' );  // post_object → WP_Post|null
+    $related_download = get_field( 'art_related_download' ); // post_object → WP_Post|null
 
-// Related content.
-$related_articles = get_field( 'art_related_articles' );
-$related_case     = get_field( 'art_related_case' );
-$related_episode  = get_field( 'art_related_episode' );
-$related_download = get_field( 'art_related_download' );
+    // Author.
+    $author_id   = (int) get_the_author_meta( 'ID' );
+    $author_name = get_the_author_meta( 'display_name' );
+    $author_bio  = get_the_author_meta( 'description' );
+
+    // Category.
+    $cat_terms = get_the_terms( $art_id, 'article_category' );
+    $cat_label = ( ! is_wp_error( $cat_terms ) && ! empty( $cat_terms ) )
+                 ? $cat_terms[0]->name : '';
+    $cat_url   = ( ! is_wp_error( $cat_terms ) && ! empty( $cat_terms ) )
+                 ? get_term_link( $cat_terms[0] ) : '';
+
+    $pub_date = get_the_date( 'j F Y' );
+    $pub_iso  = get_the_date( 'c' );
 ?>
 
 <main id="main" class="site-main" role="main">
 
-    <!-- ── Hero ─────────────────────────────────────────────────────── -->
+    <!-- ── 1 & 2. Hero + metadata ───────────────────────────────────────── -->
     <section class="section--padded" aria-labelledby="single-hero-title">
         <div class="container container--medium">
+
+            <nav class="article-hero__breadcrumb" aria-label="Article navigation">
+                <a href="<?php echo esc_url( get_post_type_archive_link( 'article' ) ); ?>">
+                    The Future of Luxury
+                </a>
+                <?php if ( $cat_label && ! is_wp_error( $cat_url ) ) : ?>
+                <span aria-hidden="true">/</span>
+                <a href="<?php echo esc_url( $cat_url ); ?>"><?php echo esc_html( $cat_label ); ?></a>
+                <?php endif; ?>
+            </nav>
+
             <div class="single-hero">
 
                 <?php if ( $cat_label ) : ?>
@@ -49,17 +86,29 @@ $related_download = get_field( 'art_related_download' );
                     <?php the_title(); ?>
                 </h1>
 
+                <?php
+                $subtitle = get_field( 'art_subtitle' );
+                if ( $subtitle ) : ?>
+                <p class="single-hero__subtitle"><?php echo esc_html( $subtitle ); ?></p>
+                <?php endif; ?>
+
                 <?php if ( $standfirst ) : ?>
                 <p class="single-hero__standfirst"><?php echo esc_html( $standfirst ); ?></p>
                 <?php endif; ?>
 
-                <div class="meta-bar">
-                    <time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
-                        <?php echo esc_html( get_the_date( 'j F Y' ) ); ?>
+                <div class="meta-bar" role="contentinfo" aria-label="Article information">
+                    <?php if ( $author_name ) : ?>
+                    <span class="meta-bar__author"><?php echo esc_html( $author_name ); ?></span>
+                    <?php endif; ?>
+                    <time datetime="<?php echo esc_attr( $pub_iso ); ?>">
+                        <?php echo esc_html( $pub_date ); ?>
                     </time>
                     <?php if ( $read_time ) : ?>
                     <span class="meta-bar__separator"></span>
-                    <span><?php echo esc_html( $read_time ); ?> min read</span>
+                    <span><?php echo absint( $read_time ); ?> min read</span>
+                    <?php endif; ?>
+                    <?php if ( $cornerstone ) : ?>
+                    <span class="meta-bar__cornerstone">Essential Reading</span>
                     <?php endif; ?>
                 </div>
 
@@ -67,13 +116,17 @@ $related_download = get_field( 'art_related_download' );
 
             <?php if ( has_post_thumbnail() ) : ?>
             <figure class="single-hero__media">
-                <?php the_post_thumbnail( 'full' ); ?>
+                <?php the_post_thumbnail( 'full', [
+                    'loading' => 'eager',
+                    'alt'     => esc_attr( get_the_title() ),
+                ] ); ?>
             </figure>
             <?php endif; ?>
+
         </div>
     </section>
 
-    <!-- ── Article Content ──────────────────────────────────────────── -->
+    <!-- ── 3 & 4. Article body + source note ────────────────────────────── -->
     <section class="section--padded">
         <div class="container container--narrow">
             <div class="prose">
@@ -88,7 +141,33 @@ $related_download = get_field( 'art_related_download' );
         </div>
     </section>
 
-    <!-- ── Related Content ──────────────────────────────────────────── -->
+    <!-- ── 5. Author module ──────────────────────────────────────────────── -->
+    <?php if ( $author_name ) : ?>
+    <section class="section--padded author-module" aria-labelledby="author-module-heading">
+        <div class="container container--narrow">
+            <div class="author-module__inner">
+
+                <?php $avatar = get_avatar( $author_id, 120, '', $author_name, [ 'class' => 'author-module__avatar' ] );
+                if ( $avatar ) : ?>
+                <figure class="author-module__portrait" aria-hidden="true">
+                    <?php echo $avatar; ?>
+                </figure>
+                <?php endif; ?>
+
+                <div class="author-module__body">
+                    <h2 class="screen-reader-text" id="author-module-heading">About the author</h2>
+                    <p class="author-module__display-name"><?php echo esc_html( $author_name ); ?></p>
+                    <?php if ( $author_bio ) : ?>
+                    <p class="author-module__bio"><?php echo esc_html( $author_bio ); ?></p>
+                    <?php endif; ?>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <?php endif; ?>
+
+    <!-- ── 6–9. Related content ──────────────────────────────────────────── -->
     <?php
     get_template_part( 'parts/related/articles', null, [
         'posts'    => $related_articles ?: [],
@@ -111,9 +190,16 @@ $related_download = get_field( 'art_related_download' );
     ] );
     ?>
 
-    <!-- ── CTA Footer ───────────────────────────────────────────────── -->
+    <!-- ── 10. Subscribe ─────────────────────────────────────────────────── -->
+    <?php if ( $subscribe_on !== false ) :
+        get_template_part( 'parts/global/subscribe' );
+    endif; ?>
+
+    <!-- ── 11. CTA Footer ───────────────────────────────────────────────── -->
     <?php get_template_part( 'parts/global/cta-footer' ); ?>
 
 </main>
 
-<?php get_footer(); ?>
+<?php
+endwhile;
+get_footer();

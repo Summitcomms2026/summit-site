@@ -44,10 +44,26 @@ while ( have_posts() ) :
     $related_episode  = get_field( 'art_related_episode' );  // post_object → WP_Post|null
     $related_download = get_field( 'art_related_download' ); // post_object → WP_Post|null
 
-    // Author.
-    $author_id   = (int) get_the_author_meta( 'ID' );
-    $author_name = get_the_author_meta( 'display_name' );
-    $author_bio  = get_the_author_meta( 'description' );
+    // Author — defensive display name resolution.
+    $author_id    = (int) get_the_author_meta( 'ID' );
+    $author_login = get_the_author_meta( 'user_login' );
+    $raw_display  = get_the_author_meta( 'display_name' );
+    $first_name   = get_the_author_meta( 'first_name' );
+    $last_name    = get_the_author_meta( 'last_name' );
+    $author_bio   = get_the_author_meta( 'description' );
+
+    // Fallback chain: human display_name → first+last → humanised login.
+    if ( $raw_display && $raw_display !== $author_login ) {
+        $author_name = $raw_display;
+    } elseif ( $first_name && $last_name ) {
+        $author_name = trim( $first_name . ' ' . $last_name );
+    } else {
+        $author_name = ucwords( str_replace( [ '.', '_', '-' ], ' ', $author_login ) );
+    }
+
+    // Avatar — suppress if no meaningful avatar found.
+    $avatar_data    = get_avatar_data( $author_id, [ 'size' => 120 ] );
+    $has_avatar     = ! empty( $avatar_data['found_avatar'] );
 
     // Category.
     $cat_terms = get_the_terms( $art_id, 'article_category' );
@@ -144,8 +160,9 @@ while ( have_posts() ) :
         <div class="container container--narrow">
             <div class="author-module__inner">
 
-                <?php $avatar = get_avatar( $author_id, 120, '', $author_name, [ 'class' => 'author-module__avatar' ] );
-                if ( $avatar ) : ?>
+                <?php if ( $has_avatar ) :
+                    $avatar = get_avatar( $author_id, 120, '', $author_name, [ 'class' => 'author-module__avatar' ] );
+                ?>
                 <figure class="author-module__portrait" aria-hidden="true">
                     <?php echo $avatar; ?>
                 </figure>

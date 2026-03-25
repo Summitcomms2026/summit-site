@@ -65,6 +65,32 @@ if ( $paged === 1 ) {
         </div>
     </section>
 
+    <!-- ── Category Filter Nav ────────────────────────────────────────── -->
+    <?php $all_cats = get_terms( [ 'taxonomy' => 'article_category', 'hide_empty' => true ] ); ?>
+    <?php if ( ! is_wp_error( $all_cats ) && ! empty( $all_cats ) ) : ?>
+    <nav class="archive-filters" aria-label="Browse by category">
+        <div class="container container--wide">
+            <ul class="archive-filters__list" role="list">
+                <li class="archive-filters__item">
+                    <a href="<?php echo esc_url( get_post_type_archive_link( 'article' ) ); ?>"
+                       class="archive-filters__btn is-active"
+                       aria-current="page">
+                        All
+                    </a>
+                </li>
+                <?php foreach ( $all_cats as $cat ) : ?>
+                <li class="archive-filters__item">
+                    <a href="<?php echo esc_url( get_term_link( $cat ) ); ?>"
+                       class="archive-filters__btn">
+                        <?php echo esc_html( $cat->name ); ?>
+                    </a>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </nav>
+    <?php endif; ?>
+
     <!-- ── Featured Article (page 1 only) ───────────────────────────── -->
     <?php if ( $featured_article ) :
         $fa_id       = $featured_article->ID;

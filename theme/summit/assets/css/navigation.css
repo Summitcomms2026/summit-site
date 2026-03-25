@@ -1,0 +1,181 @@
+/*
+ * Summit Theme — Navigation
+ * assets/css/navigation.css
+ *
+ * Site header, navigation, mobile toggle, and footer styles.
+ */
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* SITE HEADER                                                           */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(250, 250, 248, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--colour-ink-05);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--space-4);
+}
+
+.site-header__logo {
+  font-size: var(--text-body-l);
+  font-weight: 500;
+  letter-spacing: var(--tracking-tight);
+  text-decoration: none;
+  color: var(--colour-ink);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* MOBILE TOGGLE                                                         */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.site-header__toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.site-header__toggle-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--colour-ink);
+  border-radius: 1px;
+  transition: transform var(--duration-fast) var(--ease-out),
+              opacity var(--duration-fast) var(--ease-out);
+}
+
+/* Animate to X when open */
+.site-header__toggle[aria-expanded="true"] .site-header__toggle-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.site-header__toggle[aria-expanded="true"] .site-header__toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.site-header__toggle[aria-expanded="true"] .site-header__toggle-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (min-width: 768px) {
+  .site-header__toggle {
+    display: none;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* SITE NAV                                                              */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+/* Mobile: hidden by default, shown when toggle is open */
+.site-nav {
+  display: none;
+}
+
+.site-nav[data-open="true"] {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: rgba(250, 250, 248, 0.98);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--colour-ink-05);
+  padding: var(--space-4) var(--space-5);
+}
+
+/* Desktop: always visible, inline */
+@media (min-width: 768px) {
+  .site-nav,
+  .site-nav[data-open="true"] {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-6);
+    align-items: center;
+    position: static;
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: none;
+    padding: 0;
+  }
+}
+
+.site-nav__link {
+  font-size: var(--text-small);
+  font-weight: 400;
+  letter-spacing: var(--tracking-wide);
+  text-decoration: none;
+  color: var(--colour-ink-60);
+  transition: color var(--duration-fast) var(--ease-out);
+  padding-block: var(--space-2);
+}
+
+@media (min-width: 768px) {
+  .site-nav__link {
+    padding-block: 0;
+  }
+}
+
+.site-nav__link:hover,
+.site-nav__link[aria-current="page"] {
+  color: var(--colour-ink);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* SITE FOOTER                                                           */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.site-footer {
+  padding-block: var(--space-10);
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+@media (min-width: 768px) {
+  .site-footer__inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.site-footer__brand {
+  font-size: var(--text-small);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  color: var(--colour-paper);
+}
+
+.site-footer__legal {
+  font-size: var(--text-micro);
+  color: var(--colour-paper-50);
+}

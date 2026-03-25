@@ -1,0 +1,357 @@
+/*
+ * Summit Theme — Singles
+ * assets/css/singles.css
+ *
+ * Single-template-specific layouts and the prose content wrapper.
+ */
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* SINGLE HERO (shared pattern)                                          */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.single-hero {
+  margin-bottom: var(--space-6);
+}
+
+.single-hero__title {
+  font-size: var(--text-display-l);
+  font-weight: 400;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-6);
+}
+
+.single-hero__standfirst {
+  font-size: var(--text-body-l);
+  color: var(--colour-ink-60);
+  line-height: var(--leading-body);
+  max-width: var(--measure-narrow);
+  margin-bottom: var(--space-6);
+}
+
+.section--dark .single-hero__title {
+  color: var(--colour-paper);
+}
+
+.section--dark .single-hero__standfirst {
+  color: var(--colour-paper-65);
+}
+
+.single-hero__media {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: var(--colour-ink-05);
+  margin-top: var(--space-8);
+}
+
+.single-hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* PROSE — typographic wrapper for the_content()                         */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.prose {
+  font-size: var(--text-body-l);
+  line-height: var(--leading-body);
+  max-width: var(--measure-narrow);
+}
+
+.prose > * + * {
+  margin-top: var(--space-6);
+}
+
+.prose h2 {
+  font-size: var(--text-h2);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  margin-top: var(--space-10);
+}
+
+.prose h3 {
+  font-size: var(--text-h3);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-snug);
+  margin-top: var(--space-8);
+}
+
+.prose p {
+  color: var(--colour-ink-80);
+}
+
+.prose a {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.prose a:hover {
+  color: var(--colour-ink-60);
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.5em;
+  color: var(--colour-ink-80);
+}
+
+.prose li + li {
+  margin-top: var(--space-2);
+}
+
+.prose blockquote {
+  font-size: var(--text-h3);
+  font-style: italic;
+  line-height: var(--leading-snug);
+  color: var(--colour-ink-80);
+  border-left: 3px solid var(--colour-ink-10);
+  padding-left: var(--space-6);
+  margin-block: var(--space-8);
+}
+
+.prose figure {
+  margin-block: var(--space-8);
+}
+
+.prose figcaption {
+  font-size: var(--text-small);
+  color: var(--colour-ink-60);
+  margin-top: var(--space-3);
+}
+
+.prose img {
+  border-radius: var(--radius-md);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* CASE STUDY SINGLE                                                     */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.single-case-study__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.single-case-study__meta-item {
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--colour-ink-60);
+}
+
+.single-case-study__intro {
+  font-size: var(--text-body-l);
+  color: var(--colour-ink-60);
+  line-height: var(--leading-body);
+  max-width: var(--measure-narrow);
+}
+
+.single-case-study__section-title {
+  font-size: var(--text-h2);
+  font-weight: 400;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-6);
+}
+
+.single-case-study__section-body {
+  font-size: var(--text-body-l);
+  line-height: var(--leading-body);
+  color: var(--colour-ink-80);
+  max-width: var(--measure-narrow);
+}
+
+.single-case-study__section-body p {
+  margin-bottom: var(--space-5);
+}
+
+.single-case-study__section-body p:last-child {
+  margin-bottom: 0;
+}
+
+.single-case-study__outcome-signal {
+  font-size: var(--text-h3);
+  font-weight: 400;
+  font-style: italic;
+  line-height: var(--leading-snug);
+  color: var(--colour-ink-80);
+  margin-top: var(--space-8);
+  max-width: 42ch;
+}
+
+.single-case-study__gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .single-case-study__gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.single-case-study__gallery-item {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: var(--colour-paper-05);
+  border-radius: var(--radius-md);
+}
+
+.single-case-study__gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* ARTICLE SINGLE                                                        */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.single-article__source-note {
+  font-size: var(--text-small);
+  color: var(--colour-ink-60);
+  font-style: italic;
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--colour-ink-10);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* SEASON SINGLE                                                         */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.single-season__artwork-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .single-season__artwork-layout {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+.single-season__artwork {
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background-color: var(--colour-paper-05);
+  max-width: 320px;
+}
+
+.single-season__artwork img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.single-season__thesis {
+  font-size: var(--text-body-l);
+  line-height: var(--leading-body);
+  color: var(--colour-ink-80);
+  max-width: var(--measure-narrow);
+}
+
+.single-season__thesis p {
+  margin-bottom: var(--space-5);
+}
+
+.single-season__thesis p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* EPISODE SINGLE                                                        */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.single-episode__deck {
+  font-size: var(--text-body-l);
+  color: var(--colour-paper-65);
+  line-height: var(--leading-body);
+  max-width: var(--measure-narrow);
+  margin-bottom: var(--space-6);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* DOWNLOAD SINGLE                                                       */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.single-download__layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .single-download__layout {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+.single-download__cover {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background-color: var(--colour-paper-pure);
+  max-width: 320px;
+}
+
+.single-download__cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.single-download__description {
+  font-size: var(--text-body-l);
+  line-height: var(--leading-body);
+  color: var(--colour-ink-80);
+  max-width: var(--measure-narrow);
+  margin-bottom: var(--space-6);
+}
+
+.single-download__description p {
+  margin-bottom: var(--space-5);
+}
+
+.single-download__description p:last-child {
+  margin-bottom: 0;
+}
+
+.single-download__file-meta {
+  display: flex;
+  gap: var(--space-3);
+  font-size: var(--text-small);
+  color: var(--colour-ink-60);
+  margin-bottom: var(--space-6);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* RELATED SECTION                                                       */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.related-section__headline {
+  font-size: var(--text-h2);
+  font-weight: 400;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-8);
+}

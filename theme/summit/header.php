@@ -3,6 +3,8 @@
  * Theme Header
  *
  * Site-wide header with navigation.
+ * Mobile: hamburger toggle reveals stacked nav.
+ * Desktop: inline horizontal nav.
  *
  * @package SummitTheme
  */
@@ -29,7 +31,17 @@ defined( 'ABSPATH' ) || exit;
                 Summit
             </a>
 
-            <nav class="site-nav" role="navigation" aria-label="<?php esc_attr_e( 'Primary', 'summit' ); ?>">
+            <button class="site-header__toggle"
+                    aria-expanded="false"
+                    aria-controls="site-nav"
+                    aria-label="<?php esc_attr_e( 'Menu', 'summit' ); ?>"
+                    onclick="var n=document.getElementById('site-nav'),o=this.getAttribute('aria-expanded')==='true';this.setAttribute('aria-expanded',o?'false':'true');n.setAttribute('data-open',o?'false':'true');">
+                <span class="site-header__toggle-bar"></span>
+                <span class="site-header__toggle-bar"></span>
+                <span class="site-header__toggle-bar"></span>
+            </button>
+
+            <nav class="site-nav" id="site-nav" data-open="false" role="navigation" aria-label="<?php esc_attr_e( 'Primary', 'summit' ); ?>">
                 <a href="<?php echo esc_url( get_post_type_archive_link( 'case_study' ) ); ?>"
                    class="site-nav__link"
                    <?php if ( is_post_type_archive( 'case_study' ) || is_singular( 'case_study' ) ) echo 'aria-current="page"'; ?>>

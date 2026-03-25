@@ -1,0 +1,170 @@
+[
+  {
+    "import_slug": "the-creative-director-delusion-the-truth-behind-luxurys-game-of-musical-chairs",
+    "wp_slug": "the-creative-director-delusion",
+    "article_category": "Brand & Positioning",
+    "cornerstone": false,
+    "featured": true,
+    "related_slugs": ["prada-make-versace-dangerous-again", "the-house-that-stumbled-inside-guccis-crisis"]
+  },
+  {
+    "import_slug": "the-future-of-luxury-a-masterclass-in-reinvention-by-marlene-dietrich",
+    "wp_slug": "the-future-of-luxury-a-masterclass-in-reinvention",
+    "article_category": "Luxury Strategy",
+    "cornerstone": true,
+    "featured": false,
+    "related_slugs": ["luxurys-new-advantage-is-invisible", "the-creative-director-delusion"]
+  },
+  {
+    "import_slug": "luxurys-new-advantage-is-invisible-owned-data-human-taste-and-fan-desire",
+    "wp_slug": "luxurys-new-advantage-is-invisible",
+    "article_category": "Luxury and Technology",
+    "cornerstone": false,
+    "featured": false,
+    "related_slugs": ["gen-z-wont-buy-your-myth", "the-future-of-luxury-a-masterclass-in-reinvention"]
+  },
+  {
+    "import_slug": "prada-make-versace-dangerous-again",
+    "wp_slug": "prada-make-versace-dangerous-again",
+    "article_category": "Brand & Positioning",
+    "cornerstone": false,
+    "featured": false,
+    "related_slugs": ["the-creative-director-delusion", "the-house-that-stumbled-inside-guccis-crisis"]
+  },
+  {
+    "import_slug": "the-house-that-stumbled-inside-guccis-crisis-and-the-battle-for-its-future",
+    "wp_slug": "the-house-that-stumbled-inside-guccis-crisis",
+    "article_category": "Brand & Positioning",
+    "cornerstone": false,
+    "featured": false,
+    "related_slugs": ["prada-make-versace-dangerous-again", "the-creative-director-delusion"]
+  },
+  {
+    "import_slug": "from-limited-edition-to-one-only-how-personalisation-is-defining-luxury-for-ultr",
+    "wp_slug": "from-limited-edition-to-one-only-personalisation-in-luxury",
+    "article_category": "The New Luxury Customer",
+    "cornerstone": false,
+    "featured": false,
+    "related_slugs": ["gen-z-wont-buy-your-myth", "luxurys-new-advantage-is-invisible"]
+  },
+  {
+    "import_slug": "the-future-of-culture-the-artificial-intelligence-arms-race-reshaping-power-weal",
+    "wp_slug": "the-future-of-culture-artificial-intelligence-arms-race",
+    "article_category": "Luxury and Technology",
+    "cornerstone": true,
+    "featured": false,
+    "related_slugs": ["luxurys-new-advantage-is-invisible", "gen-z-wont-buy-your-myth"]
+  },
+  {
+    "import_slug": "gen-z-wont-buy-your-myth-unless-they-can-wear-it-verify-it-resell-it",
+    "wp_slug": "gen-z-wont-buy-your-myth",
+    "article_category": "The New Luxury Customer",
+    "cornerstone": false,
+    "featured": false,
+    "related_slugs": ["from-limited-edition-to-one-only-personalisation-in-luxury", "luxurys-new-advantage-is-invisible"]
+  },
+  {
+    "import_slug": "apples-vision-pro-launch-the-metaverses-potential-for-brands-and-game-developers",
+    "wp_slug": "apples-vision-pro-launch-metaverse-potential-for-brands",
+    "article_category": "Luxury and Technology",
+    "cornerstone": false,
+    "featured": false,
+    "related_slugs": ["the-future-of-culture-artificial-intelligence-arms-race", "luxurys-new-advantage-is-invisible"]
+  },
+  {
+    "import_slug": "the-longevity-turn-when-time-becomes-the-most-exclusive-luxury",
+    "wp_slug": "the-longevity-turn-when-time-becomes-exclusive-luxury",
+    "article_category": "Wealth, Value & Collecting",
+    "cornerstone": false,
+    "featured": false,
+    "related_slugs": ["can-sothebys-bet-big-on-debt-and-survive"]
+  },
+  {
+    "import_slug": "the-luxurification-of-sport-how-televised-sport-became-luxurys-most-powerful-glo",
+    "wp_slug": "the-luxurification-of-sport",
+    "article_category": "Sport, Sponsorship & Status",
+    "cornerstone": false,
+    "featured": false,
+    "related_slugs": []
+  },
+  {
+    "import_slug": "can-sothebys-bet-big-on-debt-and-survive",
+    "wp_slug": "can-sothebys-bet-big-on-debt-and-survive",
+    "article_category": "Wealth, Value & Collecting",
+    "cornerstone": false,
+    "featured": false,
+    "related_slugs": ["the-longevity-turn-when-time-becomes-exclusive-luxury", "brave-new-world-decoupling-art-sales"]
+  },
+  {
+    "import_slug": "brave-new-world-decoupling-art-sales-from-experience-for-a-transformation-inspir",
+    "wp_slug": "brave-new-world-decoupling-art-sales",
+    "article_category": "Culture & Media",
+    "cornerstone": false,
+    "featured": false,
+    "related_slugs": ["the-art-experience-how-museums-can-embrace-screen-culture", "dslcollection-chinese-contemporary-art-enters-digital-era"]
+  },
+  {
+    "import_slug": "the-art-experience-how-museums-can-embrace-screen-culture-and-reinvent-with-pass",
+    "wp_slug": "the-art-experience-how-museums-can-embrace-screen-culture",
+    "article_category": "Culture & Media",
+    "cornerstone": false,
+    "featured": false,
+    "related_slugs": ["brave-new-world-decoupling-art-sales", "dslcollection-chinese-contemporary-art-enters-digital-era"]
+  },
+  {
+    "import_slug": "dslcollection-of-chinese-contemporary-art-enters-the-digital-era",
+    "wp_slug": "dslcollection-chinese-contemporary-art-enters-digital-era",
+    "article_category": "Culture & Media",
+    "cornerstone": false,
+    "featured": false,
+    "related_slugs": ["the-art-experience-how-museums-can-embrace-screen-culture", "brave-new-world-decoupling-art-sales"]
+  },
+  {
+    "import_slug": "saudi-arabias-tourism-ecosystem-the-next-frontier-for-global-hospitality",
+    "wp_slug": "saudi-arabias-tourism-ecosystem-next-frontier",
+    "article_category": "Hospitality & Travel",
+    "cornerstone": false,
+    "featured": false,
+    "related_slugs": ["hospitality-is-eating-luxurys-lunch"]
+  },
+  {
+    "import_slug": "hospitality-is-eating-luxurys-lunch-and-leaving-the-receipt-on-the-pillow",
+    "wp_slug": "hospitality-is-eating-luxurys-lunch",
+    "article_category": "Hospitality & Travel",
+    "cornerstone": false,
+    "featured": false,
+    "related_slugs": ["saudi-arabias-tourism-ecosystem-next-frontier"]
+  },
+  {
+    "import_slug": "watches-and-wonders-time-desire-and-the-infinite-theatre-of-horology",
+    "wp_slug": "watches-and-wonders-time-desire-and-horology",
+    "article_category": "Watches & Jewellery",
+    "cornerstone": false,
+    "featured": false,
+    "related_slugs": ["the-characteristics-of-luxury-a-visual-conversation"]
+  },
+  {
+    "import_slug": "the-characteristics-of-luxury-a-visual-conversation",
+    "wp_slug": "the-characteristics-of-luxury-a-visual-conversation",
+    "article_category": "Watches & Jewellery",
+    "cornerstone": false,
+    "featured": false,
+    "related_slugs": ["watches-and-wonders-time-desire-and-horology"]
+  },
+  {
+    "import_slug": "brabus-how-black-bold-and-bespoke-turned-excess-into-haute-couture",
+    "wp_slug": "brabus-how-black-bold-and-bespoke-turned-excess-into-haute-couture",
+    "article_category": "Luxury Strategy",
+    "cornerstone": false,
+    "featured": false,
+    "related_slugs": ["aston-martins-new-vanquish-something-to-do-with-desire"]
+  },
+  {
+    "import_slug": "aston-martins-new-vanquish-something-to-do-with-desire",
+    "wp_slug": "aston-martins-new-vanquish-something-to-do-with-desire",
+    "article_category": "Luxury Strategy",
+    "cornerstone": false,
+    "featured": false,
+    "related_slugs": ["brabus-how-black-bold-and-bespoke-turned-excess-into-haute-couture"]
+  }
+]

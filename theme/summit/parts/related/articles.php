@@ -51,9 +51,9 @@ if ( empty( $posts ) ) {
                    class="article-card__link"
                    aria-label="<?php echo esc_attr( 'Read: ' . get_the_title( $art_id ) ); ?>">
 
-                    <?php if ( has_post_thumbnail( $art_id ) ) : ?>
+                    <?php if ( summit_has_article_hero( $art_id ) ) : ?>
                     <figure class="article-card__media" aria-hidden="true">
-                        <?php echo get_the_post_thumbnail( $art_id, 'medium_large' ); ?>
+                        <?php echo summit_article_hero( $art_id, 'medium_large' ); ?>
                     </figure>
                     <?php endif; ?>
 

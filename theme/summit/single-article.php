@@ -114,12 +114,9 @@ while ( have_posts() ) :
 
             </div>
 
-            <?php if ( has_post_thumbnail() ) : ?>
+            <?php if ( summit_has_article_hero() ) : ?>
             <figure class="single-hero__media">
-                <?php the_post_thumbnail( 'full', [
-                    'loading' => 'eager',
-                    'alt'     => esc_attr( get_the_title() ),
-                ] ); ?>
+                <?php echo summit_article_hero( null, 'full' ); ?>
             </figure>
             <?php endif; ?>
 

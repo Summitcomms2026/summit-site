@@ -81,9 +81,9 @@ if ( $paged === 1 ) {
                    class="featured-article__link"
                    aria-label="<?php echo esc_attr( 'Read article: ' . get_the_title( $fa_id ) ); ?>">
 
-                    <?php if ( has_post_thumbnail( $fa_id ) ) : ?>
+                    <?php if ( summit_has_article_hero( $fa_id ) ) : ?>
                     <figure class="featured-article__media" aria-hidden="true">
-                        <?php echo get_the_post_thumbnail( $fa_id, 'large' ); ?>
+                        <?php echo summit_article_hero( $fa_id, 'large' ); ?>
                     </figure>
                     <?php endif; ?>
 
@@ -144,9 +144,9 @@ if ( $paged === 1 ) {
                        class="article-card__link"
                        aria-label="<?php echo esc_attr( 'Read: ' . get_the_title() ); ?>">
 
-                        <?php if ( has_post_thumbnail() ) : ?>
+                        <?php if ( summit_has_article_hero() ) : ?>
                         <figure class="article-card__media" aria-hidden="true">
-                            <?php the_post_thumbnail( 'medium_large' ); ?>
+                            <?php echo summit_article_hero( null, 'medium_large' ); ?>
                         </figure>
                         <?php endif; ?>
 

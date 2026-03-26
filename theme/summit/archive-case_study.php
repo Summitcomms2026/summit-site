@@ -31,6 +31,35 @@ get_header();
         </div>
     </section>
 
+    <!-- ── Strategic Framing ──────────────────────────────────────── -->
+    <section class="section--padded archive-framing">
+        <div class="container container--narrow">
+            <div class="archive-framing__body">
+                <p>What follows is a selective account of the work — chosen not to impress with volume, but to show how strategy, design and craft converge in practice.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Showreel (conditional) ─────────────────────────────────── -->
+    <?php
+    $front_page_id  = (int) get_option( 'page_on_front' );
+    $showreel_embed = $front_page_id ? get_field( 'home_showreel_embed', $front_page_id ) : '';
+
+    if ( $showreel_embed ) : ?>
+    <section class="showreel-block section--dark section--padded" aria-labelledby="archive-showreel-heading">
+        <div class="container container--wide">
+            <header class="showreel-block__header">
+                <h2 class="showreel-block__headline" id="archive-showreel-heading">
+                    See the Work
+                </h2>
+            </header>
+            <div class="showreel-block__embed">
+                <?php echo $showreel_embed; // ACF oEmbed markup. ?>
+            </div>
+        </div>
+    </section>
+    <?php endif; ?>
+
     <!-- ── Case Study Grid ──────────────────────────────────────────── -->
     <section class="section--padded">
         <div class="container container--wide">

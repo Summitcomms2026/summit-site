@@ -1,0 +1,49 @@
+[
+  {
+    "wp_slug": "kaleida-studios",
+    "action": "publish",
+    "cs_intro": "Kaleida Studios had built a reputation for technically ambitious creative work, but their digital presence told a fragmented story. Projects were presented in isolation, without a unifying visual language or narrative that communicated the studio's creative proposition. The brief was to build a digital platform that demonstrated, rather than described, what Kaleida could do.",
+    "cs_challenge": "<p>Kaleida's existing digital presence was project-by-project — a collection of case files that showed capability but not creative identity. Potential collaborators and commissioning clients could see individual outcomes but had no way to understand the studio's design philosophy at a glance.</p><p>The risk was that without a coherent platform, the studio would continue to attract transactional briefs rather than the creative partnerships its work deserved.</p>",
+    "cs_strategic_idea": "<p>Rather than building a conventional portfolio site that catalogued finished work, we proposed an experience-led platform that used the studio's own creative output as navigational architecture. The digital presence itself should function as a demonstration of Kaleida's capabilities — immersive, considered, and designed to reward curiosity.</p><p>The positioning shifted from services vendor to creative studio with a design philosophy. Every interaction with the platform should convey craft before a single word is read.</p>",
+    "cs_what_we_built": "<p>A digital platform structured around interactive vignettes rather than static project pages. The visual language, motion principles, and content hierarchy were designed as a single coherent system — each element reinforcing the studio's creative identity.</p><p>Navigation was rethought as an experience layer: visitors encounter the work through curated sequences that reveal the studio's range and sensibility progressively, rather than through conventional grid-and-filter browsing.</p>",
+    "cs_outcome": "<p>The platform gave Kaleida a digital presence that matched the ambition of their physical and interactive work. It became a working demonstration of the studio's capabilities rather than a description of them.</p><p>The quality of inbound enquiries shifted. Conversations moved from procurement-style briefs toward creative partnership proposals — the kind of collaborative relationships the studio had always sought but struggled to attract through a conventional portfolio.</p>",
+    "cs_outcome_signal": "Inbound conversations shifted from procurement briefs to creative partnership proposals.",
+    "cs_related_article": ["luxurys-new-advantage-is-invisible", "apples-vision-pro-launch-metaverse-potential-for-brands"],
+    "cs_seo_title": "Kaleida Studios | Experience Design | Summit",
+    "cs_meta_desc": "Experience design and digital platform for Kaleida Studios, a creative technology studio. A case study in building a digital presence that demonstrates rather than describes."
+  },
+  {
+    "wp_slug": "tastemakers-podcast",
+    "action": "publish",
+    "cs_intro": "Summit's editorial voice had established authority through long-form writing, but the brand had no audio expression. Launching a podcast without a distinct identity and editorial architecture risked producing generic interview content that diluted rather than extended the brand's curatorial standards.",
+    "cs_challenge": "<p>The challenge was not production — it was identity. A podcast is easy to launch and difficult to sustain with coherence. Without editorial architecture, most branded podcasts drift into loosely themed conversations that serve neither the host's reputation nor the listener's time.</p><p>Summit needed a podcast that felt like a publication: structured, curated, and unmistakably connected to the editorial standards already established in writing.</p>",
+    "cs_strategic_idea": "<p>We treated the podcast as a publication with editorial architecture rather than a marketing channel with episodes. Every element — from season structure to episode framing to guest selection criteria — was designed to reflect the same curatorial rigour applied to written work.</p><p>The core principle: each season should have a thesis, each episode should advance that thesis, and each guest should be selected not for profile alone but for the quality of thinking they bring to the season's question.</p>",
+    "cs_what_we_built": "<p>A complete podcast identity system: naming, visual identity, season theming framework, episode structure template, and editorial guidelines governing guest selection and conversation framing.</p><p>The architecture was designed to sustain multiple seasons with thematic coherence while allowing each season to explore a distinct question. The identity system extended across audio, visual, and written touchpoints — ensuring the podcast felt like a natural extension of Summit's editorial voice rather than a separate initiative.</p>",
+    "cs_outcome": "<p>Tastemakers established a distinct editorial voice in audio that complemented and extended Summit's authority in written form. The podcast attracted participation from founders and creative directors who had previously engaged with Summit only through its written editorial — the format opened conversations that long-form articles alone could not.</p>",
+    "cs_outcome_signal": "The podcast attracted guest participation from leaders who had previously engaged only through written editorial.",
+    "cs_related_article": ["brave-new-world-decoupling-art-sales", "the-art-experience-how-museums-can-embrace-screen-culture"],
+    "cs_seo_title": "Tastemakers Podcast | Identity & Editorial Architecture | Summit",
+    "cs_meta_desc": "Podcast identity and editorial architecture for the Tastemakers interview series. A case study in building audio editorial with curatorial standards."
+  },
+  {
+    "wp_slug": "leading-plastic-surgeons-films",
+    "action": "publish",
+    "cs_intro": "A group of world-leading plastic surgeons needed to communicate the philosophy and precision behind their work to an audience beyond medical peers. Traditional healthcare marketing — testimonials, before-and-after imagery — was inappropriate for practitioners at this level. The brief was to find a format that conveyed authority without resorting to clinical convention.",
+    "cs_challenge": "<p>These were surgeons whose work sat at the intersection of medicine and design — practitioners who thought carefully about form, proportion, and human identity. But their public presence was limited to peer-reviewed journals and word-of-mouth referral networks.</p><p>Standard healthcare communications — patient testimonials, procedural descriptions, facility photography — would have diminished rather than elevated their positioning. The challenge was to make the thinking visible without trivialising the craft.</p>",
+    "cs_strategic_idea": "<p>We proposed documentary film as the format, but with a specific editorial premise: reveal the thinking, not the results. Each film would profile a single surgeon through the lens of their creative philosophy — how they think about form, why certain decisions matter, what they see that others do not.</p><p>The positioning reframed these practitioners not as medical service providers but as people with a design philosophy applied to the human form. The reference points were arts documentary and design journalism, not corporate video or healthcare marketing.</p>",
+    "cs_what_we_built": "<p>A series of short documentary films, each structured around a single surgeon's creative perspective. Production emphasised craft: considered lighting, measured pacing, and an interview technique drawn from arts documentary rather than promotional content.</p><p>The editorial approach prioritised ideas over outcomes. Each film explored how the surgeon thinks — their influences, their standards, their view of the relationship between technical precision and aesthetic judgement — rather than cataloguing procedures or displaying results.</p>",
+    "cs_outcome": "<p>The films gave the surgeons a credible, elevated public presence that extended their reputation beyond existing referral networks. Peer recognition grew as the films circulated within professional communities, and the series became a primary reference point cited in new patient introductions from fellow surgeons.</p>",
+    "cs_outcome_signal": "The film series became the primary referral asset cited by peer surgeons introducing new patients.",
+    "cs_related_article": ["brabus-how-black-bold-and-bespoke-turned-excess-into-haute-couture", "aston-martins-new-vanquish-something-to-do-with-desire"],
+    "cs_seo_title": "Leading Plastic Surgeons Films | Documentary Series | Summit",
+    "cs_meta_desc": "A documentary film series profiling the philosophy and craft of world-leading plastic surgeons. A case study in authority building through design-led film."
+  },
+  {
+    "wp_slug": "teddy-william",
+    "action": "hold"
+  },
+  {
+    "wp_slug": "the-fight-against-skin-cancer",
+    "action": "hold"
+  }
+]

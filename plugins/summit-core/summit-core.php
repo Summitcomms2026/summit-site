@@ -19,3 +19,6 @@ require_once __DIR__ . '/taxonomies.php';
 
 // ACF field groups — file registers its own acf/init hook internally.
 require_once __DIR__ . '/acf-fields.php';
+
+// Enquiry form AJAX handler — Design Tomorrow contact form.
+require_once __DIR__ . '/enquiry-handler.php';

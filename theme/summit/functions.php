@@ -31,3 +31,28 @@ function summit_enqueue_styles(): void {
     }
 
 }
+
+/**
+ * Enqueue enquiry form script on the Design Tomorrow page.
+ */
+add_action( 'wp_enqueue_scripts', 'summit_enqueue_enquiry_form' );
+
+function summit_enqueue_enquiry_form(): void {
+    if ( ! is_page( 'design-tomorrow' ) ) {
+        return;
+    }
+
+    $v = wp_get_theme()->get( 'Version' );
+
+    wp_enqueue_script(
+        'summit-enquiry-form',
+        get_template_directory_uri() . '/assets/js/enquiry-form.js',
+        [],
+        $v,
+        true
+    );
+
+    wp_localize_script( 'summit-enquiry-form', 'summitEnquiry', [
+        'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+    ] );
+}

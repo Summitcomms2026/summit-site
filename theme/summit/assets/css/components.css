@@ -80,7 +80,7 @@
 /* ══════════════════════════════════════════════════════════════════════ */
 
 .archive-filters {
-  padding-block: var(--space-6);
+  padding-block: var(--space-8);
   border-bottom: var(--border-hairline);
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -94,7 +94,7 @@
 .archive-filters__list {
   display: flex;
   flex-wrap: nowrap;
-  gap: var(--space-2);
+  gap: var(--space-3);
   align-items: center;
 }
 
@@ -110,13 +110,13 @@
   border: 1px solid var(--colour-ink-10);
   border-radius: var(--radius-full);
   transition:
-    color            var(--duration-fast) var(--ease-out),
-    background-color var(--duration-fast) var(--ease-out),
-    border-color     var(--duration-fast) var(--ease-out);
+    color            var(--duration-base) var(--ease-out),
+    background-color var(--duration-base) var(--ease-out),
+    border-color     var(--duration-base) var(--ease-out);
 }
 
 .archive-filters__btn:hover {
-  border-color: var(--colour-ink-30);
+  border-color: var(--colour-ink);
   color: var(--colour-ink);
   text-decoration: none;
 }
@@ -129,7 +129,8 @@
 }
 
 .archive-filters__btn.is-active:hover {
-  opacity: 0.88;
+  background-color: var(--colour-ink-60);
+  border-color: var(--colour-ink-60);
 }
 
 
@@ -257,33 +258,37 @@
 /* ══════════════════════════════════════════════════════════════════════ */
 
 .archive-hero {
-  padding-block: var(--space-section-xl);
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-section);
   border-bottom: var(--border-hairline);
 }
 
 .archive-hero__header {
-  /* Nothing — breadcrumb and eyebrow handle their own spacing */
+  /* Breadcrumb and eyebrow handle their own spacing */
 }
 
 .archive-hero__title {
   font-size: var(--text-display-l);
+  font-weight: 400;
   letter-spacing: var(--tracking-tight);
   line-height: var(--leading-tight);
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-8);
+  max-width: 16ch;
 }
 
 .archive-hero__sub {
   font-size: var(--text-body-l);
   color: var(--colour-ink-60);
   line-height: var(--leading-body);
-  max-width: 64ch;
+  max-width: 52ch;
   margin-bottom: 0;
 }
 
 .archive-hero__intro {
   font-size: var(--text-body-l);
   color: var(--colour-ink-60);
-  max-width: 64ch;
+  line-height: var(--leading-body);
+  max-width: 52ch;
   margin-top: var(--space-4);
 }
 
@@ -298,21 +303,22 @@
 }
 
 .subscribe-module__inner {
-  max-width: 56ch;
+  max-width: 52ch;
 }
 
 .subscribe-module__heading {
-  font-size: var(--text-h3);
+  font-size: var(--text-h2);
   font-weight: 400;
   letter-spacing: var(--tracking-tight);
-  margin-bottom: var(--space-4);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-5);
 }
 
 .subscribe-module__sub {
   font-size: var(--text-body);
   color: var(--colour-ink-60);
   line-height: var(--leading-body);
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-10);
 }
 
 .subscribe-module__form {
@@ -416,10 +422,10 @@
 /* ══════════════════════════════════════════════════════════════════════ */
 
 .pull-quote-block {
-  padding-block: var(--space-16);
+  padding-block: var(--space-20);
   border-top: var(--border-hairline);
   border-bottom: var(--border-hairline);
-  margin-block: var(--space-12);
+  margin-block: var(--space-16);
 }
 
 .pull-quote-block__quote {
@@ -468,7 +474,9 @@
 .related-reading__header,
 .related-work__header,
 .related-episodes__header {
-  margin-bottom: var(--space-10);
+  margin-bottom: var(--space-12);
+  padding-bottom: var(--space-6);
+  border-bottom: var(--border-hairline);
 }
 
 .related-reading__heading,

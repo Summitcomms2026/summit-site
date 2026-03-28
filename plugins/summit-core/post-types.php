@@ -26,8 +26,8 @@ function summit_core_register_post_types() {
         ),
         'public' => true,
         'show_in_rest' => true,
-        'has_archive' => false,
-        'rewrite' => array('slug' => 'future-of-luxury'),
+        'has_archive' => 'the-future-of-luxury',
+        'rewrite' => array('slug' => 'the-future-of-luxury'),
         'menu_icon' => 'dashicons-edit-large',
         'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'author', 'revisions', 'custom-fields'),
     ));

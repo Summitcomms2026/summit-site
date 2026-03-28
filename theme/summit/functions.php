@@ -50,6 +50,32 @@ function summit_enqueue_navigation(): void {
 }
 
 /**
+ * Google Analytics 4 — output gtag snippet when measurement ID is configured.
+ *
+ * To activate: add the following line to wp-config.php, replacing the ID:
+ *   define( 'SUMMIT_GA4_ID', 'G-XXXXXXXXXX' );
+ *
+ * Leave undefined on staging to prevent tracking of pre-launch traffic.
+ */
+add_action( 'wp_head', function () {
+    if ( ! defined( 'SUMMIT_GA4_ID' ) || ! SUMMIT_GA4_ID ) {
+        return;
+    }
+
+    $id = esc_js( SUMMIT_GA4_ID );
+    echo <<<HTML
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={$id}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{$id}');
+</script>
+HTML;
+}, 1 );
+
+/**
  * Enqueue enquiry form script on the Design Tomorrow page.
  */
 add_action( 'wp_enqueue_scripts', 'summit_enqueue_enquiry_form' );

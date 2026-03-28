@@ -95,6 +95,7 @@
 
 .archive-hero {
   margin-bottom: var(--space-10);
+  padding-top: var(--space-16);
 }
 
 .archive-hero__eyebrow {
@@ -112,14 +113,14 @@
   letter-spacing: var(--tracking-tight);
   line-height: var(--leading-tight);
   margin-bottom: var(--space-6);
-  max-width: 28ch;
+  max-width: 16ch;
 }
 
 .archive-hero__body {
   font-size: var(--text-body-l);
   color: var(--colour-ink-60);
   line-height: var(--leading-body);
-  max-width: var(--measure-narrow);
+  max-width: 52ch;
 }
 
 .archive-hero__body p {
@@ -475,7 +476,7 @@
 
 .archive-filters__btn:hover {
   color: var(--colour-ink);
-  border-color: var(--colour-ink-60);
+  border-color: var(--colour-ink);
 }
 
 .archive-filters__btn.is-active {
@@ -510,4 +511,14 @@
   justify-content: center;
   gap: var(--space-4);
   margin-top: var(--space-8);
+}
+
+
+.subscribe-module__heading {
+  font-size: var(--text-h2);
+  line-height: var(--leading-tight);
+}
+
+.subscribe-module__sub {
+  margin-bottom: var(--space-10);
 }

@@ -442,6 +442,84 @@
 
 
 /* ══════════════════════════════════════════════════════════════════════ */
+/* WHO WE ARE PAGE                                                        */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.page-hero--who-we-are {
+  padding: 72px 0 36px;
+}
+
+.page-hero--who-we-are .page-hero__header {
+  max-width: 860px;
+}
+
+.page-hero--who-we-are .page-hero__title {
+  max-width: 18ch;
+}
+
+.page-hero--who-we-are .page-hero__intro {
+  max-width: 760px;
+  margin-top: 18px;
+}
+
+.page-hero--who-we-are .page-hero__intro p {
+  margin: 0;
+}
+
+.page-hero--who-we-are .page-hero__intro p + p {
+  margin-top: 18px;
+}
+
+.wwa-section__heading {
+  font-size: var(--text-h2);
+  font-weight: 400;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-6);
+}
+
+.wwa-section__body {
+  font-size: var(--text-body-l);
+  color: var(--colour-ink-80);
+  line-height: var(--leading-body);
+  max-width: var(--measure-narrow);
+}
+
+.wwa-section__body p {
+  margin: 0;
+}
+
+.wwa-section__body p + p {
+  margin-top: var(--space-5);
+}
+
+.wwa-section--tinted {
+  background-color: var(--colour-ink-05);
+}
+
+.wwa-values__heading {
+  font-size: var(--text-h2);
+  font-weight: 400;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-8);
+}
+
+.service-card--static {
+  cursor: default;
+}
+
+.service-card--static:hover {
+  border-color: var(--colour-ink-10);
+  background-color: transparent;
+}
+
+.page-content--who-we-are {
+  padding-top: 0;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
 /* SERVICE CARDS — What We Do page                                       */
 /* ══════════════════════════════════════════════════════════════════════ */
 

@@ -42,6 +42,16 @@ defined( 'ABSPATH' ) || exit;
             </button>
 
             <nav class="site-nav" id="site-nav" data-open="false" role="navigation" aria-label="<?php esc_attr_e( 'Primary', 'summit' ); ?>">
+                <a href="<?php echo esc_url( home_url( '/who-we-are/' ) ); ?>"
+                   class="site-nav__link"
+                   <?php if ( is_page( 'who-we-are' ) ) echo 'aria-current="page"'; ?>>
+                    Who We Are
+                </a>
+                <a href="<?php echo esc_url( home_url( '/what-we-do/' ) ); ?>"
+                   class="site-nav__link"
+                   <?php if ( function_exists( 'summit_is_what_we_do_section' ) && summit_is_what_we_do_section() ) echo 'aria-current="page"'; ?>>
+                    What We Do
+                </a>
                 <a href="<?php echo esc_url( get_post_type_archive_link( 'case_study' ) ); ?>"
                    class="site-nav__link"
                    <?php if ( is_post_type_archive( 'case_study' ) || is_singular( 'case_study' ) ) echo 'aria-current="page"'; ?>>
@@ -49,7 +59,7 @@ defined( 'ABSPATH' ) || exit;
                 </a>
                 <a href="<?php echo esc_url( get_post_type_archive_link( 'article' ) ); ?>"
                    class="site-nav__link"
-                   <?php if ( is_post_type_archive( 'article' ) || is_singular( 'article' ) ) echo 'aria-current="page"'; ?>>
+                   <?php if ( is_post_type_archive( 'article' ) || is_singular( 'article' ) || is_tax( 'article_category' ) ) echo 'aria-current="page"'; ?>>
                     Editorial
                 </a>
                 <a href="<?php echo esc_url( get_post_type_archive_link( 'podcast_season' ) ); ?>"

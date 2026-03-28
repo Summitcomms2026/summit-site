@@ -80,6 +80,16 @@
 
   --measure-narrow: 56ch;
 
+  /* ── Semantic spacing ──────────────────────────────────────── */
+
+  --space-section:    clamp(4rem, 6vw, 6rem);
+  --space-section-xl: clamp(5rem, 8vw, 8rem);
+
+  /* ── Borders ─────────────────────────────────────────────── */
+
+  --colour-ink-30:   rgba(26, 26, 26, 0.30);
+  --border-hairline: 1px solid var(--colour-ink-10);
+
   /* ── Misc ──────────────────────────────────────────────────── */
 
   --radius-md: 0.5rem;

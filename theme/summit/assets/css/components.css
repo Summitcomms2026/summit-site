@@ -483,3 +483,31 @@
   background-color: var(--colour-ink);
   border-color: var(--colour-ink);
 }
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* 404 ERROR PAGE                                                        */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.error-404__heading {
+  font-size: var(--text-display-l);
+  letter-spacing: var(--tracking-tight);
+  color: var(--colour-paper);
+  margin-top: var(--space-4);
+}
+
+.error-404__body {
+  font-size: var(--text-body-l);
+  color: var(--colour-paper-65);
+  margin-top: var(--space-5);
+  max-width: var(--measure-narrow);
+  margin-inline: auto;
+}
+
+.error-404__nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}

@@ -13,7 +13,7 @@ defined( 'ABSPATH' ) || exit;
 get_header();
 ?>
 
-<main class="site-main">
+<main id="main" class="site-main" role="main">
     <div class="container">
 
         <?php if ( have_posts() ) : ?>

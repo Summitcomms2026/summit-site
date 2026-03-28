@@ -21,6 +21,8 @@ defined( 'ABSPATH' ) || exit;
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
+<a href="#main" class="skip-link"><?php esc_html_e( 'Skip to content', 'summit' ); ?></a>
+
 <header class="site-header" role="banner">
     <div class="container container--wide">
         <div class="site-header__inner">

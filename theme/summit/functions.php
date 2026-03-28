@@ -33,6 +33,23 @@ function summit_enqueue_styles(): void {
 }
 
 /**
+ * Enqueue navigation script for mobile menu keyboard handling.
+ */
+add_action( 'wp_enqueue_scripts', 'summit_enqueue_navigation' );
+
+function summit_enqueue_navigation(): void {
+    $v = wp_get_theme()->get( 'Version' );
+
+    wp_enqueue_script(
+        'summit-navigation',
+        get_template_directory_uri() . '/assets/js/navigation.js',
+        [],
+        $v,
+        true
+    );
+}
+
+/**
  * Enqueue enquiry form script on the Design Tomorrow page.
  */
 add_action( 'wp_enqueue_scripts', 'summit_enqueue_enquiry_form' );

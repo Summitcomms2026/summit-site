@@ -32,22 +32,7 @@ function summit_enqueue_styles(): void {
 
 }
 
-/**
- * Enqueue navigation script for mobile menu keyboard handling.
- */
-add_action( 'wp_enqueue_scripts', 'summit_enqueue_navigation' );
-
-function summit_enqueue_navigation(): void {
-    $v = wp_get_theme()->get( 'Version' );
-
-    wp_enqueue_script(
-        'summit-navigation',
-        get_template_directory_uri() . '/assets/js/navigation.js',
-        [],
-        $v,
-        true
-    );
-}
+// nav.js (scroll-aware mega-menu) is enqueued by inc/nav-functions.php → summit_nav_enqueue_script().
 
 /**
  * Google Analytics 4 — output gtag snippet when measurement ID is configured.

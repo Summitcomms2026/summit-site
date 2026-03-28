@@ -227,6 +227,65 @@
   border-top: 1px solid var(--colour-ink-10);
 }
 
+.article-hero {
+  padding-top: var(--space-16);
+}
+
+.article-hero__title {
+  margin-bottom: var(--space-8);
+  max-width: 20ch;
+}
+
+.article-hero__standfirst {
+  max-width: 56ch;
+  margin-bottom: 0;
+}
+
+.article-meta {
+  padding-top: var(--space-6);
+  border-top: var(--border-hairline);
+}
+
+.article-body {
+  padding-top: var(--space-16);
+}
+
+.wysiwyg h2 {
+  margin-top: var(--space-16);
+  line-height: var(--leading-snug);
+}
+
+.wysiwyg h3 {
+  margin-top: var(--space-12);
+  line-height: 1.3;
+}
+
+.wysiwyg h4 {
+  margin-top: var(--space-10);
+}
+
+.wysiwyg blockquote p {
+  font-size: clamp(1.125rem, 1.8vw, 1.375rem);
+}
+
+.wysiwyg a {
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color var(--duration-base) var(--ease-out);
+}
+
+.author-module {
+  padding-block: var(--space-16);
+}
+
+.author-module__avatar {
+  width: 64px;
+  height: 64px;
+}
+
+.author-module__bio {
+  max-width: 52ch;
+}
+
 
 /* ══════════════════════════════════════════════════════════════════════ */
 /* SEASON SINGLE                                                         */

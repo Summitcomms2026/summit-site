@@ -85,6 +85,11 @@
   letter-spacing: var(--tracking-tight);
   line-height: var(--leading-snug);
   margin-bottom: var(--space-3);
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.case-study-card__link:hover .case-study-card__title {
+  color: var(--colour-ink-60);
 }
 
 .case-study-card__client {
@@ -164,11 +169,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 400ms var(--ease-out);
+  transition: transform var(--duration-slow) var(--ease-out);
 }
 
 .article-card__link:hover .article-card__media img {
-  transform: scale(1.03);
+  transform: scale(1.04);
 }
 
 .article-card__body {
@@ -192,6 +197,11 @@
   letter-spacing: var(--tracking-tight);
   line-height: var(--leading-snug);
   margin-bottom: var(--space-3);
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.article-card__link:hover .article-card__title {
+  color: var(--colour-ink-60);
 }
 
 .article-card__standfirst {
@@ -220,12 +230,13 @@
 
 .featured-article {
   margin-bottom: var(--space-10);
+  padding-block: var(--space-section-xl);
 }
 
 .featured-article__link {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-6);
+  gap: var(--space-10);
   text-decoration: none;
   color: inherit;
 }
@@ -248,11 +259,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 400ms var(--ease-out);
+  transition: transform var(--duration-slow) var(--ease-out);
 }
 
 .featured-article__link:hover .featured-article__media img {
-  transform: scale(1.03);
+  transform: scale(1.04);
 }
 
 .featured-article__eyebrow {
@@ -271,6 +282,11 @@
   letter-spacing: var(--tracking-tight);
   line-height: var(--leading-tight);
   margin-bottom: var(--space-4);
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.featured-article__link:hover .featured-article__title {
+  color: var(--colour-ink-60);
 }
 
 .featured-article__standfirst {
@@ -356,6 +372,11 @@
   letter-spacing: var(--tracking-tight);
   line-height: var(--leading-snug);
   margin-bottom: var(--space-2);
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.season-card__link:hover .season-card__title {
+  color: var(--colour-ink-60);
 }
 
 .season-card__subtitle {
@@ -412,6 +433,11 @@
   font-weight: 400;
   letter-spacing: var(--tracking-tight);
   line-height: var(--leading-snug);
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.episode-card__link:hover .episode-card__title {
+  color: var(--colour-ink-60);
 }
 
 .episode-card__guest {

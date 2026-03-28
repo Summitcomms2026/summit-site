@@ -167,4 +167,65 @@
         overlayBrand.setAttribute( 'tabindex', '-1' );
     }
 
+    // ── Scroll-aware header ────────────────────────────────────────────
+    // Hides top nav + bottom bar on scroll-down, shows on scroll-up.
+    // Uses rAF throttling and an 8px threshold to avoid iOS bounce jitter.
+    var siteNav   = document.getElementById( 'site-nav' );
+    var bottomBar = document.getElementById( 'sticky-bottom-bar' );
+
+    if ( siteNav ) {
+        var lastScrollY  = 0;
+        var ticking      = false;
+        var navHidden    = false;
+        var SCROLL_THRESHOLD = 8;
+        var navHeight    = 56;
+
+        function updateScrollDirection() {
+            var currentY = window.pageYOffset;
+
+            // Always show when near top
+            if ( currentY < navHeight ) {
+                if ( navHidden ) {
+                    siteNav.classList.remove( 'site-nav--hidden' );
+                    if ( bottomBar ) { bottomBar.classList.remove( 'sticky-bottom-bar--hidden' ); }
+                    navHidden = false;
+                }
+                lastScrollY = currentY;
+                ticking = false;
+                return;
+            }
+
+            // Never hide when menu is open
+            if ( isOpen ) {
+                lastScrollY = currentY;
+                ticking = false;
+                return;
+            }
+
+            var delta = currentY - lastScrollY;
+
+            if ( delta > SCROLL_THRESHOLD && ! navHidden ) {
+                // Scrolling down — hide
+                siteNav.classList.add( 'site-nav--hidden' );
+                if ( bottomBar ) { bottomBar.classList.add( 'sticky-bottom-bar--hidden' ); }
+                navHidden = true;
+            } else if ( delta < -SCROLL_THRESHOLD && navHidden ) {
+                // Scrolling up — show
+                siteNav.classList.remove( 'site-nav--hidden' );
+                if ( bottomBar ) { bottomBar.classList.remove( 'sticky-bottom-bar--hidden' ); }
+                navHidden = false;
+            }
+
+            lastScrollY = currentY;
+            ticking = false;
+        }
+
+        window.addEventListener( 'scroll', function () {
+            if ( ! ticking ) {
+                requestAnimationFrame( updateScrollDirection );
+                ticking = true;
+            }
+        }, { passive: true } );
+    }
+
 }() );

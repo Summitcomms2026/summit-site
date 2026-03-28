@@ -25,11 +25,6 @@
   height: 100%;
   text-decoration: none;
   color: inherit;
-  transition: opacity var(--duration-base) var(--ease-out);
-}
-
-.article-card__link:hover {
-  opacity: 0.8;
 }
 
 .article-card__link:focus-visible {
@@ -92,6 +87,11 @@
   letter-spacing: var(--tracking-tight);
   color: var(--colour-ink);
   margin-bottom: var(--space-3);
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.article-card__link:hover .article-card__title {
+  color: var(--colour-ink-60);
 }
 
 .article-card__standfirst {
@@ -137,11 +137,6 @@
   height: 100%;
   text-decoration: none;
   color: inherit;
-  transition: opacity var(--duration-base) var(--ease-out);
-}
-
-.case-study-card__link:hover {
-  opacity: 0.8;
 }
 
 .case-study-card__link:focus-visible {
@@ -202,6 +197,11 @@
   letter-spacing: var(--tracking-tight);
   margin-bottom: var(--space-3);
   color: var(--colour-ink);
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.case-study-card__link:hover .case-study-card__title {
+  color: var(--colour-ink-60);
 }
 
 .case-study-card__client {
@@ -255,11 +255,6 @@
   gap: var(--space-6);
   text-decoration: none;
   color: inherit;
-  transition: opacity var(--duration-base) var(--ease-out);
-}
-
-.episode-card__link:hover {
-  opacity: 0.8;
 }
 
 .episode-card__link:focus-visible {
@@ -317,6 +312,11 @@
   line-height: var(--leading-snug);
   color: var(--colour-ink);
   margin-bottom: var(--space-2);
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.episode-card__link:hover .episode-card__title {
+  color: var(--colour-ink-60);
 }
 
 .episode-card__guest {
@@ -391,11 +391,6 @@
   height: 100%;
   text-decoration: none;
   color: inherit;
-  transition: opacity var(--duration-base) var(--ease-out);
-}
-
-.season-card__link:hover {
-  opacity: 0.8;
 }
 
 .season-card__link:focus-visible {
@@ -434,6 +429,11 @@
   font-weight: 400;
   letter-spacing: var(--tracking-tight);
   margin-bottom: var(--space-2);
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.season-card__link:hover .season-card__title {
+  color: var(--colour-ink-60);
 }
 
 .season-card__theme {
@@ -460,21 +460,16 @@
 /* ══════════════════════════════════════════════════════════════════════ */
 
 .featured-article {
-  padding-block: var(--space-section);
+  padding-block: var(--space-section-xl);
   border-bottom: var(--border-hairline);
 }
 
 .featured-article__link {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-8);
+  gap: var(--space-10);
   text-decoration: none;
   color: inherit;
-  transition: opacity var(--duration-base) var(--ease-out);
-}
-
-.featured-article__link:hover {
-  opacity: 0.82;
 }
 
 @media (min-width: 768px) {
@@ -513,6 +508,11 @@
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
   margin-bottom: var(--space-5);
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.featured-article__link:hover .featured-article__title {
+  color: var(--colour-ink-60);
 }
 
 .featured-article__standfirst {
@@ -561,11 +561,6 @@
   gap: var(--space-8);
   text-decoration: none;
   color: inherit;
-  transition: opacity var(--duration-base) var(--ease-out);
-}
-
-.featured-episode__link:hover {
-  opacity: 0.82;
 }
 
 @media (min-width: 768px) {
@@ -603,6 +598,11 @@
   font-weight: 400;
   letter-spacing: var(--tracking-tight);
   margin-bottom: var(--space-4);
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.featured-episode__link:hover .featured-episode__title {
+  color: var(--colour-ink-60);
 }
 
 .featured-episode__guest {

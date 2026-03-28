@@ -19,6 +19,7 @@
   /* Neutrals — the foundation of Summit's restrained palette */
   --colour-ink:          #1A1A18;   /* Near-black — primary text, dark panels */
   --colour-ink-60:       #666660;   /* 60% ink — secondary text, captions */
+  --colour-ink-40:       #9A9A95;   /* 40% ink — muted labels, metadata */
   --colour-ink-30:       #B3B3AE;   /* 30% ink — disabled, very quiet UI */
   --colour-ink-10:       #E8E8E5;   /* 10% ink — borders, dividers */
   --colour-ink-05:       #F4F4F2;   /* 5% ink — surface tints, zebra rows */

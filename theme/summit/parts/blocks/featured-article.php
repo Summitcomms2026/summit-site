@@ -71,12 +71,12 @@ $cat_label   = ( ! is_wp_error( $cat_terms ) && ! empty( $cat_terms ) )
     <div class="container container--medium">
 
         <header class="home-article__header">
-            <h2 class="home-article__section-headline" id="home-article-heading">
+            <h2 class="home-article__section-headline" id="home-article-heading" data-reveal>
                 <?php echo esc_html( $section_headline ); ?>
             </h2>
         </header>
 
-        <div class="featured-article">
+        <div class="featured-article" data-reveal data-reveal-delay="1">
             <a href="<?php echo esc_url( get_permalink( $art_id ) ); ?>"
                class="featured-article__link"
                aria-label="<?php echo esc_attr( 'Read article: ' . get_the_title( $art_id ) ); ?>">

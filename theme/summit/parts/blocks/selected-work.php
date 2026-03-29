@@ -46,14 +46,17 @@ if ( empty( $cases ) ) {
     <div class="container container--wide">
 
         <header class="selected-work__header">
-            <h2 class="selected-work__headline" id="selected-work-heading">
+            <h2 class="selected-work__headline" id="selected-work-heading" data-reveal>
                 <?php echo esc_html( $headline ); ?>
             </h2>
         </header>
 
         <ul class="case-study-grid" role="list">
-            <?php foreach ( $cases as $case ) :
+            <?php
+            $card_delays = [ 1, 2, 3, 4 ];
+            foreach ( $cases as $card_i => $case ) :
                 $cs_id     = $case->ID;
+                $card_delay = $card_delays[ $card_i ] ?? 4;
                 $summary   = get_field( 'cs_summary', $cs_id );
                 $client    = get_field( 'cs_client', $cs_id );
                 $year      = get_field( 'cs_year', $cs_id );
@@ -61,7 +64,7 @@ if ( empty( $cases ) ) {
                 $svc_label = ( ! is_wp_error( $svc_terms ) && ! empty( $svc_terms ) )
                              ? $svc_terms[0]->name : '';
             ?>
-            <li class="case-study-card">
+            <li class="case-study-card" data-reveal data-reveal-delay="<?php echo $card_delay; ?>">
                 <a href="<?php echo esc_url( get_permalink( $cs_id ) ); ?>"
                    class="case-study-card__link"
                    aria-label="<?php echo esc_attr( 'View case study: ' . get_the_title( $cs_id ) ); ?>">

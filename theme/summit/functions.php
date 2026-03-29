@@ -25,6 +25,7 @@ function summit_enqueue_styles(): void {
     wp_enqueue_style( 'summit-singles',    $p . 'singles.css',    [ 'summit-cards' ],      $v );
     wp_enqueue_style( 'summit-utilities',  $p . 'utilities.css',  [ 'summit-singles' ],    $v );
     wp_enqueue_style( 'summit-navigation', $p . 'navigation.css', [ 'summit-utilities' ],  $v );
+    wp_enqueue_style( 'summit-motion',     $p . 'motion.css',     [ 'summit-navigation' ], $v );
 
     if ( is_front_page() ) {
         wp_enqueue_style( 'summit-homepage', $p . 'homepage.css', [ 'summit-components' ], $v );
@@ -33,6 +34,23 @@ function summit_enqueue_styles(): void {
 }
 
 // nav.js (scroll-aware mega-menu) is enqueued by inc/nav-functions.php → summit_nav_enqueue_script().
+
+/**
+ * Enqueue scroll-reveal animation script (site-wide, footer).
+ */
+add_action( 'wp_enqueue_scripts', 'summit_enqueue_scripts' );
+
+function summit_enqueue_scripts(): void {
+    $v = wp_get_theme()->get( 'Version' );
+
+    wp_enqueue_script(
+        'summit-scroll-animate',
+        get_template_directory_uri() . '/assets/js/scroll-animate.js',
+        [],   // no dependencies
+        $v,
+        true  // load in footer
+    );
+}
 
 /**
  * Google Analytics 4 — output gtag snippet when measurement ID is configured.

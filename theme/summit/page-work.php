@@ -65,11 +65,11 @@ $cs_query = new WP_Query( $cs_args );
         <div class="container container--medium">
             <header class="archive-hero__header">
                 <p class="archive-hero__eyebrow">Selected Work</p>
-                <h1 class="archive-hero__title" id="work-hero-title">
+                <h1 class="archive-hero__title" id="work-hero-title" data-reveal>
                     <?php echo esc_html( $page_title ); ?>
                 </h1>
                 <?php if ( $page_intro ) : ?>
-                <div class="archive-hero__intro">
+                <div class="archive-hero__intro" data-reveal data-reveal-delay="1">
                     <?php
                     /*
                      * Page body content is run through the_content filters.
@@ -80,7 +80,7 @@ $cs_query = new WP_Query( $cs_args );
                     ?>
                 </div>
                 <?php else : ?>
-                <p class="archive-hero__sub">
+                <p class="archive-hero__sub" data-reveal data-reveal-delay="1">
                     A curated selection of engagements across brand strategy,
                     experience design and digital transformation.
                 </p>
@@ -147,7 +147,8 @@ $cs_query = new WP_Query( $cs_args );
             <?php if ( $cs_query->have_posts() ) : ?>
 
             <ul class="case-study-grid" role="list">
-                <?php while ( $cs_query->have_posts() ) : $cs_query->the_post();
+                <?php $cs_card_index = 0; while ( $cs_query->have_posts() ) : $cs_query->the_post();
+                    $cs_card_index++;
                     $summary   = get_field( 'cs_summary' );
                     $client    = get_field( 'cs_client' );
                     $year      = get_field( 'cs_year' );
@@ -155,7 +156,7 @@ $cs_query = new WP_Query( $cs_args );
                     $svc_label = ( ! is_wp_error( $svc_terms ) && ! empty( $svc_terms ) )
                                  ? $svc_terms[0]->name : '';
                 ?>
-                <li class="case-study-card" data-post-id="<?php the_ID(); ?>">
+                <li class="case-study-card" data-post-id="<?php the_ID(); ?>" data-reveal data-reveal-delay="<?php echo min( $cs_card_index, 3 ); ?>">
                     <a href="<?php the_permalink(); ?>"
                        class="case-study-card__link"
                        aria-label="<?php echo esc_attr( 'View case study: ' . get_the_title() ); ?>">

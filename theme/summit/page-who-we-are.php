@@ -68,13 +68,13 @@ $values = [
 						<header class="page-hero__header">
 							<p class="page-hero__eyebrow">Who We Are</p>
 
-							<h1 class="page-hero__title">
+							<h1 class="page-hero__title" data-reveal>
 								<?php echo esc_html( $hero_headline ); ?>
 							</h1>
 
 							<div class="page-hero__intro">
 								<?php foreach ( $hero_intro as $paragraph ) : ?>
-									<p><?php echo esc_html( $paragraph ); ?></p>
+									<p data-reveal data-reveal-delay="1"><?php echo esc_html( $paragraph ); ?></p>
 								<?php endforeach; ?>
 							</div>
 						</header>
@@ -84,12 +84,12 @@ $values = [
 				<!-- ── 2. Philosophy ────────────────────────────────────────── -->
 				<section class="wwa-section section--padded" aria-labelledby="wwa-philosophy-heading">
 					<div class="container container--narrow">
-						<h2 class="wwa-section__heading" id="wwa-philosophy-heading">
+						<h2 class="wwa-section__heading" id="wwa-philosophy-heading" data-reveal>
 							<?php echo esc_html( $philosophy_heading ); ?>
 						</h2>
 						<div class="wwa-section__body">
 							<?php foreach ( $philosophy_body as $paragraph ) : ?>
-								<p><?php echo esc_html( $paragraph ); ?></p>
+								<p data-reveal data-reveal-delay="1"><?php echo esc_html( $paragraph ); ?></p>
 							<?php endforeach; ?>
 						</div>
 					</div>
@@ -98,12 +98,12 @@ $values = [
 				<!-- ── 3. Operating model ───────────────────────────────────── -->
 				<section class="wwa-section wwa-section--tinted section--padded" aria-labelledby="wwa-model-heading">
 					<div class="container container--narrow">
-						<h2 class="wwa-section__heading" id="wwa-model-heading">
+						<h2 class="wwa-section__heading" id="wwa-model-heading" data-reveal>
 							<?php echo esc_html( $model_heading ); ?>
 						</h2>
 						<div class="wwa-section__body">
 							<?php foreach ( $model_body as $paragraph ) : ?>
-								<p><?php echo esc_html( $paragraph ); ?></p>
+								<p data-reveal data-reveal-delay="1"><?php echo esc_html( $paragraph ); ?></p>
 							<?php endforeach; ?>
 						</div>
 					</div>
@@ -112,12 +112,12 @@ $values = [
 				<!-- ── 4. Why clients work with us ──────────────────────────── -->
 				<section class="wwa-values section--padded" aria-labelledby="wwa-values-heading">
 					<div class="container container--medium">
-						<h2 class="wwa-values__heading" id="wwa-values-heading">
+						<h2 class="wwa-values__heading" id="wwa-values-heading" data-reveal>
 							Why Clients Work With Us
 						</h2>
 						<div class="service-cards__grid">
-							<?php foreach ( $values as $value ) : ?>
-							<div class="service-card service-card--static">
+							<?php foreach ( $values as $value_index => $value ) : ?>
+							<div class="service-card service-card--static" data-reveal data-reveal-delay="<?php echo $value_index + 1; ?>">
 								<h3 class="service-card__title"><?php echo esc_html( $value['title'] ); ?></h3>
 								<p class="service-card__description"><?php echo esc_html( $value['description'] ); ?></p>
 							</div>

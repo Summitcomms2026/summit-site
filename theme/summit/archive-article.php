@@ -73,9 +73,9 @@ $article_cats = get_terms( [ 'taxonomy' => 'article_category', 'hide_empty' => t
     <section class="archive-hero archive-hero--editorial" aria-labelledby="fol-hero-title">
         <div class="container container--medium">
             <header class="archive-hero__header">
-                <p class="archive-hero__eyebrow">Editorial</p>
-                <h1 class="archive-hero__title" id="fol-hero-title">The Future of Luxury</h1>
-                <p class="archive-hero__sub">
+                <p class="archive-hero__eyebrow" data-reveal="fade">Editorial</p>
+                <h1 class="archive-hero__title" id="fol-hero-title" data-reveal>The Future of Luxury</h1>
+                <p class="archive-hero__sub" data-reveal data-reveal-delay="1">
                     Strategic thinking on luxury, culture, technology and the forces
                     shaping how sophisticated audiences assign value.
                 </p>

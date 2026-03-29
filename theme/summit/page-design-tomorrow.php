@@ -20,10 +20,10 @@ get_header();
 	<section class="dt-hero" aria-labelledby="dt-hero-title">
 		<div class="container container--medium">
 			<header class="dt-hero__header">
-				<h1 class="dt-hero__title" id="dt-hero-title">
+				<h1 class="dt-hero__title" id="dt-hero-title" data-reveal>
 					Let's Design Tomorrow
 				</h1>
-				<p class="dt-hero__intro">
+				<p class="dt-hero__intro" data-reveal data-reveal-delay="1">
 					We partner with ambitious brands to sharpen positioning, elevate creative expression and build digital experiences of lasting value. If you have a project in mind, we would like to hear about it.
 				</p>
 			</header>
@@ -34,7 +34,7 @@ get_header();
 	<section class="dt-form-section" aria-label="Contact form">
 		<div class="container container--narrow">
 
-			<form class="dt-form" id="summit-enquiry-form" method="post" novalidate>
+			<form class="dt-form" id="summit-enquiry-form" method="post" novalidate data-reveal data-reveal-delay="2">
 
 				<?php wp_nonce_field( 'summit_enquiry_submit', 'summit_enquiry_nonce' ); ?>
 				<input type="hidden" name="action" value="summit_enquiry">

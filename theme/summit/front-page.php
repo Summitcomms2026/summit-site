@@ -48,10 +48,10 @@ the_post(); // consume the front-page post for ACF context
     ?>
     <section class="vp-block section--padded" aria-labelledby="vp-heading">
         <div class="container container--narrow">
-            <h2 class="vp-block__headline" id="vp-heading">
+            <h2 class="vp-block__headline" id="vp-heading" data-reveal>
                 <?php echo esc_html( $vp_headline ); ?>
             </h2>
-            <div class="vp-block__body">
+            <div class="vp-block__body" data-reveal data-reveal-delay="1">
                 <?php echo wp_kses_post( $vp_body ); ?>
             </div>
         </div>
@@ -96,19 +96,23 @@ the_post(); // consume the front-page post for ACF context
         <div class="container container--wide">
 
             <header class="sectors-grid-section__header">
-                <h2 class="sectors-grid-section__headline" id="sectors-heading">
+                <h2 class="sectors-grid-section__headline" id="sectors-heading" data-reveal="fade">
                     <?php echo esc_html( $sectors_headline ); ?>
                 </h2>
                 <?php if ( $sectors_body ) : ?>
-                <div class="sectors-grid-section__body">
+                <div class="sectors-grid-section__body" data-reveal="fade" data-reveal-delay="1">
                     <?php echo wp_kses_post( $sectors_body ); ?>
                 </div>
                 <?php endif; ?>
             </header>
 
             <ul class="sectors-grid" role="list">
-                <?php foreach ( $sectors as $sector ) : ?>
-                <li class="sectors-grid__item">
+                <?php
+                $sector_delays = [ 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6 ];
+                foreach ( $sectors as $si => $sector ) :
+                    $sd = $sector_delays[ $si ] ?? 1;
+                ?>
+                <li class="sectors-grid__item" data-reveal="fade" data-reveal-delay="<?php echo $sd; ?>">
                     <?php echo esc_html( $sector ); ?>
                 </li>
                 <?php endforeach; ?>

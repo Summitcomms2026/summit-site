@@ -421,7 +421,8 @@
 /* ══════════════════════════════════════════════════════════════════════ */
 
 .page-hero {
-  padding: 72px 0 28px;
+  padding-block-start: var(--space-16);
+  padding-block-end:   var(--space-8);
 }
 
 .page-hero__header {
@@ -433,9 +434,9 @@
 }
 
 .page-hero__intro {
-  margin-top: 16px;
-  font-size: 1.05rem;
-  line-height: 1.45;
+  margin-top: var(--space-4);
+  font-size: var(--text-body-l);
+  line-height: var(--leading-body);
   color: var(--colour-ink-60);
   max-width: 42ch;
 }
@@ -454,7 +455,8 @@
 /* ══════════════════════════════════════════════════════════════════════ */
 
 .page-hero--what-we-do {
-  padding: 72px 0 36px;
+  padding-block-start: var(--space-16);
+  padding-block-end:   var(--space-10);
 }
 
 .page-hero--what-we-do .page-hero__header {
@@ -505,7 +507,8 @@
 /* ══════════════════════════════════════════════════════════════════════ */
 
 .page-hero--who-we-are {
-  padding: 72px 0 36px;
+  padding-block-start: var(--space-16);
+  padding-block-end:   var(--space-10);
 }
 
 .page-hero--who-we-are .page-hero__header {

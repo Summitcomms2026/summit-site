@@ -35,20 +35,26 @@
 /* ══════════════════════════════════════════════════════════════════════ */
 
 .section--padded {
-  padding-block: var(--space-10);
+  padding-block: var(--space-12);
 }
 
 .section--padded-xl {
-  padding-block: var(--space-12);
+  padding-block: var(--space-16);
 }
 
 @media (min-width: 768px) {
   .section--padded {
-    padding-block: var(--space-12);
+    padding-block: var(--space-16);
   }
 
   .section--padded-xl {
-    padding-block: clamp(var(--space-12), 8vw, 10rem);
+    padding-block: clamp(var(--space-16), 8vw, 10rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .section--padded {
+    padding-block: var(--space-20);
   }
 }
 

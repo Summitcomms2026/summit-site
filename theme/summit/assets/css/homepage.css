@@ -185,10 +185,11 @@
 }
 
 .capability-triptych__desc {
-  font-size: var(--text-body);
+  font-size: var(--text-body-l);
   color: var(--colour-ink-60);
   line-height: var(--leading-body);
   margin-bottom: var(--space-6);
+  max-width: 42ch;
 }
 
 .capability-triptych__desc p {
@@ -298,7 +299,7 @@
 }
 
 .tastemakers-feature__body {
-  font-size: var(--text-body);
+  font-size: var(--text-body-l);
   color: var(--colour-paper-65);
   line-height: var(--leading-body);
   margin-bottom: var(--space-8);
@@ -344,7 +345,7 @@
 }
 
 .download-feature__body {
-  font-size: var(--text-body);
+  font-size: var(--text-body-l);
   color: var(--colour-ink-60);
   line-height: var(--leading-body);
   margin-bottom: var(--space-8);

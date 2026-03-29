@@ -502,6 +502,18 @@
     transform: scaleX(1);
 }
 
+
+/* ── CTA item — "Let's Talk" — visually distinct from nav links ─────── */
+
+.mega-menu__primary-link--cta {
+    font-style: italic;
+    color: var(--colour-ink-60);
+}
+
+.mega-menu__primary-link--cta:hover {
+    color: var(--colour-ink);
+}
+
 .mega-menu__secondary-nav {
     margin-top: auto;
     padding-top: 34px;

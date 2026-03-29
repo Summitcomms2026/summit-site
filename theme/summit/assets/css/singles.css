@@ -866,3 +866,31 @@
   color: var(--colour-ink-30);
   margin: 0;
 }
+
+
+/* ── Service Approach Section ────────────────────────────────────────── */
+
+.service-approach {
+    padding-block: var(--space-16);
+}
+
+.service-approach .eyebrow {
+    margin-bottom: var(--space-4);
+}
+
+.service-approach h2 {
+    font-size: var(--text-h2);
+    font-weight: 400;
+    letter-spacing: var(--tracking-tight);
+    line-height: var(--leading-tight);
+    margin-bottom: var(--space-6);
+    max-width: 22ch;
+}
+
+.service-approach__body {
+    font-size: var(--text-body-l);
+    color: var(--colour-ink-60);
+    line-height: var(--leading-body);
+    max-width: var(--measure-narrow);
+    margin: 0;
+}

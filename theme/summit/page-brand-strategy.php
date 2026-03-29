@@ -63,17 +63,17 @@ $service_articles = new WP_Query( [
 	<section class="service-hero" aria-labelledby="service-hero-title">
 		<div class="container container--medium">
 
-			<nav class="service-hero__breadcrumb" aria-label="Service navigation">
+			<nav class="service-hero__breadcrumb" aria-label="Service navigation" data-reveal="fade">
 				<a href="<?php echo esc_url( home_url( '/what-we-do/' ) ); ?>">What We Do</a>
 				<span aria-hidden="true">/</span>
 				<span aria-current="page"><?php echo esc_html( $service_name ); ?></span>
 			</nav>
 
 			<header class="service-hero__header">
-				<h1 class="service-hero__title" id="service-hero-title">
+				<h1 class="service-hero__title" id="service-hero-title" data-reveal>
 					<?php echo esc_html( $service_name ); ?>
 				</h1>
-				<p class="service-hero__intro">
+				<p class="service-hero__intro" data-reveal data-reveal-delay="1">
 					<?php echo esc_html( $service_intro ); ?>
 				</p>
 			</header>
@@ -86,10 +86,19 @@ $service_articles = new WP_Query( [
 		<div class="container container--narrow">
 			<h2 class="service-capabilities__heading">What this includes</h2>
 			<ul class="service-capabilities__list">
-				<?php foreach ( $capabilities as $cap ) : ?>
-				<li class="service-capabilities__item"><?php echo esc_html( $cap ); ?></li>
+				<?php foreach ( $capabilities as $cap_i => $cap ) : ?>
+				<li class="service-capabilities__item"<?php if ( $cap_i === 0 ) echo ' data-reveal data-reveal-delay="1"'; elseif ( $cap_i === 1 ) echo ' data-reveal data-reveal-delay="2"'; elseif ( $cap_i === 2 ) echo ' data-reveal data-reveal-delay="3"'; ?>><?php echo esc_html( $cap ); ?></li>
 				<?php endforeach; ?>
 			</ul>
+		</div>
+	</section>
+
+	<!-- ── Our Approach ────────────────────────────────────────────────── -->
+	<section class="service-approach section--padded section--tinted" aria-label="Our Approach">
+		<div class="container container--medium">
+			<p class="eyebrow" data-reveal="fade">Methodology</p>
+			<h2 data-reveal>Clarity before execution.</h2>
+			<p class="service-approach__body" data-reveal data-reveal-delay="1">We begin every brand strategy engagement with deep discovery — mapping the competitive landscape, understanding the brand's authentic territory, and aligning stakeholders on a shared strategic vision. The result is a platform that is both creatively inspiring and commercially actionable.</p>
 		</div>
 	</section>
 

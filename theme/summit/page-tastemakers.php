@@ -180,15 +180,17 @@ $platform_names = [
 
             <header class="podcast-hero__header">
                 <p class="podcast-hero__eyebrow">A Summit Media Property</p>
-                <h1 class="podcast-hero__title" id="tastemakers-title">
+                <h1 class="podcast-hero__title" id="tastemakers-title" data-reveal>
                     <?php echo esc_html( get_the_title() ); ?>
                 </h1>
                 <?php
                 $series_desc = get_the_content();
-                if ( $series_desc ) :
+                if ( $series_desc ) : ?>
+                <div data-reveal data-reveal-delay="1"><?php
                     echo apply_filters( 'the_content', $series_desc ); // phpcs:ignore WordPress.Security.EscapeOutput
-                else : ?>
-                <p class="podcast-hero__description">
+                ?></div>
+                <?php else : ?>
+                <p class="podcast-hero__description" data-reveal data-reveal-delay="1">
                     Conversations on luxury, culture, technology and the forces
                     shaping how sophisticated audiences assign value.
                 </p>
@@ -386,14 +388,14 @@ $platform_names = [
             </header>
 
             <ul class="season-grid" role="list">
-                <?php foreach ( $past_seasons as $ps ) :
+                <?php foreach ( $past_seasons as $ps_index => $ps ) :
                     $ps_num      = get_field( 'ps_season_number', $ps->ID );
                     $ps_subtitle = get_field( 'ps_subtitle',      $ps->ID );
                     $ps_theme    = get_field( 'ps_theme',         $ps->ID );
                     $ps_artwork  = get_field( 'ps_artwork',       $ps->ID );
                     $ps_label    = $ps_num ? 'Season ' . absint( $ps_num ) : get_the_title( $ps->ID );
                 ?>
-                <li class="season-card">
+                <li class="season-card" data-reveal data-reveal-delay="<?php echo min( $ps_index + 1, 3 ); ?>">
                     <a href="<?php echo esc_url( get_permalink( $ps->ID ) ); ?>"
                        class="season-card__link"
                        aria-label="<?php echo esc_attr( 'Explore ' . $ps_label ); ?>">

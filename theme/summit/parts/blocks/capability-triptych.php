@@ -45,9 +45,9 @@ $pillars = [
     <div class="container container--wide">
 
         <header class="capability-triptych__header">
-            <h2 class="capability-triptych__headline" id="capabilities-heading">What We Do</h2>
+            <h2 class="capability-triptych__headline" id="capabilities-heading" data-reveal>What We Do</h2>
             <?php if ( $intro ) : ?>
-            <div class="capability-triptych__intro">
+            <div class="capability-triptych__intro" data-reveal data-reveal-delay="1">
                 <?php echo wp_kses_post( wpautop( $intro ) ); ?>
             </div>
             <?php endif; ?>
@@ -55,8 +55,12 @@ $pillars = [
 
         <div class="capability-triptych__grid">
 
-            <?php foreach ( $pillars as $pillar ) : ?>
-            <div class="capability-triptych__pillar">
+            <?php
+            $pillar_delays = [ 1, 2, 3 ];
+            foreach ( $pillars as $i => $pillar ) :
+                $delay = $pillar_delays[ $i ] ?? 1;
+            ?>
+            <div class="capability-triptych__pillar" data-reveal data-reveal-delay="<?php echo $delay; ?>">
                 <h3 class="capability-triptych__title">
                     <?php echo esc_html( $pillar['title'] ); ?>
                 </h3>

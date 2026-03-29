@@ -228,4 +228,21 @@
         }, { passive: true } );
     }
 
+    // ── Header scroll-state (.is-scrolled) ────────────────────────────
+    // Adds a frosted-glass appearance to the header once the user has
+    // scrolled past the hero. Separate from the hide/show logic above.
+    var IS_SCROLLED_THRESHOLD = 80; // px
+
+    function updateScrolledState() {
+        if ( ! header ) { return; }
+        if ( window.pageYOffset > IS_SCROLLED_THRESHOLD ) {
+            header.classList.add( 'is-scrolled' );
+        } else {
+            header.classList.remove( 'is-scrolled' );
+        }
+    }
+
+    window.addEventListener( 'scroll', updateScrolledState, { passive: true } );
+    updateScrolledState(); // run immediately — handles mid-scroll page load
+
 }() );

@@ -72,7 +72,7 @@ $artwork   = get_field( 'ps_artwork', $season_id );
         <div class="tastemakers-feature__layout">
 
             <?php if ( $artwork ) : ?>
-            <figure class="tastemakers-feature__artwork" aria-hidden="true">
+            <figure class="tastemakers-feature__artwork" aria-hidden="true" data-reveal="fade">
                 <img src="<?php echo esc_url( $artwork['url'] ); ?>"
                      alt="<?php echo esc_attr( $artwork['alt'] ?? '' ); ?>"
                      width="<?php echo esc_attr( $artwork['width'] ?? '' ); ?>"
@@ -83,32 +83,33 @@ $artwork   = get_field( 'ps_artwork', $season_id );
 
             <div class="tastemakers-feature__content">
 
-                <p class="tastemakers-feature__eyebrow"><?php echo esc_html( $headline ); ?></p>
+                <p class="tastemakers-feature__eyebrow" data-reveal="fade"><?php echo esc_html( $headline ); ?></p>
 
-                <h2 class="tastemakers-feature__title" id="tastemakers-heading">
+                <h2 class="tastemakers-feature__title" id="tastemakers-heading" data-reveal="fade">
                     <?php echo esc_html( get_the_title( $season_id ) ); ?>
                 </h2>
 
                 <?php if ( $subtitle ) : ?>
-                <p class="tastemakers-feature__subtitle">
+                <p class="tastemakers-feature__subtitle" data-reveal="fade" data-reveal-delay="1">
                     <?php echo esc_html( $subtitle ); ?>
                 </p>
                 <?php endif; ?>
 
                 <?php if ( $theme ) : ?>
-                <p class="tastemakers-feature__theme">
+                <p class="tastemakers-feature__theme" data-reveal="fade" data-reveal-delay="1">
                     <?php echo esc_html( $theme ); ?>
                 </p>
                 <?php endif; ?>
 
                 <?php if ( $body ) : ?>
-                <div class="tastemakers-feature__body">
+                <div class="tastemakers-feature__body" data-reveal="fade" data-reveal-delay="2">
                     <?php echo wp_kses_post( wpautop( $body ) ); ?>
                 </div>
                 <?php endif; ?>
 
                 <a href="<?php echo esc_url( get_permalink( $season_id ) ); ?>"
-                   class="btn btn--primary">
+                   class="btn btn--primary"
+                   data-reveal="fade" data-reveal-delay="3">
                     Listen to Tastemakers
                 </a>
 

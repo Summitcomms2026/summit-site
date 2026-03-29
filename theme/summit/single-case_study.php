@@ -50,7 +50,7 @@ $related_episode = get_field( 'cs_related_episode' );
         <div class="container container--medium">
             <div class="single-hero">
 
-                <div class="single-case-study__meta">
+                <div class="single-case-study__meta" data-reveal="fade">
                     <?php if ( ! is_wp_error( $svc_terms ) && ! empty( $svc_terms ) ) : ?>
                     <span class="single-case-study__meta-item"><?php echo esc_html( $svc_terms[0]->name ); ?></span>
                     <?php endif; ?>
@@ -62,16 +62,16 @@ $related_episode = get_field( 'cs_related_episode' );
                     <?php endif; ?>
                 </div>
 
-                <h1 class="single-hero__title" id="single-hero-title">
+                <h1 class="single-hero__title" id="single-hero-title" data-reveal>
                     <?php the_title(); ?>
                 </h1>
 
                 <?php if ( $summary ) : ?>
-                <p class="single-hero__standfirst"><?php echo esc_html( $summary ); ?></p>
+                <p class="single-hero__standfirst" data-reveal data-reveal-delay="1"><?php echo esc_html( $summary ); ?></p>
                 <?php endif; ?>
 
                 <?php if ( $client ) : ?>
-                <p class="meta-bar">
+                <p class="meta-bar" data-reveal="fade" data-reveal-delay="2">
                     <span>Client: <?php echo esc_html( $client ); ?></span>
                     <?php if ( $geographic ) : ?>
                     <span class="meta-bar__separator"></span>
@@ -83,7 +83,7 @@ $related_episode = get_field( 'cs_related_episode' );
             </div>
 
             <?php if ( has_post_thumbnail() ) : ?>
-            <figure class="single-hero__media">
+            <figure class="single-hero__media" data-reveal="fade">
                 <?php the_post_thumbnail( 'full' ); ?>
             </figure>
             <?php endif; ?>

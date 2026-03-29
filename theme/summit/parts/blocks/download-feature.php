@@ -56,29 +56,30 @@ $dl_excerpt       = has_excerpt( $dl_id ) ? get_the_excerpt( $dl_id ) : '';
         <div class="download-feature__layout">
 
             <?php if ( has_post_thumbnail( $dl_id ) ) : ?>
-            <figure class="download-feature__cover" aria-hidden="true">
+            <figure class="download-feature__cover" aria-hidden="true" data-reveal="fade">
                 <?php echo get_the_post_thumbnail( $dl_id, 'medium_large' ); ?>
             </figure>
             <?php endif; ?>
 
             <div class="download-feature__content">
 
-                <h2 class="download-feature__headline" id="download-heading">
+                <h2 class="download-feature__headline" id="download-heading" data-reveal>
                     <?php echo esc_html( $section_headline ); ?>
                 </h2>
 
                 <?php if ( $section_body ) : ?>
-                <div class="download-feature__body">
+                <div class="download-feature__body" data-reveal data-reveal-delay="1">
                     <?php echo wp_kses_post( wpautop( $section_body ) ); ?>
                 </div>
                 <?php elseif ( $dl_excerpt ) : ?>
-                <p class="download-feature__body">
+                <p class="download-feature__body" data-reveal data-reveal-delay="1">
                     <?php echo esc_html( $dl_excerpt ); ?>
                 </p>
                 <?php endif; ?>
 
                 <a href="<?php echo esc_url( get_permalink( $dl_id ) ); ?>"
-                   class="btn btn--primary">
+                   class="btn btn--primary"
+                   data-reveal data-reveal-delay="2">
                     View Download
                 </a>
 

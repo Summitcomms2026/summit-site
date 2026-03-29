@@ -20,12 +20,12 @@ get_header();
     <section class="section--padded" aria-labelledby="archive-hero-heading">
         <div class="container container--medium">
             <div class="archive-hero">
-                <p class="archive-hero__eyebrow">Work Showcase</p>
-                <h1 class="archive-hero__headline" id="archive-hero-heading">
+                <p class="archive-hero__eyebrow" data-reveal="fade">Work Showcase</p>
+                <h1 class="archive-hero__headline" id="archive-hero-heading" data-reveal>
                     Selected Work
                 </h1>
                 <div class="archive-hero__body">
-                    <p>A selection of projects across brand strategy, experience design and digital transformation for luxury and premium brands.</p>
+                    <p data-reveal data-reveal-delay="1">A selection of projects across brand strategy, experience design and digital transformation for luxury and premium brands.</p>
                 </div>
             </div>
         </div>

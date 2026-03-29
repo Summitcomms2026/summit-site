@@ -27,17 +27,17 @@ $url      = $args['url']      ?? home_url( '/design-tomorrow/' );
     <div class="container container--medium">
         <div class="cta-footer__inner text-center">
 
-            <h2 class="cta-footer__headline" id="cta-footer-heading">
+            <h2 class="cta-footer__headline" id="cta-footer-heading" data-reveal="fade">
                 <?php echo esc_html( $headline ); ?>
             </h2>
 
             <?php if ( $body ) : ?>
-            <p class="cta-footer__body">
+            <p class="cta-footer__body" data-reveal="fade" data-reveal-delay="1">
                 <?php echo esc_html( $body ); ?>
             </p>
             <?php endif; ?>
 
-            <a href="<?php echo esc_url( $url ); ?>" class="btn btn--primary">
+            <a href="<?php echo esc_url( $url ); ?>" class="btn btn--primary" data-reveal="fade" data-reveal-delay="2">
                 <?php echo esc_html( $label ); ?>
             </a>
 

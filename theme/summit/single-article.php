@@ -95,10 +95,10 @@ while ( have_posts() ) :
             <div class="single-hero">
 
                 <?php if ( $cat_label ) : ?>
-                <p class="eyebrow"><?php echo esc_html( $cat_label ); ?></p>
+                <p class="eyebrow" data-reveal="fade"><?php echo esc_html( $cat_label ); ?></p>
                 <?php endif; ?>
 
-                <h1 class="single-hero__title" id="single-hero-title">
+                <h1 class="single-hero__title" id="single-hero-title" data-reveal>
                     <?php the_title(); ?>
                 </h1>
 
@@ -109,10 +109,10 @@ while ( have_posts() ) :
                 <?php endif; ?>
 
                 <?php if ( $standfirst ) : ?>
-                <p class="single-hero__standfirst"><?php echo esc_html( $standfirst ); ?></p>
+                <p class="single-hero__standfirst" data-reveal data-reveal-delay="1"><?php echo esc_html( $standfirst ); ?></p>
                 <?php endif; ?>
 
-                <div class="meta-bar" role="contentinfo" aria-label="Article information">
+                <div class="meta-bar" role="contentinfo" aria-label="Article information" data-reveal="fade" data-reveal-delay="2">
                     <?php if ( $author_name ) : ?>
                     <span class="meta-bar__author"><?php echo esc_html( $author_name ); ?></span>
                     <?php endif; ?>
@@ -131,7 +131,7 @@ while ( have_posts() ) :
             </div>
 
             <?php if ( summit_has_article_hero() ) : ?>
-            <figure class="single-hero__media">
+            <figure class="single-hero__media" data-reveal="fade">
                 <?php echo summit_article_hero( null, 'full' ); ?>
             </figure>
             <?php endif; ?>

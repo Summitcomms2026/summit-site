@@ -33,21 +33,21 @@ $work_url            = home_url( '/work/' );
 						<header class="page-hero__header">
 							<p class="page-hero__eyebrow">What We Do</p>
 
-							<h1 class="page-hero__title">
+							<h1 class="page-hero__title" data-reveal>
 								Brand Strategy, Experience Design and Digital Transformation for Luxury Brands
 							</h1>
 
 							<div class="page-hero__intro">
-								<p>
+								<p data-reveal data-reveal-delay="1">
 									Summit Communication Group helps luxury brands define sharper positions, create more meaningful experiences and modernise the digital systems that shape relevance, desirability and growth.
 								</p>
 
-								<p>
+								<p data-reveal data-reveal-delay="1">
 									Our work brings together strategic thinking, creative direction and digital capability to help brands move with clarity in a changing luxury landscape.
 								</p>
 							</div>
 
-							<div class="page-hero__actions">
+							<div class="page-hero__actions" data-reveal data-reveal-delay="2">
 								<a class="btn btn--primary" href="<?php echo esc_url( $design_tomorrow_url ); ?>">
 									Start a Conversation
 								</a>
@@ -66,7 +66,7 @@ $work_url            = home_url( '/work/' );
 						<div class="service-cards__grid">
 
 							<a href="<?php echo esc_url( home_url( '/what-we-do/brand-strategy/' ) ); ?>"
-							   class="service-card">
+							   class="service-card" data-reveal data-reveal-delay="1">
 								<h2 class="service-card__title">Brand Strategy</h2>
 								<p class="service-card__description">
 									Sharper positioning for luxury brands navigating change.
@@ -75,7 +75,7 @@ $work_url            = home_url( '/work/' );
 							</a>
 
 							<a href="<?php echo esc_url( home_url( '/what-we-do/experience-design/' ) ); ?>"
-							   class="service-card">
+							   class="service-card" data-reveal data-reveal-delay="2">
 								<h2 class="service-card__title">Experience Design</h2>
 								<p class="service-card__description">
 									Creative direction that elevates every touchpoint.
@@ -84,7 +84,7 @@ $work_url            = home_url( '/work/' );
 							</a>
 
 							<a href="<?php echo esc_url( home_url( '/what-we-do/digital-transformation/' ) ); ?>"
-							   class="service-card">
+							   class="service-card" data-reveal data-reveal-delay="3">
 								<h2 class="service-card__title">Digital Transformation</h2>
 								<p class="service-card__description">
 									Modern systems for relevance, desirability and growth.

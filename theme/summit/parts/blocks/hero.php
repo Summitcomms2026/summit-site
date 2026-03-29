@@ -35,18 +35,18 @@ $cta2_url   = get_field( 'home_hero_cta2_url' )   ?: get_post_type_archive_link(
         <header class="home-hero__header">
 
             <?php if ( $eyebrow ) : ?>
-            <p class="home-hero__eyebrow"><?php echo esc_html( $eyebrow ); ?></p>
+            <p class="home-hero__eyebrow" data-reveal="fade"><?php echo esc_html( $eyebrow ); ?></p>
             <?php endif; ?>
 
-            <h1 class="home-hero__title" id="home-hero-title">
+            <h1 class="home-hero__title" id="home-hero-title" data-reveal>
                 <?php echo esc_html( $headline ); ?>
             </h1>
 
-            <div class="home-hero__body">
+            <div class="home-hero__body" data-reveal data-reveal-delay="1">
                 <?php echo wp_kses_post( wpautop( $body ) ); ?>
             </div>
 
-            <div class="home-hero__actions">
+            <div class="home-hero__actions" data-reveal data-reveal-delay="2">
                 <a href="<?php echo esc_url( $cta_url ); ?>" class="btn btn--primary">
                     <?php echo esc_html( $cta_label ); ?>
                 </a>

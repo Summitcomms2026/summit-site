@@ -169,11 +169,11 @@ $menu_articles = summit_get_menu_articles();
                                 </a>
                             </li>
 
-                            <li class="mega-menu__primary-item <?php echo ( is_page( 'future-of-luxury' ) || get_post_type() === 'article' ) ? 'is-current' : ''; ?>">
-                                <a href="<?php echo esc_url( home_url( '/future-of-luxury' ) ); ?>"
+                            <li class="mega-menu__primary-item <?php echo ( is_post_type_archive( 'article' ) || get_post_type() === 'article' ) ? 'is-current' : ''; ?>">
+                                <a href="<?php echo esc_url( get_post_type_archive_link( 'article' ) ); ?>"
                                    class="mega-menu__primary-link"
-                                   <?php echo ( is_page( 'future-of-luxury' ) || get_post_type() === 'article' ) ? 'aria-current="page"' : ''; ?>>
-                                    Future of Luxury
+                                   <?php echo ( is_post_type_archive( 'article' ) || get_post_type() === 'article' ) ? 'aria-current="page"' : ''; ?>>
+                                    The Future of Luxury
                                 </a>
                             </li>
 
@@ -228,7 +228,7 @@ $menu_articles = summit_get_menu_articles();
 <div class="mega-menu__editorial-col" aria-label="Recent articles">
 
     <p class="mega-menu__editorial-label">
-        <a href="<?php echo esc_url( home_url( '/future-of-luxury' ) ); ?>">
+        <a href="<?php echo esc_url( get_post_type_archive_link( 'article' ) ); ?>">
             The Future of Luxury
         </a>
     </p>
@@ -278,7 +278,7 @@ $menu_articles = summit_get_menu_articles();
         <?php endforeach; ?>
     </ul>
 
-    <a href="<?php echo esc_url( home_url( '/future-of-luxury' ) ); ?>"
+    <a href="<?php echo esc_url( get_post_type_archive_link( 'article' ) ); ?>"
        class="mega-menu__editorial-all">
         All articles
     </a>

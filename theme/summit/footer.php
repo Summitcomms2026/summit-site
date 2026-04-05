@@ -46,13 +46,17 @@ defined( 'ABSPATH' ) || exit;
 
             <!-- Navigation -->
             <nav class="site-footer__nav" aria-label="<?php esc_attr_e( 'Footer navigation', 'summit' ); ?>">
-                <ul class="site-footer__nav-list" role="list">
+                <ul class="site-footer__nav-list site-footer__nav-list--primary" role="list">
                     <li><a href="<?php echo esc_url( home_url( '/who-we-are/' ) ); ?>" class="site-footer__nav-link">Who We Are</a></li>
                     <li><a href="<?php echo esc_url( home_url( '/what-we-do/' ) ); ?>" class="site-footer__nav-link">What We Do</a></li>
-                    <li><a href="<?php echo esc_url( get_post_type_archive_link( 'case_study' ) ); ?>" class="site-footer__nav-link">Work Showcase</a></li>
+                    <li><a href="<?php echo esc_url( get_post_type_archive_link( 'case_study' ) ); ?>" class="site-footer__nav-link">Selected Portfolio</a></li>
                     <li><a href="<?php echo esc_url( get_post_type_archive_link( 'article' ) ); ?>" class="site-footer__nav-link">The Future of Luxury</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/tastemakers/' ) ); ?>" class="site-footer__nav-link">Tastemakers</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/design-tomorrow/' ) ); ?>" class="site-footer__nav-link">Let's Talk</a></li>
+                </ul>
+                <ul class="site-footer__nav-list site-footer__nav-list--secondary" role="list">
                     <li><a href="<?php echo esc_url( home_url( '/careers/' ) ); ?>" class="site-footer__nav-link">Careers</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/client-lounge/' ) ); ?>" class="site-footer__nav-link">Client Lounge</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/tastemakers/' ) ); ?>" class="site-footer__nav-link">Tastemakers Podcast</a></li>
                 </ul>
             </nav>
 
@@ -73,12 +77,9 @@ defined( 'ABSPATH' ) || exit;
 
         <div class="site-footer__base">
             <p class="site-footer__copyright">
-                &copy; <?php echo esc_html( gmdate( 'Y' ) ); ?> Summit Communication Group. All rights reserved.
+                &copy; <?php echo esc_html( gmdate( 'Y' ) ); ?> Summit Communication Group. All Rights Reserved.
+                <br>Summit&reg; is a registered trademark of Summit Communication Group.
             </p>
-            <ul class="site-footer__legal-list" role="list">
-                <li><a href="<?php echo esc_url( home_url( '/privacy/' ) ); ?>" class="site-footer__legal-link">Privacy</a></li>
-                <li><a href="<?php echo esc_url( home_url( '/terms/' ) ); ?>" class="site-footer__legal-link">Terms</a></li>
-            </ul>
         </div>
 
     </div>

@@ -940,6 +940,7 @@
 .site-footer__nav {
     display: flex;
     flex-direction: column;
+    gap: var(--space-8);
 }
 
 .site-footer__nav-list {

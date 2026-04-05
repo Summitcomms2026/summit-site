@@ -56,9 +56,18 @@ $section_headline = get_field( 'home_article_headline' ) ?: 'The Future of Luxur
     <div class="container container--wide">
 
         <header class="home-article__header">
-            <h2 class="home-article__section-headline" id="home-article-heading" data-reveal>
-                <?php echo esc_html( $section_headline ); ?>
-            </h2>
+            <div>
+                <h2 class="home-article__section-headline" id="home-article-heading" data-reveal>
+                    <?php echo esc_html( $section_headline ); ?>
+                </h2>
+                <p class="home-article__sub" data-reveal data-reveal-delay="1">
+                    News and media published by Summit Communication Group exclusively here, first.
+                </p>
+            </div>
+            <a href="<?php echo esc_url( get_post_type_archive_link( 'article' ) ); ?>"
+               class="btn btn--primary" data-reveal data-reveal-delay="1">
+                All Articles
+            </a>
         </header>
 
         <div class="home-article__grid">
@@ -67,10 +76,11 @@ $section_headline = get_field( 'home_article_headline' ) ?: 'The Future of Luxur
             foreach ( $articles as $ai => $art_post ) :
                 $art_id    = $art_post->ID;
                 $delay     = $card_delays[ $ai ] ?? 3;
-                $cat_terms = get_the_terms( $art_id, 'article_category' );
-                $cat_label = ( ! is_wp_error( $cat_terms ) && ! empty( $cat_terms ) )
-                             ? $cat_terms[0]->name : '';
-                $read_time = get_field( 'art_read_time', $art_id );
+                $cat_terms  = get_the_terms( $art_id, 'article_category' );
+                $cat_label  = ( ! is_wp_error( $cat_terms ) && ! empty( $cat_terms ) )
+                              ? $cat_terms[0]->name : '';
+                $read_time  = get_field( 'art_read_time', $art_id );
+                $standfirst = get_field( 'art_standfirst', $art_id );
                 if ( ! $read_time ) {
                     $read_time = summit_estimated_read_time( $art_id );
                 }
@@ -93,6 +103,12 @@ $section_headline = get_field( 'home_article_headline' ) ?: 'The Future of Luxur
                     <?php echo esc_html( get_the_title( $art_id ) ); ?>
                 </h3>
 
+                <?php if ( $standfirst ) : ?>
+                <p class="home-article__card-standfirst">
+                    <?php echo esc_html( wp_trim_words( $standfirst, 20, "\u{2026}" ) ); ?>
+                </p>
+                <?php endif; ?>
+
                 <div class="home-article__card-meta">
                     <time datetime="<?php echo esc_attr( get_the_date( 'c', $art_id ) ); ?>">
                         <?php echo esc_html( get_the_date( 'j F Y', $art_id ) ); ?>
@@ -106,11 +122,7 @@ $section_headline = get_field( 'home_article_headline' ) ?: 'The Future of Luxur
             <?php endforeach; ?>
         </div>
 
-        <footer class="home-article__footer">
-            <a href="<?php echo esc_url( get_post_type_archive_link( 'article' ) ); ?>" class="btn btn--secondary">
-                All Articles
-            </a>
-        </footer>
+        <?php /* CTA is in the header row per approved comp */ ?>
 
     </div>
 </section>

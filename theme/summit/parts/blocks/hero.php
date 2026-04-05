@@ -22,12 +22,12 @@
 defined( 'ABSPATH' ) || exit;
 
 $eyebrow   = get_field( 'home_hero_eyebrow' );
-$headline  = get_field( 'home_hero_headline' )   ?: 'Brand Strategy, Experience Design and Digital Transformation for Luxury Brands';
-$body      = get_field( 'home_hero_body' )        ?: 'We partner with luxury and premium brands to sharpen positioning, elevate creative expression and build digital experiences of lasting value.';
-$cta_label = get_field( 'home_hero_cta_label' )   ?: 'Design Tomorrow';
-$cta_url   = get_field( 'home_hero_cta_url' )     ?: home_url( '/design-tomorrow' );
-$cta2_label = get_field( 'home_hero_cta2_label' ) ?: 'Explore Our Work';
-$cta2_url   = get_field( 'home_hero_cta2_url' )   ?: get_post_type_archive_link( 'case_study' );
+$headline  = get_field( 'home_hero_headline' )   ?: 'Designing the Future of Luxury';
+$body      = get_field( 'home_hero_body' )        ?: 'Summit Communication Group is a design consultancy specialising in brand strategy, experience design and digital transformation for luxury brands.';
+$cta_label = get_field( 'home_hero_cta_label' )   ?: 'What We Do';
+$cta_url   = get_field( 'home_hero_cta_url' )     ?: home_url( '/what-we-do' );
+$cta2_label = get_field( 'home_hero_cta2_label' ) ?: "Let\u{2019}s Talk";
+$cta2_url   = get_field( 'home_hero_cta2_url' )   ?: home_url( '/design-tomorrow' );
 
 $hero_image = get_field( 'home_hero_image' );
 $hero_url   = $hero_image ? $hero_image['url'] : get_template_directory_uri() . '/assets/img/top-herophoto.jpg';

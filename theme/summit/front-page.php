@@ -35,20 +35,16 @@ the_post(); // consume the front-page post for ACF context
     <!-- ── 1. Hero ────────────────────────────────────────────────────────── -->
     <?php get_template_part( 'parts/blocks/hero' ); ?>
 
-    <!-- ── 2. Value Proposition ───────────────────────────────────────────── -->
+    <!-- ── 2. Value Proposition (dark panel) ─────────────────────────────── -->
     <?php
-    $vp_headline = get_field( 'home_vp_headline' ) ?: 'Strategy, Creativity and Technology for the Luxury Sector';
-    $vp_body     = get_field( 'home_vp_body' )
-        ?: '<p>Summit Communication Group operates at the intersection of luxury, design and technology. We help ambitious brands sharpen their positioning, elevate their creative expression and build digital experiences that reflect who they truly are.</p>';
+    $vp_statement = get_field( 'home_vp_headline' )
+        ?: 'We partner with luxury brands, creators and cultural institutions to define distinctive brand positions and create memorable client experiences. Our work sits between strategy, design and technology across product, place and culture.';
     ?>
-    <section class="vp-block" aria-labelledby="vp-heading">
+    <section class="vp-block section--dark" aria-label="Value proposition">
         <div class="container container--narrow">
-            <h2 class="vp-block__headline" id="vp-heading" data-reveal>
-                <?php echo esc_html( $vp_headline ); ?>
-            </h2>
-            <div class="vp-block__body" data-reveal data-reveal-delay="1">
-                <?php echo wp_kses_post( $vp_body ); ?>
-            </div>
+            <p class="vp-block__statement" data-reveal>
+                <?php echo esc_html( $vp_statement ); ?>
+            </p>
         </div>
     </section>
 
@@ -76,18 +72,18 @@ the_post(); // consume the front-page post for ACF context
     $sectors_body     = get_field( 'home_sectors_body' );
 
     $sectors = [
-        'Fashion & Leather Goods',
-        'Watches & Jewellery',
-        'Hospitality & Travel',
-        'Beauty & Fragrance',
-        'Automotive & Aviation',
-        'Art & Culture',
-        'Wine & Spirits',
-        'Property & Interiors',
-        'Sport & Lifestyle',
-        'Wealth & Finance',
-        'Technology & Innovation',
-        'Food & Gastronomy',
+        [ 'Fashion & Leather Goods', 'Codes, desire and distinction shaped for brands that must endure.' ],
+        [ 'Watches & Jewellery', 'Narratives measured in carats, complications and continental restraint.' ],
+        [ 'Hospitality & Travel', 'Experiences designed to signal taste, trust and effortless privilege.' ],
+        [ 'Beauty & Fragrance', 'Positioning beauty brands where ritual, identity and desire converge.' ],
+        [ 'Automotive & Aviation', 'Velocity, elegance and engineering theatre shaped with continental confidence.' ],
+        [ 'Art & Culture', 'Cultural strategy for institutions and family offices with serious ambition.' ],
+        [ 'Wine & Spirits', 'Enduring brand worlds for producers of heritage, ritual and appetite.' ],
+        [ 'Architecture & Interiors', 'Spatial brands shaped through discipline, atmosphere and refined distinction.' ],
+        [ 'Sport & Lifestyle', 'Positioning for aspirational brands where performance meets cultural status.' ],
+        [ 'Wealth & Finance', 'Trust architecture for firms serving affluent and influential audiences.' ],
+        [ 'Technology', 'Strategic clarity for innovation brands seeking authority, not novelty.' ],
+        [ 'Gastronomy', 'Brands with appetite, ceremony and unmistakable point of view.' ],
     ];
     ?>
     <section class="sectors-grid-section section--dark section--padded" aria-labelledby="sectors-heading">
@@ -98,10 +94,14 @@ the_post(); // consume the front-page post for ACF context
                     <?php echo esc_html( $sectors_headline ); ?>
                 </h2>
                 <?php if ( $sectors_body ) : ?>
-                <div class="sectors-grid-section__body" data-reveal="fade" data-reveal-delay="1">
-                    <?php echo wp_kses_post( $sectors_body ); ?>
-                </div>
+                <p class="sectors-grid-section__body" data-reveal="fade" data-reveal-delay="1">
+                    <?php echo esc_html( $sectors_body ); ?>
+                </p>
                 <?php endif; ?>
+                <a href="<?php echo esc_url( home_url( '/design-tomorrow/' ) ); ?>"
+                   class="btn btn--primary sectors-grid-section__cta" data-reveal="fade" data-reveal-delay="1">
+                    Get In Touch
+                </a>
             </header>
 
             <ul class="sectors-grid" role="list">
@@ -111,7 +111,8 @@ the_post(); // consume the front-page post for ACF context
                     $sd = $sector_delays[ $si ] ?? 1;
                 ?>
                 <li class="sectors-grid__item" data-reveal="fade" data-reveal-delay="<?php echo $sd; ?>">
-                    <?php echo esc_html( $sector ); ?>
+                    <strong class="sectors-grid__item-title"><?php echo esc_html( $sector[0] ); ?></strong>
+                    <span class="sectors-grid__item-desc"><?php echo esc_html( $sector[1] ); ?></span>
                 </li>
                 <?php endforeach; ?>
             </ul>
@@ -122,7 +123,10 @@ the_post(); // consume the front-page post for ACF context
     <!-- ── 10. CTA Footer ─────────────────────────────────────────────────── -->
     <?php
     get_template_part( 'parts/global/cta-footer', null, [
-        'image' => get_template_directory_uri() . '/assets/img/cta-mainimage.jpg',
+        'headline' => 'Start the Conversation',
+        'body'     => 'We partner with ambitious brands to sharpen positioning, elevate creative expression and build digital experiences that deliver lasting value.',
+        'label'    => "Let\u{2019}s Design Tomorrow",
+        'image'    => get_template_directory_uri() . '/assets/img/cta-mainimage.jpg',
     ] );
     ?>
 

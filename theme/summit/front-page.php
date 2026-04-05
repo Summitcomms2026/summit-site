@@ -64,7 +64,7 @@ the_post(); // consume the front-page post for ACF context
     <?php get_template_part( 'parts/blocks/featured-article' ); ?>
 
     <!-- ── 8. Subscribe for Early Access ─────────────────────────────────── -->
-    <section class="home-subscribe section--tinted section--padded" aria-labelledby="home-subscribe-heading">
+    <section class="home-subscribe section--dark section--padded" aria-labelledby="home-subscribe-heading">
         <div class="container container--wide">
             <div class="home-subscribe__layout">
 
@@ -142,7 +142,7 @@ the_post(); // consume the front-page post for ACF context
         [ 'Gastronomy', 'Brands with appetite, ceremony and unmistakable point of view.' ],
     ];
     ?>
-    <section class="sectors-grid-section section--dark section--padded" aria-labelledby="sectors-heading">
+    <section class="sectors-grid-section section--tinted section--padded" aria-labelledby="sectors-heading">
         <div class="container container--wide">
 
             <header class="sectors-grid-section__header">
@@ -167,8 +167,7 @@ the_post(); // consume the front-page post for ACF context
                     $sd = $sector_delays[ $si ] ?? 1;
                 ?>
                 <li class="sectors-grid__item" data-reveal="fade" data-reveal-delay="<?php echo $sd; ?>">
-                    <strong class="sectors-grid__item-title"><?php echo esc_html( $sector[0] ); ?></strong>
-                    <span class="sectors-grid__item-desc"><?php echo esc_html( $sector[1] ); ?></span>
+                    <?php echo esc_html( $sector[0] ); ?>
                 </li>
                 <?php endforeach; ?>
             </ul>

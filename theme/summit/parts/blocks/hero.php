@@ -35,36 +35,37 @@ $hero_url   = $hero_image ? $hero_image['url'] : get_template_directory_uri() . 
 
 <section class="home-hero" aria-labelledby="home-hero-title"
          style="--hero-bg: url('<?php echo esc_url( $hero_url ); ?>');">
-    <div class="container container--medium">
-        <header class="home-hero__header">
+    <div class="container container--wide">
+        <div class="home-hero__layout">
 
-            <?php if ( $eyebrow ) : ?>
-            <p class="home-hero__eyebrow" data-reveal="fade"><?php echo esc_html( $eyebrow ); ?></p>
-            <?php endif; ?>
-
-            <h1 class="home-hero__title" id="home-hero-title" data-reveal>
-                <?php
-                // Wrap "Luxury" in <em> for italic serif treatment
-                echo wp_kses(
-                    str_replace( 'Luxury', '<em>Luxury</em>', esc_html( $headline ) ),
-                    [ 'em' => [] ]
-                );
-                ?>
-            </h1>
-
-            <div class="home-hero__body" data-reveal data-reveal-delay="1">
-                <?php echo wp_kses_post( wpautop( $body ) ); ?>
+            <div class="home-hero__left">
+                <h1 class="home-hero__title" id="home-hero-title" data-reveal>
+                    <?php
+                    echo wp_kses(
+                        str_replace( 'Luxury', '<em>Luxury</em>', esc_html( $headline ) ),
+                        [ 'em' => [] ]
+                    );
+                    ?>
+                </h1>
             </div>
 
-            <div class="home-hero__actions" data-reveal data-reveal-delay="2">
-                <a href="<?php echo esc_url( $cta_url ); ?>" class="btn btn--primary">
-                    <?php echo esc_html( $cta_label ); ?>
-                </a>
-                <a href="<?php echo esc_url( $cta2_url ); ?>" class="btn btn--secondary">
-                    <?php echo esc_html( $cta2_label ); ?>
-                </a>
+            <div class="home-hero__right" data-reveal data-reveal-delay="1">
+                <div class="home-hero__body">
+                    <?php echo wp_kses_post( wpautop( $body ) ); ?>
+                </div>
+                <div class="home-hero__actions">
+                    <a href="<?php echo esc_url( $cta_url ); ?>" class="btn btn--primary">
+                        <?php echo esc_html( $cta_label ); ?>
+                    </a>
+                    <a href="<?php echo esc_url( $cta2_url ); ?>" class="btn btn--secondary">
+                        <?php echo esc_html( $cta2_label ); ?>
+                    </a>
+                </div>
             </div>
 
-        </header>
+        </div>
     </div>
+    <p class="home-hero__scroll" data-reveal="fade" data-reveal-delay="3">
+        <span>&darr;</span> Scroll
+    </p>
 </section>

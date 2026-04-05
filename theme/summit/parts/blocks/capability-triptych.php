@@ -71,16 +71,13 @@ $pillars = [
                          alt="" width="117" height="117" loading="lazy">
                 </figure>
                 <?php endif; ?>
+                <span class="capability-triptych__number" aria-hidden="true">[ <?php echo $i + 1; ?> ]</span>
                 <h3 class="capability-triptych__title">
                     <?php echo esc_html( $pillar['title'] ); ?>
                 </h3>
                 <div class="capability-triptych__desc">
                     <?php echo wp_kses_post( wpautop( $pillar['desc'] ) ); ?>
                 </div>
-                <a href="<?php echo esc_url( $pillar['url'] ); ?>"
-                   class="capability-triptych__link">
-                    Learn More
-                </a>
             </div>
             <?php endforeach; ?>
 

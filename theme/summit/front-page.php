@@ -63,8 +63,64 @@ the_post(); // consume the front-page post for ACF context
     <!-- ── 7. Featured Article (3-up strip) ───────────────────────────────── -->
     <?php get_template_part( 'parts/blocks/featured-article' ); ?>
 
-    <!-- ── 8. Subscribe ───────────────────────────────────────────────────── -->
-    <?php get_template_part( 'parts/global/subscribe' ); ?>
+    <!-- ── 8. Subscribe for Early Access ─────────────────────────────────── -->
+    <section class="home-subscribe section--tinted section--padded" aria-labelledby="home-subscribe-heading">
+        <div class="container container--wide">
+            <div class="home-subscribe__layout">
+
+                <div class="home-subscribe__form-col">
+                    <h2 class="home-subscribe__heading" id="home-subscribe-heading">Subscribe for Early Access</h2>
+                    <p class="home-subscribe__sub">A subscriber-first publication covering the ideas, industries and individuals shaping the future of luxury.</p>
+
+                    <?php if ( shortcode_exists( 'summit_subscribe_form' ) ) :
+                        echo do_shortcode( '[summit_subscribe_form]' );
+                    else : ?>
+                    <form class="home-subscribe__form" action="#" method="post" aria-label="Newsletter sign-up">
+                        <div class="home-subscribe__fields">
+                            <div class="home-subscribe__field">
+                                <label for="sub-fname">First Name *</label>
+                                <input type="text" id="sub-fname" name="first_name" required autocomplete="given-name">
+                            </div>
+                            <div class="home-subscribe__field">
+                                <label for="sub-sname">Surname *</label>
+                                <input type="text" id="sub-sname" name="surname" required autocomplete="family-name">
+                            </div>
+                            <div class="home-subscribe__field">
+                                <label for="sub-email">Email *</label>
+                                <input type="email" id="sub-email" name="email" required autocomplete="email">
+                            </div>
+                            <div class="home-subscribe__field">
+                                <label for="sub-mobile">Mobile</label>
+                                <input type="tel" id="sub-mobile" name="mobile" autocomplete="tel">
+                            </div>
+                            <div class="home-subscribe__field">
+                                <label for="sub-company">Company</label>
+                                <input type="text" id="sub-company" name="company" autocomplete="organization">
+                            </div>
+                            <div class="home-subscribe__field">
+                                <label for="sub-position">Position</label>
+                                <input type="text" id="sub-position" name="position" autocomplete="organization-title">
+                            </div>
+                        </div>
+                        <p class="home-subscribe__consent">By signing up you agree to receive emails from us. To opt out, click unsubscribe in the email footer.</p>
+                        <button type="submit" class="btn btn--primary">Subscribe</button>
+                    </form>
+                    <?php endif; ?>
+                </div>
+
+                <div class="home-subscribe__info-col">
+                    <p class="home-subscribe__pub-intro"><strong>The Future of Luxury</strong> is a renowned digital platform for serious readers of luxury business, culture and wealth, published by Summit Communication Group.</p>
+                    <ul class="home-subscribe__pub-details">
+                        <li><strong>History:</strong> More than 120+ long-form articles and analyses published to date.</li>
+                        <li><strong>Audience:</strong> Written for an international readership of over 2,400 CEOs, senior executives, private bankers and affluent decision-makers.</li>
+                        <li><strong>Distribution:</strong> Published 44 times a year, with each edition released to subscribers first.</li>
+                        <li><strong>Content Focus:</strong> Features business intelligence, cultural commentary, interviews and market insight from influential voices across luxury and art.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
     <!-- ── 9. World of Luxury / Sectors Grid ──────────────────────────────── -->
     <?php

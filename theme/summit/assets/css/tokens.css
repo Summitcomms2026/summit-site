@@ -39,12 +39,11 @@
   /* ── Typography — Font Stacks ──────────────────────────────────────── */
 
   /*
-   * Primary sans: SF Pro Display on Apple, Segoe UI on Windows,
-   * then neutral geometric fallbacks.
-   * Summit's governance requests SF Pro Display; this stack provides it
-   * where the OS supplies it (Apple devices) and degrades gracefully.
+   * Primary sans — display: Neue Haas Grotesk Display for headlines,
+   * navigation, and large UI text. Falls back to SF Pro Display / system.
    */
   --font-sans:
+    "neue-haas-grotesk-display",
     "SF Pro Display",
     -apple-system,
     BlinkMacSystemFont,
@@ -53,12 +52,26 @@
     sans-serif;
 
   /*
-   * Serif emphasis: Big Caslon FB Bold Italic — for occasional editorial
-   * emphasis in headlines. Falls back to high-quality system serifs.
-   * Used sparingly, never as body text.
+   * Primary sans — text: Neue Haas Grotesk Text for body copy,
+   * captions, metadata, and smaller UI text. Optimised for readability
+   * at body sizes. Falls back to system sans.
+   */
+  --font-text:
+    "neue-haas-grotesk-text",
+    "SF Pro Text",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    system-ui,
+    sans-serif;
+
+  /*
+   * Serif emphasis: Big Caslon FB — for editorial emphasis in headlines,
+   * value proposition statements, and italic accents.
+   * Available in 400/700 normal and italic via Adobe Fonts.
    */
   --font-serif:
-    "Big Caslon FB",
+    "big-caslon-fb",
     "Big Caslon",
     "Book Antiqua",
     Georgia,

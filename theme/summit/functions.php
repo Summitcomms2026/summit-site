@@ -17,7 +17,10 @@ function summit_enqueue_styles(): void {
     $v = wp_get_theme()->get( 'Version' );
     $p = get_template_directory_uri() . '/assets/css/';
 
-    wp_enqueue_style( 'summit-tokens',     $p . 'tokens.css',     [],                      $v );
+    // Adobe Fonts (Typekit) — Neue Haas Grotesk + Big Caslon FB
+    wp_enqueue_style( 'summit-typekit', 'https://use.typekit.net/oda0xwr.css', [], null );
+
+    wp_enqueue_style( 'summit-tokens',     $p . 'tokens.css',     [ 'summit-typekit' ],    $v );
     wp_enqueue_style( 'summit-base',       $p . 'base.css',       [ 'summit-tokens' ],     $v );
     wp_enqueue_style( 'summit-layout',     $p . 'layout.css',     [ 'summit-base' ],       $v );
     wp_enqueue_style( 'summit-components', $p . 'components.css', [ 'summit-layout' ],     $v );

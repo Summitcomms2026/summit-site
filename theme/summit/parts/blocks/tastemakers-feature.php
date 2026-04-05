@@ -71,15 +71,18 @@ $artwork   = get_field( 'ps_artwork', $season_id );
 
         <div class="tastemakers-feature__layout">
 
-            <?php if ( $artwork ) : ?>
             <figure class="tastemakers-feature__artwork" aria-hidden="true" data-reveal="fade">
+                <?php if ( $artwork ) : ?>
                 <img src="<?php echo esc_url( $artwork['url'] ); ?>"
                      alt="<?php echo esc_attr( $artwork['alt'] ?? '' ); ?>"
                      width="<?php echo esc_attr( $artwork['width'] ?? '' ); ?>"
                      height="<?php echo esc_attr( $artwork['height'] ?? '' ); ?>"
                      loading="lazy">
+                <?php else : ?>
+                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/tastemakers-showcover.jpg' ); ?>"
+                     alt="" width="277" height="277" loading="lazy">
+                <?php endif; ?>
             </figure>
-            <?php endif; ?>
 
             <div class="tastemakers-feature__content">
 

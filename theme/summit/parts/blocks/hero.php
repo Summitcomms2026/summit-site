@@ -43,7 +43,13 @@ $hero_url   = $hero_image ? $hero_image['url'] : get_template_directory_uri() . 
             <?php endif; ?>
 
             <h1 class="home-hero__title" id="home-hero-title" data-reveal>
-                <?php echo esc_html( $headline ); ?>
+                <?php
+                // Wrap "Luxury" in <em> for italic serif treatment
+                echo wp_kses(
+                    str_replace( 'Luxury', '<em>Luxury</em>', esc_html( $headline ) ),
+                    [ 'em' => [] ]
+                );
+                ?>
             </h1>
 
             <div class="home-hero__body" data-reveal data-reveal-delay="1">

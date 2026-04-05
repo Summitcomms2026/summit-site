@@ -55,11 +55,14 @@ $dl_excerpt       = has_excerpt( $dl_id ) ? get_the_excerpt( $dl_id ) : '';
 
         <div class="download-feature__layout">
 
-            <?php if ( has_post_thumbnail( $dl_id ) ) : ?>
             <figure class="download-feature__cover" aria-hidden="true" data-reveal="fade">
-                <?php echo get_the_post_thumbnail( $dl_id, 'medium_large' ); ?>
+                <?php if ( has_post_thumbnail( $dl_id ) ) :
+                    echo get_the_post_thumbnail( $dl_id, 'medium_large' );
+                else : ?>
+                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/characteristics-mainimage.jpg' ); ?>"
+                     alt="" width="916" height="498" loading="lazy">
+                <?php endif; ?>
             </figure>
-            <?php endif; ?>
 
             <div class="download-feature__content">
 
@@ -80,7 +83,7 @@ $dl_excerpt       = has_excerpt( $dl_id ) ? get_the_excerpt( $dl_id ) : '';
                 <a href="<?php echo esc_url( get_permalink( $dl_id ) ); ?>"
                    class="btn btn--primary"
                    data-reveal data-reveal-delay="2">
-                    View Download
+                    Download Your Copy
                 </a>
 
             </div>

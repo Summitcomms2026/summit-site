@@ -51,11 +51,10 @@ $pillars = [
 
         <header class="capability-triptych__header">
             <h2 class="capability-triptych__headline" id="capabilities-heading" data-reveal>What We Do</h2>
-            <?php if ( $intro ) : ?>
-            <div class="capability-triptych__intro" data-reveal data-reveal-delay="1">
-                <?php echo wp_kses_post( wpautop( $intro ) ); ?>
-            </div>
-            <?php endif; ?>
+            <a href="<?php echo esc_url( home_url( '/what-we-do' ) ); ?>"
+               class="btn btn--primary" data-reveal data-reveal-delay="1">
+                Explore Services
+            </a>
         </header>
 
         <div class="capability-triptych__grid">
@@ -86,12 +85,6 @@ $pillars = [
             <?php endforeach; ?>
 
         </div>
-
-        <footer class="capability-triptych__footer">
-            <a href="<?php echo esc_url( home_url( '/what-we-do' ) ); ?>" class="btn btn--secondary">
-                Explore Services
-            </a>
-        </footer>
 
     </div>
 </section>

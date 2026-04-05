@@ -2,13 +2,24 @@
  * Summit Theme — Homepage
  * assets/css/homepage.css
  *
- * Precise panel-by-panel styles matching the approved 1920px design comp.
- * Reference: Matter of Form (matterofform.com) for luxury design standard.
+ * Pixel-perfect panel-by-panel styles from approved 1920px design comp.
+ * All measurements extracted from panel JPGs at 1920px width.
+ *
+ * Key design constants (at 1920px):
+ *   Edge margin:     50px  (left/right gutter)
+ *   Button height:   59-65px
+ *   Button radius:   pill (999px)
+ *   Section padding: ~108px top typically
+ *   Card gap:        24-30px
  */
+
+:root {
+  --hp-edge: clamp(20px, 2.6vw, 50px);
+}
 
 
 /* ══════════════════════════════════════════════════════════════════════
-   HOMEPAGE BODY — remove site-content padding for hero bleed
+   HOMEPAGE BODY — pull up to cover nav padding
    ══════════════════════════════════════════════════════════════════════ */
 
 .site-main--home {
@@ -17,8 +28,10 @@
 
 
 /* ══════════════════════════════════════════════════════════════════════
-   01. HERO — Full-bleed photo, split layout: headline left, body right
+   01. HERO — Full-bleed photo, split layout
    Panel: 1920x1053
+   Headline left at x=61. Right col text at x=1415.
+   Buttons at y=913, 81px from bottom.
    ══════════════════════════════════════════════════════════════════════ */
 
 .home-hero {
@@ -27,7 +40,7 @@
   min-height: 100svh;
   display: flex;
   align-items: flex-end;
-  padding: var(--nav-height) 0 clamp(48px, 6vh, 96px) 0;
+  padding: var(--nav-height) 0 clamp(48px, 4.2vw, 81px) 0;
   overflow: hidden;
   color: var(--colour-paper);
 }
@@ -57,6 +70,7 @@
 .home-hero > .container {
   position: relative;
   z-index: 2;
+  padding-inline: var(--hp-edge);
 }
 
 .home-hero__layout {
@@ -68,8 +82,8 @@
 
 @media (min-width: 960px) {
   .home-hero__layout {
-    grid-template-columns: 1.2fr 1fr;
-    gap: var(--space-16);
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
   }
 }
 
@@ -90,11 +104,16 @@
   font-weight: 400;
 }
 
+.home-hero__right {
+  max-width: 500px;
+  margin-left: auto;
+}
+
 .home-hero__body {
+  font-family: var(--font-text);
   font-size: var(--text-small);
   color: rgba(250, 250, 248, 0.7);
   line-height: var(--leading-body);
-  max-width: 42ch;
   margin-bottom: var(--space-6);
 }
 
@@ -109,7 +128,13 @@
 .home-hero__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-3);
+  gap: 12px;
+}
+
+.home-hero .btn {
+  min-height: 59px;
+  padding: 0 1.8em;
+  font-size: 0.8rem;
 }
 
 .home-hero .btn--primary {
@@ -138,7 +163,7 @@
 .home-hero__scroll {
   position: absolute;
   bottom: clamp(16px, 2vh, 32px);
-  left: var(--space-6);
+  left: var(--hp-edge);
   z-index: 2;
   display: flex;
   align-items: center;
@@ -150,12 +175,16 @@
 
 
 /* ══════════════════════════════════════════════════════════════════════
-   02. VALUE PROPOSITION — Dark statement panel, serif
+   02. VALUE PROPOSITION — Dark serif statement
    Panel: 1920x821
    ══════════════════════════════════════════════════════════════════════ */
 
 .vp-block {
   padding-block: clamp(100px, 14vw, 220px);
+}
+
+.vp-block > .container {
+  padding-inline: var(--hp-edge);
 }
 
 .vp-block.section--dark {
@@ -177,24 +206,32 @@
 
 
 /* ══════════════════════════════════════════════════════════════════════
-   03. WHAT WE DO — Center-aligned cards with thumbnails + numbers
+   03. WHAT WE DO — Center-aligned 3 cards
    Panel: 1920x965
+   Header at y=108. "Explore Services" right-aligned at x=1671, 49px right margin.
+   Cards: x=51..1869 (width 1818), y=266..859 (height 593px).
+   Card dividers at x=656 and x=1262 (3 equal cols ~605px each).
    ══════════════════════════════════════════════════════════════════════ */
 
 .capability-triptych {
-  padding-block: clamp(80px, 10vw, 140px);
+  padding-top: clamp(64px, 5.6vw, 108px);
+  padding-bottom: clamp(64px, 5.5vw, 106px);
+}
+
+.capability-triptych > .container {
+  padding-inline: var(--hp-edge);
 }
 
 .capability-triptych__header {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: var(--space-6);
-  margin-bottom: var(--space-10);
+  margin-bottom: clamp(48px, 5.2vw, 101px);
 }
 
 .capability-triptych__headline {
-  font-size: var(--text-h2);
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
   font-weight: 400;
   letter-spacing: var(--tracking-tight);
   line-height: var(--leading-tight);
@@ -204,8 +241,8 @@
 .capability-triptych__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1px;
   border: 1px solid var(--colour-ink-10);
+  overflow: hidden;
 }
 
 @media (min-width: 768px) {
@@ -219,7 +256,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: var(--space-12) var(--space-8);
+  padding: clamp(40px, 4vw, 72px) var(--space-8);
   background: var(--colour-paper-pure);
   border-right: 1px solid var(--colour-ink-10);
   transition: opacity var(--duration-base) var(--ease-out);
@@ -229,11 +266,20 @@
   border-right: none;
 }
 
+@media (max-width: 767px) {
+  .capability-triptych__pillar {
+    border-right: none;
+    border-bottom: 1px solid var(--colour-ink-10);
+  }
+  .capability-triptych__pillar:last-child {
+    border-bottom: none;
+  }
+}
+
 @media (min-width: 768px) {
   .capability-triptych__grid:hover .capability-triptych__pillar {
     opacity: 0.4;
   }
-
   .capability-triptych__grid:hover .capability-triptych__pillar:hover {
     opacity: 1;
   }
@@ -244,7 +290,6 @@
   height: 117px;
   overflow: hidden;
   margin-bottom: var(--space-6);
-  flex-shrink: 0;
 }
 
 .capability-triptych__thumb img {
@@ -255,6 +300,7 @@
 }
 
 .capability-triptych__number {
+  font-family: var(--font-text);
   font-size: var(--text-small);
   color: var(--colour-ink-40);
   letter-spacing: var(--tracking-wide);
@@ -262,49 +308,52 @@
 }
 
 .capability-triptych__title {
-  font-size: var(--text-h3);
+  font-size: clamp(1.1rem, 1.4vw, 1.3rem);
   font-weight: 500;
-  letter-spacing: var(--tracking-tight);
+  letter-spacing: 0;
   line-height: var(--leading-snug);
   margin-bottom: var(--space-4);
 }
 
 .capability-triptych__desc {
+  font-family: var(--font-text);
   font-size: var(--text-small);
   color: var(--colour-ink-60);
   line-height: var(--leading-body);
-  max-width: 32ch;
+  max-width: 30ch;
 }
 
 .capability-triptych__desc p {
-  margin-bottom: var(--space-2);
-}
-
-.capability-triptych__desc p:last-child {
-  margin-bottom: 0;
+  margin: 0;
 }
 
 
 /* ══════════════════════════════════════════════════════════════════════
    04. SELECTED WORK — Dark, 4 logo-mark cards
-   Panel: 1920x939. Each card is a dark rectangle with a centered
-   project logo/wordmark. No service type, no title text, no description.
+   Panel: 1920x939
+   Header at y=109. Cards at y=369..736 (368px tall).
+   4 cards, each ~436px wide, 24px gap. Margins ~53px.
    ══════════════════════════════════════════════════════════════════════ */
 
 .selected-work {
-  padding-block: clamp(80px, 10vw, 160px);
+  padding-top: clamp(64px, 5.7vw, 109px);
+  padding-bottom: clamp(100px, 10.5vw, 203px);
+}
+
+.selected-work > .container {
+  padding-inline: var(--hp-edge);
 }
 
 .selected-work__header {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: var(--space-6);
-  margin-bottom: var(--space-16);
+  margin-bottom: clamp(80px, 12.3vw, 237px);
 }
 
 .selected-work__headline {
-  font-size: var(--text-h2);
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
   font-weight: 400;
   letter-spacing: var(--tracking-tight);
   line-height: var(--leading-tight);
@@ -314,7 +363,7 @@
 .selected-work .case-study-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-4);
+  gap: 24px;
 }
 
 @media (min-width: 960px) {
@@ -331,7 +380,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 436 / 368;
   background: rgba(250, 250, 248, 0.04);
   text-decoration: none;
   padding: var(--space-8);
@@ -354,7 +403,6 @@
   filter: grayscale(0) brightness(1);
 }
 
-/* Hide the text body in Selected Work — comp shows logo-only cards */
 .selected-work .case-study-card__body {
   position: absolute;
   width: 1px;
@@ -367,7 +415,6 @@
   .selected-work .case-study-grid:hover .case-study-card {
     opacity: 0.35;
   }
-
   .selected-work .case-study-grid:hover .case-study-card:hover {
     opacity: 1;
   }
@@ -375,13 +422,15 @@
 
 
 /* ══════════════════════════════════════════════════════════════════════
-   05. TASTEMAKERS — Podcast showcase, 2-column
-   Panel: 1920x864. Left: photo + artwork + platforms.
-   Right: episode title + long description.
+   05. TASTEMAKERS — Panel: 1920x864
    ══════════════════════════════════════════════════════════════════════ */
 
 .tastemakers-feature {
-  padding-block: clamp(80px, 10vw, 140px);
+  padding-block: clamp(64px, 7vw, 108px);
+}
+
+.tastemakers-feature > .container {
+  padding-inline: var(--hp-edge);
 }
 
 .tastemakers-feature__layout {
@@ -412,6 +461,7 @@
 }
 
 .tastemakers-feature__eyebrow {
+  font-family: var(--font-text);
   font-size: var(--text-micro);
   font-weight: 500;
   letter-spacing: var(--tracking-wider);
@@ -430,6 +480,7 @@
 }
 
 .tastemakers-feature__subtitle {
+  font-family: var(--font-text);
   font-size: var(--text-body);
   font-style: italic;
   color: rgba(250, 250, 248, 0.6);
@@ -437,12 +488,14 @@
 }
 
 .tastemakers-feature__theme {
+  font-family: var(--font-text);
   font-size: var(--text-small);
   color: rgba(250, 250, 248, 0.4);
   margin-bottom: var(--space-6);
 }
 
 .tastemakers-feature__body {
+  font-family: var(--font-text);
   font-size: var(--text-small);
   color: rgba(250, 250, 248, 0.6);
   line-height: var(--leading-body);
@@ -473,7 +526,7 @@
 .tastemakers-feature__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-3);
+  gap: 12px;
 }
 
 .tastemakers-feature__social {
@@ -499,12 +552,15 @@
 
 
 /* ══════════════════════════════════════════════════════════════════════
-   06. CHARACTERISTICS OF LUXURY — Download feature
-   Panel: 1920x804. Tinted bg. Split: dark image collage | text + CTA.
+   06. CHARACTERISTICS — Panel: 1920x804
    ══════════════════════════════════════════════════════════════════════ */
 
 .download-feature {
-  padding-block: clamp(80px, 10vw, 140px);
+  padding-block: clamp(64px, 7vw, 108px);
+}
+
+.download-feature > .container {
+  padding-inline: var(--hp-edge);
 }
 
 .download-feature__layout {
@@ -534,16 +590,17 @@
 }
 
 .download-feature__headline {
-  font-size: var(--text-h2);
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
   font-weight: 400;
   font-style: italic;
-  font-family: var(--font-serif);
   letter-spacing: var(--tracking-tight);
   line-height: var(--leading-tight);
   margin-bottom: var(--space-6);
 }
 
 .download-feature__body {
+  font-family: var(--font-text);
   font-size: var(--text-body);
   color: var(--colour-ink-60);
   line-height: var(--leading-body);
@@ -561,26 +618,30 @@
 
 
 /* ══════════════════════════════════════════════════════════════════════
-   07. FUTURE OF LUXURY — 3-up article cards with text-on-image overlay
-   Panel: 1920x1226. Each card: large photo, title + metadata
-   overlaid at bottom with gradient.
+   07. FUTURE OF LUXURY — 3-up text-on-image overlay cards
+   Panel: 1920x1226. Portrait 3:4 cards.
    ══════════════════════════════════════════════════════════════════════ */
 
 .home-article {
-  padding-block: clamp(80px, 10vw, 140px);
+  padding-top: clamp(64px, 5.6vw, 108px);
+  padding-bottom: clamp(64px, 5.6vw, 108px);
+}
+
+.home-article > .container {
+  padding-inline: var(--hp-edge);
 }
 
 .home-article__header {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: var(--space-4) var(--space-8);
-  margin-bottom: var(--space-10);
+  margin-bottom: clamp(32px, 3vw, 56px);
 }
 
 .home-article__section-headline {
-  font-size: var(--text-h2);
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
   font-weight: 400;
   letter-spacing: var(--tracking-tight);
   line-height: var(--leading-tight);
@@ -588,6 +649,7 @@
 }
 
 .home-article__sub {
+  font-family: var(--font-text);
   font-size: var(--text-small);
   color: var(--colour-ink-60);
   max-width: 48ch;
@@ -597,7 +659,7 @@
 .home-article__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-4);
+  gap: 24px;
 }
 
 @media (min-width: 768px) {
@@ -608,7 +670,10 @@
 
 .home-article__card {
   position: relative;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--space-6);
   text-decoration: none;
   color: var(--colour-paper);
   overflow: hidden;
@@ -621,7 +686,6 @@
   .home-article__grid:hover .home-article__card {
     opacity: 0.5;
   }
-
   .home-article__grid:hover .home-article__card:hover {
     opacity: 1;
   }
@@ -645,7 +709,6 @@
   transform: scale(1.04);
 }
 
-/* Gradient overlay for text legibility */
 .home-article__card::after {
   content: '';
   position: absolute;
@@ -659,7 +722,6 @@
   z-index: 1;
 }
 
-/* Text content positioned at bottom */
 .home-article__card-cat,
 .home-article__card-title,
 .home-article__card-standfirst,
@@ -668,14 +730,8 @@
   z-index: 2;
 }
 
-.home-article__card {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: var(--space-6);
-}
-
 .home-article__card-cat {
+  font-family: var(--font-text);
   font-size: var(--text-micro);
   font-weight: 500;
   letter-spacing: var(--tracking-wider);
@@ -685,37 +741,40 @@
 }
 
 .home-article__card-title {
-  font-size: clamp(1.1rem, 1.6vw, 1.5rem);
+  font-size: clamp(1.1rem, 1.5vw, 1.4rem);
   font-weight: 400;
   letter-spacing: var(--tracking-tight);
   line-height: var(--leading-snug);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-2);
   color: var(--colour-paper);
 }
 
 .home-article__card-standfirst {
-  font-size: var(--text-micro);
-  color: rgba(250, 250, 248, 0.6);
-  line-height: var(--leading-body);
-  margin-bottom: var(--space-3);
+  display: none;
 }
 
 .home-article__card-meta {
   display: flex;
   gap: var(--space-3);
+  font-family: var(--font-text);
   font-size: var(--text-micro);
   color: rgba(250, 250, 248, 0.45);
+  margin-top: var(--space-2);
 }
 
 
 /* ══════════════════════════════════════════════════════════════════════
-   08. SUBSCRIBE — Dark background, dark input fields
+   08. SUBSCRIBE — Dark panel
    Panel: 1920x795
    ══════════════════════════════════════════════════════════════════════ */
 
 .home-subscribe.section--dark {
   background-color: var(--colour-ink);
   color: var(--colour-paper);
+}
+
+.home-subscribe > .container {
+  padding-inline: var(--hp-edge);
 }
 
 .home-subscribe__layout {
@@ -732,7 +791,7 @@
 }
 
 .home-subscribe__heading {
-  font-size: var(--text-h2);
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
   font-weight: 400;
   letter-spacing: var(--tracking-tight);
   line-height: var(--leading-tight);
@@ -741,6 +800,7 @@
 }
 
 .home-subscribe__sub {
+  font-family: var(--font-text);
   font-size: var(--text-small);
   color: rgba(250, 250, 248, 0.6);
   line-height: var(--leading-body);
@@ -756,6 +816,7 @@
 
 .home-subscribe__field label {
   display: block;
+  font-family: var(--font-text);
   font-size: var(--text-micro);
   font-weight: 500;
   letter-spacing: var(--tracking-wide);
@@ -767,9 +828,10 @@
 .home-subscribe__field input {
   width: 100%;
   padding: var(--space-3) var(--space-4);
-  font-family: var(--font-sans);
+  font-family: var(--font-text);
   font-size: var(--text-body);
   border: 1px solid rgba(250, 250, 248, 0.15);
+  border-radius: 0;
   background: rgba(250, 250, 248, 0.05);
   color: var(--colour-paper);
   transition: border-color var(--duration-fast) var(--ease-out);
@@ -785,6 +847,7 @@
 }
 
 .home-subscribe__consent {
+  font-family: var(--font-text);
   font-size: var(--text-micro);
   color: rgba(250, 250, 248, 0.35);
   line-height: var(--leading-body);
@@ -808,6 +871,7 @@
 }
 
 .home-subscribe__pub-intro {
+  font-family: var(--font-text);
   font-size: var(--text-body);
   color: rgba(250, 250, 248, 0.8);
   line-height: var(--leading-body);
@@ -815,8 +879,8 @@
 }
 
 .home-subscribe__pub-intro strong {
-  font-style: italic;
   font-family: var(--font-serif);
+  font-style: italic;
 }
 
 .home-subscribe__pub-details {
@@ -829,6 +893,7 @@
 }
 
 .home-subscribe__pub-details li {
+  font-family: var(--font-text);
   font-size: var(--text-small);
   line-height: var(--leading-body);
   color: rgba(250, 250, 248, 0.55);
@@ -840,25 +905,31 @@
 
 
 /* ══════════════════════════════════════════════════════════════════════
-   09. WORLD OF LUXURY — Light section, card tiles
-   Panel: 1920x1037. Tinted bg. 4-column grid of light grey cards
-   with centered sector title. No descriptions.
+   09. WORLD OF LUXURY — Light card tiles
+   Panel: 1920x1037
+   Header at y=117. Cards start y=297.
+   3 rows x 4 cols. Card height ~190px. Gap ~30px.
    ══════════════════════════════════════════════════════════════════════ */
 
 .sectors-grid-section {
-  padding-block: clamp(80px, 10vw, 160px);
+  padding-top: clamp(64px, 6.1vw, 117px);
+  padding-bottom: clamp(64px, 5.7vw, 110px);
+}
+
+.sectors-grid-section > .container {
+  padding-inline: var(--hp-edge);
 }
 
 .sectors-grid-section__header {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
   gap: var(--space-4) var(--space-8);
-  margin-bottom: var(--space-12);
+  margin-bottom: clamp(48px, 6.6vw, 127px);
 }
 
 .sectors-grid-section__headline {
-  font-size: var(--text-h2);
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
   font-weight: 400;
   letter-spacing: var(--tracking-tight);
   line-height: var(--leading-tight);
@@ -866,6 +937,7 @@
 }
 
 .sectors-grid-section__body {
+  font-family: var(--font-text);
   font-size: var(--text-small);
   color: var(--colour-ink-60);
   line-height: var(--leading-body);
@@ -880,18 +952,20 @@
 .sectors-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-4);
+  gap: 16px;
 }
 
 @media (min-width: 640px) {
   .sectors-grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
   }
 }
 
 @media (min-width: 1024px) {
   .sectors-grid {
     grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
   }
 }
 
@@ -900,38 +974,38 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: var(--space-8) var(--space-4);
-  background: rgba(0, 0, 0, 0.04);
+  min-height: clamp(120px, 9.9vw, 190px);
+  padding: var(--space-6) var(--space-4);
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-text);
   font-size: var(--text-small);
   font-weight: 400;
   color: var(--colour-ink-60);
-  letter-spacing: var(--tracking-normal);
+  border: none;
   transition: opacity var(--duration-base) var(--ease-out),
               background-color var(--duration-base) var(--ease-out);
-  border: none;
 }
 
 @media (min-width: 768px) {
   .sectors-grid:hover .sectors-grid__item {
     opacity: 0.4;
   }
-
   .sectors-grid:hover .sectors-grid__item:hover {
     opacity: 1;
-    background: rgba(0, 0, 0, 0.07);
+    background: rgba(0, 0, 0, 0.08);
   }
 }
 
 
 /* ══════════════════════════════════════════════════════════════════════
-   10. CLOSING CTA — Full-bleed image, serif italic text
-   Panel: 1920x662. Centered text in serif italic.
+   10. CLOSING CTA — Panel: 1920x662
    ══════════════════════════════════════════════════════════════════════ */
 
 .cta-footer--image {
   position: relative;
   overflow: hidden;
-  padding-block: clamp(96px, 12vw, 180px);
+  padding-block: clamp(80px, 10vw, 160px);
 }
 
 .cta-footer--image::before {
@@ -957,7 +1031,6 @@
 
 .cta-footer--image .cta-footer__headline {
   font-family: var(--font-serif);
-  font-style: normal;
   font-size: var(--text-display-l);
 }
 

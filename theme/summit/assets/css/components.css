@@ -11,16 +11,21 @@
 /* ══════════════════════════════════════════════════════════════════════ */
 
 .btn {
-  display: inline-block;
-  padding: 0.8em 1.8em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+  padding: 0 2em;
+  font-family: var(--font-sans);
   font-size: var(--text-small);
   font-weight: 500;
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
   text-decoration: none;
   border: 1px solid transparent;
-  border-radius: 0;
+  border-radius: var(--radius-full);
   cursor: pointer;
+  white-space: nowrap;
   transition: background-color var(--duration-fast) var(--ease-out),
               color var(--duration-fast) var(--ease-out),
               border-color var(--duration-fast) var(--ease-out);

@@ -1,74 +1,59 @@
 <?php
 /**
- * Part: Featured Article Panel
+ * Part: Featured Article Panel — 3-up editorial strip
  * Location: parts/blocks/featured-article.php
  *
- * Features a single article on the homepage. Reuses the existing
- * .featured-article component markup and CSS from cards.css.
+ * Shows 3 articles in a horizontal grid on the homepage.
+ * Design reference: panel7 — 1920x1226.
  *
- * Curated first: uses home_article_item post_object field.
- * Auto fallback: queries latest article with art_featured flag,
- *   then latest article by date.
+ * Curated first: uses home_article_items relationship field (max 3).
+ * Auto fallback: queries 3 latest articles.
  * Guard: section is not rendered when no articles exist.
  *
  * ACF fields (from front page):
- *   home_article_headline text        optional
- *   home_article_item     post_object optional — article
+ *   home_article_headline text         optional
+ *   home_article_items    relationship  optional — article, max 3
+ *   home_article_item     post_object   optional — legacy single article
  *
  * @package SummitTheme
  */
 
 defined( 'ABSPATH' ) || exit;
 
-// Curated selection.
-$article = get_field( 'home_article_item' );
+// Curated selection — relationship field returns array of WP_Post objects.
+$articles = get_field( 'home_article_items' );
 
-// Auto fallback — try featured article first.
-if ( empty( $article ) ) {
-    $featured_q = new WP_Query( [
-        'post_type'      => 'article',
-        'posts_per_page' => 1,
-        'meta_key'       => 'art_featured',
-        'meta_value'     => '1',
-        'no_found_rows'  => true,
-    ] );
-    if ( $featured_q->have_posts() ) {
-        $article = $featured_q->posts[0];
+// Legacy fallback — single post_object field.
+if ( empty( $articles ) ) {
+    $single = get_field( 'home_article_item' );
+    if ( $single ) {
+        $articles = [ $single ];
     }
-    wp_reset_postdata();
 }
 
-// Fallback to latest article.
-if ( empty( $article ) ) {
-    $latest_q = new WP_Query( [
+// Auto fallback — 3 most recent articles.
+if ( empty( $articles ) ) {
+    $article_q = new WP_Query( [
         'post_type'      => 'article',
-        'posts_per_page' => 1,
+        'posts_per_page' => 3,
         'orderby'        => 'date',
         'order'          => 'DESC',
         'no_found_rows'  => true,
     ] );
-    if ( $latest_q->have_posts() ) {
-        $article = $latest_q->posts[0];
-    }
+    $articles = $article_q->posts;
     wp_reset_postdata();
 }
 
-// Guard — do not render without an article.
-if ( empty( $article ) ) {
+// Guard — do not render without articles.
+if ( empty( $articles ) ) {
     return;
 }
 
 $section_headline = get_field( 'home_article_headline' ) ?: 'The Future of Luxury';
-$art_id      = $article->ID;
-$standfirst  = get_field( 'art_standfirst', $art_id );
-$read_time   = get_field( 'art_read_time', $art_id );
-$cat_terms   = get_the_terms( $art_id, 'article_category' );
-$cat_label   = ( ! is_wp_error( $cat_terms ) && ! empty( $cat_terms ) )
-               ? $cat_terms[0]->name : '';
 ?>
 
 <section class="home-article section--padded" aria-labelledby="home-article-heading">
-    <div class="container container--medium">
+    <div class="container container--wide">
 
         <header class="home-article__header">
             <h2 class="home-article__section-headline" id="home-article-heading" data-reveal>
@@ -76,52 +61,54 @@ $cat_label   = ( ! is_wp_error( $cat_terms ) && ! empty( $cat_terms ) )
             </h2>
         </header>
 
-        <div class="featured-article" data-reveal data-reveal-delay="1">
+        <div class="home-article__grid">
+            <?php
+            $card_delays = [ 1, 2, 3 ];
+            foreach ( $articles as $ai => $art_post ) :
+                $art_id    = $art_post->ID;
+                $delay     = $card_delays[ $ai ] ?? 3;
+                $cat_terms = get_the_terms( $art_id, 'article_category' );
+                $cat_label = ( ! is_wp_error( $cat_terms ) && ! empty( $cat_terms ) )
+                             ? $cat_terms[0]->name : '';
+                $read_time = get_field( 'art_read_time', $art_id );
+                if ( ! $read_time ) {
+                    $read_time = summit_estimated_read_time( $art_id );
+                }
+            ?>
             <a href="<?php echo esc_url( get_permalink( $art_id ) ); ?>"
-               class="featured-article__link"
-               aria-label="<?php echo esc_attr( 'Read article: ' . get_the_title( $art_id ) ); ?>">
+               class="home-article__card"
+               data-reveal data-reveal-delay="<?php echo $delay; ?>">
 
                 <?php if ( has_post_thumbnail( $art_id ) ) : ?>
-                <figure class="featured-article__media" aria-hidden="true">
+                <figure class="home-article__card-media" aria-hidden="true">
                     <?php echo get_the_post_thumbnail( $art_id, 'large' ); ?>
                 </figure>
                 <?php endif; ?>
 
-                <div class="featured-article__body">
+                <?php if ( $cat_label ) : ?>
+                <span class="home-article__card-cat"><?php echo esc_html( $cat_label ); ?></span>
+                <?php endif; ?>
 
-                    <?php if ( $cat_label ) : ?>
-                    <span class="featured-article__eyebrow"><?php echo esc_html( $cat_label ); ?></span>
+                <h3 class="home-article__card-title">
+                    <?php echo esc_html( get_the_title( $art_id ) ); ?>
+                </h3>
+
+                <div class="home-article__card-meta">
+                    <time datetime="<?php echo esc_attr( get_the_date( 'c', $art_id ) ); ?>">
+                        <?php echo esc_html( get_the_date( 'j F Y', $art_id ) ); ?>
+                    </time>
+                    <?php if ( $read_time ) : ?>
+                    <span><?php echo absint( $read_time ); ?> min read</span>
                     <?php endif; ?>
-
-                    <h3 class="featured-article__title">
-                        <?php echo esc_html( get_the_title( $art_id ) ); ?>
-                    </h3>
-
-                    <?php if ( $standfirst ) : ?>
-                    <p class="featured-article__standfirst">
-                        <?php echo esc_html( $standfirst ); ?>
-                    </p>
-                    <?php endif; ?>
-
-                    <div class="featured-article__meta">
-                        <time datetime="<?php echo esc_attr( get_the_date( 'c', $art_id ) ); ?>">
-                            <?php echo esc_html( get_the_date( 'j F Y', $art_id ) ); ?>
-                        </time>
-                        <?php if ( $read_time ) : ?>
-                        <span><?php echo esc_html( $read_time ); ?> min read</span>
-                        <?php endif; ?>
-                    </div>
-
-                    <span class="featured-article__cta" aria-hidden="true">Read Article</span>
-
                 </div>
 
             </a>
+            <?php endforeach; ?>
         </div>
 
         <footer class="home-article__footer">
             <a href="<?php echo esc_url( get_post_type_archive_link( 'article' ) ); ?>" class="btn btn--secondary">
-                View All Articles
+                All Articles
             </a>
         </footer>
 

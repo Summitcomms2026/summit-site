@@ -6,25 +6,65 @@
  * Loaded conditionally on the front page via is_front_page().
  *
  * Sections styled here:
- *   1. Home Hero
+ *   1. Home Hero (full-bleed photo with text overlay)
  *   2. Showreel Block
  *   3. Value Proposition
- *   4. Capability Triptych
- *   5. Selected Work
- *   6. Tastemakers Feature
- *   7. Download Feature
- *   8. Home Article (wrapper for existing .featured-article)
- *   9. Sectors Grid
+ *   4. Capability Triptych (3 service cards with thumbnails + hover)
+ *   5. Selected Work (compact typographic row, dark)
+ *   6. Tastemakers Feature (podcast showcase with platform icons)
+ *   7. Download Feature (split layout with cover image)
+ *   8. Home Article / Future of Luxury (3-up editorial strip)
+ *   9. Sectors Grid / World of Luxury (hover dim/highlight)
+ *  10. Subscribe (centered form)
+ *  11. Closing CTA (full-bleed image background)
  *
- * Section tones (.section--dark, .section--tinted) and buttons
- * (.btn, .btn--primary, .btn--secondary) are defined in
- * layout.css and components.css respectively.
+ * Design reference: 1920px-wide panel exports.
  */
 
 
 /* ══════════════════════════════════════════════════════════════════════ */
 /* 1. HOME HERO                                                           */
+/* Full-bleed photograph filling viewport. Text overlay with gradient.    */
+/* Reference: panel1 — 1920x1053                                          */
 /* ══════════════════════════════════════════════════════════════════════ */
+
+.home-hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  padding: var(--space-24) 0 var(--space-16);
+  overflow: hidden;
+  color: var(--colour-paper);
+}
+
+.home-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--hero-bg, none) center / cover no-repeat;
+  z-index: 0;
+}
+
+.home-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(26, 26, 24, 0.82) 0%,
+    rgba(26, 26, 24, 0.45) 40%,
+    rgba(26, 26, 24, 0.15) 70%,
+    rgba(26, 26, 24, 0.05) 100%
+  );
+  z-index: 1;
+}
+
+.home-hero > .container {
+  position: relative;
+  z-index: 2;
+}
 
 .home-hero__title {
   font-size: var(--text-display-xl);
@@ -32,14 +72,24 @@
   letter-spacing: var(--tracking-tight);
   line-height: var(--leading-tight);
   margin-bottom: var(--space-8);
-  max-width: 22ch;
+  max-width: 20ch;
+  color: var(--colour-paper);
+}
+
+.home-hero__eyebrow {
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: rgba(250, 250, 248, 0.65);
+  margin-bottom: var(--space-6);
 }
 
 .home-hero__body {
   font-size: var(--text-body-l);
-  color: var(--colour-ink-60);
+  color: rgba(250, 250, 248, 0.75);
   line-height: var(--leading-body);
-  max-width: 56ch;
+  max-width: 52ch;
   margin-bottom: var(--space-10);
 }
 
@@ -55,6 +105,26 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-4);
+}
+
+.home-hero .btn--primary {
+  background: var(--colour-paper);
+  color: var(--colour-ink);
+  border-color: var(--colour-paper);
+}
+
+.home-hero .btn--primary:hover {
+  background: rgba(250, 250, 248, 0.85);
+  border-color: rgba(250, 250, 248, 0.85);
+}
+
+.home-hero .btn--secondary {
+  color: var(--colour-paper);
+  border-color: rgba(250, 250, 248, 0.4);
+}
+
+.home-hero .btn--secondary:hover {
+  border-color: var(--colour-paper);
 }
 
 
@@ -109,7 +179,12 @@
 
 /* ══════════════════════════════════════════════════════════════════════ */
 /* 3. VALUE PROPOSITION                                                   */
+/* Reference: panel2 — 1920x821 (generous vertical breathing room)        */
 /* ══════════════════════════════════════════════════════════════════════ */
+
+.vp-block {
+  padding-block: clamp(80px, 10vw, 160px);
+}
 
 .vp-block__headline {
   font-size: var(--text-display-l);
@@ -138,6 +213,8 @@
 
 /* ══════════════════════════════════════════════════════════════════════ */
 /* 4. CAPABILITY TRIPTYCH                                                 */
+/* Reference: panel3 — 1920x965. Cards have 117x117 thumbnail accents.   */
+/* Hover: active card stays bright, siblings dim.                         */
 /* ══════════════════════════════════════════════════════════════════════ */
 
 .capability-triptych__header {
@@ -162,18 +239,49 @@
 .capability-triptych__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--grid-gap-cards);
+  gap: var(--space-8);
 }
 
 @media (min-width: 768px) {
   .capability-triptych__grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
   }
 }
 
 .capability-triptych__pillar {
   display: flex;
   flex-direction: column;
+  padding: var(--space-8) var(--space-6);
+  border: 1px solid var(--colour-ink-05);
+  border-radius: var(--radius-md);
+  transition: opacity var(--duration-base) var(--ease-out),
+              border-color var(--duration-base) var(--ease-out);
+}
+
+.capability-triptych__grid:hover .capability-triptych__pillar {
+  opacity: 0.5;
+}
+
+.capability-triptych__grid:hover .capability-triptych__pillar:hover {
+  opacity: 1;
+  border-color: var(--colour-ink-10);
+}
+
+.capability-triptych__thumb {
+  width: 117px;
+  height: 117px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-bottom: var(--space-6);
+  flex-shrink: 0;
+}
+
+.capability-triptych__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .capability-triptych__title {
@@ -185,7 +293,7 @@
 }
 
 .capability-triptych__desc {
-  font-size: var(--text-body-l);
+  font-size: var(--text-body);
   color: var(--colour-ink-60);
   line-height: var(--leading-body);
   margin-bottom: var(--space-6);
@@ -215,9 +323,16 @@
   color: var(--colour-ink);
 }
 
+.capability-triptych__footer {
+  margin-top: var(--space-12);
+  text-align: center;
+}
+
 
 /* ══════════════════════════════════════════════════════════════════════ */
 /* 5. SELECTED WORK                                                       */
+/* Reference: panel4 — 1920x939. Dark section with floating project       */
+/* names/marks. Hover: active bright, siblings dimmed.                    */
 /* ══════════════════════════════════════════════════════════════════════ */
 
 .selected-work__header {
@@ -231,6 +346,30 @@
   line-height: var(--leading-tight);
 }
 
+.selected-work .case-study-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+}
+
+@media (min-width: 960px) {
+  .selected-work .case-study-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.selected-work .case-study-card {
+  transition: opacity var(--duration-base) var(--ease-out);
+}
+
+.selected-work .case-study-grid:hover .case-study-card {
+  opacity: 0.4;
+}
+
+.selected-work .case-study-grid:hover .case-study-card:hover {
+  opacity: 1;
+}
+
 .selected-work__footer {
   margin-top: var(--space-12);
   text-align: center;
@@ -239,7 +378,32 @@
 
 /* ══════════════════════════════════════════════════════════════════════ */
 /* 6. TASTEMAKERS FEATURE                                                 */
+/* Reference: panel5 — 1920x864. Dark section with background image,     */
+/* show artwork (277x277), platform distribution icons, social icons.     */
 /* ══════════════════════════════════════════════════════════════════════ */
+
+.tastemakers-feature {
+  position: relative;
+}
+
+.tastemakers-feature__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.tastemakers-feature__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.25;
+}
+
+.tastemakers-feature > .container {
+  position: relative;
+  z-index: 1;
+}
 
 .tastemakers-feature__layout {
   display: grid;
@@ -250,7 +414,8 @@
 
 @media (min-width: 768px) {
   .tastemakers-feature__layout {
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 277px 1fr;
+    gap: var(--space-12);
   }
 }
 
@@ -258,6 +423,7 @@
   overflow: hidden;
   border-radius: var(--radius-md);
   aspect-ratio: 1;
+  max-width: 277px;
   background-color: var(--colour-paper-05);
 }
 
@@ -306,10 +472,75 @@
   max-width: 52ch;
 }
 
+.tastemakers-feature__platforms {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.tastemakers-feature__platform-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--colour-paper-50);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.tastemakers-feature__platform-icon:hover {
+  color: var(--colour-paper);
+}
+
+.tastemakers-feature__platform-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.tastemakers-feature__social {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.tastemakers-feature__social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  color: var(--colour-paper-50);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.tastemakers-feature__social-icon:hover {
+  color: var(--colour-paper);
+}
+
+.tastemakers-feature__social-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.tastemakers-feature__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}
+
 
 /* ══════════════════════════════════════════════════════════════════════ */
 /* 7. DOWNLOAD FEATURE                                                    */
+/* Reference: panel6 — 1920x804. Image 916x498.                          */
 /* ══════════════════════════════════════════════════════════════════════ */
+
+.download-feature {
+  padding-block: clamp(64px, 8vw, 128px);
+}
 
 .download-feature__layout {
   display: grid;
@@ -320,7 +551,8 @@
 
 @media (min-width: 768px) {
   .download-feature__layout {
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
   }
 }
 
@@ -362,11 +594,17 @@
 
 
 /* ══════════════════════════════════════════════════════════════════════ */
-/* 8. HOME ARTICLE (wrapper for .featured-article from cards.css)        */
+/* 8. HOME ARTICLE / FUTURE OF LUXURY — 3-up editorial strip             */
+/* Reference: panel7 — 1920x1226. Three large article cards.             */
+/* Hover: active card bright, siblings dimmed.                            */
 /* ══════════════════════════════════════════════════════════════════════ */
 
 .home-article__header {
   margin-bottom: var(--space-10);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-6);
 }
 
 .home-article__section-headline {
@@ -376,6 +614,79 @@
   line-height: var(--leading-tight);
 }
 
+.home-article__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .home-article__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.home-article__card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity var(--duration-base) var(--ease-out);
+}
+
+.home-article__grid:hover .home-article__card {
+  opacity: 0.45;
+}
+
+.home-article__grid:hover .home-article__card:hover {
+  opacity: 1;
+}
+
+.home-article__card-media {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-4);
+  background-color: var(--colour-ink-05);
+}
+
+.home-article__card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.home-article__card:hover .home-article__card-media img {
+  transform: scale(1.04);
+}
+
+.home-article__card-cat {
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--colour-ink-40);
+  margin-bottom: var(--space-2);
+}
+
+.home-article__card-title {
+  font-size: var(--text-h3);
+  font-weight: 400;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-snug);
+  margin-bottom: var(--space-3);
+}
+
+.home-article__card-meta {
+  display: flex;
+  gap: var(--space-3);
+  font-size: var(--text-micro);
+  color: var(--colour-ink-40);
+  margin-top: auto;
+}
+
 .home-article__footer {
   margin-top: var(--space-12);
   text-align: center;
@@ -383,8 +694,13 @@
 
 
 /* ══════════════════════════════════════════════════════════════════════ */
-/* 9. SECTORS GRID                                                        */
+/* 9. SECTORS GRID / WORLD OF LUXURY                                      */
+/* Reference: panel9 — 1920x1037. Dark section. Hover dim/highlight.      */
 /* ══════════════════════════════════════════════════════════════════════ */
+
+.sectors-grid-section {
+  padding-block: clamp(80px, 10vw, 160px);
+}
 
 .sectors-grid-section__header {
   margin-bottom: var(--space-12);
@@ -431,4 +747,62 @@
   padding-block: var(--space-5);
   border-bottom: 1px solid var(--colour-paper-10);
   letter-spacing: var(--tracking-normal);
+  transition: opacity var(--duration-base) var(--ease-out),
+              color var(--duration-base) var(--ease-out);
+}
+
+.sectors-grid:hover .sectors-grid__item {
+  opacity: 0.4;
+}
+
+.sectors-grid:hover .sectors-grid__item:hover {
+  opacity: 1;
+  color: var(--colour-paper);
+}
+
+.sectors-grid-section__footer {
+  margin-top: var(--space-12);
+  text-align: center;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* 10. SUBSCRIBE                                                          */
+/* Reference: panel8 — 1920x795. Generous vertical breathing room.        */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.site-main--home .subscribe-module {
+  padding-block: clamp(80px, 10vw, 160px);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* 11. CLOSING CTA                                                        */
+/* Reference: panel10 — 1920x662. Full-bleed background image.            */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.cta-footer--image {
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-footer--image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--cta-bg, none) center / cover no-repeat;
+  z-index: 0;
+}
+
+.cta-footer--image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 26, 24, 0.72);
+  z-index: 1;
+}
+
+.cta-footer--image > .container {
+  position: relative;
+  z-index: 2;
 }

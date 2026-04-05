@@ -6,19 +6,17 @@
  * WordPress template hierarchy: front-page.php takes precedence when a
  * static front page is set in Settings > Reading.
  *
- * Component sequence:
- *   1.  Hero              → parts/blocks/hero.php
- *   2.  Showreel          → parts/blocks/showreel.php
- *   3.  Value Proposition → inline
- *   4.  Capability Triptych → parts/blocks/capability-triptych.php
- *   5.  Selected Work     → parts/blocks/selected-work.php
- *   6.  Tastemakers       → parts/blocks/tastemakers-feature.php
- *   7.  Download          → parts/blocks/download-feature.php
- *   8.  Featured Article  → parts/blocks/featured-article.php
- *   9.  Sectors Grid      → inline
- *  10.  CTA Footer        → parts/global/cta-footer.php (existing)
- *
- * Dark/light rhythm: L → D → L → T → L → D → T → L → D → D
+ * Component sequence (matches approved design comp):
+ *   1.  Hero              → parts/blocks/hero.php (full-bleed photo)
+ *   2.  Value Proposition → inline (centered statement)
+ *   3.  Capability Triptych → parts/blocks/capability-triptych.php
+ *   4.  Selected Work     → parts/blocks/selected-work.php
+ *   5.  Tastemakers       → parts/blocks/tastemakers-feature.php
+ *   6.  Download          → parts/blocks/download-feature.php
+ *   7.  Featured Article  → parts/blocks/featured-article.php (3-up strip)
+ *   8.  Subscribe         → parts/global/subscribe.php
+ *   9.  Sectors Grid      → inline (World of Luxury)
+ *  10.  CTA Footer        → parts/global/cta-footer.php (with bg image)
  *
  * ACF field group: group_summit_homepage (home_* prefix)
  *
@@ -37,16 +35,13 @@ the_post(); // consume the front-page post for ACF context
     <!-- ── 1. Hero ────────────────────────────────────────────────────────── -->
     <?php get_template_part( 'parts/blocks/hero' ); ?>
 
-    <!-- ── 2. Showreel ────────────────────────────────────────────────────── -->
-    <?php get_template_part( 'parts/blocks/showreel' ); ?>
-
-    <!-- ── 3. Value Proposition ───────────────────────────────────────────── -->
+    <!-- ── 2. Value Proposition ───────────────────────────────────────────── -->
     <?php
     $vp_headline = get_field( 'home_vp_headline' ) ?: 'Strategy, Creativity and Technology for the Luxury Sector';
     $vp_body     = get_field( 'home_vp_body' )
         ?: '<p>Summit Communication Group operates at the intersection of luxury, design and technology. We help ambitious brands sharpen their positioning, elevate their creative expression and build digital experiences that reflect who they truly are.</p>';
     ?>
-    <section class="vp-block section--padded" aria-labelledby="vp-heading">
+    <section class="vp-block" aria-labelledby="vp-heading">
         <div class="container container--narrow">
             <h2 class="vp-block__headline" id="vp-heading" data-reveal>
                 <?php echo esc_html( $vp_headline ); ?>
@@ -57,22 +52,25 @@ the_post(); // consume the front-page post for ACF context
         </div>
     </section>
 
-    <!-- ── 4. Capability Triptych ─────────────────────────────────────────── -->
+    <!-- ── 3. Capability Triptych ─────────────────────────────────────────── -->
     <?php get_template_part( 'parts/blocks/capability-triptych' ); ?>
 
-    <!-- ── 5. Selected Work ───────────────────────────────────────────────── -->
+    <!-- ── 4. Selected Work ───────────────────────────────────────────────── -->
     <?php get_template_part( 'parts/blocks/selected-work' ); ?>
 
-    <!-- ── 6. Tastemakers ─────────────────────────────────────────────────── -->
+    <!-- ── 5. Tastemakers ─────────────────────────────────────────────────── -->
     <?php get_template_part( 'parts/blocks/tastemakers-feature' ); ?>
 
-    <!-- ── 7. Download ────────────────────────────────────────────────────── -->
+    <!-- ── 6. Download ────────────────────────────────────────────────────── -->
     <?php get_template_part( 'parts/blocks/download-feature' ); ?>
 
-    <!-- ── 8. Featured Article ────────────────────────────────────────────── -->
+    <!-- ── 7. Featured Article (3-up strip) ───────────────────────────────── -->
     <?php get_template_part( 'parts/blocks/featured-article' ); ?>
 
-    <!-- ── 9. Sectors Grid ────────────────────────────────────────────────── -->
+    <!-- ── 8. Subscribe ───────────────────────────────────────────────────── -->
+    <?php get_template_part( 'parts/global/subscribe' ); ?>
+
+    <!-- ── 9. World of Luxury / Sectors Grid ──────────────────────────────── -->
     <?php
     $sectors_headline = get_field( 'home_sectors_headline' ) ?: 'The Luxury Economy';
     $sectors_body     = get_field( 'home_sectors_body' );
@@ -122,7 +120,11 @@ the_post(); // consume the front-page post for ACF context
     </section>
 
     <!-- ── 10. CTA Footer ─────────────────────────────────────────────────── -->
-    <?php get_template_part( 'parts/global/cta-footer' ); ?>
+    <?php
+    get_template_part( 'parts/global/cta-footer', null, [
+        'image' => get_template_directory_uri() . '/assets/img/cta-mainimage.jpg',
+    ] );
+    ?>
 
 </main>
 

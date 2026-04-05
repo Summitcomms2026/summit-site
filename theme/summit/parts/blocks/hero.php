@@ -28,9 +28,13 @@ $cta_label = get_field( 'home_hero_cta_label' )   ?: 'Design Tomorrow';
 $cta_url   = get_field( 'home_hero_cta_url' )     ?: home_url( '/design-tomorrow' );
 $cta2_label = get_field( 'home_hero_cta2_label' ) ?: 'Explore Our Work';
 $cta2_url   = get_field( 'home_hero_cta2_url' )   ?: get_post_type_archive_link( 'case_study' );
+
+$hero_image = get_field( 'home_hero_image' );
+$hero_url   = $hero_image ? $hero_image['url'] : get_template_directory_uri() . '/assets/img/top-herophoto.jpg';
 ?>
 
-<section class="home-hero section--padded-xl" aria-labelledby="home-hero-title">
+<section class="home-hero" aria-labelledby="home-hero-title"
+         style="--hero-bg: url('<?php echo esc_url( $hero_url ); ?>');">
     <div class="container container--medium">
         <header class="home-hero__header">
 

@@ -22,21 +22,26 @@ defined( 'ABSPATH' ) || exit;
 
 $intro = get_field( 'home_cap_intro' );
 
+$img_dir = get_template_directory_uri() . '/assets/img/';
+
 $pillars = [
     [
         'title' => get_field( 'home_cap_1_title' ) ?: 'Brand Strategy',
         'desc'  => get_field( 'home_cap_1_desc' )  ?: 'Positioning, identity and narrative frameworks that give luxury brands strategic clarity and cultural relevance.',
         'url'   => get_field( 'home_cap_1_url' )   ?: home_url( '/what-we-do/brand-strategy' ),
+        'thumb' => $img_dir . 'whatwedo-brandstrategy.jpg',
     ],
     [
         'title' => get_field( 'home_cap_2_title' ) ?: 'Experience Design',
         'desc'  => get_field( 'home_cap_2_desc' )  ?: 'Physical and digital experiences that reflect brand truth, delight discerning audiences and create lasting impressions.',
         'url'   => get_field( 'home_cap_2_url' )   ?: home_url( '/what-we-do/experience-design' ),
+        'thumb' => $img_dir . 'whatwedo-experiencedesign.jpg',
     ],
     [
         'title' => get_field( 'home_cap_3_title' ) ?: 'Digital Transformation',
         'desc'  => get_field( 'home_cap_3_desc' )  ?: 'Platforms, systems and digital infrastructure built for premium performance, operational elegance and measurable growth.',
         'url'   => get_field( 'home_cap_3_url' )   ?: home_url( '/what-we-do/digital-transformation' ),
+        'thumb' => $img_dir . 'whatwedo-digitaltransformation.jpg',
     ],
 ];
 ?>
@@ -61,6 +66,12 @@ $pillars = [
                 $delay = $pillar_delays[ $i ] ?? 1;
             ?>
             <div class="capability-triptych__pillar" data-reveal data-reveal-delay="<?php echo $delay; ?>">
+                <?php if ( ! empty( $pillar['thumb'] ) ) : ?>
+                <figure class="capability-triptych__thumb" aria-hidden="true">
+                    <img src="<?php echo esc_url( $pillar['thumb'] ); ?>"
+                         alt="" width="117" height="117" loading="lazy">
+                </figure>
+                <?php endif; ?>
                 <h3 class="capability-triptych__title">
                     <?php echo esc_html( $pillar['title'] ); ?>
                 </h3>
@@ -75,6 +86,12 @@ $pillars = [
             <?php endforeach; ?>
 
         </div>
+
+        <footer class="capability-triptych__footer">
+            <a href="<?php echo esc_url( home_url( '/what-we-do' ) ); ?>" class="btn btn--secondary">
+                Explore Services
+            </a>
+        </footer>
 
     </div>
 </section>

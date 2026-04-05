@@ -21,9 +21,14 @@ $headline = $args['headline'] ?? "Let\u{2019}s Design Tomorrow";
 $body     = $args['body']     ?? 'We partner with ambitious brands to sharpen positioning, elevate creative expression and build digital experiences of lasting value.';
 $label    = $args['label']    ?? 'Start a Conversation';
 $url      = $args['url']      ?? home_url( '/design-tomorrow/' );
+$image    = $args['image']    ?? '';
+
+$image_class = $image ? ' cta-footer--image' : '';
+$image_style = $image ? " style=\"--cta-bg: url('" . esc_url( $image ) . "');\"" : '';
 ?>
 
-<section class="cta-footer section--dark section--padded" aria-labelledby="cta-footer-heading">
+<section class="cta-footer section--dark section--padded<?php echo $image_class; ?>"
+         aria-labelledby="cta-footer-heading"<?php echo $image_style; ?>>
     <div class="container container--medium">
         <div class="cta-footer__inner text-center">
 

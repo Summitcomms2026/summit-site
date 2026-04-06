@@ -22,20 +22,20 @@ defined( 'ABSPATH' ) || exit;
 ?>
 <span class="site-logo" aria-hidden="true">
     <svg class="site-logo__svg"
-         viewBox="0 0 155 20"
+         viewBox="0 0 170 18"
          xmlns="http://www.w3.org/2000/svg"
          role="img"
          aria-label="Summit">
         <text x="0"
-              y="15"
+              y="13"
               font-family="-apple-system, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif"
-              font-size="13.5"
-              font-weight="500"
-              letter-spacing="3.5"
+              font-size="12"
+              font-weight="400"
+              letter-spacing="5"
               fill="currentColor">SUMMIT</text>
-        <!-- Compass star — 4-point elongated star, easy to swap for final brand asset -->
-        <g transform="translate(113, 10)" fill="currentColor">
-            <path d="M0-6 1.2-1.2 6 0 1.2 1.2 0 6-1.2 1.2-6 0-1.2-1.2Z" opacity="0.85"/>
+        <!-- Compass star — delicate 4-point star, easy to swap for final brand asset -->
+        <g transform="translate(118, 8)" fill="currentColor">
+            <path d="M0-4.5 .8-.8 4.5 0 .8.8 0 4.5-.8.8-4.5 0-.8-.8Z" opacity="0.8"/>
         </g>
     </svg>
 </span>

@@ -202,9 +202,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 40px;
-    padding: 10px 18px;
-    border-radius: 999px;
+    min-height: 38px;
+    padding: 9px 20px;
+    border-radius: var(--radius-md);
     font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.04em;
@@ -348,11 +348,11 @@
     opacity: 0;
     pointer-events: none;
     overflow: hidden;
-    transform: translateY(-12px);
+    transform: translateY(-8px);
     transition:
-        opacity 220ms var(--ease-in),
-        transform 220ms var(--ease-in),
-        visibility 0s linear 220ms;
+        opacity 200ms var(--ease-in),
+        transform 200ms var(--ease-in),
+        visibility 0s linear 200ms;
 }
 
 
@@ -362,8 +362,8 @@
     pointer-events: auto;
     transform: translateY(0);
     transition:
-        opacity var(--duration-slow) var(--ease-out),
-        transform var(--duration-slow) var(--ease-out),
+        opacity 480ms var(--ease-out),
+        transform 480ms var(--ease-out),
         visibility 0s linear 0s;
 }
 
@@ -462,15 +462,20 @@
    ────────────────────────────────────────────────────────── */
 
 
+/* ── Staggered entrance — Matter of Form-style reveal ────── */
+/* Items fade up from 12px below with ~70ms spacing.
+   Overlay opens first (480ms), then content starts arriving
+   after a 200ms delay. Close is a quick unified fade-out. */
+
 .mega-menu__primary-item,
 .mega-menu__secondary-nav,
 .mega-menu__editorial-col,
 .mega-menu__bottom-bar {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(12px);
     transition:
-        opacity var(--duration-base) var(--ease-out),
-        transform var(--duration-base) var(--ease-out);
+        opacity 400ms var(--ease-out),
+        transform 400ms var(--ease-out);
 }
 
 
@@ -484,25 +489,25 @@
 
 
 @media (prefers-reduced-motion: no-preference) {
-    .mega-menu[aria-hidden="false"] .mega-menu__primary-item:nth-child(1) { transition-delay: 120ms; }
-    .mega-menu[aria-hidden="false"] .mega-menu__primary-item:nth-child(2) { transition-delay: 190ms; }
-    .mega-menu[aria-hidden="false"] .mega-menu__primary-item:nth-child(3) { transition-delay: 260ms; }
-    .mega-menu[aria-hidden="false"] .mega-menu__primary-item:nth-child(4) { transition-delay: 330ms; }
-    .mega-menu[aria-hidden="false"] .mega-menu__primary-item:nth-child(5) { transition-delay: 400ms; }
+    .mega-menu[aria-hidden="false"] .mega-menu__primary-item:nth-child(1) { transition-delay: 200ms; }
+    .mega-menu[aria-hidden="false"] .mega-menu__primary-item:nth-child(2) { transition-delay: 270ms; }
+    .mega-menu[aria-hidden="false"] .mega-menu__primary-item:nth-child(3) { transition-delay: 340ms; }
+    .mega-menu[aria-hidden="false"] .mega-menu__primary-item:nth-child(4) { transition-delay: 410ms; }
+    .mega-menu[aria-hidden="false"] .mega-menu__primary-item:nth-child(5) { transition-delay: 480ms; }
 
-    .mega-menu[aria-hidden="false"] .mega-menu__secondary-nav { transition-delay: 400ms; }
-    .mega-menu[aria-hidden="false"] .mega-menu__editorial-col { transition-delay: 320ms; }
-    .mega-menu[aria-hidden="false"] .mega-menu__bottom-bar   { transition-delay: 440ms; }
+    .mega-menu[aria-hidden="false"] .mega-menu__secondary-nav { transition-delay: 520ms; }
+    .mega-menu[aria-hidden="false"] .mega-menu__editorial-col { transition-delay: 380ms; }
+    .mega-menu[aria-hidden="false"] .mega-menu__bottom-bar   { transition-delay: 560ms; }
 }
 
 
-/* On close: no stagger, snap back immediately */
+/* On close: no stagger, unified quick fade-out */
 .mega-menu[aria-hidden="true"] .mega-menu__primary-item,
 .mega-menu[aria-hidden="true"] .mega-menu__secondary-nav,
 .mega-menu[aria-hidden="true"] .mega-menu__editorial-col,
 .mega-menu[aria-hidden="true"] .mega-menu__bottom-bar {
     transition-delay: 0s;
-    transition-duration: 120ms;
+    transition-duration: 150ms;
 }
 
 
@@ -580,15 +585,14 @@
 }
 
 
-/* ── CTA item — "Let's Talk" — visually distinct from nav links ─────── */
+/* ── CTA item — "Let's Talk" — same style as other nav links ─────── */
 
 .mega-menu__primary-link--cta {
-    font-style: italic;
-    color: rgba(255, 255, 255, 0.55);
+    font-style: normal;
 }
 
-.mega-menu__primary-link--cta:hover {
-    color: var(--colour-paper);
+.mega-menu__primary-link--cta::after {
+    display: none;
 }
 
 .mega-menu__secondary-nav {
@@ -840,111 +844,12 @@
     }
 }
 
+/* Sticky bottom bar is hidden — content lives inside mega menu only */
 .sticky-bottom-bar {
-    position: fixed;
-    inset: auto 0 0 0;
-    z-index: var(--z-sticky);
-    height: var(--bottom-bar-height);
-    background: var(--colour-paper);
-    border-top: var(--border-hairline);
-    pointer-events: auto;
-    transition:
-        transform var(--duration-base) var(--ease-out),
-        opacity var(--duration-base) var(--ease-out),
-        visibility 0s linear 0s;
-}
-
-
-.sticky-bottom-bar--hidden {
-    transform: translateY(100%);
-}
-
-.menu-is-open .sticky-bottom-bar {
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(8px);
-    visibility: hidden;
-    transition:
-        opacity var(--duration-fast) var(--ease-out),
-        transform var(--duration-fast) var(--ease-out),
-        visibility 0s linear var(--duration-fast);
-}
-
-.sticky-bottom-bar__inner {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    height: 100%;
-    padding-inline: var(--menu-edge);
-    padding-top: 8px;
-    max-width: none;
-    margin: 0;
-}
-
-.sticky-bottom-bar__positioning {
-    margin: 0;
-    font-size: 0.84rem;
-    line-height: 1.25;
-    letter-spacing: 0.01em;
-    color: var(--colour-ink-40);
-}
-
-.sticky-bottom-bar__actions {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: flex-start;
-    gap: 2px;
-    margin-left: auto;
-}
-
-.sticky-bottom-bar__separator {
     display: none;
 }
 
-.sticky-bottom-bar__cta,
-.sticky-bottom-bar__location {
-    font-size: 0.84rem;
-    line-height: 1.15;
-    letter-spacing: 0.01em;
-    text-transform: none;
-    text-decoration: none;
-}
-
-.sticky-bottom-bar__cta {
-    position: relative;
-    color: var(--colour-ink);
-    font-weight: 500;
-}
-
-
-.sticky-bottom-bar__cta::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -1px;
-    width: 100%;
-    height: 1px;
-    background: currentColor;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform var(--duration-base) var(--ease-out);
-}
-
-
-.sticky-bottom-bar__cta:hover::after {
-    transform: scaleX(1);
-}
-
-.sticky-bottom-bar__location {
-    color: var(--colour-ink-40);
-    white-space: nowrap;
-}
-
-.sticky-bottom-bar__cta:hover,
-.sticky-bottom-bar__location:hover {
-    color: var(--colour-ink-60);
-}
+/* Sticky bottom bar child styles removed — bar is display: none */
 
 .mega-menu__bottom-cta:hover {
     color: rgba(255, 255, 255, 0.6);
@@ -958,7 +863,7 @@
 
 .site-content {
     padding-top: var(--nav-height);
-    padding-bottom: var(--bottom-bar-height);
+    padding-bottom: 0;
 }
 
 

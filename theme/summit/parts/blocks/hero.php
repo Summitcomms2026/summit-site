@@ -54,10 +54,10 @@ $hero_url   = $hero_image ? $hero_image['url'] : get_template_directory_uri() . 
                     <?php echo wp_kses_post( wpautop( $body ) ); ?>
                 </div>
                 <div class="home-hero__actions">
-                    <a href="<?php echo esc_url( $cta_url ); ?>" class="btn btn--primary">
+                    <a href="<?php echo esc_url( $cta_url ); ?>" class="btn btn--secondary">
                         <?php echo esc_html( $cta_label ); ?>
                     </a>
-                    <a href="<?php echo esc_url( $cta2_url ); ?>" class="btn btn--secondary">
+                    <a href="<?php echo esc_url( $cta2_url ); ?>" class="btn btn--primary">
                         <?php echo esc_html( $cta2_label ); ?>
                     </a>
                 </div>

@@ -35,7 +35,7 @@ if ( empty( $articles ) ) {
 if ( empty( $articles ) ) {
     $article_q = new WP_Query( [
         'post_type'      => 'article',
-        'posts_per_page' => 3,
+        'posts_per_page' => 6,
         'orderby'        => 'date',
         'order'          => 'DESC',
         'no_found_rows'  => true,
@@ -121,6 +121,35 @@ $section_headline = get_field( 'home_article_headline' ) ?: 'The Future of Luxur
             </a>
             <?php endforeach; ?>
         </div>
+
+        <div class="home-article__nav" aria-label="Article slider navigation">
+            <button class="home-article__arrow home-article__arrow--prev" aria-label="Previous articles" type="button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="home-article__arrow home-article__arrow--next" aria-label="Next articles" type="button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+        </div>
+
+        <script>
+        (function(){
+            const grid = document.querySelector('.home-article__grid');
+            if (!grid) return;
+            const prev = document.querySelector('.home-article__arrow--prev');
+            const next = document.querySelector('.home-article__arrow--next');
+            const scrollAmount = () => {
+                const card = grid.querySelector('.home-article__card');
+                if (!card) return grid.clientWidth;
+                return card.offsetWidth + 24; // card width + gap
+            };
+            if (prev) prev.addEventListener('click', () => {
+                grid.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+            });
+            if (next) next.addEventListener('click', () => {
+                grid.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+            });
+        })();
+        </script>
 
         <?php /* CTA is in the header row per approved comp */ ?>
 

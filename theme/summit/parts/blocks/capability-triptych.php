@@ -78,6 +78,9 @@ $pillars = [
                 <div class="capability-triptych__desc">
                     <?php echo wp_kses_post( wpautop( $pillar['desc'] ) ); ?>
                 </div>
+                <a href="<?php echo esc_url( $pillar['url'] ); ?>" class="capability-triptych__link">
+                    Learn More <span aria-hidden="true">&rarr;</span>
+                </a>
             </div>
             <?php endforeach; ?>
 

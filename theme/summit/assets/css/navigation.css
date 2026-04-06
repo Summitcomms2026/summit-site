@@ -884,7 +884,7 @@
 
 @media (min-width: 768px) {
     .site-footer__inner {
-        grid-template-columns: 1fr 1fr auto;
+        grid-template-columns: auto 1fr 1fr auto;
         gap: var(--space-12);
     }
 }
@@ -940,7 +940,6 @@
 .site-footer__nav {
     display: flex;
     flex-direction: column;
-    gap: var(--space-8);
 }
 
 .site-footer__nav-list {
@@ -1024,6 +1023,12 @@
         align-items: center;
         justify-content: space-between;
     }
+}
+
+.site-footer__base .site-footer__social {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
 }
 
 .site-footer__copyright {

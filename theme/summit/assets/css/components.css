@@ -23,7 +23,7 @@
   text-transform: uppercase;
   text-decoration: none;
   border: 1px solid transparent;
-  border-radius: var(--radius-full);
+  border-radius: 4px;
   cursor: pointer;
   white-space: nowrap;
   transition: background-color var(--duration-fast) var(--ease-out),

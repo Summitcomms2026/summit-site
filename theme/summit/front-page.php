@@ -41,7 +41,7 @@ the_post(); // consume the front-page post for ACF context
         ?: 'We partner with luxury brands, creators and cultural institutions to define distinctive brand positions and create memorable client experiences. Our work sits between strategy, design and technology across product, place and culture.';
     ?>
     <section class="vp-block section--dark" aria-label="Value proposition">
-        <div class="container container--narrow">
+        <div class="container container--wide">
             <p class="vp-block__statement" data-reveal>
                 <?php echo esc_html( $vp_statement ); ?>
             </p>
@@ -146,14 +146,16 @@ the_post(); // consume the front-page post for ACF context
         <div class="container container--wide">
 
             <header class="sectors-grid-section__header">
-                <h2 class="sectors-grid-section__headline" id="sectors-heading" data-reveal="fade">
-                    <?php echo esc_html( $sectors_headline ); ?>
-                </h2>
-                <?php if ( $sectors_body ) : ?>
-                <p class="sectors-grid-section__body" data-reveal="fade" data-reveal-delay="1">
-                    <?php echo esc_html( $sectors_body ); ?>
-                </p>
-                <?php endif; ?>
+                <div class="sectors-grid-section__header-text">
+                    <h2 class="sectors-grid-section__headline" id="sectors-heading" data-reveal="fade">
+                        <?php echo esc_html( $sectors_headline ); ?>
+                    </h2>
+                    <?php if ( $sectors_body ) : ?>
+                    <p class="sectors-grid-section__body" data-reveal="fade" data-reveal-delay="1">
+                        <?php echo wp_strip_all_tags( $sectors_body ); ?>
+                    </p>
+                    <?php endif; ?>
+                </div>
                 <a href="<?php echo esc_url( home_url( '/design-tomorrow/' ) ); ?>"
                    class="btn btn--primary sectors-grid-section__cta" data-reveal="fade" data-reveal-delay="1">
                     Get In Touch
@@ -167,7 +169,8 @@ the_post(); // consume the front-page post for ACF context
                     $sd = $sector_delays[ $si ] ?? 1;
                 ?>
                 <li class="sectors-grid__item" data-reveal="fade" data-reveal-delay="<?php echo $sd; ?>">
-                    <?php echo esc_html( $sector[0] ); ?>
+                    <strong class="sectors-grid__item-title"><?php echo esc_html( $sector[0] ); ?></strong>
+                    <span class="sectors-grid__item-desc"><?php echo esc_html( $sector[1] ); ?></span>
                 </li>
                 <?php endforeach; ?>
             </ul>

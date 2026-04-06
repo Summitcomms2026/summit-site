@@ -66,7 +66,7 @@ $theme     = get_field( 'ps_theme', $season_id );
 $artwork   = get_field( 'ps_artwork', $season_id );
 ?>
 
-<section class="tastemakers-feature section--dark section--padded" aria-labelledby="tastemakers-heading">
+<section class="tastemakers-feature section--padded" aria-labelledby="tastemakers-heading">
     <div class="container container--wide">
 
         <div class="tastemakers-feature__layout">
@@ -132,7 +132,7 @@ $artwork   = get_field( 'ps_artwork', $season_id );
                         Season One
                     </a>
                     <a href="<?php echo esc_url( home_url( '/tastemakers/' ) ); ?>"
-                       class="btn btn--secondary" style="color: var(--colour-paper); border-color: rgba(250,250,248,0.4);">
+                       class="btn btn--secondary">
                         View Episodes
                     </a>
                 </div>

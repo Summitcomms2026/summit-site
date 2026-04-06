@@ -20,7 +20,7 @@
 
 
 :root {
-    --nav-height: 56px;
+    --nav-height: 64px;
     --bottom-bar-height: 42px;
     --menu-edge: 38px;
     --menu-top: 64px;
@@ -30,7 +30,7 @@
 
 @media (max-width: 767px) {
     :root {
-        --nav-height: 52px;
+        --nav-height: 58px;
         --bottom-bar-height: 40px;
         --menu-edge: 18px;
         --menu-top: 32px;
@@ -279,7 +279,7 @@
 
 .home .site-nav {
     background: transparent;
-    border-bottom-color: transparent;
+    border-bottom-color: rgba(255, 255, 255, 0.12);
 }
 
 .home .site-nav__menu-btn,

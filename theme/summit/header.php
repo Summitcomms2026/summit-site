@@ -173,7 +173,7 @@ $menu_articles = summit_get_menu_articles();
                                 <a href="<?php echo esc_url( home_url( '/future-of-luxury' ) ); ?>"
                                    class="mega-menu__primary-link"
                                    <?php echo ( is_page( 'future-of-luxury' ) || get_post_type() === 'article' ) ? 'aria-current="page"' : ''; ?>>
-                                    Future of Luxury
+                                    The Future of Luxury
                                 </a>
                             </li>
 
@@ -213,7 +213,8 @@ $menu_articles = summit_get_menu_articles();
                                 <a href="<?php echo esc_url( home_url( '/tastemakers' ) ); ?>"
                                    class="mega-menu__secondary-link"
                                    <?php echo ( is_page( 'tastemakers' ) || get_post_type() === 'podcast_season' || get_post_type() === 'podcast_episode' ) ? 'aria-current="page"' : ''; ?>>
-                                    Tastemakers
+                                    Tastemakers Podcast
+                                    <svg class="mega-menu__secondary-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3v5zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3v5z"/></svg>
                                 </a>
                             </li>
 
@@ -294,14 +295,14 @@ $menu_articles = summit_get_menu_articles();
         <div class="mega-menu__bottom-bar">
             <div class="mega-menu__bottom-bar-inner">
                 <p class="mega-menu__bottom-positioning">
-                    Independent design consultancy for luxury brands.
+                    An independent design consultancy<br>for tomorrow's luxury brands
                 </p>
                 <div class="mega-menu__bottom-actions">
                     <a href="<?php echo esc_url( home_url( '/design-tomorrow' ) ); ?>"
                        class="mega-menu__bottom-cta">
-                        Start a Conversation
+                        Start a conversation
                     </a>
-                    <span class="mega-menu__bottom-location">London&nbsp;+44</span>
+                    <span class="mega-menu__bottom-location">WhatsApp&nbsp;+61&nbsp;430&nbsp;388&nbsp;662</span>
                 </div>
             </div>
         </div><!-- /.mega-menu__bottom-bar -->
@@ -323,17 +324,17 @@ $menu_articles = summit_get_menu_articles();
     <div class="sticky-bottom-bar__inner">
 
         <p class="sticky-bottom-bar__positioning">
-            Independent design consultancy for luxury brands.
+            An independent design consultancy<br>for tomorrow's luxury brands
         </p>
 
         <div class="sticky-bottom-bar__actions">
             <a href="<?php echo esc_url( home_url( '/design-tomorrow' ) ); ?>"
                class="sticky-bottom-bar__cta">
-                Start a Conversation
+                Start a conversation
             </a>
             <span class="sticky-bottom-bar__separator" aria-hidden="true">/</span>
-            <a href="tel:+44" class="sticky-bottom-bar__location">
-                London&nbsp;+44
+            <a href="https://wa.me/61430388662" class="sticky-bottom-bar__location">
+                WhatsApp&nbsp;+61&nbsp;430&nbsp;388&nbsp;662
             </a>
         </div>
 

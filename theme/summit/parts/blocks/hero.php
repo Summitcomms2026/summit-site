@@ -65,7 +65,11 @@ $hero_url   = $hero_image ? $hero_image['url'] : get_template_directory_uri() . 
 
         </div>
     </div>
-    <p class="home-hero__scroll" data-reveal="fade" data-reveal-delay="3">
-        <span>&darr;</span> Scroll
-    </p>
+    <button type="button" class="home-hero__scroll" data-reveal="fade" data-reveal-delay="3"
+            onclick="this.closest('section').nextElementSibling.scrollIntoView({behavior:'smooth'})">
+        <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+            <path d="M5 1v7M1.5 5.5 5 9l3.5-3.5"/>
+        </svg>
+        Scroll
+    </button>
 </section>

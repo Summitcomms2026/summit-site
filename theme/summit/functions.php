@@ -53,6 +53,16 @@ function summit_enqueue_scripts(): void {
         $v,
         true  // load in footer
     );
+
+    if ( is_front_page() ) {
+        wp_enqueue_script(
+            'summit-vp-scroll',
+            get_template_directory_uri() . '/assets/js/vp-scroll-direction.js',
+            [],
+            $v,
+            true
+        );
+    }
 }
 
 /**

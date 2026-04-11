@@ -40,7 +40,7 @@ the_post(); // consume the front-page post for ACF context
     $vp_statement = get_field( 'home_vp_headline' )
         ?: 'We partner with luxury brands, creators and cultural institutions to define distinctive brand positions and create memorable client experiences. Our work sits between strategy, design and technology across product, place and culture.';
     ?>
-    <section class="vp-block section--dark" aria-label="Value proposition">
+    <section class="vp-block" aria-label="Value proposition">
         <div class="container container--wide">
             <p class="vp-block__statement" data-reveal>
                 <?php echo esc_html( $vp_statement ); ?>

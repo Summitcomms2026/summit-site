@@ -224,33 +224,40 @@
 
 
 /* ══════════════════════════════════════════════════════════════════════
-   02. VALUE PROPOSITION — Dark serif statement
-   Panel: 1920x821
+   02. VALUE PROPOSITION — Serif statement, scroll-direction colour shift
+   Panel: 1920x820
+   Container: 1700px centred, copy left-aligned
+   Two states: dark (default / scroll-down) ↔ light (scroll-up)
    ══════════════════════════════════════════════════════════════════════ */
 
 .vp-block {
-  padding-block: clamp(100px, 14vw, 220px);
+  padding-block: clamp(100px, 16.4vw, 314px);
+  background-color: var(--colour-ink);
+  color: var(--colour-paper);
+  transition:
+    background-color 0.6s var(--ease-inout),
+    color 0.6s var(--ease-inout);
+}
+
+.vp-block.vp--scroll-up {
+  background-color: var(--colour-paper);
+  color: var(--colour-ink);
 }
 
 .vp-block > .container {
+  max-width: 1700px;
   padding-inline: var(--hp-edge);
-}
-
-.vp-block.section--dark {
-  background-color: var(--colour-ink);
-  color: var(--colour-paper);
 }
 
 .vp-block__statement {
   font-family: var(--font-serif);
-  font-size: clamp(1.4rem, 2.5vw, 2.1rem);
+  font-size: clamp(1.4rem, 2.3vw, 2.5rem);
   font-weight: 400;
   font-style: normal;
-  line-height: 1.55;
-  letter-spacing: -0.005em;
-  max-width: 1645px;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
   margin: 0;
-  color: var(--colour-paper);
+  color: inherit;
 }
 
 

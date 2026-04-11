@@ -91,7 +91,7 @@
 
 .home-hero__title {
   font-family: var(--font-sans);
-  font-size: clamp(2.6rem, 5.2vw, 4.375rem);
+  font-size: clamp(2.6rem, 7.3vw, 8.75rem);
   font-weight: 400;
   letter-spacing: -0.03em;
   line-height: 0.97;
@@ -100,7 +100,7 @@
 }
 
 .home-hero__left {
-  max-width: 600px;
+  max-width: 1100px;
 }
 
 .home-hero__title em,
@@ -122,7 +122,7 @@
   color: #b5b4b6;
   line-height: 1.5;
   margin-bottom: 16px;
-  max-width: 290px;
+  max-width: 261px;
 }
 
 .home-hero__body p {

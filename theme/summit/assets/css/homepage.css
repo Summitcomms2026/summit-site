@@ -245,13 +245,13 @@
 }
 
 .vp-block > .container {
-  max-width: 1700px;
+  max-width: 850px;
   padding-inline: var(--hp-edge);
 }
 
 .vp-block__statement {
   font-family: var(--font-serif);
-  font-size: clamp(1.4rem, 2.3vw, 2.5rem);
+  font-size: clamp(1.4rem, 2.7vw, 3.25rem);
   font-weight: 400;
   font-style: normal;
   line-height: 1.2;

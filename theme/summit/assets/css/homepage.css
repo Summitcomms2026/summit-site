@@ -498,12 +498,13 @@
   border-color: var(--colour-paper);
 }
 
-/* Grid — 4 columns, bottom-aligned so hover grows upward */
+/* Grid — 4 columns, fixed height, centred vertically */
 .selected-work__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
   align-items: end;
+  height: clamp(360px, 36vw, 580px);
 }
 
 @media (min-width: 960px) {
@@ -519,19 +520,19 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  height: clamp(280px, 20vw, 370px);
+  height: clamp(240px, 18vw, 320px);
   background: rgba(250, 250, 248, 0.04);
   text-decoration: none;
   color: var(--colour-paper);
-  padding: var(--space-6);
+  padding: var(--space-5);
   overflow: hidden;
   transition: height 0.4s var(--ease-out);
 }
 
-/* Hover: card grows upward */
+/* Hover: card grows upward within fixed grid height */
 @media (min-width: 768px) {
   .sw-card:hover {
-    height: clamp(440px, 36vw, 680px);
+    height: clamp(360px, 36vw, 580px);
   }
 
   /* Dim siblings */
@@ -552,7 +553,7 @@
   font-size: var(--text-micro);
   color: rgba(250, 250, 248, 0.4);
   letter-spacing: var(--tracking-wide);
-  margin-bottom: auto;
+  margin-bottom: var(--space-4);
   opacity: 0;
   transition: opacity var(--duration-base) var(--ease-out);
 }
@@ -561,15 +562,15 @@
   opacity: 1;
 }
 
-/* ── Logo (centred) ────────────────────────────────────────────────── */
+/* ── Logo (centred in card) ────────────────────────────────────────── */
 
 .sw-card__logo {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 60%;
-  max-width: 200px;
+  width: 55%;
+  max-width: 180px;
   margin: 0;
   display: flex;
   align-items: center;
@@ -580,18 +581,19 @@
   width: 100%;
   height: auto;
   object-fit: contain;
-  opacity: 0.65;
+  opacity: 0.45;
   transition: opacity var(--duration-base) var(--ease-out);
 }
 
 .sw-card:hover .sw-card__logo img {
-  opacity: 0.85;
+  opacity: 0.7;
 }
 
 /* ── Revealed content (title + body) ───────────────────────────────── */
 
 .sw-card__reveal {
   margin-top: auto;
+  padding-right: 32px;
   opacity: 0;
   transform: translateY(8px);
   transition: opacity var(--duration-base) var(--ease-out),
@@ -605,7 +607,7 @@
 
 .sw-card__title {
   font-family: var(--font-sans);
-  font-size: clamp(0.85rem, 1vw, 1rem);
+  font-size: clamp(0.8rem, 0.9vw, 0.9375rem);
   font-weight: 500;
   color: var(--colour-paper);
   letter-spacing: 0;
@@ -615,9 +617,9 @@
 
 .sw-card__desc {
   font-family: var(--font-text);
-  font-size: var(--text-micro);
+  font-size: 0.625rem;
   color: rgba(250, 250, 248, 0.4);
-  line-height: var(--leading-body);
+  line-height: 1.4;
   margin: 0;
 }
 
@@ -625,9 +627,9 @@
 
 .sw-card__arrow {
   position: absolute;
-  bottom: var(--space-6);
-  right: var(--space-6);
-  font-size: 1.1rem;
+  bottom: var(--space-5);
+  right: var(--space-5);
+  font-size: 1rem;
   color: var(--colour-paper);
   opacity: 0;
   transition: opacity var(--duration-base) var(--ease-out);

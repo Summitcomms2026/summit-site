@@ -377,16 +377,22 @@
 .capability-triptych__link {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-2);
   margin-top: auto;
-  padding-top: var(--space-6);
+  align-self: stretch;
+  margin-inline: calc(-1 * var(--space-8));
+  margin-bottom: clamp(-40px, -4vw, -72px);
+  padding: 14px 20px;
   font-family: var(--font-sans);
-  font-size: var(--text-small);
-  font-weight: 500;
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
   text-decoration: none;
-  color: var(--colour-paper);
+  background: var(--colour-paper-pure);
+  color: var(--colour-ink);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
   opacity: 0;
   transition: opacity var(--duration-base) var(--ease-out);
 }

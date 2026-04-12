@@ -52,7 +52,7 @@ $acf_body = get_field( 'home_tastemakers_body' );
     <div class="container container--wide">
 
         <!-- ── Top row: heading left, Season One button right ──── -->
-        <header class="tm__header" data-reveal="fade">
+        <header class="tm__header" data-reveal>
             <h2 class="tm__heading">
                 Tastemakers Podcast
                 <svg class="tm__headphones" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3v5zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3v5z"/></svg>
@@ -68,7 +68,7 @@ $acf_body = get_field( 'home_tastemakers_body' );
             <!-- ── Left: Show branding ──────────────────────────────── -->
             <div class="tm__show">
 
-                <div class="tm__show-info" data-reveal="fade" data-reveal-delay="1">
+                <div class="tm__show-info" data-reveal data-reveal-delay="2">
 
                     <figure class="tm__artwork" aria-hidden="true">
                         <img src="<?php echo esc_url( $artwork_url ); ?>"
@@ -106,7 +106,7 @@ $acf_body = get_field( 'home_tastemakers_body' );
                     </div>
                 </div>
 
-                <div class="tm__platforms" data-reveal="fade" data-reveal-delay="2">
+                <div class="tm__platforms" data-reveal data-reveal-delay="4">
                     <p class="tm__platforms-label">Listen or watch on your favourite platform</p>
                     <div class="tm__platforms-row">
                         <a href="https://podcasts.apple.com/" rel="noopener" target="_blank" class="tm__platform">
@@ -143,7 +143,7 @@ $acf_body = get_field( 'home_tastemakers_body' );
             </div>
 
             <!-- ── Right: Season content ────────────────────────────── -->
-            <div class="tm__season" data-reveal="fade" data-reveal-delay="1">
+            <div class="tm__season" data-reveal data-reveal-delay="3">
 
                 <p class="tm__season-label">Season One</p>
 

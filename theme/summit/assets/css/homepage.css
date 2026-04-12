@@ -647,8 +647,8 @@
 
 .sw-card__arrow {
   position: absolute;
-  bottom: var(--space-5);
-  right: var(--space-5);
+  bottom: 20px;
+  right: 20px;
   font-size: 1rem;
   color: var(--colour-paper);
   opacity: 0;

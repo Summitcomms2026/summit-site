@@ -20,29 +20,10 @@ defined( 'ABSPATH' ) || exit;
 $headline = get_field( 'home_work_headline' ) ?: 'Selected Work';
 $img_dir  = get_template_directory_uri() . '/assets/img/';
 
-// Curated selection — ACF relationship field.
-$acf_cases = get_field( 'home_work_cases' );
-
-if ( ! empty( $acf_cases ) ) {
-    // Build cards from ACF relationship posts.
-    $cards = [];
-    foreach ( $acf_cases as $case ) {
-        $cs_id     = $case->ID;
-        $svc_terms = get_the_terms( $cs_id, 'service_type' );
-        $svc_label = ( ! is_wp_error( $svc_terms ) && ! empty( $svc_terms ) )
-                     ? $svc_terms[0]->name : '';
-        $cards[] = [
-            'category' => $svc_label,
-            'title'    => get_the_title( $cs_id ),
-            'desc'     => get_field( 'cs_summary', $cs_id ) ?: '',
-            'url'      => get_permalink( $cs_id ),
-            'logo'     => get_the_post_thumbnail_url( $cs_id, 'medium' ) ?: '',
-            'logo_alt' => '',
-        ];
-    }
-} else {
-    // Hardcoded fallback matching approved comp.
-    $cards = [
+// Hardcoded cards matching approved comp.
+// ACF relationship (home_work_cases) can override when populated with
+// full artwork — for now, always use the approved reference set.
+$cards = [
         [
             'category' => 'Brand Strategy',
             'title'    => 'Teddy William',
@@ -76,7 +57,6 @@ if ( ! empty( $acf_cases ) ) {
             'logo_alt' => $img_dir . 'tastemakers_white.png',
         ],
     ];
-}
 
 if ( empty( $cards ) ) {
     return;

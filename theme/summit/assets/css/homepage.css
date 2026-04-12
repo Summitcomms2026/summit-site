@@ -549,8 +549,9 @@
 
 .sw-card__category {
   font-family: var(--font-text);
-  font-size: var(--text-small);
-  color: rgba(250, 250, 248, 0.5);
+  font-size: var(--text-micro);
+  color: rgba(250, 250, 248, 0.4);
+  letter-spacing: var(--tracking-wide);
   margin-bottom: auto;
   opacity: 0;
   transition: opacity var(--duration-base) var(--ease-out);
@@ -604,17 +605,18 @@
 
 .sw-card__title {
   font-family: var(--font-sans);
-  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
-  font-weight: 600;
+  font-size: clamp(0.85rem, 1vw, 1rem);
+  font-weight: 500;
+  color: var(--colour-paper);
   letter-spacing: 0;
   line-height: var(--leading-snug);
-  margin: 0 0 var(--space-3) 0;
+  margin: 0 0 var(--space-2) 0;
 }
 
 .sw-card__desc {
   font-family: var(--font-text);
-  font-size: var(--text-small);
-  color: rgba(250, 250, 248, 0.55);
+  font-size: var(--text-micro);
+  color: rgba(250, 250, 248, 0.4);
   line-height: var(--leading-body);
   margin: 0;
 }

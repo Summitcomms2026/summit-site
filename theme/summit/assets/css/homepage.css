@@ -565,13 +565,10 @@
 /* ── Logo (centred in card) ────────────────────────────────────────── */
 
 .sw-card__logo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 55%;
   max-width: 180px;
-  margin: 0;
+  max-height: 140px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -607,7 +604,7 @@
 
 .sw-card__title {
   font-family: var(--font-sans);
-  font-size: clamp(0.8rem, 0.9vw, 0.9375rem);
+  font-size: clamp(0.85rem, 1vw, 1rem);
   font-weight: 500;
   color: var(--colour-paper);
   letter-spacing: 0;
@@ -617,7 +614,7 @@
 
 .sw-card__desc {
   font-family: var(--font-text);
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   color: rgba(250, 250, 248, 0.4);
   line-height: 1.4;
   margin: 0;

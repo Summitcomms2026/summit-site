@@ -668,7 +668,7 @@
 
 .tastemakers-feature {
   padding-block: clamp(64px, 5.5vw, 100px);
-  background: var(--colour-paper);
+  background: var(--colour-paper) url('../img/tastemakers-background.jpg') center / cover no-repeat;
 }
 
 .tastemakers-feature > .container {
@@ -765,12 +765,12 @@
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
   color: var(--colour-ink-40);
-  margin: 0 0 var(--space-2) 0;
+  margin: 0 0 var(--space-1) 0;
 }
 
 .tm__logo-mark {
-  margin: 0 0 var(--space-2) 0;
-  max-width: 240px;
+  margin: 0 0 var(--space-1) 0;
+  max-width: 220px;
 }
 
 .tm__logo-mark img {
@@ -783,7 +783,7 @@
   font-size: var(--text-micro);
   font-weight: 500;
   color: var(--colour-ink);
-  margin: 0 0 var(--space-5) 0;
+  margin: 0 0 var(--space-4) 0;
 }
 
 .tm__show-actions {
@@ -876,6 +876,53 @@
 .tm__platform img {
   width: 18px;
   height: 18px;
+}
+
+/* More dropdown — Pushkin-style */
+.tm__platform-more {
+  position: relative;
+}
+
+.tm__platform-more-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.tm__more-dropdown {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #917a3c;
+  padding: var(--space-3);
+  min-width: 140px;
+  z-index: 10;
+}
+
+.tm__platform-more:hover .tm__more-dropdown,
+.tm__platform-more:focus-within .tm__more-dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.tm__more-dropdown a {
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--colour-paper);
+  padding: 4px 0;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.tm__more-dropdown a:hover {
+  opacity: 0.7;
 }
 
 /* ── Right: Season content ─────────────────────────────────────────── */

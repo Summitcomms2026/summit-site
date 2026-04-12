@@ -78,7 +78,7 @@ $acf_body = get_field( 'home_tastemakers_body' );
                     <div class="tm__show-meta">
                         <p class="tm__host">Gregory Gray</p>
                         <figure class="tm__logo-mark" aria-hidden="true">
-                            <img src="<?php echo esc_url( $img_dir . 'tastemakers.png' ); ?>"
+                            <img src="<?php echo esc_url( $img_dir . 'tm.png' ); ?>"
                                  alt="Tastemakers" loading="lazy">
                         </figure>
                         <p class="tm__tagline">A show on rewriting luxury for modern times</p>
@@ -125,10 +125,18 @@ $acf_body = get_field( 'home_tastemakers_body' );
                             <img src="<?php echo esc_url( $img_dir . 'icon_iheartradio.svg' ); ?>" alt="" width="18" height="18">
                             <span>iHeart</span>
                         </a>
-                        <a href="#" rel="noopener" class="tm__platform">
-                            <img src="<?php echo esc_url( $img_dir . 'icon_more-dots.svg' ); ?>" alt="" width="18" height="18">
-                            <span>More</span>
-                        </a>
+                        <div class="tm__platform-more">
+                            <button type="button" class="tm__platform tm__platform-more-btn">
+                                <img src="<?php echo esc_url( $img_dir . 'icon_more-dots.svg' ); ?>" alt="" width="18" height="18">
+                                <span>More</span>
+                            </button>
+                            <div class="tm__more-dropdown">
+                                <a href="#">RSS</a>
+                                <a href="https://music.amazon.com/">Amazon Music</a>
+                                <a href="https://www.iheart.com/">iHeart</a>
+                                <a href="https://www.youtube.com/">YouTube</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

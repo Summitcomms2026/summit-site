@@ -661,133 +661,259 @@
 
 
 /* ══════════════════════════════════════════════════════════════════════
-   05. TASTEMAKERS — Panel: 1920x864
+   05. TASTEMAKERS — Two-column show feature
+   Left: show branding + artwork + CTA + platforms
+   Right: season label + title + thesis
    ══════════════════════════════════════════════════════════════════════ */
 
 .tastemakers-feature {
-  padding-block: clamp(64px, 7vw, 108px);
+  padding-block: clamp(64px, 5.5vw, 100px);
+  background: var(--colour-paper);
 }
 
 .tastemakers-feature > .container {
-  padding-inline: var(--hp-edge);
+  max-width: calc(100% - 100px);
+  padding-inline: 0;
 }
 
-.tastemakers-feature__layout {
+/* ── Layout ────────────────────────────────────────────────────────── */
+
+.tm__layout {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-10);
+  gap: var(--space-12);
   align-items: start;
 }
 
-@media (min-width: 768px) {
-  .tastemakers-feature__layout {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-12);
+@media (min-width: 960px) {
+  .tm__layout {
+    grid-template-columns: 42% 1fr;
+    gap: clamp(48px, 5vw, 96px);
   }
 }
 
-.tastemakers-feature__artwork {
-  overflow: hidden;
-  aspect-ratio: 1;
-  max-width: 277px;
-  background-color: var(--colour-ink-05);
+/* ── Left: Show branding ───────────────────────────────────────────── */
+
+.tm__podcast-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 1.6vw, 1.5rem);
+  font-weight: 400;
+  color: var(--colour-ink);
+  margin-bottom: clamp(32px, 4vw, 64px);
 }
 
-.tastemakers-feature__artwork img {
+.tm__podcast-label svg {
+  width: 20px;
+  height: 20px;
+  opacity: 0.5;
+}
+
+.tm__show-info {
+  display: flex;
+  gap: var(--space-6);
+  align-items: flex-start;
+  margin-bottom: clamp(24px, 3vw, 48px);
+}
+
+.tm__artwork {
+  flex-shrink: 0;
+  width: clamp(160px, 14vw, 240px);
+  aspect-ratio: 1;
+  overflow: hidden;
+  margin: 0;
+}
+
+.tm__artwork img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.tastemakers-feature__eyebrow {
+.tm__show-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: clamp(160px, 14vw, 240px);
+}
+
+.tm__host {
   font-family: var(--font-text);
   font-size: var(--text-micro);
   font-weight: 500;
-  letter-spacing: var(--tracking-wider);
+  letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  color: var(--colour-ink-60);
-  margin-bottom: var(--space-3);
+  color: var(--colour-ink-40);
+  margin: 0 0 var(--space-2) 0;
 }
 
-.tastemakers-feature__title {
-  font-size: var(--text-display-l);
+.tm__show-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 400;
+  letter-spacing: var(--tracking-tight);
+  line-height: 1;
+  color: var(--colour-ink);
+  margin: 0 0 var(--space-2) 0;
+}
+
+.tm__tagline {
+  font-family: var(--font-text);
+  font-size: var(--text-small);
+  color: var(--colour-ink-60);
+  margin: 0 0 var(--space-5) 0;
+}
+
+.tm__show-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+/* View Episodes — gold treatment */
+.tm__btn-episodes {
+  background: #8B7355;
+  color: var(--colour-paper) !important;
+  border-color: #8B7355;
+  border-radius: var(--radius-md);
+  min-height: 38px;
+  padding: 9px 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+}
+
+.tm__btn-episodes:hover {
+  background: #6E5A43;
+  border-color: #6E5A43;
+}
+
+.tm__social {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.tm__social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  text-decoration: none;
+  opacity: 0.4;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.tm__social a:hover {
+  opacity: 0.8;
+}
+
+.tm__social img {
+  width: 20px;
+  height: 20px;
+}
+
+/* ── Platform strip ────────────────────────────────────────────────── */
+
+.tm__platforms-label {
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  color: var(--colour-ink-40);
+  margin: 0 0 var(--space-4) 0;
+}
+
+.tm__platforms-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(16px, 2vw, 32px);
+}
+
+.tm__platform {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  text-decoration: none;
+  color: var(--colour-ink);
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.tm__platform:hover {
+  opacity: 1;
+}
+
+.tm__platform img {
+  width: 18px;
+  height: 18px;
+}
+
+/* ── Right: Season content ─────────────────────────────────────────── */
+
+.tm__season {
+  position: relative;
+}
+
+.tm__btn-season {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: var(--radius-md);
+  min-height: 38px;
+  padding: 9px 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+}
+
+.tm__season-label {
+  font-family: var(--font-text);
+  font-size: var(--text-small);
+  font-weight: 600;
+  font-style: italic;
+  color: var(--colour-ink);
+  margin: 0 0 var(--space-2) 0;
+}
+
+.tm__season-title {
+  font-family: var(--font-sans);
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
   font-weight: 400;
   letter-spacing: var(--tracking-tight);
   line-height: var(--leading-tight);
   color: var(--colour-ink);
-  margin-bottom: var(--space-2);
+  margin: 0 0 var(--space-8) 0;
 }
 
-.tastemakers-feature__subtitle {
-  font-family: var(--font-text);
-  font-size: var(--text-body);
-  font-style: italic;
-  color: var(--colour-ink-60);
-  margin-bottom: var(--space-6);
-}
-
-.tastemakers-feature__theme {
-  font-family: var(--font-text);
-  font-size: var(--text-small);
-  color: var(--colour-ink-40);
-  margin-bottom: var(--space-6);
-}
-
-.tastemakers-feature__body {
+.tm__thesis {
   font-family: var(--font-text);
   font-size: var(--text-small);
   color: var(--colour-ink-60);
   line-height: var(--leading-body);
-  margin-bottom: var(--space-6);
 }
 
-.tastemakers-feature__platforms {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  margin-bottom: var(--space-6);
+.tm__thesis p {
+  margin: 0 0 var(--space-5) 0;
 }
 
-.tastemakers-feature__platform-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  color: var(--colour-ink-40);
-  text-decoration: none;
-  transition: color var(--duration-fast) var(--ease-out);
+.tm__thesis p:last-child {
+  margin-bottom: 0;
 }
 
-.tastemakers-feature__platform-icon:hover { color: var(--colour-ink); }
-.tastemakers-feature__platform-icon svg { width: 22px; height: 22px; }
-
-.tastemakers-feature__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+.tm__thesis-intro {
+  font-weight: 700;
+  color: var(--colour-ink);
 }
-
-.tastemakers-feature__social {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  margin-top: var(--space-6);
-}
-
-.tastemakers-feature__social-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  color: var(--colour-ink-40);
-  text-decoration: none;
-  transition: color var(--duration-fast) var(--ease-out);
-}
-
-.tastemakers-feature__social-icon:hover { color: var(--colour-ink); }
-.tastemakers-feature__social-icon svg { width: 16px; height: 16px; }
 
 
 /* ══════════════════════════════════════════════════════════════════════

@@ -51,15 +51,22 @@ $acf_body = get_field( 'home_tastemakers_body' );
 <section class="tastemakers-feature" aria-labelledby="tastemakers-heading">
     <div class="container container--wide">
 
+        <!-- ── Top row: heading left, Season One button right ──── -->
+        <header class="tm__header" data-reveal="fade">
+            <h2 class="tm__heading">
+                Tastemakers Podcast
+                <svg class="tm__headphones" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3v5zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3v5z"/></svg>
+            </h2>
+            <a href="<?php echo esc_url( $season_url ); ?>"
+               class="btn btn--secondary tm__btn-season" data-reveal data-reveal-delay="1">
+                Season One
+            </a>
+        </header>
+
         <div class="tm__layout">
 
             <!-- ── Left: Show branding ──────────────────────────────── -->
             <div class="tm__show">
-
-                <p class="tm__podcast-label" data-reveal="fade">
-                    Tastemakers Podcast
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3zM9 20.5V22h6v-1.5h-2.25v-2.07A7.003 7.003 0 0019 11.5h-1.5a5.5 5.5 0 01-11 0H5a7.003 7.003 0 006.25 6.93V20.5H9z"/></svg>
-                </p>
 
                 <div class="tm__show-info" data-reveal="fade" data-reveal-delay="1">
 
@@ -70,7 +77,10 @@ $acf_body = get_field( 'home_tastemakers_body' );
 
                     <div class="tm__show-meta">
                         <p class="tm__host">Gregory Gray</p>
-                        <h2 class="tm__show-title" id="tastemakers-heading">Tastemakers</h2>
+                        <figure class="tm__logo-mark" aria-hidden="true">
+                            <img src="<?php echo esc_url( $img_dir . 'tastemakers.png' ); ?>"
+                                 alt="Tastemakers" loading="lazy">
+                        </figure>
                         <p class="tm__tagline">A show on rewriting luxury for modern times</p>
 
                         <div class="tm__show-actions">
@@ -127,14 +137,9 @@ $acf_body = get_field( 'home_tastemakers_body' );
             <!-- ── Right: Season content ────────────────────────────── -->
             <div class="tm__season" data-reveal="fade" data-reveal-delay="1">
 
-                <a href="<?php echo esc_url( $season_url ); ?>"
-                   class="btn btn--secondary tm__btn-season">
-                    <?php echo esc_html( $season_label ); ?>
-                </a>
+                <p class="tm__season-label">Season One</p>
 
-                <p class="tm__season-label"><?php echo esc_html( $season_label ); ?></p>
-
-                <h3 class="tm__season-title"><?php echo esc_html( $season_title ); ?></h3>
+                <h3 class="tm__season-title">The New Value Equation</h3>
 
                 <?php if ( $acf_body ) : ?>
                     <div class="tm__thesis">

@@ -535,9 +535,9 @@
 /* Hover: card expands from centre via negative margin */
 @media (min-width: 768px) {
   .sw-card:hover {
-    height: 574px;
-    margin-top: calc((574px - 100%) / -2);
-    margin-bottom: calc((574px - 100%) / -2);
+    height: 440px;
+    margin-top: calc((440px - 100%) / -2);
+    margin-bottom: calc((440px - 100%) / -2);
     justify-content: flex-start;
     align-items: flex-start;
   }
@@ -640,8 +640,8 @@
 
 .sw-card__arrow {
   position: absolute;
-  bottom: var(--space-5);
-  right: var(--space-5);
+  bottom: var(--space-4);
+  right: var(--space-4);
   font-size: 1rem;
   color: var(--colour-paper);
   opacity: 0;

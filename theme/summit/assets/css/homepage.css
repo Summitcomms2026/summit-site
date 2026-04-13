@@ -1267,24 +1267,24 @@
 .home-article__card-overlay {
   position: relative;
   z-index: 2;
-  padding: clamp(16px, 1.4vw, 24px);
-  border: 1px solid rgba(250, 250, 248, 0.15);
-  margin: auto clamp(12px, 1.2vw, 20px) clamp(12px, 1.2vw, 20px);
+  padding: clamp(18px, 1.6vw, 28px);
+  border: 1px solid rgba(250, 250, 248, 0.18);
+  margin: auto clamp(14px, 1.3vw, 22px) clamp(14px, 1.3vw, 22px);
 }
 
 .home-article__card-overlay .home-article__card-title {
   font-family: var(--font-sans);
-  font-size: clamp(1rem, 1.35vw, 1.3rem);
+  font-size: clamp(1.15rem, 1.55vw, 1.5rem);
   font-weight: 400;
   letter-spacing: var(--tracking-tight);
   line-height: var(--leading-snug);
   color: var(--colour-paper);
-  margin: 0 0 var(--space-4) 0;
+  margin: 0 0 clamp(20px, 2vw, 36px) 0;
 }
 
 .home-article__card-meta {
   display: flex;
-  gap: var(--space-3);
+  gap: var(--space-4);
   font-family: var(--font-text);
   font-size: var(--text-micro);
   color: rgba(250, 250, 248, 0.55);
@@ -1325,7 +1325,7 @@
 
 .home-article__card-excerpt-panel .home-article__card-title {
   font-family: var(--font-sans);
-  font-size: clamp(1rem, 1.35vw, 1.3rem);
+  font-size: clamp(1.15rem, 1.55vw, 1.5rem);
   font-weight: 400;
   letter-spacing: var(--tracking-tight);
   line-height: var(--leading-snug);
@@ -1394,6 +1394,11 @@
 .home-article__nav {
   display: flex;
   gap: var(--space-3);
+}
+
+/* Hide prev arrow by default (start-of-rail); JS shows it on scroll */
+.home-article__arrow--prev {
+  display: none;
 }
 
 .home-article__arrow {

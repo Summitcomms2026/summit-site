@@ -317,8 +317,12 @@ $section_headline = get_field( 'home_article_headline' ) ?: 'The Future of Luxur
         }
     }, { passive: true });
 
-    /* ── Initial state ────────────────────────────────────────────── */
-    updateControls();
+    /* ── Initial state — defer to ensure layout is painted ────────── */
+    requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+            updateControls();
+        });
+    });
 
     // Re-sync on resize
     window.addEventListener('resize', function () {

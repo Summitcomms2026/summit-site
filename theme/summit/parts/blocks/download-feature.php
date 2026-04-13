@@ -45,44 +45,33 @@ if ( empty( $download ) ) {
 
 $dl_id           = $download->ID;
 $section_headline = get_field( 'home_download_headline' ) ?: 'The Characteristics of Luxury';
-$section_body     = get_field( 'home_download_body' );
+$section_body     = get_field( 'home_download_body' )
+    ?: 'Designed for senior managers, this visual conversation demonstrates the principles that define enduring luxury brands and how they can be applied as a business strategy.';
 $dl_title         = get_the_title( $dl_id );
-$dl_excerpt       = has_excerpt( $dl_id ) ? get_the_excerpt( $dl_id ) : '';
 ?>
 
-<section class="download-feature section--tinted section--padded" aria-labelledby="download-heading">
-    <div class="container container--medium">
+<section class="download-feature section--tinted" aria-labelledby="download-heading">
+    <div class="container container--wide">
 
         <div class="download-feature__layout">
 
-            <figure class="download-feature__cover" aria-hidden="true" data-reveal="fade">
-                <?php if ( has_post_thumbnail( $dl_id ) ) :
-                    echo get_the_post_thumbnail( $dl_id, 'medium_large' );
-                else : ?>
+            <figure class="download-feature__cover" aria-hidden="true" data-reveal>
                 <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/characteristics-mainimage.jpg' ); ?>"
                      alt="" width="916" height="498" loading="lazy">
-                <?php endif; ?>
             </figure>
 
-            <div class="download-feature__content">
+            <div class="download-feature__content" data-reveal data-reveal-delay="1">
 
-                <h2 class="download-feature__headline" id="download-heading" data-reveal>
-                    <?php echo esc_html( $section_headline ); ?>
+                <h2 class="download-feature__headline" id="download-heading">
+                    The Characteristics <em>of Luxury</em>
                 </h2>
 
-                <?php if ( $section_body ) : ?>
-                <div class="download-feature__body" data-reveal data-reveal-delay="1">
-                    <?php echo wp_kses_post( wpautop( $section_body ) ); ?>
-                </div>
-                <?php elseif ( $dl_excerpt ) : ?>
-                <p class="download-feature__body" data-reveal data-reveal-delay="1">
-                    <?php echo esc_html( $dl_excerpt ); ?>
+                <p class="download-feature__body">
+                    <?php echo esc_html( $section_body ); ?>
                 </p>
-                <?php endif; ?>
 
                 <a href="<?php echo esc_url( get_permalink( $dl_id ) ); ?>"
-                   class="btn btn--primary"
-                   data-reveal data-reveal-delay="2">
+                   class="btn download-feature__cta">
                     Download Your Copy
                 </a>
 

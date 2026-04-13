@@ -1099,8 +1099,9 @@
 
 
 /* ══════════════════════════════════════════════════════════════════════
-   07. FUTURE OF LUXURY — 3-up text-on-image overlay cards
-   Panel: 1920x1226. Portrait 3:4 cards.
+   07. FUTURE OF LUXURY — Editorial article rail
+   Panel: 1920x1226. Portrait 3:4 cards, horizontal scroll.
+   Progress bar + directional arrows. One card may use excerpt variant.
    ══════════════════════════════════════════════════════════════════════ */
 
 .home-article {
@@ -1109,19 +1110,29 @@
 }
 
 .home-article > .container {
-  padding-inline: var(--hp-edge);
+  max-width: calc(100% - 100px);
+  padding-inline: 0;
 }
+
+/* ── Top row: heading/subline left, button right ──────────────────── */
 
 .home-article__header {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: var(--space-4) var(--space-8);
-  margin-bottom: clamp(32px, 3vw, 56px);
+  margin-bottom: clamp(36px, 3.5vw, 64px);
+}
+
+.home-article__header-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
 }
 
 .home-article__section-headline {
+  font-family: var(--font-sans);
   font-size: clamp(1.4rem, 2.2vw, 2rem);
   font-weight: 400;
   letter-spacing: var(--tracking-tight);
@@ -1133,11 +1144,41 @@
   font-family: var(--font-text);
   font-size: var(--text-small);
   color: var(--colour-ink-60);
+  line-height: var(--leading-body);
   max-width: 48ch;
   margin: 0;
 }
 
-.home-article__grid {
+/* ── All Articles button — pill outline ───────────────────────────── */
+
+.home-article__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 28px;
+  font-family: var(--font-sans);
+  font-size: var(--text-small);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  color: var(--colour-ink);
+  border: 1px solid var(--colour-ink);
+  border-radius: 999px;
+  background: transparent;
+  transition:
+    background-color var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out);
+}
+
+.home-article__cta:hover {
+  background-color: var(--colour-ink);
+  color: var(--colour-paper);
+}
+
+/* ── Rail container ───────────────────────────────────────────────── */
+
+.home-article__rail {
   display: flex;
   gap: 24px;
   overflow-x: auto;
@@ -1146,16 +1187,17 @@
   -webkit-overflow-scrolling: touch;
 }
 
-.home-article__grid::-webkit-scrollbar {
+.home-article__rail::-webkit-scrollbar {
   display: none;
 }
+
+/* ── Card base ────────────────────────────────────────────────────── */
 
 .home-article__card {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: var(--space-6);
   text-decoration: none;
   color: var(--colour-paper);
   overflow: hidden;
@@ -1173,14 +1215,18 @@
   }
 }
 
+/* ── Collective hover dim ─────────────────────────────────────────── */
+
 @media (min-width: 768px) {
-  .home-article__grid:hover .home-article__card {
+  .home-article__rail:hover .home-article__card {
     opacity: 0.5;
   }
-  .home-article__grid:hover .home-article__card:hover {
+  .home-article__rail:hover .home-article__card:hover {
     opacity: 1;
   }
 }
+
+/* ── Card media (background image) ────────────────────────────────── */
 
 .home-article__card-media {
   position: absolute;
@@ -1200,6 +1246,8 @@
   transform: scale(1.04);
 }
 
+/* ── Gradient overlay for image cards ─────────────────────────────── */
+
 .home-article__card::after {
   content: '';
   position: absolute;
@@ -1207,41 +1255,31 @@
   background: linear-gradient(
     to top,
     rgba(26, 26, 24, 0.85) 0%,
-    rgba(26, 26, 24, 0.3) 50%,
+    rgba(26, 26, 24, 0.30) 50%,
     transparent 100%
   );
   z-index: 1;
+  pointer-events: none;
 }
 
-.home-article__card-cat,
-.home-article__card-title,
-.home-article__card-standfirst,
-.home-article__card-meta {
+/* ── Overlay caption (image-led cards) ────────────────────────────── */
+
+.home-article__card-overlay {
   position: relative;
   z-index: 2;
+  padding: var(--space-6);
+  border: 1px solid rgba(250, 250, 248, 0.15);
+  margin: auto var(--space-4) var(--space-4) var(--space-4);
 }
 
-.home-article__card-cat {
-  font-family: var(--font-text);
-  font-size: var(--text-micro);
-  font-weight: 500;
-  letter-spacing: var(--tracking-wider);
-  text-transform: uppercase;
-  color: rgba(250, 250, 248, 0.6);
-  margin-bottom: var(--space-2);
-}
-
-.home-article__card-title {
+.home-article__card-overlay .home-article__card-title {
+  font-family: var(--font-sans);
   font-size: clamp(1.1rem, 1.5vw, 1.4rem);
   font-weight: 400;
   letter-spacing: var(--tracking-tight);
   line-height: var(--leading-snug);
-  margin-bottom: var(--space-2);
   color: var(--colour-paper);
-}
-
-.home-article__card-standfirst {
-  display: none;
+  margin: 0 0 var(--space-3) 0;
 }
 
 .home-article__card-meta {
@@ -1249,15 +1287,113 @@
   gap: var(--space-3);
   font-family: var(--font-text);
   font-size: var(--text-micro);
-  color: rgba(250, 250, 248, 0.45);
-  margin-top: var(--space-2);
+  color: rgba(250, 250, 248, 0.55);
 }
+
+.home-article__card-cat {
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+}
+
+/* ── Excerpt variant (white panel card) ───────────────────────────── */
+
+.home-article__card--excerpt::after {
+  display: none;
+}
+
+.home-article__card--excerpt {
+  justify-content: stretch;
+}
+
+.home-article__card--excerpt .home-article__card-media {
+  position: relative;
+  inset: auto;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.home-article__card-excerpt-panel {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  background: var(--colour-paper-pure);
+  color: var(--colour-ink);
+  padding: var(--space-6);
+  flex: 0 0 auto;
+}
+
+.home-article__card-excerpt-panel .home-article__card-title {
+  font-family: var(--font-sans);
+  font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+  font-weight: 400;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-snug);
+  color: var(--colour-ink);
+  margin: 0 0 var(--space-3) 0;
+}
+
+.home-article__card-standfirst {
+  font-family: var(--font-text);
+  font-size: var(--text-small);
+  color: var(--colour-ink-60);
+  line-height: var(--leading-body);
+  margin: 0;
+}
+
+.home-article__card-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+  margin-top: var(--space-4);
+  width: 36px;
+  height: 36px;
+  background: var(--colour-ink);
+  color: var(--colour-paper);
+  border-radius: 2px;
+}
+
+/* ── Bottom row: progress bar left, arrows right ──────────────────── */
+
+.home-article__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: clamp(24px, 2.5vw, 40px);
+}
+
+/* ── Progress bar ─────────────────────────────────────────────────── */
+
+.home-article__progress {
+  flex: 0 0 33%;
+  max-width: 400px;
+}
+
+.home-article__progress-track {
+  position: relative;
+  height: 2px;
+  background: var(--colour-ink-10);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.home-article__progress-thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--colour-ink);
+  border-radius: 1px;
+  will-change: transform, width;
+  transition: transform 180ms var(--ease-out), width 180ms var(--ease-out);
+}
+
+/* ── Directional arrows ───────────────────────────────────────────── */
 
 .home-article__nav {
   display: flex;
-  justify-content: flex-end;
   gap: var(--space-3);
-  margin-top: var(--space-6);
 }
 
 .home-article__arrow {
@@ -1267,12 +1403,15 @@
   width: 48px;
   height: 48px;
   border: 1px solid var(--colour-ink-10);
-  border-radius: 4px;
+  border-radius: 0;
   background: none;
   color: var(--colour-ink);
   cursor: pointer;
-  transition: background-color var(--duration-fast) var(--ease-out),
-              border-color var(--duration-fast) var(--ease-out);
+  padding: 0;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
 }
 
 .home-article__arrow:hover {

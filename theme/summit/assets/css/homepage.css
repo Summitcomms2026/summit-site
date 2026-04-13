@@ -1023,16 +1023,15 @@
 
 .download-feature__cover {
   background: var(--colour-ink);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: clamp(24px, 3vw, 48px);
+  overflow: hidden;
   margin: 0;
+  padding: 0;
 }
 
 .download-feature__cover img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 
@@ -1043,13 +1042,13 @@
   flex-direction: column;
   background: var(--colour-ink);
   color: var(--colour-paper);
-  padding: clamp(32px, 3.5vw, 56px);
+  padding: clamp(20px, 2vw, 28px);
 }
 
 .download-feature__headline {
   font-family: var(--font-sans);
-  font-size: clamp(1.2rem, 1.6vw, 1.5rem);
-  font-weight: 700;
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  font-weight: 600;
   font-style: normal;
   letter-spacing: var(--tracking-tight);
   line-height: var(--leading-tight);

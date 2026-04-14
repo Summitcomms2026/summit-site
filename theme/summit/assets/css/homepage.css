@@ -1403,22 +1403,18 @@
   justify-content: center;
   width: 48px;
   height: 48px;
-  border: 1px solid var(--colour-ink-10);
+  border: none;
   border-radius: 0;
   background: none;
   color: var(--colour-ink);
   cursor: pointer;
   padding: 0;
   transition:
-    background-color var(--duration-fast) var(--ease-out),
-    border-color var(--duration-fast) var(--ease-out),
-    color var(--duration-fast) var(--ease-out);
+    opacity var(--duration-fast) var(--ease-out);
 }
 
 .home-article__arrow:hover {
-  background-color: var(--colour-ink);
-  color: var(--colour-paper);
-  border-color: var(--colour-ink);
+  opacity: 0.5;
 }
 
 

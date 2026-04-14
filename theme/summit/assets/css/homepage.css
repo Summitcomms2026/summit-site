@@ -1148,32 +1148,35 @@
   margin: var(--space-1) 0 0 0;
 }
 
-/* ── All Articles button — pill outline ───────────────────────────── */
+/* ── All Articles button — matches page-wide outline button system ─ */
 
 .home-article__cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 44px;
-  padding: 0 24px;
-  font-family: var(--font-sans);
-  font-size: var(--text-small);
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  text-decoration: none;
+  background: transparent;
   color: var(--colour-ink);
   border: 1px solid var(--colour-ink);
-  border-radius: 999px;
-  background: transparent;
+  border-radius: var(--radius-md);
+  min-height: 38px;
+  padding: 9px 20px;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+  text-decoration: none;
   white-space: nowrap;
   transition:
-    background-color var(--duration-base) var(--ease-out),
-    color var(--duration-base) var(--ease-out);
+    background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
 }
 
 .home-article__cta:hover {
-  background-color: var(--colour-ink);
+  background: var(--colour-ink);
   color: var(--colour-paper);
+  border-color: var(--colour-ink);
 }
 
 /* ── Rail container ───────────────────────────────────────────────── */
@@ -1201,7 +1204,7 @@
   text-decoration: none;
   color: var(--colour-paper);
   overflow: hidden;
-  aspect-ratio: 10 / 13;
+  aspect-ratio: 4 / 5;
   background-color: var(--colour-ink);
   transition: opacity var(--duration-base) var(--ease-out);
   flex: 0 0 100%;

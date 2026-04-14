@@ -168,11 +168,9 @@ $section_headline = get_field( 'home_article_headline' ) ?: 'The Future of Luxur
                     $has_image  = has_post_thumbnail( $art_id );
                     $image_html = $has_image ? get_the_post_thumbnail( $art_id, 'large' ) : '';
 
-                    // Determine variant: if standfirst exists and position is 3rd (index 2), use excerpt
+                    // All live-feed cards use the overlay treatment.
+                    // Excerpt variant is only used by placeholder/curated data.
                     $variant = 'overlay';
-                    if ( $standfirst && $ai === 2 ) {
-                        $variant = 'excerpt';
-                    }
                 }
 
                 // Truncate title for display

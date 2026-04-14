@@ -1862,31 +1862,31 @@
 
 .cta-footer--image .cta-footer__body {
   font-family: var(--font-serif);
-  font-style: italic;
+  font-style: normal;
   font-size: clamp(1.6rem, 2.8vw, 2.6rem);
   font-weight: 400;
   line-height: 1.45;
-  max-width: 22ch;
+  max-width: 30ch;
   margin-inline: auto;
   color: rgba(250, 250, 248, 0.7);
   margin-top: var(--space-6);
   margin-bottom: var(--space-10);
 }
 
-/* ── CTA button — outline white ───────────────────────────────────── */
+/* ── CTA button — outline white, page-wide system ─────────────────── */
 
 .cta-footer--image .cta-footer__btn {
   background: transparent;
   color: var(--colour-paper);
   border: 1px solid rgba(250, 250, 248, 0.4);
   border-radius: var(--radius-md);
-  min-height: 48px;
-  padding: 0 28px;
+  min-height: 38px;
+  padding: 9px 20px;
   font-family: var(--font-sans);
-  font-size: var(--text-small);
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  text-transform: none;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
 }
 
 .cta-footer--image .cta-footer__btn:hover {

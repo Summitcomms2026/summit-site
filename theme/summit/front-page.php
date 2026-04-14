@@ -103,18 +103,31 @@ the_post(); // consume the front-page post for ACF context
                             </div>
                         </div>
                         <p class="home-subscribe__consent">By signing up you agree to receive emails from us. To opt out, click unsubscribe in the email footer.</p>
-                        <button type="submit" class="btn btn--primary">Subscribe</button>
+                        <button type="submit" class="btn home-subscribe__btn">Subscribe</button>
                     </form>
                     <?php endif; ?>
                 </div>
 
                 <div class="home-subscribe__info-col">
+                    <h3 class="home-subscribe__info-heading">The Future of Luxury</h3>
                     <p class="home-subscribe__pub-intro"><strong>The Future of Luxury</strong> is a renowned digital platform for serious readers of luxury business, culture and wealth, published by Summit Communication Group.</p>
                     <ul class="home-subscribe__pub-details">
-                        <li><strong>History:</strong> More than 120+ long-form articles and analyses published to date.</li>
-                        <li><strong>Audience:</strong> Written for an international readership of over 2,400 CEOs, senior executives, private bankers and affluent decision-makers.</li>
-                        <li><strong>Distribution:</strong> Published 44 times a year, with each edition released to subscribers first.</li>
-                        <li><strong>Content Focus:</strong> Features business intelligence, cultural commentary, interviews and market insight from influential voices across luxury and art.</li>
+                        <li>
+                            <strong>History</strong>
+                            <span>More than 120+ long-form articles and analyses published to date.</span>
+                        </li>
+                        <li>
+                            <strong>Audience</strong>
+                            <span>Written for an international readership of over 2,400 CEOs, senior executives, private bankers and affluent decision-makers.</span>
+                        </li>
+                        <li>
+                            <strong>Distribution</strong>
+                            <span>Published 44 times a year, with each edition released to subscribers first.</span>
+                        </li>
+                        <li>
+                            <strong>Content Focus</strong>
+                            <span>Features business intelligence, cultural commentary, interviews and market insight from influential voices across luxury and art.</span>
+                        </li>
                     </ul>
                 </div>
 

@@ -6,15 +6,14 @@
  * Horizontal scrolling editorial rail showing article cards.
  * Design reference: panel7 — 1920x1226.
  *
+ * Card states:
+ *   Default — image + gradient + overlay frame (title, category, read time)
+ *   Hover   — white panel rises from bottom (title, standfirst, arrow)
+ *
  * Data strategy (3-tier fallback):
  *   1. ACF home_article_items relationship field (curated)
  *   2. WP_Query for latest articles
  *   3. Hardcoded placeholders matching approved comp
- *
- * ACF fields (from front page):
- *   home_article_headline text         optional
- *   home_article_items    relationship  optional — article
- *   home_article_item     post_object   optional — legacy
  *
  * @package SummitTheme
  */
@@ -25,7 +24,6 @@ defined( 'ABSPATH' ) || exit;
 
 $articles = get_field( 'home_article_items' );
 
-// Legacy fallback — single post_object.
 if ( empty( $articles ) ) {
     $single = get_field( 'home_article_item' );
     if ( $single ) {
@@ -33,7 +31,6 @@ if ( empty( $articles ) ) {
     }
 }
 
-// Auto fallback — 9 most recent articles.
 if ( empty( $articles ) ) {
     $article_q = new WP_Query( [
         'post_type'      => 'article',
@@ -46,74 +43,17 @@ if ( empty( $articles ) ) {
     wp_reset_postdata();
 }
 
-// Determine data source: live vs placeholder.
 $using_placeholders = false;
 
 if ( empty( $articles ) ) {
     $using_placeholders = true;
-
-    // Hardcoded placeholders matching approved comp screenshots.
     $articles = [
-        (object) [
-            'ID'        => 0,
-            'title'     => 'The Luxurification of Sport: Why Luxury\u{2019}s Biggest Bet Is on the Stadium',
-            'category'  => 'Sport, Sponsorship & Status',
-            'read_time' => 16,
-            'excerpt'   => '',
-            'image'     => '',
-            'variant'   => 'overlay',
-            'url'       => '#',
-        ],
-        (object) [
-            'ID'        => 0,
-            'title'     => 'The Creative Director Is Dead. Long Live the Creative Director.',
-            'category'  => 'Brand & Positioning',
-            'read_time' => 14,
-            'excerpt'   => '',
-            'image'     => '',
-            'variant'   => 'overlay',
-            'url'       => '#',
-        ],
-        (object) [
-            'ID'        => 0,
-            'title'     => 'BRABUS: How Black, Bold Engineering Became a Luxury Brand',
-            'category'  => '',
-            'read_time' => 0,
-            'excerpt'   => "Let\u{2019}s explore what BRABUS GmbH calls it the 1-Second-Wow Effect.",
-            'image'     => '',
-            'variant'   => 'excerpt',
-            'url'       => '#',
-        ],
-        (object) [
-            'ID'        => 0,
-            'title'     => 'Gen Z won\u{2019}t buy your myth: Why luxury must earn belief, not inheritance',
-            'category'  => 'The New Luxury Customer',
-            'read_time' => 0,
-            'excerpt'   => '',
-            'image'     => '',
-            'variant'   => 'overlay',
-            'url'       => '#',
-        ],
-        (object) [
-            'ID'        => 0,
-            'title'     => 'Hospitality Is Eating Luxury: Why Hotels Are the New Brand Platform',
-            'category'  => 'Hospitality & Travel',
-            'read_time' => 8,
-            'excerpt'   => '',
-            'image'     => '',
-            'variant'   => 'overlay',
-            'url'       => '#',
-        ],
-        (object) [
-            'ID'        => 0,
-            'title'     => 'Ralph Lauren: The Art of Atmosphere, Memory and American Desire',
-            'category'  => 'Brand & Positioning',
-            'read_time' => 6,
-            'excerpt'   => '',
-            'image'     => '',
-            'variant'   => 'overlay',
-            'url'       => '#',
-        ],
+        (object) [ 'ID' => 0, 'title' => "The Luxurification of Sport: Why Luxury\u{2019}s Biggest Bet Is on the Stadium", 'category' => 'Sport, Sponsorship & Status', 'read_time' => 16, 'standfirst' => 'How Formula 1, football and the Olympics became luxury\u{2019}s most coveted stages.', 'url' => '#' ],
+        (object) [ 'ID' => 0, 'title' => 'The Creative Director Is Dead. Long Live the Creative Director.', 'category' => 'Brand & Positioning', 'read_time' => 14, 'standfirst' => 'The role has changed forever. Here\u{2019}s what replaced it.', 'url' => '#' ],
+        (object) [ 'ID' => 0, 'title' => 'BRABUS: How Black, Bold Engineering Became a Luxury Brand', 'category' => 'Automotive & Aviation', 'read_time' => 12, 'standfirst' => "Let\u{2019}s explore what BRABUS GmbH calls it the 1-Second-Wow Effect.", 'url' => '#' ],
+        (object) [ 'ID' => 0, 'title' => "Gen Z won\u{2019}t buy your myth: Why luxury must earn belief, not inheritance", 'category' => 'The New Luxury Customer', 'read_time' => 10, 'standfirst' => 'The generation that sees through heritage theatre and demands substance.', 'url' => '#' ],
+        (object) [ 'ID' => 0, 'title' => 'Hospitality Is Eating Luxury: Why Hotels Are the New Brand Platform', 'category' => 'Hospitality & Travel', 'read_time' => 8, 'standfirst' => 'From LVMH to Prada, luxury\u{2019}s biggest players are checking in.', 'url' => '#' ],
+        (object) [ 'ID' => 0, 'title' => 'Ralph Lauren: The Art of Atmosphere, Memory and American Desire', 'category' => 'Brand & Positioning', 'read_time' => 6, 'standfirst' => 'How one man built an empire not on clothes, but on a feeling.', 'url' => '#' ],
     ];
 }
 
@@ -123,7 +63,6 @@ $section_headline = get_field( 'home_article_headline' ) ?: 'The Future of Luxur
 <section class="home-article section--padded" aria-labelledby="home-article-heading">
     <div class="container container--wide">
 
-        <!-- ── Top row: heading + subline / All Articles button ──────── -->
         <header class="home-article__header" data-reveal>
             <div class="home-article__header-text">
                 <h2 class="home-article__section-headline" id="home-article-heading">
@@ -139,7 +78,6 @@ $section_headline = get_field( 'home_article_headline' ) ?: 'The Future of Luxur
             </a>
         </header>
 
-        <!-- ── Rail: horizontal scroll container ────────────────────── -->
         <div class="home-article__rail" data-reveal="fade" data-reveal-delay="1">
             <?php
             foreach ( $articles as $ai => $art_post ) :
@@ -148,8 +86,7 @@ $section_headline = get_field( 'home_article_headline' ) ?: 'The Future of Luxur
                     $art_title  = $art_post->title;
                     $cat_label  = $art_post->category;
                     $read_time  = $art_post->read_time;
-                    $standfirst = $art_post->excerpt;
-                    $variant    = $art_post->variant;
+                    $standfirst = $art_post->standfirst;
                     $art_url    = $art_post->url;
                     $has_image  = false;
                     $image_html = '';
@@ -167,19 +104,18 @@ $section_headline = get_field( 'home_article_headline' ) ?: 'The Future of Luxur
                     $art_url    = get_permalink( $art_id );
                     $has_image  = has_post_thumbnail( $art_id );
                     $image_html = $has_image ? get_the_post_thumbnail( $art_id, 'large' ) : '';
-
-                    // All live-feed cards use the overlay treatment.
-                    // Excerpt variant is only used by placeholder/curated data.
-                    $variant = 'overlay';
                 }
 
-                // Truncate title for display
                 $display_title = mb_strlen( $art_title ) > 40
                     ? mb_substr( $art_title, 0, 37 ) . "\u{2026}"
                     : $art_title;
+
+                $hover_excerpt = $standfirst
+                    ? wp_trim_words( $standfirst, 18, "\u{2026}" )
+                    : '';
             ?>
             <a href="<?php echo esc_url( $art_url ); ?>"
-               class="home-article__card<?php echo $variant === 'excerpt' ? ' home-article__card--excerpt' : ''; ?>"
+               class="home-article__card"
                aria-label="<?php echo esc_attr( 'Read: ' . $art_title ); ?>">
 
                 <figure class="home-article__card-media" aria-hidden="true">
@@ -188,19 +124,7 @@ $section_headline = get_field( 'home_article_headline' ) ?: 'The Future of Luxur
                     <?php endif; ?>
                 </figure>
 
-                <?php if ( $variant === 'excerpt' ) : ?>
-                <!-- White excerpt panel -->
-                <div class="home-article__card-excerpt-panel">
-                    <h3 class="home-article__card-title"><?php echo esc_html( $display_title ); ?></h3>
-                    <?php if ( $standfirst ) : ?>
-                    <p class="home-article__card-standfirst"><?php echo esc_html( wp_trim_words( $standfirst, 20, "\u{2026}" ) ); ?></p>
-                    <?php endif; ?>
-                    <span class="home-article__card-arrow" aria-hidden="true">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </span>
-                </div>
-                <?php else : ?>
-                <!-- Image overlay caption -->
+                <!-- Default state: overlay caption -->
                 <div class="home-article__card-overlay">
                     <h3 class="home-article__card-title"><?php echo esc_html( $display_title ); ?></h3>
                     <div class="home-article__card-meta">
@@ -212,13 +136,22 @@ $section_headline = get_field( 'home_article_headline' ) ?: 'The Future of Luxur
                         <?php endif; ?>
                     </div>
                 </div>
-                <?php endif; ?>
+
+                <!-- Hover state: white excerpt panel -->
+                <div class="home-article__card-hover">
+                    <h3 class="home-article__card-hover-title"><?php echo esc_html( $display_title ); ?></h3>
+                    <?php if ( $hover_excerpt ) : ?>
+                    <p class="home-article__card-hover-excerpt"><?php echo esc_html( $hover_excerpt ); ?></p>
+                    <?php endif; ?>
+                    <span class="home-article__card-hover-arrow" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                </div>
 
             </a>
             <?php endforeach; ?>
         </div>
 
-        <!-- ── Bottom row: progress bar / arrows ────────────────────── -->
         <footer class="home-article__footer">
             <div class="home-article__progress">
                 <div class="home-article__progress-track">
@@ -239,10 +172,6 @@ $section_headline = get_field( 'home_article_headline' ) ?: 'The Future of Luxur
 </section>
 
 <script>
-/**
- * Article Rail — scroll, progress bar, arrow state management.
- * Vanilla JS, no dependencies. Matches scroll-animate.js conventions.
- */
 (function () {
     'use strict';
 
@@ -255,7 +184,6 @@ $section_headline = get_field( 'home_article_headline' ) ?: 'The Future of Luxur
 
     var smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    /* ── Scroll amount: one card width + gap ──────────────────────── */
     function getScrollStep() {
         var card = rail.querySelector('.home-article__card');
         if (!card) return rail.clientWidth;
@@ -264,20 +192,13 @@ $section_headline = get_field( 'home_article_headline' ) ?: 'The Future of Luxur
         return card.offsetWidth + gap;
     }
 
-    /* ── Arrow visibility ─────────────────────────────────────────── */
     function updateControls() {
         var scrollLeft = rail.scrollLeft;
         var maxScroll  = rail.scrollWidth - rail.clientWidth;
 
-        // Arrow states
-        if (prev) {
-            prev.style.display = scrollLeft <= 2 ? 'none' : '';
-        }
-        if (next) {
-            next.style.display = scrollLeft >= maxScroll - 2 ? 'none' : '';
-        }
+        if (prev) prev.style.display = scrollLeft <= 2 ? 'none' : '';
+        if (next) next.style.display = scrollLeft >= maxScroll - 2 ? 'none' : '';
 
-        // Progress thumb
         if (thumb && maxScroll > 0) {
             var ratio    = rail.clientWidth / rail.scrollWidth;
             var position = scrollLeft / maxScroll;
@@ -285,47 +206,30 @@ $section_headline = get_field( 'home_article_headline' ) ?: 'The Future of Luxur
             var trackW   = trackEl ? trackEl.offsetWidth : 0;
             var thumbW   = Math.max(trackW * ratio, 40);
             var thumbX   = (trackW - thumbW) * position;
-
             thumb.style.width     = thumbW + 'px';
             thumb.style.transform = 'translateX(' + thumbX + 'px)';
         }
     }
 
-    /* ── Arrow click handlers ─────────────────────────────────────── */
-    if (prev) {
-        prev.addEventListener('click', function () {
-            rail.scrollBy({ left: -getScrollStep(), behavior: smooth ? 'smooth' : 'auto' });
-        });
-    }
-    if (next) {
-        next.addEventListener('click', function () {
-            rail.scrollBy({ left: getScrollStep(), behavior: smooth ? 'smooth' : 'auto' });
-        });
-    }
+    if (prev) prev.addEventListener('click', function () {
+        rail.scrollBy({ left: -getScrollStep(), behavior: smooth ? 'smooth' : 'auto' });
+    });
+    if (next) next.addEventListener('click', function () {
+        rail.scrollBy({ left: getScrollStep(), behavior: smooth ? 'smooth' : 'auto' });
+    });
 
-    /* ── Sync on scroll ───────────────────────────────────────────── */
     var ticking = false;
     rail.addEventListener('scroll', function () {
         if (!ticking) {
-            requestAnimationFrame(function () {
-                updateControls();
-                ticking = false;
-            });
+            requestAnimationFrame(function () { updateControls(); ticking = false; });
             ticking = true;
         }
     }, { passive: true });
 
-    /* ── Initial state — defer to ensure layout is painted ────────── */
     requestAnimationFrame(function () {
-        requestAnimationFrame(function () {
-            updateControls();
-        });
+        requestAnimationFrame(function () { updateControls(); });
     });
 
-    // Re-sync on resize
-    window.addEventListener('resize', function () {
-        updateControls();
-    }, { passive: true });
-
+    window.addEventListener('resize', function () { updateControls(); }, { passive: true });
 })();
 </script>

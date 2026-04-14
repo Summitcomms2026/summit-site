@@ -69,14 +69,14 @@ the_post(); // consume the front-page post for ACF context
             <div class="home-subscribe__layout">
 
                 <div class="home-subscribe__form-col">
-                    <h2 class="home-subscribe__heading" id="home-subscribe-heading">Subscribe for Early Access</h2>
-                    <p class="home-subscribe__sub">A subscriber-first publication covering the ideas, industries and individuals shaping the future of luxury.</p>
+                    <h2 class="home-subscribe__heading" id="home-subscribe-heading" data-reveal>Subscribe for Early Access</h2>
+                    <p class="home-subscribe__sub" data-reveal data-reveal-delay="1">A subscriber-first publication covering the ideas, industries and individuals shaping the future of luxury.</p>
 
                     <?php if ( shortcode_exists( 'summit_subscribe_form' ) ) :
                         echo do_shortcode( '[summit_subscribe_form]' );
                     else : ?>
                     <form class="home-subscribe__form" action="#" method="post" aria-label="Newsletter sign-up">
-                        <div class="home-subscribe__fields">
+                        <div class="home-subscribe__fields" data-reveal data-reveal-delay="2">
                             <div class="home-subscribe__field">
                                 <label for="sub-fname">First Name *</label>
                                 <input type="text" id="sub-fname" name="first_name" required autocomplete="given-name">
@@ -102,29 +102,29 @@ the_post(); // consume the front-page post for ACF context
                                 <input type="text" id="sub-position" name="position" autocomplete="organization-title">
                             </div>
                         </div>
-                        <p class="home-subscribe__consent">By signing up you agree to receive emails from us. To opt out, click unsubscribe in the email footer.</p>
-                        <button type="submit" class="btn home-subscribe__btn">Subscribe</button>
+                        <p class="home-subscribe__consent" data-reveal data-reveal-delay="3">By signing up you agree to receive emails from us. To opt out, click unsubscribe in the email footer.</p>
+                        <button type="submit" class="btn home-subscribe__btn" data-reveal data-reveal-delay="3">Subscribe</button>
                     </form>
                     <?php endif; ?>
                 </div>
 
                 <div class="home-subscribe__info-col">
-                    <h3 class="home-subscribe__info-heading">The Future of Luxury</h3>
-                    <p class="home-subscribe__pub-intro"><strong>The Future of Luxury</strong> is a renowned digital platform for serious readers of luxury business, culture and wealth, published by Summit Communication Group.</p>
+                    <h3 class="home-subscribe__info-heading" data-reveal>The Future of Luxury</h3>
+                    <p class="home-subscribe__pub-intro" data-reveal data-reveal-delay="1"><strong>The Future of Luxury</strong> is a renowned digital platform for serious readers of luxury business, culture and wealth, published by Summit Communication Group.</p>
                     <ul class="home-subscribe__pub-details">
-                        <li>
+                        <li data-reveal data-reveal-delay="2">
                             <strong>History</strong>
                             <span>More than 120+ long-form articles and analyses published to date.</span>
                         </li>
-                        <li>
+                        <li data-reveal data-reveal-delay="3">
                             <strong>Audience</strong>
                             <span>Written for an international readership of over 2,400 CEOs, senior executives, private bankers and affluent decision-makers.</span>
                         </li>
-                        <li>
+                        <li data-reveal data-reveal-delay="4">
                             <strong>Distribution</strong>
                             <span>Published 44 times a year, with each edition released to subscribers first.</span>
                         </li>
-                        <li>
+                        <li data-reveal data-reveal-delay="5">
                             <strong>Content Focus</strong>
                             <span>Features business intelligence, cultural commentary, interviews and market insight from influential voices across luxury and art.</span>
                         </li>

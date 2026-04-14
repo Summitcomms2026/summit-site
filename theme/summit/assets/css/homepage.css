@@ -1623,36 +1623,38 @@
 
 
 /* ══════════════════════════════════════════════════════════════════════
-   09. WORLD OF LUXURY — Light card tiles
-   Panel: 1920x1037
-   Header at y=117. Cards start y=297.
-   3 rows x 4 cols. Card height ~190px. Gap ~30px.
+   09. WORLD OF LUXURY — Sector grid
+   Panel: 1920x1037. 4×3 grid tiles with hover reveal.
    ══════════════════════════════════════════════════════════════════════ */
 
 .sectors-grid-section {
-  padding-top: clamp(64px, 6.1vw, 117px);
+  padding-top: clamp(64px, 5.6vw, 108px);
   padding-bottom: clamp(64px, 5.7vw, 110px);
 }
 
 .sectors-grid-section > .container {
-  padding-inline: var(--hp-edge);
+  max-width: calc(100% - 100px);
+  padding-inline: 0;
 }
+
+/* ── Top row ──────────────────────────────────────────────────────── */
 
 .sectors-grid-section__header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: var(--space-6);
-  margin-bottom: clamp(48px, 6.6vw, 127px);
+  margin-bottom: clamp(40px, 4.5vw, 80px);
 }
 
 .sectors-grid-section__header-text {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: var(--space-2);
 }
 
 .sectors-grid-section__headline {
+  font-family: var(--font-sans);
   font-size: clamp(1.4rem, 2.2vw, 2rem);
   font-weight: 400;
   letter-spacing: var(--tracking-tight);
@@ -1665,13 +1667,42 @@
   font-size: var(--text-small);
   color: var(--colour-ink-60);
   line-height: var(--leading-body);
-  max-width: 50ch;
-  margin: 0;
+  margin: var(--space-1) 0 0 0;
 }
+
+/* ── Get In Touch — outline button, page-wide system ──────────────── */
 
 .sectors-grid-section__cta {
   flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--colour-ink);
+  border: 1px solid var(--colour-ink);
+  border-radius: var(--radius-md);
+  min-height: 38px;
+  padding: 9px 20px;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
 }
+
+.sectors-grid-section__cta:hover {
+  background: var(--colour-ink);
+  color: var(--colour-paper);
+  border-color: var(--colour-ink);
+}
+
+/* ── Grid ─────────────────────────────────────────────────────────── */
 
 .sectors-grid {
   display: grid;
@@ -1693,7 +1724,10 @@
   }
 }
 
+/* ── Default tile ─────────────────────────────────────────────────── */
+
 .sectors-grid__item {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1701,43 +1735,62 @@
   text-align: center;
   min-height: clamp(120px, 9.9vw, 190px);
   padding: var(--space-6) var(--space-4);
-  background: rgba(0, 0, 0, 0.05);
-  border-radius: var(--radius-sm);
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 0;
   font-family: var(--font-text);
   font-size: var(--text-small);
   font-weight: 400;
   color: var(--colour-ink-60);
   border: none;
-  transition: opacity var(--duration-base) var(--ease-out),
-              background-color var(--duration-base) var(--ease-out);
+  transition:
+    opacity 350ms var(--ease-out),
+    background-color 350ms var(--ease-out);
 }
 
 .sectors-grid__item-title {
-  font-weight: 500;
-  color: var(--colour-ink);
+  font-family: var(--font-text);
+  font-size: var(--text-small);
+  font-weight: 600;
+  color: #666666;
+  transition: color 350ms var(--ease-out);
 }
+
+/* ── Hover: desc reveal ───────────────────────────────────────────── */
 
 .sectors-grid__item-desc {
   display: block;
+  font-family: var(--font-text);
   font-size: var(--text-micro);
-  color: var(--colour-ink-60);
-  line-height: var(--leading-body);
+  color: #666666;
+  line-height: 1.5;
   margin-top: var(--space-2);
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: max-height var(--duration-base) var(--ease-out),
-              opacity var(--duration-base) var(--ease-out);
+  transition:
+    max-height 350ms var(--ease-out),
+    opacity 350ms var(--ease-out);
 }
+
+/* ── Active tile state (desktop) ──────────────────────────────────── */
 
 @media (min-width: 768px) {
   .sectors-grid:hover .sectors-grid__item {
     opacity: 0.4;
   }
+
   .sectors-grid:hover .sectors-grid__item:hover {
     opacity: 1;
-    background: #fff;
+    background: var(--colour-paper-pure);
+    /* Inset border frame: ~20px inside tile edge */
+    box-shadow: inset 0 0 0 20px var(--colour-paper-pure),
+                inset 0 0 0 21px rgba(0, 0, 0, 0.08);
   }
+
+  .sectors-grid__item:hover .sectors-grid__item-title {
+    color: #1a1a1a;
+  }
+
   .sectors-grid__item:hover .sectors-grid__item-desc {
     max-height: 120px;
     opacity: 1;

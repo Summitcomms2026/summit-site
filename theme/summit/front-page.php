@@ -137,8 +137,8 @@ the_post(); // consume the front-page post for ACF context
 
     <!-- ── 9. World of Luxury / Sectors Grid ──────────────────────────────── -->
     <?php
-    $sectors_headline = get_field( 'home_sectors_headline' ) ?: 'The Luxury Economy';
-    $sectors_body     = get_field( 'home_sectors_body' );
+    $sectors_headline = get_field( 'home_sectors_headline' ) ?: 'The World of Luxury';
+    $sectors_body     = get_field( 'home_sectors_body' ) ?: 'Our global talent network spans the divisions shaping the modern luxury economy.';
 
     $sectors = [
         [ 'Fashion & Leather Goods', 'Codes, desire and distinction shaped for brands that must endure.' ],
@@ -163,14 +163,12 @@ the_post(); // consume the front-page post for ACF context
                     <h2 class="sectors-grid-section__headline" id="sectors-heading" data-reveal="fade">
                         <?php echo esc_html( $sectors_headline ); ?>
                     </h2>
-                    <?php if ( $sectors_body ) : ?>
                     <p class="sectors-grid-section__body" data-reveal="fade" data-reveal-delay="1">
                         <?php echo wp_strip_all_tags( $sectors_body ); ?>
                     </p>
-                    <?php endif; ?>
                 </div>
                 <a href="<?php echo esc_url( home_url( '/design-tomorrow/' ) ); ?>"
-                   class="btn btn--primary sectors-grid-section__cta" data-reveal="fade" data-reveal-delay="1">
+                   class="sectors-grid-section__cta" data-reveal="fade" data-reveal-delay="1">
                     Get In Touch
                 </a>
             </header>

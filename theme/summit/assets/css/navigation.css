@@ -972,6 +972,7 @@
     font-weight: 600;
     letter-spacing: 0.04em;
     text-transform: capitalize;
+    text-decoration: none;
 }
 
 .site-footer .site-footer__cta:hover {

@@ -889,7 +889,7 @@
 }
 
 .site-footer__brand .site-logo__svg {
-    height: 20px;
+    height: 28px;
 }
 
 .site-footer__social {
@@ -960,15 +960,24 @@
     white-space: nowrap;
 }
 
-.site-footer .btn--primary {
+.site-footer .site-footer__cta {
+    background: transparent;
+    color: var(--colour-paper);
+    border: 1px solid rgba(250, 250, 248, 0.4);
+    border-radius: var(--radius-md);
+    min-height: 38px;
+    padding: 9px 20px;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: capitalize;
+}
+
+.site-footer .site-footer__cta:hover {
     background: var(--colour-paper);
     color: var(--colour-ink);
     border-color: var(--colour-paper);
-}
-
-.site-footer .btn--primary:hover {
-    background: rgba(250, 250, 248, 0.85);
-    border-color: rgba(250, 250, 248, 0.85);
 }
 
 .site-footer__podcast-link {

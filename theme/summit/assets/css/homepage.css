@@ -1862,10 +1862,35 @@
 
 .cta-footer--image .cta-footer__body {
   font-family: var(--font-serif);
-  font-style: normal;
-  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
-  line-height: 1.55;
-  max-width: 42ch;
+  font-style: italic;
+  font-size: clamp(1.6rem, 2.8vw, 2.6rem);
+  font-weight: 400;
+  line-height: 1.45;
+  max-width: 22ch;
   margin-inline: auto;
-  color: rgba(250, 250, 248, 0.65);
+  color: rgba(250, 250, 248, 0.7);
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-10);
+}
+
+/* ── CTA button — outline white ───────────────────────────────────── */
+
+.cta-footer--image .cta-footer__btn {
+  background: transparent;
+  color: var(--colour-paper);
+  border: 1px solid rgba(250, 250, 248, 0.4);
+  border-radius: var(--radius-md);
+  min-height: 48px;
+  padding: 0 28px;
+  font-family: var(--font-sans);
+  font-size: var(--text-small);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.cta-footer--image .cta-footer__btn:hover {
+  background: var(--colour-paper);
+  color: var(--colour-ink);
+  border-color: var(--colour-paper);
 }

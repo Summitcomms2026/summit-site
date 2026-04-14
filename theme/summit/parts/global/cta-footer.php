@@ -42,7 +42,7 @@ $image_style = $image ? " style=\"--cta-bg: url('" . esc_url( $image ) . "');\""
             </p>
             <?php endif; ?>
 
-            <a href="<?php echo esc_url( $url ); ?>" class="btn btn--primary" data-reveal="fade" data-reveal-delay="2">
+            <a href="<?php echo esc_url( $url ); ?>" class="btn cta-footer__btn" data-reveal="fade" data-reveal-delay="2">
                 <?php echo esc_html( $label ); ?>
             </a>
 

@@ -55,11 +55,12 @@ $menu_articles = summit_get_menu_articles();
                     aria-controls="mega-menu"
                     aria-expanded="false"
                     aria-label="Open navigation menu">
-                <span class="site-nav__menu-label" aria-hidden="true">Menu</span>
                 <span class="site-nav__menu-icon" aria-hidden="true">
                     <span></span>
                     <span></span>
+                    <span></span>
                 </span>
+                <span class="site-nav__menu-label" aria-hidden="true">Menu</span>
             </button>
 
             <!-- Brand / wordmark (centre) -->

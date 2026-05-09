@@ -549,7 +549,7 @@
        if the Pro family ever fails to load. */
     font-family: "neue-haas-grotesk-display-pr", var(--font-sans);
     font-size: clamp(1.66rem, 2.6vw, 2.66rem);
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.15;
     letter-spacing: 0;
     color: var(--colour-paper);

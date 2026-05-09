@@ -582,7 +582,7 @@
 .mega-menu__secondary-list {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 21px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -590,7 +590,7 @@
 
 .mega-menu__secondary-link {
     display: block;
-    font-size: clamp(1.66rem, 2.07vw, 1.94rem);
+    font-size: clamp(1.38rem, 1.73vw, 1.62rem);
     font-weight: 500;
     line-height: 1.16;
     letter-spacing: 0.01em;
@@ -607,10 +607,10 @@
 
 .mega-menu__secondary-icon {
     display: inline-block;
-    width: 29px;
-    height: 29px;
-    vertical-align: -4px;
-    margin-left: 14px;
+    width: 24px;
+    height: 24px;
+    vertical-align: -3px;
+    margin-left: 12px;
     fill: none;
     stroke: currentColor;
     stroke-width: 1.5;

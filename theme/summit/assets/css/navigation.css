@@ -546,7 +546,7 @@
     display: inline-block;
     font-family: var(--font-sans);
     font-size: clamp(1.66rem, 2.6vw, 2.66rem);
-    font-weight: 500;
+    font-weight: 700;
     line-height: 1.15;
     letter-spacing: 0;
     color: var(--colour-paper);

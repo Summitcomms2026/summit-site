@@ -105,9 +105,11 @@
     border: 0;
     background: none;
     cursor: pointer;
-    font-family: var(--font-sans);
+    /* -pr (Pro) variant carries weight 500 not present in the
+       standard neue-haas-grotesk-display kit. */
+    font-family: "neue-haas-grotesk-display-pr", var(--font-sans);
     font-size: 0.84rem;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.25;
     letter-spacing: 0.01em;
     text-transform: none;
@@ -206,8 +208,10 @@
     min-height: 38px;
     padding: 9px 20px;
     border-radius: var(--radius-md);
+    /* -pr (Pro) variant for true medium weight. */
+    font-family: "neue-haas-grotesk-display-pr", var(--font-sans);
     font-size: 0.84rem;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.25;
     letter-spacing: 0.01em;
     text-transform: none;
@@ -536,7 +540,7 @@
 .mega-menu__primary-list {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 14px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -550,7 +554,7 @@
        standard neue-haas-grotesk-display kit. Falls back to var(--font-sans)
        if the Pro family ever fails to load. */
     font-family: "neue-haas-grotesk-display-pr", var(--font-sans);
-    font-size: clamp(1.66rem, 2.6vw, 2.66rem);
+    font-size: clamp(1.25rem, 1.95vw, 2.0rem);
     font-weight: 500;
     line-height: 1.15;
     letter-spacing: 0;

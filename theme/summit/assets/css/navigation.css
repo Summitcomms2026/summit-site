@@ -567,7 +567,7 @@
        standard neue-haas-grotesk-display kit. Falls back to var(--font-sans)
        if the Pro family ever fails to load. */
     font-family: "neue-haas-grotesk-display-pr", var(--font-sans);
-    font-size: clamp(1.44rem, 2.24vw, 2.3rem);
+    font-size: 2.3rem;
     font-weight: 500;
     line-height: 1.15;
     letter-spacing: 0;
@@ -609,7 +609,7 @@
 
 .mega-menu__secondary-link {
     display: block;
-    font-size: clamp(1.06rem, 1.32vw, 1.24rem);
+    font-size: 1.24rem;
     font-weight: 500;
     line-height: 1.16;
     letter-spacing: 0.01em;

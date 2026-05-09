@@ -72,11 +72,6 @@
 }
 
 
-.site-nav--hidden {
-    transform: translateY(-100%);
-}
-
-
 .site-header.menu-is-open .site-nav {
     background: var(--colour-ink);
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
@@ -221,8 +216,11 @@
     min-height: 38px;
     padding: 9px 20px;
     border-radius: var(--radius-md);
-    /* -pr (Pro) variant for true medium weight. */
-    font-family: "neue-haas-grotesk-display-pr", var(--font-sans);
+    /* Text family matches the bottom-corner CTAs ("Start a conversation"
+       etc.) which inherit var(--font-text). The Display-Pro variant looks
+       leaner at button sizes; the Text variant has chunkier strokes by
+       design and reads heavier at the same nominal weight. */
+    font-family: var(--font-text);
     font-size: 0.84rem;
     font-weight: 500;
     line-height: 1.25;

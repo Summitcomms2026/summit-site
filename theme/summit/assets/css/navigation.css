@@ -534,7 +534,7 @@
 .mega-menu__primary-list {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 18px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -545,10 +545,10 @@
     position: relative;
     display: inline-block;
     font-family: var(--font-sans);
-    font-size: clamp(1.28rem, 2vw, 2.05rem);
+    font-size: clamp(1.66rem, 2.6vw, 2.66rem);
     font-weight: 500;
-    line-height: 1.04;
-    letter-spacing: -0.045em;
+    line-height: 1.15;
+    letter-spacing: 0;
     color: var(--colour-paper);
     text-decoration: none;
     padding: 0;

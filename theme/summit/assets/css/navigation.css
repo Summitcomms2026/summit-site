@@ -544,9 +544,12 @@
 .mega-menu__primary-link--cta {
     position: relative;
     display: inline-block;
-    font-family: var(--font-sans);
+    /* -pr (Pro) variant carries weights 500/600 not present in the
+       standard neue-haas-grotesk-display kit. Falls back to var(--font-sans)
+       if the Pro family ever fails to load. */
+    font-family: "neue-haas-grotesk-display-pr", var(--font-sans);
     font-size: clamp(1.66rem, 2.6vw, 2.66rem);
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1.15;
     letter-spacing: 0;
     color: var(--colour-paper);

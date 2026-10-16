@@ -681,3 +681,62 @@
     display: none;
   }
 }
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* SUBSCRIBE STATUS                                                       */
+/* The status line shared by subscribe forms that have no status style    */
+/* of their own (inc/subscribe.php). Empty, it takes no space.            */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.summit-subscribe-status {
+  margin-top: var(--space-4);
+  font-family: var(--font-text);
+  font-size: var(--text-small);
+  line-height: 1.5;
+  color: inherit;
+}
+
+.summit-subscribe-status:empty {
+  display: none;
+}
+
+.summit-subscribe-status.is-sent {
+  font-size: var(--text-body-l);
+}
+
+.summit-subscribe-status.is-error {
+  opacity: 0.85;
+}
+
+.summit-subscribe-status:focus {
+  outline: none;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* MISSING-IMAGE FALLBACK                                                 */
+/* An image whose file is not on the server (inc/image-helpers.php):      */
+/* a dark tonal field with a fine compass-star line, filling the frame it */
+/* replaces the image in, so no component's geometry changes.             */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.summit-image-fallback {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  background: linear-gradient(155deg, #2b2b28 0%, #1d1d1b 62%, #1a1a18 100%);
+  box-shadow: inset 0 0 0 1px rgba(250, 250, 248, 0.06);
+}
+
+.summit-image-fallback__mark {
+  width: clamp(14px, 12%, 44px);
+  height: auto;
+  fill: none;
+  stroke: rgba(250, 250, 248, 0.32);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}

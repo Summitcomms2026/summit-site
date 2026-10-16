@@ -1,5 +1,5 @@
 {
-  "description": "Canonical source record for the Solutions section's page content. WordPress is the runtime editor; these files are the recoverable source. Not loaded by WordPress. Block markup in each source file is exactly what the block editor stores in post_content. Entries without a source set page fields only (the one-line summaries the Solutions overview reads).",
+  "description": "Canonical source record for the Solutions section's page content. WordPress is the runtime editor; these files are the recoverable source. Not loaded by WordPress. Block markup in each source file is exactly what the block editor stores in post_content. Entries without a source set page fields only (the one-line summaries the Solutions overview reads). Entry pages without their own content carry template and fields only (eyebrow, standfirst from the summary, or a sector line for industries), so the family template gives them their hero, their lens and the footer.",
   "section": "/solutions",
   "pages": [
     {
@@ -34,108 +34,225 @@
       }
     },
     {
-      "title": "Strategy & Planning",
       "path": "/solutions/strategy-planning",
+      "template": "page-solutions.php",
       "meta": {
-        "summit_summary": "Define the position before deciding how to express it."
+        "summit_summary": "Define the position before deciding how to express it.",
+        "summit_eyebrow": "Solutions / By Function",
+        "summit_tone": "paper",
+        "summit_standfirst": "Define the position before deciding how to express it."
       }
     },
     {
-      "title": "Brand & Marketing",
       "path": "/solutions/brand-marketing",
+      "template": "page-solutions.php",
       "meta": {
-        "summit_summary": "Decide how desire is created, sustained and withheld."
+        "summit_summary": "Decide how desire is created, sustained and withheld.",
+        "summit_eyebrow": "Solutions / By Function",
+        "summit_tone": "paper",
+        "summit_standfirst": "Decide how desire is created, sustained and withheld."
       }
     },
     {
-      "title": "Editorial & Influence",
       "path": "/solutions/editorial-influence",
+      "template": "page-solutions.php",
       "meta": {
-        "summit_summary": "Determine what is worth saying, create something worth reading, and place it before people worth reaching."
+        "summit_summary": "Determine what is worth saying, create something worth reading, and place it before people worth reaching.",
+        "summit_eyebrow": "Solutions / By Function",
+        "summit_tone": "paper",
+        "summit_standfirst": "Determine what is worth saying, create something worth reading, and place it before people worth reaching."
       }
     },
     {
-      "title": "Experience Design",
       "path": "/solutions/experience-design",
+      "template": "page-solutions.php",
       "meta": {
-        "summit_summary": "Give every point of contact the same discipline as the object at its centre."
+        "summit_summary": "Give every point of contact the same discipline as the object at its centre.",
+        "summit_eyebrow": "Solutions / By Function",
+        "summit_tone": "paper",
+        "summit_standfirst": "Give every point of contact the same discipline as the object at its centre."
       }
     },
     {
-      "title": "Digital Commerce",
       "path": "/solutions/digital-commerce",
+      "template": "page-solutions.php",
       "meta": {
-        "summit_summary": "Sell online without abandoning the scarcity, service and presentation that define the house."
+        "summit_summary": "Sell online without abandoning the scarcity, service and presentation that define the house.",
+        "summit_eyebrow": "Solutions / By Function",
+        "summit_tone": "paper",
+        "summit_standfirst": "Sell online without abandoning the scarcity, service and presentation that define the house."
       }
     },
     {
-      "title": "Product, IP & Patrimony",
       "path": "/solutions/product-ip-patrimony",
+      "template": "page-solutions.php",
       "meta": {
-        "summit_summary": "Judge which objects carry the house, and secure what makes them its own."
+        "summit_summary": "Judge which objects carry the house, and secure what makes them its own.",
+        "summit_eyebrow": "Solutions / By Function",
+        "summit_tone": "paper",
+        "summit_standfirst": "Judge which objects carry the house, and secure what makes them its own."
       }
     },
     {
-      "title": "Build a Maison",
       "path": "/solutions/build-a-maison",
+      "template": "page-solutions.php",
       "meta": {
-        "summit_summary": "Create the institutional architecture required to become more than a brand."
+        "summit_summary": "Create the institutional architecture required to become more than a brand.",
+        "summit_eyebrow": "Solutions / By Need",
+        "summit_tone": "paper",
+        "summit_standfirst": "Create the institutional architecture required to become more than a brand."
       }
     },
     {
-      "title": "Reposition a Maison",
       "path": "/solutions/reposition-a-maison",
+      "template": "page-solutions.php",
       "meta": {
-        "summit_summary": "Move the standing of a house without severing what made it."
+        "summit_summary": "Move the standing of a house without severing what made it.",
+        "summit_eyebrow": "Solutions / By Need",
+        "summit_tone": "paper",
+        "summit_standfirst": "Move the standing of a house without severing what made it."
       }
     },
     {
-      "title": "Enhance Desire Without Dilution",
       "path": "/solutions/enhance-desire-without-dilution",
+      "template": "page-solutions.php",
       "meta": {
-        "summit_summary": "Grow demand while protecting the scarcity and meaning that create it."
+        "summit_summary": "Grow demand while protecting the scarcity and meaning that create it.",
+        "summit_eyebrow": "Solutions / By Need",
+        "summit_tone": "paper",
+        "summit_standfirst": "Grow demand while protecting the scarcity and meaning that create it."
       }
     },
     {
-      "title": "Strengthen an Icon",
       "path": "/solutions/strengthen-an-icon",
+      "template": "page-solutions.php",
       "meta": {
-        "summit_summary": "Protect the authority of what the house is known for without allowing repetition to become inertia."
+        "summit_summary": "Protect the authority of what the house is known for without allowing repetition to become inertia.",
+        "summit_eyebrow": "Solutions / By Need",
+        "summit_tone": "paper",
+        "summit_standfirst": "Protect the authority of what the house is known for without allowing repetition to become inertia."
       }
     },
     {
-      "title": "Activate Patrimony & IP",
       "path": "/solutions/activate-patrimony-ip",
+      "template": "page-solutions.php",
       "meta": {
-        "summit_summary": "Turn archive, marks and know-how into living authority rather than heritage theatre."
+        "summit_summary": "Turn archive, marks and know-how into living authority rather than heritage theatre.",
+        "summit_eyebrow": "Solutions / By Need",
+        "summit_tone": "paper",
+        "summit_standfirst": "Turn archive, marks and know-how into living authority rather than heritage theatre."
       }
     },
     {
-      "title": "Transform the Client Experience",
       "path": "/solutions/transform-the-client-experience",
+      "template": "page-solutions.php",
       "meta": {
-        "summit_summary": "Make every encounter with the house worthy of its objects."
+        "summit_summary": "Make every encounter with the house worthy of its objects.",
+        "summit_eyebrow": "Solutions / By Need",
+        "summit_tone": "paper",
+        "summit_standfirst": "Make every encounter with the house worthy of its objects."
       }
     },
     {
-      "title": "Develop Thought Leadership",
       "path": "/solutions/develop-thought-leadership",
+      "template": "page-solutions.php",
       "meta": {
-        "summit_summary": "Earn an authoritative voice in the conversations that shape the category."
+        "summit_summary": "Earn an authoritative voice in the conversations that shape the category.",
+        "summit_eyebrow": "Solutions / By Need",
+        "summit_tone": "paper",
+        "summit_standfirst": "Earn an authoritative voice in the conversations that shape the category."
       }
     },
     {
-      "title": "Applied AI",
       "path": "/solutions/applied-ai",
+      "template": "page-solutions.php",
       "meta": {
-        "summit_summary": "Use intelligent systems where they deepen judgement, not where they cheapen it."
+        "summit_summary": "Use intelligent systems where they deepen judgement, not where they cheapen it.",
+        "summit_eyebrow": "Solutions / By Need",
+        "summit_tone": "paper",
+        "summit_standfirst": "Use intelligent systems where they deepen judgement, not where they cheapen it."
       }
     },
     {
-      "title": "Investment & Acquisitions",
       "path": "/solutions/investment-acquisitions",
+      "template": "page-solutions.php",
       "meta": {
-        "summit_summary": "Bring luxury judgement to decisions about capital, holdings and growth."
+        "summit_summary": "Bring luxury judgement to decisions about capital, holdings and growth.",
+        "summit_eyebrow": "Solutions / By Need",
+        "summit_tone": "paper",
+        "summit_standfirst": "Bring luxury judgement to decisions about capital, holdings and growth."
+      }
+    },
+    {
+      "path": "/solutions/watches-jewellery",
+      "template": "page-solutions.php",
+      "meta": {
+        "summit_standfirst": "Time, craft and provenance: houses whose objects are expected to outlive their owners.",
+        "summit_eyebrow": "Solutions / By Industry",
+        "summit_tone": "paper"
+      }
+    },
+    {
+      "path": "/solutions/fashion-accessories",
+      "template": "page-solutions.php",
+      "meta": {
+        "summit_standfirst": "Seasonal pressure against lasting codes: keeping a house recognisable while it keeps moving.",
+        "summit_eyebrow": "Solutions / By Industry",
+        "summit_tone": "paper"
+      }
+    },
+    {
+      "path": "/solutions/beauty-fragrance",
+      "template": "page-solutions.php",
+      "meta": {
+        "summit_standfirst": "Scale without dilution: authority in categories built on reach.",
+        "summit_eyebrow": "Solutions / By Industry",
+        "summit_tone": "paper"
+      }
+    },
+    {
+      "path": "/solutions/wine-spirits",
+      "template": "page-solutions.php",
+      "meta": {
+        "summit_standfirst": "Place, vintage and allocation: scarcity that nature sets and houses must govern.",
+        "summit_eyebrow": "Solutions / By Industry",
+        "summit_tone": "paper"
+      }
+    },
+    {
+      "path": "/solutions/automotive",
+      "template": "page-solutions.php",
+      "meta": {
+        "summit_standfirst": "Engineering, heritage and desire: marques judged on the road, in the archive and at auction.",
+        "summit_eyebrow": "Solutions / By Industry",
+        "summit_tone": "paper"
+      }
+    },
+    {
+      "path": "/solutions/real-estate-hospitality",
+      "template": "page-solutions.php",
+      "meta": {
+        "summit_standfirst": "Places and encounters: luxury experienced as setting, service and time.",
+        "summit_eyebrow": "Solutions / By Industry",
+        "summit_tone": "paper"
+      }
+    },
+    {
+      "path": "/solutions/art-collectibles",
+      "template": "page-solutions.php",
+      "meta": {
+        "summit_standfirst": "Provenance, market and meaning: where price and cultural standing are easily confused.",
+        "summit_eyebrow": "Solutions / By Industry",
+        "summit_tone": "paper"
+      }
+    },
+    {
+      "path": "/solutions/private-banking-wealth-management",
+      "template": "page-solutions.php",
+      "meta": {
+        "summit_standfirst": "Trust, discretion and continuity: institutions judged by their clients as a house is judged.",
+        "summit_eyebrow": "Solutions / By Industry",
+        "summit_tone": "paper"
       }
     }
   ]

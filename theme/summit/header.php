@@ -111,7 +111,7 @@ $nav_cta = summit_nav( 'cta' );
         </p>
 
         <div class="sticky-bottom-bar__actions">
-            <a href="<?php echo esc_url( home_url( '/design-tomorrow' ) ); ?>"
+            <a href="<?php echo esc_url( summit_nav_url( summit_nav( 'cta' ) ) ); ?>"
                class="sticky-bottom-bar__cta">
                 Start a conversation
             </a>

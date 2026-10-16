@@ -2,50 +2,65 @@
 /**
  * 404 Template
  *
- * Branded error page with clear recovery paths.
+ * The internal page shell's hero on a dark field, then the way back into
+ * the site: the primary sections and Let's Talk, from the navigation
+ * config, so the recovery paths always match the architecture.
  *
  * @package SummitTheme
  */
 
 defined( 'ABSPATH' ) || exit;
 
+add_action( 'wp_enqueue_scripts', static function () {
+    wp_enqueue_style( 'summit-page-shell', get_template_directory_uri() . '/assets/css/page-shell.css', [ 'summit-navigation' ], wp_get_theme()->get( 'Version' ) );
+} );
+
+add_filter( 'body_class', static function ( array $classes ): array {
+    $classes[] = 'summit-shell';
+    $classes[] = 'summit-shell--dark';
+    return $classes;
+} );
+
+$nav_cta  = summit_nav( 'cta' );
+$sections = summit_nav( 'primary' ) ?: [];
+
 get_header();
 ?>
 
-<main id="main" class="site-main" role="main">
+<main id="main" class="site-main site-main--shell" role="main">
 
-    <section class="error-404 section--dark section--padded" aria-labelledby="error-404-heading">
+    <?php get_template_part( 'parts/global/page-hero', null, [
+        'eyebrow'    => [ __( 'Not found', 'summit' ) ],
+        'title'      => __( 'This page is not here.', 'summit' ),
+        'standfirst' => __( 'It may have moved as the site has grown. The way back in is below.', 'summit' ),
+        'tone'       => 'dark',
+        'actions'    => [
+            [ 'type' => 'cta', 'label' => __( 'Return home', 'summit' ), 'url' => home_url( '/' ) ],
+            [ 'type' => 'utility', 'mode' => 'link', 'icon' => false, 'label' => $nav_cta['label'] ?? '', 'url' => summit_nav_url( $nav_cta ), 'class' => 'action--contextual' ],
+        ],
+    ] ); ?>
+
+    <nav class="shell-index" aria-label="<?php esc_attr_e( 'The site', 'summit' ); ?>">
         <div class="container container--medium">
-            <div class="error-404__inner text-center">
-
-                <p class="error-404__eyebrow eyebrow">404</p>
-
-                <h1 class="error-404__heading" id="error-404-heading">
-                    Page not found
-                </h1>
-
-                <p class="error-404__body">
-                    The page you requested does not exist or has been moved.
-                </p>
-
-                <nav class="error-404__nav" aria-label="<?php esc_attr_e( 'Recovery links', 'summit' ); ?>">
-                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="btn btn--primary">
-                        Return Home
-                    </a>
-                    <a href="<?php echo esc_url( home_url( '/what-we-do/' ) ); ?>" class="btn btn--secondary">
-                        What We Do
-                    </a>
-                    <a href="<?php echo esc_url( get_post_type_archive_link( 'case_study' ) ); ?>" class="btn btn--secondary">
-                        Work Showcase
-                    </a>
-                    <a href="<?php echo esc_url( home_url( '/design-tomorrow/' ) ); ?>" class="btn btn--secondary">
-                        Design Tomorrow
-                    </a>
-                </nav>
-
+            <p class="shell-index__heading"><span><?php esc_html_e( 'The site', 'summit' ); ?></span></p>
+            <div class="shell-index__groups">
+                <div class="shell-index__group">
+                    <ul class="shell-index__list" role="list">
+                        <?php foreach ( $sections as $section ) : ?>
+                        <li>
+                            <a class="shell-index__link" href="<?php echo esc_url( summit_nav_url( $section ) ); ?>">
+                                <span class="shell-index__label"><?php echo esc_html( $section['label'] ); ?></span>
+                                <span class="shell-index__arrow" aria-hidden="true">&rarr;</span>
+                            </a>
+                        </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
             </div>
         </div>
-    </section>
+    </nav>
+
+    <?php get_template_part( 'parts/global/cta-footer' ); ?>
 
 </main>
 

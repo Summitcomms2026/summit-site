@@ -2,14 +2,18 @@
 /**
  * Enquiry Form Handler
  *
- * Processes submissions from Summit's enquiry forms (Design Tomorrow, The
- * Observatory's private briefing request, and The Future of Luxury's
- * subscribe form). Creates an enquiry CPT post with ACF fields and sends an
+ * Processes submissions from Summit's enquiry forms (Let's Talk, Media
+ * Enquiries, Design Tomorrow, The Observatory's private briefing request,
+ * and the subscribe forms). Creates an enquiry CPT post with ACF fields and sends an
  * email notification.
  *
  * A subscription asks only for an email address: it is recorded as an
  * enquiry of type "fol_subscription" until a mailing-list service is
  * connected (the theme's [summit_subscribe_form] hook takes over then).
+ * Every subscribe form on the site submits here (assets/js/subscribe.js).
+ * An address already on the list is acknowledged without a second record
+ * or notification. The homepage form's optional fields (first name,
+ * surname, mobile, position) are kept with the record.
  *
  * Forms submit by AJAX (assets/js/enquiry-form.js) and receive JSON. Without
  * JavaScript, a form posting to admin-post.php is answered with a redirect
@@ -69,6 +73,18 @@ function summit_handle_enquiry(): void {
 	$message     = sanitize_textarea_field( wp_unslash( $_POST['enq_message'] ?? '' ) );
 	$form_source = sanitize_text_field( wp_unslash( $_POST['enq_form_source'] ?? '' ) );
 
+	// Subscribe forms may split the name, and carry a mobile or position.
+	if ( '' === $name ) {
+		$name = trim( sanitize_text_field( wp_unslash( $_POST['enq_first_name'] ?? '' ) ) . ' ' . sanitize_text_field( wp_unslash( $_POST['enq_surname'] ?? '' ) ) );
+	}
+	$extra = array_filter( [
+		'Mobile'   => sanitize_text_field( wp_unslash( $_POST['enq_phone'] ?? '' ) ),
+		'Position' => sanitize_text_field( wp_unslash( $_POST['enq_position'] ?? '' ) ),
+	] );
+	foreach ( $extra as $label => $value ) {
+		$message .= ( '' === $message ? '' : "\n" ) . "{$label}: {$value}";
+	}
+
 	// ── Validate required fields ────────────────────────────────────────
 	$errors = [];
 
@@ -89,6 +105,7 @@ function summit_handle_enquiry(): void {
 		'general',
 		'observatory_briefing',
 		'fol_subscription',
+		'media_speaking',
 	], true ) ) {
 		$errors[] = 'Please select an enquiry type.';
 	}
@@ -98,13 +115,31 @@ function summit_handle_enquiry(): void {
 	}
 
 	if ( ! empty( $errors ) ) {
-		summit_enquiry_respond( false, implode( ' ', $errors ), 422 );
+		summit_enquiry_respond( false, $is_subscription ? 'Please enter a valid email address.' : implode( ' ', $errors ), 422 );
+	}
+
+	// ── A repeat subscription is acknowledged, not duplicated ───────────
+	if ( $is_subscription ) {
+		$existing = get_posts( [
+			'post_type'      => 'enquiry',
+			'post_status'    => 'any',
+			'posts_per_page' => 1,
+			'fields'         => 'ids',
+			'meta_query'     => [
+				[ 'key' => 'enq_email', 'value' => $email ],
+				[ 'key' => 'enq_type', 'value' => 'fol_subscription' ],
+			],
+		] );
+		if ( $existing ) {
+			summit_enquiry_respond( true, 'You’re already on the list.', 200, [ 'repeat' => true ] );
+		}
 	}
 
 	// ── Create enquiry CPT post ─────────────────────────────────────────
 	$type_labels = [
 		'observatory_briefing' => 'Private Briefing (The Observatory)',
 		'fol_subscription'     => 'Subscription (The Future of Luxury)',
+		'media_speaking'       => 'Media Enquiry',
 	];
 	$type_label = $type_labels[ $type ] ?? ucwords( str_replace( '_', ' ', $type ) );
 	$post_title = sprintf( '%s — %s', $name ?: $email, $type_label );
@@ -139,6 +174,15 @@ function summit_handle_enquiry(): void {
 
 		$body  = "A subscription to The Future of Luxury was received.\n\n";
 		$body .= "Email: {$email}\n";
+		if ( '' !== $name ) {
+			$body .= "Name: {$name}\n";
+		}
+		if ( '' !== $company ) {
+			$body .= "Company: {$company}\n";
+		}
+		if ( '' !== $message ) {
+			$body .= "{$message}\n";
+		}
 		$body .= 'Source: ' . ( 0 === strpos( $form_source, '/' ) ? home_url( $form_source ) : $form_source ) . "\n\n";
 		$body .= "View in admin: " . admin_url( "post.php?post={$post_id}&action=edit" ) . "\n";
 	} elseif ( 'observatory_briefing' === $type ) {
@@ -157,7 +201,7 @@ function summit_handle_enquiry(): void {
 	} else {
 		$subject = sprintf( '[Summit] New enquiry from %s — %s', $name, $type_label );
 
-		$body  = "New enquiry received via the Design Tomorrow form.\n\n";
+		$body  = 'New enquiry received through ' . ( $form_source ? $form_source : 'the website' ) . ".\n\n";
 		$body .= "Name: {$name}\n";
 		$body .= "Email: {$email}\n";
 		$body .= "Company: {$company}\n";
@@ -173,7 +217,7 @@ function summit_handle_enquiry(): void {
 	] );
 
 	// ── Respond ─────────────────────────────────────────────────────────
-	summit_enquiry_respond( true, $is_subscription ? 'Thank you. Your address has been received.' : 'Thank you. We have received your enquiry.', 200, [
+	summit_enquiry_respond( true, $is_subscription ? 'You’re on the list.' : 'Thank you. We have received your enquiry.', 200, [
 		'post_id'    => $post_id,
 		'mail_sent'  => $mail_sent,
 	] );

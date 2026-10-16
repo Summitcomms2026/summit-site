@@ -1,0 +1,30 @@
+{
+  "description": "Contact: Let's Talk and Media Enquiries. Canonical block content plus page fields. Template page-contact.php; styles assets/css/contact.css. Shortcodes: [summit_contact_form] (the question form, through Summit Core's enquiry handler as type general or media_speaking) and [summit_contact_direct] (established direct contact only).",
+  "section": "contact",
+  "pages": [
+    {
+      "path": "/lets-talk",
+      "source": "lets-talk.blocks.html",
+      "template": "page-contact.php",
+      "meta": {
+        "summit_eyebrow": "Let’s Talk",
+        "summit_headline": "Let’s talk.",
+        "summit_tone": "paper",
+        "summit_standfirst": "If the question concerns the position, authority, experience or stewardship of a luxury house, begin with the question.",
+        "summit_form": "general"
+      }
+    },
+    {
+      "path": "/media-enquiries",
+      "source": "media-enquiries.blocks.html",
+      "template": "page-contact.php",
+      "meta": {
+        "summit_eyebrow": "Media Enquiries",
+        "summit_headline": "Media enquiries.",
+        "summit_tone": "paper",
+        "summit_standfirst": "For interviews, commentary and requests concerning The Future of Luxury, Touch Me Not and Summit’s research.",
+        "summit_form": "media"
+      }
+    }
+  ]
+}

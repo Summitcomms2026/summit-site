@@ -737,7 +737,7 @@
 
 .tm__layout {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);  /* lets the column shrink to the phone width */
   gap: var(--space-12);
   align-items: start;
 }
@@ -809,6 +809,19 @@
   display: flex;
   align-items: center;
   gap: var(--space-5);
+}
+
+/* Phones: the artwork and the show's details stack rather than overflow */
+@media (max-width: 599px) {
+  .tm__show-info {
+    flex-wrap: wrap;
+  }
+
+  .tm__show-meta {
+    flex: 1 1 100%;
+    min-width: 0;
+    min-height: 0;
+  }
 }
 
 /* View Episodes — gold treatment */

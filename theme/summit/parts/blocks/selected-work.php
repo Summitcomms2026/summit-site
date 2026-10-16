@@ -28,7 +28,7 @@ $cards = [
             'category' => 'Brand Strategy',
             'title'    => 'Teddy William',
             'desc'     => 'Teddy William produces garments of the very highest order. Many are leaders in their respective fields, accustomed to exacting standards, discerning taste, and the quiet assurance of bespoke done properly.',
-            'url'      => home_url( '/work/teddy-william' ),
+            'url'      => ( get_post_type_archive_link( 'case_study' ) ?: home_url( '/work-showcase/' ) ) /* no case study page yet */,
             'logo'     => $img_dir . 'teddywilliam_white.png',
         ],
         [
@@ -42,7 +42,7 @@ $cards = [
             'category' => 'Experience Design',
             'title'    => 'The Fight Against Skin Cancer',
             'desc'     => 'In this short film, we interviewed Dr Leo Kim, his dedicated team, and three brave patients who shared their journeys through diagnosis, cancer removal and these stories are a powerful reminder of the human spirit.',
-            'url'      => home_url( '/work/the-fight-against-skin-cancer' ),
+            'url'      => ( get_post_type_archive_link( 'case_study' ) ?: home_url( '/work-showcase/' ) ) /* no case study page yet */,
             'logo'     => $img_dir . 'fightagainst-white.png',
         ],
         [

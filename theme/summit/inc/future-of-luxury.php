@@ -157,8 +157,9 @@ add_action( 'wp_enqueue_scripts', static function (): void {
     $v   = wp_get_theme()->get( 'Version' );
     $uri = get_template_directory_uri();
     wp_enqueue_style( 'summit-fol', $uri . '/assets/css/fol.css', [ 'summit-navigation' ], $v );
-    wp_enqueue_script( 'summit-fol', $uri . '/assets/js/fol.js', [], $v, true );
-    wp_localize_script( 'summit-fol', 'summitFol', [ 'ajaxUrl' => admin_url( 'admin-ajax.php' ) ] );
+    if ( is_singular( 'article' ) ) {
+        wp_enqueue_script( 'summit-fol', $uri . '/assets/js/fol.js', [], $v, true );
+    }
 } );
 
 /**
@@ -180,3 +181,11 @@ add_action( 'wp_head', static function (): void {
         echo "<script>document.documentElement.classList.add('fol-js');</script>\n";
     }
 }, 1 );
+
+/**
+ * The archive is the publication: title it as such in the document title
+ * and archive headings, without touching the post type's labels.
+ */
+add_filter( 'post_type_archive_title', static function ( $title, $post_type ) {
+    return 'article' === $post_type ? __( 'The Future of Luxury', 'summit' ) : $title;
+}, 10, 2 );

@@ -309,7 +309,7 @@ function summit_seo_get_archive_data(): array {
 
     $archive_descriptions = [
         'case_study'     => 'Selected work from Summit — brand strategy, experience design and digital transformation for luxury brands.',
-        'article'        => 'Insights on luxury branding, experience design and digital transformation from Summit Communication Group.',
+        'article'        => 'Essays and analysis on the houses, objects and decisions reshaping luxury.',
         'podcast_season' => 'Tastemakers — conversations with the people shaping luxury, culture and craft.',
         'download'       => 'Guides and resources from Summit Communication Group.',
     ];

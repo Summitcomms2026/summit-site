@@ -1,0 +1,42 @@
+{
+  "description": "Utility pages: Client Access, Careers, Privacy and Terms, on the internal page shell (page-shell.php). Honest, minimal content: no client login is implied, no vacancies are invented, and Privacy and Terms state only what the site does until the legal copy is supplied.",
+  "section": "utility",
+  "pages": [
+    {
+      "path": "/client-access",
+      "source": "client-access.blocks.html",
+      "template": "page-shell.php",
+      "meta": {
+        "summit_tone": "paper",
+        "summit_standfirst": "For clients in an active engagement with Summit."
+      }
+    },
+    {
+      "path": "/careers",
+      "source": "careers.blocks.html",
+      "template": "page-shell.php",
+      "meta": {
+        "summit_tone": "paper",
+        "summit_standfirst": "A senior core, and specialists who join where their expertise changes the work."
+      }
+    },
+    {
+      "path": "/privacy",
+      "source": "privacy.blocks.html",
+      "template": "page-shell.php",
+      "meta": {
+        "summit_tone": "paper",
+        "summit_standfirst": "How this site handles the information you send to Summit."
+      }
+    },
+    {
+      "path": "/terms",
+      "source": "terms.blocks.html",
+      "template": "page-shell.php",
+      "meta": {
+        "summit_tone": "paper",
+        "summit_standfirst": "The terms on which this site is offered."
+      }
+    }
+  ]
+}

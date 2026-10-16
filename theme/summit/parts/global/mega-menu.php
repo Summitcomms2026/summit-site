@@ -110,6 +110,19 @@ $current_attr = static function ( string $path, bool $exact = false ): string {
                                         role="list"
                                         aria-label="<?php echo esc_attr( $section['label'] ); ?>">
 
+                                        <?php
+                                        // The section's own page, as the Observatory's "Overview" leaf does in
+                                        // the config, wherever the section does not already list itself.
+                                        if ( ! in_array( $section['path'], array_column( $children, 'path' ), true ) ) : ?>
+                                        <li class="mega-menu__branch-item">
+                                            <a href="<?php echo esc_url( summit_nav_url( $section ) ); ?>"
+                                               class="mega-menu__branch-link"
+                                               <?php if ( $current_attr( $section['path'], true ) ) : ?>aria-current="page"<?php endif; ?>>
+                                                <?php esc_html_e( 'Overview', 'summit' ); ?>
+                                            </a>
+                                        </li>
+                                        <?php endif; ?>
+
                                         <?php foreach ( $groups as $group_key => $group ) :
                                             $leaves_id = 'mega-menu-leaves-' . $key . '-' . $group_key;
                                         ?>
@@ -201,7 +214,8 @@ $current_attr = static function ( string $path, bool $exact = false ): string {
             $read_time = get_field( 'art_read_time', $menu_article->ID );
             $pub_date  = get_the_date( 'j M Y', $menu_article->ID );
             $pub_iso   = get_the_date( 'c', $menu_article->ID );
-            $thumb_url = get_the_post_thumbnail_url( $menu_article->ID, 'medium' );
+            $thumb_id  = (int) get_post_thumbnail_id( $menu_article->ID );
+            $thumb_url = $thumb_id && summit_attachment_file_exists( $thumb_id ) ? get_the_post_thumbnail_url( $menu_article->ID, 'medium' ) : '';
 
             if ( ! $read_time ) {
                 $read_time = summit_estimated_read_time( $menu_article->ID );
@@ -209,11 +223,15 @@ $current_attr = static function ( string $path, bool $exact = false ): string {
         ?>
         <li class="mega-menu__editorial-item">
             <a href="<?php echo esc_url( get_permalink( $menu_article->ID ) ); ?>"
-               class="mega-menu__editorial-link <?php echo $thumb_url ? 'has-thumb' : 'no-thumb'; ?>">
+               class="mega-menu__editorial-link <?php echo $thumb_id ? 'has-thumb' : 'no-thumb'; ?>">
 
-                <?php if ( $thumb_url ) : ?>
+                <?php if ( $thumb_id ) : ?>
                 <span class="mega-menu__editorial-thumb" aria-hidden="true">
+                    <?php if ( $thumb_url ) : ?>
                     <img src="<?php echo esc_url( $thumb_url ); ?>" alt="">
+                    <?php else : ?>
+                    <?php echo summit_image_fallback(); // phpcs:ignore WordPress.Security.EscapeOutput -- static markup ?>
+                    <?php endif; ?>
                 </span>
                 <?php endif; ?>
 
@@ -258,7 +276,7 @@ $current_attr = static function ( string $path, bool $exact = false ): string {
                 An independent design consultancy<br>for tomorrow's luxury brands
             </p>
             <div class="mega-menu__bottom-actions">
-                <a href="<?php echo esc_url( home_url( '/design-tomorrow' ) ); ?>"
+                <a href="<?php echo esc_url( summit_nav_url( summit_nav( 'cta' ) ) ); ?>"
                    class="mega-menu__bottom-cta">
                     Start a conversation
                 </a>

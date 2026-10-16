@@ -75,35 +75,38 @@ the_post(); // consume the front-page post for ACF context
                     <?php if ( shortcode_exists( 'summit_subscribe_form' ) ) :
                         echo do_shortcode( '[summit_subscribe_form]' );
                     else : ?>
-                    <form class="home-subscribe__form" action="#" method="post" aria-label="Newsletter sign-up">
+                    <?php $summit_sub = summit_subscribe_returned(); ?>
+                    <form class="home-subscribe__form" action="<?php echo esc_url( summit_subscribe_action() ); ?>" method="post" aria-label="Newsletter sign-up" data-summit-subscribe>
+                        <?php summit_subscribe_fields( '/' ); ?>
                         <div class="home-subscribe__fields" data-reveal data-reveal-delay="2">
                             <div class="home-subscribe__field">
                                 <label for="sub-fname">First Name *</label>
-                                <input type="text" id="sub-fname" name="first_name" required autocomplete="given-name">
+                                <input type="text" id="sub-fname" name="enq_first_name" required autocomplete="given-name">
                             </div>
                             <div class="home-subscribe__field">
                                 <label for="sub-sname">Surname *</label>
-                                <input type="text" id="sub-sname" name="surname" required autocomplete="family-name">
+                                <input type="text" id="sub-sname" name="enq_surname" required autocomplete="family-name">
                             </div>
                             <div class="home-subscribe__field">
                                 <label for="sub-email">Email *</label>
-                                <input type="email" id="sub-email" name="email" required autocomplete="email">
+                                <input type="email" id="sub-email" name="enq_email" required autocomplete="email">
                             </div>
                             <div class="home-subscribe__field">
                                 <label for="sub-mobile">Mobile</label>
-                                <input type="tel" id="sub-mobile" name="mobile" autocomplete="tel">
+                                <input type="tel" id="sub-mobile" name="enq_phone" autocomplete="tel">
                             </div>
                             <div class="home-subscribe__field">
                                 <label for="sub-company">Company</label>
-                                <input type="text" id="sub-company" name="company" autocomplete="organization">
+                                <input type="text" id="sub-company" name="enq_company" autocomplete="organization">
                             </div>
                             <div class="home-subscribe__field">
                                 <label for="sub-position">Position</label>
-                                <input type="text" id="sub-position" name="position" autocomplete="organization-title">
+                                <input type="text" id="sub-position" name="enq_position" autocomplete="organization-title">
                             </div>
                         </div>
                         <p class="home-subscribe__consent" data-reveal data-reveal-delay="3">By signing up you agree to receive emails from us. To opt out, click unsubscribe in the email footer.</p>
                         <button type="submit" class="btn home-subscribe__btn" data-reveal data-reveal-delay="3">Subscribe</button>
+                        <p class="summit-subscribe-status<?php echo 'sent' === $summit_sub['state'] ? ' is-sent' : ( $summit_sub['state'] ? ' is-error' : '' ); ?>"<?php echo $summit_sub['state'] ? ' id="enquiry-status" tabindex="-1"' : ''; ?> role="status" aria-live="polite" data-subscribe-status><?php echo esc_html( $summit_sub['message'] ); ?></p>
                     </form>
                     <?php endif; ?>
                 </div>

@@ -1,5 +1,5 @@
 {
-  "description": "Canonical source record for the Programmes section's page content. WordPress is the runtime editor; these files are the recoverable source. Not loaded by WordPress. Block markup in each source file is exactly what the block editor stores in post_content. Entries without a source set page fields only (the proposition, moment and related Solutions the Programmes register reads).",
+  "description": "Canonical source record for the Programmes section's page content. WordPress is the runtime editor; these files are the recoverable source. Not loaded by WordPress. Block markup in each source file is exactly what the block editor stores in post_content. Entries without a source set page fields only (the proposition, moment and related Solutions the Programmes register reads). Programmes without their own content carry template and fields only, so the family template gives them their hero, the other programmes and the footer.",
   "section": "/programmes",
   "pages": [
     {
@@ -35,48 +35,63 @@
       }
     },
     {
-      "title": "Editorial & Influence",
       "path": "/programmes/editorial-influence",
+      "template": "page-programmes.php",
       "meta": {
         "summit_summary": "A programme to determine what is worth saying, create something worth reading, and place it before the people worth reaching.",
         "summit_moment": "When the story of the house is being told more often by others than by the house itself.",
-        "summit_related": "/solutions/editorial-influence, /solutions/develop-thought-leadership"
+        "summit_related": "/solutions/editorial-influence, /solutions/develop-thought-leadership",
+        "summit_eyebrow": "Programmes / Programme 02",
+        "summit_tone": "paper",
+        "summit_standfirst": "A programme to determine what is worth saying, create something worth reading, and place it before the people worth reaching."
       }
     },
     {
-      "title": "Digital Growth",
       "path": "/programmes/digital-growth",
+      "template": "page-programmes.php",
       "meta": {
         "summit_summary": "A programme for growing digital demand and commerce without surrendering the scarcity, service or presentation that define the house.",
         "summit_moment": "When digital demand must grow without the house becoming ordinary online.",
-        "summit_related": "/solutions/digital-commerce, /solutions/enhance-desire-without-dilution"
+        "summit_related": "/solutions/digital-commerce, /solutions/enhance-desire-without-dilution",
+        "summit_eyebrow": "Programmes / Programme 03",
+        "summit_tone": "paper",
+        "summit_standfirst": "A programme for growing digital demand and commerce without surrendering the scarcity, service or presentation that define the house."
       }
     },
     {
-      "title": "Client Experience",
       "path": "/programmes/client-experience",
+      "template": "page-programmes.php",
       "meta": {
         "summit_summary": "A programme for aligning product, place, service and digital encounter so every contact carries the authority of the house.",
         "summit_moment": "When the encounter with the house falls short of what it makes.",
-        "summit_related": "/solutions/experience-design, /solutions/transform-the-client-experience"
+        "summit_related": "/solutions/experience-design, /solutions/transform-the-client-experience",
+        "summit_eyebrow": "Programmes / Programme 04",
+        "summit_tone": "paper",
+        "summit_standfirst": "A programme for aligning product, place, service and digital encounter so every contact carries the authority of the house."
       }
     },
     {
-      "title": "Agentic AI",
       "path": "/programmes/agentic-ai",
+      "template": "page-programmes.php",
       "meta": {
         "summit_summary": "A programme for applying intelligent agents where they extend service and judgement without outsourcing the maison’s voice.",
         "summit_moment": "When a house is weighing where intelligent agents belong, and where they do not.",
-        "summit_related": "/solutions/applied-ai"
+        "summit_related": "/solutions/applied-ai",
+        "summit_eyebrow": "Programmes / Programme 05",
+        "summit_tone": "paper",
+        "summit_standfirst": "A programme for applying intelligent agents where they extend service and judgement without outsourcing the maison’s voice."
       }
     },
     {
-      "title": "Brand & IP Stewardship",
       "path": "/programmes/brand-ip-stewardship",
+      "template": "page-programmes.php",
       "meta": {
         "summit_summary": "A programme for governing the marks, designs, archives and patrimony that carry a house over time.",
         "summit_moment": "When the marks, designs and archives that carry the house need governing, not only registering.",
-        "summit_related": "/solutions/product-ip-patrimony, /solutions/activate-patrimony-ip, /solutions/strengthen-an-icon"
+        "summit_related": "/solutions/product-ip-patrimony, /solutions/activate-patrimony-ip, /solutions/strengthen-an-icon",
+        "summit_eyebrow": "Programmes / Programme 06",
+        "summit_tone": "paper",
+        "summit_standfirst": "A programme for governing the marks, designs, archives and patrimony that carry a house over time."
       }
     }
   ]

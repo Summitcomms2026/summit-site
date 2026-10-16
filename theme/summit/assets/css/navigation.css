@@ -72,14 +72,9 @@
 }
 
 
-.site-nav--hidden {
-    transform: translateY(-100%);
-}
-
-
 .site-header.menu-is-open .site-nav {
     background: var(--colour-ink);
-    border-bottom: 1px solid rgba(200, 160, 80, 0.25);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 
@@ -105,9 +100,12 @@
     border: 0;
     background: none;
     cursor: pointer;
-    font-family: var(--font-sans);
-    font-size: 0.78rem;
+    /* -pr (Pro) variant carries weight 500 not present in the
+       standard neue-haas-grotesk-display kit. */
+    font-family: "neue-haas-grotesk-display-pr", var(--font-sans);
+    font-size: 0.84rem;
     font-weight: 500;
+    line-height: 1.25;
     letter-spacing: 0.01em;
     text-transform: none;
     color: var(--colour-ink);
@@ -142,7 +140,9 @@
     width: 100%;
     height: 1px;
     background: currentColor;
-    transition: transform var(--duration-base) var(--ease-inout);
+    transition:
+        transform var(--duration-base) var(--ease-inout),
+        opacity var(--duration-base) var(--ease-inout);
 }
 
 
@@ -151,15 +151,26 @@
 }
 
 
+.site-nav__menu-icon:not(.site-nav__menu-icon--cross) span:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
 .site-nav__menu-icon:not(.site-nav__menu-icon--cross) span:last-child {
     bottom: 0;
 }
 
 
-/* Hamburger → X morph when menu is open */
+/* Hamburger → X morph when menu is open: outer bars cross, middle fades */
 .menu-is-open .site-nav__menu-icon:not(.site-nav__menu-icon--cross) span:first-child {
     top: 50%;
     transform: translateY(-50%) rotate(45deg);
+}
+
+
+.menu-is-open .site-nav__menu-icon:not(.site-nav__menu-icon--cross) span:nth-child(2) {
+    opacity: 0;
 }
 
 
@@ -205,10 +216,16 @@
     min-height: 38px;
     padding: 9px 20px;
     border-radius: var(--radius-md);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+    /* Text family matches the bottom-corner CTAs ("Start a conversation"
+       etc.) which inherit var(--font-text). The Display-Pro variant looks
+       leaner at button sizes; the Text variant has chunkier strokes by
+       design and reads heavier at the same nominal weight. */
+    font-family: var(--font-text);
+    font-size: 0.84rem;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: 0.01em;
+    text-transform: none;
     background: var(--colour-ink);
     color: var(--colour-paper);
     border: 1px solid var(--colour-ink);
@@ -270,7 +287,7 @@
 .site-logo svg {
     display: block;
     width: auto;
-    height: 16px;
+    height: 22px;
     overflow: visible;
 }
 
@@ -379,7 +396,7 @@
 .mega-menu__nav-bar {
     height: var(--nav-height);
     flex-shrink: 0;
-    border-bottom: 1px solid rgba(200, 160, 80, 0.25);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     background: var(--colour-ink);
 }
 
@@ -534,7 +551,7 @@
 .mega-menu__primary-list {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 16px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -544,11 +561,14 @@
 .mega-menu__primary-link--cta {
     position: relative;
     display: inline-block;
-    font-family: var(--font-sans);
-    font-size: clamp(1.28rem, 2vw, 2.05rem);
+    /* -pr (Pro) variant carries weights 500/600 not present in the
+       standard neue-haas-grotesk-display kit. Falls back to var(--font-sans)
+       if the Pro family ever fails to load. */
+    font-family: "neue-haas-grotesk-display-pr", var(--font-sans);
+    font-size: 2.3rem;
     font-weight: 500;
-    line-height: 1.04;
-    letter-spacing: -0.045em;
+    line-height: 1.15;
+    letter-spacing: 0;
     color: var(--colour-paper);
     text-decoration: none;
     padding: 0;
@@ -579,7 +599,7 @@
 .mega-menu__secondary-list {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 16px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -587,7 +607,7 @@
 
 .mega-menu__secondary-link {
     display: block;
-    font-size: clamp(0.92rem, 1.15vw, 1.08rem);
+    font-size: 1.24rem;
     font-weight: 500;
     line-height: 1.16;
     letter-spacing: 0.01em;
@@ -604,10 +624,10 @@
 
 .mega-menu__secondary-icon {
     display: inline-block;
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     vertical-align: -2px;
-    margin-left: 8px;
+    margin-left: 9px;
     fill: none;
     stroke: currentColor;
     stroke-width: 1.5;
@@ -709,11 +729,18 @@
 
 .mega-menu__editorial-title {
     grid-area: title;
-    font-size: 1.06rem;
+    font-size: 1.1rem;
     font-weight: 400;
     line-height: 1.22;
     color: var(--colour-paper);
-    max-width: 36ch;
+    max-width: 27ch;
+    /* Hard-cap at 2 lines; longer titles truncate with an ellipsis.
+       -webkit-line-clamp ships in all modern browsers despite the
+       prefix and is the only pattern that handles multi-line ellipsis. */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .mega-menu__editorial-cat {
@@ -721,7 +748,7 @@
     align-self: center;
     justify-self: end;
     white-space: nowrap;
-    font-size: 0.8rem;
+    font-size: 0.74rem;
     line-height: 1.1;
     color: rgba(255, 255, 255, 0.4);
 }
@@ -889,7 +916,7 @@
 }
 
 .site-footer__brand .site-logo__svg {
-    height: 20px;
+    height: 28px;
 }
 
 .site-footer__social {
@@ -960,15 +987,25 @@
     white-space: nowrap;
 }
 
-.site-footer .btn--primary {
+.site-footer .site-footer__cta {
+    background: transparent;
+    color: var(--colour-paper);
+    border: 1px solid rgba(250, 250, 248, 0.4);
+    border-radius: var(--radius-md);
+    min-height: 38px;
+    padding: 9px 20px;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: capitalize;
+    text-decoration: none;
+}
+
+.site-footer .site-footer__cta:hover {
     background: var(--colour-paper);
     color: var(--colour-ink);
     border-color: var(--colour-paper);
-}
-
-.site-footer .btn--primary:hover {
-    background: rgba(250, 250, 248, 0.85);
-    border-color: rgba(250, 250, 248, 0.85);
 }
 
 .site-footer__podcast-link {

@@ -29,19 +29,22 @@ $pillars = [
         'title' => get_field( 'home_cap_1_title' ) ?: 'Brand Strategy',
         'desc'  => get_field( 'home_cap_1_desc' )  ?: 'Positioning, identity and narrative frameworks that give luxury brands strategic clarity and cultural relevance.',
         'url'   => get_field( 'home_cap_1_url' )   ?: home_url( '/what-we-do/brand-strategy' ),
-        'thumb' => $img_dir . 'whatwedo-brandstrategy.jpg',
+        'icon'     => $img_dir . 'icon_brand-strategy.svg',
+        'icon_on'  => $img_dir . 'icon_brand-strategy-on.svg',
     ],
     [
         'title' => get_field( 'home_cap_2_title' ) ?: 'Experience Design',
         'desc'  => get_field( 'home_cap_2_desc' )  ?: 'Physical and digital experiences that reflect brand truth, delight discerning audiences and create lasting impressions.',
         'url'   => get_field( 'home_cap_2_url' )   ?: home_url( '/what-we-do/experience-design' ),
-        'thumb' => $img_dir . 'whatwedo-experiencedesign.jpg',
+        'icon'     => $img_dir . 'icon_experience-design.svg',
+        'icon_on'  => $img_dir . 'icon_experience-design-on.svg',
     ],
     [
         'title' => get_field( 'home_cap_3_title' ) ?: 'Digital Transformation',
         'desc'  => get_field( 'home_cap_3_desc' )  ?: 'Platforms, systems and digital infrastructure built for premium performance, operational elegance and measurable growth.',
         'url'   => get_field( 'home_cap_3_url' )   ?: home_url( '/what-we-do/digital-transformation' ),
-        'thumb' => $img_dir . 'whatwedo-digitaltransformation.jpg',
+        'icon'     => $img_dir . 'icon_digital-transformation.svg',
+        'icon_on'  => $img_dir . 'icon_digital-transformation-on.svg',
     ],
 ];
 ?>
@@ -52,7 +55,7 @@ $pillars = [
         <header class="capability-triptych__header">
             <h2 class="capability-triptych__headline" id="capabilities-heading" data-reveal>What We Do</h2>
             <a href="<?php echo esc_url( home_url( '/what-we-do' ) ); ?>"
-               class="btn btn--primary" data-reveal data-reveal-delay="1">
+               class="btn btn--secondary" data-reveal data-reveal-delay="1">
                 Explore Services
             </a>
         </header>
@@ -65,12 +68,14 @@ $pillars = [
                 $delay = $pillar_delays[ $i ] ?? 1;
             ?>
             <div class="capability-triptych__pillar" data-reveal data-reveal-delay="<?php echo $delay; ?>">
-                <?php if ( ! empty( $pillar['thumb'] ) ) : ?>
                 <figure class="capability-triptych__thumb" aria-hidden="true">
-                    <img src="<?php echo esc_url( $pillar['thumb'] ); ?>"
-                         alt="" width="117" height="117" loading="lazy">
+                    <img class="capability-triptych__icon--off"
+                         src="<?php echo esc_url( $pillar['icon'] ); ?>"
+                         alt="" width="100" height="100" loading="lazy">
+                    <img class="capability-triptych__icon--on"
+                         src="<?php echo esc_url( $pillar['icon_on'] ); ?>"
+                         alt="" width="100" height="100" loading="lazy">
                 </figure>
-                <?php endif; ?>
                 <span class="capability-triptych__number" aria-hidden="true">[ <?php echo $i + 1; ?> ]</span>
                 <h3 class="capability-triptych__title">
                     <?php echo esc_html( $pillar['title'] ); ?>

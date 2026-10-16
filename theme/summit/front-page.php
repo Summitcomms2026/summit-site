@@ -40,7 +40,7 @@ the_post(); // consume the front-page post for ACF context
     $vp_statement = get_field( 'home_vp_headline' )
         ?: 'We partner with luxury brands, creators and cultural institutions to define distinctive brand positions and create memorable client experiences. Our work sits between strategy, design and technology across product, place and culture.';
     ?>
-    <section class="vp-block section--dark" aria-label="Value proposition">
+    <section class="vp-block" aria-label="Value proposition">
         <div class="container container--wide">
             <p class="vp-block__statement" data-reveal>
                 <?php echo esc_html( $vp_statement ); ?>
@@ -69,14 +69,14 @@ the_post(); // consume the front-page post for ACF context
             <div class="home-subscribe__layout">
 
                 <div class="home-subscribe__form-col">
-                    <h2 class="home-subscribe__heading" id="home-subscribe-heading">Subscribe for Early Access</h2>
-                    <p class="home-subscribe__sub">A subscriber-first publication covering the ideas, industries and individuals shaping the future of luxury.</p>
+                    <h2 class="home-subscribe__heading" id="home-subscribe-heading" data-reveal>Subscribe for Early Access</h2>
+                    <p class="home-subscribe__sub" data-reveal data-reveal-delay="1">A subscriber-first publication covering the ideas, industries and individuals shaping the future of luxury.</p>
 
                     <?php if ( shortcode_exists( 'summit_subscribe_form' ) ) :
                         echo do_shortcode( '[summit_subscribe_form]' );
                     else : ?>
                     <form class="home-subscribe__form" action="#" method="post" aria-label="Newsletter sign-up">
-                        <div class="home-subscribe__fields">
+                        <div class="home-subscribe__fields" data-reveal data-reveal-delay="2">
                             <div class="home-subscribe__field">
                                 <label for="sub-fname">First Name *</label>
                                 <input type="text" id="sub-fname" name="first_name" required autocomplete="given-name">
@@ -102,19 +102,32 @@ the_post(); // consume the front-page post for ACF context
                                 <input type="text" id="sub-position" name="position" autocomplete="organization-title">
                             </div>
                         </div>
-                        <p class="home-subscribe__consent">By signing up you agree to receive emails from us. To opt out, click unsubscribe in the email footer.</p>
-                        <button type="submit" class="btn btn--primary">Subscribe</button>
+                        <p class="home-subscribe__consent" data-reveal data-reveal-delay="3">By signing up you agree to receive emails from us. To opt out, click unsubscribe in the email footer.</p>
+                        <button type="submit" class="btn home-subscribe__btn" data-reveal data-reveal-delay="3">Subscribe</button>
                     </form>
                     <?php endif; ?>
                 </div>
 
                 <div class="home-subscribe__info-col">
-                    <p class="home-subscribe__pub-intro"><strong>The Future of Luxury</strong> is a renowned digital platform for serious readers of luxury business, culture and wealth, published by Summit Communication Group.</p>
+                    <h3 class="home-subscribe__info-heading" data-reveal>The Future of Luxury</h3>
+                    <p class="home-subscribe__pub-intro" data-reveal data-reveal-delay="1"><strong>The Future of Luxury</strong> is a renowned digital platform for serious readers of luxury business, culture and wealth, published by Summit Communication Group.</p>
                     <ul class="home-subscribe__pub-details">
-                        <li><strong>History:</strong> More than 120+ long-form articles and analyses published to date.</li>
-                        <li><strong>Audience:</strong> Written for an international readership of over 2,400 CEOs, senior executives, private bankers and affluent decision-makers.</li>
-                        <li><strong>Distribution:</strong> Published 44 times a year, with each edition released to subscribers first.</li>
-                        <li><strong>Content Focus:</strong> Features business intelligence, cultural commentary, interviews and market insight from influential voices across luxury and art.</li>
+                        <li data-reveal data-reveal-delay="2">
+                            <strong>History</strong>
+                            <span>More than 120+ long-form articles and analyses published to date.</span>
+                        </li>
+                        <li data-reveal data-reveal-delay="3">
+                            <strong>Audience</strong>
+                            <span>Written for an international readership of over 2,400 CEOs, senior executives, private bankers and affluent decision-makers.</span>
+                        </li>
+                        <li data-reveal data-reveal-delay="4">
+                            <strong>Distribution</strong>
+                            <span>Published 44 times a year, with each edition released to subscribers first.</span>
+                        </li>
+                        <li data-reveal data-reveal-delay="5">
+                            <strong>Content Focus</strong>
+                            <span>Features business intelligence, cultural commentary, interviews and market insight from influential voices across luxury and art.</span>
+                        </li>
                     </ul>
                 </div>
 
@@ -124,8 +137,8 @@ the_post(); // consume the front-page post for ACF context
 
     <!-- ── 9. World of Luxury / Sectors Grid ──────────────────────────────── -->
     <?php
-    $sectors_headline = get_field( 'home_sectors_headline' ) ?: 'The Luxury Economy';
-    $sectors_body     = get_field( 'home_sectors_body' );
+    $sectors_headline = get_field( 'home_sectors_headline' ) ?: 'The World of Luxury';
+    $sectors_body     = get_field( 'home_sectors_body' ) ?: 'Our global talent network spans the divisions shaping the modern luxury economy.';
 
     $sectors = [
         [ 'Fashion & Leather Goods', 'Codes, desire and distinction shaped for brands that must endure.' ],
@@ -150,14 +163,12 @@ the_post(); // consume the front-page post for ACF context
                     <h2 class="sectors-grid-section__headline" id="sectors-heading" data-reveal="fade">
                         <?php echo esc_html( $sectors_headline ); ?>
                     </h2>
-                    <?php if ( $sectors_body ) : ?>
                     <p class="sectors-grid-section__body" data-reveal="fade" data-reveal-delay="1">
                         <?php echo wp_strip_all_tags( $sectors_body ); ?>
                     </p>
-                    <?php endif; ?>
                 </div>
                 <a href="<?php echo esc_url( home_url( '/design-tomorrow/' ) ); ?>"
-                   class="btn btn--primary sectors-grid-section__cta" data-reveal="fade" data-reveal-delay="1">
+                   class="sectors-grid-section__cta" data-reveal="fade" data-reveal-delay="1">
                     Get In Touch
                 </a>
             </header>

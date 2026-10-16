@@ -49,7 +49,7 @@ defined( 'ABSPATH' ) || exit;
             <!-- Actions column (button only) -->
             <div class="site-footer__actions-col">
                 <a href="<?php echo esc_url( home_url( '/design-tomorrow/' ) ); ?>"
-                   class="btn btn--primary site-footer__cta">
+                   class="site-footer__cta">
                     Design Tomorrow
                 </a>
             </div>

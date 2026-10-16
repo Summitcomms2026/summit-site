@@ -39,12 +39,18 @@ $hero_url   = $hero_image ? $hero_image['url'] : get_template_directory_uri() . 
         <div class="home-hero__layout">
 
             <div class="home-hero__left">
-                <h1 class="home-hero__title" id="home-hero-title" data-reveal>
+                <h1 class="home-hero__title" id="home-hero-title">
                     <?php
-                    echo wp_kses(
-                        str_replace( 'Luxury', '<em>Luxury</em>', esc_html( $headline ) ),
-                        [ 'em' => [] ]
-                    );
+                    $words = explode( ' ', $headline );
+                    $delay = 0;
+                    foreach ( $words as $i => $word ) :
+                        $inner = ( $word === 'Luxury' )
+                            ? '<em>' . esc_html( $word ) . '</em>'
+                            : esc_html( $word );
+                        $style = $delay ? ' style="animation-delay:' . $delay . 's"' : '';
+                        echo '<span' . $style . '>' . $inner . '</span> ';
+                        $delay = round( $delay + 0.12, 2 );
+                    endforeach;
                     ?>
                 </h1>
             </div>
@@ -54,10 +60,10 @@ $hero_url   = $hero_image ? $hero_image['url'] : get_template_directory_uri() . 
                     <?php echo wp_kses_post( wpautop( $body ) ); ?>
                 </div>
                 <div class="home-hero__actions">
-                    <a href="<?php echo esc_url( $cta_url ); ?>" class="btn btn--primary">
+                    <a href="<?php echo esc_url( $cta_url ); ?>" class="btn btn--secondary">
                         <?php echo esc_html( $cta_label ); ?>
                     </a>
-                    <a href="<?php echo esc_url( $cta2_url ); ?>" class="btn btn--secondary">
+                    <a href="<?php echo esc_url( $cta2_url ); ?>" class="btn btn--primary">
                         <?php echo esc_html( $cta2_label ); ?>
                     </a>
                 </div>
@@ -65,7 +71,11 @@ $hero_url   = $hero_image ? $hero_image['url'] : get_template_directory_uri() . 
 
         </div>
     </div>
-    <p class="home-hero__scroll" data-reveal="fade" data-reveal-delay="3">
-        <span>&darr;</span> Scroll
-    </p>
+    <button type="button" class="home-hero__scroll" data-reveal="fade" data-reveal-delay="3"
+            onclick="this.closest('section').nextElementSibling.scrollIntoView({behavior:'smooth'})">
+        <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+            <path d="M5 1v7M1.5 5.5 5 9l3.5-3.5"/>
+        </svg>
+        Scroll
+    </button>
 </section>

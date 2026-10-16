@@ -43,46 +43,38 @@ if ( empty( $download ) ) {
     return;
 }
 
-$dl_id           = $download->ID;
-$section_headline = get_field( 'home_download_headline' ) ?: 'The Characteristics of Luxury';
-$section_body     = get_field( 'home_download_body' );
-$dl_title         = get_the_title( $dl_id );
-$dl_excerpt       = has_excerpt( $dl_id ) ? get_the_excerpt( $dl_id ) : '';
+$dl_id = $download->ID;
+$body  = 'Designed for senior managers, this visual conversation demonstrates the principles that define enduring luxury brands and how they can be applied as a business strategy.';
+
+// ACF override — strip tags to prevent raw HTML output.
+$acf_body = get_field( 'home_download_body' );
+if ( $acf_body ) {
+    $body = wp_strip_all_tags( $acf_body );
+}
 ?>
 
-<section class="download-feature section--tinted section--padded" aria-labelledby="download-heading">
-    <div class="container container--medium">
+<section class="download-feature section--tinted" aria-labelledby="download-heading">
+    <div class="container container--wide">
 
         <div class="download-feature__layout">
 
-            <figure class="download-feature__cover" aria-hidden="true" data-reveal="fade">
-                <?php if ( has_post_thumbnail( $dl_id ) ) :
-                    echo get_the_post_thumbnail( $dl_id, 'medium_large' );
-                else : ?>
+            <div class="download-feature__cover" data-reveal>
                 <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/characteristics-mainimage.jpg' ); ?>"
-                     alt="" width="916" height="498" loading="lazy">
-                <?php endif; ?>
-            </figure>
+                     alt="The Characteristics of Luxury" width="916" height="498" loading="lazy">
+            </div>
 
-            <div class="download-feature__content">
+            <div class="download-feature__content" data-reveal data-reveal-delay="1">
 
-                <h2 class="download-feature__headline" id="download-heading" data-reveal>
-                    <?php echo esc_html( $section_headline ); ?>
+                <h2 class="download-feature__headline" id="download-heading">
+                    The Characteristics of Luxury
                 </h2>
 
-                <?php if ( $section_body ) : ?>
-                <div class="download-feature__body" data-reveal data-reveal-delay="1">
-                    <?php echo wp_kses_post( wpautop( $section_body ) ); ?>
-                </div>
-                <?php elseif ( $dl_excerpt ) : ?>
-                <p class="download-feature__body" data-reveal data-reveal-delay="1">
-                    <?php echo esc_html( $dl_excerpt ); ?>
+                <p class="download-feature__body">
+                    <?php echo esc_html( $body ); ?>
                 </p>
-                <?php endif; ?>
 
                 <a href="<?php echo esc_url( get_permalink( $dl_id ) ); ?>"
-                   class="btn btn--primary"
-                   data-reveal data-reveal-delay="2">
+                   class="download-feature__cta">
                     Download Your Copy
                 </a>
 

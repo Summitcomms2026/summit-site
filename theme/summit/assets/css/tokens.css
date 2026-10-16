@@ -158,6 +158,17 @@
   --container-bleed:   100%;     /* Full viewport */
   --container-padding: var(--space-6);  /* Horizontal gutter inside containers */
 
+  /*
+   * Legacy compatibility aliases.
+   * layout.css still references the pre-Batch-20 token names
+   * (--container-max, --container-med) that were renamed/removed in 37fdbdc
+   * without updating layout.css. Alias them to the current scale so
+   * .container and .container--medium resolve correctly — no class renames,
+   * no template edits, no new widths introduced.
+   */
+  --container-med:  var(--container-medium);  /* 1040px — was 960px pre-rename */
+  --container-max:  var(--container-wide);    /* 1320px — base .container cap  */
+
   /* ── Grid ──────────────────────────────────────────────────────────── */
 
   --grid-columns:   12;

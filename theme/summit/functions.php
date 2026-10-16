@@ -6,6 +6,7 @@
 defined( 'ABSPATH' ) || exit;
 
 require_once get_template_directory() . '/inc/seo.php';
+require_once get_template_directory() . '/inc/navigation-config.php';
 require_once get_template_directory() . '/inc/nav-functions.php';
 require_once get_template_directory() . '/inc/page-guards.php';
 require_once get_template_directory() . '/inc/image-helpers.php';

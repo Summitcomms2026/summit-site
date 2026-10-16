@@ -1,0 +1,142 @@
+{
+  "description": "Canonical source record for the Solutions section's page content. WordPress is the runtime editor; these files are the recoverable source. Not loaded by WordPress. Block markup in each source file is exactly what the block editor stores in post_content. Entries without a source set page fields only (the one-line summaries the Solutions overview reads).",
+  "section": "/solutions",
+  "pages": [
+    {
+      "title": "Solutions",
+      "path": "/solutions",
+      "template": "page-solutions.php",
+      "source": "overview.blocks.html",
+      "meta": {
+        "summit_eyebrow": "Solutions",
+        "summit_tone": "paper",
+        "summit_headline": "The question determines the work.",
+        "summit_standfirst": "Summit works across strategy, brand, editorial, experience, digital commerce, product, IP and patrimony. The route in depends on the industry, the function or the question that needs resolving.",
+        "summit_utilities": "share"
+      }
+    },
+    {
+      "title": "Maison Due Diligence",
+      "path": "/solutions/maison-due-diligence",
+      "template": "page-solutions.php",
+      "source": "maison-due-diligence.blocks.html",
+      "meta": {
+        "summit_eyebrow": "Solutions / By Need",
+        "summit_tone": "paper",
+        "summit_headline": "Read the maison before the transaction.",
+        "summit_standfirst": "Maison Due Diligence examines the institutional, brand, patrimonial and governance conditions that shape a luxury house beyond price.",
+        "summit_cta_label": "Discuss a Maison Due Diligence",
+        "summit_cta_url": "/lets-talk",
+        "summit_secondary_label": "The Observatory",
+        "summit_secondary_url": "/the-observatory",
+        "summit_utilities": "share",
+        "summit_summary": "Read the institutional, brand, patrimonial and governance conditions behind the transaction."
+      }
+    },
+    {
+      "title": "Strategy & Planning",
+      "path": "/solutions/strategy-planning",
+      "meta": {
+        "summit_summary": "Define the position before deciding how to express it."
+      }
+    },
+    {
+      "title": "Brand & Marketing",
+      "path": "/solutions/brand-marketing",
+      "meta": {
+        "summit_summary": "Decide how desire is created, sustained and withheld."
+      }
+    },
+    {
+      "title": "Editorial & Influence",
+      "path": "/solutions/editorial-influence",
+      "meta": {
+        "summit_summary": "Determine what is worth saying, create something worth reading, and place it before people worth reaching."
+      }
+    },
+    {
+      "title": "Experience Design",
+      "path": "/solutions/experience-design",
+      "meta": {
+        "summit_summary": "Give every point of contact the same discipline as the object at its centre."
+      }
+    },
+    {
+      "title": "Digital Commerce",
+      "path": "/solutions/digital-commerce",
+      "meta": {
+        "summit_summary": "Sell online without abandoning the scarcity, service and presentation that define the house."
+      }
+    },
+    {
+      "title": "Product, IP & Patrimony",
+      "path": "/solutions/product-ip-patrimony",
+      "meta": {
+        "summit_summary": "Judge which objects carry the house, and secure what makes them its own."
+      }
+    },
+    {
+      "title": "Build a Maison",
+      "path": "/solutions/build-a-maison",
+      "meta": {
+        "summit_summary": "Create the institutional architecture required to become more than a brand."
+      }
+    },
+    {
+      "title": "Reposition a Maison",
+      "path": "/solutions/reposition-a-maison",
+      "meta": {
+        "summit_summary": "Move the standing of a house without severing what made it."
+      }
+    },
+    {
+      "title": "Enhance Desire Without Dilution",
+      "path": "/solutions/enhance-desire-without-dilution",
+      "meta": {
+        "summit_summary": "Grow demand while protecting the scarcity and meaning that create it."
+      }
+    },
+    {
+      "title": "Strengthen an Icon",
+      "path": "/solutions/strengthen-an-icon",
+      "meta": {
+        "summit_summary": "Protect the authority of what the house is known for without allowing repetition to become inertia."
+      }
+    },
+    {
+      "title": "Activate Patrimony & IP",
+      "path": "/solutions/activate-patrimony-ip",
+      "meta": {
+        "summit_summary": "Turn archive, marks and know-how into living authority rather than heritage theatre."
+      }
+    },
+    {
+      "title": "Transform the Client Experience",
+      "path": "/solutions/transform-the-client-experience",
+      "meta": {
+        "summit_summary": "Make every encounter with the house worthy of its objects."
+      }
+    },
+    {
+      "title": "Develop Thought Leadership",
+      "path": "/solutions/develop-thought-leadership",
+      "meta": {
+        "summit_summary": "Earn an authoritative voice in the conversations that shape the category."
+      }
+    },
+    {
+      "title": "Applied AI",
+      "path": "/solutions/applied-ai",
+      "meta": {
+        "summit_summary": "Use intelligent systems where they deepen judgement, not where they cheapen it."
+      }
+    },
+    {
+      "title": "Investment & Acquisitions",
+      "path": "/solutions/investment-acquisitions",
+      "meta": {
+        "summit_summary": "Bring luxury judgement to decisions about capital, holdings and growth."
+      }
+    }
+  ]
+}

@@ -526,3 +526,158 @@
 .subscribe-module__sub {
   margin-bottom: var(--space-10);
 }
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* ACTIONS                                                               */
+/* Two related languages (parts/global/action.php):                      */
+/*   CTA      — the compact Summit button established on the homepage    */
+/*   utility  — publication tools: small type, thin line icon, no chrome */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+/* Compact button — the homepage hero / header CTA proportion */
+.btn--compact {
+  min-height: 40px;
+  padding: 10px 22px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  border-radius: var(--radius-md);
+}
+
+.btn--compact:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 4px;
+}
+
+.section--dark .btn--compact.btn--secondary {
+  border-color: rgba(250, 250, 248, 0.35);
+}
+
+/* A row of actions: CTAs first, utilities set apart by space alone */
+.action-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: var(--space-8);
+  row-gap: var(--space-3);
+}
+
+.action-group .btn + .btn {
+  margin-left: calc(var(--space-3) - var(--space-8));
+}
+
+/* Utility action — a publication tool, not an app button */
+.action--utility {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 40px;            /* comfortable touch target, no visible box */
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-text);
+  font-size: 0.8125rem;        /* 13px */
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: var(--colour-ink-60);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.action--utility:hover,
+.action--utility:focus-visible,
+.action--utility[aria-expanded="true"] {
+  color: var(--colour-ink);
+}
+
+.action--utility:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
+.action__icon {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.action--utility.is-done {
+  color: var(--colour-ink);
+}
+
+/* Share and its fallback set sit on one line, divided by a hairline */
+.action-share {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: var(--space-6);
+}
+
+.action-share__fallback {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: var(--space-6);
+}
+
+.action-share__fallback[hidden] {
+  display: none;
+}
+
+.action-share.is-open .action-share__fallback {
+  padding-left: var(--space-6);
+  border-left: 1px solid var(--colour-ink-10);
+}
+
+/* Desktop: the fallback set drops beneath Share, so opening it never
+   reflows the text beside the action row. */
+@media (min-width: 960px) {
+  .action-share {
+    position: relative;
+  }
+
+  .action-share__fallback {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+  }
+
+  .action-share.is-open .action-share__fallback {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+/* On dark fields */
+.section--dark .action--utility {
+  color: rgba(250, 250, 248, 0.62);
+}
+
+.section--dark .action--utility:hover,
+.section--dark .action--utility:focus-visible,
+.section--dark .action--utility[aria-expanded="true"],
+.section--dark .action--utility.is-done {
+  color: var(--colour-paper);
+}
+
+.section--dark .action-share.is-open .action-share__fallback {
+  border-left-color: rgba(250, 250, 248, 0.16);
+}
+
+@media print {
+  .action-group {
+    display: none;
+  }
+}

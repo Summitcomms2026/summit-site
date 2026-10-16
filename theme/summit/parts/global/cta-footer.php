@@ -17,10 +17,13 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$headline = $args['headline'] ?? "Let\u{2019}s Design Tomorrow";
-$body     = $args['body']     ?? 'We partner with ambitious brands to sharpen positioning, elevate creative expression and build digital experiences of lasting value.';
-$label    = $args['label']    ?? 'Start a Conversation';
-$url      = $args['url']      ?? home_url( '/design-tomorrow/' );
+// Defaults: Summit's global proposition and the canonical CTA (from the
+// navigation config). Templates may still pass their own overrides.
+$nav_cta  = function_exists( 'summit_nav' ) ? summit_nav( 'cta' ) : null;
+$headline = $args['headline'] ?? 'Quality of judgement makes luxury endure.';
+$body     = $args['body']     ?? 'For questions of strategy, desire, stewardship and long-term value, talk to Summit.';
+$label    = $args['label']    ?? ( $nav_cta['label'] ?? "Let\u{2019}s Talk" );
+$url      = $args['url']      ?? ( $nav_cta ? summit_nav_url( $nav_cta ) : home_url( '/lets-talk/' ) );
 $image    = $args['image']    ?? '';
 
 $image_class = $image ? ' cta-footer--image' : '';

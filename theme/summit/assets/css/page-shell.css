@@ -1,0 +1,389 @@
+/*
+ * Summit Theme — Internal Page Shell
+ * assets/css/page-shell.css
+ * Loaded by page-shell.php only.
+ *
+ * The opening grammar of a serious interior page: an eyebrow on a
+ * hairline, a large (not homepage-scale) title, a second hairline, then
+ * the standfirst with its contextual CTA and publication tools.
+ * Followed by the page body, an index of where the page sits, and the
+ * global CTA footer.
+ *
+ * Measures sit inside the approved 1040px .container--medium.
+ */
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* HEADER ON A DARK HERO                                                 */
+/* Shell pages with tone "dark" let the header sit transparent over the  */
+/* hero, exactly as the homepage does; once scrolled, the established    */
+/* frosted state takes over. Scoped to .summit-shell--dark only.         */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.summit-shell--dark .site-header:not(.menu-is-open):not(.is-scrolled) .site-nav {
+  background: transparent;
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+.summit-shell--dark .site-header:not(.menu-is-open):not(.is-scrolled) .site-nav__menu-btn,
+.summit-shell--dark .site-header:not(.menu-is-open):not(.is-scrolled) .site-nav__brand {
+  color: var(--colour-paper);
+}
+
+.summit-shell--dark .site-header:not(.menu-is-open):not(.is-scrolled) .site-nav__menu-btn:hover,
+.summit-shell--dark .site-header:not(.menu-is-open):not(.is-scrolled) .site-nav__menu-btn:focus-visible,
+.summit-shell--dark .site-header:not(.menu-is-open):not(.is-scrolled) .site-nav__brand:hover {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.summit-shell--dark .site-header:not(.menu-is-open):not(.is-scrolled) .site-nav__cta.btn--primary {
+  background: transparent;
+  color: var(--colour-paper);
+  border-color: var(--colour-paper);
+}
+
+.summit-shell--dark .site-header:not(.menu-is-open):not(.is-scrolled) .site-nav__cta.btn--primary:hover {
+  background: var(--colour-paper);
+  color: var(--colour-ink);
+}
+
+.summit-shell--dark .site-header:not(.menu-is-open):not(.is-scrolled) .site-nav__brand:focus-visible,
+.summit-shell--dark .site-header:not(.menu-is-open):not(.is-scrolled) .site-nav__cta:focus-visible {
+  outline-color: var(--colour-paper);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* HERO                                                                  */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.shell-hero {
+  --shell-rule: var(--colour-ink-10);
+  --shell-quiet: var(--colour-ink-60);
+  padding-block: clamp(88px, 13vh, 160px) clamp(64px, 9vh, 112px);
+}
+
+.shell-hero.section--dark {
+  --shell-rule: rgba(250, 250, 248, 0.16);
+  --shell-quiet: rgba(250, 250, 248, 0.56);
+}
+
+/* Dark: the hero runs beneath the transparent header and holds the
+   field like a cover — eyebrow at the top, title and standfirst low. */
+.shell-hero--dark {
+  margin-top: calc(-1 * var(--nav-height));
+  padding-top: calc(var(--nav-height) + clamp(72px, 12vh, 136px));
+  min-height: min(88vh, 900px);
+  display: flex;
+}
+
+.shell-hero--dark > .container {
+  display: flex;
+  flex-direction: column;
+}
+
+.shell-hero--dark .shell-hero__title {
+  margin-top: auto;
+  padding-top: clamp(56px, 10vh, 120px);
+}
+
+.shell-hero__eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--shell-rule);
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--shell-quiet);
+}
+
+.shell-hero__eyebrow-sep {
+  opacity: 0.5;
+}
+
+.shell-hero__title {
+  max-width: 14ch;
+  margin: clamp(48px, 8vh, 96px) 0 0;
+  font-family: var(--font-sans);
+  font-size: clamp(2.75rem, 7vw, 4rem);      /* 44 at 390, 54 at 768 */
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+/* Title only (scaffold pages): the title still gets a field around it */
+.shell-hero--title-only {
+  padding-bottom: clamp(64px, 9vh, 104px);
+}
+
+.shell-hero--title-only:last-child {
+  padding-bottom: clamp(120px, 22vh, 240px);
+}
+
+/* Foot: hairline, then standfirst and actions on one line at desktop */
+.shell-hero__foot {
+  display: grid;
+  gap: var(--space-8);
+  margin-top: clamp(40px, 6vh, 72px);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--shell-rule);
+}
+
+.shell-hero__standfirst {
+  max-width: 34ch;
+  font-family: var(--font-text);
+  font-size: clamp(1.1875rem, 1.55vw, 1.375rem);   /* 19 → 22 */
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: -0.003em;
+  color: var(--colour-ink);
+  text-wrap: pretty;
+}
+
+.section--dark .shell-hero__standfirst {
+  color: rgba(250, 250, 248, 0.86);
+}
+
+@media (min-width: 960px) {
+  .shell-hero__title {
+    font-size: clamp(3.5rem, 5.6vw, 5.5rem);  /* 81 at 1440, max 88 */
+  }
+
+  .shell-hero__foot {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    column-gap: var(--space-16);
+  }
+
+  .shell-hero__actions {
+    justify-self: end;
+    padding-bottom: 2px;   /* optical: button cap-height to standfirst baseline */
+  }
+}
+
+@media (max-width: 767px) {
+  .shell-hero {
+    padding-block: 64px 48px;
+  }
+
+  .shell-hero--dark {
+    padding-top: calc(var(--nav-height) + 56px);
+    min-height: 66svh;
+  }
+
+  .shell-hero__title {
+    margin-top: 40px;
+    letter-spacing: -0.02em;
+  }
+
+  .shell-hero__foot {
+    gap: var(--space-6);
+    margin-top: 36px;
+    padding-top: var(--space-6);
+  }
+
+  .shell-hero__actions .action-group {
+    column-gap: var(--space-6);
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* BODY                                                                  */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.shell-body {
+  padding-block: clamp(56px, 8vw, 112px);
+}
+
+.shell-body__inner {
+  max-width: 680px;
+  font-size: var(--text-body-l);
+  line-height: var(--leading-body);
+}
+
+.shell-body__inner > * + * {
+  margin-top: 1.1em;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* INDEX — where the page sits                                           */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.shell-index {
+  padding-block: clamp(72px, 9vw, 128px);
+}
+
+.shell-hero + .shell-index {
+  padding-top: clamp(56px, 7vw, 96px);
+}
+
+.shell-index__heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--colour-ink-10);
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--colour-ink-60);
+}
+
+.shell-index__parent {
+  color: var(--colour-ink);
+  text-decoration: none;
+}
+
+.shell-index__parent:hover {
+  color: var(--colour-ink-60);
+}
+
+.shell-index__sep {
+  opacity: 0.5;
+}
+
+.shell-index__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.shell-index__list li {
+  border-bottom: 1px solid var(--colour-ink-10);
+}
+
+.shell-index__link {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-6);
+  padding-block: 22px;
+  font-family: var(--font-sans);
+  font-size: clamp(1.5rem, 2.1vw, 1.875rem);   /* 24 → 30 */
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--colour-ink);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.shell-index__arrow {
+  flex: none;
+  font-family: var(--font-text);
+  font-size: 1rem;
+  color: var(--colour-ink-40);
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+}
+
+.shell-index__link:hover,
+.shell-index__link:focus-visible {
+  color: var(--colour-ink-60);
+}
+
+.shell-index__link:hover .shell-index__arrow,
+.shell-index__link:focus-visible .shell-index__arrow {
+  color: var(--colour-ink);
+  transform: translateX(4px);
+}
+
+.shell-index__link:focus-visible {
+  outline: 1px solid var(--colour-ink);
+  outline-offset: 4px;
+}
+
+/* A request (e.g. Request a Private Briefing): a quiet underline */
+.shell-index__link.is-action .shell-index__label {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  text-decoration-color: var(--colour-ink-30);
+}
+
+/* Grouped index (Solutions): three columns of destinations */
+.shell-index--grouped .shell-index__groups {
+  display: grid;
+  gap: var(--space-12) var(--space-10);
+  margin-top: var(--space-10);
+}
+
+.shell-index__group-label {
+  margin: 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--colour-ink-10);
+  font-family: var(--font-text);
+  font-size: var(--text-small);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--colour-ink);
+}
+
+.shell-index--grouped .shell-index__link {
+  padding-block: 12px;
+  font-family: var(--font-text);
+  font-size: 1.0625rem;   /* 17 — the menu's destination size */
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+
+.shell-index--grouped .shell-index__arrow {
+  font-size: 0.875rem;
+}
+
+@media (min-width: 768px) {
+  .shell-index--grouped .shell-index__groups {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .shell-index__link {
+    padding-block: 18px;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* REDUCED MOTION + PRINT                                                */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .shell-index__arrow {
+    transition: none;
+  }
+
+  .shell-index__link:hover .shell-index__arrow {
+    transform: none;
+  }
+}
+
+@media print {
+  .shell-hero--dark {
+    margin-top: 0;
+    min-height: 0;
+    background: none;
+    color: #000;
+  }
+
+  .shell-index,
+  .cta-footer {
+    display: none;
+  }
+}

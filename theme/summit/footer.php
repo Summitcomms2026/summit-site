@@ -2,13 +2,28 @@
 /**
  * Theme Footer
  *
- * Site-wide footer matching the approved design comp (panel11).
- * Layout: logo + nav links + social icons + podcast link + CTA + copyright.
+ * Site-wide footer in the approved design (panel11), carrying the
+ * resolved Summit architecture. Labels and destinations come from the
+ * navigation config (inc/navigation-config.php):
+ *
+ *   brand | primary sections | utility | Let's Talk + Subscribe
+ *   ─────────────────────────────────────────────────────────────
+ *   copyright                         Privacy · Terms   LinkedIn
+ *
+ * Legacy routes (Who We Are, What We Do, Selected Portfolio, Tastemakers,
+ * Design Tomorrow) remain live but are no longer surfaced here.
  *
  * @package SummitTheme
  */
 
 defined( 'ABSPATH' ) || exit;
+
+$footer_primary   = summit_nav( 'primary' ) ?: [];
+$footer_utility   = summit_nav( 'utility' ) ?: [];
+$footer_legal     = summit_nav( 'legal' ) ?: [];
+$footer_social    = summit_nav( 'social' ) ?: [];
+$footer_cta       = summit_nav( 'cta' );
+$footer_subscribe = summit_nav( 'subscribe' );
 ?>
 
 </div><!-- /.site-content -->
@@ -26,32 +41,40 @@ defined( 'ABSPATH' ) || exit;
                 </a>
             </div>
 
-            <!-- Primary Navigation -->
+            <!-- Primary: the six sections -->
             <nav class="site-footer__nav site-footer__nav--primary" aria-label="<?php esc_attr_e( 'Footer primary navigation', 'summit' ); ?>">
                 <ul class="site-footer__nav-list" role="list">
-                    <li><a href="<?php echo esc_url( home_url( '/who-we-are/' ) ); ?>" class="site-footer__nav-link">Who We Are</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/what-we-do/' ) ); ?>" class="site-footer__nav-link">What We Do</a></li>
-                    <li><a href="<?php echo esc_url( get_post_type_archive_link( 'case_study' ) ); ?>" class="site-footer__nav-link">Selected Portfolio</a></li>
-                    <li><a href="<?php echo esc_url( get_post_type_archive_link( 'article' ) ); ?>" class="site-footer__nav-link">The Future of Luxury</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/design-tomorrow/' ) ); ?>" class="site-footer__nav-link">Let's Talk</a></li>
+                    <?php foreach ( $footer_primary as $section ) : ?>
+                    <li><a href="<?php echo esc_url( summit_nav_url( $section ) ); ?>" class="site-footer__nav-link"><?php echo esc_html( $section['label'] ); ?></a></li>
+                    <?php endforeach; ?>
                 </ul>
             </nav>
 
-            <!-- Secondary Navigation -->
+            <!-- Utility -->
             <nav class="site-footer__nav site-footer__nav--secondary" aria-label="<?php esc_attr_e( 'Footer secondary navigation', 'summit' ); ?>">
                 <ul class="site-footer__nav-list" role="list">
-                    <li><a href="<?php echo esc_url( home_url( '/careers/' ) ); ?>" class="site-footer__nav-link">Careers</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/client-lounge/' ) ); ?>" class="site-footer__nav-link">Client Lounge</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/tastemakers/' ) ); ?>" class="site-footer__nav-link">Tastemakers Podcast</a></li>
+                    <?php foreach ( $footer_utility as $item ) : ?>
+                    <li><a href="<?php echo esc_url( summit_nav_url( $item ) ); ?>" class="site-footer__nav-link"><?php echo esc_html( $item['label'] ); ?></a></li>
+                    <?php endforeach; ?>
                 </ul>
             </nav>
 
-            <!-- Actions column (button only) -->
+            <!-- Actions: the conversation, then the publication -->
             <div class="site-footer__actions-col">
-                <a href="<?php echo esc_url( home_url( '/design-tomorrow/' ) ); ?>"
+                <?php if ( $footer_cta ) : ?>
+                <a href="<?php echo esc_url( summit_nav_url( $footer_cta ) ); ?>"
                    class="site-footer__cta">
-                    Design Tomorrow
+                    <?php echo esc_html( $footer_cta['label'] ); ?>
                 </a>
+                <?php endif; ?>
+
+                <?php if ( $footer_subscribe ) : ?>
+                <a href="<?php echo esc_url( summit_nav_url( $footer_subscribe ) ); ?>"
+                   class="site-footer__nav-link"
+                   aria-label="<?php esc_attr_e( 'Subscribe to The Future of Luxury', 'summit' ); ?>">
+                    <?php echo esc_html( $footer_subscribe['label'] ); ?>
+                </a>
+                <?php endif; ?>
             </div>
 
         </div>
@@ -62,21 +85,20 @@ defined( 'ABSPATH' ) || exit;
                 <br>Summit&reg; is a registered trademark of Summit Communication Group.
             </p>
             <div class="site-footer__social">
-                <a href="https://www.youtube.com/@summitcomms" class="site-footer__social-icon" aria-label="YouTube" rel="noopener" target="_blank">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="currentColor"/></svg>
-                </a>
-                <a href="https://www.instagram.com/summitcomms/" class="site-footer__social-icon" aria-label="Instagram" rel="noopener" target="_blank">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" fill="currentColor"/></svg>
-                </a>
-                <a href="https://x.com/summitcomms" class="site-footer__social-icon" aria-label="X" rel="noopener" target="_blank">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="currentColor"/></svg>
-                </a>
-                <a href="https://www.linkedin.com/company/summitcomms/" class="site-footer__social-icon" aria-label="LinkedIn" rel="noopener" target="_blank">
+                <nav aria-label="<?php esc_attr_e( 'Legal', 'summit' ); ?>">
+                    <ul class="site-footer__legal-list" role="list">
+                        <?php foreach ( $footer_legal as $item ) : ?>
+                        <li><a href="<?php echo esc_url( summit_nav_url( $item ) ); ?>" class="site-footer__legal-link"><?php echo esc_html( $item['label'] ); ?></a></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </nav>
+                <?php foreach ( $footer_social as $item ) : ?>
+                <a href="<?php echo esc_url( summit_nav_url( $item ) ); ?>" class="site-footer__social-icon"
+                   aria-label="<?php echo esc_attr( sprintf( /* translators: %s: network name */ __( '%s (opens in a new tab)', 'summit' ), $item['label'] ) ); ?>"
+                   rel="noopener" target="_blank">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="currentColor"/></svg>
                 </a>
-                <a href="https://www.facebook.com/summitcomms" class="site-footer__social-icon" aria-label="Facebook" rel="noopener" target="_blank">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="currentColor"/></svg>
-                </a>
+                <?php endforeach; ?>
             </div>
         </div>
 

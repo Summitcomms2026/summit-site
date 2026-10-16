@@ -1,209 +1,91 @@
 <?php
 /**
- * Template: Article Category Taxonomy Archive
+ * Template: The Future of Luxury — a subject
  * Location: taxonomy-article_category.php
+ * URL: /article-category/{term-slug}/ (rewrite slug registered in summit-core/taxonomies.php)
  *
- * WordPress template hierarchy:
- *   taxonomy-article_category-{term-slug}.php
- *   → taxonomy-article_category.php     ← this file
- *   → taxonomy.php
- *   → archive.php
- *   → index.php
+ * One of the section's categories, as reached from the Essays & Analysis
+ * index or an essay's kicker. WordPress supplies the term's articles
+ * through the main loop.
  *
- * The taxonomy is registered with the key 'article_category'.
- * Its rewrite slug is 'topic' (registered in summit-core/taxonomies.php).
- * Public URL: /topic/{term-slug}
+ * Panels:
+ *   1. Masthead      the publication's rail, the subject as the H1
+ *   2. Essays        the subject's essays, newest first, with pagination
+ *   3. Subjects      the other subjects, and the way back to the index
+ *   4. Subscribe     #subscribe
+ *   5. CTA footer
  *
- * This template is the category-filtered view of The Future of Luxury.
- * It mirrors the layout of archive-article.php with the current
- * category highlighted in the filter nav and the hero adapted to the
- * term name and description. The featured article slot belongs to the
- * main /the-future-of-luxury page; category archives begin with the
- * filter nav and article grid directly.
- *
- * WordPress supplies the article query via the global loop — have_posts()
- * and the_post() iterate over articles already filtered by this term.
- * No custom WP_Query is needed here.
- *
- * Component sequence:
- *   1. Category hero — breadcrumb, term name, term description
- *   2. Category filter nav — all terms, current highlighted with aria-current
- *   3. Article grid (global WP loop — already filtered by term)
- *   4. Pagination
- *   5. CTA footer → parts/global/cta-footer.php
- *
- * SEO & Schema — not injected here.
- * Output handled in inc/seo.php. WordPress sets the canonical URL for
- * taxonomy archives automatically; inc/seo.php adds OG and description.
+ * SEO & Schema are handled in inc/seo.php.
  *
  * @package SummitTheme
  */
 
 defined( 'ABSPATH' ) || exit;
 
+$term     = get_queried_object();
+$archive  = get_post_type_archive_link( 'article' );
+$subjects = get_terms( [ 'taxonomy' => 'article_category', 'hide_empty' => true ] );
+$source   = '/' . trim( (string) wp_parse_url( get_term_link( $term ), PHP_URL_PATH ), '/' );
+
 get_header();
-
-$current_term = get_queried_object(); // WP_Term for this article_category
-
-// All article categories for the filter nav.
-$all_cats = get_terms( [ 'taxonomy' => 'article_category', 'hide_empty' => true ] );
 ?>
 
-<main id="main" class="site-main" role="main">
+<main id="main" class="site-main fol" role="main">
 
-    <!-- ── 1. Category hero ─────────────────────────────────────────────── -->
-    <section class="section--padded" aria-labelledby="cat-hero-title">
-        <div class="container container--medium">
-            <div class="archive-hero">
+    <?php get_template_part( 'parts/fol/masthead', null, [
+        'size'       => 'section',
+        'rail'       => [ '<a href="' . esc_url( $archive ) . '">' . esc_html__( 'The Future of Luxury', 'summit' ) . '</a>', __( 'Subject', 'summit' ) ],
+        'title'      => wp_specialchars_decode( $term->name, ENT_QUOTES ),
+        'standfirst' => $term->description ? wp_strip_all_tags( $term->description ) : '',
+        'actions'    => [
+            [ 'type' => 'utility', 'mode' => 'link', 'icon' => false, 'label' => __( 'All essays', 'summit' ), 'url' => $archive . '#essays-analysis', 'class' => 'action--contextual' ],
+        ],
+    ] ); ?>
 
-                <nav class="archive-hero__breadcrumb" aria-label="Editorial navigation">
-                    <a href="<?php echo esc_url( get_post_type_archive_link( 'article' ) ); ?>">
-                        The Future of Luxury
-                    </a>
-                    <span aria-hidden="true">/</span>
-                    <span aria-current="page">
-                        <?php echo esc_html( $current_term->name ); ?>
-                    </span>
-                </nav>
-
-                <p class="archive-hero__eyebrow">Editorial Category</p>
-
-                <h1 class="archive-hero__headline" id="cat-hero-title">
-                    <?php echo esc_html( $current_term->name ); ?>
-                </h1>
-
-                <?php if ( $current_term->description ) : ?>
-                <div class="archive-hero__body">
-                    <p><?php echo esc_html( $current_term->description ); ?></p>
+    <section class="fol-panel fol-subject" aria-label="<?php echo esc_attr( wp_specialchars_decode( $term->name, ENT_QUOTES ) ); ?>">
+        <div class="fol-wrap">
+            <?php if ( have_posts() ) : ?>
+            <div class="fol-subject__grid">
+                <?php $i = 0; while ( have_posts() ) : the_post(); ?>
+                <div data-reveal data-reveal-delay="<?php echo esc_attr( (string) min( 3, $i++ % 3 ) ); ?>">
+                    <?php get_template_part( 'parts/fol/story', null, [ 'post' => get_post(), 'variant' => 'feature', 'level' => 2, 'category' => false ] ); ?>
                 </div>
-                <?php else : ?>
-                <div class="archive-hero__body">
-                    <p>
-                        Articles on
-                        <?php echo esc_html( strtolower( $current_term->name ) ); ?>
-                        from The Future of Luxury.
-                    </p>
-                </div>
-                <?php endif; ?>
-
+                <?php endwhile; ?>
             </div>
+            <?php
+            the_posts_pagination( [
+                'mid_size'           => 1,
+                'prev_text'          => __( 'Newer', 'summit' ),
+                'next_text'          => __( 'Older', 'summit' ),
+                'screen_reader_text' => __( 'More essays', 'summit' ),
+                'class'              => 'fol-pagination',
+            ] );
+            ?>
+            <?php else : ?>
+            <p class="fol-empty__note"><?php esc_html_e( 'No essays are filed under this subject yet.', 'summit' ); ?></p>
+            <?php endif; ?>
         </div>
     </section>
 
-    <!-- ── 2. Category filter nav ───────────────────────────────────────── -->
-    <?php if ( ! is_wp_error( $all_cats ) && ! empty( $all_cats ) ) : ?>
-    <nav class="archive-filters" aria-label="Browse by category">
-        <div class="container container--wide">
-            <ul class="archive-filters__list" role="list">
-
-                <li class="archive-filters__item">
-                    <a href="<?php echo esc_url( get_post_type_archive_link( 'article' ) ); ?>"
-                       class="archive-filters__btn">
-                        All
-                    </a>
-                </li>
-
-                <?php foreach ( $all_cats as $cat ) :
-                    $is_active = (int) $cat->term_id === (int) $current_term->term_id;
-                ?>
-                <li class="archive-filters__item">
-                    <a href="<?php echo esc_url( get_term_link( $cat ) ); ?>"
-                       class="archive-filters__btn <?php echo $is_active ? 'is-active' : ''; ?>"
-                       aria-current="<?php echo $is_active ? 'page' : 'false'; ?>">
-                        <?php echo esc_html( $cat->name ); ?>
-                    </a>
-                </li>
+    <?php if ( ! is_wp_error( $subjects ) && count( $subjects ) > 1 ) : ?>
+    <nav class="fol-panel fol-subjects" aria-labelledby="fol-subjects-heading">
+        <div class="fol-wrap">
+            <h2 class="fol-subjects__heading" id="fol-subjects-heading" data-reveal="fade"><?php esc_html_e( 'Other subjects', 'summit' ); ?></h2>
+            <ul class="fol-subjects__list" role="list" data-reveal="fade">
+                <?php foreach ( $subjects as $subject ) :
+                    if ( $subject->term_id === $term->term_id ) {
+                        continue;
+                    } ?>
+                <li><a href="<?php echo esc_url( get_term_link( $subject ) ); ?>"><?php echo esc_html( wp_specialchars_decode( $subject->name, ENT_QUOTES ) ); ?></a></li>
                 <?php endforeach; ?>
-
+                <li class="fol-subjects__all"><a href="<?php echo esc_url( $archive . '#essays-analysis' ); ?>"><?php esc_html_e( 'The full index', 'summit' ); ?></a></li>
             </ul>
         </div>
     </nav>
     <?php endif; ?>
 
-    <!-- ── 3. Article grid ──────────────────────────────────────────────── -->
-    <section class="section--padded" aria-label="Articles in this category">
-        <div class="container container--wide">
+    <?php get_template_part( 'parts/fol/subscribe', null, [ 'source' => $source ] ); ?>
 
-            <?php if ( have_posts() ) : ?>
-
-            <ul class="article-grid" role="list">
-                <?php while ( have_posts() ) : the_post();
-                    $standfirst = get_field( 'art_standfirst' );
-                    $read_time  = get_field( 'art_read_time' );
-                    $cat_terms  = get_the_terms( get_the_ID(), 'article_category' );
-                    $cat_label  = ( ! is_wp_error( $cat_terms ) && ! empty( $cat_terms ) )
-                                  ? $cat_terms[0]->name : '';
-                ?>
-                <li class="article-card">
-                    <a href="<?php the_permalink(); ?>"
-                       class="article-card__link"
-                       aria-label="<?php echo esc_attr( 'Read: ' . get_the_title() ); ?>">
-
-                        <?php if ( summit_has_article_hero() ) : ?>
-                        <figure class="article-card__media" aria-hidden="true">
-                            <?php echo summit_article_hero( null, 'medium_large' ); ?>
-                        </figure>
-                        <?php endif; ?>
-
-                        <div class="article-card__body">
-                            <?php if ( $cat_label ) : ?>
-                            <span class="article-card__eyebrow">
-                                <?php echo esc_html( $cat_label ); ?>
-                            </span>
-                            <?php endif; ?>
-
-                            <h2 class="article-card__title"><?php the_title(); ?></h2>
-
-                            <?php if ( $standfirst ) : ?>
-                            <p class="article-card__standfirst">
-                                <?php echo esc_html( $standfirst ); ?>
-                            </p>
-                            <?php endif; ?>
-
-                            <div class="article-card__meta">
-                                <time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
-                                    <?php echo esc_html( get_the_date( 'j F Y' ) ); ?>
-                                </time>
-                                <?php if ( $read_time ) : ?>
-                                <span><?php echo absint( $read_time ); ?> min read</span>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-
-                    </a>
-                </li>
-                <?php endwhile; ?>
-            </ul>
-
-            <!-- ── 4. Pagination ─────────────────────────────────────── -->
-            <div class="pagination">
-                <?php the_posts_pagination( [
-                    'mid_size'           => 2,
-                    'prev_text'          => '&larr;',
-                    'next_text'          => '&rarr;',
-                    'screen_reader_text' => 'Articles navigation',
-                    'aria_label'         => 'Articles in ' . esc_html( $current_term->name ),
-                ] ); ?>
-            </div>
-
-            <?php else : ?>
-
-            <div class="empty-state">
-                <p class="empty-state__message">
-                    No articles published in this category yet.
-                </p>
-                <a href="<?php echo esc_url( get_post_type_archive_link( 'article' ) ); ?>"
-                   class="btn btn--secondary">
-                    View All Articles
-                </a>
-            </div>
-
-            <?php endif; ?>
-
-        </div>
-    </section>
-
-    <!-- ── 5. CTA Footer ───────────────────────────────────────────────── -->
     <?php get_template_part( 'parts/global/cta-footer' ); ?>
 
 </main>

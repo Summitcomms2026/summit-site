@@ -17,19 +17,19 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$posts    = $args['posts']    ?? [];
+$related_items    = $args['posts']    ?? [];
 $headline = $args['headline'] ?? 'Related Download';
 
 // Normalise: ACF post_object may return a single post.
-if ( $posts instanceof WP_Post ) {
-    $posts = [ $posts ];
+if ( $related_items instanceof WP_Post ) {
+    $related_items = [ $related_items ];
 }
 
-if ( empty( $posts ) ) {
+if ( empty( $related_items ) ) {
     return;
 }
 
-$download  = $posts[0];
+$download  = $related_items[0];
 $dl_id     = $download->ID;
 $desc      = get_field( 'dl_description', $dl_id );
 $file_type = get_field( 'dl_file_type', $dl_id );

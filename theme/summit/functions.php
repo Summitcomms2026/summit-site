@@ -10,6 +10,7 @@ require_once get_template_directory() . '/inc/navigation-config.php';
 require_once get_template_directory() . '/inc/nav-functions.php';
 require_once get_template_directory() . '/inc/page-guards.php';
 require_once get_template_directory() . '/inc/image-helpers.php';
+require_once get_template_directory() . '/inc/future-of-luxury.php';
 
 add_action( 'wp_enqueue_scripts', 'summit_enqueue_styles' );
 

@@ -1,26 +1,28 @@
 <?php
 /**
- * Template: Single Article
+ * Template: The Future of Luxury — an essay
  * Location: single-article.php
- * URL: /the-future-of-luxury/[slug]
+ * URL: /the-future-of-luxury/{slug}/
  *
- * Component sequence:
- *   1. Article hero — breadcrumb, headline, subtitle, standfirst, featured image
- *   2. Metadata bar — author, date, read time, cornerstone badge
- *   3. Article body (the_content)
- *   4. Source note
- *   5. Author module
- *   6. Related articles   → parts/related/articles.php
- *   7. Related case study → parts/related/case-studies.php
- *   8. Related episode    → parts/related/episodes.php
- *   9. Related download   → parts/related/downloads.php
- *  10. Subscribe module   → parts/global/subscribe.php
- *  11. CTA footer         → parts/global/cta-footer.php
+ * The reading template. One column, set for long reading:
  *
- * SEO & Schema — not injected here.
- * Output handled in inc/seo.php.
+ *   1. Head       rail (The Future of Luxury / category), headline,
+ *                 standfirst, byline (author · date · reading time) and
+ *                 the page's tools (Share — with Copy Link, Email and
+ *                 LinkedIn — and Print, from the shared action system)
+ *   2. Image      the featured image, only when its file exists; the head
+ *                 stands complete without it
+ *   3. Body       the_content, in the reading measure; inline images are
+ *                 revealed when they load and withdrawn if they cannot
+ *                 (assets/js/fol.js), so a dead remote image leaves no frame
+ *   4. Foot       subject, the author, and the tools again
+ *   5. Further reading  two or three real essays (parts/fol/related.php)
+ *   6. Related work, episode or download, where the editors have set one
+ *   7. Subscribe  #subscribe (art_subscribe_prompt, on by default)
+ *   8. CTA footer
  *
- * ACF fields: art_* prefix (see acf-fields.php)
+ * Fields (art_*, see summit-core/acf-fields.php) are read, never altered.
+ * SEO & Schema are handled in inc/seo.php.
  *
  * @package SummitTheme
  */
@@ -32,185 +34,170 @@ get_header();
 while ( have_posts() ) :
     the_post();
 
-    // ── Field retrieval ───────────────────────────────────────────────────
-    $art_id           = get_the_ID();
-    $standfirst       = get_field( 'art_standfirst' );
-    $read_time        = get_field( 'art_read_time' );
-    $cornerstone      = get_field( 'art_cornerstone' );
-    $source_note      = get_field( 'art_source_note' );
-    $subscribe_on     = get_field( 'art_subscribe_prompt' );
-    $related_articles = get_field( 'art_related_articles' ); // relationship → array
-    $related_case     = get_field( 'art_related_case' );     // post_object → WP_Post|null
-    $related_episode  = get_field( 'art_related_episode' );  // post_object → WP_Post|null
-    $related_download = get_field( 'art_related_download' ); // post_object → WP_Post|null
+    $art_id       = get_the_ID();
+    $category     = summit_fol_category( $art_id );
+    $category_url = $category ? get_term_link( $category ) : '';
+    $standfirst   = summit_fol_standfirst( $art_id );
+    $minutes      = summit_fol_read_time( $art_id );
+    $author       = summit_fol_author( $art_id );
+    $author_id    = (int) get_post_field( 'post_author', $art_id );
+    $author_bio   = $author ? (string) get_the_author_meta( 'description', $author_id ) : '';
+    $subtitle     = (string) get_field( 'art_subtitle' );
+    $cornerstone  = (bool) get_field( 'art_cornerstone' );
+    $source_note  = trim( (string) get_field( 'art_source_note' ) );
+    $subscribe_on = get_field( 'art_subscribe_prompt' );
+    $image        = summit_fol_image( $art_id, 'full', [ 'sizes' => '(min-width: 1320px) 1272px, 100vw', 'fetchpriority' => 'high', 'loading' => 'eager' ] );
+    $archive      = get_post_type_archive_link( 'article' );
 
-    // Author — defensive display name resolution.
-    $author_id    = (int) get_the_author_meta( 'ID' );
-    $author_login = get_the_author_meta( 'user_login' );
-    $raw_display  = get_the_author_meta( 'display_name' );
-    $first_name   = get_the_author_meta( 'first_name' );
-    $last_name    = get_the_author_meta( 'last_name' );
-    $author_bio   = get_the_author_meta( 'description' );
-
-    // Fallback chain: human display_name → first+last → humanised login.
-    if ( $raw_display && $raw_display !== $author_login ) {
-        $author_name = $raw_display;
-    } elseif ( $first_name && $last_name ) {
-        $author_name = trim( $first_name . ' ' . $last_name );
-    } else {
-        $author_name = ucwords( str_replace( [ '.', '_', '-' ], ' ', $author_login ) );
+    // Import bookkeeping ("Imported from …") is an editor's note, not a reader's.
+    if ( preg_match( '/^imported from\b/i', $source_note ) ) {
+        $source_note = '';
     }
 
-    // Avatar — suppress if no meaningful avatar found.
-    $avatar_data    = get_avatar_data( $author_id, [ 'size' => 120 ] );
-    $has_avatar     = ! empty( $avatar_data['found_avatar'] );
-
-    // Category.
-    $cat_terms = get_the_terms( $art_id, 'article_category' );
-    $cat_label = ( ! is_wp_error( $cat_terms ) && ! empty( $cat_terms ) )
-                 ? $cat_terms[0]->name : '';
-    $cat_url   = ( ! is_wp_error( $cat_terms ) && ! empty( $cat_terms ) )
-                 ? get_term_link( $cat_terms[0] ) : '';
-
-    $pub_date = get_the_date( 'j F Y' );
-    $pub_iso  = get_the_date( 'c' );
+    $tools = [
+        [ 'mode' => 'share' ],
+        [ 'mode' => 'print' ],
+    ];
 ?>
 
-<main id="main" class="site-main" role="main">
+<main id="main" class="site-main fol fol-reading" role="main">
 
-    <!-- ── 1 & 2. Hero + metadata ───────────────────────────────────────── -->
-    <section class="section--padded" aria-labelledby="single-hero-title">
-        <div class="container container--medium">
+    <article <?php post_class( 'fol-article' ); ?>>
 
-            <nav class="article-hero__breadcrumb" aria-label="Article navigation">
-                <a href="<?php echo esc_url( get_post_type_archive_link( 'article' ) ); ?>">
-                    The Future of Luxury
-                </a>
-                <?php if ( $cat_label && ! is_wp_error( $cat_url ) ) : ?>
-                <span aria-hidden="true">/</span>
-                <a href="<?php echo esc_url( $cat_url ); ?>"><?php echo esc_html( $cat_label ); ?></a>
-                <?php endif; ?>
-            </nav>
+        <header class="fol-article__head">
+            <div class="fol-wrap">
+                <nav class="fol-article__rail" aria-label="<?php esc_attr_e( 'Breadcrumb', 'summit' ); ?>" data-reveal="fade">
+                    <a href="<?php echo esc_url( $archive ); ?>"><?php esc_html_e( 'The Future of Luxury', 'summit' ); ?></a>
+                    <?php if ( $category && ! is_wp_error( $category_url ) ) : ?>
+                    <span aria-hidden="true">/</span>
+                    <a href="<?php echo esc_url( $category_url ); ?>"><?php echo esc_html( $category->name ); ?></a>
+                    <?php endif; ?>
+                    <?php if ( $cornerstone ) : ?>
+                    <span class="fol-article__flag"><?php esc_html_e( 'Essential reading', 'summit' ); ?></span>
+                    <?php endif; ?>
+                </nav>
 
-            <div class="single-hero">
+                <h1 class="fol-article__title" data-reveal><?php the_title(); ?></h1>
 
-                <?php if ( $cat_label ) : ?>
-                <p class="eyebrow" data-reveal="fade"><?php echo esc_html( $cat_label ); ?></p>
-                <?php endif; ?>
-
-                <h1 class="single-hero__title" id="single-hero-title" data-reveal>
-                    <?php the_title(); ?>
-                </h1>
-
-                <?php
-                $subtitle = get_field( 'art_subtitle' );
-                if ( $subtitle ) : ?>
-                <p class="single-hero__subtitle"><?php echo esc_html( $subtitle ); ?></p>
+                <?php if ( $subtitle ) : ?>
+                <p class="fol-article__subtitle" data-reveal><?php echo esc_html( $subtitle ); ?></p>
                 <?php endif; ?>
 
                 <?php if ( $standfirst ) : ?>
-                <p class="single-hero__standfirst" data-reveal data-reveal-delay="1"><?php echo esc_html( $standfirst ); ?></p>
+                <p class="fol-article__standfirst" data-reveal data-reveal-delay="1"><?php echo esc_html( $standfirst ); ?></p>
                 <?php endif; ?>
 
-                <div class="meta-bar" role="contentinfo" aria-label="Article information" data-reveal="fade" data-reveal-delay="2">
-                    <?php if ( $author_name ) : ?>
-                    <span class="meta-bar__author"><?php echo esc_html( $author_name ); ?></span>
-                    <?php endif; ?>
-                    <time datetime="<?php echo esc_attr( $pub_iso ); ?>">
-                        <?php echo esc_html( $pub_date ); ?>
-                    </time>
-                    <?php if ( $read_time ) : ?>
-                    <span class="meta-bar__separator"></span>
-                    <span><?php echo absint( $read_time ); ?> min read</span>
-                    <?php endif; ?>
-                    <?php if ( $cornerstone ) : ?>
-                    <span class="meta-bar__cornerstone">Essential Reading</span>
-                    <?php endif; ?>
+                <div class="fol-article__byline" data-reveal="fade" data-reveal-delay="2">
+                    <p class="fol-article__meta">
+                        <?php if ( $author ) : ?>
+                        <span class="fol-article__author"><?php
+                            /* translators: %s: author name */
+                            echo esc_html( sprintf( __( 'By %s', 'summit' ), $author ) );
+                        ?></span>
+                        <?php endif; ?>
+                        <time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>"><?php echo esc_html( get_the_date( 'j F Y' ) ); ?></time>
+                        <?php if ( $minutes ) : ?>
+                        <span><?php
+                            /* translators: %d: minutes */
+                            echo esc_html( sprintf( __( '%d min read', 'summit' ), $minutes ) );
+                        ?></span>
+                        <?php endif; ?>
+                    </p>
+                    <?php get_template_part( 'parts/global/action-group', null, [
+                        'label'   => __( 'Share or print this essay', 'summit' ),
+                        'actions' => $tools,
+                        'class'   => 'fol-article__tools',
+                    ] ); ?>
                 </div>
-
             </div>
+        </header>
 
-            <?php if ( summit_has_article_hero() ) : ?>
-            <figure class="single-hero__media" data-reveal="fade">
-                <?php echo summit_article_hero( null, 'full' ); ?>
-            </figure>
-            <?php endif; ?>
+        <?php if ( $image ) : ?>
+        <figure class="fol-article__image" data-reveal="fade">
+            <?php echo $image; // phpcs:ignore WordPress.Security.EscapeOutput -- wp_get_attachment_image ?>
+        </figure>
+        <?php endif; ?>
 
+        <div class="fol-article__body fol-prose" data-fol-prose>
+            <?php the_content(); ?>
         </div>
-    </section>
 
-    <!-- ── 3 & 4. Article body + source note ────────────────────────────── -->
-    <section class="section--padded">
-        <div class="container container--narrow">
-            <div class="prose">
-                <?php the_content(); ?>
-            </div>
-
-            <?php if ( $source_note ) : ?>
-            <p class="single-article__source-note">
-                <?php echo esc_html( $source_note ); ?>
-            </p>
-            <?php endif; ?>
-        </div>
-    </section>
-
-    <!-- ── 5. Author module ──────────────────────────────────────────────── -->
-    <?php if ( $author_name ) : ?>
-    <section class="section--padded author-module" aria-labelledby="author-module-heading">
-        <div class="container container--narrow">
-            <div class="author-module__inner">
-
-                <?php if ( $has_avatar ) :
-                    $avatar = get_avatar( $author_id, 120, '', $author_name, [ 'class' => 'author-module__avatar' ] );
-                ?>
-                <figure class="author-module__portrait" aria-hidden="true">
-                    <?php echo $avatar; ?>
-                </figure>
+        <footer class="fol-article__foot">
+            <div class="fol-article__measure">
+                <?php if ( $source_note ) : ?>
+                <p class="fol-article__source"><?php echo esc_html( $source_note ); ?></p>
                 <?php endif; ?>
 
-                <div class="author-module__body">
-                    <h2 class="screen-reader-text" id="author-module-heading">About the author</h2>
-                    <p class="author-module__display-name"><?php echo esc_html( $author_name ); ?></p>
-                    <?php if ( $author_bio ) : ?>
-                    <p class="author-module__bio"><?php echo esc_html( $author_bio ); ?></p>
+                <dl class="fol-article__register">
+                    <?php if ( $category && ! is_wp_error( $category_url ) ) : ?>
+                    <div>
+                        <dt><?php esc_html_e( 'Filed under', 'summit' ); ?></dt>
+                        <dd><a href="<?php echo esc_url( $category_url ); ?>"><?php echo esc_html( $category->name ); ?></a></dd>
+                    </div>
                     <?php endif; ?>
-                </div>
+                    <?php if ( $author ) : ?>
+                    <div>
+                        <dt><?php esc_html_e( 'Author', 'summit' ); ?></dt>
+                        <dd>
+                            <span class="fol-article__author-name"><?php echo esc_html( $author ); ?></span>
+                            <?php if ( $author_bio ) : ?>
+                            <span class="fol-article__bio"><?php echo esc_html( $author_bio ); ?></span>
+                            <?php endif; ?>
+                        </dd>
+                    </div>
+                    <?php endif; ?>
+                    <div>
+                        <dt><?php esc_html_e( 'Published', 'summit' ); ?></dt>
+                        <dd><time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>"><?php echo esc_html( get_the_date( 'j F Y' ) ); ?></time></dd>
+                    </div>
+                </dl>
 
+                <?php get_template_part( 'parts/global/action-group', null, [
+                    'label'   => __( 'Share or print this essay', 'summit' ),
+                    'actions' => [
+                        [ 'mode' => 'linkedin' ],
+                        [ 'mode' => 'email' ],
+                        [ 'mode' => 'copy' ],
+                        [ 'mode' => 'print' ],
+                    ],
+                    'class'   => 'fol-article__tools fol-article__tools--end',
+                ] ); ?>
             </div>
-        </div>
-    </section>
-    <?php endif; ?>
+        </footer>
 
-    <!-- ── 6–9. Related content ──────────────────────────────────────────── -->
+    </article>
+
     <?php
-    get_template_part( 'parts/related/articles', null, [
-        'posts'    => $related_articles ?: [],
-        'headline' => 'Related Reading',
-    ] );
+    get_template_part( 'parts/fol/related', null, [ 'post_id' => $art_id ] );
+
+    // ACF post_object fields may hold one post, an ID or a list: the related
+    // parts expect a list of published posts.
+    $as_posts = static function ( $value ): array {
+        $value = is_array( $value ) ? $value : ( $value ? [ $value ] : [] );
+        return array_values( array_filter( array_map( 'get_post', $value ), static fn( $p ) => $p && 'publish' === $p->post_status ) );
+    };
 
     get_template_part( 'parts/related/case-studies', null, [
-        'posts'    => $related_case ?: [],
-        'headline' => 'Related Work',
+        'posts'    => $as_posts( get_field( 'art_related_case' ) ),
+        'headline' => __( 'Related Work', 'summit' ),
     ] );
-
     get_template_part( 'parts/related/episodes', null, [
-        'posts'    => $related_episode ?: [],
-        'headline' => 'Related Episode',
+        'posts'    => $as_posts( get_field( 'art_related_episode' ) ),
+        'headline' => __( 'Related Episode', 'summit' ),
     ] );
-
     get_template_part( 'parts/related/downloads', null, [
-        'posts'    => $related_download ?: [],
-        'headline' => 'Related Download',
+        'posts'    => $as_posts( get_field( 'art_related_download' ) ),
+        'headline' => __( 'Related Download', 'summit' ),
     ] );
+
+    if ( false !== $subscribe_on ) {
+        get_template_part( 'parts/fol/subscribe', null, [
+            'source' => '/' . trim( (string) wp_parse_url( get_permalink(), PHP_URL_PATH ), '/' ),
+        ] );
+    }
+
+    get_template_part( 'parts/global/cta-footer' );
     ?>
-
-    <!-- ── 10. Subscribe ─────────────────────────────────────────────────── -->
-    <?php if ( $subscribe_on !== false ) :
-        get_template_part( 'parts/global/subscribe' );
-    endif; ?>
-
-    <!-- ── 11. CTA Footer ───────────────────────────────────────────────── -->
-    <?php get_template_part( 'parts/global/cta-footer' ); ?>
 
 </main>
 

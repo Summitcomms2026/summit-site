@@ -17,19 +17,19 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$posts    = $args['posts']    ?? [];
+$related_items    = $args['posts']    ?? [];
 $headline = $args['headline'] ?? 'More Episodes';
 
 // Normalise: ACF post_object fields may return a single post.
-if ( $posts instanceof WP_Post ) {
-    $posts = [ $posts ];
+if ( $related_items instanceof WP_Post ) {
+    $related_items = [ $related_items ];
 }
 
-if ( is_array( $posts ) ) {
-    $posts = array_filter( $posts, fn( $p ) => $p instanceof WP_Post );
+if ( is_array( $related_items ) ) {
+    $related_items = array_filter( $related_items, fn( $p ) => $p instanceof WP_Post );
 }
 
-if ( empty( $posts ) ) {
+if ( empty( $related_items ) ) {
     return;
 }
 ?>
@@ -42,7 +42,7 @@ if ( empty( $posts ) ) {
         </h2>
 
         <ul class="episode-list" role="list">
-            <?php foreach ( $posts as $episode ) :
+            <?php foreach ( $related_items as $episode ) :
                 $ep_id   = $episode->ID;
                 $deck    = get_field( 'ep_deck',           $ep_id );
                 $guest   = get_field( 'ep_guest_name',     $ep_id );

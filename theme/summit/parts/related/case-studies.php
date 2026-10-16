@@ -17,10 +17,15 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$posts    = $args['posts']    ?? [];
+$related_items    = $args['posts']    ?? [];
 $headline = $args['headline'] ?? 'Related Work';
 
-if ( empty( $posts ) ) {
+// ACF post_object fields may hold a single post.
+if ( $related_items instanceof WP_Post ) {
+    $related_items = [ $related_items ];
+}
+
+if ( empty( $related_items ) ) {
     return;
 }
 ?>
@@ -33,7 +38,7 @@ if ( empty( $posts ) ) {
         </h2>
 
         <ul class="related-grid" role="list">
-            <?php foreach ( $posts as $case ) :
+            <?php foreach ( $related_items as $case ) :
                 $cs_id     = $case->ID;
                 $summary   = get_field( 'cs_summary', $cs_id );
                 $client    = get_field( 'cs_client', $cs_id );

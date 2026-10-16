@@ -1,300 +1,102 @@
 <?php
 /**
- * Template: The Future of Luxury — Article Archive
+ * Template: The Future of Luxury — the publication
  * Location: archive-article.php
- *
- * WordPress template hierarchy: archive-{post_type}.php
- * Fires when is_post_type_archive('article') is true.
  * URL: /the-future-of-luxury/
  *
- * The article CPT has has_archive => 'the-future-of-luxury'. This template
- * owns the primary editorial archive display via a custom WP_Query.
- * Taxonomy archives (article_category) are handled by taxonomy-article_category.php.
- * Single articles are handled by single-article.php at /the-future-of-luxury/{slug}/.
+ * The article post type's archive (has_archive => 'the-future-of-luxury').
+ * Single essays live at /the-future-of-luxury/{slug}/ (single-article.php);
+ * subjects at /article-category/{term}/ (taxonomy-article_category.php).
  *
- * Component sequence:
- *   1. Archive hero (title + intro)
- *   2. Featured article (flagged art_featured = 1)
- *   3. Category navigation → links to taxonomy-article_category.php archives
- *   4. Article grid (standard WP_Query)
- *   5. Pagination
- *   6. Download panel → parts/archive/download-panel.php
- *   7. Tastemakers panel → parts/archive/tastemakers-panel.php
- *   8. Subscribe module → parts/global/subscribe.php
- *   9. CTA footer → parts/global/cta-footer.php
+ * Panels:
+ *   1. Masthead      nameplate, standfirst, the way to the index and subscribe
+ *   2. Lead          the newest essay flagged art_featured, else the newest
+ *   3. Latest        #latest — the next five, in two weights
+ *   4. Essays & Analysis  #essays-analysis — the full index by category
+ *   5. Independence  the section's editorial standing
+ *   6. Subscribe     #subscribe
+ *   7. CTA footer    the global Let's Talk footer
+ *
+ * The anchors are the navigation's own children (inc/navigation-config.php).
+ * Queries are local to this template; the homepage modules and the mega
+ * menu's editorial rail keep their own.
  *
  * @package SummitTheme
  */
 
 defined( 'ABSPATH' ) || exit;
 
-get_header();
-
-// ── Featured article query ────────────────────────────────────────────────
-$featured_article = null;
-$featured_query   = new WP_Query( [
+$lead   = summit_fol_lead();
+$latest = get_posts( [
     'post_type'      => 'article',
-    'posts_per_page' => 1,
-    'meta_key'       => 'art_featured',
-    'meta_value'     => '1',
-    'meta_compare'   => '=',
+    'post_status'    => 'publish',
+    'posts_per_page' => 5,
+    'post__not_in'   => $lead ? [ $lead->ID ] : [],
+    'orderby'        => [ 'date' => 'DESC', 'ID' => 'DESC' ],
     'no_found_rows'  => true,
 ] );
-if ( $featured_query->have_posts() ) {
-    $featured_query->the_post();
-    $featured_article = get_post();
-    wp_reset_postdata();
-}
+$source = '/' . trim( (string) wp_parse_url( get_post_type_archive_link( 'article' ), PHP_URL_PATH ), '/' );
 
-// ── Pagination for main article grid ─────────────────────────────────────
-// CPT archives on page 1 may use 'page' rather than 'paged'.
-$paged = max( 1, get_query_var( 'paged' ) ?: get_query_var( 'page' ) );
-
-// ── Article grid query ────────────────────────────────────────────────────
-// Exclude the featured article from the main grid to prevent duplication.
-$exclude_ids = $featured_article ? [ $featured_article->ID ] : [];
-
-$article_query = new WP_Query( [
-    'post_type'      => 'article',
-    'posts_per_page' => 9,
-    'paged'          => $paged,
-    'post__not_in'   => $exclude_ids,
-    'orderby'        => 'date',
-    'order'          => 'DESC',
-] );
-
-// ── Article categories for the filter nav ────────────────────────────────
-$article_cats = get_terms( [ 'taxonomy' => 'article_category', 'hide_empty' => true ] );
+get_header();
 ?>
 
-<main id="main" class="site-main site-main--future-of-luxury" role="main">
+<main id="main" class="site-main fol" role="main">
 
-    <!-- ── 1. Archive hero ──────────────────────────────────────────────── -->
-    <section class="archive-hero archive-hero--editorial" aria-labelledby="fol-hero-title">
-        <div class="container container--medium">
-            <header class="archive-hero__header">
-                <p class="archive-hero__eyebrow" data-reveal="fade">Editorial</p>
-                <h1 class="archive-hero__title" id="fol-hero-title" data-reveal>The Future of Luxury</h1>
-                <p class="archive-hero__sub" data-reveal data-reveal-delay="1">
-                    Strategic thinking on luxury, culture, technology and the forces
-                    shaping how sophisticated audiences assign value.
-                </p>
+    <?php get_template_part( 'parts/fol/masthead', null, [
+        'rail'       => [ __( 'Summit Communication Group', 'summit' ), __( 'Essays and analysis', 'summit' ) ],
+        'title'      => __( 'The Future of Luxury', 'summit' ),
+        'standfirst' => __( 'Essays and analysis on the houses, objects and decisions reshaping luxury.', 'summit' ),
+        'actions'    => [
+            [ 'type' => 'cta', 'label' => __( 'Essays & Analysis', 'summit' ), 'url' => '#essays-analysis' ],
+            [ 'type' => 'utility', 'mode' => 'link', 'icon' => false, 'label' => __( 'Subscribe', 'summit' ), 'url' => '#subscribe', 'class' => 'action--contextual' ],
+        ],
+    ] ); ?>
+
+    <?php if ( $lead ) : ?>
+    <section class="fol-panel fol-lead" aria-label="<?php esc_attr_e( 'Lead essay', 'summit' ); ?>">
+        <div class="fol-wrap" data-reveal="fade">
+            <?php get_template_part( 'parts/fol/story', null, [ 'post' => $lead, 'variant' => 'lead', 'level' => 2 ] ); ?>
+        </div>
+    </section>
+    <?php endif; ?>
+
+    <?php if ( $latest ) :
+        $first = array_shift( $latest ); ?>
+    <section class="fol-panel fol-latest" id="latest" aria-labelledby="fol-latest-heading">
+        <div class="fol-wrap">
+            <header class="fol-panel__head" data-reveal="fade">
+                <h2 class="fol-panel__title" id="fol-latest-heading"><?php esc_html_e( 'Latest', 'summit' ); ?></h2>
             </header>
-        </div>
-    </section>
-
-    <!-- ── 2. Featured article ──────────────────────────────────────────── -->
-    <?php if ( $featured_article ) :
-        $feat_standfirst = get_field( 'art_standfirst', $featured_article->ID );
-        $feat_read_time  = get_field( 'art_read_time',  $featured_article->ID );
-        $feat_cats       = get_the_terms( $featured_article->ID, 'article_category' );
-        $feat_cat_name   = ( ! is_wp_error( $feat_cats ) && ! empty( $feat_cats ) )
-                           ? $feat_cats[0]->name : '';
-        $feat_thumb      = get_the_post_thumbnail( $featured_article->ID, 'full' );
-    ?>
-    <section class="featured-article" aria-labelledby="featured-article-title">
-        <div class="container container--wide">
-            <a href="<?php echo esc_url( get_permalink( $featured_article->ID ) ); ?>"
-               class="featured-article__link">
-
-                <?php if ( $feat_thumb ) : ?>
-                <figure class="featured-article__media" aria-hidden="true">
-                    <?php echo $feat_thumb; ?>
-                </figure>
-                <?php endif; ?>
-
-                <div class="featured-article__body">
-                    <?php if ( $feat_cat_name ) : ?>
-                    <p class="featured-article__eyebrow"><?php echo esc_html( $feat_cat_name ); ?></p>
-                    <?php endif; ?>
-                    <h2 class="featured-article__title" id="featured-article-title">
-                        <?php echo esc_html( get_the_title( $featured_article->ID ) ); ?>
-                    </h2>
-                    <?php if ( $feat_standfirst ) : ?>
-                    <p class="featured-article__standfirst">
-                        <?php echo esc_html( $feat_standfirst ); ?>
-                    </p>
-                    <?php endif; ?>
-                    <div class="featured-article__meta">
-                        <time datetime="<?php echo esc_attr( get_the_date( 'c', $featured_article->ID ) ); ?>">
-                            <?php echo esc_html( get_the_date( 'j F Y', $featured_article->ID ) ); ?>
-                        </time>
-                        <?php if ( $feat_read_time ) : ?>
-                        <span><?php echo absint( $feat_read_time ); ?> min read</span>
-                        <?php endif; ?>
-                    </div>
-                    <span class="featured-article__cta" aria-hidden="true">Read Article</span>
+            <div class="fol-latest__grid">
+                <div class="fol-latest__feature" data-reveal>
+                    <?php get_template_part( 'parts/fol/story', null, [ 'post' => $first, 'variant' => 'feature' ] ); ?>
                 </div>
-
-            </a>
-        </div>
-    </section>
-    <?php endif; ?>
-
-    <!-- ── 3. Category navigation ───────────────────────────────────────── -->
-    <?php if ( ! is_wp_error( $article_cats ) && ! empty( $article_cats ) ) : ?>
-    <nav class="archive-filters archive-filters--categories" aria-label="Browse by category">
-        <div class="container container--wide">
-            <ul class="archive-filters__list" role="list">
-
-                <li class="archive-filters__item">
-                    <a href="<?php echo esc_url( get_post_type_archive_link( 'article' ) ); ?>"
-                       class="archive-filters__btn is-active"
-                       aria-current="true">
-                        All
-                    </a>
-                </li>
-
-                <?php foreach ( $article_cats as $cat ) : ?>
-                <li class="archive-filters__item">
-                    <a href="<?php echo esc_url( get_term_link( $cat ) ); ?>"
-                       class="archive-filters__btn">
-                        <?php echo esc_html( $cat->name ); ?>
-                    </a>
-                </li>
-                <?php endforeach; ?>
-
-            </ul>
-        </div>
-    </nav>
-    <?php endif; ?>
-
-    <!-- ── 4. Article grid ──────────────────────────────────────────────── -->
-    <section class="archive-grid archive-grid--articles" aria-label="Article index">
-        <div class="container container--wide">
-
-            <?php if ( $article_query->have_posts() ) : ?>
-
-            <ul class="article-grid" role="list">
-                <?php while ( $article_query->have_posts() ) : $article_query->the_post();
-                    $standfirst = get_field( 'art_standfirst' );
-                    $read_time  = get_field( 'art_read_time' );
-                    $cats       = get_the_terms( get_the_ID(), 'article_category' );
-                    $cat_name   = ( ! is_wp_error( $cats ) && ! empty( $cats ) )
-                                  ? $cats[0]->name : '';
-                ?>
-                <li class="article-card" data-post-id="<?php the_ID(); ?>">
-                    <a href="<?php the_permalink(); ?>"
-                       class="article-card__link"
-                       aria-label="<?php echo esc_attr( 'Read: ' . get_the_title() ); ?>">
-
-                        <?php if ( has_post_thumbnail() ) : ?>
-                        <figure class="article-card__media" aria-hidden="true">
-                            <?php the_post_thumbnail( 'medium_large' ); ?>
-                        </figure>
-                        <?php endif; ?>
-
-                        <div class="article-card__body">
-                            <div class="article-card__meta">
-                                <?php if ( $cat_name ) : ?>
-                                <span class="article-card__category"><?php echo esc_html( $cat_name ); ?></span>
-                                <?php endif; ?>
-                                <time class="article-card__date"
-                                      datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
-                                    <?php echo esc_html( get_the_date( 'j F Y' ) ); ?>
-                                </time>
-                                <?php if ( $read_time ) : ?>
-                                <span class="article-card__read-time">
-                                    <?php echo absint( $read_time ); ?> min read
-                                </span>
-                                <?php endif; ?>
-                            </div>
-                            <h2 class="article-card__title"><?php the_title(); ?></h2>
-                            <?php if ( $standfirst ) : ?>
-                            <p class="article-card__standfirst"><?php echo esc_html( $standfirst ); ?></p>
-                            <?php endif; ?>
-                            <span class="article-card__cta" aria-hidden="true">Read Article</span>
-                        </div>
-
-                    </a>
-                </li>
-                <?php endwhile; ?>
-            </ul>
-
-            <!-- ── 5. Pagination ─────────────────────────────────────── -->
-            <?php
-            $big = 999999;
-            echo paginate_links( [
-                'base'      => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-                'format'    => '?paged=%#%',
-                'current'   => max( 1, $paged ),
-                'total'     => $article_query->max_num_pages,
-                'prev_text' => '<span aria-hidden="true">&larr;</span><span class="screen-reader-text"> Previous</span>',
-                'next_text' => '<span class="screen-reader-text">Next </span><span aria-hidden="true">&rarr;</span>',
-                'type'      => 'list',
-            ] );
-            wp_reset_postdata();
-            ?>
-
-            <?php else : ?>
-            <div class="archive-empty">
-                <p class="archive-empty__message">No articles published yet.</p>
+                <?php if ( $latest ) : ?>
+                <div class="fol-latest__list">
+                    <?php foreach ( $latest as $i => $item ) : ?>
+                    <div data-reveal data-reveal-delay="<?php echo esc_attr( (string) min( 4, $i + 1 ) ); ?>">
+                        <?php get_template_part( 'parts/fol/story', null, [ 'post' => $item, 'variant' => 'item' ] ); ?>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+                <?php endif; ?>
             </div>
-            <?php wp_reset_postdata(); ?>
-            <?php endif; ?>
-
         </div>
     </section>
+    <?php elseif ( ! $lead ) : ?>
+    <section class="fol-panel fol-empty">
+        <div class="fol-wrap">
+            <p class="fol-empty__note"><?php esc_html_e( 'The first essays are in preparation.', 'summit' ); ?></p>
+        </div>
+    </section>
+    <?php endif; ?>
 
-    <!-- ── 6. Download panel ──────────────────────────────────────────── -->
-    <?php
-    // Resolve featured download: fallback to most recent.
-    $fol_download  = null;
-    $dl_fallback_q = new WP_Query( [
-        'post_type'      => 'download',
-        'posts_per_page' => 1,
-        'orderby'        => 'date',
-        'order'          => 'DESC',
-        'no_found_rows'  => true,
-    ] );
-    $fol_download = $dl_fallback_q->have_posts() ? $dl_fallback_q->posts[0] : null;
-    wp_reset_postdata();
+    <?php get_template_part( 'parts/fol/index' ); ?>
 
-    if ( $fol_download ) :
-        set_query_var( 'summit_download_post',    $fol_download );
-        set_query_var( 'summit_download_heading',  'Download' );
-        get_template_part( 'parts/archive/download-panel' );
-    endif;
-    ?>
+    <?php get_template_part( 'parts/fol/independence' ); ?>
 
-    <!-- ── 7. Tastemakers panel ────────────────────────────────────────── -->
-    <?php
-    // Resolve featured season: ps_is_featured flag → fallback to most recent.
-    $tm_season_q = new WP_Query( [
-        'post_type'      => 'podcast_season',
-        'posts_per_page' => 1,
-        'meta_key'       => 'ps_is_featured',
-        'meta_value'     => '1',
-        'meta_compare'   => '=',
-        'no_found_rows'  => true,
-    ] );
-    if ( ! $tm_season_q->have_posts() ) {
-        $tm_season_q = new WP_Query( [
-            'post_type'      => 'podcast_season',
-            'posts_per_page' => 1,
-            'orderby'        => 'date',
-            'order'          => 'DESC',
-            'no_found_rows'  => true,
-        ] );
-    }
-    $tm_season = $tm_season_q->have_posts() ? $tm_season_q->posts[0] : null;
-    wp_reset_postdata();
+    <?php get_template_part( 'parts/fol/subscribe', null, [ 'source' => $source ] ); ?>
 
-    if ( $tm_season ) :
-        set_query_var( 'summit_tm_season',  $tm_season );
-        set_query_var( 'summit_tm_heading', 'From Tastemakers' );
-        get_template_part( 'parts/archive/tastemakers-panel' );
-    endif;
-    ?>
-
-    <!-- ── 8. Subscribe ─────────────────────────────────────────────────── -->
-    <?php
-    set_query_var( 'summit_subscribe_heading', 'Subscribe to The Future of Luxury' );
-    set_query_var( 'summit_subscribe_sub',     'Thinking on luxury, culture and the forces shaping how sophisticated audiences assign value — delivered directly.' );
-    get_template_part( 'parts/global/subscribe' );
-    ?>
-
-    <!-- ── 9. CTA footer ──────────────────────────────────────────────── -->
     <?php get_template_part( 'parts/global/cta-footer' ); ?>
 
 </main>

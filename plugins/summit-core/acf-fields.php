@@ -1550,6 +1550,7 @@ function summit_acf_enquiry(): void {
 					'partnership'           => 'Partnership',
 					'other'                 => 'Other',
 					'observatory_briefing'  => 'Private Briefing (The Observatory)',
+					'fol_subscription'      => 'Subscription (The Future of Luxury)',
 				],
 				'default_value' => 'other',
 				'allow_null'    => 0,

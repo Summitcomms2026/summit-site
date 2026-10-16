@@ -17,15 +17,15 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$posts    = $args['posts']    ?? [];
+$related_items    = $args['posts']    ?? [];
 $headline = $args['headline'] ?? 'Related Reading';
 
 // Normalise: ACF post_object fields may return a single post, not an array.
-if ( $posts instanceof WP_Post ) {
-    $posts = [ $posts ];
+if ( $related_items instanceof WP_Post ) {
+    $related_items = [ $related_items ];
 }
 
-if ( empty( $posts ) ) {
+if ( empty( $related_items ) ) {
     return;
 }
 ?>
@@ -38,7 +38,7 @@ if ( empty( $posts ) ) {
         </h2>
 
         <ul class="related-grid" role="list">
-            <?php foreach ( $posts as $article ) :
+            <?php foreach ( $related_items as $article ) :
                 $art_id     = $article->ID;
                 $standfirst = get_field( 'art_standfirst', $art_id );
                 $read_time  = get_field( 'art_read_time', $art_id );

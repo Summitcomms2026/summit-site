@@ -2,9 +2,14 @@
 /**
  * Enquiry Form Handler
  *
- * Processes submissions from Summit's enquiry forms (Design Tomorrow, and
- * The Observatory's private briefing request). Creates an enquiry CPT post
- * with ACF fields and sends an email notification.
+ * Processes submissions from Summit's enquiry forms (Design Tomorrow, The
+ * Observatory's private briefing request, and The Future of Luxury's
+ * subscribe form). Creates an enquiry CPT post with ACF fields and sends an
+ * email notification.
+ *
+ * A subscription asks only for an email address: it is recorded as an
+ * enquiry of type "fol_subscription" until a mailing-list service is
+ * connected (the theme's [summit_subscribe_form] hook takes over then).
  *
  * Forms submit by AJAX (assets/js/enquiry-form.js) and receive JSON. Without
  * JavaScript, a form posting to admin-post.php is answered with a redirect
@@ -67,7 +72,9 @@ function summit_handle_enquiry(): void {
 	// ── Validate required fields ────────────────────────────────────────
 	$errors = [];
 
-	if ( empty( $name ) ) {
+	$is_subscription = 'fol_subscription' === $type;
+
+	if ( empty( $name ) && ! $is_subscription ) {
 		$errors[] = 'Name is required.';
 	}
 
@@ -81,11 +88,12 @@ function summit_handle_enquiry(): void {
 		'digital_transformation',
 		'general',
 		'observatory_briefing',
+		'fol_subscription',
 	], true ) ) {
 		$errors[] = 'Please select an enquiry type.';
 	}
 
-	if ( empty( $message ) ) {
+	if ( empty( $message ) && ! $is_subscription ) {
 		$errors[] = 'A message is required.';
 	}
 
@@ -96,9 +104,10 @@ function summit_handle_enquiry(): void {
 	// ── Create enquiry CPT post ─────────────────────────────────────────
 	$type_labels = [
 		'observatory_briefing' => 'Private Briefing (The Observatory)',
+		'fol_subscription'     => 'Subscription (The Future of Luxury)',
 	];
 	$type_label = $type_labels[ $type ] ?? ucwords( str_replace( '_', ' ', $type ) );
-	$post_title = sprintf( '%s — %s', $name, $type_label );
+	$post_title = sprintf( '%s — %s', $name ?: $email, $type_label );
 
 	$post_id = wp_insert_post( [
 		'post_type'   => 'enquiry',
@@ -125,7 +134,14 @@ function summit_handle_enquiry(): void {
 	// ── Send email notification ─────────────────────────────────────────
 	$admin_email = get_option( 'admin_email' );
 
-	if ( 'observatory_briefing' === $type ) {
+	if ( $is_subscription ) {
+		$subject = 'New subscription — The Future of Luxury';
+
+		$body  = "A subscription to The Future of Luxury was received.\n\n";
+		$body .= "Email: {$email}\n";
+		$body .= 'Source: ' . ( 0 === strpos( $form_source, '/' ) ? home_url( $form_source ) : $form_source ) . "\n\n";
+		$body .= "View in admin: " . admin_url( "post.php?post={$post_id}&action=edit" ) . "\n";
+	} elseif ( 'observatory_briefing' === $type ) {
 		$subject = 'Private briefing request — The Observatory';
 
 		$body  = "A private briefing request was received through The Observatory.\n\n";
@@ -153,11 +169,11 @@ function summit_handle_enquiry(): void {
 
 	$mail_sent = wp_mail( $admin_email, $subject, $body, [
 		'Content-Type: text/plain; charset=UTF-8',
-		"Reply-To: {$name} <{$email}>",
+		$name ? "Reply-To: {$name} <{$email}>" : "Reply-To: {$email}",
 	] );
 
 	// ── Respond ─────────────────────────────────────────────────────────
-	summit_enquiry_respond( true, 'Thank you. We have received your enquiry.', 200, [
+	summit_enquiry_respond( true, $is_subscription ? 'Thank you. Your address has been received.' : 'Thank you. We have received your enquiry.', 200, [
 		'post_id'    => $post_id,
 		'mail_sent'  => $mail_sent,
 	] );

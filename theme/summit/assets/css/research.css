@@ -1,0 +1,979 @@
+/*
+ * Summit Theme — Research
+ * assets/css/research.css
+ * Loaded by page-research.php only (after page-shell.css).
+ *
+ * The body of work, set like a book. Each chapter opens on a running head
+ * (section name, folio number) above a ruled line; text sits in a centred
+ * reading column; headings speak in the serif; publications — covers,
+ * metadata, excerpts — break out to the full measure. Related to the
+ * Observatory in seriousness, unlike it in form: no marker column, no
+ * ledgers of the field.
+ *
+ * Measures: reading column 680px inside the approved 1040px container.
+ */
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* CHAPTERS                                                               */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.res-chapter {
+  --res-text: var(--colour-ink);
+  --res-quiet: var(--colour-ink-60);
+  --res-faint: var(--colour-ink-40);
+  --res-rule: var(--colour-ink-10);
+  --res-rule-strong: var(--colour-ink);
+  --res-field: var(--colour-paper);
+  padding-block: clamp(80px, 10vw, 152px);
+  padding-inline: max(var(--space-5), calc((100% - var(--container-med)) / 2 + var(--space-5)));
+  color: var(--res-text);
+}
+
+.res-chapter--tinted {
+  --res-field: var(--colour-ink-05);
+  background-color: var(--colour-ink-05);
+}
+
+.res-chapter--dark {
+  --res-text: var(--colour-paper);
+  --res-quiet: rgba(250, 250, 248, 0.68);
+  --res-faint: rgba(250, 250, 248, 0.5);
+  --res-rule: rgba(250, 250, 248, 0.16);
+  --res-rule-strong: var(--colour-paper);
+  --res-field: var(--colour-ink);
+  background-color: var(--colour-ink);
+}
+
+/* Classic themes wrap a group's blocks in an inner container */
+.res-chapter .wp-block-group__inner-container {
+  display: contents;
+}
+
+:where(.res-chapter, .res-chapter .wp-block-group, .res-chapter .wp-block-group__inner-container) > * {
+  margin-block: 0;
+}
+
+/* The reading column, and what breaks out of it */
+:is(.res-chapter, .res-chapter > .wp-block-group__inner-container) > * {
+  max-width: 680px;
+  margin-inline: auto;
+}
+
+:is(.res-chapter, .res-chapter > .wp-block-group__inner-container) > :is(.res-head, .res-wide, .res-publication, .res-figures, .res-objects, .res-contents, .res-findings, .res-entry, .res-terms) {
+  max-width: none;
+}
+
+:is(.res-chapter, .res-chapter > .wp-block-group__inner-container) > * + * {
+  margin-top: var(--space-8);
+}
+
+/* Running head: the section's name, its folio number to the right */
+.res-chapter p.res-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-6);
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--res-rule-strong);
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--res-quiet);
+}
+
+/* The folio: numbered by the page itself, and decorative (no alt text) */
+.res-body {
+  counter-reset: res-folio;
+}
+
+.res-chapter p.res-head {
+  counter-increment: res-folio;
+}
+
+.res-chapter p.res-head::after {
+  content: counter(res-folio, decimal-leading-zero);
+  content: counter(res-folio, decimal-leading-zero) / "";
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: var(--res-text);
+}
+
+:is(.res-chapter, .res-chapter > .wp-block-group__inner-container) > h2 + * {
+  margin-top: clamp(40px, 5vw, 64px);
+}
+
+:is(.res-chapter, .res-chapter > .wp-block-group__inner-container) > .res-head + * {
+  margin-top: clamp(56px, 7vw, 104px);
+}
+
+/* Headings: the serif, centred over the reading column */
+.res-chapter h2 {
+  max-width: 18ch;
+  margin-inline: auto;
+  font-family: var(--font-serif);
+  font-size: clamp(2.125rem, 4vw, 3.5rem);      /* 34 → 56 */
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: var(--res-text);
+  text-wrap: balance;
+}
+
+.res-chapter h3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  color: var(--res-text);
+}
+
+.res-chapter p {
+  font-family: var(--font-text);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--res-quiet);
+  text-wrap: pretty;
+}
+
+.res-chapter p.res-lead {
+  font-size: clamp(1.1875rem, 1.55vw, 1.375rem);
+  line-height: 1.55;
+  color: var(--res-text);
+}
+
+.res-chapter--dark p.res-lead {
+  color: rgba(250, 250, 248, 0.88);
+}
+
+.res-chapter p.res-note {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.res-chapter p.res-statement {
+  max-width: 17ch;
+  font-family: var(--font-serif);
+  font-size: clamp(2.375rem, 5.2vw, 4.75rem);   /* 38 → 76 */
+  line-height: 1.06;
+  letter-spacing: -0.012em;
+  text-align: center;
+  color: var(--res-text);
+  text-wrap: balance;
+}
+
+.res-chapter p.res-statement + p.res-statement {
+  margin-top: var(--space-4);
+  color: var(--res-quiet);
+}
+
+/* Links */
+.res-chapter p.res-link {
+  margin-top: var(--space-10);
+}
+
+.res-link + .res-link {
+  margin-top: var(--space-3);
+}
+
+.res-link a,
+.res-chapter p:not(.res-cta) a {
+  color: var(--res-text);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.28em;
+  text-decoration-color: var(--res-faint);
+}
+
+.res-link a {
+  font-family: var(--font-text);
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.res-link a::after {
+  content: "\2192";
+  display: inline-block;
+  margin-left: 12px;
+  text-decoration: none;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.res-link a:hover::after,
+.res-link a:focus-visible::after {
+  transform: translateX(4px);
+}
+
+.res-chapter a:hover {
+  text-decoration-color: currentColor;
+}
+
+.res-chapter a:focus-visible {
+  outline: 1px solid var(--res-text);
+  outline-offset: 4px;
+}
+
+.res-chapter p.res-cta {
+  margin-top: var(--space-10);
+}
+
+.res-cta a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 10px 22px;
+  border: 1px solid var(--res-text);
+  border-radius: var(--radius-md);
+  background: var(--res-text);
+  font-family: var(--font-text);
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  color: var(--res-field);
+  text-decoration: none;
+  transition: background-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
+}
+
+.res-cta a:hover {
+  background: transparent;
+  color: var(--res-text);
+}
+
+.res-cta a:focus-visible {
+  outline: 2px solid var(--res-text);
+  outline-offset: 3px;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* PUBLICATIONS                                                           */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+:is(.res-chapter, .res-chapter > .wp-block-group__inner-container) > .res-publication {
+  display: grid;
+  gap: clamp(40px, 5vw, 72px);
+  align-items: center;
+}
+
+.res-publication__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.res-publication__text > * {
+  margin: 0;
+}
+
+.res-publication h2 {
+  max-width: 14ch;
+  margin-inline: 0;
+  font-size: clamp(2.5rem, 5.2vw, 4.75rem);
+  line-height: 1.02;
+  text-align: left;
+}
+
+.res-chapter .res-publication p.res-statement {
+  max-width: 20ch;
+  margin-inline: 0;
+  font-size: clamp(1.625rem, 2.6vw, 2.375rem);
+  text-align: left;
+}
+
+/* Covers and frontispieces: flat, as they are — no mock-ups */
+.res-chapter figure.res-cover {
+  margin: 0 auto;
+}
+
+:is(.res-chapter, .res-chapter > .wp-block-group__inner-container) > figure.res-cover + * {
+  margin-top: clamp(40px, 5vw, 64px);
+}
+
+.res-cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--res-rule);
+}
+
+.res-chapter--dark .res-cover img {
+  border-color: transparent;
+}
+
+.res-cover figcaption {
+  margin-top: 14px;
+  font-family: var(--font-text);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--res-quiet);
+}
+
+@media (min-width: 960px) {
+  :is(.res-chapter, .res-chapter > .wp-block-group__inner-container) > .res-publication {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: clamp(56px, 7vw, 104px);
+  }
+
+  .res-publication--reverse :is(.res-cover, .res-typecover) {
+    order: 2;
+  }
+}
+
+/* Artwork, or its designed stand-in (parts/research/artwork.php) */
+.res-chapter .res-art {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.res-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.res-art figcaption {
+  margin-top: 14px;
+  font-family: var(--font-text);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--res-quiet);
+}
+
+.res-art--set {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--colour-ink-10);
+  background: var(--colour-paper-pure);
+  color: var(--colour-ink);
+  text-align: center;
+}
+
+/* The title page, set in type */
+.res-art--cover.res-art--set {
+  aspect-ratio: 612 / 792;
+  justify-content: center;
+  gap: 18px;
+  padding: 12% 10%;
+}
+
+.res-art__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 3.2vw, 2.75rem);
+  line-height: 1.05;
+}
+
+.res-art__rule {
+  width: 36px;
+  height: 1px;
+  background: var(--colour-ink-40);
+}
+
+.res-art__subtitle {
+  font-family: var(--font-serif);
+  font-size: clamp(0.9375rem, 1.3vw, 1.125rem);
+  color: var(--colour-ink-60);
+}
+
+.res-art__byline {
+  margin-top: auto;
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--colour-ink-60);
+}
+
+/* A plate: the drawing's place, held by a paper field and its line */
+.res-chapter .res-art--plate {
+  max-width: 440px;
+}
+
+.res-art--plate.res-art--set {
+  aspect-ratio: 1200 / 1739;
+  justify-content: center;
+  padding: 14%;
+  background: #F2EFE8;
+  border-color: transparent;
+}
+
+.res-art__line {
+  max-width: 16ch;
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 2.6vw, 2.125rem);
+  line-height: 1.25;
+  color: var(--colour-ink);
+}
+
+/* A frontispiece: a drawing given the full height it needs */
+.res-chapter figure.res-cover.res-wide {
+  max-width: 560px;
+}
+
+/* Metadata, set like a colophon */
+.res-chapter ul.res-meta {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--res-rule-strong);
+}
+
+.res-meta li {
+  display: grid;
+  grid-template-columns: minmax(0, 8.5rem) minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: baseline;
+  padding-block: 11px 12px;
+  border-bottom: 1px solid var(--res-rule);
+  font-family: var(--font-text);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--res-text);
+}
+
+.res-meta strong {
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--res-quiet);
+}
+
+/* A short excerpt, given room */
+.res-chapter blockquote.res-excerpt {
+  margin-block: clamp(48px, 6vw, 80px) 0;
+  padding: 0;
+  border: 0;
+  text-align: center;
+}
+
+.res-excerpt p {
+  max-width: 24ch;
+  margin-inline: auto;
+  font-family: var(--font-serif);
+  font-size: clamp(1.625rem, 2.8vw, 2.375rem);
+  line-height: 1.22;
+  color: var(--res-text);
+}
+
+.res-excerpt cite {
+  display: block;
+  margin-top: var(--space-5);
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--res-quiet);
+}
+
+/* A typographic cover, where no cleared image exists */
+.res-chapter .res-typecover {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-8);
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 3 / 4;
+  margin-inline: auto;
+  padding: clamp(24px, 3vw, 36px);
+  background: var(--colour-ink);
+  color: var(--colour-paper);
+}
+
+.res-chapter .res-typecover p {
+  margin: 0;
+  color: rgba(250, 250, 248, 0.7);
+}
+
+.res-chapter .res-typecover p.res-typecover__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 3vw, 2.375rem);
+  line-height: 1.08;
+  color: var(--colour-paper);
+}
+
+.res-chapter .res-typecover p.res-typecover__label {
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* REGISTERS                                                              */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+/* A reading's figures: serif numerals over small capitals */
+.res-chapter ul.res-figures {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-inline: 0;
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--res-rule-strong);
+}
+
+.res-figures li {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px 16px 26px 0;
+  border-bottom: 1px solid var(--res-rule);
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--res-quiet);
+}
+
+.res-figures strong {
+  order: -1;
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  font-variant-numeric: lining-nums;
+  color: var(--res-text);
+}
+
+.res-figures li:first-child {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 960px) {
+  .res-chapter ul.res-figures {
+    grid-template-columns: minmax(0, 1.6fr) repeat(4, minmax(0, 1fr));
+  }
+
+  .res-figures li {
+    padding: 24px 20px 0;
+    border-bottom: 0;
+    border-left: 1px solid var(--res-rule);
+  }
+
+  .res-figures li:first-child {
+    grid-column: auto;
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+/* Defined terms */
+.res-chapter ul.res-terms {
+  display: grid;
+  column-gap: clamp(32px, 4vw, 56px);
+  margin-inline: 0;
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--res-rule-strong);
+}
+
+.res-terms li {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-block: 18px 20px;
+  border-bottom: 1px solid var(--res-rule);
+  font-family: var(--font-text);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--res-quiet);
+}
+
+.res-terms strong {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--res-text);
+}
+
+@media (min-width: 768px) {
+  .res-chapter ul.res-terms {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Contents: the book's own architecture */
+:is(.res-chapter, .res-chapter > .wp-block-group__inner-container) > .res-contents {
+  display: grid;
+  gap: var(--space-10) clamp(40px, 5vw, 72px);
+}
+
+.res-contents__part > * {
+  margin: 0;
+}
+
+.res-contents__part h3 {
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--res-rule-strong);
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--res-quiet);
+}
+
+.res-contents__part ol,
+.res-contents__part ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.res-contents__part li {
+  display: grid;
+  grid-template-columns: 3.2rem minmax(0, 1fr);
+  align-items: baseline;
+  padding-block: 12px 13px;
+  border-bottom: 1px solid var(--res-rule);
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  line-height: 1.3;
+  color: var(--res-text);
+}
+
+.res-contents__part li strong {
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  color: var(--res-quiet);
+}
+
+@media (min-width: 960px) {
+  :is(.res-chapter, .res-chapter > .wp-block-group__inner-container) > .res-contents {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Findings: a title and a line each */
+:is(.res-chapter, .res-chapter > .wp-block-group__inner-container) > .res-findings {
+  display: grid;
+  column-gap: clamp(40px, 5vw, 72px);
+  border-top: 1px solid var(--res-rule-strong);
+}
+
+.res-finding {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-block: 24px 28px;
+  border-bottom: 1px solid var(--res-rule);
+}
+
+.res-finding > * {
+  margin: 0;
+}
+
+.res-finding h3 {
+  font-size: clamp(1.375rem, 2vw, 1.75rem);
+  line-height: 1.15;
+}
+
+.res-chapter .res-finding p {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  :is(.res-chapter, .res-chapter > .wp-block-group__inner-container) > .res-findings {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* A register of objects */
+.res-chapter ul.res-objects {
+  display: grid;
+  column-gap: clamp(32px, 4vw, 56px);
+  margin-inline: 0;
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--res-rule-strong);
+}
+
+.res-objects li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-block: 14px 15px;
+  border-bottom: 1px solid var(--res-rule);
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+  line-height: 1.2;
+  color: var(--res-text);
+}
+
+.res-objects li em {
+  font-family: var(--font-text);
+  font-size: 0.8125rem;
+  font-style: normal;
+  letter-spacing: 0.02em;
+  text-align: right;
+  color: var(--res-quiet);
+}
+
+@media (min-width: 768px) {
+  .res-chapter ul.res-objects {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* A catalogue entry */
+:is(.res-chapter, .res-chapter > .wp-block-group__inner-container) > .res-entry {
+  display: grid;
+  gap: clamp(32px, 4vw, 56px);
+  align-items: start;
+  padding-top: clamp(32px, 4vw, 48px);
+  border-top: 1px solid var(--res-rule-strong);
+}
+
+.res-entry__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.res-entry__text > * {
+  margin: 0;
+}
+
+.res-entry h3,
+.res-chapter .res-entry h2 {
+  max-width: none;
+  margin-inline: 0;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.08;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  :is(.res-chapter, .res-chapter > .wp-block-group__inner-container) > .res-entry {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  }
+
+  .res-entry .res-typecover {
+    margin-inline: 0;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* THE EMPTY CHAIR                                                        */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.res-chair {
+  margin: clamp(48px, 6vw, 80px) auto 0;
+  max-width: 520px;
+}
+
+.res-chair__field {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: clamp(5px, 0.8vw, 9px);
+}
+
+.res-chair__place {
+  position: relative;
+  aspect-ratio: 1;
+  border: 1px solid var(--res-faint);
+}
+
+.res-chair__place.is-empty {
+  border: 0;
+}
+
+.res-chair__rank {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-serif);
+  font-size: clamp(0.75rem, 1.4vw, 1rem);
+  color: var(--res-text);
+}
+
+.res-chair__caption {
+  margin-top: var(--space-5);
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--res-quiet);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* THE REST OF THE COLLECTION                                             */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.res-collection {
+  padding-block: clamp(64px, 8vw, 112px);
+  border-top: 1px solid var(--colour-ink-10);
+}
+
+.res-collection__heading {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--colour-ink);
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--colour-ink-60);
+}
+
+.res-collection__heading a {
+  color: var(--colour-ink);
+  text-decoration: none;
+}
+
+.res-collection .res-collection__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.res-collection__list li {
+  border-bottom: 1px solid var(--colour-ink-10);
+}
+
+.res-collection__link {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  column-gap: var(--space-4);
+  row-gap: 4px;
+  align-items: baseline;
+  padding-block: 18px 20px;
+  color: var(--colour-ink);
+  text-decoration: none;
+}
+
+.res-collection__num {
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  color: var(--colour-ink-60);
+}
+
+.res-collection__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.375rem, 2vw, 1.75rem);
+  line-height: 1.15;
+}
+
+.res-collection__summary {
+  grid-column: 2;
+  max-width: 60ch;
+  font-family: var(--font-text);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--colour-ink-60);
+}
+
+.res-collection__link:hover .res-collection__title {
+  color: var(--colour-ink-60);
+}
+
+.res-collection a:focus-visible {
+  outline: 1px solid var(--colour-ink);
+  outline-offset: 4px;
+}
+
+@media (min-width: 960px) {
+  .res-collection__link {
+    grid-template-columns: 40px minmax(0, 5fr) minmax(0, 6fr);
+  }
+
+  .res-collection__summary {
+    grid-column: 3;
+  }
+}
+
+/* The hero's quiet contextual link */
+.summit-research .action--contextual .action__label {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.28em;
+  text-decoration-color: var(--colour-ink-30);
+}
+
+.summit-research .action--contextual::after {
+  content: "\2192";
+  margin-left: 2px;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* SMALL SCREENS · REDUCED MOTION · PRINT                                 */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 767px) {
+  .res-chapter {
+    padding-block: 64px 72px;
+  }
+
+  .res-meta li {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .res-link a::after,
+  .res-cta a {
+    transition: none;
+  }
+
+  .res-link a:hover::after,
+  .res-link a:focus-visible::after {
+    transform: none;
+  }
+}
+
+@media print {
+  .res-chapter,
+  .res-chapter--dark,
+  .res-chapter--tinted {
+    --res-text: #000;
+    --res-quiet: #333;
+    --res-rule: #ccc;
+    --res-rule-strong: #000;
+    padding-block: 32px;
+    background: none;
+  }
+
+  .res-collection,
+  .res-chapter--close {
+    display: none;
+  }
+}

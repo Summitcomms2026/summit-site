@@ -1,0 +1,87 @@
+{
+  "description": "Canonical source record for the Research section's page content. WordPress is the runtime editor; these files are the recoverable source. Not loaded by WordPress. Block markup in each source file is exactly what the block editor stores in post_content. Approved images are in theme/summit/assets/img/research/; development artwork is held Local-only in its provisional/ folder (git-ignored).",
+  "section": "/research",
+  "pages": [
+    {
+      "title": "Research",
+      "path": "/research",
+      "template": "page-research.php",
+      "source": "overview.blocks.html",
+      "meta": {
+        "summit_eyebrow": "Research",
+        "summit_tone": "paper",
+        "summit_headline": "Research is where judgement is tested.",
+        "summit_standfirst": "Summit’s research examines how luxury acquires authority, how institutions preserve it, and what happens when time, governance, desire and stewardship pull in different directions.",
+        "summit_cta_label": "View the research",
+        "summit_cta_url": "/research#collection",
+        "summit_utilities": "share"
+      }
+    },
+    {
+      "title": "Touch Me Not",
+      "path": "/research/touch-me-not",
+      "template": "page-research.php",
+      "source": "touch-me-not.blocks.html",
+      "meta": {
+        "summit_eyebrow": "Research / Book",
+        "summit_tone": "paper",
+        "summit_standfirst": "The Mystery of Luxury — by Gregory Gray and Olivia Dhordain.",
+        "summit_cta_label": "Explore The Luxury 100",
+        "summit_cta_url": "/research/luxury-100",
+        "summit_secondary_label": "The Observatory",
+        "summit_secondary_url": "/the-observatory",
+        "summit_utilities": "share",
+        "summit_summary": "The Mystery of Luxury. A book by Gregory Gray and Olivia Dhordain on when an object becomes meaning, and who keeps that meaning alive."
+      }
+    },
+    {
+      "title": "The Luxury 100",
+      "path": "/research/luxury-100",
+      "template": "page-research.php",
+      "source": "luxury-100.blocks.html",
+      "meta": {
+        "summit_eyebrow": "Research / Annual reading",
+        "summit_tone": "paper",
+        "summit_standfirst": "An annual reading of durable luxury objects and the institutions that hold them.",
+        "summit_cta_label": "The Observatory",
+        "summit_cta_url": "/the-observatory",
+        "summit_secondary_label": "View Research",
+        "summit_secondary_url": "/research",
+        "summit_utilities": "share",
+        "summit_summary": "An annual reading of durable luxury objects and the institutions that hold them. The 2027 reading: ninety-nine objects, one empty chair."
+      }
+    },
+    {
+      "title": "White Papers",
+      "path": "/research/white-papers",
+      "template": "page-research.php",
+      "source": "white-papers.blocks.html",
+      "meta": {
+        "summit_eyebrow": "Research / White Papers",
+        "summit_tone": "paper",
+        "summit_headline": "White Papers",
+        "summit_standfirst": "Research carried into a specific question, for the people who must decide it.",
+        "summit_cta_label": "Let’s Talk",
+        "summit_cta_url": "/lets-talk",
+        "summit_utilities": "share",
+        "summit_summary": "Research carried into a specific question. The New Asian Maison: How Cultural Specificity Becomes Global Luxury."
+      }
+    },
+    {
+      "title": "Research Programme",
+      "path": "/research/programme",
+      "template": "page-research.php",
+      "source": "programme.blocks.html",
+      "meta": {
+        "summit_eyebrow": "Research / Programme",
+        "summit_tone": "paper",
+        "summit_headline": "Where the map runs out.",
+        "summit_standfirst": "Summit’s research is continuing work: an annual reading of the Canon, a governed field around it, and the open questions both declare.",
+        "summit_cta_label": "Let’s Talk",
+        "summit_cta_url": "/lets-talk",
+        "summit_utilities": "share",
+        "summit_summary": "Continuing work: the Canon read every year, the field around it, and the questions the method keeps open."
+      }
+    }
+  ]
+}

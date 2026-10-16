@@ -432,25 +432,56 @@
     align-items: start;
 }
 
-/* Two-zone composition: navigation left, contextual region right.
-   --mm-col / --mm-gap are shared with the absolutely positioned panels
-   so they land exactly on the right-hand column. */
+/* Progressive-tree composition, left to right:
+     --z1 primary · --z2 branch · --z3 leaves · rail (the remainder)
+   with --g1/--g2/--g3 as the gutters between them. Widths follow the
+   content, not equal division: the primary column keeps its authority,
+   the branch is narrow, the leaves get enough measure for long sector
+   names, and the rail takes what remains. The branch and leaf columns
+   are absolutely positioned from the same variables (see the tree). */
 @media (min-width: 960px) {
     .mega-menu {
-        --mm-col: 400px;
-        --mm-gap: 64px;
+        --z1: 330px;
+        --g1: 36px;
+        --z2: 190px;
+        --g2: 28px;
+        --z3: 230px;
+        --g3: 40px;
     }
 
     .mega-menu__body-inner {
-        grid-template-columns: var(--mm-col) minmax(0, 1fr);
-        gap: var(--mm-gap);
+        column-gap: 0;
+        /* Below 1280px the rail shares the tree's region (see below) */
+        grid-template-columns: var(--z1) var(--g1) minmax(0, 1fr);
+    }
+
+    .mega-menu__nav-col {
+        grid-column: 1;
+    }
+
+    .mega-menu__editorial-col {
+        grid-column: 3;
     }
 }
 
-@media (min-width: 960px) and (max-width: 1199px) {
+/* From 1280px the rail keeps its own column beside the open tree */
+@media (min-width: 1280px) {
+    .mega-menu__body-inner {
+        grid-template-columns:
+            var(--z1)
+            calc(var(--g1) + var(--z2) + var(--g2) + var(--z3) + var(--g3))
+            minmax(0, 1fr);
+    }
+}
+
+@media (min-width: 1360px) {
     .mega-menu {
-        --mm-col: 340px;
-        --mm-gap: 48px;
+        --z1: 330px;
+        --g1: 40px;
+        --z2: 200px;
+        --g2: 36px;
+        --z3: 280px;
+        --g3: 56px;
     }
 }
 
@@ -626,15 +657,21 @@
     transform: rotate(90deg);
 }
 
-.mega-menu__primary-toggle[aria-expanded="true"] .mega-menu__toggle-icon span:last-child {
+.mega-menu__primary-toggle[aria-expanded="true"] .mega-menu__toggle-icon span:last-child,
+.mega-menu__branch-toggle[aria-expanded="true"] .mega-menu__toggle-icon span:last-child {
     transform: rotate(0deg);
 }
 
-/* Desktop: while a section's panel is showing, its label holds the
-   hover state — the same dim and indent, simply sustained. */
+/* Desktop: once a section is open, the active label comes forward
+   (paper, held indent) and its peers recede — editorial emphasis,
+   still legible, never disabled-looking. */
 @media (min-width: 960px) {
-    .mega-menu__primary-item.is-active .mega-menu__primary-link {
-        color: rgba(255, 255, 255, 0.55);
+    .mega-menu.has-section .mega-menu__primary-link {
+        color: rgba(255, 255, 255, 0.4);
+    }
+
+    .mega-menu.has-section .mega-menu__primary-item.is-active .mega-menu__primary-link {
+        color: var(--colour-paper);
         transform: translateX(8px);
     }
 }
@@ -811,100 +848,202 @@
     color: var(--colour-paper);
 }
 
-/* The Future of Luxury owns the rail: when its label is the active
-   destination the rail's own label answers, quietly. */
-.mega-menu[data-section="future-of-luxury"] .mega-menu__editorial-label {
-    color: var(--colour-paper);
-}
-
+/* The Future of Luxury owns the rail: when it is the active section
+   the rail's own label answers, quietly. */
 .mega-menu__editorial-label {
     transition: color 500ms var(--ease-out);
 }
 
-
-/* ──────────────────────────────────────────────────────────
-   Contextual panels — Solutions (index) and The Observatory
-   (register). Each panel follows its parent link in the DOM.
-   Desktop lifts it into the right-hand region; below 960px it
-   expands in place beneath the parent.
-
-   Hand-over with the editorial rail follows the menu's own
-   open/close vocabulary: the outgoing state leaves quickly
-   (ease-in), the incoming state arrives slowly (ease-out).
-   ────────────────────────────────────────────────────────── */
-
-.mega-menu {
-    --mm-out: 160ms;
-    --mm-in: 360ms;
-    --mm-in-delay: 120ms;
-}
-
-.mega-menu__panel-label {
-    margin: 0 0 18px;
-    font-size: 0.88rem;
-    font-weight: 400;
-    line-height: 1.1;
-    letter-spacing: 0.01em;
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.mega-menu__panel-all {
-    align-self: flex-start;
-    font-size: 0.84rem;
-    font-weight: 500;
-    line-height: 1.1;
-    letter-spacing: 0.01em;
-    color: rgba(255, 255, 255, 0.5);
-    text-decoration: none;
-    transition: color var(--duration-fast) var(--ease-out);
-}
-
-.mega-menu__panel-all:hover {
+.mega-menu[data-section="future-of-luxury"] .mega-menu__editorial-label {
     color: var(--colour-paper);
 }
 
-
-/* ── Solutions: a three-part index ─────────────────────── */
-
-.mega-menu__index {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap: clamp(24px, 3.2vw, 56px);
-    row-gap: 32px;
+/* The rail is a persistent column whose width now depends on the
+   viewport, so the article card adapts to the space it is given:
+   wide — thumb | meta + title | category (as approved)
+   compact — category drops beneath the title
+   narrow — text only, no thumbnail */
+@media (min-width: 960px) {
+    .mega-menu__editorial-col {
+        container-type: inline-size;
+    }
 }
 
-.mega-menu__index-heading {
+@container (max-width: 559px) {
+    .mega-menu__editorial-link {
+        grid-template-columns: 96px 1fr;
+        grid-template-areas:
+            "thumb meta"
+            "thumb title"
+            "thumb cat";
+    }
+
+    .mega-menu__editorial-thumb {
+        width: 96px;
+    }
+
+    .mega-menu__editorial-cat {
+        align-self: start;
+        justify-self: start;
+        margin-top: 4px;
+    }
+}
+
+@container (max-width: 379px) {
+    .mega-menu__editorial-link {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "meta"
+            "title"
+            "cat";
+    }
+
+    .mega-menu__editorial-thumb {
+        display: none;
+    }
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   Progressive tree — branch (children / taxonomy) and leaves
+   (Solutions destinations). Each branch follows its parent
+   link in the DOM and each leaf list its taxonomy control.
+
+   Hierarchy is carried by opacity and proximity: the active
+   item at each level comes forward, its peers recede. Motion
+   follows the menu's own vocabulary — the outgoing state
+   leaves quickly (ease-in), the incoming one arrives slowly
+   (ease-out) — with only a few pixels of lateral travel.
+   ────────────────────────────────────────────────────────── */
+
+.mega-menu {
+    --mm-out: 140ms;
+    --mm-in: 320ms;
+    --mm-in-delay: 90ms;
+}
+
+.mega-menu__branch,
+.mega-menu__leaf-list {
     display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 12px;
-    margin: 0 0 16px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    font-size: 0.84rem;
-    font-weight: 500;
-    line-height: 1.1;
-    letter-spacing: 0.01em;
-    color: rgba(255, 255, 255, 0.5);
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
-.mega-menu__index-count {
+.mega-menu__branch {
+    gap: 14px;
+}
+
+/* Hairlines within a branch run to its longest entry, not the column */
+@media (min-width: 960px) {
+    .mega-menu__branch {
+        width: max-content;
+        max-width: 100%;
+    }
+}
+
+.mega-menu__leaf-list {
+    gap: 10px;
+}
+
+/* Branch entries: a step down from the primary scale, same family */
+.mega-menu__branch-link,
+.mega-menu__branch-toggle {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-family: "neue-haas-grotesk-display-pr", var(--font-sans);
+    font-size: 1.3rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0;
+    text-align: left;
+    color: var(--colour-paper);
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        color 500ms var(--ease-out),
+        transform 500ms var(--ease-out);
+}
+
+.mega-menu__branch-link:hover,
+.mega-menu__branch-toggle:hover {
+    color: rgba(255, 255, 255, 0.55);
+    transform: translateX(6px);
+}
+
+.mega-menu__branch-link[aria-current] {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.mega-menu__branch-count {
+    font-family: var(--font-text);
     font-size: 0.74rem;
     font-weight: 400;
     font-variant-numeric: tabular-nums;
     color: rgba(255, 255, 255, 0.3);
 }
 
-.mega-menu__index-list {
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+.mega-menu__branch-toggle .mega-menu__toggle-icon {
+    display: none;
 }
 
-.mega-menu__index-link {
+/* Taxonomy: the selected branch comes forward, its peers recede */
+.mega-menu__branch--taxonomy.has-active .mega-menu__branch-toggle {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.mega-menu__branch--taxonomy.has-active .mega-menu__branch-item.is-active > .mega-menu__branch-toggle {
+    color: var(--colour-paper);
+}
+
+/* The Observatory: a numbered, methodical register */
+.mega-menu__branch--numbered .mega-menu__branch-link {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 0;
+}
+
+.mega-menu__branch-num {
+    font-family: var(--font-text);
+    font-size: 0.74rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    font-variant-numeric: tabular-nums;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* A request rather than a page: set apart by a hairline and a quiet
+   underline, but still an entry in the tree — not a button. */
+.mega-menu__branch-item.is-action {
+    margin-top: 8px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.mega-menu__branch-item.is-action .mega-menu__branch-label {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 6px;
+    text-decoration-color: rgba(255, 255, 255, 0.35);
+    transition: text-decoration-color 500ms var(--ease-out);
+}
+
+.mega-menu__branch-item.is-action .mega-menu__branch-link:hover .mega-menu__branch-label {
+    text-decoration-color: currentColor;
+}
+
+.mega-menu__branch--numbered .is-action .mega-menu__branch-link {
+    display: inline-flex;
+    padding-left: 32px;
+}
+
+/* Leaves: the destinations — reading size, generous measure */
+.mega-menu__leaf-link {
     display: inline-block;
     font-size: 1.02rem;
     font-weight: 400;
@@ -916,121 +1055,37 @@
         transform 500ms var(--ease-out);
 }
 
-.mega-menu__index-link:hover {
+.mega-menu__leaf-link:hover {
     color: rgba(255, 255, 255, 0.55);
     transform: translateX(4px);
 }
 
-.mega-menu__index-link[aria-current] {
+.mega-menu__leaf-link[aria-current] {
     color: rgba(255, 255, 255, 0.55);
 }
 
-.mega-menu__panel--index .mega-menu__panel-all {
-    margin-top: 36px;
-}
 
-
-/* ── The Observatory: a numbered register ──────────────── */
-
-.mega-menu__register {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.mega-menu__register-item {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.mega-menu__register-link {
-    display: grid;
-    grid-template-columns: 56px 1fr;
-    align-items: baseline;
-    padding: 17px 0;
-    text-decoration: none;
-    color: inherit;
-}
-
-.mega-menu__register-num {
-    font-size: 0.74rem;
-    line-height: 1.1;
-    letter-spacing: 0.01em;
-    font-variant-numeric: tabular-nums;
-    color: rgba(255, 255, 255, 0.4);
-}
-
-.mega-menu__register-title {
-    justify-self: start;
-    font-family: "neue-haas-grotesk-display-pr", var(--font-sans);
-    font-size: 1.5rem;
-    font-weight: 500;
-    line-height: 1.15;
-    color: var(--colour-paper);
-    transition:
-        color 500ms var(--ease-out),
-        transform 500ms var(--ease-out);
-}
-
-.mega-menu__register-link:hover .mega-menu__register-title,
-.mega-menu__register-link[aria-current] .mega-menu__register-title {
-    color: rgba(255, 255, 255, 0.55);
-}
-
-.mega-menu__register-link:hover .mega-menu__register-title {
-    transform: translateX(8px);
-}
-
-/* The one action in the register: the header CTA's outline treatment */
-.mega-menu__panel-action {
-    align-self: flex-start;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 38px;
-    margin-top: 32px;
-    padding: 9px 20px;
-    border: 1px solid var(--colour-paper);
-    border-radius: var(--radius-md);
-    font-family: var(--font-text);
-    font-size: 0.84rem;
-    font-weight: 500;
-    line-height: 1.25;
-    letter-spacing: 0.01em;
-    color: var(--colour-paper);
-    text-decoration: none;
-    transition:
-        background-color var(--duration-base) var(--ease-out),
-        color var(--duration-base) var(--ease-out);
-}
-
-.mega-menu__panel-action:hover {
-    background: var(--colour-paper);
-    color: var(--colour-ink);
-}
-
-
-/* ── Desktop: panels occupy the right-hand region ──────── */
+/* ── Desktop: branch and leaves take their columns ─────── */
 
 @media (min-width: 960px) {
-    .mega-menu__panel {
+    .mega-menu.has-section .mega-menu__primary-link:hover {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .mega-menu__panel,
+    .mega-menu__leaves {
         position: absolute;
-        top: 52px;
-        bottom: calc(var(--bottom-bar-height) + 18px);
-        left: calc(var(--menu-edge) + var(--mm-col) + var(--mm-gap));
-        right: var(--menu-edge);
-        display: flex;
-        flex-direction: column;
         visibility: hidden;
         opacity: 0;
-        transform: translateY(6px);
+        transform: translateX(-6px);
         transition:
             opacity var(--mm-out) var(--ease-in),
             transform var(--mm-out) var(--ease-in),
             visibility 0s linear var(--mm-out);
     }
 
-    .mega-menu__panel.is-active {
+    .mega-menu__panel.is-active,
+    .mega-menu__branch-item.is-active > .mega-menu__leaves {
         visibility: visible;
         opacity: 1;
         transform: none;
@@ -1040,49 +1095,75 @@
             visibility 0s linear 0s;
     }
 
+    /* Branch column, top-aligned with the primary list. Sections
+       without leaves may run into the (unused) leaf column. */
+    .mega-menu__panel {
+        top: 52px;
+        left: calc(var(--menu-edge) + var(--z1) + var(--g1));
+        width: calc(var(--z2) + var(--g2) + var(--z3));
+    }
+
+    .mega-menu__panel.has-leaves {
+        width: var(--z2);
+    }
+
+    /* A single hairline marks where each level branches off */
+    .mega-menu__panel-inner,
+    .mega-menu__leaves-inner {
+        padding-left: 22px;
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
     .mega-menu__panel-inner {
-        display: flex;
-        flex-direction: column;
+        padding-top: 6px;
+        padding-bottom: 6px;
     }
 
-    /* The register sits in the rail's own footprint */
-    .mega-menu__panel--register {
-        align-items: flex-end;
-        justify-content: flex-end;
+    /* Leaves column: immediately right of the branch */
+    .mega-menu__leaves {
+        top: 0;
+        left: calc(100% + var(--g2));
+        width: var(--z3);
     }
 
-    .mega-menu__panel--register .mega-menu__panel-inner {
-        width: 100%;
-        max-width: 700px;
+    .mega-menu__leaves-inner {
+        padding-top: 9px;
+        padding-bottom: 9px;
+    }
+}
+
+/* Below 1280px the rail cannot sit beside a full tree. It stays as the
+   resting state and for The Future of Luxury (whose own entries then
+   stay within the rail's world); any other open section takes the
+   region, and the rail returns when the section clears. */
+@media (min-width: 960px) and (max-width: 1279px) {
+    /* With the rail stepped aside, the destinations take its measure */
+    .mega-menu {
+        --z3: 300px;
     }
 
-    /* After the entrance stagger, the rail hands over without delay */
+    .mega-menu__panel[data-panel="future-of-luxury"],
+    .mega-menu__primary-item[data-section="future-of-luxury"] .mega-menu__primary-toggle {
+        display: none;
+    }
+
     .mega-menu.is-settled .mega-menu__editorial-col {
         transition:
             opacity var(--mm-in) var(--ease-out) var(--mm-in-delay),
-            transform var(--mm-in) var(--ease-out) var(--mm-in-delay),
             visibility 0s linear 0s;
     }
 
-    .mega-menu[aria-hidden="false"].has-panel .mega-menu__editorial-col {
+    .mega-menu[aria-hidden="false"].has-section:not([data-section="future-of-luxury"]) .mega-menu__editorial-col {
         visibility: hidden;
         opacity: 0;
         transition:
             opacity var(--mm-out) var(--ease-in),
-            transform var(--mm-out) var(--ease-in),
             visibility 0s linear var(--mm-out);
     }
 }
 
-/* Mid-width desktops: the index tightens rather than crowds */
-@media (min-width: 960px) and (max-width: 1199px) {
-    .mega-menu__index-link {
-        font-size: 0.94rem;
-    }
-}
 
-
-/* ── Below 960px: one column, sections expand in place ─── */
+/* ── Below 960px: the tree expands in place ────────────── */
 
 @media (max-width: 959px) {
     /* Fill the screen so utility links still settle at the foot.
@@ -1099,6 +1180,7 @@
         flex: 1 0 auto;
         display: flex;
         flex-direction: column;
+        align-items: stretch;  /* full-width rows: +/− sit at the menu edge */
     }
 
     .mega-menu__nav-col {
@@ -1106,12 +1188,20 @@
         min-height: 0;
     }
 
+    /* Every primary row now carries a +/−, so on the narrowest phones the
+       scale eases just enough for "The Future of Luxury" to hold one line.
+       Capped at the established 2.3rem from ~428px upward. */
+    .mega-menu__primary-link {
+        font-size: clamp(1.9rem, 8.6vw, 2.3rem);
+    }
+
     /* As before at this width, the rail is not part of the small-screen menu */
     .mega-menu__editorial-col {
         display: none;
     }
 
-    .mega-menu__panel {
+    .mega-menu__panel,
+    .mega-menu__leaves {
         display: grid;
         grid-template-rows: 0fr;
         visibility: hidden;
@@ -1120,7 +1210,8 @@
             visibility 0s linear var(--duration-slow);
     }
 
-    .mega-menu__panel.is-active {
+    .mega-menu__panel.is-active,
+    .mega-menu__branch-item.is-active > .mega-menu__leaves {
         grid-template-rows: 1fr;
         visibility: visible;
         transition:
@@ -1128,69 +1219,75 @@
             visibility 0s linear 0s;
     }
 
-    .mega-menu__panel-inner {
-        display: flex;
-        flex-direction: column;
+    .mega-menu__panel-inner,
+    .mega-menu__leaves-inner {
         min-height: 0;
         overflow: hidden;
     }
 
-    .mega-menu__panel-label {
+    /* Two classes: outranks the global ul[role="list"] margin reset */
+    .mega-menu__panel .mega-menu__branch {
+        gap: 0;
+        margin-top: 14px;
+    }
+
+    .mega-menu__panel.is-active .mega-menu__panel-inner {
+        padding-bottom: 14px;
+    }
+
+    .mega-menu__branch-link,
+    .mega-menu__branch-toggle {
+        width: 100%;
+        padding-block: 9px;
+        font-size: 1.24rem;
+    }
+
+    /* Taxonomy rows carry the same quiet +/− as the primary rows */
+    .mega-menu__branch-toggle {
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .mega-menu__branch-toggle:hover {
+        transform: none;
+    }
+
+    .mega-menu__branch-toggle .mega-menu__toggle-icon {
+        display: block;
+        flex: none;
+        width: 14px;
+        height: 14px;
+        margin-right: 2px;
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .mega-menu__branch-count {
         display: none;
     }
 
-    .mega-menu__index {
-        grid-template-columns: 1fr;
-        row-gap: 30px;
-        margin-top: 28px;
+    .mega-menu__branch-label {
+        flex: 1;
     }
 
-    .mega-menu__index-list {
+    /* One level of nesting, marked by a hairline rather than indents */
+    .mega-menu__leaves-inner {
+        padding-left: 16px;
+        border-left: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .mega-menu__panel .mega-menu__leaf-list {
         gap: 0;
+        margin: 4px 0 12px;
     }
 
-    .mega-menu__index-link {
+    .mega-menu__leaf-link {
         padding-block: 7px;
         font-size: 1.06rem;
     }
 
-    .mega-menu__index-heading {
-        margin-bottom: 6px;
-    }
-
-    .mega-menu__panel--index .mega-menu__panel-all {
-        margin-top: 24px;
-        padding-block: 6px;
-    }
-
-    /* Two classes: outranks the global ol[role="list"] margin reset */
-    .mega-menu__panel .mega-menu__register {
-        margin-top: 24px;
-    }
-
-    .mega-menu__register-link {
-        grid-template-columns: 40px 1fr;
-        padding: 14px 0;
-    }
-
-    .mega-menu__register-title {
-        font-size: 1.26rem;
-    }
-
-    .mega-menu__panel-action {
-        margin-top: 24px;
-    }
-
-    /* A closing breath beneath an open section */
-    .mega-menu__panel.is-active .mega-menu__panel-inner {
-        padding-bottom: 14px;
-    }
-}
-
-@media (min-width: 600px) and (max-width: 959px) {
-    .mega-menu__index {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        column-gap: 40px;
+    .mega-menu__branch-item.is-action {
+        margin-top: 10px;
+        padding-top: 8px;
     }
 }
 
@@ -1205,7 +1302,7 @@
 }
 
 
-/* ── Reduced motion: states change immediately ─────────── */
+/* ── Reduced motion: hierarchy changes immediately ─────── */
 
 @media (prefers-reduced-motion: reduce) {
     .mega-menu,
@@ -1219,17 +1316,19 @@
 
     .mega-menu,
     .mega-menu__panel,
+    .mega-menu__leaves,
     .mega-menu__primary-item,
     .mega-menu__secondary-nav,
     .mega-menu__editorial-col,
     .mega-menu__bottom-bar,
-    .mega-menu__primary-link:hover,
-    .mega-menu__primary-item.is-active .mega-menu__primary-link,
-    .mega-menu__index-link:hover,
-    .mega-menu__register-link:hover .mega-menu__register-title {
+    .mega-menu__primary-link,
+    .mega-menu__branch-link,
+    .mega-menu__branch-toggle,
+    .mega-menu__leaf-link {
         transform: none !important;
     }
 }
+
 
 /* ──────────────────────────────────────────────────────────
    Overlay bottom utility bar

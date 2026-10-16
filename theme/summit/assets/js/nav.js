@@ -6,19 +6,21 @@
  *   - Menu open / close toggle (the header's menu button is also the
  *     close control while the overlay is open)
  *   - aria-expanded / aria-hidden state management
- *   - Escape: first clears an open section, then closes the menu
+ *   - Escape: steps back one level of the tree, then closes the menu
  *   - Backdrop click to close
  *   - Body scroll lock when menu is open
  *   - Focus containment: the header bar + overlay; the rest of the page
  *     is made inert while the menu is open
  *   - Restores focus to the trigger button on close
- *   - Contextual section states (Solutions, The Observatory):
+ *   - The progressive tree:
  *       desktop — hover (with a short intent delay) or keyboard focus on a
- *                 parent label shows its panel in the right-hand region;
- *                 any other primary label returns the editorial rail.
- *                 Clicking a parent label always navigates to it.
- *       small screens / touch — the quiet +/− control beside the parent
- *                 expands its pages in place; the label stays a link.
+ *                 primary label opens its branch beside it; within
+ *                 Solutions, hover or focus on a taxonomy control shows its
+ *                 destinations in the next column (By Industry by default,
+ *                 or whichever taxonomy was chosen earlier in this menu
+ *                 session). Clicking a primary label always navigates.
+ *       small screens / touch — quiet +/− controls expand each level in
+ *                 place; primary labels stay links.
  *
  * No dependencies. Vanilla JS only.
  * Loaded in the footer — DOM is available immediately.
@@ -43,19 +45,24 @@
     }
 
     // ── State ────────────────────────────────────────────────────────────
-    var isOpen        = false;
-    var lastFocused   = null;
-    var scrollY       = 0;
-    var activeSection = '';
-    var hoverTimer    = null;
-    var settleTimer   = null;
-    var suppressFocus = false;
-    var inerted       = [];
+    var isOpen         = false;
+    var lastFocused    = null;
+    var scrollY        = 0;
+    var activeSection  = '';
+    var chosenGroup    = {};    // section → taxonomy chosen this menu session
+    var hoverTimer     = null;
+    var groupTimer     = null;
+    var settleTimer    = null;
+    var suppressFocus  = false;
+    var inerted        = [];
 
-    var HOVER_INTENT = 90;    // ms — forgives a pointer crossing other labels
-    var SETTLE_AFTER = 1100;  // ms — entrance stagger has finished by now
+    var INTENT_FIRST   = 60;    // ms — opening the first branch
+    var INTENT_SWITCH  = 120;   // ms — moving between branches: forgives a
+                                //      pointer crossing other labels
+    var INTENT_GROUP   = 80;    // ms — moving between taxonomies
+    var SETTLE_AFTER   = 1100;  // ms — entrance stagger has finished by now
 
-    // Desktop composition (panels in the right-hand region)
+    // Desktop composition (branches in columns beside the primary list)
     var desktop = window.matchMedia( '(min-width: 960px)' );
 
     // ── Focusable elements query ─────────────────────────────────────────
@@ -72,23 +79,50 @@
         return Array.prototype.slice.call( list );
     }
 
-    // ── Sections and their panels ────────────────────────────────────────
-    var items  = toArray( megaMenu.querySelectorAll( '.mega-menu__primary-item' ) );
-    var panels = {};
+    // ── The tree, read from the rendered (config-driven) markup ─────────
+    var items    = toArray( megaMenu.querySelectorAll( '.mega-menu__primary-item' ) );
+    var sections = {};
 
     items.forEach( function ( item ) {
         var panel = item.querySelector( '.mega-menu__panel' );
         if ( ! panel ) { return; }
 
-        panels[ item.getAttribute( 'data-section' ) ] = {
-            item:   item,
-            panel:  panel,
-            link:   item.querySelector( '.mega-menu__primary-link' ),
-            toggle: item.querySelector( '.mega-menu__primary-toggle' ),
+        var key    = item.getAttribute( 'data-section' );
+        var groups = {};
+        var order  = [];
+
+        toArray( panel.querySelectorAll( '.mega-menu__branch-item[data-group]' ) ).forEach( function ( gItem ) {
+            var gKey = gItem.getAttribute( 'data-group' );
+            order.push( gKey );
+            groups[ gKey ] = {
+                item:   gItem,
+                toggle: gItem.querySelector( '.mega-menu__branch-toggle' ),
+                leaves: gItem.querySelector( '.mega-menu__leaves' ),
+            };
+        } );
+
+        sections[ key ] = {
+            item:     item,
+            panel:    panel,
+            link:     item.querySelector( '.mega-menu__primary-link' ),
+            toggle:   item.querySelector( '.mega-menu__primary-toggle' ),
+            taxonomy: panel.querySelector( '.mega-menu__branch--taxonomy' ),
+            groups:   groups,
+            order:    order,
+            group:    '',
         };
     } );
 
-    // On desktop the parent link itself reports the panel's state;
+    function setInert( el, on ) {
+        if ( ! el ) { return; }
+        if ( on ) {
+            el.setAttribute( 'inert', '' );
+        } else {
+            el.removeAttribute( 'inert' );
+        }
+    }
+
+    // On desktop the primary link itself reports its branch's state;
     // below 960px the +/− control does, and the link is a plain link.
     function syncLinkState( entry, expanded ) {
         if ( desktop.matches ) {
@@ -99,34 +133,58 @@
     }
 
     /**
-     * Set the contextual section. A key with no panel (or '') shows the
-     * editorial rail; data-section still records which label is active.
+     * Show one taxonomy's destinations within a section ('' for none).
+     */
+    function setGroup( sectionKey, groupKey ) {
+        var entry = sections[ sectionKey ];
+        if ( ! entry || ! entry.order.length ) { return; }
+
+        groupKey    = entry.groups[ groupKey ] ? groupKey : '';
+        entry.group = groupKey;
+
+        entry.order.forEach( function ( gKey ) {
+            var g  = entry.groups[ gKey ];
+            var on = gKey === groupKey;
+
+            g.item.classList.toggle( 'is-active', on );
+            g.toggle.setAttribute( 'aria-expanded', on ? 'true' : 'false' );
+            setInert( g.leaves, ! on );
+        } );
+
+        if ( entry.taxonomy ) {
+            entry.taxonomy.classList.toggle( 'has-active', !! groupKey );
+        }
+    }
+
+    // A user's own choice of taxonomy is kept for the rest of the session
+    function chooseGroup( sectionKey, groupKey ) {
+        chosenGroup[ sectionKey ] = groupKey;
+        setGroup( sectionKey, groupKey );
+    }
+
+    /**
+     * Open one section's branch ('' for none — the resting state).
      */
     function setSection( key ) {
-        var panelKey = panels[ key ] ? key : '';
+        key = sections[ key ] ? key : '';
 
-        megaMenu.setAttribute( 'data-section', key || '' );
         megaMenu.classList.add( 'is-settled' );
 
-        if ( panelKey === activeSection ) { return; }
-        activeSection = panelKey;
+        if ( key === activeSection ) { return; }
+        activeSection = key;
 
-        megaMenu.setAttribute( 'data-panel', panelKey );
-        megaMenu.classList.toggle( 'has-panel', !! panelKey );
+        megaMenu.setAttribute( 'data-section', key );
+        megaMenu.classList.toggle( 'has-section', !! key );
 
-        Object.keys( panels ).forEach( function ( k ) {
-            var entry = panels[ k ];
-            var on    = k === panelKey;
+        Object.keys( sections ).forEach( function ( k ) {
+            var entry = sections[ k ];
+            var on    = k === key;
 
             entry.item.classList.toggle( 'is-active', on );
             entry.panel.classList.toggle( 'is-active', on );
 
-            // Hidden panels are removed from focus order and the a11y tree
-            if ( on ) {
-                entry.panel.removeAttribute( 'inert' );
-            } else {
-                entry.panel.setAttribute( 'inert', '' );
-            }
+            // Hidden branches are removed from focus order and the a11y tree
+            setInert( entry.panel, ! on );
 
             if ( entry.toggle ) {
                 entry.toggle.setAttribute( 'aria-expanded', on ? 'true' : 'false' );
@@ -134,13 +192,22 @@
 
             syncLinkState( entry, on );
         } );
+
+        // Solutions: the taxonomy chosen earlier this session, otherwise
+        // By Industry on desktop; on small screens nothing until asked.
+        var entry = sections[ key ];
+        if ( entry && entry.order.length ) {
+            setGroup( key, chosenGroup[ key ] || ( desktop.matches ? entry.order[0] : '' ) );
+        }
     }
 
-    function resetSection() {
+    function resetTree() {
         clearTimeout( hoverTimer );
+        clearTimeout( groupTimer );
+        chosenGroup   = {};
         activeSection = null;  // force a full re-sync
         setSection( '' );
-        megaMenu.removeAttribute( 'data-section' );
+        Object.keys( sections ).forEach( function ( k ) { setGroup( k, '' ); } );
         megaMenu.classList.remove( 'is-settled' );
     }
 
@@ -163,7 +230,7 @@
         isOpen      = true;
         lastFocused = document.activeElement;
 
-        resetSection();
+        resetTree();
 
         menuBtn.setAttribute( 'aria-expanded', 'true' );
         menuBtn.setAttribute( 'aria-label',    'Close navigation menu' );
@@ -199,6 +266,7 @@
         isOpen = false;
 
         clearTimeout( hoverTimer );
+        clearTimeout( groupTimer );
         clearTimeout( settleTimer );
         megaMenu.classList.remove( 'is-settled' );
 
@@ -242,7 +310,7 @@
         return scope.filter( isReachable );
     }
 
-    // Focus the parent of a section without re-triggering its panel
+    // Move focus without the focus itself re-opening a branch
     function focusQuietly( el ) {
         suppressFocus = true;
         el.focus();
@@ -251,11 +319,23 @@
 
     // ── Keyboard handling ────────────────────────────────────────────────
     function handleKeydown( e ) {
-        // Escape: first clears an open section, then closes the menu
+        // Escape steps back one level: destinations → their taxonomy,
+        // an open branch → its primary label, and finally closes the menu.
         if ( e.key === 'Escape' || e.key === 'Esc' ) {
+            var current = document.activeElement;
+            var leaves  = current && current.closest ? current.closest( '.mega-menu__leaves' ) : null;
+
+            if ( leaves ) {
+                var owner = leaves.parentNode.querySelector( '.mega-menu__branch-toggle' );
+                if ( owner ) {
+                    focusQuietly( owner );
+                    return;
+                }
+            }
+
             if ( activeSection ) {
-                var entry  = panels[ activeSection ];
-                var within = entry.panel.contains( document.activeElement );
+                var entry  = sections[ activeSection ];
+                var within = entry.panel.contains( current );
 
                 setSection( '' );
 
@@ -264,6 +344,7 @@
                 }
                 return;
             }
+
             closeMenu();
             return;
         }
@@ -274,11 +355,11 @@
 
             if ( ! focusable.length ) { return; }
 
-            var first   = focusable[0];
-            var last    = focusable[ focusable.length - 1 ];
-            var current = document.activeElement;
+            var first  = focusable[0];
+            var last   = focusable[ focusable.length - 1 ];
+            var active = document.activeElement;
 
-            if ( focusable.indexOf( current ) === -1 ) {
+            if ( focusable.indexOf( active ) === -1 ) {
                 e.preventDefault();
                 ( e.shiftKey ? last : first ).focus();
                 return;
@@ -286,13 +367,13 @@
 
             if ( e.shiftKey ) {
                 // Shift+Tab: wrap from first to last
-                if ( current === first ) {
+                if ( active === first ) {
                     e.preventDefault();
                     last.focus();
                 }
             } else {
                 // Tab: wrap from last to first
-                if ( current === last ) {
+                if ( active === last ) {
                     e.preventDefault();
                     first.focus();
                 }
@@ -316,9 +397,9 @@
         }
     } );
 
-    // Primary labels: hover intent + keyboard focus drive the right-hand
-    // region on desktop. Every label participates, so moving to a section
-    // without a panel brings the editorial rail back.
+    // Primary labels: hover intent + keyboard focus open the branch on
+    // desktop. A label is never a disclosure-only control — clicking it
+    // navigates to the section itself.
     items.forEach( function ( item ) {
         var key  = item.getAttribute( 'data-section' );
         var link = item.querySelector( '.mega-menu__primary-link' );
@@ -327,7 +408,9 @@
         link.addEventListener( 'mouseenter', function () {
             if ( ! desktop.matches ) { return; }
             clearTimeout( hoverTimer );
-            hoverTimer = setTimeout( function () { setSection( key ); }, HOVER_INTENT );
+            hoverTimer = setTimeout( function () {
+                setSection( key );
+            }, activeSection ? INTENT_SWITCH : INTENT_FIRST );
         } );
 
         link.addEventListener( 'mouseleave', function () {
@@ -341,20 +424,54 @@
         } );
     } );
 
-    // +/− controls: explicit disclosure (small screens and touch)
-    Object.keys( panels ).forEach( function ( key ) {
-        var entry = panels[ key ];
-        if ( ! entry.toggle ) { return; }
+    Object.keys( sections ).forEach( function ( key ) {
+        var entry = sections[ key ];
 
-        entry.toggle.addEventListener( 'click', function () {
-            setSection( activeSection === key ? '' : key );
+        // Primary +/−: explicit disclosure (small screens and touch)
+        if ( entry.toggle ) {
+            entry.toggle.addEventListener( 'click', function () {
+                setSection( activeSection === key ? '' : key );
+            } );
+        }
+
+        // Taxonomy controls: hover intent / focus select on desktop;
+        // a click selects on desktop and toggles below 960px.
+        entry.order.forEach( function ( gKey ) {
+            var toggle = entry.groups[ gKey ].toggle;
+
+            toggle.addEventListener( 'mouseenter', function () {
+                if ( ! desktop.matches ) { return; }
+                clearTimeout( groupTimer );
+                groupTimer = setTimeout( function () {
+                    chooseGroup( key, gKey );
+                }, INTENT_GROUP );
+            } );
+
+            toggle.addEventListener( 'mouseleave', function () {
+                clearTimeout( groupTimer );
+            } );
+
+            toggle.addEventListener( 'focus', function () {
+                if ( suppressFocus || ! desktop.matches ) { return; }
+                clearTimeout( groupTimer );
+                chooseGroup( key, gKey );
+            } );
+
+            toggle.addEventListener( 'click', function () {
+                clearTimeout( groupTimer );
+                if ( desktop.matches ) {
+                    chooseGroup( key, gKey );
+                } else {
+                    chooseGroup( key, entry.group === gKey ? '' : gKey );
+                }
+            } );
         } );
     } );
 
-    // Keep the parent links' ARIA honest when the composition changes
+    // Keep the primary links' ARIA honest when the composition changes
     function onBreakpointChange() {
-        Object.keys( panels ).forEach( function ( key ) {
-            syncLinkState( panels[ key ], key === activeSection );
+        Object.keys( sections ).forEach( function ( key ) {
+            syncLinkState( sections[ key ], key === activeSection );
         } );
     }
 
@@ -366,7 +483,7 @@
 
     // Closed overlay is removed from focus order and the a11y tree
     megaMenu.setAttribute( 'inert', '' );
-    resetSection();
+    resetTree();
 
     // The sticky nav stays visible at all times. Visual variants
     // (transparent over the dark hero vs frosted-glass with dark text

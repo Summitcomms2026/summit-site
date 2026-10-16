@@ -115,7 +115,7 @@ function summit_nav_config(): array {
                     [ 'label' => 'For Family Offices & Investors', 'path' => '/the-observatory/for-family-offices-investors' ],
                     [ 'label' => 'The Field',                      'path' => '/the-observatory/field' ],
                     [ 'label' => 'How It Works',                   'path' => '/the-observatory/how-it-works' ],
-                    [ 'label' => 'Request a Private Briefing',     'path' => '/the-observatory/request-a-private-briefing' ],
+                    [ 'label' => 'Request a Private Briefing',     'path' => '/the-observatory/request-a-private-briefing', 'action' => true ],  // a request, not a content page
                 ],
             ],
 
@@ -234,4 +234,46 @@ function summit_nav( string $key = '' ) {
     }
 
     return $config[ $key ] ?? null;
+}
+
+
+/**
+ * Resolve a config item to an absolute URL.
+ *
+ * External items carry a full 'url'; internal items carry a site-relative
+ * 'path' (which may include a #fragment) and are passed through home_url().
+ *
+ * @param  array $item  A config item with 'url' or 'path'.
+ * @return string
+ */
+function summit_nav_url( array $item ): string {
+    if ( ! empty( $item['url'] ) ) {
+        return $item['url'];
+    }
+
+    return home_url( $item['path'] ?? '/' );
+}
+
+
+/**
+ * Whether the current request sits at or beneath a configured path.
+ *
+ * Fragments are ignored, so '/the-future-of-luxury#subscribe' matches the
+ * archive. With $exact, only the path itself matches (no descendants).
+ *
+ * @param  string $path   Site-relative path from the config.
+ * @param  bool   $exact  Match the path only, not its descendants.
+ * @return bool
+ */
+function summit_nav_is_current( string $path, bool $exact = false ): bool {
+    global $wp;
+
+    $request = '/' . trim( (string) ( $wp->request ?? '' ), '/' );
+    $target  = '/' . trim( strtok( $path, '#' ), '/' );
+
+    if ( $request === $target ) {
+        return true;
+    }
+
+    return ! $exact && '/' !== $target && 0 === strpos( $request . '/', $target . '/' );
 }

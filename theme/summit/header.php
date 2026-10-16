@@ -4,28 +4,27 @@
  * Location: header.php
  *
  * Outputs the document <head> and the global site header, which consists of:
- *   1. Sticky top navigation (normal state) — Menu | Brand | Design Tomorrow
- *   2. Mega menu overlay — full navigation environment, hidden until triggered
- *   3. Sticky bottom utility bar — positioning statement | CTA | London +44
+ *   1. Sticky top navigation (normal state) — Menu | Brand | Let’s Talk
+ *   2. Mega menu overlay — parts/global/mega-menu.php
+ *   3. Sticky bottom utility bar — positioning statement | CTA | WhatsApp
  *
  * The <title> tag is NOT manually written here.
  * inc/seo.php calls add_theme_support('title-tag') and WordPress outputs
  * the <title> element inside wp_head() automatically.
  *
- * The mega menu article feed is a lightweight WP_Query for the 3 most
- * recent published articles. It is run in functions.php via a helper and
- * cached with wp_cache_get() so it does not repeat on every header call.
+ * Navigation labels and destinations come from inc/navigation-config.php
+ * (summit_nav()); the primary CTA is summit_nav( 'cta' ). Paths are passed
+ * through home_url() so they resolve in every environment.
  *
- * Navigation links use hardcoded v1 routes as defined in the brief.
- * These are filtered through home_url() so they are always relative to
- * the site root regardless of environment (local, staging, production).
+ * While the menu is open, .site-nav stays on top of the overlay and its
+ * menu button becomes the close control (see assets/js/nav.js).
  *
  * @package SummitTheme
  */
 
 defined( 'ABSPATH' ) || exit;
 
-$menu_articles = summit_get_menu_articles();
+$nav_cta = summit_nav( 'cta' );
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -71,10 +70,13 @@ $menu_articles = summit_get_menu_articles();
             </a>
 
             <!-- Primary CTA (right) -->
-            <a href="<?php echo esc_url( home_url( '/design-tomorrow' ) ); ?>"
-               class="site-nav__cta btn btn--primary">
-                Design Tomorrow
+            <?php if ( $nav_cta ) : ?>
+            <a href="<?php echo esc_url( summit_nav_url( $nav_cta ) ); ?>"
+               class="site-nav__cta btn btn--primary"
+               <?php if ( summit_nav_is_current( $nav_cta['path'], true ) ) : ?>aria-current="page"<?php endif; ?>>
+                <?php echo esc_html( $nav_cta['label'] ); ?>
             </a>
+            <?php endif; ?>
 
         </div>
     </div><!-- /.site-nav -->
@@ -82,233 +84,13 @@ $menu_articles = summit_get_menu_articles();
 
     <!-- ── Mega menu overlay ────────────────────────────────────────── -->
     <!--
-        The mega menu is a full-viewport overlay that opens on Menu click.
-        It is hidden via aria-hidden="true" and visibility:hidden in CSS.
-        JavaScript toggles aria-expanded on the trigger button (for
-        assistive technology) and sets aria-hidden="false" on the overlay.
-        CSS opens the overlay by responding to:
-            .mega-menu[aria-hidden="false"]
-        via opacity + visibility + pointer-events transitions.
-
-        This avoids any display:none toggle that would cause layout flash.
-        The overlay uses visibility + opacity + pointer-events for a
-        calm, lag-free reveal.
+        Full-viewport navigation environment, built from the navigation
+        config. Hidden via aria-hidden="true" + visibility:hidden in CSS;
+        nav.js toggles aria-expanded on the trigger and aria-hidden on the
+        overlay, and CSS opens it via .mega-menu[aria-hidden="false"]
+        (opacity + visibility + pointer-events — no display toggle).
     -->
-    <div class="mega-menu"
-         id="mega-menu"
-         role="dialog"
-         aria-modal="true"
-         aria-label="Navigation menu"
-         aria-hidden="true">
-
-        <!-- Preserved top navigation inside the overlay -->
-        <div class="mega-menu__nav-bar">
-            <div class="mega-menu__nav-bar-inner">
-
-                <button class="mega-menu__close-btn site-nav__menu-btn site-nav__menu-btn--open"
-                        id="menu-close-btn"
-                        type="button"
-                        aria-controls="mega-menu"
-                        aria-label="Close navigation menu">
-                    <span class="site-nav__menu-label" aria-hidden="true">Close</span>
-                    <span class="site-nav__menu-icon site-nav__menu-icon--cross" aria-hidden="true">
-                        <span></span>
-                        <span></span>
-                    </span>
-                </button>
-
-                <a href="<?php echo esc_url( home_url( '/' ) ); ?>"
-                   class="site-nav__brand"
-                   tabindex="-1"
-                   aria-hidden="true">
-                    <?php get_template_part( 'parts/global/logo' ); ?>
-                </a>
-
-                <a href="<?php echo esc_url( home_url( '/design-tomorrow' ) ); ?>"
-                   class="site-nav__cta btn btn--primary"
-                   tabindex="-1">
-                    Design Tomorrow
-                </a>
-
-            </div>
-        </div><!-- /.mega-menu__nav-bar -->
-
-
-        <!-- Mega menu body -->
-        <div class="mega-menu__body">
-            <div class="mega-menu__body-inner">
-
-                <!-- Left column: primary + secondary navigation -->
-                <div class="mega-menu__nav-col">
-
-                    <!-- Primary navigation -->
-                    <nav class="mega-menu__primary-nav"
-                         aria-label="Primary navigation">
-                        <ul class="mega-menu__primary-list" role="list">
-
-                          <li class="mega-menu__primary-item <?php echo is_page( 'who-we-are' ) ? 'is-current' : ''; ?>">
-                                <a href="<?php echo esc_url( home_url( '/who-we-are' ) ); ?>"
-                                   class="mega-menu__primary-link"
-                                   <?php echo is_page( 'who-we-are' ) ? 'aria-current="page"' : ''; ?>>
-                                    Who We Are
-                                </a>
-                            </li>
-
-                            <li class="mega-menu__primary-item <?php echo is_page( 'what-we-do' ) ? 'is-current' : ''; ?>">
-                                <a href="<?php echo esc_url( home_url( '/what-we-do' ) ); ?>"
-                                   class="mega-menu__primary-link"
-                                   <?php echo is_page( 'what-we-do' ) ? 'aria-current="page"' : ''; ?>>
-                                    What We Do
-                                </a>
-                            </li>
-
-                            <li class="mega-menu__primary-item <?php echo is_page( 'work' ) || get_post_type() === 'case_study' ? 'is-current' : ''; ?>">
-                                <a href="<?php echo esc_url( home_url( '/work' ) ); ?>"
-                                   class="mega-menu__primary-link"
-                                   <?php echo ( is_page( 'work' ) || get_post_type() === 'case_study' ) ? 'aria-current="page"' : ''; ?>>
-                                    Selected Portfolio
-                                </a>
-                            </li>
-
-                            <li class="mega-menu__primary-item <?php echo ( is_post_type_archive( 'article' ) || get_post_type() === 'article' ) ? 'is-current' : ''; ?>">
-                                <a href="<?php echo esc_url( get_post_type_archive_link( 'article' ) ); ?>"
-                                   class="mega-menu__primary-link"
-                                   <?php echo ( is_post_type_archive( 'article' ) || get_post_type() === 'article' ) ? 'aria-current="page"' : ''; ?>>
-                                    The Future of Luxury
-                                </a>
-                            </li>
-
-                            <li class="mega-menu__primary-item <?php echo is_page( 'design-tomorrow' ) ? 'is-current' : ''; ?>">
-                                <a href="<?php echo esc_url( home_url( '/design-tomorrow' ) ); ?>"
-                                   class="mega-menu__primary-link mega-menu__primary-link--cta"
-                                   <?php echo is_page( 'design-tomorrow' ) ? 'aria-current="page"' : ''; ?>>
-                                    Let's Talk
-                                </a>
-                            </li>
-
-                        </ul>
-                    </nav><!-- /.mega-menu__primary-nav -->
-
-                    <!-- Secondary / utility navigation -->
-                    <nav class="mega-menu__secondary-nav"
-                         aria-label="Secondary navigation">
-                        <ul class="mega-menu__secondary-list" role="list">
-
-                            <li>
-                                <a href="<?php echo esc_url( home_url( '/careers' ) ); ?>"
-                                   class="mega-menu__secondary-link"
-                                   <?php echo is_page( 'careers' ) ? 'aria-current="page"' : ''; ?>>
-                                    Careers
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="<?php echo esc_url( home_url( '/client-lounge' ) ); ?>"
-                                   class="mega-menu__secondary-link"
-                                   <?php echo is_page( 'client-lounge' ) ? 'aria-current="page"' : ''; ?>>
-                                    Client Lounge
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="<?php echo esc_url( home_url( '/tastemakers' ) ); ?>"
-                                   class="mega-menu__secondary-link"
-                                   <?php echo ( is_page( 'tastemakers' ) || get_post_type() === 'podcast_season' || get_post_type() === 'podcast_episode' ) ? 'aria-current="page"' : ''; ?>>
-                                    Tastemakers Podcast
-                                    <svg class="mega-menu__secondary-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3v5zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3v5z"/></svg>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </nav><!-- /.mega-menu__secondary-nav -->
-
-                </div><!-- /.mega-menu__nav-col -->
-
-
-                <!-- Right column: editorial feed -->
-<?php if ( ! empty( $menu_articles ) ) : ?>
-<div class="mega-menu__editorial-col" aria-label="Recent articles">
-
-    <p class="mega-menu__editorial-label">
-        <a href="<?php echo esc_url( get_post_type_archive_link( 'article' ) ); ?>">
-            The Future of Luxury
-        </a>
-    </p>
-
-    <ul class="mega-menu__editorial-list" role="list">
-        <?php foreach ( $menu_articles as $menu_article ) :
-            $cats      = get_the_terms( $menu_article->ID, 'article_category' );
-            $cat_name  = ( ! is_wp_error( $cats ) && ! empty( $cats ) ) ? $cats[0]->name : '';
-            $read_time = get_field( 'art_read_time', $menu_article->ID );
-            $pub_date  = get_the_date( 'j M Y', $menu_article->ID );
-            $pub_iso   = get_the_date( 'c', $menu_article->ID );
-            $thumb_url = get_the_post_thumbnail_url( $menu_article->ID, 'medium' );
-
-            if ( ! $read_time ) {
-                $read_time = summit_estimated_read_time( $menu_article->ID );
-            }
-        ?>
-        <li class="mega-menu__editorial-item">
-            <a href="<?php echo esc_url( get_permalink( $menu_article->ID ) ); ?>"
-               class="mega-menu__editorial-link <?php echo $thumb_url ? 'has-thumb' : 'no-thumb'; ?>">
-
-                <?php if ( $thumb_url ) : ?>
-                <span class="mega-menu__editorial-thumb" aria-hidden="true">
-                    <img src="<?php echo esc_url( $thumb_url ); ?>" alt="">
-                </span>
-                <?php endif; ?>
-
-                <div class="mega-menu__editorial-meta">
-                    <time datetime="<?php echo esc_attr( $pub_iso ); ?>">
-                        <?php echo esc_html( $pub_date ); ?>
-                    </time>
-                    <span><?php echo absint( $read_time ); ?> min read</span>
-                </div>
-
-                <span class="mega-menu__editorial-title">
-                    <?php echo esc_html( get_the_title( $menu_article->ID ) ); ?>
-                </span>
-
-                <?php if ( $cat_name ) : ?>
-                <span class="mega-menu__editorial-cat">
-                    <?php echo esc_html( $cat_name ); ?>
-                </span>
-                <?php endif; ?>
-
-            </a>
-        </li>
-        <?php endforeach; ?>
-    </ul>
-
-    <a href="<?php echo esc_url( get_post_type_archive_link( 'article' ) ); ?>"
-       class="mega-menu__editorial-all">
-        All articles
-    </a>
-
-</div>
-<?php endif; ?>
-
-            </div><!-- /.mega-menu__body-inner -->
-        </div><!-- /.mega-menu__body -->
-
-
-        <!-- Mega menu bottom utility bar (inside overlay) -->
-        <div class="mega-menu__bottom-bar">
-            <div class="mega-menu__bottom-bar-inner">
-                <p class="mega-menu__bottom-positioning">
-                    An independent design consultancy<br>for tomorrow's luxury brands
-                </p>
-                <div class="mega-menu__bottom-actions">
-                    <a href="<?php echo esc_url( home_url( '/design-tomorrow' ) ); ?>"
-                       class="mega-menu__bottom-cta">
-                        Start a conversation
-                    </a>
-                    <span class="mega-menu__bottom-location">WhatsApp&nbsp;+61&nbsp;430&nbsp;388&nbsp;662</span>
-                </div>
-            </div>
-        </div><!-- /.mega-menu__bottom-bar -->
-
-    </div><!-- /.mega-menu -->
+    <?php get_template_part( 'parts/global/mega-menu' ); ?>
 
     <!-- Overlay backdrop — click to close -->
     <div class="mega-menu-backdrop" id="mega-menu-backdrop" aria-hidden="true"></div>

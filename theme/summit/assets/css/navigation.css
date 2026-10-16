@@ -244,6 +244,21 @@
 }
 
 
+.site-nav__cta:focus-visible {
+    outline: 2px solid var(--colour-ink);
+    outline-offset: 3px;
+}
+
+
+/* Focus rings read as paper wherever the bar sits on a dark field */
+.home .site-header:not(.is-scrolled) .site-nav__brand:focus-visible,
+.home .site-header:not(.is-scrolled) .site-nav__cta:focus-visible,
+.site-header.menu-is-open .site-nav__brand:focus-visible,
+.site-header.menu-is-open .site-nav__cta:focus-visible {
+    outline-color: var(--colour-paper);
+}
+
+
 .site-header.menu-is-open .site-nav__menu-btn,
 .site-header.menu-is-open .site-nav__brand {
     color: var(--colour-paper);
@@ -257,19 +272,6 @@
 }
 
 
-/* ── Mega menu overlay — nav bar element overrides ────────── */
-
-.mega-menu__nav-bar .site-nav__brand {
-    color: var(--colour-paper);
-}
-
-.mega-menu__nav-bar .site-nav__cta.btn--primary {
-    background: transparent;
-    color: var(--colour-paper);
-    border-color: var(--colour-paper);
-}
-
-.mega-menu__nav-bar .site-nav__cta.btn--primary:hover,
 .site-header.menu-is-open .site-nav__cta.btn--primary:hover {
     background: var(--colour-paper);
     color: var(--colour-ink);
@@ -401,57 +403,6 @@
 }
 
 
-.mega-menu__close-btn {
-    color: var(--colour-paper);
-}
-
-
-.mega-menu__close-btn:hover {
-    color: rgba(255, 255, 255, 0.6);
-}
-
-
-/* Hide close-button label visually, keep for screen readers */
-.mega-menu__close-btn .site-nav__menu-label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-}
-
-
-.site-nav__menu-icon--cross {
-    position: relative;
-    width: 16px;
-    height: 16px;
-}
-
-
-.site-nav__menu-icon--cross span {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: currentColor;
-}
-
-
-.site-nav__menu-icon--cross span:first-child {
-    transform: rotate(45deg);
-}
-
-
-.site-nav__menu-icon--cross span:last-child {
-    transform: rotate(-45deg);
-}
-
-
 /* ──────────────────────────────────────────────────────────
    Overlay body layout
    ────────────────────────────────────────────────────────── */
@@ -461,10 +412,16 @@
 
 .mega-menu__body {
     flex: 1;
-    overflow: hidden;
+    min-height: 0;
+    /* Scrolls only when content exceeds the viewport (short screens,
+       expanded sections on mobile). Never scrolls the page beneath. */
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
 }
 
 .mega-menu__body-inner {
+    position: relative;  /* anchors the desktop contextual panels */
     display: grid;
     grid-template-columns: 1fr;
     gap: 38px;
@@ -475,10 +432,25 @@
     align-items: start;
 }
 
+/* Two-zone composition: navigation left, contextual region right.
+   --mm-col / --mm-gap are shared with the absolutely positioned panels
+   so they land exactly on the right-hand column. */
 @media (min-width: 960px) {
-    .summit-has-articles .mega-menu__body-inner {
-        grid-template-columns: 400px minmax(620px, 1fr);
-        gap: 64px;
+    .mega-menu {
+        --mm-col: 400px;
+        --mm-gap: 64px;
+    }
+
+    .mega-menu__body-inner {
+        grid-template-columns: var(--mm-col) minmax(0, 1fr);
+        gap: var(--mm-gap);
+    }
+}
+
+@media (min-width: 960px) and (max-width: 1199px) {
+    .mega-menu {
+        --mm-col: 340px;
+        --mm-gap: 48px;
     }
 }
 
@@ -504,12 +476,15 @@
 }
 
 
+/* 'none' rather than translateY(0): visually identical at rest, but an
+   untransformed item does not become the containing block for the
+   absolutely positioned contextual panels nested inside it. */
 .mega-menu[aria-hidden="false"] .mega-menu__primary-item,
 .mega-menu[aria-hidden="false"] .mega-menu__secondary-nav,
 .mega-menu[aria-hidden="false"] .mega-menu__editorial-col,
 .mega-menu[aria-hidden="false"] .mega-menu__bottom-bar {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
 }
 
 
@@ -519,10 +494,11 @@
     .mega-menu[aria-hidden="false"] .mega-menu__primary-item:nth-child(3) { transition-delay: 340ms; }
     .mega-menu[aria-hidden="false"] .mega-menu__primary-item:nth-child(4) { transition-delay: 410ms; }
     .mega-menu[aria-hidden="false"] .mega-menu__primary-item:nth-child(5) { transition-delay: 480ms; }
+    .mega-menu[aria-hidden="false"] .mega-menu__primary-item:nth-child(6) { transition-delay: 550ms; }
 
-    .mega-menu[aria-hidden="false"] .mega-menu__secondary-nav { transition-delay: 520ms; }
+    .mega-menu[aria-hidden="false"] .mega-menu__secondary-nav { transition-delay: 590ms; }
     .mega-menu[aria-hidden="false"] .mega-menu__editorial-col { transition-delay: 380ms; }
-    .mega-menu[aria-hidden="false"] .mega-menu__bottom-bar   { transition-delay: 560ms; }
+    .mega-menu[aria-hidden="false"] .mega-menu__bottom-bar   { transition-delay: 630ms; }
 }
 
 
@@ -586,9 +562,81 @@
     transform: translateX(8px);
 }
 
-.mega-menu__primary-link[aria-current="page"],
-.mega-menu__primary-link--cta[aria-current="page"] {
+.mega-menu__primary-link[aria-current],
+.mega-menu__primary-link--cta[aria-current] {
     color: rgba(255, 255, 255, 0.55);
+}
+
+
+/* Parent row: the label is always a real link. Sections with a panel
+   also carry a quiet disclosure control, shown only where hover is not
+   available (touch) or the panel expands in place (below 960px). */
+.mega-menu__primary-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.mega-menu__primary-toggle {
+    display: none;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 42px;
+    margin-right: -13px;  /* optically aligns the glyph to the menu edge */
+    padding: 0;
+    border: 0;
+    background: none;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: color var(--duration-fast) var(--ease-out);
+}
+
+.mega-menu__primary-toggle:hover,
+.mega-menu__primary-toggle[aria-expanded="true"] {
+    color: var(--colour-paper);
+}
+
+@media (max-width: 959px), (hover: none) {
+    .mega-menu__primary-toggle {
+        display: inline-flex;
+    }
+}
+
+/* Plus → minus, drawn with the same 1px strokes as the menu icon */
+.mega-menu__toggle-icon {
+    position: relative;
+    width: 18px;
+    height: 18px;
+}
+
+.mega-menu__toggle-icon span {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transition: transform var(--duration-base) var(--ease-inout);
+}
+
+.mega-menu__toggle-icon span:last-child {
+    transform: rotate(90deg);
+}
+
+.mega-menu__primary-toggle[aria-expanded="true"] .mega-menu__toggle-icon span:last-child {
+    transform: rotate(0deg);
+}
+
+/* Desktop: while a section's panel is showing, its label holds the
+   hover state — the same dim and indent, simply sustained. */
+@media (min-width: 960px) {
+    .mega-menu__primary-item.is-active .mega-menu__primary-link {
+        color: rgba(255, 255, 255, 0.55);
+        transform: translateX(8px);
+    }
 }
 
 .mega-menu__secondary-nav {
@@ -622,16 +670,6 @@
     color: var(--colour-paper);
 }
 
-.mega-menu__secondary-icon {
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    vertical-align: -2px;
-    margin-left: 9px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.5;
-}
 
 /* ──────────────────────────────────────────────────────────
    Right editorial rail
@@ -771,6 +809,426 @@
 
 .mega-menu__editorial-all:hover {
     color: var(--colour-paper);
+}
+
+/* The Future of Luxury owns the rail: when its label is the active
+   destination the rail's own label answers, quietly. */
+.mega-menu[data-section="future-of-luxury"] .mega-menu__editorial-label {
+    color: var(--colour-paper);
+}
+
+.mega-menu__editorial-label {
+    transition: color 500ms var(--ease-out);
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   Contextual panels — Solutions (index) and The Observatory
+   (register). Each panel follows its parent link in the DOM.
+   Desktop lifts it into the right-hand region; below 960px it
+   expands in place beneath the parent.
+
+   Hand-over with the editorial rail follows the menu's own
+   open/close vocabulary: the outgoing state leaves quickly
+   (ease-in), the incoming state arrives slowly (ease-out).
+   ────────────────────────────────────────────────────────── */
+
+.mega-menu {
+    --mm-out: 160ms;
+    --mm-in: 360ms;
+    --mm-in-delay: 120ms;
+}
+
+.mega-menu__panel-label {
+    margin: 0 0 18px;
+    font-size: 0.88rem;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.mega-menu__panel-all {
+    align-self: flex-start;
+    font-size: 0.84rem;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-out);
+}
+
+.mega-menu__panel-all:hover {
+    color: var(--colour-paper);
+}
+
+
+/* ── Solutions: a three-part index ─────────────────────── */
+
+.mega-menu__index {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: clamp(24px, 3.2vw, 56px);
+    row-gap: 32px;
+}
+
+.mega-menu__index-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 0 0 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 0.84rem;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.mega-menu__index-count {
+    font-size: 0.74rem;
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.mega-menu__index-list {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.mega-menu__index-link {
+    display: inline-block;
+    font-size: 1.02rem;
+    font-weight: 400;
+    line-height: 1.28;
+    color: var(--colour-paper);
+    text-decoration: none;
+    transition:
+        color 500ms var(--ease-out),
+        transform 500ms var(--ease-out);
+}
+
+.mega-menu__index-link:hover {
+    color: rgba(255, 255, 255, 0.55);
+    transform: translateX(4px);
+}
+
+.mega-menu__index-link[aria-current] {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.mega-menu__panel--index .mega-menu__panel-all {
+    margin-top: 36px;
+}
+
+
+/* ── The Observatory: a numbered register ──────────────── */
+
+.mega-menu__register {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mega-menu__register-item {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mega-menu__register-link {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    align-items: baseline;
+    padding: 17px 0;
+    text-decoration: none;
+    color: inherit;
+}
+
+.mega-menu__register-num {
+    font-size: 0.74rem;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+    font-variant-numeric: tabular-nums;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.mega-menu__register-title {
+    justify-self: start;
+    font-family: "neue-haas-grotesk-display-pr", var(--font-sans);
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--colour-paper);
+    transition:
+        color 500ms var(--ease-out),
+        transform 500ms var(--ease-out);
+}
+
+.mega-menu__register-link:hover .mega-menu__register-title,
+.mega-menu__register-link[aria-current] .mega-menu__register-title {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.mega-menu__register-link:hover .mega-menu__register-title {
+    transform: translateX(8px);
+}
+
+/* The one action in the register: the header CTA's outline treatment */
+.mega-menu__panel-action {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    margin-top: 32px;
+    padding: 9px 20px;
+    border: 1px solid var(--colour-paper);
+    border-radius: var(--radius-md);
+    font-family: var(--font-text);
+    font-size: 0.84rem;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: 0.01em;
+    color: var(--colour-paper);
+    text-decoration: none;
+    transition:
+        background-color var(--duration-base) var(--ease-out),
+        color var(--duration-base) var(--ease-out);
+}
+
+.mega-menu__panel-action:hover {
+    background: var(--colour-paper);
+    color: var(--colour-ink);
+}
+
+
+/* ── Desktop: panels occupy the right-hand region ──────── */
+
+@media (min-width: 960px) {
+    .mega-menu__panel {
+        position: absolute;
+        top: 52px;
+        bottom: calc(var(--bottom-bar-height) + 18px);
+        left: calc(var(--menu-edge) + var(--mm-col) + var(--mm-gap));
+        right: var(--menu-edge);
+        display: flex;
+        flex-direction: column;
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(6px);
+        transition:
+            opacity var(--mm-out) var(--ease-in),
+            transform var(--mm-out) var(--ease-in),
+            visibility 0s linear var(--mm-out);
+    }
+
+    .mega-menu__panel.is-active {
+        visibility: visible;
+        opacity: 1;
+        transform: none;
+        transition:
+            opacity var(--mm-in) var(--ease-out) var(--mm-in-delay),
+            transform var(--mm-in) var(--ease-out) var(--mm-in-delay),
+            visibility 0s linear 0s;
+    }
+
+    .mega-menu__panel-inner {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* The register sits in the rail's own footprint */
+    .mega-menu__panel--register {
+        align-items: flex-end;
+        justify-content: flex-end;
+    }
+
+    .mega-menu__panel--register .mega-menu__panel-inner {
+        width: 100%;
+        max-width: 700px;
+    }
+
+    /* After the entrance stagger, the rail hands over without delay */
+    .mega-menu.is-settled .mega-menu__editorial-col {
+        transition:
+            opacity var(--mm-in) var(--ease-out) var(--mm-in-delay),
+            transform var(--mm-in) var(--ease-out) var(--mm-in-delay),
+            visibility 0s linear 0s;
+    }
+
+    .mega-menu[aria-hidden="false"].has-panel .mega-menu__editorial-col {
+        visibility: hidden;
+        opacity: 0;
+        transition:
+            opacity var(--mm-out) var(--ease-in),
+            transform var(--mm-out) var(--ease-in),
+            visibility 0s linear var(--mm-out);
+    }
+}
+
+/* Mid-width desktops: the index tightens rather than crowds */
+@media (min-width: 960px) and (max-width: 1199px) {
+    .mega-menu__index-link {
+        font-size: 0.94rem;
+    }
+}
+
+
+/* ── Below 960px: one column, sections expand in place ─── */
+
+@media (max-width: 959px) {
+    /* Fill the screen so utility links still settle at the foot.
+       Content scrolling towards the bottom bar dissolves rather than
+       being cut; at rest that band is empty padding. */
+    .mega-menu__body {
+        display: flex;
+        flex-direction: column;
+        -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 36px), transparent);
+                mask-image: linear-gradient(to bottom, #000 calc(100% - 36px), transparent);
+    }
+
+    .mega-menu__body-inner {
+        flex: 1 0 auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mega-menu__nav-col {
+        flex: 1 0 auto;
+        min-height: 0;
+    }
+
+    /* As before at this width, the rail is not part of the small-screen menu */
+    .mega-menu__editorial-col {
+        display: none;
+    }
+
+    .mega-menu__panel {
+        display: grid;
+        grid-template-rows: 0fr;
+        visibility: hidden;
+        transition:
+            grid-template-rows var(--duration-slow) var(--ease-out),
+            visibility 0s linear var(--duration-slow);
+    }
+
+    .mega-menu__panel.is-active {
+        grid-template-rows: 1fr;
+        visibility: visible;
+        transition:
+            grid-template-rows var(--duration-slow) var(--ease-out),
+            visibility 0s linear 0s;
+    }
+
+    .mega-menu__panel-inner {
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    .mega-menu__panel-label {
+        display: none;
+    }
+
+    .mega-menu__index {
+        grid-template-columns: 1fr;
+        row-gap: 30px;
+        margin-top: 28px;
+    }
+
+    .mega-menu__index-list {
+        gap: 0;
+    }
+
+    .mega-menu__index-link {
+        padding-block: 7px;
+        font-size: 1.06rem;
+    }
+
+    .mega-menu__index-heading {
+        margin-bottom: 6px;
+    }
+
+    .mega-menu__panel--index .mega-menu__panel-all {
+        margin-top: 24px;
+        padding-block: 6px;
+    }
+
+    /* Two classes: outranks the global ol[role="list"] margin reset */
+    .mega-menu__panel .mega-menu__register {
+        margin-top: 24px;
+    }
+
+    .mega-menu__register-link {
+        grid-template-columns: 40px 1fr;
+        padding: 14px 0;
+    }
+
+    .mega-menu__register-title {
+        font-size: 1.26rem;
+    }
+
+    .mega-menu__panel-action {
+        margin-top: 24px;
+    }
+
+    /* A closing breath beneath an open section */
+    .mega-menu__panel.is-active .mega-menu__panel-inner {
+        padding-bottom: 14px;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 959px) {
+    .mega-menu__index {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 40px;
+    }
+}
+
+
+/* ── Focus within the dark field ───────────────────────── */
+
+.mega-menu a:focus-visible,
+.mega-menu button:focus-visible {
+    outline: 1px solid var(--colour-paper);
+    outline-offset: 4px;
+    border-radius: var(--radius-sm);
+}
+
+
+/* ── Reduced motion: states change immediately ─────────── */
+
+@media (prefers-reduced-motion: reduce) {
+    .mega-menu,
+    .mega-menu[aria-hidden="false"],
+    .mega-menu *,
+    .mega-menu *::before,
+    .mega-menu *::after {
+        transition-duration: 0s !important;
+        transition-delay: 0s !important;
+    }
+
+    .mega-menu,
+    .mega-menu__panel,
+    .mega-menu__primary-item,
+    .mega-menu__secondary-nav,
+    .mega-menu__editorial-col,
+    .mega-menu__bottom-bar,
+    .mega-menu__primary-link:hover,
+    .mega-menu__primary-item.is-active .mega-menu__primary-link,
+    .mega-menu__index-link:hover,
+    .mega-menu__register-link:hover .mega-menu__register-title {
+        transform: none !important;
+    }
 }
 
 /* ──────────────────────────────────────────────────────────

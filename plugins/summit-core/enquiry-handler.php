@@ -2,8 +2,13 @@
 /**
  * Enquiry Form Handler
  *
- * Processes AJAX submissions from the Design Tomorrow contact form.
- * Creates an enquiry CPT post with ACF fields and sends an email notification.
+ * Processes submissions from Summit's enquiry forms (Design Tomorrow, and
+ * The Observatory's private briefing request). Creates an enquiry CPT post
+ * with ACF fields and sends an email notification.
+ *
+ * Forms submit by AJAX (assets/js/enquiry-form.js) and receive JSON. Without
+ * JavaScript, a form posting to admin-post.php is answered with a redirect
+ * back to its page carrying ?enquiry=sent|invalid|failed.
  *
  * @package SummitCore
  */
@@ -17,6 +22,30 @@ add_action( 'wp_ajax_summit_enquiry',        'summit_handle_enquiry' );
 add_action( 'wp_ajax_nopriv_summit_enquiry', 'summit_handle_enquiry' );
 
 /**
+ * No-JavaScript fallback: the same handler, answered with a redirect.
+ */
+add_action( 'admin_post_summit_enquiry',        'summit_handle_enquiry' );
+add_action( 'admin_post_nopriv_summit_enquiry', 'summit_handle_enquiry' );
+
+/**
+ * Answer a submission: JSON for AJAX, otherwise a redirect back to the
+ * submitting page with a state it can display. Exits.
+ */
+function summit_enquiry_respond( bool $ok, string $message, int $status = 200, array $data = [] ): void {
+	if ( wp_doing_ajax() ) {
+		if ( $ok ) {
+			wp_send_json_success( array_merge( [ 'message' => $message ], $data ) );
+		}
+		wp_send_json_error( [ 'message' => $message ], $status );
+	}
+
+	$state = $ok ? 'sent' : ( 422 === $status ? 'invalid' : 'failed' );
+	$back  = remove_query_arg( 'enquiry', wp_get_referer() ?: home_url( '/' ) );
+	wp_safe_redirect( add_query_arg( 'enquiry', $state, $back ) . '#enquiry-status', 303 );
+	exit;
+}
+
+/**
  * Process the enquiry form submission.
  */
 function summit_handle_enquiry(): void {
@@ -24,7 +53,7 @@ function summit_handle_enquiry(): void {
 	// ── Nonce verification ──────────────────────────────────────────────
 	if ( ! isset( $_POST['summit_enquiry_nonce'] )
 	     || ! wp_verify_nonce( $_POST['summit_enquiry_nonce'], 'summit_enquiry_submit' ) ) {
-		wp_send_json_error( [ 'message' => 'Security check failed. Please refresh and try again.' ], 403 );
+		summit_enquiry_respond( false, 'Security check failed. Please refresh and try again.', 403 );
 	}
 
 	// ── Sanitise inputs ─────────────────────────────────────────────────
@@ -51,6 +80,7 @@ function summit_handle_enquiry(): void {
 		'experience_design',
 		'digital_transformation',
 		'general',
+		'observatory_briefing',
 	], true ) ) {
 		$errors[] = 'Please select an enquiry type.';
 	}
@@ -60,11 +90,15 @@ function summit_handle_enquiry(): void {
 	}
 
 	if ( ! empty( $errors ) ) {
-		wp_send_json_error( [ 'message' => implode( ' ', $errors ) ], 422 );
+		summit_enquiry_respond( false, implode( ' ', $errors ), 422 );
 	}
 
 	// ── Create enquiry CPT post ─────────────────────────────────────────
-	$post_title = sprintf( '%s — %s', $name, ucwords( str_replace( '_', ' ', $type ) ) );
+	$type_labels = [
+		'observatory_briefing' => 'Private Briefing (The Observatory)',
+	];
+	$type_label = $type_labels[ $type ] ?? ucwords( str_replace( '_', ' ', $type ) );
+	$post_title = sprintf( '%s — %s', $name, $type_label );
 
 	$post_id = wp_insert_post( [
 		'post_type'   => 'enquiry',
@@ -73,7 +107,7 @@ function summit_handle_enquiry(): void {
 	], true );
 
 	if ( is_wp_error( $post_id ) ) {
-		wp_send_json_error( [ 'message' => 'Could not save enquiry. Please try again.' ], 500 );
+		summit_enquiry_respond( false, 'Could not save enquiry. Please try again.', 500 );
 	}
 
 	// ── Populate ACF fields ─────────────────────────────────────────────
@@ -90,17 +124,32 @@ function summit_handle_enquiry(): void {
 
 	// ── Send email notification ─────────────────────────────────────────
 	$admin_email = get_option( 'admin_email' );
-	$type_label  = ucwords( str_replace( '_', ' ', $type ) );
-	$subject     = sprintf( '[Summit] New enquiry from %s — %s', $name, $type_label );
 
-	$body  = "New enquiry received via the Design Tomorrow form.\n\n";
-	$body .= "Name: {$name}\n";
-	$body .= "Email: {$email}\n";
-	$body .= "Company: {$company}\n";
-	$body .= "Type: {$type_label}\n";
-	$body .= "Source: {$form_source}\n\n";
-	$body .= "Message:\n{$message}\n\n";
-	$body .= "View in admin: " . admin_url( "post.php?post={$post_id}&action=edit" ) . "\n";
+	if ( 'observatory_briefing' === $type ) {
+		$subject = 'Private briefing request — The Observatory';
+
+		$body  = "A private briefing request was received through The Observatory.\n\n";
+		$body .= "Name: {$name}\n";
+		$body .= "Email: {$email}\n";
+		if ( '' !== $company ) {
+			$body .= "Organisation: {$company}\n";
+		}
+		$body .= "Enquiry type: {$type_label}\n";
+		$body .= 'Source: ' . ( 0 === strpos( $form_source, '/' ) ? home_url( $form_source ) : $form_source ) . "\n\n";
+		$body .= "Question:\n{$message}\n\n";
+		$body .= "View in admin: " . admin_url( "post.php?post={$post_id}&action=edit" ) . "\n";
+	} else {
+		$subject = sprintf( '[Summit] New enquiry from %s — %s', $name, $type_label );
+
+		$body  = "New enquiry received via the Design Tomorrow form.\n\n";
+		$body .= "Name: {$name}\n";
+		$body .= "Email: {$email}\n";
+		$body .= "Company: {$company}\n";
+		$body .= "Type: {$type_label}\n";
+		$body .= "Source: {$form_source}\n\n";
+		$body .= "Message:\n{$message}\n\n";
+		$body .= "View in admin: " . admin_url( "post.php?post={$post_id}&action=edit" ) . "\n";
+	}
 
 	$mail_sent = wp_mail( $admin_email, $subject, $body, [
 		'Content-Type: text/plain; charset=UTF-8',
@@ -108,8 +157,7 @@ function summit_handle_enquiry(): void {
 	] );
 
 	// ── Respond ─────────────────────────────────────────────────────────
-	wp_send_json_success( [
-		'message'    => 'Thank you. We have received your enquiry.',
+	summit_enquiry_respond( true, 'Thank you. We have received your enquiry.', 200, [
 		'post_id'    => $post_id,
 		'mail_sent'  => $mail_sent,
 	] );

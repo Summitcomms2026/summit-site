@@ -1,40 +1,51 @@
 <?php
 /**
- * Template Name: Observatory Overview
+ * Template Name: Observatory
  * Location: page-observatory.php
  *
- * The Observatory's landing page: a long-form chaptered page built on the
- * internal page shell's grammar.
+ * The Observatory section: the Overview and its chapters (For CMOs, For
+ * Family Offices & Investors, The Field, How It Works, Request a Private
+ * Briefing). Long-form chaptered pages built on the internal page shell's
+ * grammar.
  *
- *   hero     the shell hero (dark) — eyebrow · H1 · standfirst · CTA · share
- *   body     the page's own content: chapters authored as core blocks in
- *            the editor (groups, headings, paragraphs, lists), styled by
- *            assets/css/observatory.css through their block class names
- *   footer   the global CTA footer (Let's Talk)
+ *   hero      the shell hero — eyebrow · H1 · standfirst · CTA · utilities
+ *   body      the page's own content: chapters authored as core blocks in
+ *             the editor (groups, headings, paragraphs, lists), styled by
+ *             assets/css/observatory.css through their block class names
+ *   form      the private briefing form, where the page asks for it
+ *   sequence  on chapter pages, the section's reading order
+ *   footer    the global CTA footer (Let's Talk)
  *
- * The narrative is editorial content, not template prose: every word on
- * the page beneath the hero is edited in the block editor. This template
- * adds only the hero, the reveal attributes and the CTA footer.
+ * The narrative is editorial content, not template prose: every word in
+ * the body is edited in the block editor. Canonical source for the content
+ * lives in site-content/observatory/ (see its manifest.json).
  *
  * Page fields (post meta, as page-shell.php):
  *   summit_eyebrow      eyebrow, parts separated by " / "
+ *   summit_headline     optional display H1 (defaults to the page title)
+ *   summit_tone         dark | tinted | paper (default)
  *   summit_standfirst   standfirst beneath the title
- *   summit_utilities    comma list of utility actions, e.g. "share"
+ *   summit_utilities    comma list of utility actions, e.g. "share, print"
+ *   summit_form         "briefing" renders the private briefing form
  *
  * Block class names the stylesheet understands:
- *   obs-chapter (+ --tinted | --dark | --plain)   a chapter: <section> group
+ *   obs-chapter (+ --tinted | --dark | --briefing)  a chapter: <section> group
  *   obs-marker      chapter number and name, e.g. "01 — What it is"
+ *   obs-statement   a heading at statement scale
  *   obs-lead        a lead paragraph
- *   obs-pull        a pull statement
- *   obs-register    the field's quantities (list; <strong> holds the figure)
- *   obs-note        a quiet note under a register
+ *   obs-pull        a pull statement (serif)
+ *   obs-register    quantities (list; <strong> holds the figure)
+ *   obs-note        a quiet note
  *   obs-finding     a highlighted finding (group)
  *   obs-pillars / obs-pillar / obs-derived        the method (groups)
- *   obs-principles  governance principles (list)
- *   obs-audiences / obs-audience                  the two pathways (groups)
+ *   obs-rows / obs-row                            numbered readings (groups)
+ *   obs-readings / obs-reading                      an annotated reading sequence (groups)
+ *   obs-principles  principles (list)
+ *   obs-list        a ruled two-column list
+ *   obs-audiences / obs-audience                  pathways (groups)
  *   obs-sectors     the sector register (ordered list)
- *   obs-steps / obs-step                          how it works (groups)
- *   obs-outcome     the classification a reading arrives at (group)
+ *   obs-steps / obs-step                          a sequence (groups)
+ *   obs-outcome     paired readings, <strong> labels (group of paragraphs)
  *   obs-link        a text link with an arrow (paragraph)
  *   obs-cta         a primary call to action (paragraph holding a link)
  *
@@ -45,35 +56,58 @@ defined( 'ABSPATH' ) || exit;
 
 $page_id    = get_queried_object_id();
 $path       = '/' . trim( (string) get_page_uri( $page_id ), '/' );
+$tone       = get_post_meta( $page_id, 'summit_tone', true ) ?: 'paper';
+$headline   = get_post_meta( $page_id, 'summit_headline', true );
 $standfirst = get_post_meta( $page_id, 'summit_standfirst', true );
+$form       = get_post_meta( $page_id, 'summit_form', true );
 $utilities  = array_filter( array_map( 'trim', explode( ',', (string) get_post_meta( $page_id, 'summit_utilities', true ) ) ) );
 $eyebrow    = array_filter( array_map( 'trim', explode( '/', (string) get_post_meta( $page_id, 'summit_eyebrow', true ) ) ) );
 
-// Hero actions: the section's contextual CTA (from the navigation config),
-// then utilities — exactly as the page shell assembles them.
-$actions = [];
-foreach ( summit_nav( 'primary' ) ?: [] as $section ) {
-    if ( $section['path'] !== $path ) {
-        continue;
+// The section this page belongs to (the Overview, or one of its chapters).
+$section = null;
+foreach ( summit_nav( 'primary' ) ?: [] as $candidate ) {
+    $paths = array_column( $candidate['children'] ?? [], 'path' );
+    if ( $candidate['path'] === $path || in_array( $path, $paths, true ) ) {
+        $section = $candidate;
+        break;
     }
-    foreach ( $section['children'] ?? [] as $child ) {
-        if ( ! empty( $child['action'] ) ) {
-            $actions[] = [ 'type' => 'cta', 'label' => $child['label'], 'url' => summit_nav_url( $child ) ];
-        }
+}
+$is_overview = $section && $section['path'] === $path;
+
+// Hero actions: the section's contextual CTA (not on its own page), then
+// utilities — exactly as the page shell assembles them.
+$actions = [];
+foreach ( $section['children'] ?? [] as $child ) {
+    if ( ! empty( $child['action'] ) && $child['path'] !== $path ) {
+        $actions[] = [ 'type' => 'cta', 'label' => $child['label'], 'url' => summit_nav_url( $child ) ];
     }
 }
 foreach ( $utilities as $mode ) {
     $actions[] = [ 'type' => 'utility', 'mode' => sanitize_key( $mode ) ];
 }
 
-add_action( 'wp_enqueue_scripts', static function () {
+$slug = $is_overview ? 'overview' : sanitize_html_class( basename( $path ) );
+
+add_action( 'wp_enqueue_scripts', static function () use ( $form ) {
     $v = wp_get_theme()->get( 'Version' );
     wp_enqueue_style( 'summit-page-shell', get_template_directory_uri() . '/assets/css/page-shell.css', [ 'summit-navigation' ], $v );
     wp_enqueue_style( 'summit-observatory', get_template_directory_uri() . '/assets/css/observatory.css', [ 'summit-page-shell' ], $v );
+
+    // The briefing form submits through Summit's existing enquiry handler.
+    if ( 'briefing' === $form ) {
+        wp_enqueue_script( 'summit-enquiry-form', get_template_directory_uri() . '/assets/js/enquiry-form.js', [], $v, true );
+        wp_localize_script( 'summit-enquiry-form', 'summitEnquiry', [ 'ajaxUrl' => admin_url( 'admin-ajax.php' ) ] );
+    }
 } );
 
-add_filter( 'body_class', static function ( array $classes ): array {
-    return array_merge( $classes, [ 'summit-shell', 'summit-shell--dark', 'summit-observatory' ] );
+add_filter( 'body_class', static function ( array $classes ) use ( $tone, $slug ): array {
+    $classes[] = 'summit-shell';
+    $classes[] = 'summit-observatory';
+    $classes[] = 'summit-observatory--' . $slug;
+    if ( 'dark' === $tone ) {
+        $classes[] = 'summit-shell--dark';  // header sits transparent over the dark hero
+    }
+    return $classes;
 } );
 
 /*
@@ -85,11 +119,11 @@ $summit_obs_reveal = static function ( string $html ): string {
     if ( ! class_exists( 'WP_HTML_Tag_Processor' ) ) {
         return $html;
     }
-    $staggered = [ 'obs-pillar', 'obs-step', 'obs-audience' ];
+    $staggered = [ 'obs-pillar', 'obs-row', 'obs-reading', 'obs-step', 'obs-audience' ];
+    $faded     = [ 'obs-register', 'obs-sectors', 'obs-principles', 'obs-list', 'obs-finding', 'obs-derived', 'obs-outcome' ];
     $count     = [];
     $p         = new WP_HTML_Tag_Processor( $html );
     while ( $p->next_tag() ) {
-        $tag = $p->get_tag();
         if ( $p->has_class( 'obs-marker' ) ) {
             $p->set_attribute( 'data-reveal', 'fade' );
             continue;
@@ -102,12 +136,13 @@ $summit_obs_reveal = static function ( string $html ): string {
                 continue 2;
             }
         }
-        if ( $p->has_class( 'obs-register' ) || $p->has_class( 'obs-sectors' ) || $p->has_class( 'obs-principles' )
-            || $p->has_class( 'obs-finding' ) || $p->has_class( 'obs-derived' ) || $p->has_class( 'obs-outcome' ) ) {
-            $p->set_attribute( 'data-reveal', 'fade' );
-            continue;
+        foreach ( $faded as $class ) {
+            if ( $p->has_class( $class ) ) {
+                $p->set_attribute( 'data-reveal', 'fade' );
+                continue 2;
+            }
         }
-        if ( 'H2' === $tag || $p->has_class( 'obs-lead' ) || $p->has_class( 'obs-pull' ) || $p->has_class( 'obs-cta' ) ) {
+        if ( 'H2' === $p->get_tag() || $p->has_class( 'obs-lead' ) || $p->has_class( 'obs-pull' ) || $p->has_class( 'obs-cta' ) ) {
             $p->set_attribute( 'data-reveal', '' );
         }
     }
@@ -124,9 +159,9 @@ get_header();
 
         <?php get_template_part( 'parts/global/page-hero', null, [
             'eyebrow'    => $eyebrow,
-            'title'      => get_the_title(),
+            'title'      => $headline ?: get_the_title(),
             'standfirst' => $standfirst,
-            'tone'       => 'dark',
+            'tone'       => $tone,
             'actions'    => $actions,
         ] ); ?>
 
@@ -135,13 +170,23 @@ get_header();
         if ( trim( $content ) ) {
             echo '<div class="obs-body">' . $summit_obs_reveal( $content ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput -- the_content output
         }
+
+        if ( 'briefing' === $form ) {
+            get_template_part( 'parts/observatory/briefing-form', null, [ 'source' => $path ] );
+        }
         ?>
 
     </article>
 
     <?php endwhile; ?>
 
-    <?php get_template_part( 'parts/global/cta-footer' ); ?>
+    <?php
+    if ( $section && ! $is_overview ) {
+        get_template_part( 'parts/observatory/sequence', null, [ 'section' => $section, 'path' => $path ] );
+    }
+
+    get_template_part( 'parts/global/cta-footer' );
+    ?>
 </main>
 
 <?php

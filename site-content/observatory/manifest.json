@@ -13,6 +13,72 @@
         "summit_standfirst": "A proprietary, governed research instrument for luxury maisons, CMOs, family offices and investors.",
         "summit_utilities": "share"
       }
+    },
+    {
+      "title": "For CMOs",
+      "path": "/the-observatory/for-cmos",
+      "template": "page-observatory.php",
+      "source": "for-cmos.blocks.html",
+      "meta": {
+        "summit_eyebrow": "The Observatory / For CMOs",
+        "summit_tone": "paper",
+        "summit_headline": "What carries the house.",
+        "summit_standfirst": "How the leadership of a maison can read the Observatory: which propositions carry institutional authority, which are carried by it, and what the house must not lose.",
+        "summit_utilities": "share"
+      }
+    },
+    {
+      "title": "For Family Offices & Investors",
+      "path": "/the-observatory/for-family-offices-investors",
+      "template": "page-observatory.php",
+      "source": "for-family-offices-investors.blocks.html",
+      "meta": {
+        "summit_eyebrow": "The Observatory / For Family Offices & Investors",
+        "summit_tone": "tinted",
+        "summit_headline": "Institutional quality, read with discipline.",
+        "summit_standfirst": "For family offices, collectors and their advisers: a structured reading of governance, durability and patrimony — read separately from price, and never as a forecast.",
+        "summit_utilities": "share"
+      }
+    },
+    {
+      "title": "The Field",
+      "path": "/the-observatory/field",
+      "template": "page-observatory.php",
+      "source": "field.blocks.html",
+      "meta": {
+        "summit_eyebrow": "The Observatory / The Field",
+        "summit_tone": "dark",
+        "summit_headline": "A field around the canon.",
+        "summit_standfirst": "One hundred and four entries across seventeen sectors, read under the same discipline as the Luxury 100.",
+        "summit_utilities": "share"
+      }
+    },
+    {
+      "title": "How It Works",
+      "path": "/the-observatory/how-it-works",
+      "template": "page-observatory.php",
+      "source": "how-it-works.blocks.html",
+      "meta": {
+        "summit_eyebrow": "The Observatory / How It Works",
+        "summit_tone": "paper",
+        "summit_headline": "How the Observatory reads.",
+        "summit_standfirst": "A governed method: what can be read, how a reading is made and placed, and where the instrument declares its limits.",
+        "summit_utilities": "share, print"
+      }
+    },
+    {
+      "title": "Request a Private Briefing",
+      "path": "/the-observatory/request-a-private-briefing",
+      "template": "page-observatory.php",
+      "source": "request-a-private-briefing.blocks.html",
+      "meta": {
+        "summit_eyebrow": "The Observatory / Private Briefing",
+        "summit_tone": "paper",
+        "summit_headline": "Request a private briefing.",
+        "summit_standfirst": "A private briefing applies the Observatory’s governed framework to a specific maison, sector, holding or strategic question — without altering the public research record.",
+        "summit_utilities": "",
+        "summit_form": "briefing"
+      }
     }
   ]
 }

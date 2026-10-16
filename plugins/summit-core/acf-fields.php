@@ -1549,6 +1549,7 @@ function summit_acf_enquiry(): void {
 					'media_speaking'        => 'Media or Speaking',
 					'partnership'           => 'Partnership',
 					'other'                 => 'Other',
+					'observatory_briefing'  => 'Private Briefing (The Observatory)',
 				],
 				'default_value' => 'other',
 				'allow_null'    => 0,

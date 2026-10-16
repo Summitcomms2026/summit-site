@@ -8,19 +8,24 @@
  * from inc/navigation-config.php (summit_nav()); nothing here restates
  * the IA by hand.
  *
- * A progressive tree, read left to right on wide desktop:
- *   1. Primary   — the six destinations (always real links).
- *   2. Branch    — the active section's children, or for Solutions its
- *                  three taxonomy controls (By Industry / Function / Need).
- *   3. Leaves    — the destinations of the active Solutions taxonomy.
- *   4. Rail      — the live Future of Luxury articles, which stay put
- *                  while the tree opens to their left.
+ * Implements the approved composition study (scratch/mega-menu-study,
+ * states A / B / C at 1440×900). A horizontal tree:
+ *   PRIMARY (right-aligned to an axis) | BRANCH | LEAVES      RAIL
  *
- * Each branch sits in the DOM directly after its parent link, and each
- * leaf list directly after its taxonomy control, so keyboard and reader
- * order runs parent → children → destinations → next parent. Desktop CSS
- * lifts branches and leaves into their columns; below 960px they expand
- * in place.
+ *   Primary — six section rows. Each row selects its section inside the
+ *             menu (click / tap / Enter / Space); nothing opens on hover.
+ *   Branch  — the section's children from the config, introduced by a
+ *             vertical rule. For Solutions the branch holds the three
+ *             taxonomy selectors.
+ *   Leaves  — the destinations of the selected Solutions taxonomy, behind
+ *             a second rule.
+ *   Rail    — the live Future of Luxury articles (summit_get_menu_articles()),
+ *             which stay at the far right on wide desktop.
+ *
+ * Each branch sits in the DOM directly after its row, and each leaf list
+ * directly after its taxonomy selector, so keyboard and reader order runs
+ * section → children → destinations → next section. Desktop CSS lifts
+ * them into columns beside the axis; below 960px they expand in place.
  *
  * Interaction state is managed by assets/js/nav.js.
  *
@@ -33,8 +38,9 @@ $menu_articles = summit_get_menu_articles();
 $primary       = summit_nav( 'primary' ) ?: [];
 $utility       = summit_nav( 'utility' ) ?: [];
 
-// Sections whose single child level reads as a numbered register.
-$numbered_sections = [ 'observatory' ];
+// The disclosure clue: the thin text arrow from the approved study,
+// attached to its label. Decorative — the whole row is the control.
+$nav_arrow = '<span class="mega-menu__arrow" aria-hidden="true">&rarr;</span>';
 
 /**
  * aria-current value for a config path: 'page' on the page itself,
@@ -49,6 +55,7 @@ $current_attr = static function ( string $path, bool $exact = false ): string {
     }
     return ( ! $exact && summit_nav_is_current( $path ) ) ? 'true' : '';
 };
+
 ?>
 <div class="mega-menu"
      id="mega-menu"
@@ -63,7 +70,7 @@ $current_attr = static function ( string $path, bool $exact = false ): string {
     <div class="mega-menu__body">
         <div class="mega-menu__body-inner">
 
-            <!-- Left column: primary + utility navigation -->
+            <!-- Navigation: primary tree + utility -->
             <div class="mega-menu__nav-col">
 
                 <nav class="mega-menu__primary-nav"
@@ -73,7 +80,6 @@ $current_attr = static function ( string $path, bool $exact = false ): string {
                         <?php foreach ( $primary as $key => $section ) :
                             $groups   = $section['groups'] ?? [];
                             $children = $section['children'] ?? [];
-                            $has_tree = $groups || $children;
                             $panel_id = 'mega-menu-panel-' . $key;
                             $current  = $current_attr( $section['path'] );
 
@@ -83,46 +89,27 @@ $current_attr = static function ( string $path, bool $exact = false ): string {
                                 $current = 'true';
                             }
                         ?>
-                        <li class="mega-menu__primary-item<?php echo $has_tree ? ' has-panel' : ''; ?><?php echo $current ? ' is-current' : ''; ?>"
+                        <li class="mega-menu__primary-item<?php echo $current ? ' is-current' : ''; ?>"
                             data-section="<?php echo esc_attr( $key ); ?>">
 
-                            <div class="mega-menu__primary-row">
-                                <a href="<?php echo esc_url( summit_nav_url( $section ) ); ?>"
-                                   class="mega-menu__primary-link"
-                                   <?php if ( $has_tree ) : ?>aria-controls="<?php echo esc_attr( $panel_id ); ?>"<?php endif; ?>
-                                   <?php if ( $current ) : ?>aria-current="<?php echo esc_attr( $current ); ?>"<?php endif; ?>>
-                                    <?php echo esc_html( $section['label'] ); ?>
-                                </a>
+                            <button class="mega-menu__primary-toggle"
+                                    type="button"
+                                    aria-controls="<?php echo esc_attr( $panel_id ); ?>"
+                                    aria-expanded="false">
+                                <span class="mega-menu__primary-label"><?php echo esc_html( $section['label'] ); ?></span>
+                                <?php echo $nav_arrow; // phpcs:ignore WordPress.Security.EscapeOutput -- static markup ?>
+                            </button>
 
-                                <?php if ( $has_tree ) : ?>
-                                <button class="mega-menu__primary-toggle"
-                                        type="button"
-                                        aria-controls="<?php echo esc_attr( $panel_id ); ?>"
-                                        aria-expanded="false">
-                                    <span class="visually-hidden">
-                                        <?php
-                                        /* translators: %s: navigation section name */
-                                        echo esc_html( sprintf( __( 'Pages in %s', 'summit' ), $section['label'] ) );
-                                        ?>
-                                    </span>
-                                    <span class="mega-menu__toggle-icon" aria-hidden="true">
-                                        <span></span>
-                                        <span></span>
-                                    </span>
-                                </button>
-                                <?php endif; ?>
-                            </div>
-
-                            <?php if ( $has_tree ) : ?>
                             <!-- Branch: <?php echo esc_html( $section['label'] ); ?> -->
                             <div class="mega-menu__panel<?php echo $groups ? ' has-leaves' : ''; ?>"
                                  id="<?php echo esc_attr( $panel_id ); ?>"
                                  data-panel="<?php echo esc_attr( $key ); ?>"
                                  inert>
                                 <div class="mega-menu__panel-inner">
+                                    <ul class="mega-menu__branch<?php echo $groups ? ' mega-menu__branch--taxonomy' : ''; ?>"
+                                        role="list"
+                                        aria-label="<?php echo esc_attr( $section['label'] ); ?>">
 
-                                <?php if ( $groups ) : ?>
-                                    <ul class="mega-menu__branch mega-menu__branch--taxonomy" role="list">
                                         <?php foreach ( $groups as $group_key => $group ) :
                                             $leaves_id = 'mega-menu-leaves-' . $key . '-' . $group_key;
                                         ?>
@@ -132,11 +119,7 @@ $current_attr = static function ( string $path, bool $exact = false ): string {
                                                     aria-controls="<?php echo esc_attr( $leaves_id ); ?>"
                                                     aria-expanded="false">
                                                 <span class="mega-menu__branch-label"><?php echo esc_html( $group['label'] ); ?></span>
-                                                <span class="mega-menu__branch-count" aria-hidden="true"><?php echo esc_html( sprintf( '%02d', count( $group['children'] ) ) ); ?></span>
-                                                <span class="mega-menu__toggle-icon" aria-hidden="true">
-                                                    <span></span>
-                                                    <span></span>
-                                                </span>
+                                                <?php echo $nav_arrow; // phpcs:ignore WordPress.Security.EscapeOutput -- static markup ?>
                                             </button>
 
                                             <div class="mega-menu__leaves" id="<?php echo esc_attr( $leaves_id ); ?>" inert>
@@ -157,13 +140,7 @@ $current_attr = static function ( string $path, bool $exact = false ): string {
                                             </div>
                                         </li>
                                         <?php endforeach; ?>
-                                    </ul>
 
-                                <?php else :
-                                    $numbered = in_array( $key, $numbered_sections, true );
-                                    $n        = 0;
-                                ?>
-                                    <ul class="mega-menu__branch<?php echo $numbered ? ' mega-menu__branch--numbered' : ''; ?>" role="list">
                                         <?php foreach ( $children as $child ) :
                                             $is_action = ! empty( $child['action'] );
                                         ?>
@@ -171,19 +148,14 @@ $current_attr = static function ( string $path, bool $exact = false ): string {
                                             <a href="<?php echo esc_url( summit_nav_url( $child ) ); ?>"
                                                class="mega-menu__branch-link"
                                                <?php if ( $current_attr( $child['path'], true ) ) : ?>aria-current="page"<?php endif; ?>>
-                                                <?php if ( $numbered && ! $is_action ) : ?>
-                                                <span class="mega-menu__branch-num" aria-hidden="true"><?php echo esc_html( sprintf( '%02d', ++$n ) ); ?></span>
-                                                <?php endif; ?>
-                                                <span class="mega-menu__branch-label"><?php echo esc_html( $child['label'] ); ?></span>
+                                                <?php echo esc_html( $child['label'] ); ?>
                                             </a>
                                         </li>
                                         <?php endforeach; ?>
-                                    </ul>
-                                <?php endif; ?>
 
+                                    </ul>
                                 </div>
                             </div>
-                            <?php endif; ?>
 
                         </li>
                         <?php endforeach; ?>
@@ -212,7 +184,7 @@ $current_attr = static function ( string $path, bool $exact = false ): string {
             </div><!-- /.mega-menu__nav-col -->
 
 
-            <!-- Right column: editorial feed — persistent; the tree opens to its left -->
+            <!-- The Future of Luxury rail — the composition's second anchor -->
 <?php if ( ! empty( $menu_articles ) ) : ?>
 <div class="mega-menu__editorial-col" aria-label="Recent articles">
 

@@ -432,56 +432,52 @@
     align-items: start;
 }
 
-/* Progressive-tree composition, left to right:
-     --z1 primary · --z2 branch · --z3 leaves · rail (the remainder)
-   with --g1/--g2/--g3 as the gutters between them. Widths follow the
-   content, not equal division: the primary column keeps its authority,
-   the branch is narrow, the leaves get enough measure for long sector
-   names, and the rail takes what remains. The branch and leaf columns
-   are absolutely positioned from the same variables (see the tree). */
+/* Approved composition (scratch/mega-menu-study, 1440×900):
+
+     primary text edge  466   (right-aligned, 26px short of the axis)
+     first rule (axis)  492
+     second rule        672
+     rail               952 – 1376  (424px)
+     tree top           318   (first primary line box)
+
+   Horizontal positions are proportions of the width so the composition
+   holds from 1280px up; the tree's top is a proportion of the height. */
 @media (min-width: 960px) {
     .mega-menu {
-        --z1: 330px;
-        --g1: 36px;
-        --z2: 190px;
-        --g2: 28px;
-        --z3: 230px;
-        --g3: 40px;
+        --axis:      34.17%;   /* 492 / 1440 */
+        --p-gap:     26px;
+        --s:         12.5vw;   /* 180 — taxonomy column */
+        --t:         17.64vw;  /* 254 — destinations column */
+        --rail-left: 66.11%;   /* 952 / 1440 */
+        --rail-w:    29.44%;   /* 424 / 1440 */
+        --tree-top:  calc(35.33vh - var(--nav-height));  /* 318 at 900 */
+        --rule:      rgba(250, 250, 248, 0.24);
     }
 
     .mega-menu__body-inner {
-        column-gap: 0;
-        /* Below 1280px the rail shares the tree's region (see below) */
-        grid-template-columns: var(--z1) var(--g1) minmax(0, 1fr);
+        position: relative;
+        display: block;
+        height: 100%;
+        min-height: 520px;
+        padding: 0;
     }
 
-    .mega-menu__nav-col {
-        grid-column: 1;
+    .mega-menu .mega-menu__nav-col {
+        display: contents;
     }
 
-    .mega-menu__editorial-col {
-        grid-column: 3;
-    }
-}
-
-/* From 1280px the rail keeps its own column beside the open tree */
-@media (min-width: 1280px) {
-    .mega-menu__body-inner {
-        grid-template-columns:
-            var(--z1)
-            calc(var(--g1) + var(--z2) + var(--g2) + var(--z3) + var(--g3))
-            minmax(0, 1fr);
+    .mega-menu__primary-nav {
+        position: absolute;
+        top: var(--tree-top);
+        right: calc(100% - var(--axis) + var(--p-gap));
     }
 }
 
-@media (min-width: 1360px) {
+/* Shorter screens: the tree's top line rises so long destination lists
+   and the rail stay clear of the bottom bar. */
+@media (min-width: 960px) and (max-height: 800px) {
     .mega-menu {
-        --z1: 330px;
-        --g1: 40px;
-        --z2: 200px;
-        --g2: 36px;
-        --z3: 280px;
-        --g3: 56px;
+        --tree-top: calc(29vh - var(--nav-height));
     }
 }
 
@@ -564,115 +560,137 @@
     list-style: none;
 }
 
-.mega-menu__primary-link,
-.mega-menu__primary-link--cta {
+/* Section rows: the visible label is the control that opens its branch */
+.mega-menu__primary-toggle {
     position: relative;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 0;
+    border: 0;
+    background: none;
     /* -pr (Pro) variant carries weights 500/600 not present in the
-       standard neue-haas-grotesk-display kit. Falls back to var(--font-sans)
-       if the Pro family ever fails to load. */
+       standard neue-haas-grotesk-display kit. */
     font-family: "neue-haas-grotesk-display-pr", var(--font-sans);
     font-size: 2.3rem;
     font-weight: 500;
     line-height: 1.15;
     letter-spacing: 0;
+    text-align: left;
     color: var(--colour-paper);
-    text-decoration: none;
-    padding: 0;
-    margin: 0;
-    border: 0;
-    transition:
-        color 500ms var(--ease-out),
-        transform 500ms var(--ease-out);
-}
-
-
-.mega-menu__primary-link:hover,
-.mega-menu__primary-link--cta:hover {
-    color: rgba(255, 255, 255, 0.55);
-    transform: translateX(8px);
-}
-
-.mega-menu__primary-link[aria-current],
-.mega-menu__primary-link--cta[aria-current] {
-    color: rgba(255, 255, 255, 0.55);
-}
-
-
-/* Parent row: the label is always a real link. Sections with a panel
-   also carry a quiet disclosure control, shown only where hover is not
-   available (touch) or the panel expands in place (below 960px). */
-.mega-menu__primary-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-}
-
-.mega-menu__primary-toggle {
-    display: none;
-    flex: none;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 42px;
-    margin-right: -13px;  /* optically aligns the glyph to the menu edge */
-    padding: 0;
-    border: 0;
-    background: none;
-    color: rgba(255, 255, 255, 0.7);
     cursor: pointer;
-    transition: color var(--duration-fast) var(--ease-out);
+    transition: color 160ms var(--ease-out);
 }
 
-.mega-menu__primary-toggle:hover,
-.mega-menu__primary-toggle[aria-expanded="true"] {
-    color: var(--colour-paper);
+/* The arrow clue: the thin text arrow, attached to its label */
+.mega-menu__arrow {
+    flex: none;
+    font-family: var(--font-text);
+    font-weight: 400;
+    line-height: 1;
+    pointer-events: none;
+    transition:
+        opacity 160ms var(--ease-out),
+        transform 160ms var(--ease-out);
 }
 
-@media (max-width: 959px), (hover: none) {
-    .mega-menu__primary-toggle {
-        display: inline-flex;
-    }
-}
-
-/* Plus → minus, drawn with the same 1px strokes as the menu icon */
-.mega-menu__toggle-icon {
-    position: relative;
-    width: 18px;
-    height: 18px;
-}
-
-.mega-menu__toggle-icon span {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: currentColor;
-    transition: transform var(--duration-base) var(--ease-inout);
-}
-
-.mega-menu__toggle-icon span:last-child {
-    transform: rotate(90deg);
-}
-
-.mega-menu__primary-toggle[aria-expanded="true"] .mega-menu__toggle-icon span:last-child,
-.mega-menu__branch-toggle[aria-expanded="true"] .mega-menu__toggle-icon span:last-child {
-    transform: rotate(0deg);
-}
-
-/* Desktop: once a section is open, the active label comes forward
-   (paper, held indent) and its peers recede — editorial emphasis,
-   still legible, never disabled-looking. */
 @media (min-width: 960px) {
-    .mega-menu.has-section .mega-menu__primary-link {
-        color: rgba(255, 255, 255, 0.4);
+    .mega-menu__primary-list {
+        position: relative;  /* containing block for the whole tree */
+        gap: 0;
+        text-align: right;
     }
 
-    .mega-menu.has-section .mega-menu__primary-item.is-active .mega-menu__primary-link {
+    .mega-menu__primary-item {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    /* Entrance: fade only — a moving row would carry its branch with it */
+    .mega-menu__primary-item,
+    .mega-menu[aria-hidden="false"] .mega-menu__primary-item {
+        transform: none;
+    }
+
+    .mega-menu__primary-toggle {
+        display: block;
+        font-size: clamp(32px, 2.778vw, 48px);  /* 40px at 1440 */
+        line-height: 1.1;                       /* 44px pitch */
+        letter-spacing: -0.005em;
+        text-align: right;
+        white-space: nowrap;
+        color: rgba(250, 250, 248, 0.42);
+    }
+
+    .mega-menu__primary-toggle .mega-menu__arrow {
+        position: absolute;
+        top: 50%;
+        left: calc(100% + 6px);
+        transform: translateY(-52%);
+        font-size: 13px;
         color: var(--colour-paper);
-        transform: translateX(8px);
+        opacity: 0;
+    }
+
+    /* Tones: resting 42% · hover / focus brighter · open white;
+       with a section open its peers sit at 36%. */
+    .mega-menu__primary-toggle:hover,
+    .mega-menu__primary-toggle:focus-visible {
+        color: rgba(250, 250, 248, 0.78);
+    }
+
+    .mega-menu.has-section .mega-menu__primary-toggle {
+        color: rgba(250, 250, 248, 0.36);
+    }
+
+    .mega-menu.has-section .mega-menu__primary-toggle:hover,
+    .mega-menu.has-section .mega-menu__primary-toggle:focus-visible {
+        color: rgba(250, 250, 248, 0.72);
+    }
+
+    .mega-menu.has-section .mega-menu__primary-toggle[aria-expanded="true"] {
+        color: var(--colour-paper);
+    }
+
+    .mega-menu__primary-toggle:hover .mega-menu__arrow,
+    .mega-menu__primary-toggle:focus-visible .mega-menu__arrow,
+    .mega-menu__primary-toggle[aria-expanded="true"] .mega-menu__arrow {
+        opacity: 1;
+    }
+
+    /* Utility: quiet, subordinate, lower left */
+    .mega-menu .mega-menu__secondary-nav {
+        position: absolute;
+        left: var(--menu-edge);
+        bottom: 66px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .mega-menu .mega-menu__secondary-list {
+        gap: 8px;
+    }
+
+    .mega-menu .mega-menu__secondary-link {
+        font-family: var(--font-text);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.2;
+        letter-spacing: 0;
+        color: rgba(250, 250, 248, 0.5);
+    }
+
+    .mega-menu .mega-menu__secondary-link:hover,
+    .mega-menu .mega-menu__secondary-link:focus-visible {
+        color: var(--colour-paper);
+    }
+}
+
+/* Touch screens at desktop width: no hover, so the clue stays visible */
+@media (min-width: 960px) and (hover: none) {
+    .mega-menu__primary-toggle .mega-menu__arrow,
+    .mega-menu__branch-toggle .mega-menu__arrow {
+        opacity: 0.6;
     }
 }
 
@@ -848,78 +866,132 @@
     color: var(--colour-paper);
 }
 
-/* The Future of Luxury owns the rail: when it is the active section
-   the rail's own label answers, quietly. */
+/* ──────────────────────────────────────────────────────────
+   The Future of Luxury rail — the composition's second anchor.
+   Approved at 1440: 952 – 1376 (424px), top aligned with the
+   rules; 120px 4:3 thumbnails, 18px white titles, quiet
+   heading and metadata so the open tree stays dominant.
+   ────────────────────────────────────────────────────────── */
+
 .mega-menu__editorial-label {
-    transition: color 500ms var(--ease-out);
+    transition: color 160ms var(--ease-out);
 }
 
 .mega-menu[data-section="future-of-luxury"] .mega-menu__editorial-label {
-    color: var(--colour-paper);
+    color: rgba(250, 250, 248, 0.62);
 }
 
-/* The rail is a persistent column whose width now depends on the
-   viewport, so the article card adapts to the space it is given:
-   wide — thumb | meta + title | category (as approved)
-   compact — category drops beneath the title
-   narrow — text only, no thumbnail */
 @media (min-width: 960px) {
-    .mega-menu__editorial-col {
+    .mega-menu .mega-menu__editorial-col {
+        position: absolute;
+        top: calc(var(--tree-top) - 4px);
+        left: var(--rail-left);
+        width: var(--rail-w);
+        min-height: 0;
+        display: block;
         container-type: inline-size;
     }
-}
 
-@container (max-width: 559px) {
-    .mega-menu__editorial-link {
-        grid-template-columns: 96px 1fr;
+    .mega-menu .mega-menu__editorial-label,
+    .mega-menu .mega-menu__editorial-list,
+    .mega-menu .mega-menu__editorial-all {
+        max-width: none;
+    }
+
+    .mega-menu .mega-menu__editorial-label {
+        margin: 0 0 18px;
+        font-size: 13px;
+        line-height: 1;
+        color: rgba(250, 250, 248, 0.38);
+    }
+
+    .mega-menu .mega-menu__editorial-item {
+        padding: 18px 0;
+        border-top: 1px solid rgba(250, 250, 248, 0.12);
+    }
+
+    .mega-menu .mega-menu__editorial-link {
+        grid-template-columns: 120px 1fr;
         grid-template-areas:
             "thumb meta"
             "thumb title"
             "thumb cat";
+        grid-template-rows: auto auto 1fr;
+        column-gap: 22px;
+        row-gap: 6px;
     }
 
-    .mega-menu__editorial-thumb {
-        width: 96px;
+    .mega-menu .mega-menu__editorial-thumb {
+        width: 120px;
+        aspect-ratio: 4 / 3;
     }
 
-    .mega-menu__editorial-cat {
+    .mega-menu .mega-menu__editorial-meta {
+        gap: 0;
+        font-size: 12px;
+        line-height: 1.2;
+        letter-spacing: 0;
+        color: rgba(250, 250, 248, 0.34);
+    }
+
+    .mega-menu .mega-menu__editorial-meta span::before {
+        content: "·";
+        padding: 0 8px;
+    }
+
+    .mega-menu .mega-menu__editorial-title {
+        max-width: none;
+        font-size: 18px;
+        line-height: 1.25;
+        color: var(--colour-paper);
+    }
+
+    .mega-menu .mega-menu__editorial-cat {
         align-self: start;
         justify-self: start;
-        margin-top: 4px;
+        font-size: 12px;
+        line-height: 1.2;
+        color: rgba(250, 250, 248, 0.34);
+    }
+
+    .mega-menu .mega-menu__editorial-all {
+        display: inline-block;
+        margin-top: 6px;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 1.2;
+        letter-spacing: 0;
+        color: rgba(250, 250, 248, 0.38);
     }
 }
 
-@container (max-width: 379px) {
-    .mega-menu__editorial-link {
-        grid-template-columns: 1fr;
-        grid-template-areas:
-            "meta"
-            "title"
-            "cat";
+/* Narrow rails (below ~1280px wide screens) keep a smaller thumbnail */
+@container (max-width: 359px) {
+    .mega-menu .mega-menu__editorial-link {
+        grid-template-columns: 88px 1fr;
+        column-gap: 16px;
     }
 
-    .mega-menu__editorial-thumb {
-        display: none;
+    .mega-menu .mega-menu__editorial-thumb {
+        width: 88px;
+    }
+
+    .mega-menu .mega-menu__editorial-title {
+        font-size: 16px;
     }
 }
 
 
 /* ──────────────────────────────────────────────────────────
-   Progressive tree — branch (children / taxonomy) and leaves
-   (Solutions destinations). Each branch follows its parent
-   link in the DOM and each leaf list its taxonomy control.
-
-   Hierarchy is carried by opacity and proximity: the active
-   item at each level comes forward, its peers recede. Motion
-   follows the menu's own vocabulary — the outgoing state
-   leaves quickly (ease-in), the incoming one arrives slowly
-   (ease-out) — with only a few pixels of lateral travel.
+   The tree — branch (a section's children, or the Solutions
+   taxonomies) behind the first rule; destinations behind the
+   second. Nothing opens on hover or focus: levels change only
+   on click / Enter / Space (assets/js/nav.js). Transitions are
+   short and quiet.
    ────────────────────────────────────────────────────────── */
 
 .mega-menu {
-    --mm-out: 140ms;
-    --mm-in: 320ms;
-    --mm-in-delay: 90ms;
+    --mm-t: 160ms;
 }
 
 .mega-menu__branch,
@@ -931,239 +1003,191 @@
     list-style: none;
 }
 
-.mega-menu__branch {
-    gap: 14px;
-}
-
-/* Hairlines within a branch run to its longest entry, not the column */
-@media (min-width: 960px) {
-    .mega-menu__branch {
-        width: max-content;
-        max-width: 100%;
-    }
-}
-
-.mega-menu__leaf-list {
-    gap: 10px;
-}
-
-/* Branch entries: a step down from the primary scale, same family */
 .mega-menu__branch-link,
-.mega-menu__branch-toggle {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 10px;
+.mega-menu__branch-toggle,
+.mega-menu__leaf-link {
+    position: relative;
+    display: inline-block;
     padding: 0;
     border: 0;
     background: none;
-    font-family: "neue-haas-grotesk-display-pr", var(--font-sans);
-    font-size: 1.3rem;
-    font-weight: 500;
-    line-height: 1.2;
+    font-family: var(--font-text);
+    font-size: 17px;
+    font-weight: 400;
     letter-spacing: 0;
     text-align: left;
-    color: var(--colour-paper);
     text-decoration: none;
     cursor: pointer;
-    transition:
-        color 500ms var(--ease-out),
-        transform 500ms var(--ease-out);
+    transition: color var(--mm-t) var(--ease-out);
+}
+
+/* Taxonomies and section children: 78% → white */
+.mega-menu__branch-link,
+.mega-menu__branch-toggle {
+    color: rgba(250, 250, 248, 0.78);
 }
 
 .mega-menu__branch-link:hover,
-.mega-menu__branch-toggle:hover {
-    color: rgba(255, 255, 255, 0.55);
-    transform: translateX(6px);
-}
-
+.mega-menu__branch-link:focus-visible,
+.mega-menu__branch-toggle:hover,
+.mega-menu__branch-toggle:focus-visible,
 .mega-menu__branch-link[aria-current] {
-    color: rgba(255, 255, 255, 0.55);
-}
-
-.mega-menu__branch-count {
-    font-family: var(--font-text);
-    font-size: 0.74rem;
-    font-weight: 400;
-    font-variant-numeric: tabular-nums;
-    color: rgba(255, 255, 255, 0.3);
-}
-
-.mega-menu__branch-toggle .mega-menu__toggle-icon {
-    display: none;
-}
-
-/* Taxonomy: the selected branch comes forward, its peers recede */
-.mega-menu__branch--taxonomy.has-active .mega-menu__branch-toggle {
-    color: rgba(255, 255, 255, 0.45);
-}
-
-.mega-menu__branch--taxonomy.has-active .mega-menu__branch-item.is-active > .mega-menu__branch-toggle {
     color: var(--colour-paper);
 }
 
-/* The Observatory: a numbered, methodical register */
-.mega-menu__branch--numbered .mega-menu__branch-link {
-    display: grid;
-    grid-template-columns: 32px 1fr;
-    gap: 0;
+/* Solutions: one taxonomy selected (white), the others at 50% */
+.mega-menu__branch--taxonomy.has-active .mega-menu__branch-toggle {
+    color: rgba(250, 250, 248, 0.5);
 }
 
-.mega-menu__branch-num {
-    font-family: var(--font-text);
-    font-size: 0.74rem;
-    font-weight: 400;
-    letter-spacing: 0.01em;
-    font-variant-numeric: tabular-nums;
-    color: rgba(255, 255, 255, 0.4);
+.mega-menu__branch--taxonomy.has-active .mega-menu__branch-toggle:hover,
+.mega-menu__branch--taxonomy.has-active .mega-menu__branch-toggle:focus-visible {
+    color: rgba(250, 250, 248, 0.78);
 }
 
-/* A request rather than a page: set apart by a hairline and a quiet
-   underline, but still an entry in the tree — not a button. */
-.mega-menu__branch-item.is-action {
-    margin-top: 8px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
+.mega-menu .mega-menu__branch-toggle[aria-expanded="true"] {
+    color: var(--colour-paper);
 }
 
-.mega-menu__branch-item.is-action .mega-menu__branch-label {
+.mega-menu__branch-toggle .mega-menu__arrow {
+    font-size: 15px;
+    opacity: 0;
+}
+
+.mega-menu__branch-toggle:hover .mega-menu__arrow,
+.mega-menu__branch-toggle:focus-visible .mega-menu__arrow,
+.mega-menu__branch-toggle[aria-expanded="true"] .mega-menu__arrow {
+    opacity: 1;
+}
+
+/* A request rather than a page: only a faint underline */
+.mega-menu__branch-item.is-action .mega-menu__branch-link {
     text-decoration: underline;
     text-decoration-thickness: 1px;
-    text-underline-offset: 6px;
-    text-decoration-color: rgba(255, 255, 255, 0.35);
-    transition: text-decoration-color 500ms var(--ease-out);
+    text-underline-offset: 4px;
+    text-decoration-color: rgba(250, 250, 248, 0.3);
 }
 
-.mega-menu__branch-item.is-action .mega-menu__branch-link:hover .mega-menu__branch-label {
-    text-decoration-color: currentColor;
-}
-
-.mega-menu__branch--numbered .is-action .mega-menu__branch-link {
-    display: inline-flex;
-    padding-left: 32px;
-}
-
-/* Leaves: the destinations — reading size, generous measure */
+/* Destinations: 86% → white */
 .mega-menu__leaf-link {
-    display: inline-block;
-    font-size: 1.02rem;
-    font-weight: 400;
-    line-height: 1.28;
-    color: var(--colour-paper);
-    text-decoration: none;
-    transition:
-        color 500ms var(--ease-out),
-        transform 500ms var(--ease-out);
+    line-height: 1.3;
+    color: rgba(250, 250, 248, 0.86);
 }
 
-.mega-menu__leaf-link:hover {
-    color: rgba(255, 255, 255, 0.55);
-    transform: translateX(4px);
-}
-
+.mega-menu__leaf-link:hover,
+.mega-menu__leaf-link:focus-visible,
 .mega-menu__leaf-link[aria-current] {
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--colour-paper);
 }
 
 
-/* ── Desktop: branch and leaves take their columns ─────── */
+/* ── Desktop: the tree grows to the right of the axis ──── */
 
 @media (min-width: 960px) {
-    .mega-menu.has-section .mega-menu__primary-link:hover {
-        color: rgba(255, 255, 255, 0.7);
-    }
-
     .mega-menu__panel,
     .mega-menu__leaves {
         position: absolute;
         visibility: hidden;
         opacity: 0;
-        transform: translateX(-6px);
+        border-left: 1px solid var(--rule);
         transition:
-            opacity var(--mm-out) var(--ease-in),
-            transform var(--mm-out) var(--ease-in),
-            visibility 0s linear var(--mm-out);
+            opacity var(--mm-t) var(--ease-out),
+            visibility 0s linear var(--mm-t);
     }
 
     .mega-menu__panel.is-active,
     .mega-menu__branch-item.is-active > .mega-menu__leaves {
         visibility: visible;
         opacity: 1;
-        transform: none;
         transition:
-            opacity var(--mm-in) var(--ease-out) var(--mm-in-delay),
-            transform var(--mm-in) var(--ease-out) var(--mm-in-delay),
+            opacity var(--mm-t) var(--ease-out),
             visibility 0s linear 0s;
     }
 
-    /* Branch column, top-aligned with the primary list. Sections
-       without leaves may run into the (unused) leaf column. */
+    /* First rule: the axis, spanning the primary list (±4px) */
     .mega-menu__panel {
-        top: 52px;
-        left: calc(var(--menu-edge) + var(--z1) + var(--g1));
-        width: calc(var(--z2) + var(--g2) + var(--z3));
+        top: -4px;
+        left: calc(100% + var(--p-gap));
+        width: var(--s);
+        min-height: calc(100% + 8px);
+        text-align: left;
     }
 
-    .mega-menu__panel.has-leaves {
-        width: var(--z2);
+    /* Single-level branches may use the (unused) destinations measure */
+    .mega-menu__panel:not(.has-leaves) {
+        width: calc(var(--s) + var(--t));
     }
 
-    /* A single hairline marks where each level branches off */
-    .mega-menu__panel-inner,
-    .mega-menu__leaves-inner {
-        padding-left: 22px;
-        border-left: 1px solid rgba(255, 255, 255, 0.1);
+    /* Second rule: at the taxonomy column's right edge */
+    .mega-menu__leaves {
+        top: 0;
+        left: 100%;
+        width: var(--t);
+        min-height: 100%;
     }
 
     .mega-menu__panel-inner {
-        padding-top: 6px;
-        padding-bottom: 6px;
-    }
-
-    /* Leaves column: immediately right of the branch */
-    .mega-menu__leaves {
-        top: 0;
-        left: calc(100% + var(--g2));
-        width: var(--z3);
+        padding: 7px 0 0 18px;
     }
 
     .mega-menu__leaves-inner {
-        padding-top: 9px;
-        padding-bottom: 9px;
+        padding: 14px 18px 0 18px;  /* first destination on the taxonomy's line */
+    }
+
+    .mega-menu__branch-item {
+        width: fit-content;
+    }
+
+    .mega-menu__branch-link,
+    .mega-menu__branch-toggle {
+        line-height: 36px;  /* 36px pitch */
+        white-space: nowrap;
+    }
+
+    .mega-menu__branch-toggle .mega-menu__arrow {
+        position: absolute;
+        top: 50%;
+        left: calc(100% + 10px);
+        transform: translateY(-52%);
+    }
+
+    .mega-menu__leaf-list {
+        gap: 9.9px;  /* 32px pitch with 1.3 leading */
+    }
+
+    /* Block-level rows so the list item adds no line box of its own */
+    .mega-menu__branch-link,
+    .mega-menu__branch-toggle,
+    .mega-menu__leaf-link {
+        display: block;
     }
 }
 
-/* Below 1280px the rail cannot sit beside a full tree. It stays as the
-   resting state and for The Future of Luxury (whose own entries then
-   stay within the rail's world); any other open section takes the
-   region, and the rail returns when the section clears. */
+/* Below 1280px the 424px rail cannot sit beside a full tree: it is the
+   resting state, steps aside while a section is open, and returns
+   after. The destinations take some of its measure. */
 @media (min-width: 960px) and (max-width: 1279px) {
-    /* With the rail stepped aside, the destinations take its measure */
     .mega-menu {
-        --z3: 300px;
-    }
-
-    .mega-menu__panel[data-panel="future-of-luxury"],
-    .mega-menu__primary-item[data-section="future-of-luxury"] .mega-menu__primary-toggle {
-        display: none;
+        --t: 26vw;
     }
 
     .mega-menu.is-settled .mega-menu__editorial-col {
         transition:
-            opacity var(--mm-in) var(--ease-out) var(--mm-in-delay),
+            opacity var(--mm-t) var(--ease-out),
             visibility 0s linear 0s;
     }
 
-    .mega-menu[aria-hidden="false"].has-section:not([data-section="future-of-luxury"]) .mega-menu__editorial-col {
+    .mega-menu[aria-hidden="false"].has-section .mega-menu__editorial-col {
         visibility: hidden;
         opacity: 0;
         transition:
-            opacity var(--mm-out) var(--ease-in),
-            visibility 0s linear var(--mm-out);
+            opacity var(--mm-t) var(--ease-out),
+            visibility 0s linear var(--mm-t);
     }
 }
 
 
-/* ── Below 960px: the tree expands in place ────────────── */
+/* ── Below 960px: the same click tree, expanding in place ── */
 
 @media (max-width: 959px) {
     /* Fill the screen so utility links still settle at the foot.
@@ -1180,7 +1204,7 @@
         flex: 1 0 auto;
         display: flex;
         flex-direction: column;
-        align-items: stretch;  /* full-width rows: +/− sit at the menu edge */
+        align-items: stretch;  /* full-width rows: arrows sit at the menu edge */
     }
 
     .mega-menu__nav-col {
@@ -1188,16 +1212,44 @@
         min-height: 0;
     }
 
-    /* Every primary row now carries a +/−, so on the narrowest phones the
-       scale eases just enough for "The Future of Luxury" to hold one line.
-       Capped at the established 2.3rem from ~428px upward. */
-    .mega-menu__primary-link {
-        font-size: clamp(1.9rem, 8.6vw, 2.3rem);
-    }
-
     /* As before at this width, the rail is not part of the small-screen menu */
     .mega-menu__editorial-col {
         display: none;
+    }
+
+    /* Rows are the controls; the arrow sits at the edge, always visible,
+       and turns down when its level is open. The narrowest phones ease
+       the scale so "The Future of Luxury" holds one line (max 2.3rem). */
+    .mega-menu__primary-toggle,
+    .mega-menu__branch-toggle {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .mega-menu__primary-toggle {
+        font-size: clamp(1.9rem, 8.6vw, 2.3rem);
+    }
+
+    .mega-menu__arrow {
+        margin-right: 2px;
+        color: rgba(250, 250, 248, 0.7);
+    }
+
+    .mega-menu__primary-toggle .mega-menu__arrow {
+        font-size: 20px;
+    }
+
+    .mega-menu__branch-toggle .mega-menu__arrow {
+        font-size: 17px;
+        opacity: 1;
+    }
+
+    .mega-menu__primary-toggle[aria-expanded="true"] .mega-menu__arrow,
+    .mega-menu__branch-toggle[aria-expanded="true"] .mega-menu__arrow {
+        color: var(--colour-paper);
+        transform: rotate(90deg);
     }
 
     .mega-menu__panel,
@@ -1206,8 +1258,8 @@
         grid-template-rows: 0fr;
         visibility: hidden;
         transition:
-            grid-template-rows var(--duration-slow) var(--ease-out),
-            visibility 0s linear var(--duration-slow);
+            grid-template-rows var(--duration-base) var(--ease-out),
+            visibility 0s linear var(--duration-base);
     }
 
     .mega-menu__panel.is-active,
@@ -1215,7 +1267,7 @@
         grid-template-rows: 1fr;
         visibility: visible;
         transition:
-            grid-template-rows var(--duration-slow) var(--ease-out),
+            grid-template-rows var(--duration-base) var(--ease-out),
             visibility 0s linear 0s;
     }
 
@@ -1228,66 +1280,34 @@
     /* Two classes: outranks the global ul[role="list"] margin reset */
     .mega-menu__panel .mega-menu__branch {
         gap: 0;
-        margin-top: 14px;
+        margin-top: 10px;
     }
 
     .mega-menu__panel.is-active .mega-menu__panel-inner {
-        padding-bottom: 14px;
+        padding-bottom: 12px;
     }
 
     .mega-menu__branch-link,
     .mega-menu__branch-toggle {
         width: 100%;
-        padding-block: 9px;
-        font-size: 1.24rem;
-    }
-
-    /* Taxonomy rows carry the same quiet +/− as the primary rows */
-    .mega-menu__branch-toggle {
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .mega-menu__branch-toggle:hover {
-        transform: none;
-    }
-
-    .mega-menu__branch-toggle .mega-menu__toggle-icon {
-        display: block;
-        flex: none;
-        width: 14px;
-        height: 14px;
-        margin-right: 2px;
-        color: rgba(255, 255, 255, 0.7);
-    }
-
-    .mega-menu__branch-count {
-        display: none;
-    }
-
-    .mega-menu__branch-label {
-        flex: 1;
+        padding-block: 10px;
+        font-size: 18px;
+        line-height: 1.3;
     }
 
     /* One level of nesting, marked by a hairline rather than indents */
     .mega-menu__leaves-inner {
         padding-left: 16px;
-        border-left: 1px solid rgba(255, 255, 255, 0.12);
+        border-left: 1px solid rgba(250, 250, 248, 0.24);
     }
 
     .mega-menu__panel .mega-menu__leaf-list {
         gap: 0;
-        margin: 4px 0 12px;
+        margin: 2px 0 12px;
     }
 
     .mega-menu__leaf-link {
         padding-block: 7px;
-        font-size: 1.06rem;
-    }
-
-    .mega-menu__branch-item.is-action {
-        margin-top: 10px;
-        padding-top: 8px;
     }
 }
 
@@ -1320,11 +1340,7 @@
     .mega-menu__primary-item,
     .mega-menu__secondary-nav,
     .mega-menu__editorial-col,
-    .mega-menu__bottom-bar,
-    .mega-menu__primary-link,
-    .mega-menu__branch-link,
-    .mega-menu__branch-toggle,
-    .mega-menu__leaf-link {
+    .mega-menu__bottom-bar {
         transform: none !important;
     }
 }

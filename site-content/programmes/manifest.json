@@ -1,0 +1,83 @@
+{
+  "description": "Canonical source record for the Programmes section's page content. WordPress is the runtime editor; these files are the recoverable source. Not loaded by WordPress. Block markup in each source file is exactly what the block editor stores in post_content. Entries without a source set page fields only (the proposition, moment and related Solutions the Programmes register reads).",
+  "section": "/programmes",
+  "pages": [
+    {
+      "title": "Programmes",
+      "path": "/programmes",
+      "template": "page-programmes.php",
+      "source": "overview.blocks.html",
+      "meta": {
+        "summit_eyebrow": "Programmes",
+        "summit_tone": "paper",
+        "summit_headline": "Defined ways to commission the work.",
+        "summit_standfirst": "Some questions recur often enough to deserve a defined form. Programmes give those engagements structure without reducing them to standard solutions.",
+        "summit_cta_label": "Discuss a Programme",
+        "summit_cta_url": "/lets-talk",
+        "summit_utilities": "share"
+      }
+    },
+    {
+      "title": "Maison Formation",
+      "path": "/programmes/maison-formation",
+      "template": "page-programmes.php",
+      "source": "maison-formation.blocks.html",
+      "meta": {
+        "summit_eyebrow": "Programmes / Programme 01",
+        "summit_tone": "paper",
+        "summit_standfirst": "A structured programme for younger luxury brands building the position, product logic, codes, experience and stewardship required to become enduring maisons.",
+        "summit_cta_label": "Discuss Maison Formation",
+        "summit_cta_url": "/lets-talk",
+        "summit_utilities": "share",
+        "summit_summary": "A structured programme for younger luxury brands building the institutional architecture required to become enduring maisons.",
+        "summit_moment": "When a younger luxury brand must decide what kind of house it intends to become.",
+        "summit_related": "/solutions/build-a-maison, /solutions/strategy-planning, /solutions/brand-marketing, /solutions/product-ip-patrimony, /solutions/transform-the-client-experience"
+      }
+    },
+    {
+      "title": "Editorial & Influence",
+      "path": "/programmes/editorial-influence",
+      "meta": {
+        "summit_summary": "A programme to determine what is worth saying, create something worth reading, and place it before the people worth reaching.",
+        "summit_moment": "When the story of the house is being told more often by others than by the house itself.",
+        "summit_related": "/solutions/editorial-influence, /solutions/develop-thought-leadership"
+      }
+    },
+    {
+      "title": "Digital Growth",
+      "path": "/programmes/digital-growth",
+      "meta": {
+        "summit_summary": "A programme for growing digital demand and commerce without surrendering the scarcity, service or presentation that define the house.",
+        "summit_moment": "When digital demand must grow without the house becoming ordinary online.",
+        "summit_related": "/solutions/digital-commerce, /solutions/enhance-desire-without-dilution"
+      }
+    },
+    {
+      "title": "Client Experience",
+      "path": "/programmes/client-experience",
+      "meta": {
+        "summit_summary": "A programme for aligning product, place, service and digital encounter so every contact carries the authority of the house.",
+        "summit_moment": "When the encounter with the house falls short of what it makes.",
+        "summit_related": "/solutions/experience-design, /solutions/transform-the-client-experience"
+      }
+    },
+    {
+      "title": "Agentic AI",
+      "path": "/programmes/agentic-ai",
+      "meta": {
+        "summit_summary": "A programme for applying intelligent agents where they extend service and judgement without outsourcing the maison’s voice.",
+        "summit_moment": "When a house is weighing where intelligent agents belong, and where they do not.",
+        "summit_related": "/solutions/applied-ai"
+      }
+    },
+    {
+      "title": "Brand & IP Stewardship",
+      "path": "/programmes/brand-ip-stewardship",
+      "meta": {
+        "summit_summary": "A programme for governing the marks, designs, archives and patrimony that carry a house over time.",
+        "summit_moment": "When the marks, designs and archives that carry the house need governing, not only registering.",
+        "summit_related": "/solutions/product-ip-patrimony, /solutions/activate-patrimony-ip, /solutions/strengthen-an-icon"
+      }
+    }
+  ]
+}

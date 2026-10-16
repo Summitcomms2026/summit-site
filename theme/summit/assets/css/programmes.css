@@ -1,0 +1,772 @@
+/*
+ * Summit Theme — Programmes
+ * assets/css/programmes.css
+ * Loaded by page-programmes.php only (after page-shell.css).
+ *
+ * Defined ways to commission the work. Slower and more structured than
+ * Solutions: chapters open on a full-width rule carrying a serif numeral and
+ * a name, set like the sections of a well-made proposal; the programmes read
+ * as a numbered register with a held field; territories are set as
+ * questions in the serif voice.
+ *
+ * Measure: the approved 1040px medium container.
+ */
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* CHAPTERS                                                               */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.prg-chapter,
+.prg-register {
+  --prg-text: var(--colour-ink);
+  --prg-quiet: var(--colour-ink-60);
+  --prg-faint: var(--colour-ink-40);
+  --prg-rule: var(--colour-ink-10);
+  --prg-rule-strong: var(--colour-ink);
+  padding-block: clamp(80px, 10vw, 144px);
+  padding-inline: max(var(--space-5), calc((100% - var(--container-med)) / 2 + var(--space-5)));
+  color: var(--prg-text);
+}
+
+.prg-chapter--tinted {
+  background-color: var(--colour-ink-05);
+}
+
+.prg-chapter--dark {
+  --prg-text: var(--colour-paper);
+  --prg-quiet: rgba(250, 250, 248, 0.68);
+  --prg-faint: rgba(250, 250, 248, 0.5);
+  --prg-rule: rgba(250, 250, 248, 0.16);
+  --prg-rule-strong: var(--colour-paper);
+  background-color: var(--colour-ink);
+}
+
+/* Classic themes wrap a group's blocks in an inner container */
+.prg-chapter .wp-block-group__inner-container {
+  display: contents;
+}
+
+:where(.prg-chapter, .prg-chapter .wp-block-group, .prg-chapter .wp-block-group__inner-container) > * {
+  margin-block: 0;
+}
+
+:is(.prg-chapter, .prg-chapter > .wp-block-group__inner-container) > * + * {
+  margin-top: var(--space-8);
+}
+
+/* The mark: a full-width rule carrying the chapter's numeral and name */
+.prg-chapter p.prg-mark,
+.prg-register__heading {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  max-width: none;
+  margin: 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--prg-rule-strong);
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--prg-quiet);
+}
+
+.prg-mark strong {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--prg-text);
+}
+
+:is(.prg-chapter, .prg-chapter > .wp-block-group__inner-container) > .prg-mark + * {
+  margin-top: clamp(40px, 5vw, 64px);
+}
+
+/* Headings */
+.prg-chapter h2 {
+  max-width: 20ch;
+  font-family: var(--font-sans);
+  font-size: clamp(2rem, 3.8vw, 3.5rem);        /* 32 → 56 */
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.024em;
+  color: var(--prg-text);
+  text-wrap: balance;
+}
+
+.prg-chapter h3 {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  color: var(--prg-text);
+}
+
+/* Text */
+.prg-chapter p {
+  max-width: 62ch;
+  font-family: var(--font-text);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--prg-quiet);
+  text-wrap: pretty;
+}
+
+.prg-chapter p.prg-lead {
+  max-width: 36em;
+  font-size: clamp(1.1875rem, 1.55vw, 1.375rem);
+  line-height: 1.5;
+  color: var(--prg-text);
+}
+
+.prg-chapter--dark p.prg-lead {
+  color: rgba(250, 250, 248, 0.88);
+}
+
+.prg-chapter p.prg-note {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+/* The serif voice: one statement per chapter at most */
+.prg-chapter p.prg-statement,
+.prg-chapter h2.prg-statement {
+  max-width: 19ch;
+  font-family: var(--font-serif);
+  font-size: clamp(2.25rem, 4.6vw, 4.25rem);    /* 36 → 68 */
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--prg-text);
+  text-wrap: balance;
+}
+
+/* Links */
+.prg-chapter p.prg-link {
+  margin-top: var(--space-10);
+}
+
+.prg-link a,
+.prg-chapter p:not(.prg-cta) a {
+  color: var(--prg-text);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.28em;
+  text-decoration-color: var(--prg-faint);
+}
+
+.prg-link a {
+  font-family: var(--font-text);
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.prg-link a::after {
+  content: "\2192";
+  display: inline-block;
+  margin-left: 12px;
+  text-decoration: none;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.prg-link a:hover::after,
+.prg-link a:focus-visible::after {
+  transform: translateX(4px);
+}
+
+.prg-chapter a:hover {
+  text-decoration-color: currentColor;
+}
+
+.prg-chapter a:focus-visible,
+.prg-register a:focus-visible {
+  outline: 1px solid var(--prg-text);
+  outline-offset: 4px;
+}
+
+/* The compact primary button of the action language */
+.prg-chapter p.prg-cta {
+  margin-top: var(--space-10);
+}
+
+.prg-cta a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 10px 22px;
+  border: 1px solid var(--prg-text);
+  border-radius: var(--radius-md);
+  background: var(--prg-text);
+  font-family: var(--font-text);
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  color: var(--colour-paper);
+  text-decoration: none;
+  transition: background-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
+}
+
+.prg-chapter--dark .prg-cta a {
+  color: var(--colour-ink);
+}
+
+.prg-cta a:hover {
+  background: transparent;
+  color: var(--prg-text);
+}
+
+.prg-cta a:focus-visible {
+  outline: 2px solid var(--prg-text);
+  outline-offset: 3px;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* THE REGISTER — six programmes, one held moment                         */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.prg-register {
+  padding-top: clamp(64px, 8vw, 112px);
+}
+
+.prg-register__body {
+  margin-top: clamp(16px, 2vw, 24px);
+}
+
+.prg-register__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.prg-entry {
+  position: relative;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  column-gap: var(--space-4);
+  padding-block: 28px 30px;
+  border-bottom: 1px solid var(--prg-rule);
+}
+
+.prg-entry > * {
+  grid-column: 2;
+  margin: 0;
+}
+
+/* The active entry's rule draws across */
+.prg-entry::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--prg-text);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 520ms var(--ease-out);
+}
+
+.prg-entry__num {
+  grid-column: 1;
+  grid-row: 1;
+  padding-top: 0.9em;
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  font-variant-numeric: tabular-nums;
+  color: var(--prg-quiet);
+}
+
+.prg-entry__name {
+  font-family: var(--font-sans);
+  font-size: clamp(1.75rem, 3.4vw, 2.75rem);    /* 28 → 44 */
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.022em;
+}
+
+.prg-entry__name a {
+  color: var(--prg-text);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.prg-entry__arrow {
+  display: inline-block;
+  margin-left: 16px;
+  font-family: var(--font-text);
+  font-size: 0.4em;
+  vertical-align: 0.35em;
+  color: var(--prg-faint);
+  transition: transform var(--duration-base) var(--ease-out), color var(--duration-fast) var(--ease-out);
+}
+
+.prg-entry__summary {
+  max-width: 52ch;
+  margin-top: 12px;
+  font-family: var(--font-text);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--prg-quiet);
+}
+
+.prg-entry__moment {
+  max-width: 40ch;
+  margin-top: 14px;
+  font-family: var(--font-serif);
+  font-size: 1.1875rem;
+  line-height: 1.35;
+  color: var(--prg-text);
+}
+
+.prg-entry__draws {
+  margin-top: 16px;
+  font-family: var(--font-text);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--prg-quiet);
+}
+
+.prg-entry__draws-label {
+  margin-right: 10px;
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+}
+
+.prg-entry__draws a {
+  color: var(--prg-text);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  text-decoration-color: var(--prg-faint);
+}
+
+.prg-entry:hover .prg-entry__arrow,
+.prg-entry.is-active .prg-entry__arrow {
+  color: var(--prg-text);
+  transform: translateX(4px);
+}
+
+.prg-entry.is-active::before {
+  transform: scaleX(1);
+}
+
+.prg-entry.is-active .prg-entry__num {
+  color: var(--prg-text);
+}
+
+/* The held field: the active programme's moment */
+.prg-held {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .prg-register.is-enhanced .prg-register__body {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    column-gap: clamp(48px, 6vw, 88px);
+    align-items: start;
+  }
+
+  /* The moment moves to the held field; it stays in the entry for
+     assistive technology. */
+  .prg-register.is-enhanced .prg-entry__moment {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .prg-register.is-enhanced .prg-held {
+    position: sticky;
+    top: calc(var(--nav-height, 64px) + 40px);
+    display: grid;
+    min-height: 360px;
+    margin-top: 28px;
+    padding: clamp(28px, 3vw, 40px);
+    background: var(--colour-ink);
+    color: var(--colour-paper);
+  }
+
+  .prg-held__item {
+    grid-area: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 360ms var(--ease-out), transform 460ms var(--ease-out);
+  }
+
+  .prg-held__item.is-active {
+    opacity: 1;
+    transform: none;
+  }
+
+  .prg-held__label {
+    font-family: var(--font-text);
+    font-size: var(--text-micro);
+    font-weight: 500;
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: rgba(250, 250, 248, 0.6);
+  }
+
+  .prg-held__name {
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(250, 250, 248, 0.16);
+    font-family: var(--font-sans);
+    font-size: 1.375rem;
+    letter-spacing: -0.01em;
+  }
+
+  .prg-held__moment {
+    margin: auto 0 0;
+    max-width: 18ch;
+    padding-top: 40px;
+    font-family: var(--font-serif);
+    font-size: clamp(1.75rem, 2.6vw, 2.375rem);
+    line-height: 1.18;
+    color: var(--colour-paper);
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* REGISTERS AND CONTRASTS                                                */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+/* Territories: each a label and a question */
+:is(.prg-chapter, .prg-chapter > .wp-block-group__inner-container) > .prg-questions {
+  display: grid;
+  column-gap: clamp(32px, 5vw, 72px);
+  margin-top: clamp(48px, 6vw, 80px);
+  border-top: 1px solid var(--prg-rule-strong);
+}
+
+.prg-question {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-block: 24px 30px;
+  border-bottom: 1px solid var(--prg-rule);
+}
+
+.prg-question h3 {
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--prg-quiet);
+}
+
+.prg-chapter .prg-question p {
+  max-width: 26ch;
+  font-family: var(--font-serif);
+  font-size: clamp(1.375rem, 2vw, 1.75rem);     /* 22 → 28 */
+  line-height: 1.25;
+  color: var(--prg-text);
+}
+
+@media (min-width: 768px) {
+  :is(.prg-chapter, .prg-chapter > .wp-block-group__inner-container) > .prg-questions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Two columns set against each other */
+:is(.prg-chapter, .prg-chapter > .wp-block-group__inner-container) > .prg-contrast {
+  display: grid;
+  gap: var(--space-10) clamp(32px, 5vw, 72px);
+  margin-top: clamp(48px, 6vw, 72px);
+}
+
+.prg-contrast__col {
+  padding-top: 16px;
+  border-top: 1px solid var(--prg-rule-strong);
+}
+
+.prg-contrast__col h3 {
+  margin-bottom: 16px;
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--prg-quiet);
+}
+
+.prg-contrast__col--muted .prg-list li {
+  color: var(--prg-quiet);
+}
+
+@media (min-width: 768px) {
+  :is(.prg-chapter, .prg-chapter > .wp-block-group__inner-container) > .prg-contrast {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  }
+}
+
+/* A ruled list */
+.prg-chapter ul.prg-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--prg-rule);
+}
+
+.prg-list li {
+  padding-block: 13px 14px;
+  border-bottom: 1px solid var(--prg-rule);
+  font-family: var(--font-sans);
+  font-size: clamp(1.125rem, 1.5vw, 1.3125rem);
+  line-height: 1.3;
+  letter-spacing: -0.006em;
+  color: var(--prg-text);
+}
+
+.prg-list li a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.prg-list li a::after {
+  content: "  \2192";
+  color: var(--prg-faint);
+}
+
+.prg-list li a:hover {
+  color: var(--prg-quiet);
+}
+
+/* A short list set inline, separated by thin rules */
+.prg-chapter ul.prg-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.prg-inline li {
+  font-family: var(--font-text);
+  font-size: 1.0625rem;
+  line-height: 1.4;
+  color: var(--prg-quiet);
+}
+
+.prg-inline li + li::before {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 0.9em;
+  margin-inline: 16px;
+  vertical-align: -0.1em;
+  background: var(--prg-rule-strong);
+  opacity: 0.35;
+}
+
+/* A featured programme: name and proposition set across a dark field */
+:is(.prg-chapter, .prg-chapter > .wp-block-group__inner-container) > .prg-feature {
+  display: grid;
+  gap: var(--space-8) clamp(40px, 6vw, 96px);
+  align-items: end;
+}
+
+.prg-feature h2 {
+  max-width: none;
+  font-size: clamp(2.75rem, 7vw, 6.25rem);      /* 44 → 100 */
+  line-height: 0.95;
+  letter-spacing: -0.034em;
+}
+
+@media (min-width: 1024px) {
+  :is(.prg-chapter, .prg-chapter > .wp-block-group__inner-container) > .prg-feature {
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  }
+}
+
+.prg-chapter--close h2 {
+  max-width: 14ch;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* OTHER PROGRAMMES                                                       */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.prg-others {
+  padding-block: clamp(64px, 8vw, 112px);
+  border-top: 1px solid var(--colour-ink-10);
+}
+
+.prg-others__heading {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--colour-ink);
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--colour-ink-60);
+}
+
+.prg-others__heading a {
+  color: var(--colour-ink);
+  text-decoration: none;
+}
+
+.prg-others .prg-others__list {
+  display: grid;
+  column-gap: var(--space-8);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.prg-others__list li {
+  border-bottom: 1px solid var(--colour-ink-10);
+}
+
+.prg-others__link {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) auto;
+  align-items: baseline;
+  padding-block: 15px 16px;
+  color: var(--colour-ink);
+  text-decoration: none;
+}
+
+.prg-others__num {
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  color: var(--colour-ink-60);
+}
+
+.prg-others__label {
+  font-family: var(--font-sans);
+  font-size: clamp(1.1875rem, 1.6vw, 1.375rem);
+  letter-spacing: -0.008em;
+}
+
+.prg-others__arrow {
+  font-size: 0.875rem;
+  color: var(--colour-ink-40);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.prg-others__link:hover .prg-others__label {
+  color: var(--colour-ink-60);
+}
+
+.prg-others__link:hover .prg-others__arrow {
+  color: var(--colour-ink);
+  transform: translateX(4px);
+}
+
+.prg-others a:focus-visible {
+  outline: 1px solid var(--colour-ink);
+  outline-offset: 4px;
+}
+
+@media (min-width: 768px) {
+  .prg-others .prg-others__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* SMALL SCREENS · REDUCED MOTION · PRINT                                 */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 639px) {
+  .prg-chapter ul.prg-inline {
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--prg-rule);
+  }
+
+  .prg-inline li {
+    padding-block: 11px 12px;
+    border-bottom: 1px solid var(--prg-rule);
+  }
+
+  .prg-inline li + li::before {
+    content: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .prg-chapter,
+  .prg-register {
+    padding-block: 64px 72px;
+  }
+
+  .prg-entry {
+    grid-template-columns: 32px minmax(0, 1fr);
+    padding-block: 22px 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prg-entry::before,
+  .prg-entry__arrow,
+  .prg-held__item,
+  .prg-link a::after,
+  .prg-others__arrow,
+  .prg-cta a {
+    transition: none;
+  }
+
+  .prg-held__item {
+    transform: none;
+  }
+
+  .prg-entry:hover .prg-entry__arrow,
+  .prg-entry.is-active .prg-entry__arrow,
+  .prg-link a:hover::after,
+  .prg-others__link:hover .prg-others__arrow {
+    transform: none;
+  }
+}
+
+@media print {
+  .prg-chapter,
+  .prg-chapter--dark,
+  .prg-chapter--tinted,
+  .prg-register {
+    --prg-text: #000;
+    --prg-quiet: #333;
+    --prg-rule: #ccc;
+    --prg-rule-strong: #000;
+    padding-block: 32px;
+    background: none;
+  }
+
+  .prg-held,
+  .prg-others,
+  .prg-chapter--close {
+    display: none;
+  }
+}

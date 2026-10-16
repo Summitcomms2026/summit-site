@@ -1,0 +1,18 @@
+{
+  "description": "Canonical source record for The Observatory section's page content. WordPress is the runtime editor; these files are the recoverable source. Not loaded by WordPress. Block markup in each source file is exactly what the block editor stores in post_content.",
+  "section": "/the-observatory",
+  "pages": [
+    {
+      "title": "The Observatory",
+      "path": "/the-observatory",
+      "template": "page-observatory.php",
+      "source": "overview.blocks.html",
+      "meta": {
+        "summit_eyebrow": "Summit / A governed research instrument",
+        "summit_tone": "dark",
+        "summit_standfirst": "A proprietary, governed research instrument for luxury maisons, CMOs, family offices and investors.",
+        "summit_utilities": "share"
+      }
+    }
+  ]
+}

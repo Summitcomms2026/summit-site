@@ -1,0 +1,796 @@
+/*
+ * Summit Theme — The Observatory
+ * assets/css/observatory.css
+ * Loaded by page-observatory.php only (after page-shell.css).
+ *
+ * A governed research instrument, set as a publication: numbered
+ * chapters with a marginal marker column, registers rather than
+ * dashboards, hairlines rather than cards. The chapters are core blocks
+ * authored in the editor; this sheet styles them by class name (see the
+ * template header for the vocabulary).
+ *
+ * Grid (≥960): marker column 200px · gap 64px · text column.
+ * Measures sit inside the approved 1040px medium container.
+ */
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* COVER                                                                  */
+/* The shell's dark hero, given an instrument's graticule: a few faint   */
+/* concentric rings and an axis, set off-centre and fading out.          */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.summit-observatory .shell-hero--dark {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.summit-observatory .shell-hero--dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    repeating-radial-gradient(circle at 76% 56%,
+      transparent 0 calc(var(--obs-ring) - 1px),
+      rgba(250, 250, 248, 0.07) calc(var(--obs-ring) - 1px) var(--obs-ring)),
+    linear-gradient(to right, transparent calc(76% - 0.5px), rgba(250, 250, 248, 0.06) calc(76% - 0.5px) calc(76% + 0.5px), transparent calc(76% + 0.5px)),
+    linear-gradient(to bottom, transparent calc(56% - 0.5px), rgba(250, 250, 248, 0.06) calc(56% - 0.5px) calc(56% + 0.5px), transparent calc(56% + 0.5px));
+  --obs-ring: clamp(56px, 6.5vw, 96px);
+  -webkit-mask-image: radial-gradient(circle 420px at 76% 56%, #000 0, #000 40%, transparent 100%);
+          mask-image: radial-gradient(circle 420px at 76% 56%, #000 0, #000 40%, transparent 100%);
+}
+
+@media (max-width: 767px) {
+  .summit-observatory .shell-hero--dark::before {
+    --obs-ring: 44px;
+    -webkit-mask-image: radial-gradient(circle 240px at 76% 56%, #000 0, #000 40%, transparent 100%);
+            mask-image: radial-gradient(circle 240px at 76% 56%, #000 0, #000 40%, transparent 100%);
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* CHAPTERS                                                               */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.obs-chapter {
+  --obs-rule: var(--colour-ink-10);
+  --obs-rule-strong: var(--colour-ink);
+  --obs-quiet: var(--colour-ink-60);
+  --obs-faint: var(--colour-ink-40);
+  --obs-text: var(--colour-ink);
+  padding-block: clamp(80px, 10vw, 144px);
+  padding-inline: max(var(--space-5), calc((100% - var(--container-med)) / 2 + var(--space-5)));
+  color: var(--obs-text);
+}
+
+.obs-chapter--tinted {
+  background-color: var(--colour-ink-05);
+}
+
+.obs-chapter--dark {
+  --obs-rule: rgba(250, 250, 248, 0.16);
+  --obs-rule-strong: var(--colour-paper);
+  --obs-quiet: rgba(250, 250, 248, 0.66);
+  --obs-faint: rgba(250, 250, 248, 0.44);
+  --obs-text: var(--colour-paper);
+  background-color: var(--colour-ink);
+}
+
+/* Reset the flow spacing block styles may bring; spacing is set below */
+:where(.obs-chapter, .obs-chapter .wp-block-group, .obs-chapter .wp-block-group__inner-container) > * {
+  margin-block: 0;
+}
+
+/* Classic themes wrap a group's blocks in an inner container; let the
+   blocks themselves take part in each layout. */
+.obs-chapter .wp-block-group__inner-container {
+  display: contents;
+}
+
+:is(.obs-chapter, .obs-chapter > .wp-block-group__inner-container) > * + * {
+  margin-top: var(--space-8);
+}
+
+@media (min-width: 960px) {
+  .obs-chapter {
+    display: grid;
+    grid-template-columns: 200px minmax(0, 1fr);
+    column-gap: var(--space-16);
+    align-content: start;
+  }
+
+  :is(.obs-chapter, .obs-chapter > .wp-block-group__inner-container) > * {
+    grid-column: 2;
+  }
+
+  :is(.obs-chapter, .obs-chapter > .wp-block-group__inner-container) > .obs-marker {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  :is(.obs-chapter, .obs-chapter > .wp-block-group__inner-container) > .obs-marker + h2 {
+    grid-row: 1;
+    margin-top: 0;
+  }
+
+  /* Registers, pathways and the sequence take the full measure */
+  :is(.obs-chapter, .obs-chapter > .wp-block-group__inner-container) > .obs-register,
+  :is(.obs-chapter, .obs-chapter > .wp-block-group__inner-container) > .obs-audiences,
+  :is(.obs-chapter, .obs-chapter > .wp-block-group__inner-container) > .obs-sectors,
+  :is(.obs-chapter, .obs-chapter > .wp-block-group__inner-container) > .obs-steps {
+    grid-column: 1 / -1;
+  }
+}
+
+
+/* Marker: chapter number and name on a short, strong rule */
+.obs-chapter p.obs-marker {
+  align-self: start;
+  padding-top: 14px;
+  border-top: 1px solid var(--obs-rule-strong);
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--obs-quiet);
+}
+
+:is(.obs-chapter, .obs-chapter > .wp-block-group__inner-container) > .obs-marker + h2 {
+  margin-top: var(--space-6);
+}
+
+/* Chapter heading */
+.obs-chapter h2 {
+  max-width: 19ch;
+  font-family: var(--font-sans);
+  font-size: clamp(2rem, 3.6vw, 3.25rem);       /* 32 → 52 */
+  font-weight: 400;
+  line-height: 1.06;
+  letter-spacing: -0.022em;
+  color: var(--obs-text);
+  text-wrap: balance;
+}
+
+@media (min-width: 960px) {
+  /* optical: display cap-height to the marker's rule */
+  :is(.obs-chapter, .obs-chapter > .wp-block-group__inner-container) > .obs-marker + h2 {
+    margin-top: -0.12em;
+  }
+}
+
+/* The opening statement carries the page's thesis */
+.obs-chapter h2.obs-statement {
+  max-width: 21ch;
+  font-size: clamp(2.25rem, 4.6vw, 4.25rem);    /* 36 → 68 */
+  line-height: 1.02;
+  letter-spacing: -0.026em;
+}
+
+.obs-chapter h3 {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  color: var(--obs-text);
+}
+
+/* Text */
+.obs-chapter p {
+  max-width: 62ch;
+  font-family: var(--font-text);
+  font-size: 1.0625rem;                          /* 17 */
+  line-height: 1.65;
+  color: var(--obs-quiet);
+  text-wrap: pretty;
+}
+
+:is(.obs-chapter, .obs-chapter > .wp-block-group__inner-container) > h2 + * {
+  margin-top: clamp(32px, 4vw, 48px);
+}
+
+.obs-chapter p.obs-lead {
+  max-width: 36em;
+  font-size: clamp(1.1875rem, 1.55vw, 1.375rem); /* 19 → 22, as the standfirst */
+  line-height: 1.5;
+  letter-spacing: -0.003em;
+  color: var(--obs-text);
+}
+
+.obs-chapter--dark p.obs-lead {
+  color: rgba(250, 250, 248, 0.86);
+}
+
+.obs-chapter p.obs-note {
+  max-width: 60ch;
+  font-size: 0.9375rem;                          /* 15 */
+  line-height: 1.6;
+}
+
+/* Pull statement: the one serif voice on the page */
+.obs-chapter p.obs-pull {
+  max-width: 24ch;
+  margin-top: clamp(48px, 6vw, 80px);
+  font-family: var(--font-serif);
+  font-size: clamp(1.625rem, 2.6vw, 2.25rem);   /* 26 → 36 */
+  font-weight: 400;
+  line-height: 1.22;
+  letter-spacing: -0.005em;
+  color: var(--obs-text);
+  text-wrap: balance;
+}
+
+/* Text link with an arrow */
+.obs-chapter p.obs-link {
+  margin-top: var(--space-10);
+}
+
+.obs-link a {
+  display: inline;
+  padding-block: 6px;
+  font-family: var(--font-text);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--obs-text);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+  text-decoration-color: var(--obs-faint);
+  transition: text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+.obs-link a::after {
+  content: "\2192";
+  display: inline-block;
+  margin-left: 12px;
+  color: var(--obs-faint);
+  text-decoration: none;
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+}
+
+.obs-link a:hover,
+.obs-link a:focus-visible {
+  text-decoration-color: currentColor;
+}
+
+.obs-link a:hover::after,
+.obs-link a:focus-visible::after {
+  color: var(--obs-text);
+  transform: translateX(4px);
+}
+
+.obs-chapter a:focus-visible {
+  outline: 1px solid var(--obs-text);
+  outline-offset: 4px;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* 02 · THE FIELD — a register of quantities                              */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.obs-chapter ul.obs-register {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: clamp(48px, 6vw, 88px);
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--obs-rule-strong);
+}
+
+.obs-register li {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 20px 24px 0;
+  border-bottom: 1px solid var(--obs-rule);
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--obs-quiet);
+}
+
+.obs-register li:nth-child(even) {
+  padding-left: 20px;
+  border-left: 1px solid var(--obs-rule);
+}
+
+.obs-register strong {
+  order: -1;
+  font-family: var(--font-sans);
+  font-size: clamp(3.25rem, 7.4vw, 6.5rem);     /* 52 → 104 */
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.035em;
+  text-transform: none;
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--obs-text);
+}
+
+@media (min-width: 768px) {
+  .obs-chapter ul.obs-register {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .obs-register li {
+    padding: 24px 24px 0;
+    border-bottom: 0;
+    border-left: 1px solid var(--obs-rule);
+  }
+
+  .obs-register li:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+:is(.obs-chapter, .obs-chapter > .wp-block-group__inner-container) > .obs-register + .obs-note {
+  margin-top: var(--space-10);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* 03 · A FINDING                                                         */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+:is(.obs-chapter, .obs-chapter > .wp-block-group__inner-container) > .obs-finding {
+  margin-top: clamp(48px, 6vw, 80px);
+  padding: 4px 0 4px clamp(20px, 2.4vw, 32px);
+  border-left: 1px solid var(--obs-rule-strong);
+}
+
+.obs-finding h3 {
+  font-size: clamp(1.375rem, 2vw, 1.75rem);     /* 22 → 28 */
+  line-height: 1.15;
+  letter-spacing: -0.012em;
+}
+
+:is(.obs-finding, .obs-finding > .wp-block-group__inner-container) > * + * {
+  margin-top: var(--space-4);
+}
+
+.obs-finding p {
+  color: var(--obs-text);
+}
+
+.obs-finding p.obs-note {
+  color: var(--obs-quiet);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* 04 · METHOD — five pillars, one derived reading                        */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+:is(.obs-chapter, .obs-chapter > .wp-block-group__inner-container) > .obs-pillars {
+  margin-top: clamp(48px, 6vw, 72px);
+  counter-reset: obs-pillar;
+  border-top: 1px solid var(--obs-rule);
+}
+
+.obs-pillar,
+.obs-derived {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  column-gap: var(--space-4);
+  row-gap: 8px;
+}
+
+.obs-pillar {
+  counter-increment: obs-pillar;
+  grid-template-columns: 36px minmax(0, 1fr);
+  column-gap: var(--space-4);
+  row-gap: 8px;
+  padding-block: 22px 24px;
+  border-bottom: 1px solid var(--obs-rule);
+}
+
+.obs-pillar::before,
+.obs-derived::before {
+  grid-row: 1 / span 2;
+  padding-top: 0.5em;
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  font-variant-numeric: tabular-nums;
+  color: var(--obs-quiet);
+}
+
+.obs-pillar::before {
+  content: counter(obs-pillar, decimal-leading-zero);
+}
+
+:is(.obs-pillar, .obs-pillar > .wp-block-group__inner-container) > *,
+:is(.obs-derived, .obs-derived > .wp-block-group__inner-container) > * {
+  grid-column: 2;
+}
+
+.obs-pillar h3,
+.obs-derived h3 {
+  font-size: clamp(1.25rem, 1.8vw, 1.5rem);     /* 20 → 24 */
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.obs-chapter .obs-pillar p {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  .obs-pillar,
+  .obs-derived {
+    grid-template-columns: 36px minmax(0, 15rem) minmax(0, 1fr);
+    column-gap: var(--space-6);
+    align-items: baseline;
+  }
+
+  .obs-pillar::before,
+  .obs-derived::before {
+    grid-row: auto;
+    padding-top: 0;
+  }
+
+  :is(.obs-pillar, .obs-pillar > .wp-block-group__inner-container) > h3,
+  :is(.obs-derived, .obs-derived > .wp-block-group__inner-container) > h3 {
+    grid-column: 2;
+  }
+
+  :is(.obs-pillar, .obs-pillar > .wp-block-group__inner-container) > p,
+  :is(.obs-derived, .obs-derived > .wp-block-group__inner-container) > p {
+    grid-column: 3;
+  }
+}
+
+/* Aura: set apart beneath a strong rule and labelled as derived */
+:is(.obs-chapter, .obs-chapter > .wp-block-group__inner-container) > .obs-derived {
+  margin-top: var(--space-6);
+  padding-top: 22px;
+  border-top: 1px solid var(--obs-rule-strong);
+}
+
+.obs-derived::before {
+  content: "\2193";
+  font-size: 0.875rem;
+  letter-spacing: 0;
+  color: var(--obs-text);
+}
+
+.obs-chapter .obs-derived p {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: rgba(250, 250, 248, 0.86);
+}
+
+.obs-chapter--dark p.obs-pull {
+  max-width: 28ch;
+}
+
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* 05 · GOVERNANCE — principles                                           */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.obs-chapter .obs-principles {
+  margin-top: clamp(40px, 5vw, 64px);
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--obs-rule-strong);
+}
+
+.obs-principles li {
+  padding-block: 20px 22px;
+  padding-right: clamp(0px, 14vw, 200px);
+  border-bottom: 1px solid var(--obs-rule);
+  font-family: var(--font-sans);
+  font-size: clamp(1.25rem, 1.9vw, 1.625rem);   /* 20 → 26 */
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--obs-text);
+  text-wrap: pretty;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* 06 · TWO AUDIENCES                                                     */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+:is(.obs-chapter, .obs-chapter > .wp-block-group__inner-container) > .obs-audiences {
+  display: grid;
+  gap: var(--space-12) var(--space-16);
+  margin-top: clamp(48px, 6vw, 80px);
+}
+
+.obs-audience {
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--obs-rule-strong);
+}
+
+:is(.obs-audience, .obs-audience > .wp-block-group__inner-container) > * + * {
+  margin-top: var(--space-5);
+}
+
+.obs-audience h3 {
+  max-width: 16ch;
+  font-size: clamp(1.75rem, 2.6vw, 2.25rem);    /* 28 → 36 */
+  line-height: 1.08;
+  letter-spacing: -0.018em;
+}
+
+.obs-audience p.obs-link {
+  margin-top: auto;
+  padding-top: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  :is(.obs-chapter, .obs-chapter > .wp-block-group__inner-container) > .obs-audiences {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* 07 · SECTOR REGISTER                                                   */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.obs-chapter .obs-sectors {
+  margin-top: clamp(48px, 6vw, 80px);
+  padding: 0;
+  list-style: none;
+  counter-reset: obs-sector;
+  column-gap: var(--space-10);
+  border-top: 1px solid var(--obs-rule-strong);
+}
+
+.obs-sectors li {
+  counter-increment: obs-sector;
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-5);
+  padding-block: 15px 16px;
+  border-bottom: 1px solid var(--obs-rule);
+  break-inside: avoid;
+  font-family: var(--font-sans);
+  font-size: clamp(1.25rem, 1.8vw, 1.5rem);     /* 20 → 24 */
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--obs-text);
+}
+
+.obs-sectors li::before {
+  content: counter(obs-sector, decimal-leading-zero);
+  flex: none;
+  width: 2.2em;
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  font-variant-numeric: tabular-nums;
+  color: var(--obs-quiet);
+}
+
+@media (min-width: 560px) {
+  .obs-chapter .obs-sectors {
+    columns: 2;
+  }
+}
+
+@media (min-width: 960px) {
+  .obs-chapter .obs-sectors {
+    columns: 3;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* 08 · HOW IT WORKS — the reading, in sequence                           */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+:is(.obs-chapter, .obs-chapter > .wp-block-group__inner-container) > .obs-steps {
+  display: grid;
+  gap: var(--space-10) var(--space-8);
+  margin-top: clamp(48px, 6vw, 80px);
+  counter-reset: obs-step;
+}
+
+.obs-step {
+  counter-increment: obs-step;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--obs-rule-strong);
+}
+
+.obs-step::before {
+  content: counter(obs-step, decimal-leading-zero);
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  font-variant-numeric: tabular-nums;
+  color: var(--obs-quiet);
+}
+
+.obs-step h3 {
+  font-size: clamp(1.375rem, 2vw, 1.625rem);    /* 22 → 26 */
+  line-height: 1.15;
+  letter-spacing: -0.012em;
+}
+
+.obs-chapter .obs-step p {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+@media (min-width: 640px) {
+  :is(.obs-chapter, .obs-chapter > .wp-block-group__inner-container) > .obs-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  :is(.obs-chapter, .obs-chapter > .wp-block-group__inner-container) > .obs-steps {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* The two readings a scored entry can receive */
+:is(.obs-chapter, .obs-chapter > .wp-block-group__inner-container) > .obs-outcome {
+  display: grid;
+  gap: var(--space-6) var(--space-10);
+  margin-top: clamp(48px, 6vw, 72px);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--obs-rule);
+}
+
+.obs-outcome p {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.9375rem;
+}
+
+.obs-outcome strong {
+  font-family: var(--font-sans);
+  font-size: clamp(1.5rem, 2.2vw, 1.875rem);    /* 24 → 30 */
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--obs-text);
+}
+
+@media (min-width: 640px) {
+  :is(.obs-chapter, .obs-chapter > .wp-block-group__inner-container) > .obs-outcome {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* PRIVATE BRIEFING                                                       */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.obs-chapter--briefing h2 {
+  max-width: 14ch;
+  font-size: clamp(2.25rem, 4.6vw, 4.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.026em;
+}
+
+.obs-chapter p.obs-cta {
+  margin-top: var(--space-10);
+}
+
+/* The compact primary button of the action language */
+.obs-cta a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 10px 22px;
+  border: 1px solid var(--colour-ink);
+  border-radius: var(--radius-md);
+  background: var(--colour-ink);
+  font-family: var(--font-text);
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  color: var(--colour-paper);
+  text-decoration: none;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.obs-cta a:hover {
+  background: transparent;
+  color: var(--colour-ink);
+}
+
+.obs-cta a:focus-visible {
+  outline: 2px solid var(--colour-ink);
+  outline-offset: 3px;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* SMALL SCREENS                                                          */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 959px) {
+  :is(.obs-chapter, .obs-chapter > .wp-block-group__inner-container) > .obs-marker {
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 767px) {
+  .obs-chapter {
+    padding-block: 72px 80px;
+  }
+
+  .obs-chapter p.obs-pull {
+    max-width: 22ch;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* REDUCED MOTION + PRINT                                                 */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .obs-link a::after,
+  .obs-cta a {
+    transition: none;
+  }
+
+  .obs-link a:hover::after,
+  .obs-link a:focus-visible::after {
+    transform: none;
+  }
+}
+
+@media print {
+  .summit-observatory .shell-hero--dark::before {
+    display: none;
+  }
+
+  .obs-chapter,
+  .obs-chapter--dark,
+  .obs-chapter--tinted {
+    --obs-text: #000;
+    --obs-quiet: #333;
+    --obs-faint: #666;
+    --obs-rule: #ccc;
+    --obs-rule-strong: #000;
+    padding-block: 32px;
+    background: none;
+    break-inside: avoid-page;
+  }
+
+  .obs-chapter--dark p.obs-lead,
+  .obs-chapter .obs-derived p {
+    color: #333;
+  }
+
+  .obs-chapter--briefing {
+    display: none;
+  }
+}

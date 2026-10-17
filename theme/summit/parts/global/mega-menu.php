@@ -230,7 +230,7 @@ $current_attr = static function ( string $path, bool $exact = false ): string {
                     <?php if ( $thumb_url ) : ?>
                     <img src="<?php echo esc_url( $thumb_url ); ?>" alt="">
                     <?php else : ?>
-                    <?php echo summit_image_fallback(); // phpcs:ignore WordPress.Security.EscapeOutput -- static markup ?>
+                    <?php echo summit_image_fallback( $menu_article->ID ); // phpcs:ignore WordPress.Security.EscapeOutput -- static markup ?>
                     <?php endif; ?>
                 </span>
                 <?php endif; ?>

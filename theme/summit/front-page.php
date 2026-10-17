@@ -11,7 +11,8 @@
  *   2.  Value Proposition → inline (centered statement)
  *   3.  Capability Triptych → parts/blocks/capability-triptych.php
  *   4.  Selected Work     → parts/blocks/selected-work.php
- *   5.  Tastemakers       → parts/blocks/tastemakers-feature.php
+ *   5.  The Observatory   → parts/blocks/observatory-feature.php (the panel
+ *                           position Tastemakers held)
  *   6.  Download          → parts/blocks/download-feature.php
  *   7.  Featured Article  → parts/blocks/featured-article.php (3-up strip)
  *   8.  Subscribe         → parts/global/subscribe.php
@@ -38,7 +39,7 @@ the_post(); // consume the front-page post for ACF context
     <!-- ── 2. Value Proposition (dark panel) ─────────────────────────────── -->
     <?php
     $vp_statement = get_field( 'home_vp_headline' )
-        ?: 'We partner with luxury brands, creators and cultural institutions to define distinctive brand positions and create memorable client experiences. Our work sits between strategy, design and technology across product, place and culture.';
+        ?: 'Luxury endures on the quality of its decisions. Summit helps houses, institutions and investors make them.';
     ?>
     <section class="vp-block" aria-label="Value proposition">
         <div class="container container--wide">
@@ -55,7 +56,7 @@ the_post(); // consume the front-page post for ACF context
     <?php get_template_part( 'parts/blocks/selected-work' ); ?>
 
     <!-- ── 5. Tastemakers ─────────────────────────────────────────────────── -->
-    <?php get_template_part( 'parts/blocks/tastemakers-feature' ); ?>
+    <?php get_template_part( 'parts/blocks/observatory-feature' ); ?>
 
     <!-- ── 6. Download ────────────────────────────────────────────────────── -->
     <?php get_template_part( 'parts/blocks/download-feature' ); ?>
@@ -143,20 +144,21 @@ the_post(); // consume the front-page post for ACF context
     $sectors_headline = get_field( 'home_sectors_headline' ) ?: 'The World of Luxury';
     $sectors_body     = get_field( 'home_sectors_body' ) ?: 'Our global talent network spans the divisions shaping the modern luxury economy.';
 
-    $sectors = [
-        [ 'Fashion & Leather Goods', 'Codes, desire and distinction shaped for brands that must endure.' ],
-        [ 'Watches & Jewellery', 'Narratives measured in carats, complications and continental restraint.' ],
-        [ 'Hospitality & Travel', 'Experiences designed to signal taste, trust and effortless privilege.' ],
-        [ 'Beauty & Fragrance', 'Positioning beauty brands where ritual, identity and desire converge.' ],
-        [ 'Automotive & Aviation', 'Velocity, elegance and engineering theatre shaped with continental confidence.' ],
-        [ 'Art & Culture', 'Cultural strategy for institutions and family offices with serious ambition.' ],
-        [ 'Wine & Spirits', 'Enduring brand worlds for producers of heritage, ritual and appetite.' ],
-        [ 'Architecture & Interiors', 'Spatial brands shaped through discipline, atmosphere and refined distinction.' ],
-        [ 'Sport & Lifestyle', 'Positioning for aspirational brands where performance meets cultural status.' ],
-        [ 'Wealth & Finance', 'Trust architecture for firms serving affluent and influential audiences.' ],
-        [ 'Technology', 'Strategic clarity for innovation brands seeking authority, not novelty.' ],
-        [ 'Gastronomy', 'Brands with appetite, ceremony and unmistakable point of view.' ],
-    ];
+    // The industries Summit's Solutions are read through (navigation
+    // config), each with its page's line and image (summit_standfirst,
+    // summit_visual — the Solutions industry family).
+    $solution_groups = summit_nav( 'primary' )['solutions']['groups'] ?? [];
+    $industry_group  = $solution_groups['by-industry'] ?? ( $solution_groups ? reset( $solution_groups ) : [] );
+    $sectors = [];
+    foreach ( $industry_group['children'] ?? [] as $item ) {
+        $page      = get_page_by_path( trim( $item['path'], '/' ), OBJECT, 'page' );
+        $sectors[] = [
+            $item['label'],
+            $page ? (string) get_post_meta( $page->ID, 'summit_standfirst', true ) : '',
+            summit_nav_url( $item ),
+            $page ? (string) get_post_meta( $page->ID, 'summit_visual', true ) : '',
+        ];
+    }
     ?>
     <section class="sectors-grid-section section--tinted section--padded" aria-labelledby="sectors-heading">
         <div class="container container--wide">
@@ -176,15 +178,20 @@ the_post(); // consume the front-page post for ACF context
                 </a>
             </header>
 
-            <ul class="sectors-grid" role="list">
+            <ul class="sectors-grid sectors-grid--industries" role="list">
                 <?php
                 $sector_delays = [ 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6 ];
                 foreach ( $sectors as $si => $sector ) :
                     $sd = $sector_delays[ $si ] ?? 1;
                 ?>
-                <li class="sectors-grid__item" data-reveal="fade" data-reveal-delay="<?php echo $sd; ?>">
+                <li class="sectors-grid__item<?php echo $sector[3] ? ' has-image' : ''; ?>" data-reveal="fade" data-reveal-delay="<?php echo $sd; ?>">
+                    <a class="sectors-grid__link" href="<?php echo esc_url( $sector[2] ); ?>">
+                    <?php if ( $sector[3] && ! is_numeric( $sector[3] ) ) : ?>
+                    <img class="sectors-grid__image" src="<?php echo esc_url( $sector[3] ); ?>" alt="" width="614" height="767" loading="lazy" decoding="async">
+                    <?php endif; ?>
                     <strong class="sectors-grid__item-title"><?php echo esc_html( $sector[0] ); ?></strong>
                     <span class="sectors-grid__item-desc"><?php echo esc_html( $sector[1] ); ?></span>
+                    </a>
                 </li>
                 <?php endforeach; ?>
             </ul>

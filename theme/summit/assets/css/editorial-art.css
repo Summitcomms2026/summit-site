@@ -1,0 +1,271 @@
+/*
+ * Summit Theme — The Future of Luxury editorial art
+ * assets/css/editorial-art.css (site-wide: plates appear in the mega menu)
+ *
+ * The authored plate an essay is published with when it has no photograph
+ * (inc/editorial-art.php). One composition fills whatever frame it is
+ * placed in and adapts by its own width (container queries): the mega
+ * menu's 120 px thumbnail shows only the word; cards add the folio and
+ * category; the essay opener adds the second line at full scale.
+ *
+ * Families: house · ledger · object · culture · diagram.
+ * Tones: dark (the ink field) · paper (the plate paper — the paper object).
+ */
+
+.ed-art {
+  --ed-ground: linear-gradient(160deg, #262624 0%, #1c1c1a 58%, var(--colour-ink) 100%);
+  --ed-text: var(--colour-paper);
+  --ed-quiet: rgba(250, 250, 248, 0.58);
+  --ed-line: rgba(250, 250, 248, 0.18);
+  container-type: inline-size;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  overflow: hidden;
+  background: var(--ed-ground);
+  color: var(--ed-text);
+  font-family: var(--font-serif);
+  text-align: left;
+}
+
+.ed-art--paper {
+  --ed-ground: var(--field-plate, #F2EFE8);
+  --ed-text: var(--colour-ink);
+  --ed-quiet: rgba(26, 26, 24, 0.56);
+  --ed-line: rgba(26, 26, 24, 0.16);
+}
+
+/* Standalone frames (the essay opener) set their own proportion */
+.ed-art--ctx-hero {
+  aspect-ratio: 21 / 9;
+  height: auto;
+}
+
+.ed-art__geo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: var(--ed-line);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.ed-art__folio,
+.ed-art__cat {
+  position: absolute;
+  left: 7cqw;
+  right: 7cqw;
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  font-family: var(--font-text);
+  font-size: clamp(8px, 2.1cqw, 12px);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--ed-quiet);
+  line-height: 1.2;
+}
+
+.ed-art__folio {
+  top: 6.5cqw;
+}
+
+.ed-art__cat {
+  bottom: 6.5cqw;
+}
+
+.ed-art__key {
+  position: absolute;
+  display: block;
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--ed-text);
+}
+
+.ed-art__second {
+  position: absolute;
+  display: block;
+  max-width: 34cqw;
+  font-style: italic;
+  font-size: clamp(10px, 2.8cqw, 22px);
+  line-height: 1.2;
+  color: var(--ed-quiet);
+}
+
+/* ── house: the maison as wordmark ───────────────────────────────────── */
+.ed-art--house .ed-art__key {
+  left: 7cqw;
+  right: 7cqw;
+  top: 50%;
+  transform: translateY(-62%);
+  text-align: center;
+  font-size: 8.4cqw;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.ed-art--house .ed-art__second {
+  left: 0;
+  right: 0;
+  max-width: none;
+  top: 73%;
+  text-align: center;
+}
+
+/* ── ledger: transaction and governance ───────────────────────────────── */
+.ed-art--ledger .ed-art__key {
+  left: 7cqw;
+  top: 15cqw;
+  max-width: 56cqw;
+  font-size: 11cqw;
+}
+
+.ed-art--ledger .ed-art__second {
+  left: 7cqw;
+  top: calc(15cqw + 13cqw);
+}
+
+.ed-art__ledger {
+  position: absolute;
+  right: 7cqw;
+  bottom: 14cqw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15em;
+  font-family: var(--font-sans);
+  font-size: 9cqw;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  color: var(--ed-text);
+}
+
+.ed-art__ledger span + span {
+  color: var(--ed-quiet);
+}
+
+/* ── object: named inside a dial ──────────────────────────────────────── */
+.ed-art--object .ed-art__key {
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  font-size: 6.4cqw;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.ed-art--object .ed-art__second {
+  left: 0;
+  right: 0;
+  max-width: none;
+  top: calc(50% + 5cqw);
+  text-align: center;
+}
+
+/* ── culture: the editorial word, cropped ─────────────────────────────── */
+.ed-art--culture .ed-art__key {
+  left: -1.5cqw;
+  bottom: 10cqw;
+  font-size: 23cqw;
+  font-style: italic;
+  white-space: nowrap;
+  letter-spacing: -0.035em;
+}
+
+.ed-art--culture .ed-art__second {
+  left: 75cqw;
+  top: 22cqw;
+  max-width: 20cqw;
+}
+
+/* ── diagram: research-adjacent notation ──────────────────────────────── */
+.ed-art--diagram .ed-art__geo {
+  left: auto;
+  width: 64%;
+  right: -8%;
+}
+
+.ed-art--diagram .ed-art__key {
+  left: 7cqw;
+  bottom: 13cqw;
+  max-width: 60cqw;
+  font-size: 12cqw;
+}
+
+.ed-art--diagram .ed-art__second {
+  left: 7cqw;
+  top: 16cqw;
+}
+
+/* ── Smaller frames shed apparatus, never the word ───────────────────── */
+@container (max-width: 420px) {
+  .ed-art__second {
+    display: none;
+  }
+}
+
+@container (max-width: 240px) {
+  .ed-art__folio,
+  .ed-art__cat,
+  .ed-art__ledger {
+    display: none;
+  }
+
+  .ed-art__key {
+    left: 8cqw !important;
+    right: 8cqw !important;
+    top: 50% !important;
+    bottom: auto !important;
+    transform: translateY(-50%) !important;
+    max-width: none !important;
+    font-size: 15cqw !important;
+    font-style: normal !important;
+    letter-spacing: 0.02em !important;
+    text-transform: none !important;
+    white-space: normal !important;
+    text-align: center !important;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* ── Homepage cards: the caption sits over the lower third ─────────── */
+.home-article__card-media .ed-art__cat,
+.home-article__card-media .ed-art__second,
+.home-article__card-media .ed-art__ledger {
+  display: none;
+}
+
+.home-article__card-media :is(.ed-art--culture, .ed-art--diagram, .ed-art--ledger) .ed-art__key {
+  top: 24cqw;
+  bottom: auto;
+}
+
+.home-article__card-media .ed-art--culture .ed-art__key {
+  font-size: 20cqw;
+}
+
+.home-article__card-media :is(.ed-art--house, .ed-art--object) .ed-art__key {
+  top: 40%;
+}
+
+/* Editorial art is still: it does not scale on hover */
+.ed-art,
+.ed-art * {
+  transition: none;
+}
+
+@media print {
+  .ed-art {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

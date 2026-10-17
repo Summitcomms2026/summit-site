@@ -872,3 +872,10 @@
     aspect-ratio: 4 / 3;
   }
 }
+
+/* An object shown as itself — a cover, a page — not as atmosphere */
+.ab-chapter .ab-figure--object {
+  max-width: 240px;
+  margin: var(--space-6) 0 var(--space-2);
+  box-shadow: 0 1px 0 var(--ab-rule), 0 18px 40px -24px rgba(26, 26, 24, 0.45);
+}

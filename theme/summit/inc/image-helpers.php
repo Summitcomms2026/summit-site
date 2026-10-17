@@ -8,9 +8,10 @@
  * upload is missing) is never shown as a broken image. Wherever a template
  * prints the thumbnail — get_the_post_thumbnail(), summit_article_hero(),
  * or summit_image_fallback() directly (the mega menu) — the image is
- * replaced by an intentional fallback inside the same frame: a dark tonal
- * field with a fine compass-star line, sized by the frame it fills, so no
- * component's geometry changes. Styles: assets/css/components.css.
+ * replaced by an intentional fallback inside the same frame, sized by the
+ * frame it fills, so no component's geometry changes: an essay's editorial
+ * plate (inc/editorial-art.php), or for anything else a dark tonal field
+ * with a fine compass-star line (assets/css/components.css).
  *
  * @package SummitTheme
  */
@@ -85,7 +86,11 @@ function summit_attachment_file_exists( $attachment_id ) {
  *
  * @return string
  */
-function summit_image_fallback() {
+function summit_image_fallback( $post_id = 0 ) {
+	// An essay is published with its editorial plate (inc/editorial-art.php).
+	if ( $post_id && 'article' === get_post_type( $post_id ) && function_exists( 'summit_editorial_art' ) ) {
+		return summit_editorial_art( (int) $post_id );
+	}
 	return '<span class="summit-image-fallback" aria-hidden="true">'
 		. '<svg class="summit-image-fallback__mark" viewBox="0 0 40 40" focusable="false">'
 		. '<path d="M20 2v36M2 20h36M7.3 7.3l25.4 25.4M32.7 7.3 7.3 32.7"/>'
@@ -98,7 +103,7 @@ function summit_image_fallback() {
  */
 add_filter( 'post_thumbnail_html', static function ( $html, $post_id, $thumbnail_id ) {
 	if ( $thumbnail_id && ! summit_attachment_file_exists( $thumbnail_id ) ) {
-		return summit_image_fallback();
+		return summit_image_fallback( (int) $post_id );
 	}
 	return $html;
 }, 10, 3 );

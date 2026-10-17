@@ -10,8 +10,8 @@
  *                 standfirst, byline (author · date · reading time) and
  *                 the page's tools (Share — with Copy Link, Email and
  *                 LinkedIn — and Print, from the shared action system)
- *   2. Image      the featured image, only when its file exists; the head
- *                 stands complete without it
+ *   2. Image      the featured image when its file exists, otherwise the
+ *                 essay's editorial plate (inc/editorial-art.php)
  *   3. Body       the_content, in the reading measure; inline images are
  *                 revealed when they load and withdrawn if they cannot
  *                 (assets/js/fol.js), so a dead remote image leaves no frame
@@ -46,7 +46,7 @@ while ( have_posts() ) :
     $cornerstone  = (bool) get_field( 'art_cornerstone' );
     $source_note  = trim( (string) get_field( 'art_source_note' ) );
     $subscribe_on = get_field( 'art_subscribe_prompt' );
-    $image        = summit_fol_image( $art_id, 'full', [ 'sizes' => '(min-width: 1320px) 1272px, 100vw', 'fetchpriority' => 'high', 'loading' => 'eager' ] );
+    $image        = summit_fol_visual( $art_id, 'full', [ 'sizes' => '(min-width: 1320px) 1272px, 100vw', 'fetchpriority' => 'high', 'loading' => 'eager' ], 'hero' );
     $archive      = get_post_type_archive_link( 'article' );
 
     // Import bookkeeping ("Imported from …") is an editor's note, not a reader's.

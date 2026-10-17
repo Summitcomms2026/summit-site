@@ -12,8 +12,9 @@
  *   feature  a large teaser: image (if any), category, headline, standfirst
  *   item     a compact teaser on a hairline: category, headline, meta
  *
- * An image appears only when its file exists (summit_fol_image()); the
- * layout is complete without one, so a missing image is never a frame.
+ * Lead and feature stories carry the essay's visual: its photograph when
+ * the file exists, otherwise its editorial plate (summit_fol_visual()).
+ * Items stay typographic.
  *
  * $args:
  *   post      WP_Post
@@ -40,7 +41,7 @@ $category = ( $args['category'] ?? true ) ? summit_fol_category( $id ) : null;
 $author   = summit_fol_author( $id );
 $minutes  = summit_fol_read_time( $id );
 $stand    = 'item' === $variant ? '' : summit_fol_standfirst( $id );
-$image    = 'item' === $variant ? '' : summit_fol_image( $id, 'lead' === $variant ? 'large' : 'medium_large', [ 'sizes' => 'lead' === $variant ? '(min-width: 1024px) 55vw, 100vw' : '(min-width: 1024px) 40vw, 100vw' ] );
+$image    = 'item' === $variant ? '' : summit_fol_visual( $id, 'lead' === $variant ? 'large' : 'medium_large', [ 'sizes' => 'lead' === $variant ? '(min-width: 1024px) 55vw, 100vw' : '(min-width: 1024px) 40vw, 100vw' ] );
 $heading  = 'h' . $level;
 
 $classes = 'fol-story fol-story--' . $variant . ( $image ? ' has-image' : ' is-set' );

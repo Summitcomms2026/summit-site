@@ -1026,6 +1026,18 @@
   display: none;
 }
 
+/* The one acknowledgement of photographs no longer shown */
+.fol-prose .fol-prose__absence {
+  margin-block: 2em;
+  padding: var(--space-4) 0 var(--space-4) var(--space-5);
+  border-left: 1px solid var(--colour-ink-30);
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--colour-ink-60);
+}
+
 .fol-prose hr {
   width: 48px;
   margin: 2.5em auto;

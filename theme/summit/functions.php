@@ -12,6 +12,7 @@ require_once get_template_directory() . '/inc/page-guards.php';
 require_once get_template_directory() . '/inc/image-helpers.php';
 require_once get_template_directory() . '/inc/future-of-luxury.php';
 require_once get_template_directory() . '/inc/subscribe.php';
+require_once get_template_directory() . '/inc/editorial-art.php';
 
 add_action( 'wp_enqueue_scripts', 'summit_enqueue_styles' );
 

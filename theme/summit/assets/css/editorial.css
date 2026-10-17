@@ -1358,3 +1358,426 @@
 .summit-faq__item[open] > summary {
   padding-bottom: var(--space-3);
 }
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* EDITORIAL PRESENCE — Design Pass 09                                    */
+/* From the 1280×700 recording (scratch/design-pass-09): space has to     */
+/* belong to a subject; text has to be sized for the field around it.     */
+/* Research keeps its book grammar and is left out of these rules.        */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+/* ── Type for the field ───────────────────────────────────────────────── */
+@media (min-width: 1024px) {
+  /* serious explanatory prose reads at 18px; registers stay 17 */
+  :is(.sol-chapter, .obs-chapter, .prg-chapter, .ab-chapter, .ed-chapter) > p:not([class]),
+  :is(.sol-chapter, .obs-chapter, .prg-chapter, .ab-chapter, .ed-chapter) > .wp-block-group__inner-container > p:not([class]) {
+    max-width: 34em;               /* ≈ 60–66 characters */
+    font-size: 1.125rem;
+    line-height: 1.52;
+  }
+
+  .shell-hero__intro p {
+    font-size: 1.125rem;
+    line-height: 1.52;
+  }
+}
+
+:is(.sol-chapter, .obs-chapter, .prg-chapter, .ab-chapter, .ed-chapter) p:is(.sol-lead, .obs-lead, .prg-lead, .ab-lead, .ed-lead) {
+  max-width: 29em;
+  font-size: clamp(1.25rem, 1.6vw, 1.4375rem);     /* 20 → 23 */
+  line-height: 1.36;
+}
+
+:is(.sol-chapter, .obs-chapter, .prg-chapter, .ab-chapter, .ed-chapter) :is(.sol-row, .obs-row, .ab-pressure, .ed-row) p {
+  font-size: 1.0625rem;
+  line-height: 1.5;
+}
+
+/* headings by weight of argument: a reading subdivision 28–34, a major
+   argument 32–38, questions and routes 26–32 */
+:is(.sol-chapter, .obs-chapter, .prg-chapter, .ab-chapter, .ed-chapter) h2 {
+  font-size: clamp(1.75rem, 2.4vw, 2.125rem);
+  line-height: 1.08;
+}
+
+:is(.sol-chapter--statement, .obs-chapter--statement, .prg-chapter--statement, .ab-chapter--statement, .ed-chapter--statement,
+    .sol-chapter--close, .obs-chapter--close, .prg-chapter--close, .ab-chapter--close, .ed-chapter--close) h2,
+:is(.ab-chapter--statement, .ab-chapter--close) h2.ab-statement {
+  font-size: clamp(2rem, 3vw, 2.375rem);
+  line-height: 1.06;
+}
+
+:is(.sol-chapter--faq, .obs-chapter--faq, .prg-chapter--faq, .ab-chapter--faq, .ed-chapter--faq,
+    .sol-chapter--related, .obs-chapter--related, .prg-chapter--related, .ab-chapter--related, .ed-chapter--related) h2:not(.sr-only) {
+  font-size: clamp(1.625rem, 2.3vw, 2rem);         /* 26 → 32: real sectional authority */
+  line-height: 1.1;
+}
+
+/* serif propositions that wrap need room between their lines */
+.ab-statement,
+.ab-chapter .ab-pressures--principles .ab-pressure h3,
+.sx-need-intro,
+.res-chapter h2 {
+  line-height: 1.16;
+}
+
+.vp-block__statement {
+  line-height: 1.22;
+}
+
+/* small labels recede without disappearing */
+:is(.sol-kicker, .obs-marker, .prg-mark, .ab-marker, .ed-marker, .home-eyebrow):not(.section--dark *):not([class*="--dark"] *):not(.vp-block *):not(.cta-footer *):not(.home-hero *) {
+  color: color-mix(in srgb, var(--colour-ink) 76%, var(--colour-paper));   /* a step above ink-60 at micro size */
+}
+
+/* an underlined link does not also need an arrow: arrows are kept for
+   direction (sequences, "next") */
+:is(.sol-link, .obs-link, .prg-link, .ab-link, .ed-link, .ct-link) a::after {
+  content: none !important;
+}
+
+/* ── Pacing: the field ends when the thought ends ─────────────────────── */
+:is(.sol-chapter, .obs-chapter, .prg-chapter, .ab-chapter, .ed-chapter):is([class*="-chapter--reading"]) {
+  padding-block: clamp(56px, 6vw, 88px);
+}
+
+:is(.sol-chapter, .obs-chapter, .prg-chapter, .ab-chapter, .ed-chapter):is([class*="-chapter--register"]) {
+  padding-block: clamp(52px, 5.5vw, 80px);
+}
+
+:is(.sol-chapter, .obs-chapter, .prg-chapter, .ab-chapter, .ed-chapter, .res-chapter)[class*="-chapter--faq"] {
+  padding-block: clamp(56px, 6vw, 88px);
+}
+
+:is(.sol-chapter, .obs-chapter, .prg-chapter, .ab-chapter, .ed-chapter, .res-chapter)[class*="-chapter--related"] {
+  padding-block: clamp(48px, 5.5vw, 80px);
+}
+
+:is(.sol-chapter, .obs-chapter, .prg-chapter, .ab-chapter, .ed-chapter)[class*="-chapter--statement"] {
+  padding-block: clamp(80px, 9vw, 128px);
+}
+
+:is(.sol-chapter, .obs-chapter, .prg-chapter, .ab-chapter, .ed-chapter, .res-chapter)[class*="-chapter--close"] {
+  padding-block: clamp(64px, 7vw, 104px);
+}
+
+/* the opening hands over to the first chapter without a second pause */
+.shell-hero--child {
+  padding-bottom: clamp(40px, 6vh, 72px);
+}
+
+/* page endings: the family's directory, then the footer — no blank tail */
+:is(.sol-related, .obs-sequence, .prg-others, .res-collection, .ab-next) {
+  padding-block: clamp(40px, 4.5vw, 64px) !important;
+}
+
+/* ── Composition: context beside argument ─────────────────────────────── */
+@media (min-width: 960px) {
+  /* Solutions: the heading holds the left column again; only a statement
+     and its routes take the full width */
+  :is(.sol-chapter--reading, .sol-chapter--interaction, .sol-chapter--faq) > .wp-block-group__inner-container > :is(h2, .sol-kicker) {
+    grid-column: 1 !important;
+  }
+
+  :is(.sol-chapter--reading, .sol-chapter--interaction, .sol-chapter--faq) > .wp-block-group__inner-container > .sol-kicker {
+    grid-row: auto !important;
+  }
+
+  :is(.sol-chapter--reading, .sol-chapter--interaction, .sol-chapter--faq) > .wp-block-group__inner-container > h2 {
+    grid-row: span 24 !important;
+  }
+
+  :is(.sol-chapter--reading, .sol-chapter--interaction, .sol-chapter--faq) > .wp-block-group__inner-container > h2 + * {
+    margin-top: 0 !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* The Observatory, About, Programmes questions and the contact pages:
+     a contextual column for the marker and heading, the argument beside */
+  :is(.obs-chapter, .ab-chapter):is([class*="--reading"], [class*="--register"], [class*="--faq"], [class*="--related"], [class*="--close"], [class*="--interaction"]),
+  .prg-chapter:is([class*="--faq"], [class*="--related"]) {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+    column-gap: clamp(40px, 5vw, 88px);
+    align-content: start;
+  }
+
+  :is(.obs-chapter, .ab-chapter):is([class*="--reading"], [class*="--register"], [class*="--faq"], [class*="--related"], [class*="--close"], [class*="--interaction"]) > .wp-block-group__inner-container > *,
+  .prg-chapter:is([class*="--faq"], [class*="--related"]) > .wp-block-group__inner-container > * {
+    grid-column: 2 !important;
+    grid-row: auto !important;
+    margin-top: 0;
+  }
+
+  :is(.obs-chapter, .ab-chapter):is([class*="--reading"], [class*="--register"], [class*="--faq"], [class*="--related"], [class*="--close"], [class*="--interaction"]) > .wp-block-group__inner-container > :is(.obs-marker, .ab-marker),
+  .prg-chapter:is([class*="--faq"], [class*="--related"]) > .wp-block-group__inner-container > .prg-mark {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    position: static;
+    align-self: start;
+  }
+
+  :is(.obs-chapter, .ab-chapter):is([class*="--reading"], [class*="--register"], [class*="--faq"], [class*="--related"], [class*="--close"], [class*="--interaction"]) > .wp-block-group__inner-container > h2,
+  .prg-chapter:is([class*="--faq"], [class*="--related"]) > .wp-block-group__inner-container > h2 {
+    grid-column: 1 !important;
+    grid-row: 2 / span 40 !important;
+    max-width: 13ch;
+    align-self: start;
+    position: sticky;
+    top: calc(var(--nav-height, 64px) + 32px);
+  }
+
+  :is(.obs-chapter, .ab-chapter):is([class*="--reading"], [class*="--register"], [class*="--faq"], [class*="--related"], [class*="--close"], [class*="--interaction"]) > .wp-block-group__inner-container > h2:first-child,
+  .prg-chapter:is([class*="--faq"], [class*="--related"]) > .wp-block-group__inner-container > h2:first-child {
+    grid-row: 1 / span 40 !important;
+  }
+
+  :is(.obs-chapter, .ab-chapter):is([class*="--reading"], [class*="--register"], [class*="--faq"], [class*="--related"], [class*="--close"], [class*="--interaction"]) > .wp-block-group__inner-container > :is(.obs-marker, .ab-marker) + h2 {
+    margin-top: var(--space-4) !important;
+  }
+
+  /* in the argument column, blocks follow at the reading rhythm */
+  :is(.obs-chapter, .ab-chapter):is([class*="--reading"], [class*="--register"], [class*="--faq"], [class*="--related"], [class*="--close"], [class*="--interaction"]) > .wp-block-group__inner-container > :not(h2):not(.obs-marker):not(.ab-marker) ~ :not(h2),
+  .prg-chapter:is([class*="--faq"], [class*="--related"]) > .wp-block-group__inner-container > :not(h2):not(.prg-mark) ~ :not(h2) {
+    margin-top: var(--space-6);
+  }
+
+  /* the Observatory's full-measure instruments keep their width */
+  .obs-chapter > .wp-block-group__inner-container > :is(.obs-register, .obs-audiences, .obs-sectors, .obs-steps, .obs-readings) {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+/* ── FAQ: a titled section beside its questions ───────────────────────── */
+[class*="-chapter--faq"] .summit-faq {
+  margin-top: clamp(24px, 3vw, 32px) !important;
+  max-width: none;
+  border-top: 1px solid var(--colour-ink-10);
+}
+
+@media (min-width: 1024px) {
+  [class*="-chapter--faq"] .summit-faq {
+    margin-top: 0 !important;
+  }
+}
+
+/* ── Related work: a ruled editorial register — title, reason, route ─── */
+[class*="-chapter--related"] :is(.sol-rows, .obs-rows, .prg-questions, .res-findings, .ab-pressures, .ed-rows) {
+  display: block !important;
+  margin-top: var(--space-6) !important;
+  border-top: 1px solid var(--colour-ink-10);
+  border-bottom: 0;
+}
+
+[class*="-chapter--related"] :is(.sol-row, .obs-row, .prg-question, .res-finding, .ab-pressure, .ed-row) {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-1) var(--space-6);
+  padding-block: var(--space-4) var(--space-5) !important;
+  border-top: 0 !important;
+  border-bottom: 1px solid var(--colour-ink-10);
+}
+
+[class*="-chapter--related"] :is(.sol-row, .obs-row, .prg-question, .res-finding, .ab-pressure, .ed-row) h3 {
+  font-family: var(--font-sans);
+  font-size: clamp(1.125rem, 1.4vw, 1.25rem) !important;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: inherit;
+}
+
+[class*="-chapter--related"] :is(.sol-row, .obs-row, .prg-question, .res-finding, .ab-pressure, .ed-row) p:not([class*="-link"]) {
+  margin: 0 !important;
+  font-family: var(--font-text);
+  font-size: 1rem !important;
+  line-height: 1.5;
+  color: var(--colour-ink-60);
+}
+
+[class*="-chapter--related"] [class*="-link"] {
+  margin: 0 !important;
+  font-size: 0.875rem;
+}
+
+[class*="-chapter--related"] :is(.sol-row, .obs-row, .prg-question, .res-finding, .ab-pressure, .ed-row) > .wp-block-group__inner-container > * {
+  grid-column: auto !important;
+  grid-row: auto;
+}
+
+@media (min-width: 768px) {
+  [class*="-chapter--related"] :is(.sol-row, .obs-row, .prg-question, .res-finding, .ab-pressure, .ed-row) {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 6fr) minmax(11rem, 3fr);
+    align-items: baseline;
+  }
+
+  [class*="-chapter--related"] :is(.sol-row, .obs-row, .prg-question, .res-finding, .ab-pressure, .ed-row) > * {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+
+  [class*="-chapter--related"] [class*="-link"] {
+    justify-self: end;
+    white-space: nowrap;
+  }
+}
+
+/* in Solutions the register runs the full measure beneath its heading */
+@media (min-width: 960px) {
+  .sol-chapter--related > .wp-block-group__inner-container > :is(.sol-rows, .sol-kicker, h2) {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+/* ── Programmes: the registers speak in sentences, not labels ─────────── */
+.prg-question h3 {
+  font-family: var(--font-sans);
+  font-size: clamp(1.1875rem, 1.5vw, 1.375rem);      /* 19 → 22 */
+  font-weight: 400;
+  line-height: 1.22;
+  letter-spacing: -0.012em;
+  text-transform: none;
+  color: var(--prg-text, var(--colour-ink));
+}
+
+.prg-question {
+  gap: 8px;
+  padding-block: 20px 24px;
+  border-bottom: 0;
+}
+
+:is(.prg-chapter, .prg-chapter > .wp-block-group__inner-container) > .prg-questions {
+  margin-top: clamp(32px, 4vw, 56px);
+}
+
+.prg-chapter .prg-questions--long .prg-question p {
+  font-size: 1.0625rem;
+  line-height: 1.52;
+}
+
+/* ── The Observatory's directory: one quiet list before the footer ───── */
+.obs-sequence__list {
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 0 var(--space-6);
+  margin-top: var(--space-4);
+}
+
+.obs-sequence__item {
+  padding-block: 10px;
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  letter-spacing: -0.005em;
+}
+
+.obs-sequence__item.is-current {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+}
+
+/* ── Let's Talk: one piece of correspondence ──────────────────────────── */
+.ct-body > .ct-panel {
+  padding-block: clamp(48px, 5vw, 72px) clamp(40px, 4vw, 56px);
+}
+
+.ct-body > .ct-panel + .ed-chapter {
+  padding-top: clamp(40px, 4.5vw, 64px);
+  border-top: 1px solid var(--colour-ink-10);
+}
+
+.ct-body {
+  padding-bottom: clamp(32px, 4vw, 56px);
+}
+
+/* ── Context column: the marker heads it, heading and argument align ─── */
+@media (min-width: 1024px) {
+  /* a marker takes the first row alone; heading and argument start level
+     beneath it (the empty cell keeps the argument out of the marker row) */
+  :is(.obs-chapter, .ab-chapter):is([class*="--reading"], [class*="--register"], [class*="--faq"], [class*="--related"], [class*="--close"], [class*="--interaction"]):has(> .wp-block-group__inner-container > :is(.obs-marker, .ab-marker))::before,
+  .prg-chapter:is([class*="--faq"], [class*="--related"]):has(> .wp-block-group__inner-container > .prg-mark)::before {
+    content: "";
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  :is(.obs-chapter, .ab-chapter, .prg-chapter) > .wp-block-group__inner-container > :is(.obs-marker, .ab-marker, .prg-mark) {
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  :is(.obs-chapter, .ab-chapter, .prg-chapter) > .wp-block-group__inner-container > :is(.obs-marker, .ab-marker, .prg-mark) + h2 {
+    margin-top: var(--space-4) !important;
+  }
+
+  /* the argument's first block sits level with the heading */
+  :is(.obs-chapter, .ab-chapter):is([class*="--reading"], [class*="--register"], [class*="--faq"], [class*="--related"], [class*="--close"], [class*="--interaction"]) > .wp-block-group__inner-container > h2 + *,
+  .prg-chapter:is([class*="--faq"], [class*="--related"]) > .wp-block-group__inner-container > h2 + * {
+    margin-top: 0 !important;
+  }
+
+  /* related routes in the argument column: title over reason, route beside */
+  :is(.obs-chapter, .ab-chapter, .prg-chapter)[class*="-chapter--related"] :is(.obs-row, .prg-question, .ab-pressure) {
+    grid-template-columns: minmax(0, 1fr) auto;
+    row-gap: 4px;
+  }
+
+  :is(.obs-chapter, .ab-chapter, .prg-chapter)[class*="-chapter--related"] :is(.obs-row, .prg-question, .ab-pressure) > .wp-block-group__inner-container > :not([class*="-link"]) {
+    grid-column: 1 !important;
+  }
+
+  :is(.obs-chapter, .ab-chapter, .prg-chapter)[class*="-chapter--related"] :is(.obs-row, .prg-question, .ab-pressure) > .wp-block-group__inner-container > [class*="-link"] {
+    grid-column: 2 !important;
+    grid-row: 1 / span 2 !important;
+    align-self: start;
+    padding-top: 0.2em;
+  }
+}
+
+/* About: an untitled register after a reading continues that reading */
+.ab-chapter--reading + .ab-chapter--related:not(:has(h2:not(.sr-only))) {
+  padding-top: 0;
+}
+
+@media (min-width: 1024px) {
+  /* contact and utility chapters: the argument starts level with its heading */
+  .ed-chapter > .wp-block-group__inner-container > h2:first-child:not(.sr-only) + * {
+    margin-top: 0 !important;
+  }
+}
+
+/* Arrows: kept for an onward route, not repeated as ornament */
+.sol-chapter p.sol-kicker::before,
+.sx-strip__title::after {
+  content: none !important;
+}
+
+/* the family directories before the footer: names, not a column of arrows */
+.sol-related__arrow,
+.prg-others__arrow,
+.ab-next__arrow {
+  display: none !important;
+}
+
+/* Programmes overview: Maison Formation, the principal programme, leads
+   the register it opens */
+.prg-chapter .prg-question:first-child:has(h3 a[href$="/programmes/maison-formation"]) {
+  padding-block: var(--space-5) var(--space-6) !important;
+}
+
+.prg-chapter .prg-question:first-child:has(h3 a[href$="/programmes/maison-formation"]) h3 {
+  font-size: clamp(1.625rem, 2.4vw, 2rem) !important;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.prg-chapter .prg-question:first-child:has(h3 a[href$="/programmes/maison-formation"]) p {
+  font-size: clamp(1.0625rem, 1.3vw, 1.1875rem) !important;
+  color: var(--colour-ink) !important;
+}
+
+/* Partners & People: a profile is a register entry, paced like one */
+.ab-chapter:has(.ab-profile) {
+  padding-block: clamp(56px, 6vw, 88px);
+}

@@ -692,7 +692,7 @@ class Page:
         elif norm(eb) in FAQ_EYEBROWS:
             kids.append(heading(esc(eb), cls='ab-statement' if self.fam == 'ab' else None))
         else:
-            kids.append(heading('FAQs', cls='sr-only'))       # the handover's own label for these sections
+            kids.append(heading('FAQs'))       # the handover's own label: the section's visible title
         items = []
         for p in grp:
             for q, answer in faq_pairs(p):

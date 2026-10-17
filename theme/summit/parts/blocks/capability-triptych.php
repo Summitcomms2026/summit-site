@@ -1,12 +1,14 @@
 <?php
 /**
- * Part: Capability Triptych — What's the Brief?
+ * Part: What's the Brief? (homepage)
  * Location: parts/blocks/capability-triptych.php
  *
  * Three ways into the work, in the Editorial Master's order (S01-P003):
  * By Need, By Function, By Industry — each with its line and its route to
- * the lens on the Solutions page. Copy from summit_home_panel(); the
- * triptych's composition and abstract marks are unchanged.
+ * the lens on the Solutions page. Set as a page of contents rather than a
+ * feature selector: By Need, the usual way in, leads; Function and
+ * Industry follow as the two secondary routes. Copy from
+ * summit_home_panel().
  *
  * Until the field is set, the lenses come from the navigation config.
  *
@@ -15,23 +17,21 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$img_dir = get_template_directory_uri() . '/assets/img/';
-$panel   = summit_home_panel( 'S01-P003' );
-$marks   = [ 'brand-strategy', 'experience-design', 'digital-transformation' ];
+$panel = summit_home_panel( 'S01-P003' );
 
-$pillars = [];
-foreach ( $panel['rows'] ?? [] as $i => $row ) {
-    $pillars[] = [
+$routes = [];
+foreach ( $panel['rows'] ?? [] as $row ) {
+    $routes[] = [
         'title' => $row['title'],
         'desc'  => $row['line'],
         'url'   => summit_meta_url( $row['url'] ?? '/solutions' ),
         'link'  => $row['cta'] ?? $row['title'],
     ];
 }
-if ( ! $pillars ) {
+if ( ! $routes ) {
     $solutions = summit_nav( 'primary' )['solutions'] ?? [];
     foreach ( array_values( $solutions['groups'] ?? [] ) as $group ) {
-        $pillars[] = [
+        $routes[] = [
             'title' => $group['label'],
             'desc'  => '',
             'url'   => summit_nav_url( $solutions ) . '#' . sanitize_title( $group['label'] ),
@@ -39,52 +39,49 @@ if ( ! $pillars ) {
         ];
     }
 }
+if ( ! $routes ) {
+    return;
+}
+$lead = array_shift( $routes );
 ?>
 
-<section class="capability-triptych section--tinted section--padded" aria-labelledby="capabilities-heading">
-    <div class="container container--wide">
+<section class="home-brief section--tinted" aria-labelledby="capabilities-heading">
+    <div class="container container--wide home-brief__inner">
 
-        <header class="capability-triptych__header">
-            <div class="capability-triptych__header-text">
-                <?php if ( ! empty( $panel['eyebrow'] ) ) : ?>
-                <p class="home-eyebrow" data-reveal="fade"><?php echo esc_html( $panel['eyebrow'] ); ?></p>
-                <?php endif; ?>
-                <h2 class="capability-triptych__headline" id="capabilities-heading" data-reveal><?php echo esc_html( $panel['headline'] ?? __( 'Solutions', 'summit' ) ); ?></h2>
-                <?php foreach ( $panel['paras'] ?? [] as $para ) : ?>
-                <p class="home-intro" data-reveal data-reveal-delay="1"><?php echo esc_html( $para ); ?></p>
-                <?php endforeach; ?>
-            </div>
+        <header class="home-brief__header">
+            <?php if ( ! empty( $panel['eyebrow'] ) ) : ?>
+            <p class="home-eyebrow" data-reveal="fade"><?php echo esc_html( $panel['eyebrow'] ); ?></p>
+            <?php endif; ?>
+            <h2 class="home-brief__headline" id="capabilities-heading" data-reveal><?php echo esc_html( $panel['headline'] ?? __( 'Solutions', 'summit' ) ); ?></h2>
+            <?php foreach ( $panel['paras'] ?? [] as $para ) : ?>
+            <p class="home-brief__intro" data-reveal data-reveal-delay="1"><?php echo esc_html( $para ); ?></p>
+            <?php endforeach; ?>
         </header>
 
-        <div class="capability-triptych__grid">
-
-            <?php foreach ( $pillars as $i => $pillar ) :
-                $mark = $marks[ $i ] ?? $marks[0];
-            ?>
-            <div class="capability-triptych__pillar" data-reveal data-reveal-delay="<?php echo (int) min( 3, $i + 1 ); ?>">
-                <figure class="capability-triptych__thumb" aria-hidden="true">
-                    <img class="capability-triptych__icon--off"
-                         src="<?php echo esc_url( $img_dir . 'icon_' . $mark . '.svg' ); ?>"
-                         alt="" width="100" height="100" loading="lazy">
-                    <img class="capability-triptych__icon--on"
-                         src="<?php echo esc_url( $img_dir . 'icon_' . $mark . '-on.svg' ); ?>"
-                         alt="" width="100" height="100" loading="lazy">
-                </figure>
-                <span class="capability-triptych__number" aria-hidden="true">[ <?php echo (int) $i + 1; ?> ]</span>
-                <h3 class="capability-triptych__title">
-                    <?php echo esc_html( $pillar['title'] ); ?>
-                </h3>
-                <?php if ( $pillar['desc'] ) : ?>
-                <div class="capability-triptych__desc">
-                    <p><?php echo esc_html( $pillar['desc'] ); ?></p>
-                </div>
+        <div class="home-brief__routes">
+            <a class="home-brief__lead" href="<?php echo esc_url( $lead['url'] ); ?>" data-reveal data-reveal-delay="1">
+                <h3 class="home-brief__title"><?php echo esc_html( $lead['title'] ); ?></h3>
+                <?php if ( $lead['desc'] ) : ?>
+                <p class="home-brief__line"><?php echo esc_html( $lead['desc'] ); ?></p>
                 <?php endif; ?>
-                <a href="<?php echo esc_url( $pillar['url'] ); ?>" class="capability-triptych__link">
-                    <?php echo esc_html( $pillar['link'] ); ?> <span aria-hidden="true">&rarr;</span>
-                </a>
-            </div>
-            <?php endforeach; ?>
+                <span class="home-brief__link"><?php echo esc_html( $lead['link'] ); ?></span>
+            </a>
 
+            <?php if ( $routes ) : ?>
+            <ul class="home-brief__others" role="list">
+                <?php foreach ( $routes as $i => $route ) : ?>
+                <li data-reveal data-reveal-delay="<?php echo (int) min( 3, $i + 2 ); ?>">
+                    <a class="home-brief__route" href="<?php echo esc_url( $route['url'] ); ?>">
+                        <h3 class="home-brief__title"><?php echo esc_html( $route['title'] ); ?></h3>
+                        <?php if ( $route['desc'] ) : ?>
+                        <p class="home-brief__line"><?php echo esc_html( $route['desc'] ); ?></p>
+                        <?php endif; ?>
+                        <span class="home-brief__link"><?php echo esc_html( $route['link'] ); ?></span>
+                    </a>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+            <?php endif; ?>
         </div>
 
     </div>

@@ -3,12 +3,10 @@
  * Part: Featured Article Panel — Editorial Rail
  * Location: parts/blocks/featured-article.php
  *
- * Horizontal scrolling editorial rail showing article cards.
- * Design reference: panel7 — 1920x1226.
- *
- * Card states:
- *   Default — image + gradient + overlay frame (title, category, read time)
- *   Hover   — white panel rises from bottom (title, standfirst, arrow)
+ * Horizontal scrolling editorial rail: a lead story, then the secondary
+ * stories. Each essay shows its image (or plate) with its headline, in
+ * full, set beneath — never truncated — with its section and reading
+ * time; the lead also carries its standfirst.
  *
  * Data strategy (3-tier fallback):
  *   1. ACF home_article_items relationship field (curated)
@@ -121,46 +119,32 @@ $section_ctas     = $panel['ctas'] ?? [ [ 'label' => 'All Essays', 'url' => '/th
                     }
                 }
 
-                $display_title = mb_strlen( $art_title ) > 40
-                    ? mb_substr( $art_title, 0, 37 ) . "\u{2026}"
-                    : $art_title;
-
-                $hover_excerpt = $standfirst
-                    ? wp_trim_words( $standfirst, 18, "\u{2026}" )
-                    : '';
+                $is_lead = 0 === $ai;
             ?>
             <a href="<?php echo esc_url( $art_url ); ?>"
-               class="home-article__card"
-               aria-label="<?php echo esc_attr( 'Read: ' . $art_title ); ?>">
+               class="home-article__card<?php echo $is_lead ? ' home-article__card--lead' : ''; ?>">
 
-                <figure class="home-article__card-media" aria-hidden="true">
+                <figure class="home-article__card-media<?php echo $has_image && $image_html ? '' : ' home-article__card-media--empty'; ?>" aria-hidden="true">
                     <?php if ( $has_image && $image_html ) : ?>
-                        <?php echo $image_html; ?>
+                        <?php echo $image_html; // phpcs:ignore WordPress.Security.EscapeOutput ?>
+                    <?php elseif ( $cat_label ) : ?>
+                        <span class="home-article__card-plate"><?php echo esc_html( $cat_label ); ?></span>
                     <?php endif; ?>
                 </figure>
 
-                <!-- Default state: overlay caption -->
-                <div class="home-article__card-overlay">
-                    <h3 class="home-article__card-title"><?php echo esc_html( $display_title ); ?></h3>
-                    <div class="home-article__card-meta">
+                <div class="home-article__card-text">
+                    <p class="home-article__card-meta">
                         <?php if ( $cat_label ) : ?>
                         <span class="home-article__card-cat"><?php echo esc_html( $cat_label ); ?></span>
                         <?php endif; ?>
                         <?php if ( $read_time ) : ?>
                         <span><?php echo absint( $read_time ); ?> min read</span>
                         <?php endif; ?>
-                    </div>
-                </div>
-
-                <!-- Hover state: white excerpt panel -->
-                <div class="home-article__card-hover">
-                    <h3 class="home-article__card-hover-title"><?php echo esc_html( $display_title ); ?></h3>
-                    <?php if ( $hover_excerpt ) : ?>
-                    <p class="home-article__card-hover-excerpt"><?php echo esc_html( $hover_excerpt ); ?></p>
+                    </p>
+                    <h3 class="home-article__card-title"><?php echo esc_html( $art_title ); ?></h3>
+                    <?php if ( $is_lead && $standfirst ) : ?>
+                    <p class="home-article__card-standfirst"><?php echo esc_html( $standfirst ); ?></p>
                     <?php endif; ?>
-                    <span class="home-article__card-hover-arrow" aria-hidden="true">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </span>
                 </div>
 
             </a>

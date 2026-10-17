@@ -3,14 +3,12 @@
  * Part: Selected Work Panel
  * Location: parts/blocks/selected-work.php
  *
- * Selected Work & Research — the evidence of what Summit has made and
- * argued: client work beside its published research. Dark editorial strip
- * with four cards; a card shows a client's logo, or a typographic mark for
- * Summit's own work (The Luxury 100's hundred places; Touch Me Not's title).
- * Default state: equal-height cards with centred logo only.
- * Hover state: active card grows taller, reveals category, title,
- * body copy and directional arrow, and releases a muted colour of its
- * own material (rose, lilac, metal, gold) — quiet at rest.
+ * Research to Challenge — Summit's published research as a shelf of
+ * publications in a dark field: Touch Me Not, the principal work, stands
+ * as the dominant object; The Luxury 100 and The Observatory sit beside it
+ * as two secondary volumes. Each object shows its own mark (or its cover,
+ * once delivered) with its title and line set beneath — the copy is read,
+ * not revealed on hover. Each keeps a low material signature.
  *
  * ACF fields (from front page):
  *   home_work_headline text         optional
@@ -68,18 +66,13 @@ if ( empty( $cards ) ) {
             </a>
         </header>
 
-        <div class="selected-work__grid<?php echo 3 === count( $cards ) ? ' selected-work__grid--three' : ''; ?>">
+        <div class="research-shelf">
 
             <?php foreach ( $cards as $i => $card ) : ?>
             <a href="<?php echo esc_url( $card['url'] ); ?>"
-               class="sw-card sw-card--<?php echo esc_attr( $card['tone'] ?? 'plain' ); ?>" data-reveal data-reveal-delay="<?php echo $i + 1; ?>"
-               aria-label="<?php echo esc_attr( $card['title'] ); ?>">
+               class="research-shelf__item research-shelf__item--<?php echo esc_attr( $card['tone'] ?? 'plain' ); ?><?php echo 0 === $i ? ' research-shelf__item--lead' : ''; ?>" data-reveal data-reveal-delay="<?php echo $i + 1; ?>">
 
-                <?php if ( ! empty( $card['category'] ) ) : ?>
-                <span class="sw-card__category"><?php echo esc_html( $card['category'] ); ?></span>
-                <?php endif; ?>
-
-                <figure class="sw-card__logo" aria-hidden="true">
+                <figure class="research-shelf__plate" aria-hidden="true">
                     <?php $cover = summit_panel_visual( 'S01-P006-' . ( $i + 1 ), 'sw-card__cover', 'medium_large' ); ?>
                     <?php if ( $cover ) : // the publication's own cover, once delivered ?>
                     <?php echo $cover; // phpcs:ignore WordPress.Security.EscapeOutput ?>
@@ -93,7 +86,6 @@ if ( empty( $cards ) ) {
                             printf( '<rect x="%d" y="%d" width="7" height="7"/>', ( $p % 10 ) * 10, intdiv( $p, 10 ) * 10 );
                         }
                         ?><rect class="sw-mark__empty" x="20.5" y="80.5" width="6" height="6"/></svg>
-                        <span class="sw-mark__name">The Luxury 100</span>
                     </span>
                     <?php elseif ( 'tmn' === ( $card['mark'] ?? '' ) ) : ?>
                     <span class="sw-mark sw-mark--tmn">
@@ -104,17 +96,14 @@ if ( empty( $cards ) ) {
                     <?php elseif ( 'obs' === ( $card['mark'] ?? '' ) ) : ?>
                     <span class="sw-mark sw-mark--obs">
                         <svg viewBox="0 0 200 200" focusable="false"><circle cx="100" cy="100" r="96"/><circle cx="100" cy="100" r="66"/><circle cx="100" cy="100" r="34"/><path d="M100 0v200M0 100h200"/></svg>
-                        <span class="sw-mark__name"><?php echo esc_html( $card['title'] ); ?></span>
                     </span>
                     <?php endif; ?>
                 </figure>
 
-                <div class="sw-card__reveal">
-                    <h3 class="sw-card__title"><?php echo esc_html( $card['title'] ); ?></h3>
-                    <p class="sw-card__desc"><?php echo esc_html( $card['desc'] ); ?></p>
+                <div class="research-shelf__caption">
+                    <h3 class="research-shelf__title"><?php echo esc_html( $card['title'] ); ?></h3>
+                    <p class="research-shelf__line"><?php echo esc_html( $card['desc'] ); ?></p>
                 </div>
-
-                <span class="sw-card__arrow" aria-hidden="true">&rarr;</span>
 
             </a>
             <?php endforeach; ?>

@@ -54,9 +54,14 @@ add_filter( 'body_class', static function ( array $classes ) use ( $tone, $form 
     return $classes;
 } );
 
-add_shortcode( 'summit_contact_form', static function () use ( $form, $path ): string {
+// Topic slug → page name, so an enquiry can say where it came from
+$lets_talk = get_page_by_path( 'lets-talk', OBJECT, 'page' );
+$topics    = $lets_talk ? (array) json_decode( (string) get_post_meta( $lets_talk->ID, 'summit_topics', true ), true ) : [];
+
+add_shortcode( 'summit_contact_form', static function ( $atts ) use ( $form, $path, $topics ): string {
+    $atts = shortcode_atts( [ 'heading' => '' ], $atts );
     ob_start();
-    get_template_part( 'parts/contact/form', null, [ 'type' => $form, 'source' => $path ] );
+    get_template_part( 'parts/contact/form', null, [ 'type' => $form, 'source' => $path, 'heading' => $atts['heading'], 'topics' => $topics ] );
     return (string) ob_get_clean();
 } );
 
@@ -79,6 +84,7 @@ get_header();
             'title'      => $meta( 'summit_headline' ) ?: get_the_title(),
             'standfirst' => $meta( 'summit_standfirst' ),
             'tone'       => $tone,
+            'actions'    => summit_meta_actions( $page_id ),
         ] ); ?>
 
         <div class="ct-body">

@@ -15,6 +15,11 @@
  * or notification. The homepage form's optional fields (first name,
  * surname, mobile, position) are kept with the record.
  *
+ * Let's Talk may also carry a separate, unticked-by-default opt-in to The
+ * Future of Luxury (enq_newsletter): it becomes its own subscription
+ * record, apart from the enquiry. Optional context (regarding, audience,
+ * request type, deadline, phone) is kept with the message.
+ *
  * Forms submit by AJAX (assets/js/enquiry-form.js) and receive JSON. Without
  * JavaScript, a form posting to admin-post.php is answered with a redirect
  * back to its page carrying ?enquiry=sent|invalid|failed.
@@ -77,10 +82,19 @@ function summit_handle_enquiry(): void {
 	if ( '' === $name ) {
 		$name = trim( sanitize_text_field( wp_unslash( $_POST['enq_first_name'] ?? '' ) ) . ' ' . sanitize_text_field( wp_unslash( $_POST['enq_surname'] ?? '' ) ) );
 	}
+	// Optional context a form may carry (Let's Talk, Media Enquiries, the
+	// private briefing): kept with the message so the record reads whole.
 	$extra = array_filter( [
-		'Mobile'   => sanitize_text_field( wp_unslash( $_POST['enq_phone'] ?? '' ) ),
-		'Position' => sanitize_text_field( wp_unslash( $_POST['enq_position'] ?? '' ) ),
+		'Regarding' => sanitize_text_field( wp_unslash( $_POST['enq_regarding'] ?? '' ) ),
+		'Audience'  => sanitize_text_field( wp_unslash( $_POST['enq_audience'] ?? '' ) ),
+		'Request'   => sanitize_text_field( wp_unslash( $_POST['enq_request'] ?? '' ) ),
+		'Deadline'  => sanitize_text_field( wp_unslash( $_POST['enq_deadline'] ?? '' ) ),
+		'Phone'     => sanitize_text_field( wp_unslash( $_POST['enq_telephone'] ?? '' ) ),
+		'Mobile'    => sanitize_text_field( wp_unslash( $_POST['enq_phone'] ?? '' ) ),
+		'Position'  => sanitize_text_field( wp_unslash( $_POST['enq_position'] ?? '' ) ),
 	] );
+	// A separate, explicit choice: never implied by the enquiry itself.
+	$newsletter = ! empty( $_POST['enq_newsletter'] ) && 'fol_subscription' !== ( $_POST['enq_type'] ?? '' );
 	foreach ( $extra as $label => $value ) {
 		$message .= ( '' === $message ? '' : "\n" ) . "{$label}: {$value}";
 	}
@@ -106,6 +120,7 @@ function summit_handle_enquiry(): void {
 		'observatory_briefing',
 		'fol_subscription',
 		'media_speaking',
+		'career',
 	], true ) ) {
 		$errors[] = 'Please select an enquiry type.';
 	}
@@ -140,6 +155,7 @@ function summit_handle_enquiry(): void {
 		'observatory_briefing' => 'Private Briefing (The Observatory)',
 		'fol_subscription'     => 'Subscription (The Future of Luxury)',
 		'media_speaking'       => 'Media Enquiry',
+		'career'               => 'Career Enquiry',
 	];
 	$type_label = $type_labels[ $type ] ?? ucwords( str_replace( '_', ' ', $type ) );
 	$post_title = sprintf( '%s — %s', $name ?: $email, $type_label );
@@ -215,6 +231,36 @@ function summit_handle_enquiry(): void {
 		'Content-Type: text/plain; charset=UTF-8',
 		$name ? "Reply-To: {$name} <{$email}>" : "Reply-To: {$email}",
 	] );
+
+	// ── Newsletter opt-in: its own subscription record ──────────────────
+	if ( $newsletter ) {
+		$listed = get_posts( [
+			'post_type'      => 'enquiry',
+			'post_status'    => 'any',
+			'posts_per_page' => 1,
+			'fields'         => 'ids',
+			'meta_query'     => [
+				[ 'key' => 'enq_email', 'value' => $email ],
+				[ 'key' => 'enq_type', 'value' => 'fol_subscription' ],
+			],
+		] );
+		if ( ! $listed ) {
+			$sub_id = wp_insert_post( [
+				'post_type'   => 'enquiry',
+				'post_title'  => sprintf( '%s — %s', $email, $type_labels['fol_subscription'] ),
+				'post_status' => 'publish',
+			], true );
+			if ( ! is_wp_error( $sub_id ) && function_exists( 'update_field' ) ) {
+				update_field( 'enq_name',        $name,  $sub_id );
+				update_field( 'enq_email',       $email, $sub_id );
+				update_field( 'enq_type',        'fol_subscription', $sub_id );
+				update_field( 'enq_message',     'Opted in with an enquiry (ticked separately).', $sub_id );
+				update_field( 'enq_form_source', $form_source, $sub_id );
+				update_field( 'enq_status',      'new', $sub_id );
+				update_field( 'enq_submitted',   current_time( 'Y-m-d H:i:s' ), $sub_id );
+			}
+		}
+	}
 
 	// ── Respond ─────────────────────────────────────────────────────────
 	summit_enquiry_respond( true, $is_subscription ? 'You’re on the list.' : 'Thank you. We have received your enquiry.', 200, [

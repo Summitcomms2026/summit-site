@@ -14,6 +14,10 @@
  *   By Need      "Start with the question." — ten oversized rows and a held
  *                statement for the active question
  *
+ * Copy: each lens's line, and the By Need lens's heading and introduction,
+ * come from the Solutions page's "summit_lenses" field (Editorial Handover
+ * v1: S02-P001, S02-P002); the earlier lines stand in until it is set.
+ *
  * Sources: labels, order and destinations from the navigation config. Each
  * entry's line is its own page's "summit_summary" field; each sector's image
  * is its page's "summit_visual" field (attachment ID or URL). Until an image
@@ -45,6 +49,15 @@ $lenses = [
     'by-function' => [ __( 'Your responsibility', 'summit' ), __( 'Function describes the discipline.', 'summit' ) ],
     'by-need'     => [ __( 'Your question', 'summit' ), __( 'Need describes the question.', 'summit' ) ],
 ];
+$overview = get_page_by_path( trim( $section['path'] ?? '/solutions', '/' ), OBJECT, 'page' );
+$copy     = $overview ? (array) json_decode( (string) get_post_meta( $overview->ID, 'summit_lenses', true ), true ) : [];
+foreach ( $copy as $key => $lens_copy ) {
+    if ( isset( $lenses[ $key ] ) && ! empty( $lens_copy['line'] ) ) {
+        $lenses[ $key ][1] = $lens_copy['line'];
+    }
+}
+$need_title = $copy['by-need']['title'] ?? __( 'Start with the question.', 'summit' );
+$need_intro = $copy['by-need']['intro'] ?? '';
 
 // An entry's own page fields
 $entry = static function ( array $item ): array {
@@ -136,7 +149,10 @@ $num = static fn( int $i ): string => sprintf( '%02d', $i );
             </ul>
 
             <?php else : ?>
-            <p class="sx-need-intro"><?php esc_html_e( 'Start with the question.', 'summit' ); ?></p>
+            <h4 class="sx-need-intro"><?php echo esc_html( $need_title ); ?></h4>
+            <?php if ( $need_intro ) : ?>
+            <p class="sx-need-support"><?php echo esc_html( $need_intro ); ?></p>
+            <?php endif; ?>
             <div class="sx-need">
                 <ul class="sx-needs" role="list">
                     <?php foreach ( $items as $i => $item ) : ?>

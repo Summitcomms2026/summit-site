@@ -14,6 +14,7 @@ require_once get_template_directory() . '/inc/future-of-luxury.php';
 require_once get_template_directory() . '/inc/subscribe.php';
 require_once get_template_directory() . '/inc/editorial-art.php';
 require_once get_template_directory() . '/inc/fol-rhythm.php';
+require_once get_template_directory() . '/inc/editorial.php';
 
 add_action( 'wp_enqueue_scripts', 'summit_enqueue_styles' );
 

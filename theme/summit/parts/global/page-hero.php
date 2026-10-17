@@ -17,6 +17,8 @@
  *   eyebrow     array of strings — section, then optional sub-section
  *   title       H1 text
  *   standfirst  short standfirst (optional)
+ *   intro       further opening paragraphs, blank-line separated (optional;
+ *               defaults to the page's summit_intro field)
  *   tone        'paper' | 'dark' | 'tinted'
  *   actions     action $args for parts/global/action-group.php (optional)
  *
@@ -28,6 +30,8 @@ defined( 'ABSPATH' ) || exit;
 $eyebrow    = array_filter( (array) ( $args['eyebrow'] ?? [] ) );
 $title      = $args['title'] ?? '';
 $standfirst = $args['standfirst'] ?? '';
+$intro      = $args['intro'] ?? ( is_page() ? (string) get_post_meta( get_queried_object_id(), 'summit_intro', true ) : '' );
+$intro      = array_filter( array_map( 'trim', preg_split( '/\n\s*\n/', $intro ) ) );
 $tone       = in_array( $args['tone'] ?? '', [ 'dark', 'tinted' ], true ) ? $args['tone'] : 'paper';
 $actions    = $args['actions'] ?? [];
 
@@ -55,7 +59,16 @@ $has_foot = $standfirst || $actions;
 
         <?php if ( $has_foot ) : ?>
         <div class="shell-hero__foot" data-reveal data-reveal-delay="1">
-            <?php if ( $standfirst ) : ?>
+            <?php if ( $standfirst && $intro ) : ?>
+            <div class="shell-hero__opening">
+                <p class="shell-hero__standfirst"><?php echo esc_html( $standfirst ); ?></p>
+                <div class="shell-hero__intro">
+                    <?php foreach ( $intro as $para ) : ?>
+                    <p><?php echo esc_html( $para ); ?></p>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <?php elseif ( $standfirst ) : ?>
             <p class="shell-hero__standfirst"><?php echo esc_html( $standfirst ); ?></p>
             <?php endif; ?>
 

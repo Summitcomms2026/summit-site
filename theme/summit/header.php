@@ -33,7 +33,7 @@ $nav_cta = summit_nav( 'cta' );
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?>>
+<body id="top" <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
 <a href="#main" class="skip-link screen-reader-text">Skip to content</a>
@@ -116,8 +116,9 @@ $nav_cta = summit_nav( 'cta' );
                 Start a conversation
             </a>
             <span class="sticky-bottom-bar__separator" aria-hidden="true">/</span>
-            <a href="https://wa.me/61430388662" class="sticky-bottom-bar__location">
-                WhatsApp&nbsp;+61&nbsp;430&nbsp;388&nbsp;662
+            <?php $summit_phone = summit_contact_channels()[0]; // approved: Australia ?>
+            <a href="<?php echo esc_url( $summit_phone['href'], [ 'tel' ] ); ?>" class="sticky-bottom-bar__location">
+                <?php echo esc_html( str_replace( ' ', "\u{00A0}", $summit_phone['display'] ) ); ?>
             </a>
         </div>
 

@@ -77,7 +77,7 @@ $nav_cta = summit_nav( 'cta' );
 $actions = [ [
     'type'  => 'cta',
     'label' => $meta( 'summit_cta_label' ) ?: ( $nav_cta['label'] ?? '' ),
-    'url'   => $meta( 'summit_cta_url' ) ? home_url( $meta( 'summit_cta_url' ) ) : summit_nav_url( $nav_cta ),
+    'url'   => $meta( 'summit_cta_url' ) ? summit_meta_url( $meta( 'summit_cta_url' ) ) : summit_nav_url( $nav_cta ),
 ] ];
 if ( $meta( 'summit_secondary_label' ) && $meta( 'summit_secondary_url' ) ) {
     $actions[] = [
@@ -85,7 +85,7 @@ if ( $meta( 'summit_secondary_label' ) && $meta( 'summit_secondary_url' ) ) {
         'mode'  => 'link',
         'icon'  => false,
         'label' => $meta( 'summit_secondary_label' ),
-        'url'   => home_url( $meta( 'summit_secondary_url' ) ),
+        'url'   => summit_meta_url( $meta( 'summit_secondary_url' ) ),
         'class' => 'action--contextual',
     ];
 }
@@ -183,10 +183,11 @@ get_header();
         <?php
         $content = apply_filters( 'the_content', get_the_content() );
 
-        // An entry without its own content shows its visual (summit_visual —
-        // the same image the overview's industry field uses) as a band.
+        // An entry with a visual (summit_visual — the same image the
+        // overview's industry field uses) opens on it as a band, before its
+        // chapters: the image keeps its place now the page has its copy.
         $visual = $meta( 'summit_visual' );
-        if ( ! trim( $content ) && $visual && ! $is_index ) :
+        if ( $visual && ! $is_index ) :
             // A theme image may have a wide companion (<name>-wide.jpg) for the band.
             $wide = is_numeric( $visual ) ? '' : preg_replace( '/\.jpg$/', '-wide.jpg', $visual );
             if ( $wide && ! is_readable( ABSPATH . ltrim( (string) wp_parse_url( $wide, PHP_URL_PATH ), '/' ) ) ) {

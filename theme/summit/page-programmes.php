@@ -64,8 +64,18 @@ $nav_cta = summit_nav( 'cta' );
 $actions = [ [
     'type'  => 'cta',
     'label' => $meta( 'summit_cta_label' ) ?: ( $nav_cta['label'] ?? '' ),
-    'url'   => $meta( 'summit_cta_url' ) ? home_url( $meta( 'summit_cta_url' ) ) : summit_nav_url( $nav_cta ),
+    'url'   => $meta( 'summit_cta_url' ) ? summit_meta_url( $meta( 'summit_cta_url' ) ) : summit_nav_url( $nav_cta ),
 ] ];
+if ( $meta( 'summit_secondary_label' ) && $meta( 'summit_secondary_url' ) ) {
+    $actions[] = [
+        'type'  => 'utility',
+        'mode'  => 'link',
+        'icon'  => false,
+        'label' => $meta( 'summit_secondary_label' ),
+        'url'   => summit_meta_url( $meta( 'summit_secondary_url' ) ),
+        'class' => 'action--contextual',
+    ];
+}
 foreach ( $utilities as $mode ) {
     $actions[] = [ 'type' => 'utility', 'mode' => sanitize_key( $mode ) ];
 }

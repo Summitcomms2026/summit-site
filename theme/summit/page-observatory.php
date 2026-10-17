@@ -76,10 +76,13 @@ $is_overview = $section && $section['path'] === $path;
 
 // Hero actions: the section's contextual CTA (not on its own page), then
 // utilities — exactly as the page shell assembles them.
-$actions = [];
-foreach ( $section['children'] ?? [] as $child ) {
-    if ( ! empty( $child['action'] ) && $child['path'] !== $path ) {
-        $actions[] = [ 'type' => 'cta', 'label' => $child['label'], 'url' => summit_nav_url( $child ) ];
+// The page's own CTAs (from the editorial handover) come first.
+$actions = summit_meta_actions( $page_id );
+if ( ! $actions ) {
+    foreach ( $section['children'] ?? [] as $child ) {
+        if ( ! empty( $child['action'] ) && $child['path'] !== $path ) {
+            $actions[] = [ 'type' => 'cta', 'label' => $child['label'], 'url' => summit_nav_url( $child ) ];
+        }
     }
 }
 foreach ( $utilities as $mode ) {
@@ -87,6 +90,13 @@ foreach ( $utilities as $mode ) {
 }
 
 $slug = $is_overview ? 'overview' : sanitize_html_class( basename( $path ) );
+
+// The briefing form, in place inside the page's own form panel
+add_shortcode( 'summit_briefing_form', static function () use ( $path ): string {
+    ob_start();
+    get_template_part( 'parts/observatory/briefing-form', null, [ 'source' => $path, 'embedded' => true ] );
+    return (string) ob_get_clean();
+} );
 
 add_action( 'wp_enqueue_scripts', static function () use ( $form ) {
     $v = wp_get_theme()->get( 'Version' );
@@ -171,7 +181,7 @@ get_header();
             echo '<div class="obs-body">' . $summit_obs_reveal( $content ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput -- the_content output
         }
 
-        if ( 'briefing' === $form ) {
+        if ( 'briefing' === $form && ! has_shortcode( get_the_content(), 'summit_briefing_form' ) ) {
             get_template_part( 'parts/observatory/briefing-form', null, [ 'source' => $path ] );
         }
         ?>

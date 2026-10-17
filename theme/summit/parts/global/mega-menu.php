@@ -283,7 +283,8 @@ $current_attr = static function ( string $path, bool $exact = false ): string {
                    class="mega-menu__bottom-cta">
                     Start a conversation
                 </a>
-                <span class="mega-menu__bottom-location">WhatsApp&nbsp;+61&nbsp;430&nbsp;388&nbsp;662</span>
+                <?php $summit_phone = summit_contact_channels()[0]; // approved: Australia ?>
+                <a href="<?php echo esc_url( $summit_phone['href'], [ 'tel' ] ); ?>" class="mega-menu__bottom-location"><?php echo esc_html( str_replace( ' ', "\u{00A0}", $summit_phone['display'] ) ); ?></a>
             </div>
         </div>
     </div><!-- /.mega-menu__bottom-bar -->

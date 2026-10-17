@@ -60,9 +60,10 @@ $tone       = get_post_meta( $page_id, 'summit_tone', true ) ?: 'paper';
 $standfirst = get_post_meta( $page_id, 'summit_standfirst', true );
 $utilities  = array_filter( array_map( 'trim', explode( ',', (string) get_post_meta( $page_id, 'summit_utilities', true ) ) ) );
 
-// Hero actions: the section's contextual CTA (not on its own page), then utilities
-$actions = [];
-if ( $context ) {
+// Hero actions: the page's own CTAs (editorial handover), else the
+// section's contextual CTA (not on its own page); then utilities
+$actions = summit_meta_actions( $page_id );
+if ( ! $actions && $context ) {
     foreach ( $context['section']['children'] ?? [] as $child ) {
         if ( ! empty( $child['action'] ) && $child['path'] !== $path ) {
             $actions[] = [ 'type' => 'cta', 'label' => $child['label'], 'url' => summit_nav_url( $child ) ];
@@ -81,9 +82,11 @@ if ( $context ) {
         $eyebrow[] = $context['group'];
     }
 }
-// Pages outside the sections (utility and legal) carry the institution's name.
+// Pages outside the sections (utility and legal) carry the institution's
+// name — or, where the page opens on its own headline, the page's name.
+$headline = (string) get_post_meta( $page_id, 'summit_headline', true );
 if ( ! $eyebrow ) {
-    $eyebrow[] = get_bloginfo( 'name' );
+    $eyebrow[] = $headline ? get_the_title( $page_id ) : get_bloginfo( 'name' );
 }
 
 // Index: a parent lists its pages; a child lists its siblings
@@ -149,13 +152,17 @@ get_header();
 
         <?php get_template_part( 'parts/global/page-hero', null, [
             'eyebrow'    => $eyebrow,
-            'title'      => get_the_title(),
+            'title'      => $headline ?: get_the_title(),
             'standfirst' => $standfirst,
             'tone'       => $tone,
             'actions'    => $actions,
         ] ); ?>
 
-        <?php if ( trim( get_the_content() ) ) : ?>
+        <?php if ( false !== strpos( get_the_content(), 'ed-chapter' ) ) : // editorial chapters set their own measure ?>
+        <div class="ed-body">
+            <?php the_content(); ?>
+        </div>
+        <?php elseif ( trim( get_the_content() ) ) : ?>
         <section class="shell-body">
             <div class="container container--medium">
                 <div class="shell-body__inner">

@@ -47,7 +47,7 @@ $heading = sprintf( __( 'Also %s', 'summit' ), lcfirst( $lens['label'] ) );
             <?php endforeach; ?>
         </ul>
         <p class="sol-related__all" data-reveal="fade">
-            <a href="<?php echo esc_url( summit_nav_url( $section ) . '#sol-index-heading' ); ?>"><?php esc_html_e( 'All three ways in', 'summit' ); ?> <span aria-hidden="true">&rarr;</span></a>
+            <a href="<?php echo esc_url( summit_nav_url( $section ) . '#sx-ways-heading' ); ?>"><?php esc_html_e( 'All three ways in', 'summit' ); ?> <span aria-hidden="true">&rarr;</span></a>
         </p>
     </div>
 </nav>

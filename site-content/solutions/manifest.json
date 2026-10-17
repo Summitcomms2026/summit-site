@@ -8,11 +8,16 @@
       "template": "page-solutions.php",
       "source": "overview.blocks.html",
       "meta": {
-        "summit_eyebrow": "Solutions",
         "summit_tone": "paper",
-        "summit_headline": "The question determines the work.",
-        "summit_standfirst": "Summit works across strategy, brand, editorial, experience, digital commerce, product, IP and patrimony. The route in depends on the industry, the function or the question that needs resolving.",
-        "summit_utilities": "share"
+        "summit_utilities": "share",
+        "summit_eyebrow": "Solutions",
+        "summit_headline": "What Needs to Change?",
+        "summit_standfirst": "Building a maison, restoring its position or planning its next chapter: each raises different questions. Some involve brand strategy; others concern revenue, experience, IP or governance. Start with the decision in front of you. The disciplines can follow.",
+        "summit_cta_label": "Find Your Starting Point",
+        "summit_cta_url": "#by-need",
+        "summit_secondary_label": "Start a Conversation",
+        "summit_secondary_url": "/lets-talk",
+        "summit_lenses": "{\"by-need\": {\"line\": \"The challenge the business is facing.\", \"title\": \"What’s Your Brief?\", \"intro\": \"Some decisions concern a maison still taking shape. Others involve an icon that has grown too familiar, a story the maison no longer controls or a transaction difficult to judge. Choose the question closest to yours.\"}, \"by-function\": {\"line\": \"The expertise the work requires.\"}, \"by-industry\": {\"line\": \"The sector in which the question arises.\"}}"
       }
     },
     {
@@ -21,16 +26,17 @@
       "template": "page-solutions.php",
       "source": "maison-due-diligence.blocks.html",
       "meta": {
-        "summit_eyebrow": "Solutions / By Need",
         "summit_tone": "paper",
-        "summit_headline": "Read the maison before the transaction.",
-        "summit_standfirst": "Maison Due Diligence examines the institutional, brand, patrimonial and governance conditions that shape a luxury house beyond price.",
-        "summit_cta_label": "Discuss a Maison Due Diligence",
-        "summit_cta_url": "/lets-talk",
-        "summit_secondary_label": "The Observatory",
-        "summit_secondary_url": "/the-observatory",
         "summit_utilities": "share",
-        "summit_summary": "Read the institutional, brand, patrimonial and governance conditions behind the transaction."
+        "summit_summary": "Read beyond sales and brand recognition. Examine founding substance, iconic assets, governance, narrative dependence and exposures that may not yet appear in the accounts.",
+        "summit_eyebrow": "Solutions / By Need",
+        "summit_headline": "What Holds the House Together?",
+        "summit_standfirst": "Brand value can be estimated. Institutional strength requires a closer reading.",
+        "summit_intro": "We examine how a maison’s products, mythology, rights, production discipline and governance hold together — including the risks that may take years to become visible in the accounts.\n\nFor owners considering their next move and investors looking beyond the multiple.",
+        "summit_cta_label": "Request a Private Briefing",
+        "summit_cta_url": "/the-observatory/request-a-private-briefing",
+        "summit_secondary_label": "Explore The Observatory",
+        "summit_secondary_url": "/the-observatory"
       }
     },
     {
@@ -38,230 +44,372 @@
       "template": "page-solutions.php",
       "meta": {
         "summit_summary": "Define the position before deciding how to express it.",
-        "summit_eyebrow": "Solutions / By Function",
         "summit_tone": "paper",
-        "summit_standfirst": "Define the position before deciding how to express it."
-      }
+        "summit_eyebrow": "Solutions / By Function",
+        "summit_headline": "Make the Decisions That Matter",
+        "summit_standfirst": "Useful strategy makes choices possible. It tells a business where its authority comes from, which audiences matter and what it should stop doing before those choices become expensive.",
+        "summit_cta_label": "Talk Through a Strategic Decision",
+        "summit_cta_url": "/lets-talk?topic=strategy-planning"
+      },
+      "source": "strategy-planning.blocks.html",
+      "title": "Strategy & Planning"
     },
     {
       "path": "/solutions/brand-marketing",
       "template": "page-solutions.php",
       "meta": {
         "summit_summary": "Decide how desire is created, sustained and withheld.",
-        "summit_eyebrow": "Solutions / By Function",
         "summit_tone": "paper",
-        "summit_standfirst": "Decide how desire is created, sustained and withheld."
-      }
+        "summit_eyebrow": "Solutions / By Function",
+        "summit_headline": "Make Desire Worth Keeping",
+        "summit_standfirst": "Great marketing may bring an audience to a maison. It cannot rescue a proposition that has become ordinary. Brand work must attend to what is being promised as carefully as to how widely it is seen.",
+        "summit_cta_label": "Discuss Brand & Marketing",
+        "summit_cta_url": "/lets-talk?topic=brand-marketing"
+      },
+      "source": "brand-marketing.blocks.html",
+      "title": "Brand & Marketing"
     },
     {
       "path": "/solutions/editorial-influence",
       "template": "page-solutions.php",
       "meta": {
         "summit_summary": "Determine what is worth saying, create something worth reading, and place it before people worth reaching.",
-        "summit_eyebrow": "Solutions / By Function",
         "summit_tone": "paper",
-        "summit_standfirst": "Determine what is worth saying, create something worth reading, and place it before people worth reaching."
-      }
+        "summit_eyebrow": "Solutions / By Function",
+        "summit_headline": "Have a View Worth Defending",
+        "summit_standfirst": "Publishing is easy. Saying something informed, useful and worth returning to is harder. Our editorial work begins with a position that can survive scrutiny, not a content calendar in search of an argument.",
+        "summit_cta_label": "Discuss an Editorial Brief",
+        "summit_cta_url": "/lets-talk?topic=editorial-influence"
+      },
+      "source": "editorial-influence.blocks.html",
+      "title": "Editorial & Influence"
     },
     {
       "path": "/solutions/experience-design",
       "template": "page-solutions.php",
       "meta": {
         "summit_summary": "Give every point of contact the same discipline as the object at its centre.",
-        "summit_eyebrow": "Solutions / By Function",
         "summit_tone": "paper",
-        "summit_standfirst": "Give every point of contact the same discipline as the object at its centre."
-      }
+        "summit_eyebrow": "Solutions / By Function",
+        "summit_headline": "Make Every Encounter Count",
+        "summit_standfirst": "Luxury experience is not a room dressed for an occasion. It is the sequence of encounters through which a client learns what the house really believes about service, detail and attention.",
+        "summit_cta_label": "Discuss an Experience Brief",
+        "summit_cta_url": "/lets-talk?topic=experience-design"
+      },
+      "source": "experience-design.blocks.html",
+      "title": "Experience Design"
     },
     {
       "path": "/solutions/digital-commerce",
       "template": "page-solutions.php",
       "meta": {
         "summit_summary": "Sell online without abandoning the scarcity, service and presentation that define the house.",
-        "summit_eyebrow": "Solutions / By Function",
         "summit_tone": "paper",
-        "summit_standfirst": "Sell online without abandoning the scarcity, service and presentation that define the house."
-      }
+        "summit_eyebrow": "Solutions / By Function",
+        "summit_headline": "Convert Without Cheapening",
+        "summit_standfirst": "Digital commerce should make buying easier without making the house easier to dismiss. The right pathway respects the client, protects the proposition and understands the difference between traffic and qualified demand.",
+        "summit_cta_label": "Discuss Digital Commerce",
+        "summit_cta_url": "/lets-talk?topic=digital-commerce"
+      },
+      "source": "digital-commerce.blocks.html",
+      "title": "Digital Commerce"
     },
     {
       "path": "/solutions/product-ip-patrimony",
       "template": "page-solutions.php",
       "meta": {
         "summit_summary": "Judge which objects carry the house, and secure what makes them its own.",
-        "summit_eyebrow": "Solutions / By Function",
         "summit_tone": "paper",
-        "summit_standfirst": "Judge which objects carry the house, and secure what makes them its own."
-      }
+        "summit_eyebrow": "Solutions / By Function",
+        "summit_headline": "What You Make, Own and Keep",
+        "summit_standfirst": "A maison’s most recognisable assets are not necessarily its most securely protected. Objects, techniques, signatures, archives and institutional memory need to be understood as one working inheritance.",
+        "summit_cta_label": "Discuss Product, IP & Patrimony",
+        "summit_cta_url": "/lets-talk?topic=product-ip-patrimony"
+      },
+      "source": "product-ip-patrimony.blocks.html",
+      "title": "Product, IP & Patrimony"
     },
     {
       "path": "/solutions/build-a-maison",
       "template": "page-solutions.php",
       "meta": {
-        "summit_summary": "Create the institutional architecture required to become more than a brand.",
-        "summit_eyebrow": "Solutions / By Need",
+        "summit_summary": "Give a promising luxury business the foundations of a house that can endure. Define what it stands for, what it makes, how it earns and what it must protect.",
         "summit_tone": "paper",
-        "summit_standfirst": "Create the institutional architecture required to become more than a brand."
-      }
+        "summit_eyebrow": "Solutions / By Need",
+        "summit_headline": "Build a Maison",
+        "summit_standfirst": "Attention can come quickly. Becoming a maison takes time",
+        "summit_intro": "Early attention doesn’t settle what a luxury business stands for. We work with founders and owners to define the proposition, decide which products can carry it, develop disciplined growth and protect the rights, memory and client experience on which its future depends.",
+        "summit_cta_label": "Discuss Maison Formation",
+        "summit_cta_url": "/lets-talk?topic=build-a-maison",
+        "summit_secondary_label": "Explore the Maison Formation Programme",
+        "summit_secondary_url": "/programmes/maison-formation"
+      },
+      "source": "build-a-maison.blocks.html",
+      "title": "Build a Maison"
     },
     {
       "path": "/solutions/reposition-a-maison",
       "template": "page-solutions.php",
       "meta": {
-        "summit_summary": "Move the standing of a house without severing what made it.",
-        "summit_eyebrow": "Solutions / By Need",
+        "summit_summary": "Recover clarity without discarding what the house has earned. Reconsider its products, clients, market position and story before deciding what should change.",
         "summit_tone": "paper",
-        "summit_standfirst": "Move the standing of a house without severing what made it."
-      }
+        "summit_eyebrow": "Solutions / By Need",
+        "summit_headline": "Change Course Without Losing the House",
+        "summit_standfirst": "Familiarity can become a comfort long after it has stopped being an advantage. Markets move, catalogues expand and the story a maison tells may no longer match what clients see.",
+        "summit_intro": "We help owners and leadership teams establish what still carries authority, what has drifted and what deserves to change — before commissioning a new identity.",
+        "summit_cta_label": "Discuss Repositioning",
+        "summit_cta_url": "/lets-talk?topic=reposition-a-maison",
+        "summit_secondary_label": "How We Work",
+        "summit_secondary_url": "/about/how-we-work"
+      },
+      "source": "reposition-a-maison.blocks.html",
+      "title": "Reposition a Maison"
     },
     {
       "path": "/solutions/enhance-desire-without-dilution",
       "template": "page-solutions.php",
       "meta": {
-        "summit_summary": "Grow demand while protecting the scarcity and meaning that create it.",
-        "summit_eyebrow": "Solutions / By Need",
+        "summit_summary": "Build demand without surrendering the conditions that make the maison desirable. Examine distribution, pricing, communication and partnerships as decisions with consequences.",
         "summit_tone": "paper",
-        "summit_standfirst": "Grow demand while protecting the scarcity and meaning that create it."
-      }
+        "summit_eyebrow": "Solutions / By Need",
+        "summit_headline": "More Demand, Less Exposure",
+        "summit_standfirst": "The wrong kind of growth makes a maison easier to find and harder to want.",
+        "summit_intro": "We examine how pricing, distribution, communication and client relationships affect demand — identifying where commercial progress strengthens the house and where greater reach begins to weaken it.",
+        "summit_cta_label": "Discuss Demand Quality",
+        "summit_cta_url": "/lets-talk?topic=demand-quality",
+        "summit_secondary_label": "Try the Demand Quality Check",
+        "summit_secondary_url": "/solutions/enhance-desire-without-dilution#s03-p008"
+      },
+      "source": "enhance-desire-without-dilution.blocks.html",
+      "title": "Enhance Desire Without Dilution"
     },
     {
       "path": "/solutions/strengthen-an-icon",
       "template": "page-solutions.php",
       "meta": {
-        "summit_summary": "Protect the authority of what the house is known for without allowing repetition to become inertia.",
-        "summit_eyebrow": "Solutions / By Need",
+        "summit_summary": "A successful object can carry a house or begin to confine it. Examine its meaning, its place in the range and the decisions that will preserve its authority.",
         "summit_tone": "paper",
-        "summit_standfirst": "Protect the authority of what the house is known for without allowing repetition to become inertia."
-      }
+        "summit_eyebrow": "Solutions / By Need",
+        "summit_headline": "Strengthen the Icon, Protect the House",
+        "summit_standfirst": "A recognisable object can carry a maison for decades. It can also begin to confine the creativity of the institution that made it.",
+        "summit_intro": "We help leadership teams read what gives an icon its authority, where repetition starts to spend it and how new work can live alongside an inherited signature.",
+        "summit_cta_label": "Discuss Icon Stewardship",
+        "summit_cta_url": "/lets-talk?topic=strengthen-an-icon",
+        "summit_secondary_label": "Explore The Luxury 100",
+        "summit_secondary_url": "/research/luxury-100"
+      },
+      "source": "strengthen-an-icon.blocks.html",
+      "title": "Strengthen an Icon"
     },
     {
       "path": "/solutions/activate-patrimony-ip",
       "template": "page-solutions.php",
       "meta": {
-        "summit_summary": "Turn archive, marks and know-how into living authority rather than heritage theatre.",
-        "summit_eyebrow": "Solutions / By Need",
+        "summit_summary": "Put archives, signatures and protected rights to work. Identify what can be renewed, what deserves protection and what must be left undisturbed.",
         "summit_tone": "paper",
-        "summit_standfirst": "Turn archive, marks and know-how into living authority rather than heritage theatre."
-      }
+        "summit_eyebrow": "Solutions / By Need",
+        "summit_headline": "Make History Useful",
+        "summit_standfirst": "A maison’s most valuable assets are not always the ones on its balance sheet. Patterns, archives, processes, signatures and the knowledge held by a handful of people may be fundamental to what makes it worth choosing.",
+        "summit_intro": "We help identify what matters, understand where it is exposed and find ways to keep that inheritance relevant. Protection and creative use belong in the same conversation.",
+        "summit_cta_label": "Discuss Patrimony & IP",
+        "summit_cta_url": "/lets-talk?topic=activate-patrimony-ip",
+        "summit_secondary_label": "Explore Brand & IP Stewardship",
+        "summit_secondary_url": "/programmes/brand-ip-stewardship"
+      },
+      "source": "activate-patrimony-ip.blocks.html",
+      "title": "Activate Patrimony & IP"
     },
     {
       "path": "/solutions/transform-the-client-experience",
       "template": "page-solutions.php",
       "meta": {
-        "summit_summary": "Make every encounter with the house worthy of its objects.",
-        "summit_eyebrow": "Solutions / By Need",
+        "summit_summary": "Bring service, physical spaces, digital encounters and private-client relationships into a coherent expression of the house.",
         "summit_tone": "paper",
-        "summit_standfirst": "Make every encounter with the house worthy of its objects."
-      }
+        "summit_eyebrow": "Solutions / By Need",
+        "summit_headline": "Experience Should Feel Like the House",
+        "summit_standfirst": "Clients should recognise a maison before they see its name. In the way an appointment begins, a product is introduced, a question is answered or a treasured object is looked after years later.",
+        "summit_intro": "We shape the encounters that turn interest into attachment, bringing the brand’s character into service, digital commerce, private-client relationships and live experience.",
+        "summit_cta_label": "Discuss Client Experience",
+        "summit_cta_url": "/lets-talk?topic=transform-the-client-experience",
+        "summit_secondary_label": "Explore Experience Design",
+        "summit_secondary_url": "/solutions/experience-design"
+      },
+      "source": "transform-the-client-experience.blocks.html",
+      "title": "Transform the Client Experience"
     },
     {
       "path": "/solutions/develop-thought-leadership",
       "template": "page-solutions.php",
       "meta": {
-        "summit_summary": "Earn an authoritative voice in the conversations that shape the category.",
-        "summit_eyebrow": "Solutions / By Need",
+        "summit_summary": "Establish a point of view worth hearing. Build it through research, editorial work and careful participation in the conversations that matter to the sector.",
         "summit_tone": "paper",
-        "summit_standfirst": "Earn an authoritative voice in the conversations that shape the category."
-      }
+        "summit_eyebrow": "Solutions / By Need",
+        "summit_headline": "Have Something Worth Saying",
+        "summit_standfirst": "Another opinion is rarely what the world is missing. A useful argument — founded on experience, tested against evidence and expressed clearly — has a better chance of being heard.",
+        "summit_intro": "We work with founders, executives and institutions to develop a point of view, turn it into considered editorial work and bring it before the audiences who matter.",
+        "summit_cta_label": "Discuss Thought Leadership",
+        "summit_cta_url": "/lets-talk?topic=develop-thought-leadership",
+        "summit_secondary_label": "Read The Future of Luxury",
+        "summit_secondary_url": "/the-future-of-luxury"
+      },
+      "source": "develop-thought-leadership.blocks.html",
+      "title": "Develop Thought Leadership"
     },
     {
       "path": "/solutions/applied-ai",
       "template": "page-solutions.php",
       "meta": {
-        "summit_summary": "Use intelligent systems where they deepen judgement, not where they cheapen it.",
-        "summit_eyebrow": "Solutions / By Need",
+        "summit_summary": "Use AI where it improves work, not as an emblem of modernity. Assess practical applications in research, service, communication and operations, with appropriate oversight.",
         "summit_tone": "paper",
-        "summit_standfirst": "Use intelligent systems where they deepen judgement, not where they cheapen it."
-      }
+        "summit_eyebrow": "Solutions / By Need",
+        "summit_headline": "Give AI the Right Job",
+        "summit_standfirst": "AI can shorten the distance between a question and an answer. It cannot decide what a maison ought to stand for.",
+        "summit_intro": "We look for applications that improve a business without flattening its character — from customer intelligence and digital commerce to editorial workflows and internal knowledge. The starting point is the work, not the technology.",
+        "summit_cta_label": "Discuss Applied AI",
+        "summit_cta_url": "/lets-talk?topic=applied-ai",
+        "summit_secondary_label": "Explore Agentic AI",
+        "summit_secondary_url": "/programmes/agentic-ai"
+      },
+      "source": "applied-ai.blocks.html",
+      "title": "Applied AI"
     },
     {
       "path": "/solutions/investment-acquisitions",
       "template": "page-solutions.php",
       "meta": {
-        "summit_summary": "Bring luxury judgement to decisions about capital, holdings and growth.",
-        "summit_eyebrow": "Solutions / By Need",
+        "summit_summary": "Consider the commercial opportunity alongside the institution being acquired, financed or developed. Clarify positioning, partner readiness and the assets that create lasting value.",
         "summit_tone": "paper",
-        "summit_standfirst": "Bring luxury judgement to decisions about capital, holdings and growth."
-      }
+        "summit_eyebrow": "Solutions / By Need",
+        "summit_headline": "Know What You Are Buying",
+        "summit_standfirst": "A luxury business can look valuable on paper while the things that make it desirable are poorly protected, overstated or dependent on a single person.",
+        "summit_intro": "We work with owners, investors and advisers to examine the commercial and institutional proposition behind an opportunity — its brand authority, products, distribution, patrimony and the decisions that may shape what comes next.",
+        "summit_cta_label": "Discuss an Opportunity",
+        "summit_cta_url": "/lets-talk?topic=investment-acquisitions",
+        "summit_secondary_label": "Explore Maison Due Diligence",
+        "summit_secondary_url": "/solutions/maison-due-diligence"
+      },
+      "source": "investment-acquisitions.blocks.html",
+      "title": "Investment & Acquisitions"
     },
     {
       "path": "/solutions/watches-jewellery",
       "template": "page-solutions.php",
       "meta": {
-        "summit_standfirst": "Time, craft and provenance: houses whose objects are expected to outlive their owners.",
-        "summit_eyebrow": "Solutions / By Industry",
         "summit_tone": "paper",
-        "summit_visual": "/wp-content/themes/summit/assets/img/solutions/watches-jewellery.jpg"
-      }
+        "summit_visual": "/wp-content/themes/summit/assets/img/solutions/watches-jewellery.jpg",
+        "summit_eyebrow": "Solutions / By Industry",
+        "summit_headline": "Meaning Is Made Over Time",
+        "summit_standfirst": "Precision can be demonstrated. Authority takes longer. In watches and jewellery, the challenge is to protect the difference between technical achievement, fashionable recognition and a proposition people will still care about decades from now.",
+        "summit_cta_label": "Talk About a Watch or Jewellery Brief",
+        "summit_cta_url": "/lets-talk?topic=watches-jewellery"
+      },
+      "source": "watches-jewellery.blocks.html",
+      "title": "Watches & Jewellery"
     },
     {
       "path": "/solutions/fashion-accessories",
       "template": "page-solutions.php",
       "meta": {
-        "summit_standfirst": "Seasonal pressure against lasting codes: keeping a house recognisable while it keeps moving.",
-        "summit_eyebrow": "Solutions / By Industry",
         "summit_tone": "paper",
-        "summit_visual": "/wp-content/themes/summit/assets/img/solutions/fashion-accessories.jpg"
-      }
+        "summit_visual": "/wp-content/themes/summit/assets/img/solutions/fashion-accessories.jpg",
+        "summit_eyebrow": "Solutions / By Industry",
+        "summit_headline": "Beyond the Next Collection",
+        "summit_standfirst": "Fashion needs newness. A maison needs continuity. The difficulty is knowing when a collection extends the house’s authority and when it begins spending the identity that made the house recognisable.",
+        "summit_cta_label": "Discuss the House’s Next Chapter",
+        "summit_cta_url": "/lets-talk?topic=fashion-accessories"
+      },
+      "source": "fashion-accessories.blocks.html",
+      "title": "Fashion & Accessories"
     },
     {
       "path": "/solutions/beauty-fragrance",
       "template": "page-solutions.php",
       "meta": {
-        "summit_standfirst": "Scale without dilution: authority in categories built on reach.",
-        "summit_eyebrow": "Solutions / By Industry",
         "summit_tone": "paper",
-        "summit_visual": "/wp-content/themes/summit/assets/img/solutions/beauty-fragrance.jpg"
-      }
+        "summit_visual": "/wp-content/themes/summit/assets/img/solutions/beauty-fragrance.jpg",
+        "summit_eyebrow": "Solutions / By Industry",
+        "summit_headline": "Known Is Not Always Desired",
+        "summit_standfirst": "Beauty makes recognition easy to buy. Building desire that survives distribution, replenishment and familiarity is more exacting. Success depends on what the formulation, object, ritual and house continue to mean after the first campaign.",
+        "summit_cta_label": "Talk About Beauty or Fragrance",
+        "summit_cta_url": "/lets-talk?topic=beauty-fragrance"
+      },
+      "source": "beauty-fragrance.blocks.html",
+      "title": "Beauty & Fragrance"
     },
     {
       "path": "/solutions/wine-spirits",
       "template": "page-solutions.php",
       "meta": {
-        "summit_standfirst": "Place, vintage and allocation: scarcity that nature sets and houses must govern.",
-        "summit_eyebrow": "Solutions / By Industry",
         "summit_tone": "paper",
-        "summit_visual": "/wp-content/themes/summit/assets/img/solutions/wine-spirits.jpg"
-      }
+        "summit_visual": "/wp-content/themes/summit/assets/img/solutions/wine-spirits.jpg",
+        "summit_eyebrow": "Solutions / By Industry",
+        "summit_headline": "Time Is Part of the Proposition",
+        "summit_standfirst": "In fine wine and spirits, much of the value is formed before a buyer encounters the bottle. Place, production discipline, custody and the decisions not taken can matter as much as what a house chooses to communicate.",
+        "summit_cta_label": "Discuss a Wine or Spirits Brief",
+        "summit_cta_url": "/lets-talk?topic=wine-spirits"
+      },
+      "source": "wine-spirits.blocks.html",
+      "title": "Wine & Spirits"
     },
     {
       "path": "/solutions/automotive",
       "template": "page-solutions.php",
       "meta": {
-        "summit_standfirst": "Engineering, heritage and desire: marques judged on the road, in the archive and at auction.",
-        "summit_eyebrow": "Solutions / By Industry",
         "summit_tone": "paper",
-        "summit_visual": "/wp-content/themes/summit/assets/img/solutions/automotive.jpg"
-      }
+        "summit_visual": "/wp-content/themes/summit/assets/img/solutions/automotive.jpg",
+        "summit_eyebrow": "Solutions / By Industry",
+        "summit_headline": "When the Model Carries the Brand",
+        "summit_standfirst": "Automotive businesses can gain volume, technology and reach while becoming less certain about what makes them worth wanting. In luxury, the defining model is often the clearest test of the whole company’s direction.",
+        "summit_cta_label": "Discuss an Automotive Brief",
+        "summit_cta_url": "/lets-talk?topic=automotive"
+      },
+      "source": "automotive.blocks.html",
+      "title": "Automotive"
     },
     {
       "path": "/solutions/real-estate-hospitality",
       "template": "page-solutions.php",
       "meta": {
-        "summit_standfirst": "Places and encounters: luxury experienced as setting, service and time.",
-        "summit_eyebrow": "Solutions / By Industry",
         "summit_tone": "paper",
-        "summit_visual": "/wp-content/themes/summit/assets/img/solutions/real-estate-hospitality.jpg"
-      }
+        "summit_visual": "/wp-content/themes/summit/assets/img/solutions/real-estate-hospitality.jpg",
+        "summit_eyebrow": "Solutions / By Industry",
+        "summit_headline": "A Place Must Keep Its Promise",
+        "summit_standfirst": "A destination is experienced before it is understood. The address, the arrival, the people and the details must belong to the same proposition. A compelling photograph is a beginning, not proof of a luxury experience.",
+        "summit_cta_label": "Discuss a Property or Hospitality Brief",
+        "summit_cta_url": "/lets-talk?topic=real-estate-hospitality"
+      },
+      "source": "real-estate-hospitality.blocks.html",
+      "title": "Real Estate & Hospitality"
     },
     {
       "path": "/solutions/art-collectibles",
       "template": "page-solutions.php",
       "meta": {
-        "summit_standfirst": "Provenance, market and meaning: where price and cultural standing are easily confused.",
-        "summit_eyebrow": "Solutions / By Industry",
         "summit_tone": "paper",
-        "summit_visual": "/wp-content/themes/summit/assets/img/solutions/art-collectibles.jpg"
-      }
+        "summit_visual": "/wp-content/themes/summit/assets/img/solutions/art-collectibles.jpg",
+        "summit_eyebrow": "Solutions / By Industry",
+        "summit_headline": "Provenance Before Prestige",
+        "summit_standfirst": "With art and collectible objects, the story can travel faster than the evidence. Serious presentation begins with authorship, condition, ownership history and the responsibilities attached to what is being offered.",
+        "summit_cta_label": "Discuss an Art or Collectibles Brief",
+        "summit_cta_url": "/lets-talk?topic=art-collectibles"
+      },
+      "source": "art-collectibles.blocks.html",
+      "title": "Art & Collectibles"
     },
     {
       "path": "/solutions/private-banking-wealth-management",
       "template": "page-solutions.php",
       "meta": {
-        "summit_standfirst": "Trust, discretion and continuity: institutions judged by their clients as a house is judged.",
-        "summit_eyebrow": "Solutions / By Industry",
         "summit_tone": "paper",
-        "summit_visual": "/wp-content/themes/summit/assets/img/solutions/private-banking-wealth-management.jpg"
-      }
+        "summit_visual": "/wp-content/themes/summit/assets/img/solutions/private-banking-wealth-management.jpg",
+        "summit_eyebrow": "Solutions / By Industry",
+        "summit_headline": "Discretion Is a Practice",
+        "summit_standfirst": "For private wealth clients, the quality of a relationship is judged over years, often in moments that never appear in a campaign. Trust must be visible in how a firm listens, explains, safeguards and follows through.",
+        "summit_cta_label": "Request a Private Conversation",
+        "summit_cta_url": "/lets-talk?topic=private-banking-wealth-management"
+      },
+      "source": "private-banking-wealth-management.blocks.html",
+      "title": "Private Banking & Wealth Management"
     }
   ]
 }

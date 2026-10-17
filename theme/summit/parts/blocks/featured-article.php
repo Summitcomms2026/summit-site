@@ -57,7 +57,13 @@ if ( empty( $articles ) ) {
     ];
 }
 
-$section_headline = get_field( 'home_article_headline' ) ?: 'The Future of Luxury';
+// Beyond the Headlines (S01-P007, summit_home_panel()): the Master's
+// heading and introduction over the live essays. The three essays the
+// copy names are not yet published; the carousel shows those that are.
+$panel            = summit_home_panel( 'S01-P007' );
+$section_headline = $panel['headline'] ?? ( get_field( 'home_article_headline' ) ?: 'The Future of Luxury' );
+$section_sub      = $panel['paras'][0] ?? 'Essays and analysis on the houses, objects and decisions reshaping luxury.';
+$section_ctas     = $panel['ctas'] ?? [ [ 'label' => 'All Essays', 'url' => '/the-future-of-luxury' ] ];
 ?>
 
 <section class="home-article section--padded" aria-labelledby="home-article-heading">
@@ -65,17 +71,21 @@ $section_headline = get_field( 'home_article_headline' ) ?: 'The Future of Luxur
 
         <header class="home-article__header" data-reveal>
             <div class="home-article__header-text">
+                <?php if ( ! empty( $panel['eyebrow'] ) ) : ?>
+                <p class="home-eyebrow"><?php echo esc_html( $panel['eyebrow'] ); ?></p>
+                <?php endif; ?>
                 <h2 class="home-article__section-headline" id="home-article-heading">
                     <?php echo esc_html( $section_headline ); ?>
                 </h2>
                 <p class="home-article__sub">
-                    Essays and analysis on the houses, objects and decisions reshaping luxury.
+                    <?php echo esc_html( $section_sub ); ?>
                 </p>
             </div>
-            <a href="<?php echo esc_url( get_post_type_archive_link( 'article' ) ?: home_url( '/the-future-of-luxury/' ) ); ?>"
-               class="home-article__cta">
-                All Essays
-            </a>
+            <div class="home-article__header-actions">
+                <?php foreach ( $section_ctas as $cta ) : ?>
+                <a href="<?php echo esc_url( summit_meta_url( $cta['url'] ) ); ?>" class="home-article__cta"><?php echo esc_html( $cta['label'] ); ?></a>
+                <?php endforeach; ?>
+            </div>
         </header>
 
         <div class="home-article__rail" data-reveal="fade" data-reveal-delay="1">

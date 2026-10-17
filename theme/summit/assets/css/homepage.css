@@ -2580,3 +2580,243 @@
     filter: brightness(0.74) saturate(0.95);
   }
 }
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   EDITORIAL HANDOVER v1 — the Master's copy in the homepage compositions
+   An eyebrow above each section headline, a short introduction beneath,
+   and the statement field's heading and link. Programmes: a quiet register
+   of the six engagements.
+   ══════════════════════════════════════════════════════════════════════ */
+
+.home-eyebrow {
+  margin: 0 0 var(--space-4);
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--colour-ink-60);
+}
+
+.section--dark .home-eyebrow,
+.vp-block .home-eyebrow {
+  color: inherit;
+  opacity: 0.66;
+}
+
+.home-intro {
+  max-width: 52ch;
+  margin: var(--space-4) 0 0;
+  font-family: var(--font-text);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--colour-ink-60);
+}
+
+.section--dark .home-intro {
+  color: rgba(250, 250, 248, 0.72);
+}
+
+.capability-triptych__header,
+.selected-work__header,
+.home-obs__header {
+  align-items: flex-end;
+}
+
+.vp-block__heading {
+  margin: 0 0 clamp(24px, 3vw, 40px);
+  font-family: var(--font-sans);
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  font-weight: 400;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  color: inherit;
+}
+
+.vp-block__statement + .vp-block__statement {
+  margin-top: 1em;
+}
+
+.vp-block__link {
+  margin: clamp(32px, 4vw, 56px) 0 0;
+  font-family: var(--font-text);
+  font-size: 0.9375rem;
+}
+
+.vp-block__link a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.24em;
+}
+
+.home-obs__lead {
+  max-width: 30ch;
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--type-section);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--colour-ink);
+}
+
+.home-article__header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-6);
+}
+
+/* Programmes — Ways to Begin */
+.home-programmes {
+  border-top: 1px solid var(--colour-ink-10);
+}
+
+.home-programmes > .container {
+  max-width: calc(100% - 100px);
+  padding-inline: 0;
+}
+
+.home-programmes__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-6);
+  margin-bottom: clamp(32px, 3.5vw, 56px);
+}
+
+.home-programmes__headline {
+  margin: 0;
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  font-weight: 400;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+}
+
+.home-programmes__list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--colour-ink-10);
+}
+
+.home-programmes__item a {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-1) var(--space-6);
+  padding-block: var(--space-5);
+  border-bottom: 1px solid var(--colour-ink-10);
+  color: var(--colour-ink);
+  text-decoration: none;
+}
+
+.home-programmes__name {
+  font-family: var(--font-sans);
+  font-size: var(--type-register);
+  line-height: 1.2;
+  letter-spacing: -0.012em;
+}
+
+.home-programmes__line {
+  grid-column: 1;
+  font-family: var(--font-text);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--colour-ink-60);
+}
+
+.home-programmes__arrow {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  transition: transform var(--motion-ui) var(--ease-out);
+}
+
+.home-programmes__item a:hover .home-programmes__arrow,
+.home-programmes__item a:focus-visible .home-programmes__arrow {
+  transform: translateX(4px);
+}
+
+.home-programmes__item a:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 4px;
+}
+
+@media (min-width: 768px) {
+  .home-programmes__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(32px, 4vw, 72px);
+  }
+}
+
+@media (max-width: 767px) {
+  .home-programmes > .container {
+    max-width: none;
+    padding-inline: var(--hp-edge, 20px);
+  }
+
+  .home-programmes__header,
+  .capability-triptych__header,
+  .home-obs__header,
+  .selected-work__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Research to Challenge: three marks */
+@media (min-width: 768px) {
+  .selected-work__grid--three {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.sw-mark--obs svg {
+  width: clamp(72px, 7vw, 108px);
+  height: auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+  opacity: 0.8;
+}
+
+.sw-mark--obs {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-3);
+}
+
+/* The closing invitation's second, quieter route */
+.cta-footer__secondary {
+  margin: var(--space-6) 0 0;
+  font-family: var(--font-text);
+  font-size: 0.9375rem;
+}
+
+.cta-footer__secondary a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.24em;
+}
+
+.cta-footer__eyebrow {
+  color: inherit;
+  opacity: 0.66;
+}
+
+/* The copy's own headline case (“Discuss a Brief”, “Read the Essays”):
+   the labels are already set as written. */
+.site-main--home .btn,
+.site-main--home .home-article__cta {
+  text-transform: none;
+}
+
+/* The Master's closing paragraph is longer than the old line: a step down */
+.site-main--home .cta-footer--image .cta-footer__body {
+  max-width: 38ch;
+  font-size: clamp(1.25rem, 1.9vw, 1.75rem);
+}

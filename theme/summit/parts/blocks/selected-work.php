@@ -21,46 +21,26 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$headline = get_field( 'home_work_headline' ) ?: 'Selected Work & Research';
-$img_dir  = get_template_directory_uri() . '/assets/img/';
-
-// Hardcoded cards matching approved comp.
-// ACF relationship (home_work_cases) can override when populated with
-// full artwork — for now, always use the approved reference set.
-$cards = [
-        [
-            'category' => 'Brand Strategy',
-            'title'    => 'Teddy William',
-            'desc'     => 'Teddy William produces garments of the very highest order. Many are leaders in their respective fields, accustomed to exacting standards, discerning taste, and the quiet assurance of bespoke done properly.',
-            'url'      => ( get_post_type_archive_link( 'case_study' ) ?: home_url( '/work-showcase/' ) ) /* no case study page yet */,
-            'logo'     => $img_dir . 'teddywilliam_white.png',
-            'tone'     => 'rose',   // cloth and tailoring warmth
-        ],
-        [
-            'category' => 'Digital Transformation',
-            'title'    => 'Kaleida Studios',
-            'desc'     => 'Kaleida Studios is a science-driven media studio creating intelligent, emotionally resonant narratives across film, audio, and immersive formats. They explore the deepest questions shaping the human experience in a technological age.',
-            'url'      => home_url( '/work-showcase/kaleida-studios/' ),
-            'logo'     => $img_dir . 'kaleidastudios_white.png',
-            'tone'     => 'lilac',  // projected light, the studio's medium
-        ],
-        [
-            'category' => 'Research',
-            'title'    => 'The Luxury 100',
-            'desc'     => 'An annual, governed reading of durable luxury objects. In the 2027 reading, ninety-nine places are held and one chair is left empty.',
-            'url'      => home_url( '/research/luxury-100' ),
-            'mark'     => 'l100',
-            'tone'     => 'metal',  // the empty chair's patina
-        ],
-        [
-            'category' => 'Book',
-            'title'    => 'Touch Me Not',
-            'desc'     => 'The Mystery of Luxury — a book by Gregory Gray and Olivia Dhordain, and the argument behind Summit’s research.',
-            'url'      => home_url( '/research/touch-me-not' ),
-            'mark'     => 'tmn',
-            'tone'     => 'gold',   // the title page: ink and gold on paper
-        ],
-    ];
+// Research to Challenge (S01-P006, summit_home_panel()): Touch Me Not,
+// The Luxury 100 and The Observatory, each in its own mark. The earlier
+// client cards are not part of the Editorial Master.
+$panel    = summit_home_panel( 'S01-P006' );
+$headline = $panel['headline'] ?? __( 'Research to Challenge', 'summit' );
+$marks    = [
+    'touch me not'    => [ 'mark' => 'tmn', 'tone' => 'gold' ],
+    'the luxury 100'  => [ 'mark' => 'l100', 'tone' => 'metal' ],
+    'the observatory' => [ 'mark' => 'obs', 'tone' => 'plain' ],
+];
+$cards = [];
+foreach ( $panel['rows'] ?? [] as $row ) {
+    $key     = strtolower( $row['title'] );
+    $cards[] = array_merge( [ 'mark' => '', 'tone' => 'plain' ], $marks[ $key ] ?? [], [
+        'title' => $row['title'],
+        'desc'  => $row['line'],
+        'url'   => summit_meta_url( $row['url'] ?? '/research' ),
+    ] );
+}
+$cta = $panel['ctas'][0] ?? [ 'label' => __( 'Explore Research', 'summit' ), 'url' => '/research' ];
 
 if ( empty( $cards ) ) {
     return;
@@ -71,23 +51,33 @@ if ( empty( $cards ) ) {
     <div class="container container--wide">
 
         <header class="selected-work__header">
-            <h2 class="selected-work__headline" id="selected-work-heading" data-reveal>
-                <?php echo esc_html( $headline ); ?>
-            </h2>
-            <a href="<?php echo esc_url( get_post_type_archive_link( 'case_study' ) ?: home_url( '/work' ) ); ?>"
+            <div>
+                <?php if ( ! empty( $panel['eyebrow'] ) ) : ?>
+                <p class="home-eyebrow" data-reveal="fade"><?php echo esc_html( $panel['eyebrow'] ); ?></p>
+                <?php endif; ?>
+                <h2 class="selected-work__headline" id="selected-work-heading" data-reveal>
+                    <?php echo esc_html( $headline ); ?>
+                </h2>
+                <?php foreach ( $panel['paras'] ?? [] as $para ) : ?>
+                <p class="home-intro" data-reveal data-reveal-delay="1"><?php echo esc_html( $para ); ?></p>
+                <?php endforeach; ?>
+            </div>
+            <a href="<?php echo esc_url( summit_meta_url( $cta['url'] ) ); ?>"
                class="btn btn--secondary" data-reveal data-reveal-delay="1">
-                All Work
+                <?php echo esc_html( $cta['label'] ); ?>
             </a>
         </header>
 
-        <div class="selected-work__grid">
+        <div class="selected-work__grid<?php echo 3 === count( $cards ) ? ' selected-work__grid--three' : ''; ?>">
 
             <?php foreach ( $cards as $i => $card ) : ?>
             <a href="<?php echo esc_url( $card['url'] ); ?>"
                class="sw-card sw-card--<?php echo esc_attr( $card['tone'] ?? 'plain' ); ?>" data-reveal data-reveal-delay="<?php echo $i + 1; ?>"
-               aria-label="<?php echo esc_attr( 'View: ' . $card['title'] ); ?>">
+               aria-label="<?php echo esc_attr( $card['title'] ); ?>">
 
+                <?php if ( ! empty( $card['category'] ) ) : ?>
                 <span class="sw-card__category"><?php echo esc_html( $card['category'] ); ?></span>
+                <?php endif; ?>
 
                 <figure class="sw-card__logo" aria-hidden="true">
                     <?php if ( 'l100' === ( $card['mark'] ?? '' ) ) : ?>
@@ -108,9 +98,11 @@ if ( empty( $cards ) ) {
                         <span class="sw-mark__rule"></span>
                         <span class="sw-mark__sub">The Mystery of Luxury</span>
                     </span>
-                    <?php else : ?>
-                    <img src="<?php echo esc_url( $card['logo'] ); ?>"
-                         alt="" loading="lazy">
+                    <?php elseif ( 'obs' === ( $card['mark'] ?? '' ) ) : ?>
+                    <span class="sw-mark sw-mark--obs">
+                        <svg viewBox="0 0 200 200" focusable="false"><circle cx="100" cy="100" r="96"/><circle cx="100" cy="100" r="66"/><circle cx="100" cy="100" r="34"/><path d="M100 0v200M0 100h200"/></svg>
+                        <span class="sw-mark__name"><?php echo esc_html( $card['title'] ); ?></span>
+                    </span>
                     <?php endif; ?>
                 </figure>
 

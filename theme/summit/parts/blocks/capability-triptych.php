@@ -1,15 +1,14 @@
 <?php
 /**
- * Part: Capability Triptych
+ * Part: Capability Triptych — What's the Brief?
  * Location: parts/blocks/capability-triptych.php
  *
- * Three ways into Summit: the Solutions lenses — By Industry, By Function,
- * By Need — each linking to its lens on the Solutions page, with a quiet
- * line to Programmes beneath. Labels and destinations come from the
- * navigation config; the triptych's composition and marks are unchanged.
+ * Three ways into the work, in the Editorial Master's order (S01-P003):
+ * By Need, By Function, By Industry — each with its line and its route to
+ * the lens on the Solutions page. Copy from summit_home_panel(); the
+ * triptych's composition and abstract marks are unchanged.
  *
- * (The earlier home_cap_* fields — Brand Strategy, Experience Design,
- * Digital Transformation — are no longer read.)
+ * Until the field is set, the lenses come from the navigation config.
  *
  * @package SummitTheme
  */
@@ -17,28 +16,28 @@
 defined( 'ABSPATH' ) || exit;
 
 $img_dir = get_template_directory_uri() . '/assets/img/';
-
-// Three ways into Summit: the Solutions lenses, in the navigation's order.
-// The abstract marks are the panel's own; the lines are the lenses' own
-// grammar (parts/solutions/ways-in.php).
-$solutions = summit_nav( 'primary' )['solutions'] ?? [];
-$lines = [
-    'By Industry' => __( 'Industry describes the context — from watches and jewellery to private banking, each world read on its own terms.', 'summit' ),
-    'By Function' => __( 'Function describes the discipline — strategy, brand, editorial, experience, commerce, product and patrimony.', 'summit' ),
-    'By Need'     => __( 'Need describes the question — build a maison, reposition one, strengthen an icon, read one before a transaction.', 'summit' ),
-];
-$marks = [ 'brand-strategy', 'experience-design', 'digital-transformation' ];
+$panel   = summit_home_panel( 'S01-P003' );
+$marks   = [ 'brand-strategy', 'experience-design', 'digital-transformation' ];
 
 $pillars = [];
-foreach ( array_values( $solutions['groups'] ?? [] ) as $i => $group ) {
+foreach ( $panel['rows'] ?? [] as $i => $row ) {
     $pillars[] = [
-        'title'   => $group['label'],
-        'desc'    => $lines[ $group['label'] ] ?? '',
-        'url'     => summit_nav_url( $solutions ) . '#' . sanitize_title( $group['label'] ),
-        'icon'    => $img_dir . 'icon_' . ( $marks[ $i ] ?? $marks[0] ) . '.svg',
-        'icon_on' => $img_dir . 'icon_' . ( $marks[ $i ] ?? $marks[0] ) . '-on.svg',
-        'count'   => count( $group['children'] ?? [] ),
+        'title' => $row['title'],
+        'desc'  => $row['line'],
+        'url'   => summit_meta_url( $row['url'] ?? '/solutions' ),
+        'link'  => $row['cta'] ?? $row['title'],
     ];
+}
+if ( ! $pillars ) {
+    $solutions = summit_nav( 'primary' )['solutions'] ?? [];
+    foreach ( array_values( $solutions['groups'] ?? [] ) as $group ) {
+        $pillars[] = [
+            'title' => $group['label'],
+            'desc'  => '',
+            'url'   => summit_nav_url( $solutions ) . '#' . sanitize_title( $group['label'] ),
+            'link'  => $group['label'],
+        ];
+    }
 }
 ?>
 
@@ -46,41 +45,42 @@ foreach ( array_values( $solutions['groups'] ?? [] ) as $i => $group ) {
     <div class="container container--wide">
 
         <header class="capability-triptych__header">
-            <h2 class="capability-triptych__headline" id="capabilities-heading" data-reveal>Solutions</h2>
-            <a href="<?php echo esc_url( home_url( '/solutions' ) ); ?>"
-               class="btn btn--secondary" data-reveal data-reveal-delay="1">
-                Explore Solutions
-            </a>
+            <div class="capability-triptych__header-text">
+                <?php if ( ! empty( $panel['eyebrow'] ) ) : ?>
+                <p class="home-eyebrow" data-reveal="fade"><?php echo esc_html( $panel['eyebrow'] ); ?></p>
+                <?php endif; ?>
+                <h2 class="capability-triptych__headline" id="capabilities-heading" data-reveal><?php echo esc_html( $panel['headline'] ?? __( 'Solutions', 'summit' ) ); ?></h2>
+                <?php foreach ( $panel['paras'] ?? [] as $para ) : ?>
+                <p class="home-intro" data-reveal data-reveal-delay="1"><?php echo esc_html( $para ); ?></p>
+                <?php endforeach; ?>
+            </div>
         </header>
 
         <div class="capability-triptych__grid">
 
-            <?php
-            $pillar_delays = [ 1, 2, 3 ];
-            foreach ( $pillars as $i => $pillar ) :
-                $delay = $pillar_delays[ $i ] ?? 1;
+            <?php foreach ( $pillars as $i => $pillar ) :
+                $mark = $marks[ $i ] ?? $marks[0];
             ?>
-            <div class="capability-triptych__pillar" data-reveal data-reveal-delay="<?php echo $delay; ?>">
+            <div class="capability-triptych__pillar" data-reveal data-reveal-delay="<?php echo (int) min( 3, $i + 1 ); ?>">
                 <figure class="capability-triptych__thumb" aria-hidden="true">
                     <img class="capability-triptych__icon--off"
-                         src="<?php echo esc_url( $pillar['icon'] ); ?>"
+                         src="<?php echo esc_url( $img_dir . 'icon_' . $mark . '.svg' ); ?>"
                          alt="" width="100" height="100" loading="lazy">
                     <img class="capability-triptych__icon--on"
-                         src="<?php echo esc_url( $pillar['icon_on'] ); ?>"
+                         src="<?php echo esc_url( $img_dir . 'icon_' . $mark . '-on.svg' ); ?>"
                          alt="" width="100" height="100" loading="lazy">
                 </figure>
-                <span class="capability-triptych__number" aria-hidden="true">[ <?php echo $i + 1; ?> ]</span>
+                <span class="capability-triptych__number" aria-hidden="true">[ <?php echo (int) $i + 1; ?> ]</span>
                 <h3 class="capability-triptych__title">
                     <?php echo esc_html( $pillar['title'] ); ?>
                 </h3>
+                <?php if ( $pillar['desc'] ) : ?>
                 <div class="capability-triptych__desc">
-                    <?php echo wp_kses_post( wpautop( $pillar['desc'] ) ); ?>
+                    <p><?php echo esc_html( $pillar['desc'] ); ?></p>
                 </div>
+                <?php endif; ?>
                 <a href="<?php echo esc_url( $pillar['url'] ); ?>" class="capability-triptych__link">
-                    <?php
-                    /* translators: %d: number of entries in the lens */
-                    echo esc_html( sprintf( __( '%d ways in', 'summit' ), $pillar['count'] ) );
-                    ?> <span aria-hidden="true">&rarr;</span>
+                    <?php echo esc_html( $pillar['link'] ); ?> <span aria-hidden="true">&rarr;</span>
                 </a>
             </div>
             <?php endforeach; ?>

@@ -4,7 +4,8 @@
  * Location: parts/blocks/observatory-feature.php
  * Used by: front-page.php, in the panel position Tastemakers held
  *
- * What makes Summit different, shown rather than claimed: the Observatory
+ * What Valuation Misses (Editorial Handover v1, S01-P004), from
+ * summit_home_panel(). What makes Summit different, shown rather than claimed: the Observatory
  * as a governed instrument — its statement, its field figures, and the way
  * to a private briefing — beside The Luxury 100 it reads around. In the
  * homepage's own grammar: header row with outlined button, then a two-
@@ -24,6 +25,13 @@ foreach ( $section['children'] ?? [] as $child ) {
         $briefing = $child;
     }
 }
+// Copy: What Valuation Misses (S01-P004). Its first CTA is the editorial
+// link; the private briefing keeps the header's outlined button.
+$panel        = summit_home_panel( 'S01-P004' );
+$panel_ctas   = $panel['ctas'] ?? [];
+$explore_cta  = $panel_ctas[0] ?? [ 'label' => $section['label'], 'url' => $section['path'] ];
+$briefing_cta = $panel_ctas[1] ?? ( $briefing ? [ 'label' => $briefing['label'], 'url' => $briefing['path'] ] : null );
+
 $figures = [
     [ '104', __( 'Entries', 'summit' ) ],
     [ '17', __( 'Sectors', 'summit' ) ],
@@ -35,21 +43,30 @@ $figures = [
     <div class="container container--wide">
 
         <header class="home-obs__header">
-            <h2 class="home-obs__heading" id="home-obs-heading" data-reveal><?php echo esc_html( $section['label'] ); ?></h2>
-            <?php if ( $briefing ) : ?>
-            <a href="<?php echo esc_url( summit_nav_url( $briefing ) ); ?>" class="btn btn--secondary home-obs__btn" data-reveal data-reveal-delay="1">
-                <?php echo esc_html( $briefing['label'] ); ?>
+            <div>
+                <?php if ( ! empty( $panel['eyebrow'] ) ) : ?>
+                <p class="home-eyebrow" data-reveal="fade"><?php echo esc_html( $panel['eyebrow'] ); ?></p>
+                <?php endif; ?>
+                <h2 class="home-obs__heading" id="home-obs-heading" data-reveal><?php echo esc_html( $panel['headline'] ?? $section['label'] ); ?></h2>
+            </div>
+            <?php if ( $briefing_cta ) : ?>
+            <a href="<?php echo esc_url( summit_meta_url( $briefing_cta['url'] ) ); ?>" class="btn btn--secondary home-obs__btn" data-reveal data-reveal-delay="1">
+                <?php echo esc_html( $briefing_cta['label'] ); ?>
             </a>
             <?php endif; ?>
         </header>
 
         <div class="home-obs__layout">
+
             <div class="home-obs__text">
-                <p class="home-obs__statement" data-reveal><?php esc_html_e( 'One governed field, read under one method.', 'summit' ); ?></p>
-                <p class="home-obs__body" data-reveal data-reveal-delay="1"><?php esc_html_e( 'The Observatory reads the houses, objects and institutions around The Luxury 100 against the same five pillars, with its confidence declared. It classifies; it does not rank.', 'summit' ); ?></p>
+                <?php foreach ( $panel['paras'] ?? [] as $k => $para ) : ?>
+                <p class="<?php echo $k ? 'home-obs__body' : 'home-obs__lead'; ?>" data-reveal><?php echo esc_html( $para ); ?></p>
+                <?php endforeach; ?>
+                <?php if ( $explore_cta ) : ?>
                 <p class="home-obs__links" data-reveal="fade" data-reveal-delay="2">
-                    <a href="<?php echo esc_url( summit_nav_url( $section ) ); ?>"><?php echo esc_html( $section['label'] ); ?> <span aria-hidden="true">&rarr;</span></a>
+                    <a href="<?php echo esc_url( summit_meta_url( $explore_cta['url'] ) ); ?>"><?php echo esc_html( $explore_cta['label'] ); ?> <span aria-hidden="true">&rarr;</span></a>
                 </p>
+                <?php endif; ?>
             </div>
 
             <div class="home-obs__field" data-reveal="fade" data-reveal-delay="1">

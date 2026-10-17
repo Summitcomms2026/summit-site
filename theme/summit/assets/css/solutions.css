@@ -1701,3 +1701,26 @@
     padding-top: clamp(28px, 3vw, 40px);
   }
 }
+
+/* ── Controlled chroma (Pass 05) ──────────────────────────────────────
+   Solutions is the most material family: its industry imagery now keeps
+   the colour of brass, wood, glass and lacquer, and the Maison Due
+   Diligence ledger becomes a patinated object — umber under a metal
+   light, with metal rules marking what the house holds (value that does
+   not appear in the numbers). */
+.sx-feature {
+  background: #F1ECE6;
+}
+
+.sx-ledger {
+  background-color: #29221F;
+  background-image: radial-gradient(ellipse 70% 80% at 85% 0%, rgba(180, 127, 99, 0.24), transparent 66%);
+}
+
+.sx-ledger__col--read ul {
+  border-top-color: rgba(180, 127, 99, 0.7);
+}
+
+.sx-ledger__col--read li {
+  border-bottom-color: rgba(180, 127, 99, 0.22);
+}

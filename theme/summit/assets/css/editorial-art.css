@@ -9,7 +9,8 @@
  * the essay opener adds the second line at full scale.
  *
  * Families: house · ledger · object · culture · diagram.
- * Tones: dark (the ink field) · paper (the plate paper — the paper object).
+ * Tones: dark · paper — each family carries its own colour family
+ * (see "Colour families" below).
  */
 
 .ed-art {
@@ -245,6 +246,132 @@
 
 .home-article__card-media :is(.ed-art--house, .ed-art--object) .ed-art__key {
   top: 40%;
+}
+
+/* ── Colour families (Pass 05) ─────────────────────────────────────────
+   One recurring editorial family per construction — not a rainbow, and
+   never a house's branding. The ground is quiet; the colour is in its
+   temperature. */
+.ed-art--house {
+  --ed-ground: var(--field-violet, #2B2031);
+  --ed-text: #FAFAF8;
+  --ed-quiet: rgba(232, 222, 238, 0.62);
+  --ed-line: rgba(201, 186, 210, 0.2);
+}
+
+.ed-art--house.ed-art--ink {
+  --ed-ground: #1D1C1E;
+  --ed-quiet: rgba(250, 250, 248, 0.58);
+  --ed-line: rgba(250, 250, 248, 0.14);
+}
+
+.ed-art--object.ed-art--dark {
+  --ed-ground: #3A2A28;
+  --ed-text: #FAFAF8;
+  --ed-quiet: rgba(240, 222, 216, 0.62);
+  --ed-line: rgba(185, 145, 138, 0.42);
+}
+
+.ed-art--object.ed-art--paper {
+  --ed-ground: #E8DAD4;
+  --ed-text: #2A2220;
+  --ed-quiet: rgba(58, 42, 40, 0.6);
+  --ed-line: rgba(122, 86, 79, 0.3);
+}
+
+.ed-art--ledger {
+  --ed-ground: var(--field-plate, #F2EFE8);
+  --ed-text: #242322;
+  --ed-quiet: rgba(36, 35, 34, 0.56);
+  --ed-line: rgba(180, 127, 99, 0.5);
+}
+
+.ed-art--ledger .ed-art__ledger {
+  color: #9A6A50;
+}
+
+.ed-art--culture.ed-art--dark {
+  --ed-ground: #5C4B64;
+  --ed-text: #FAFAF8;
+  --ed-quiet: rgba(240, 232, 244, 0.66);
+  --ed-line: rgba(250, 250, 248, 0.16);
+}
+
+.ed-art--culture.ed-art--paper {
+  --ed-ground: #EFEBEB;
+  --ed-text: var(--accent-violet, #44304F);
+  --ed-quiet: rgba(68, 48, 79, 0.62);
+  --ed-line: rgba(68, 48, 79, 0.16);
+}
+
+.ed-art--diagram {
+  --ed-ground: var(--field-plate, #F2EFE8);
+  --ed-text: #242322;
+  --ed-quiet: rgba(36, 35, 34, 0.56);
+  --ed-line: rgba(141, 116, 149, 0.55);
+}
+
+/* Material: a fine grain, felt rather than seen */
+.ed-art::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.12;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+/* A subject's own colour, as a signal: the folio and a short rule */
+.ed-art.has-trace .ed-art__folio {
+  color: var(--ed-trace);
+}
+
+.ed-art.has-trace::after {
+  content: "";
+  position: absolute;
+  left: 7cqw;
+  bottom: 6.5cqw;
+  width: 9cqw;
+  height: 2px;
+  background: var(--ed-trace);
+}
+
+/* The opener: greater tonal depth — light falling across the surface */
+.ed-art--ctx-hero {
+  background-image:
+    radial-gradient(ellipse 70% 100% at 18% 0%, rgba(255, 255, 255, 0.09), transparent 62%),
+    radial-gradient(ellipse 80% 90% at 100% 100%, rgba(0, 0, 0, 0.2), transparent 70%);
+}
+
+.ed-art--ctx-hero:is(.ed-art--paper, .ed-art--ledger, .ed-art--diagram) {
+  background-image:
+    radial-gradient(ellipse 70% 100% at 18% 0%, rgba(255, 255, 255, 0.5), transparent 62%),
+    radial-gradient(ellipse 80% 90% at 100% 100%, rgba(122, 96, 84, 0.1), transparent 70%);
+}
+
+/* A long word inside the dial is set smaller, so the dial still holds it */
+.ed-art--object.ed-art--long .ed-art__key {
+  font-size: 4.8cqw;
+}
+
+/* On the wide opener the culture plate's second line rises to the top
+   row, clear of the cropped word */
+.ed-art--ctx-hero.ed-art--culture .ed-art__second {
+  top: 6cqw;
+}
+
+/* The menu: stripped back to the word on a quiet ground */
+.mega-menu .ed-art {
+  --ed-ground: #1F1F21;
+  --ed-text: rgba(250, 250, 248, 0.86);
+  --ed-line: rgba(250, 250, 248, 0.1);
+  background-image: none;
+}
+
+.mega-menu .ed-art::before,
+.mega-menu .ed-art::after {
+  display: none;
 }
 
 /* Editorial art is still: it does not scale on hover */

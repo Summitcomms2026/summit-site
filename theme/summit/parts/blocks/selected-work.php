@@ -9,7 +9,8 @@
  * Summit's own work (The Luxury 100's hundred places; Touch Me Not's title).
  * Default state: equal-height cards with centred logo only.
  * Hover state: active card grows taller, reveals category, title,
- * body copy and directional arrow.
+ * body copy and directional arrow, and releases a muted colour of its
+ * own material (rose, lilac, metal, gold) — quiet at rest.
  *
  * ACF fields (from front page):
  *   home_work_headline text         optional
@@ -33,6 +34,7 @@ $cards = [
             'desc'     => 'Teddy William produces garments of the very highest order. Many are leaders in their respective fields, accustomed to exacting standards, discerning taste, and the quiet assurance of bespoke done properly.',
             'url'      => ( get_post_type_archive_link( 'case_study' ) ?: home_url( '/work-showcase/' ) ) /* no case study page yet */,
             'logo'     => $img_dir . 'teddywilliam_white.png',
+            'tone'     => 'rose',   // cloth and tailoring warmth
         ],
         [
             'category' => 'Digital Transformation',
@@ -40,6 +42,7 @@ $cards = [
             'desc'     => 'Kaleida Studios is a science-driven media studio creating intelligent, emotionally resonant narratives across film, audio, and immersive formats. They explore the deepest questions shaping the human experience in a technological age.',
             'url'      => home_url( '/work-showcase/kaleida-studios/' ),
             'logo'     => $img_dir . 'kaleidastudios_white.png',
+            'tone'     => 'lilac',  // projected light, the studio's medium
         ],
         [
             'category' => 'Research',
@@ -47,6 +50,7 @@ $cards = [
             'desc'     => 'An annual, governed reading of durable luxury objects. In the 2027 reading, ninety-nine places are held and one chair is left empty.',
             'url'      => home_url( '/research/luxury-100' ),
             'mark'     => 'l100',
+            'tone'     => 'metal',  // the empty chair's patina
         ],
         [
             'category' => 'Book',
@@ -54,6 +58,7 @@ $cards = [
             'desc'     => 'The Mystery of Luxury — a book by Gregory Gray and Olivia Dhordain, and the argument behind Summit’s research.',
             'url'      => home_url( '/research/touch-me-not' ),
             'mark'     => 'tmn',
+            'tone'     => 'gold',   // the title page: ink and gold on paper
         ],
     ];
 
@@ -79,7 +84,7 @@ if ( empty( $cards ) ) {
 
             <?php foreach ( $cards as $i => $card ) : ?>
             <a href="<?php echo esc_url( $card['url'] ); ?>"
-               class="sw-card" data-reveal data-reveal-delay="<?php echo $i + 1; ?>"
+               class="sw-card sw-card--<?php echo esc_attr( $card['tone'] ?? 'plain' ); ?>" data-reveal data-reveal-delay="<?php echo $i + 1; ?>"
                aria-label="<?php echo esc_attr( 'View: ' . $card['title'] ); ?>">
 
                 <span class="sw-card__category"><?php echo esc_html( $card['category'] ); ?></span>

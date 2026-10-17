@@ -816,3 +816,16 @@
     color: var(--colour-ink);
   }
 }
+
+/* ── Controlled chroma (Pass 05) ──────────────────────────────────────
+   Programmes are engagements: human warmth inside institutional
+   structure. Tinted chapters sit on warm rose-paper; the dark chapter is
+   umber rather than ink. Nothing interface-level changes colour. */
+.prg-chapter--tinted {
+  background-color: var(--field-rose);
+}
+
+.prg-chapter--dark {
+  background-color: #2B2322;
+  background-image: radial-gradient(ellipse 60% 90% at 90% 0%, rgba(185, 145, 138, 0.16), transparent 65%);
+}

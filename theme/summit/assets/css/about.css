@@ -938,3 +938,44 @@
 .ab-chapter--principle {
   padding-block: clamp(120px, 14vw, 216px);
 }
+
+/* ── Controlled chroma (Pass 05) ──────────────────────────────────────
+   About reaches people: its paper is warmer, and two Manifesto
+   propositions carry colour as meaning — Authority in deep violet (what
+   remains when attention has moved on), Memory in muted rose (archive
+   warmth). Judgement stays the black conclusion. */
+.ab-chapter--tinted {
+  --ab-field: #F2EDE9;
+}
+
+.ab-chapter--rose {
+  --ab-field: #E9DCD5;
+  --ab-plate: #F3ECE8;
+  --ab-quiet: rgba(58, 42, 40, 0.66);
+}
+
+.ab-chapter--violet {
+  --ab-text: var(--colour-paper);
+  --ab-quiet: rgba(232, 222, 238, 0.7);
+  --ab-rule: rgba(232, 222, 238, 0.16);
+  --ab-rule-strong: var(--colour-paper);
+  --ab-field: var(--field-violet);
+  --ab-plate: #362a3d;
+  background-image: radial-gradient(ellipse 60% 80% at 85% 10%, rgba(141, 116, 149, 0.24), transparent 65%);
+}
+
+.ab-chapter--violet .ab-principle__word {
+  color: #CDBBD6;
+}
+
+.ab-chapter--rose .ab-principle__word {
+  color: #7E5A53;
+}
+
+@media (max-width: 767px) {
+  /* On a phone the violet proposition stands alone: Memory's rose is held
+     lighter, so the two colour fields do not run together. */
+  .ab-chapter--rose {
+    --ab-field: var(--field-rose);
+  }
+}

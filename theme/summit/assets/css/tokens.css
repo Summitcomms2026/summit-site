@@ -210,13 +210,20 @@
    * border.subtle #CAC9C8 control borders (fields, outlines)
    * canvas.light #F3F1EE  editorial reading surface (= --colour-ink-05)
    * Accents (violet #44304F, lilac #8D7495, rose #B9918A, metal #B47F63)
-   * are not interface colours. Colour enters through image and material;
-   * metal marks the one deliberate signal (the empty chair).
+   * are never interface colours (buttons, navigation, links, borders).
+   * They enter as atmosphere, material and editorial art: about 80%
+   * neutral field, 15% content-led chroma, 5% signal. Each use has a
+   * reason (material, subject, archive, emotional shift).
    * -------------------------------------------------------------------- */
   --canvas-dark:     #101012;
   --reading-ink:     #272529;
   --border-subtle:   #CAC9C8;
+  --accent-violet:   #44304F;
+  --accent-lilac:    #8D7495;
+  --accent-rose:     #B9918A;
   --accent-metal:    #B47F63;
+  --field-violet:    #2B2031;   /* the deep atmospheric field: violet in ink */
+  --field-rose:      #EFE6E1;   /* warm paper: rose held in the page */
 
   /* ── Control — one button geometry, measured from the homepage ───────── */
   --control-height:   40px;

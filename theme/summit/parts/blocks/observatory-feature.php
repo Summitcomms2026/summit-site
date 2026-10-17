@@ -55,7 +55,7 @@ $figures = [
             <div class="home-obs__field" data-reveal="fade" data-reveal-delay="1">
                 <svg class="home-obs__instrument" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
                     <circle cx="100" cy="100" r="96"/><circle cx="100" cy="100" r="66"/><circle cx="100" cy="100" r="34"/>
-                    <path d="M100 0v200M0 100h200"/>
+                    <path d="M100 0v200M0 100h200"/><circle class="home-obs__signal" cx="100" cy="100" r="1.8"/>
                 </svg>
                 <ul class="home-obs__figures" role="list">
                     <?php foreach ( $figures as [ $n, $label ] ) : ?>

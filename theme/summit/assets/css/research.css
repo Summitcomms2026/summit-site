@@ -1004,3 +1004,12 @@
 .res-chapter p.res-head::after {
   color: var(--res-quiet);
 }
+
+/* ── Controlled chroma (Pass 05) ──────────────────────────────────────
+   Research takes its colour from its own objects (the title page's ink
+   and gold, the cover, the empty chair's metal); its tinted chapters are
+   archive paper rather than grey. */
+.res-chapter--tinted {
+  --res-field: #F1ECE3;
+  background-color: #F1ECE3;
+}

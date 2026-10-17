@@ -23,7 +23,15 @@
  *
  * One subject per plate (The Quiet System): the word, its construction and
  * a small folio number — no repeated masthead, no category inside the
- * artwork (it sits beside every card), no gradient.
+ * artwork (it sits beside every card).
+ *
+ * Colour (Pass 05): each family is a recurring editorial colour family —
+ * house: deep violet or ink · object: rose and umber · ledger: paper, charcoal
+ * and metal · culture: smoked lilac or violet ink on paper · diagram:
+ * lilac notation on paper. A few essays carry a trace of their subject's
+ * own colour (a third value in the art-direction keys) — a signal, never
+ * a field, and never the house's branding. At card scale one colour
+ * idea; at the opener, tonal depth; in the menu, stripped back.
  *
  * The plate's word ("key") is art direction, kept here per essay; an
  * essay without an entry falls back to the words before its title's colon,
@@ -40,7 +48,9 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Art direction per essay: slug => [ key, secondary ].
+ * Art direction per essay: slug => [ key, secondary, trace? ].
+ * The trace is a subject colour shown as a signal (folio and a short
+ * rule): Argyle's pink, the Vanquish's racing green, desert light.
  */
 function summit_editorial_art_keys(): array {
     return [
@@ -48,19 +58,19 @@ function summit_editorial_art_keys(): array {
         'prada-make-versace-dangerous-again'                    => [ 'Versace', 'Prada' ],
         'the-house-that-stumbled-inside-guccis-crisis'          => [ 'Gucci', 'The house that stumbled' ],
         'ralph-lauren-the-art-of-selling-through-chaos'         => [ 'Ralph Lauren', 'Selling through chaos' ],
-        'aston-martins-new-vanquish-something-to-do-with-desire' => [ 'Vanquish', 'Aston Martin' ],
+        'aston-martins-new-vanquish-something-to-do-with-desire' => [ 'Vanquish', 'Aston Martin', '#4E6B58' ],
         'the-future-of-luxury-a-masterclass-in-reinvention'     => [ 'Dietrich', 'A masterclass in reinvention' ],
         'brabus-how-black-bold-and-bespoke-turned-excess-into-haute-couture' => [ 'BRABUS', 'Black, bold, bespoke' ],
         'can-sothebys-bet-big-on-debt-and-survive'               => [ 'Sotheby’s', 'Debt' ],
         'the-longevity-turn-when-time-becomes-exclusive-luxury'  => [ 'Time', 'The longevity turn' ],
-        'from-hill-of-grace-to-argyle-pink-diamonds-why-australias-luxury-houses-need-a-harder-shell' => [ 'Argyle', 'Hill of Grace' ],
+        'from-hill-of-grace-to-argyle-pink-diamonds-why-australias-luxury-houses-need-a-harder-shell' => [ 'Argyle', 'Hill of Grace', '#D49AA5' ],
         'watches-and-wonders-time-desire-and-horology'          => [ 'Horology', 'Watches and Wonders' ],
         'the-characteristics-of-luxury-a-visual-conversation'    => [ 'Characteristics', 'A visual conversation' ],
         'the-luxurification-of-sport'                            => [ 'Sport', 'Luxurification' ],
         'dslcollection-chinese-contemporary-art-enters-digital-era' => [ 'DSL', 'Collection' ],
         'the-art-experience-how-museums-can-embrace-screen-culture' => [ 'Museum', 'Screen culture' ],
         'brave-new-world-decoupling-art-sales'                   => [ 'Decoupling', 'Art and experience' ],
-        'saudi-arabias-tourism-ecosystem-next-frontier'          => [ 'Saudi', 'The next frontier' ],
+        'saudi-arabias-tourism-ecosystem-next-frontier'          => [ 'Saudi', 'The next frontier', '#C9A574' ],
         'hospitality-is-eating-luxurys-lunch'                    => [ 'Lunch', 'Hospitality' ],
         'from-limited-edition-to-one-only-personalisation-in-luxury' => [ 'One & Only', 'From limited edition' ],
         'gen-z-wont-buy-your-myth'                               => [ 'Myth', 'Gen Z' ],
@@ -113,7 +123,7 @@ function summit_editorial_art_number( int $post_id ): int {
 /**
  * The plate's word: art-directed, else derived from the title.
  *
- * @return array{0:string,1:string}
+ * @return array{0:string,1:string,2?:string}
  */
 function summit_editorial_art_key( int $post_id ): array {
     $slug = (string) get_post_field( 'post_name', $post_id );
@@ -143,12 +153,15 @@ function summit_editorial_art_key( int $post_id ): array {
  */
 function summit_editorial_art( int $post_id, string $context = 'card' ): string {
     $family = summit_editorial_art_family( $post_id );
-    [ $key, $second ] = summit_editorial_art_key( $post_id );
+    $art    = summit_editorial_art_key( $post_id );
+    $key    = $art[0];
+    $second = $art[1] ?? '';
+    $trace  = isset( $art[2] ) ? sanitize_hex_color( $art[2] ) : '';
     $number = summit_editorial_art_number( $post_id );
     $year   = get_the_date( 'Y', $post_id );
     $tone   = in_array( $family, [ 'ledger', 'diagram' ], true ) ? 'paper' : ( $post_id % 3 === 1 ? 'paper' : 'dark' );
     if ( 'house' === $family ) {
-        $tone = 'dark';
+        $tone = $post_id % 2 ? 'dark' : 'ink';   // deep violet, or ink
     }
 
     $geometry = [
@@ -159,11 +172,12 @@ function summit_editorial_art( int $post_id, string $context = 'card' ): string 
         'diagram' => '<path d="M50 8v84M8 50h84M20.3 20.3l59.4 59.4M79.7 20.3 20.3 79.7"/><circle cx="50" cy="50" r="12"/><circle cx="50" cy="50" r="30"/>',
     ][ $family ];
 
-    $classes = sprintf( 'ed-art ed-art--%s ed-art--%s ed-art--ctx-%s', $family, $tone, sanitize_html_class( $context ) );
+    $long    = mb_strlen( $key ) > 12 ? ' ed-art--long' : '';
+    $classes = sprintf( 'ed-art ed-art--%s ed-art--%s ed-art--ctx-%s%s%s', $family, $tone, sanitize_html_class( $context ), $trace ? ' has-trace' : '', $long );
 
     ob_start();
     ?>
-<span class="<?php echo esc_attr( $classes ); ?>" aria-hidden="true">
+<span class="<?php echo esc_attr( $classes ); ?>"<?php echo $trace ? ' style="--ed-trace: ' . esc_attr( $trace ) . ';"' : ''; ?> aria-hidden="true">
     <svg class="ed-art__geo" viewBox="0 0 100 100" preserveAspectRatio="<?php echo in_array( $family, [ 'object', 'diagram' ], true ) ? 'xMidYMid meet' : 'none'; ?>" focusable="false"><?php echo $geometry; // phpcs:ignore WordPress.Security.EscapeOutput -- static markup ?></svg>
     <?php if ( $number ) : ?><span class="ed-art__folio"><?php echo esc_html( sprintf( 'No. %02d', $number ) ); ?></span><?php endif; ?>
     <span class="ed-art__key"><?php echo esc_html( $key ); ?></span>

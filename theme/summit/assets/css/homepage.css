@@ -2337,3 +2337,137 @@
     transition: none;
   }
 }
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* CONTROLLED CHROMA (Pass 05) — quiet field, expressive subject.         */
+/* Colour enters as atmosphere and material; buttons, links and the       */
+/* header stay neutral.                                                   */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+/* Hero: the photograph leads — a lighter veil lets its own colour through */
+.home-hero::after {
+  background: linear-gradient(
+    to top,
+    rgba(26, 26, 24, 0.66) 0%,
+    rgba(26, 26, 24, 0.26) 35%,
+    rgba(26, 26, 24, 0.05) 65%,
+    rgba(26, 26, 24, 0) 100%
+  );
+}
+
+/* The statement: the homepage's one deep chromatic field. Violet held in
+   ink, with light falling across it from the upper right — the shift from
+   the photograph to the proposition. Scrolling back up still turns the
+   page to paper. */
+.vp-block {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--field-violet);
+}
+
+.vp-block::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 60% 80% at 82% 12%, rgba(141, 116, 149, 0.26), transparent 64%),
+    radial-gradient(ellipse 70% 70% at 0% 100%, rgba(16, 16, 18, 0.55), transparent 70%);
+  transition: opacity 0.6s var(--ease-inout);
+}
+
+.vp-block.vp--scroll-up::before {
+  opacity: 0;
+}
+
+/* Solutions: the field in hand warms — smoked rose under a soft light,
+   the same for each way in (environmental, not a colour code). */
+@media (min-width: 768px) {
+  .capability-triptych__pillar:hover {
+    background-color: #33262A;
+    background-image: radial-gradient(ellipse 80% 70% at 50% 18%, rgba(185, 145, 138, 0.3), transparent 70%);
+  }
+}
+
+/* Selected Work & Research: quiet at rest; in hand, each mark releases the
+   colour of its own material. */
+.sw-card {
+  --sw-glow: rgba(250, 250, 248, 0.06);
+  transition: height 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              margin 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              background-color var(--motion-image, 900ms) var(--ease-out),
+              opacity var(--duration-base) var(--ease-out);
+}
+
+.sw-card--rose  { --sw-glow: rgba(185, 145, 138, 0.3); }
+.sw-card--lilac { --sw-glow: rgba(141, 116, 149, 0.34); }
+.sw-card--metal { --sw-glow: rgba(180, 127, 99, 0.28); }
+.sw-card--gold  { --sw-glow: rgba(201, 170, 120, 0.26); }
+
+.sw-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 85% 75% at 50% 42%, var(--sw-glow), transparent 72%);
+  opacity: 0;
+  transition: opacity var(--motion-image, 900ms) var(--ease-out);
+  pointer-events: none;
+}
+
+.sw-card:hover::before,
+.sw-card:focus-visible::before {
+  opacity: 1;
+}
+
+/* The empty chair keeps its metal signal, even at rest */
+.sw-mark--l100 .sw-mark__empty {
+  stroke: var(--accent-metal);
+  stroke-width: 1.2;
+}
+
+.sw-card--gold:hover .sw-mark,
+.sw-card--gold:focus-visible .sw-mark {
+  color: #E4D3B4;
+}
+
+/* The Observatory (light): mood from the environment, not the figures —
+   a faint lilac atmosphere around the instrument and one metal point at
+   its centre. */
+.home-obs {
+  overflow-x: clip;   /* the atmosphere may extend beyond the field, never the page */
+}
+
+.home-obs__field::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(120%, 640px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(141, 116, 149, 0.13), rgba(141, 116, 149, 0.04) 45%, transparent 68%);
+  pointer-events: none;
+}
+
+.home-obs__instrument .home-obs__signal {
+  fill: var(--accent-metal);
+  stroke: none;
+}
+
+/* The World of Luxury: material colour survives (the images now keep
+   their warm material hues); rest is near-monochrome, not monochrome. */
+.sectors-grid--industries .sectors-grid__image {
+  filter: brightness(0.8) saturate(1);
+}
+
+.sectors-grid--industries .sectors-grid__item:hover .sectors-grid__image,
+.sectors-grid--industries .sectors-grid__link:focus-visible .sectors-grid__image {
+  filter: brightness(0.98) saturate(1.12);
+}
+
+@media (min-width: 768px) {
+  .sectors-grid--industries.sectors-grid:hover .sectors-grid__item:not(:hover) .sectors-grid__image {
+    filter: brightness(0.6) saturate(0.75);
+  }
+}

@@ -1249,3 +1249,32 @@
   padding: clamp(24px, 2.6vw, 36px) 0 0;
   border: 0;
 }
+
+/* ── Controlled chroma (Pass 05) ──────────────────────────────────────
+   The Observatory's cover is deep atmosphere — violet held in near-black,
+   a faint light where the instrument centres, and one metal point there.
+   The figures and chapters stay neutral evidence. */
+.summit-observatory .shell-hero--dark.section--dark {
+  background-color: #151118;
+  background-image: radial-gradient(circle 520px at 76% 56%, rgba(141, 116, 149, 0.2), rgba(68, 48, 79, 0.12) 45%, transparent 75%);
+}
+
+.summit-observatory--overview .shell-hero--dark::after {
+  content: "";
+  position: absolute;
+  left: 76%;
+  top: 56%;
+  z-index: -1;
+  width: 5px;
+  height: 5px;
+  margin: -2.5px 0 0 -2.5px;
+  border-radius: 50%;
+  background: var(--accent-metal);
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .summit-observatory .shell-hero--dark.section--dark {
+    background-image: radial-gradient(circle 300px at 76% 56%, rgba(141, 116, 149, 0.16), transparent 75%);
+  }
+}

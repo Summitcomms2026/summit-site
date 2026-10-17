@@ -1309,7 +1309,8 @@
    The masthead meets the tinted lead by tone alone; panel heads keep one
    hairline that organises rather than underlines. On the index the plate
    gives atmosphere and the headline leads: its word is held back a step
-   (the essay opener keeps the plate's full authority). */
+   (the essay opener keeps the plate's full authority; its colour family
+   is untouched). */
 .fol-masthead {
   border-bottom: 0;
 }
@@ -1318,12 +1319,6 @@
   border-bottom-color: var(--fol-rule);
 }
 
-.fol-story .ed-art--dark {
-  --ed-text: rgba(250, 250, 248, 0.8);
-  --ed-line: rgba(250, 250, 248, 0.1);
-}
-
-.fol-story .ed-art--paper {
-  --ed-text: rgba(26, 26, 24, 0.78);
-  --ed-line: rgba(26, 26, 24, 0.1);
+.fol-story .ed-art__key {
+  opacity: 0.84;
 }

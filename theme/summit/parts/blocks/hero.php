@@ -11,10 +11,10 @@
  *   home_hero_eyebrow    text     optional
  *   home_hero_headline   text     optional — default provided
  *   home_hero_body       textarea optional — default provided
- *   home_hero_cta_label  text     optional — default: Design Tomorrow
- *   home_hero_cta_url    url      optional — default: /design-tomorrow
+ *   home_hero_cta_label  text     optional — default: Solutions
+ *   home_hero_cta_url    url      optional — default: /solutions
  *   home_hero_cta2_label text     optional — default: Explore Our Work
- *   home_hero_cta2_url   url      optional — default: /work-showcase
+ *   home_hero_cta2_url   url      optional — default: the canonical Let's Talk
  *
  * @package SummitTheme
  */
@@ -23,11 +23,11 @@ defined( 'ABSPATH' ) || exit;
 
 $eyebrow   = get_field( 'home_hero_eyebrow' );
 $headline  = get_field( 'home_hero_headline' )   ?: 'Designing the Future of Luxury';
-$body      = get_field( 'home_hero_body' )        ?: 'Summit Communication Group is a design consultancy specialising in brand strategy, experience design and digital transformation for luxury brands.';
-$cta_label = get_field( 'home_hero_cta_label' )   ?: 'What We Do';
-$cta_url   = get_field( 'home_hero_cta_url' )     ?: home_url( '/what-we-do' );
+$body      = get_field( 'home_hero_body' )        ?: 'A strategic design and intelligence practice for luxury houses, cultural institutions and the people who invest in them.';
+$cta_label = get_field( 'home_hero_cta_label' )   ?: 'Solutions';
+$cta_url   = get_field( 'home_hero_cta_url' )     ?: home_url( '/solutions' );
 $cta2_label = get_field( 'home_hero_cta2_label' ) ?: "Let\u{2019}s Talk";
-$cta2_url   = get_field( 'home_hero_cta2_url' )   ?: home_url( '/design-tomorrow' );
+$cta2_url   = get_field( 'home_hero_cta2_url' )   ?: summit_nav_url( summit_nav( 'cta' ) );
 
 $hero_image = get_field( 'home_hero_image' );
 $hero_url   = $hero_image ? $hero_image['url'] : get_template_directory_uri() . '/assets/img/top-herophoto.jpg';

@@ -150,6 +150,16 @@
   margin-bottom: 0;
 }
 
+/* Phones: the hero line reads as a sentence, not an annotation */
+@media (max-width: 599px) {
+  .home-hero__body {
+    max-width: 300px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+}
+
 .home-hero__actions {
   display: flex;
   flex-wrap: wrap;

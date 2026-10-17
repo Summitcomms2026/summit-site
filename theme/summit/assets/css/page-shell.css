@@ -140,7 +140,7 @@
 .shell-hero__standfirst {
   max-width: 34ch;
   font-family: var(--font-text);
-  font-size: clamp(1.1875rem, 1.55vw, 1.375rem);   /* 19 → 22 */
+  font-size: var(--type-lead);   /* 19 → 22 */
   font-weight: 400;
   line-height: 1.45;
   letter-spacing: -0.003em;
@@ -202,6 +202,11 @@
 
 .shell-body {
   padding-block: clamp(56px, 8vw, 112px);
+}
+
+/* Directly after the hero, the body begins without a second silence */
+.shell-hero + .shell-body {
+  padding-top: clamp(32px, 4vw, 56px);
 }
 
 .shell-body__inner {
@@ -321,7 +326,7 @@
   color: var(--colour-ink-40);
   transition:
     color var(--duration-fast) var(--ease-out),
-    transform var(--duration-base) var(--ease-out);
+    transform var(--motion-ui) var(--ease-out);
 }
 
 .shell-index__link:hover,

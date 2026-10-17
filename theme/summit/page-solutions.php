@@ -28,7 +28,8 @@
  *   summit_utilities         comma list of utility actions, e.g. "share"
  *
  * Entry pages feed the overview: "summit_summary" (one line, shown in the
- * index) and "summit_visual" (attachment ID or URL, a sector's image).
+ * index) and "summit_visual" (attachment ID or URL, a sector's image). An
+ * entry page without content of its own shows its visual as a band.
  *
  * Overview panel classes (blocks): sx-field (a full-width panel), sx-reset,
  *   sx-feature / sx-feature__text / sx-ledger / sx-ledger__col(--read),
@@ -181,6 +182,25 @@ get_header();
 
         <?php
         $content = apply_filters( 'the_content', get_the_content() );
+
+        // An entry without its own content shows its visual (summit_visual —
+        // the same image the overview's industry field uses) as a band.
+        $visual = $meta( 'summit_visual' );
+        if ( ! trim( $content ) && $visual && ! $is_index ) :
+            // A theme image may have a wide companion (<name>-wide.jpg) for the band.
+            $wide = is_numeric( $visual ) ? '' : preg_replace( '/\.jpg$/', '-wide.jpg', $visual );
+            if ( $wide && ! is_readable( ABSPATH . ltrim( (string) wp_parse_url( $wide, PHP_URL_PATH ), '/' ) ) ) {
+                $wide = '';
+            }
+            $visual_html = is_numeric( $visual )
+                ? wp_get_attachment_image( (int) $visual, 'large', false, [ 'alt' => '', 'loading' => 'eager' ] )
+                : '<img src="' . esc_url( $wide ?: $visual ) . '" alt="" width="' . ( $wide ? 1600 : 800 ) . '" height="' . ( $wide ? 686 : 1000 ) . '" decoding="async">';
+        ?>
+        <figure class="sol-entry-visual" data-reveal="fade">
+            <?php echo $visual_html; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above ?>
+        </figure>
+        <?php endif;
+
         if ( trim( $content ) ) {
             echo '<div class="sol-body">' . $summit_sol_reveal( $content ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput -- the_content output
         }

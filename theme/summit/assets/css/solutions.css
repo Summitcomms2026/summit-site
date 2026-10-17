@@ -32,9 +32,9 @@
 }
 
 .sol-chapter--dark {
-  --sol-rule: rgba(250, 250, 248, 0.16);
+  --sol-rule: var(--on-dark-rule);
   --sol-rule-strong: var(--colour-paper);
-  --sol-quiet: rgba(250, 250, 248, 0.66);
+  --sol-quiet: var(--on-dark-quiet);
   --sol-text: var(--colour-paper);
   background-color: var(--colour-ink);
 }
@@ -162,7 +162,7 @@
 
 .sol-chapter p.sol-lead {
   max-width: 34em;
-  font-size: clamp(1.1875rem, 1.55vw, 1.375rem);  /* 19 → 22 */
+  font-size: var(--type-lead);  /* 19 → 22 */
   line-height: 1.5;
   color: var(--sol-text);
 }
@@ -207,7 +207,7 @@
   display: inline-block;
   margin-left: 12px;
   text-decoration: none;
-  transition: transform var(--duration-base) var(--ease-out);
+  transition: transform var(--motion-ui) var(--ease-out);
 }
 
 .sol-link a:hover,
@@ -323,7 +323,7 @@
 }
 
 .sol-row h3 {
-  font-size: clamp(1.1875rem, 1.6vw, 1.375rem);  /* 19 → 22 */
+  font-size: var(--type-lead);  /* 19 → 22 */
   line-height: 1.2;
   letter-spacing: -0.008em;
 }
@@ -359,7 +359,7 @@
 
 .sol-pair strong {
   font-family: var(--font-sans);
-  font-size: clamp(1.375rem, 2vw, 1.75rem);     /* 22 → 28 */
+  font-size: var(--type-register);     /* 22 → 28 */
   line-height: 1.1;
   letter-spacing: -0.015em;
 }
@@ -451,7 +451,7 @@
   gap: var(--space-4);
   padding-block: 14px 15px;
   font-family: var(--font-sans);
-  font-size: clamp(1.1875rem, 1.6vw, 1.375rem);
+  font-size: var(--type-lead);
   line-height: 1.2;
   letter-spacing: -0.008em;
   color: var(--colour-ink);
@@ -462,7 +462,7 @@
   font-family: var(--font-text);
   font-size: 0.875rem;
   color: var(--colour-ink-40);
-  transition: transform var(--duration-base) var(--ease-out), color var(--duration-fast) var(--ease-out);
+  transition: transform var(--motion-ui) var(--ease-out), color var(--duration-fast) var(--ease-out);
 }
 
 .sol-related__link:hover {
@@ -567,9 +567,9 @@
 
 .sx-ways {
   --sx-text: var(--colour-paper);
-  --sx-quiet: rgba(250, 250, 248, 0.66);
+  --sx-quiet: var(--on-dark-quiet);
   --sx-faint: rgba(250, 250, 248, 0.52);
-  --sx-rule: rgba(250, 250, 248, 0.16);
+  --sx-rule: var(--on-dark-rule);
   padding-block: clamp(72px, 9vw, 136px) clamp(88px, 10vw, 152px);
   background: var(--colour-ink);
   color: var(--sx-text);
@@ -625,7 +625,7 @@
   background: var(--sx-text);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 520ms var(--sx-ease);
+  transition: transform var(--motion-panel) var(--sx-ease);
 }
 
 .sx-lens__num {
@@ -663,7 +663,7 @@
   font-size: 0.42em;
   opacity: 0;
   transform: translateY(-6px);
-  transition: opacity var(--duration-base) var(--sx-ease), transform 420ms var(--sx-ease);
+  transition: opacity var(--duration-base) var(--sx-ease), transform var(--motion-ui) var(--sx-ease);
 }
 
 .sx-lens__key {
@@ -725,14 +725,14 @@
   visibility: hidden;
   opacity: 0;
   transform: translateY(14px);
-  transition: opacity 420ms var(--sx-ease), transform 520ms var(--sx-ease), visibility 0s linear 420ms;
+  transition: opacity var(--motion-ui) var(--sx-ease), transform var(--motion-panel) var(--sx-ease), visibility 0s linear var(--motion-ui);
 }
 
 .sx-ways.is-enhanced .sx-lenspanel.is-active {
   visibility: visible;
   opacity: 1;
   transform: none;
-  transition: opacity 520ms var(--sx-ease) 80ms, transform 620ms var(--sx-ease) 80ms, visibility 0s;
+  transition: opacity var(--motion-panel) var(--sx-ease) var(--motion-stagger), transform var(--motion-panel) var(--sx-ease) var(--motion-stagger), visibility 0s;
 }
 
 /* Below desktop the inactive lenses leave the flow entirely, so a short
@@ -815,7 +815,7 @@
 }
 
 .sx-sector__label {
-  transition: transform 420ms var(--sx-ease);
+  transition: transform var(--motion-register) var(--sx-ease);
 }
 
 .sx-sector:hover,
@@ -857,7 +857,7 @@
   margin: 0;
   opacity: 0;
   transform: scale(1.045);
-  transition: opacity 620ms var(--sx-ease), transform 1600ms var(--sx-ease);
+  transition: opacity var(--motion-image) var(--sx-ease), transform calc(var(--motion-image) * 1.8) var(--sx-ease);
 }
 
 .sx-visual__frame.is-active {
@@ -955,7 +955,7 @@
   background: rgba(250, 250, 248, 0.06);
   transform: scaleY(0);
   transform-origin: bottom;
-  transition: transform 460ms var(--sx-ease);
+  transition: transform var(--motion-register) var(--sx-ease);
 }
 
 .sx-function:hover::before,
@@ -1020,7 +1020,7 @@
 .sx-need-intro {
   margin: 0 0 clamp(40px, 5vw, 72px);
   font-family: var(--font-serif);
-  font-size: clamp(2.25rem, 4.6vw, 4.25rem);    /* 36 → 68 */
+  font-size: var(--type-statement);    /* 36 → 68 */
   font-weight: 400;
   line-height: 1.05;
   color: var(--sx-text);
@@ -1061,7 +1061,7 @@
   font-weight: 400;
   line-height: 1.05;
   letter-spacing: -0.022em;
-  transition: transform 420ms var(--sx-ease);
+  transition: transform var(--motion-register) var(--sx-ease);
 }
 
 .sx-need__line {
@@ -1122,7 +1122,7 @@
     gap: var(--space-5);
     opacity: 0;
     transform: translateY(10px);
-    transition: opacity 360ms var(--sx-ease), transform 460ms var(--sx-ease);
+    transition: opacity var(--motion-panel) var(--sx-ease), transform var(--motion-panel) var(--sx-ease);
     pointer-events: none;
   }
 
@@ -1188,7 +1188,7 @@
   max-width: 36ch;
   margin: clamp(40px, 5vw, 72px) 0 0 auto;
   font-family: var(--font-text);
-  font-size: clamp(1.1875rem, 1.55vw, 1.375rem);
+  font-size: var(--type-lead);
   line-height: 1.5;
   color: var(--colour-ink-60);
 }
@@ -1225,7 +1225,7 @@
   max-width: 13ch;
   margin: 0;
   font-family: var(--font-sans);
-  font-size: clamp(2.25rem, 4.6vw, 4.25rem);
+  font-size: var(--type-statement);
   font-weight: 400;
   line-height: 1.02;
   letter-spacing: -0.026em;
@@ -1235,7 +1235,7 @@
   max-width: 36ch;
   margin: 0;
   font-family: var(--font-text);
-  font-size: clamp(1.1875rem, 1.55vw, 1.375rem);
+  font-size: var(--type-lead);
   line-height: 1.5;
   color: var(--colour-ink);
 }
@@ -1263,7 +1263,7 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  border-top: 1px solid rgba(250, 250, 248, 0.16);
+  border-top: 1px solid var(--on-dark-rule);
 }
 
 .sx-ledger__col li {
@@ -1329,7 +1329,7 @@
   max-width: 38ch;
   margin: 0;
   font-family: var(--font-text);
-  font-size: clamp(1.1875rem, 1.55vw, 1.375rem);
+  font-size: var(--type-lead);
   line-height: 1.5;
 }
 
@@ -1379,7 +1379,7 @@
   font-weight: 400;
   line-height: 1.04;
   letter-spacing: -0.022em;
-  transition: transform 420ms var(--ease-out), color var(--duration-fast) var(--ease-out);
+  transition: transform var(--motion-register) var(--ease-out), color var(--duration-fast) var(--ease-out);
 }
 
 .sx-row .sx-arrow {
@@ -1493,7 +1493,7 @@
   font-family: var(--font-text);
   font-size: 0.9375rem;
   color: var(--colour-ink-40);
-  transition: transform var(--duration-base) var(--ease-out), color var(--duration-fast) var(--ease-out);
+  transition: transform var(--motion-ui) var(--ease-out), color var(--duration-fast) var(--ease-out);
 }
 
 .sx-strip:hover .sx-strip__title,
@@ -1656,4 +1656,24 @@
   .sol-chapter--close {
     display: none;
   }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* ENTRY VISUAL — an industry entry's image, as a band beneath the hero   */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.sol-entry-visual {
+  margin: 0;
+  height: clamp(280px, 46vw, 620px);
+  overflow: hidden;
+  background: var(--field-dark);
+}
+
+.sol-entry-visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 45%;
 }

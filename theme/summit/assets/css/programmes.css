@@ -35,9 +35,9 @@
 
 .prg-chapter--dark {
   --prg-text: var(--colour-paper);
-  --prg-quiet: rgba(250, 250, 248, 0.68);
-  --prg-faint: rgba(250, 250, 248, 0.5);
-  --prg-rule: rgba(250, 250, 248, 0.16);
+  --prg-quiet: var(--on-dark-quiet);
+  --prg-faint: var(--on-dark-faint);
+  --prg-rule: var(--on-dark-rule);
   --prg-rule-strong: var(--colour-paper);
   background-color: var(--colour-ink);
 }
@@ -118,7 +118,7 @@
 
 .prg-chapter p.prg-lead {
   max-width: 36em;
-  font-size: clamp(1.1875rem, 1.55vw, 1.375rem);
+  font-size: var(--type-lead);
   line-height: 1.5;
   color: var(--prg-text);
 }
@@ -137,7 +137,7 @@
 .prg-chapter h2.prg-statement {
   max-width: 19ch;
   font-family: var(--font-serif);
-  font-size: clamp(2.25rem, 4.6vw, 4.25rem);    /* 36 → 68 */
+  font-size: var(--type-statement);    /* 36 → 68 */
   font-weight: 400;
   line-height: 1.08;
   letter-spacing: -0.01em;
@@ -170,7 +170,7 @@
   display: inline-block;
   margin-left: 12px;
   text-decoration: none;
-  transition: transform var(--duration-base) var(--ease-out);
+  transition: transform var(--motion-ui) var(--ease-out);
 }
 
 .prg-link a:hover::after,
@@ -269,7 +269,7 @@
   background: var(--prg-text);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 520ms var(--ease-out);
+  transition: transform var(--motion-panel) var(--ease-out);
 }
 
 .prg-entry__num {
@@ -305,7 +305,7 @@
   font-size: 0.4em;
   vertical-align: 0.35em;
   color: var(--prg-faint);
-  transition: transform var(--duration-base) var(--ease-out), color var(--duration-fast) var(--ease-out);
+  transition: transform var(--motion-ui) var(--ease-out), color var(--duration-fast) var(--ease-out);
 }
 
 .prg-entry__summary {
@@ -406,7 +406,7 @@
     gap: 12px;
     opacity: 0;
     transform: translateY(10px);
-    transition: opacity 360ms var(--ease-out), transform 460ms var(--ease-out);
+    transition: opacity var(--motion-panel) var(--ease-out), transform var(--motion-panel) var(--ease-out);
   }
 
   .prg-held__item.is-active {
@@ -425,7 +425,7 @@
 
   .prg-held__name {
     padding-bottom: 18px;
-    border-bottom: 1px solid rgba(250, 250, 248, 0.16);
+    border-bottom: 1px solid var(--on-dark-rule);
     font-family: var(--font-sans);
     font-size: 1.375rem;
     letter-spacing: -0.01em;
@@ -476,7 +476,7 @@
 .prg-chapter .prg-question p {
   max-width: 26ch;
   font-family: var(--font-serif);
-  font-size: clamp(1.375rem, 2vw, 1.75rem);     /* 22 → 28 */
+  font-size: var(--type-register);     /* 22 → 28 */
   line-height: 1.25;
   color: var(--prg-text);
 }
@@ -665,14 +665,14 @@
 
 .prg-others__label {
   font-family: var(--font-sans);
-  font-size: clamp(1.1875rem, 1.6vw, 1.375rem);
+  font-size: var(--type-lead);
   letter-spacing: -0.008em;
 }
 
 .prg-others__arrow {
   font-size: 0.875rem;
   color: var(--colour-ink-40);
-  transition: transform var(--duration-base) var(--ease-out);
+  transition: transform var(--motion-ui) var(--ease-out);
 }
 
 .prg-others__link:hover .prg-others__label {

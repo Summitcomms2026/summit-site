@@ -81,6 +81,10 @@ if ( $context ) {
         $eyebrow[] = $context['group'];
     }
 }
+// Pages outside the sections (utility and legal) carry the institution's name.
+if ( ! $eyebrow ) {
+    $eyebrow[] = get_bloginfo( 'name' );
+}
 
 // Index: a parent lists its pages; a child lists its siblings
 $index_heading = '';

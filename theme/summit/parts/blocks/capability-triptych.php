@@ -28,21 +28,21 @@ $pillars = [
     [
         'title' => get_field( 'home_cap_1_title' ) ?: 'Brand Strategy',
         'desc'  => get_field( 'home_cap_1_desc' )  ?: 'Positioning, identity and narrative frameworks that give luxury brands strategic clarity and cultural relevance.',
-        'url'   => get_field( 'home_cap_1_url' )   ?: home_url( '/what-we-do/brand-strategy' ),
+        'url'   => get_field( 'home_cap_1_url' )   ?: home_url( '/solutions/brand-marketing' ),
         'icon'     => $img_dir . 'icon_brand-strategy.svg',
         'icon_on'  => $img_dir . 'icon_brand-strategy-on.svg',
     ],
     [
         'title' => get_field( 'home_cap_2_title' ) ?: 'Experience Design',
         'desc'  => get_field( 'home_cap_2_desc' )  ?: 'Physical and digital experiences that reflect brand truth, delight discerning audiences and create lasting impressions.',
-        'url'   => get_field( 'home_cap_2_url' )   ?: home_url( '/what-we-do/experience-design' ),
+        'url'   => get_field( 'home_cap_2_url' )   ?: home_url( '/solutions/experience-design' ),
         'icon'     => $img_dir . 'icon_experience-design.svg',
         'icon_on'  => $img_dir . 'icon_experience-design-on.svg',
     ],
     [
         'title' => get_field( 'home_cap_3_title' ) ?: 'Digital Transformation',
         'desc'  => get_field( 'home_cap_3_desc' )  ?: 'Platforms, systems and digital infrastructure built for premium performance, operational elegance and measurable growth.',
-        'url'   => get_field( 'home_cap_3_url' )   ?: home_url( '/what-we-do/digital-transformation' ),
+        'url'   => get_field( 'home_cap_3_url' )   ?: home_url( '/solutions/digital-commerce' ),
         'icon'     => $img_dir . 'icon_digital-transformation.svg',
         'icon_on'  => $img_dir . 'icon_digital-transformation-on.svg',
     ],
@@ -53,10 +53,10 @@ $pillars = [
     <div class="container container--wide">
 
         <header class="capability-triptych__header">
-            <h2 class="capability-triptych__headline" id="capabilities-heading" data-reveal>What We Do</h2>
-            <a href="<?php echo esc_url( home_url( '/what-we-do' ) ); ?>"
+            <h2 class="capability-triptych__headline" id="capabilities-heading" data-reveal>Solutions</h2>
+            <a href="<?php echo esc_url( home_url( '/solutions' ) ); ?>"
                class="btn btn--secondary" data-reveal data-reveal-delay="1">
-                Explore Services
+                Explore Solutions
             </a>
         </header>
 

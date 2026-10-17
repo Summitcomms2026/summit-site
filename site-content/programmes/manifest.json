@@ -43,7 +43,9 @@
         "summit_related": "/solutions/editorial-influence, /solutions/develop-thought-leadership",
         "summit_eyebrow": "Programmes / Programme 02",
         "summit_tone": "paper",
-        "summit_standfirst": "A programme to determine what is worth saying, create something worth reading, and place it before the people worth reaching."
+        "summit_standfirst": "A programme to determine what is worth saying, create something worth reading, and place it before the people worth reaching.",
+        "summit_cta_label": "Discuss Editorial & Influence",
+        "summit_cta_url": "/lets-talk"
       }
     },
     {
@@ -55,7 +57,9 @@
         "summit_related": "/solutions/digital-commerce, /solutions/enhance-desire-without-dilution",
         "summit_eyebrow": "Programmes / Programme 03",
         "summit_tone": "paper",
-        "summit_standfirst": "A programme for growing digital demand and commerce without surrendering the scarcity, service or presentation that define the house."
+        "summit_standfirst": "A programme for growing digital demand and commerce without surrendering the scarcity, service or presentation that define the house.",
+        "summit_cta_label": "Discuss Digital Growth",
+        "summit_cta_url": "/lets-talk"
       }
     },
     {
@@ -67,7 +71,9 @@
         "summit_related": "/solutions/experience-design, /solutions/transform-the-client-experience",
         "summit_eyebrow": "Programmes / Programme 04",
         "summit_tone": "paper",
-        "summit_standfirst": "A programme for aligning product, place, service and digital encounter so every contact carries the authority of the house."
+        "summit_standfirst": "A programme for aligning product, place, service and digital encounter so every contact carries the authority of the house.",
+        "summit_cta_label": "Discuss Client Experience",
+        "summit_cta_url": "/lets-talk"
       }
     },
     {
@@ -79,7 +85,9 @@
         "summit_related": "/solutions/applied-ai",
         "summit_eyebrow": "Programmes / Programme 05",
         "summit_tone": "paper",
-        "summit_standfirst": "A programme for applying intelligent agents where they extend service and judgement without outsourcing the maison’s voice."
+        "summit_standfirst": "A programme for applying intelligent agents where they extend service and judgement without outsourcing the maison’s voice.",
+        "summit_cta_label": "Discuss Agentic AI",
+        "summit_cta_url": "/lets-talk"
       }
     },
     {
@@ -91,7 +99,9 @@
         "summit_related": "/solutions/product-ip-patrimony, /solutions/activate-patrimony-ip, /solutions/strengthen-an-icon",
         "summit_eyebrow": "Programmes / Programme 06",
         "summit_tone": "paper",
-        "summit_standfirst": "A programme for governing the marks, designs, archives and patrimony that carry a house over time."
+        "summit_standfirst": "A programme for governing the marks, designs, archives and patrimony that carry a house over time.",
+        "summit_cta_label": "Discuss Brand & IP Stewardship",
+        "summit_cta_url": "/lets-talk"
       }
     }
   ]

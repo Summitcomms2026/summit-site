@@ -72,10 +72,10 @@
 }
 
 .obs-chapter--dark {
-  --obs-rule: rgba(250, 250, 248, 0.16);
+  --obs-rule: var(--on-dark-rule);
   --obs-rule-strong: var(--colour-paper);
-  --obs-quiet: rgba(250, 250, 248, 0.66);
-  --obs-faint: rgba(250, 250, 248, 0.44);
+  --obs-quiet: var(--on-dark-quiet);
+  --obs-faint: var(--on-dark-faint);
   --obs-text: var(--colour-paper);
   background-color: var(--colour-ink);
 }
@@ -168,7 +168,7 @@
 /* The opening statement carries the page's thesis */
 .obs-chapter h2.obs-statement {
   max-width: 21ch;
-  font-size: clamp(2.25rem, 4.6vw, 4.25rem);    /* 36 → 68 */
+  font-size: var(--type-statement);    /* 36 → 68 */
   line-height: 1.02;
   letter-spacing: -0.026em;
 }
@@ -195,7 +195,7 @@
 
 .obs-chapter p.obs-lead {
   max-width: 36em;
-  font-size: clamp(1.1875rem, 1.55vw, 1.375rem); /* 19 → 22, as the standfirst */
+  font-size: var(--type-lead); /* 19 → 22, as the standfirst */
   line-height: 1.5;
   letter-spacing: -0.003em;
   color: var(--obs-text);
@@ -252,7 +252,7 @@
   text-decoration: none;
   transition:
     color var(--duration-fast) var(--ease-out),
-    transform var(--duration-base) var(--ease-out);
+    transform var(--motion-ui) var(--ease-out);
 }
 
 .obs-link a:hover,
@@ -350,7 +350,7 @@
 }
 
 .obs-finding h3 {
-  font-size: clamp(1.375rem, 2vw, 1.75rem);     /* 22 → 28 */
+  font-size: var(--type-register);     /* 22 → 28 */
   line-height: 1.15;
   letter-spacing: -0.012em;
 }
@@ -713,7 +713,7 @@
 
 .obs-chapter--briefing h2 {
   max-width: 14ch;
-  font-size: clamp(2.25rem, 4.6vw, 4.25rem);
+  font-size: var(--type-statement);
   line-height: 1.02;
   letter-spacing: -0.026em;
 }

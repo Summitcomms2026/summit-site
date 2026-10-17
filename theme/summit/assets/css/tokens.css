@@ -203,6 +203,51 @@
   --duration-base:   220ms;
   --duration-slow:   360ms;
 
+  /* ── Motion roles ────────────────────────────────────────────────────
+   * One logic for every page family. Durations differ by what moves, not
+   * by which template it lives in.
+   *   ui        navigation, hover, link state — fast, architectural
+   *   register  interactive registers and switchers — immediate, decisive
+   *   reveal    the quiet entrance of content on scroll
+   *   panel     large panel and lens transitions — controlled, editorial
+   *   image     image movement and fades — slow, nearly imperceptible
+   * -------------------------------------------------------------------- */
+  --motion-ui:       160ms;
+  --motion-register: 120ms;
+  --motion-reveal:   560ms;
+  --motion-panel:    520ms;
+  --motion-image:    900ms;
+  --motion-stagger:  80ms;
+
+  /* ── Fields and tones ─────────────────────────────────────────────────
+   * The papers and blacks every page family is built from.
+   *   field-paper / field-tint / field-dark   section grounds
+   *   field-plate   the paper object — title pages, plates, monograms —
+   *                 never a section ground
+   *   on-dark-*     text and rules on a dark field
+   * -------------------------------------------------------------------- */
+  --field-paper:     var(--colour-paper);
+  --field-tint:      var(--colour-ink-05);
+  --field-dark:      var(--colour-ink);
+  --field-plate:     #F2EFE8;
+  --on-dark:         var(--colour-paper);
+  --on-dark-quiet:   rgba(250, 250, 248, 0.66);
+  --on-dark-faint:   rgba(250, 250, 248, 0.46);
+  --on-dark-rule:    rgba(250, 250, 248, 0.16);
+
+  /* ── Type roles ───────────────────────────────────────────────────────
+   * Shared scales for roles that recur across families. Expressive,
+   * single-use scales (nameplates, manifesto words) stay with their page.
+   *   statement  a section's large statement (sans or serif by family)
+   *   lead       the paragraph that opens a chapter
+   *   register   a title in a register, index or ledger row
+   *   body-read  running text inside chapters
+   * -------------------------------------------------------------------- */
+  --type-statement:  clamp(2.25rem, 4.6vw, 4.25rem);
+  --type-lead:       clamp(1.1875rem, 1.55vw, 1.375rem);
+  --type-register:   clamp(1.375rem, 2vw, 1.75rem);
+  --type-body-read:  1.0625rem;
+
   /* ── Z-Index ─────────────────────────────────────────────────────────── */
 
   --z-base:     0;
@@ -221,5 +266,11 @@
     --duration-fast:  0ms;
     --duration-base:  0ms;
     --duration-slow:  0ms;
+    --motion-ui:       0ms;
+    --motion-register: 0ms;
+    --motion-reveal:   0ms;
+    --motion-panel:    0ms;
+    --motion-image:    0ms;
+    --motion-stagger:  0ms;
   }
 }

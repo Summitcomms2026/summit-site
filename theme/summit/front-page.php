@@ -170,9 +170,9 @@ the_post(); // consume the front-page post for ACF context
                         <?php echo wp_strip_all_tags( $sectors_body ); ?>
                     </p>
                 </div>
-                <a href="<?php echo esc_url( home_url( '/design-tomorrow/' ) ); ?>"
+                <a href="<?php echo esc_url( summit_nav_url( summit_nav( 'cta' ) ) ); ?>"
                    class="sectors-grid-section__cta" data-reveal="fade" data-reveal-delay="1">
-                    Get In Touch
+                    Let’s Talk
                 </a>
             </header>
 
@@ -196,8 +196,8 @@ the_post(); // consume the front-page post for ACF context
     <?php
     get_template_part( 'parts/global/cta-footer', null, [
         'headline' => 'Start the Conversation',
-        'body'     => 'We partner with ambitious brands to sharpen positioning, elevate creative expression and build digital experiences that deliver lasting value.',
-        'label'    => "Let\u{2019}s Design Tomorrow",
+        'body'     => 'For questions of position, desire, stewardship and long-term value, begin with the question.',
+        'label'    => "Let\u{2019}s Talk",
         'image'    => get_template_directory_uri() . '/assets/img/cta-mainimage.jpg',
     ] );
     ?>

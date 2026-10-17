@@ -12,7 +12,7 @@
  */
 
 .ct-body {
-  padding-block: clamp(72px, 9vw, 136px);
+  padding-block: clamp(40px, 5vw, 72px) clamp(72px, 9vw, 136px);
   padding-inline: max(var(--space-5), calc((100% - var(--container-med)) / 2 + var(--space-5)));
 }
 
@@ -188,7 +188,7 @@
 
 .ct-form-wrap > .ct-form__feedback--returned .dt-form__success {
   font-family: var(--font-serif);
-  font-size: clamp(1.375rem, 2vw, 1.75rem);
+  font-size: var(--type-register);
   line-height: 1.3;
 }
 
@@ -235,7 +235,7 @@
   font-family: var(--font-text);
   font-size: 1rem;
   color: var(--colour-ink-60);
-  transition: transform var(--duration-base) var(--ease-out);
+  transition: transform var(--motion-ui) var(--ease-out);
 }
 
 .ct-routes a:hover::after,

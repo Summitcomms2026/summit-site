@@ -69,12 +69,12 @@ $section_headline = get_field( 'home_article_headline' ) ?: 'The Future of Luxur
                     <?php echo esc_html( $section_headline ); ?>
                 </h2>
                 <p class="home-article__sub">
-                    News and media published by Summit Communication Group exclusively here, first.
+                    Essays and analysis on the houses, objects and decisions reshaping luxury.
                 </p>
             </div>
             <a href="<?php echo esc_url( get_post_type_archive_link( 'article' ) ?: home_url( '/the-future-of-luxury/' ) ); ?>"
                class="home-article__cta">
-                All Articles
+                All Essays
             </a>
         </header>
 

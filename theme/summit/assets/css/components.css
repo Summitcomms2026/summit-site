@@ -740,3 +740,18 @@
   stroke-width: 1;
   vector-effect: non-scaling-stroke;
 }
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* LINE BREAKING                                                          */
+/* Headings balance their lines; running text avoids a stranded last     */
+/* word. One rule for every page family, at every width.                  */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.site-main :is(h1, h2, h3) {
+  text-wrap: balance;
+}
+
+.site-main p {
+  text-wrap: pretty;
+}

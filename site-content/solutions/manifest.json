@@ -1,5 +1,5 @@
 {
-  "description": "Canonical source record for the Solutions section's page content. WordPress is the runtime editor; these files are the recoverable source. Not loaded by WordPress. Block markup in each source file is exactly what the block editor stores in post_content. Entries without a source set page fields only (the one-line summaries the Solutions overview reads). Entry pages without their own content carry template and fields only (eyebrow, standfirst from the summary, or a sector line for industries), so the family template gives them their hero, their lens and the footer.",
+  "description": "Canonical source record for the Solutions section's page content. WordPress is the runtime editor; these files are the recoverable source. Not loaded by WordPress. Block markup in each source file is exactly what the block editor stores in post_content. Entries without a source set page fields only (the one-line summaries the Solutions overview reads). Entry pages without their own content carry template and fields only (eyebrow, standfirst from the summary, or a sector line for industries), so the family template gives them their hero, their lens and the footer. Industry pages carry a development image in summit_visual (theme assets/img/solutions/, provisional — see the clearance register).",
   "section": "/solutions",
   "pages": [
     {
@@ -189,7 +189,8 @@
       "meta": {
         "summit_standfirst": "Time, craft and provenance: houses whose objects are expected to outlive their owners.",
         "summit_eyebrow": "Solutions / By Industry",
-        "summit_tone": "paper"
+        "summit_tone": "paper",
+        "summit_visual": "/wp-content/themes/summit/assets/img/solutions/watches-jewellery.jpg"
       }
     },
     {
@@ -198,7 +199,8 @@
       "meta": {
         "summit_standfirst": "Seasonal pressure against lasting codes: keeping a house recognisable while it keeps moving.",
         "summit_eyebrow": "Solutions / By Industry",
-        "summit_tone": "paper"
+        "summit_tone": "paper",
+        "summit_visual": "/wp-content/themes/summit/assets/img/solutions/fashion-accessories.jpg"
       }
     },
     {
@@ -207,7 +209,8 @@
       "meta": {
         "summit_standfirst": "Scale without dilution: authority in categories built on reach.",
         "summit_eyebrow": "Solutions / By Industry",
-        "summit_tone": "paper"
+        "summit_tone": "paper",
+        "summit_visual": "/wp-content/themes/summit/assets/img/solutions/beauty-fragrance.jpg"
       }
     },
     {
@@ -216,7 +219,8 @@
       "meta": {
         "summit_standfirst": "Place, vintage and allocation: scarcity that nature sets and houses must govern.",
         "summit_eyebrow": "Solutions / By Industry",
-        "summit_tone": "paper"
+        "summit_tone": "paper",
+        "summit_visual": "/wp-content/themes/summit/assets/img/solutions/wine-spirits.jpg"
       }
     },
     {
@@ -225,7 +229,8 @@
       "meta": {
         "summit_standfirst": "Engineering, heritage and desire: marques judged on the road, in the archive and at auction.",
         "summit_eyebrow": "Solutions / By Industry",
-        "summit_tone": "paper"
+        "summit_tone": "paper",
+        "summit_visual": "/wp-content/themes/summit/assets/img/solutions/automotive.jpg"
       }
     },
     {
@@ -234,7 +239,8 @@
       "meta": {
         "summit_standfirst": "Places and encounters: luxury experienced as setting, service and time.",
         "summit_eyebrow": "Solutions / By Industry",
-        "summit_tone": "paper"
+        "summit_tone": "paper",
+        "summit_visual": "/wp-content/themes/summit/assets/img/solutions/real-estate-hospitality.jpg"
       }
     },
     {
@@ -243,7 +249,8 @@
       "meta": {
         "summit_standfirst": "Provenance, market and meaning: where price and cultural standing are easily confused.",
         "summit_eyebrow": "Solutions / By Industry",
-        "summit_tone": "paper"
+        "summit_tone": "paper",
+        "summit_visual": "/wp-content/themes/summit/assets/img/solutions/art-collectibles.jpg"
       }
     },
     {
@@ -252,7 +259,8 @@
       "meta": {
         "summit_standfirst": "Trust, discretion and continuity: institutions judged by their clients as a house is judged.",
         "summit_eyebrow": "Solutions / By Industry",
-        "summit_tone": "paper"
+        "summit_tone": "paper",
+        "summit_visual": "/wp-content/themes/summit/assets/img/solutions/private-banking-wealth-management.jpg"
       }
     }
   ]

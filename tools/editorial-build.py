@@ -451,6 +451,7 @@ RAW_ART = {
 }
 PROFILES = {'S10-P024': '[summit_about_portrait name="gregory-gray" initials="GG" alt="Gregory Gray"]',
             'S10-P025': '[summit_about_portrait name="olivia-dhordain" initials="OD" alt="Olivia Dhordain"]'}
+PRINCIPLES = {'S10-P013'}                     # the Manifesto's six principles
 LINKED_LISTS = {'S10-P003', 'S07-P002'}      # each entry leads to its own page
 
 NOTICES = {'/privacy': ('privacy-policy', 'privacy.notice.html'), '/terms': ('terms-of-use', 'terms.notice.html')}
@@ -563,7 +564,13 @@ class Page:
                 continue        # its only destination is unpublished: the item waits with it
             kids = [heading(it['html'], 3)] + [para(text_html(b)) for b in it['paras']] + links
             rows.append(group(self.c['row'], kids))
-        return group(self.c['rows'], rows) if rows else ''
+        # entries that are prose rather than short lines read as prose
+        cls = self.c['rows']
+        if any(len(' '.join(b['text'] for b in it['paras'])) > 110 for it in items):
+            cls += f" {self.c['rows']}--long"
+        if pid in PRINCIPLES:
+            cls += f" {self.c['rows']}--principles"
+        return group(cls, rows) if rows else ''
 
     def sequence(self, pid, blocks, closing, lead_ok, state):
         out = []
@@ -585,16 +592,36 @@ class Page:
                     out.append(html_)
         return out
 
+    def role(self, p, blocks, closing):
+        """The panel's editorial role, read from its content — it sets the
+        chapter's composition and pacing (editorial.css, Design Pass 08):
+        statement · reading · register · related · interaction · close."""
+        if closing:
+            return 'close'
+        if p['id'] in GUIDES or p['id'] in CONTEXT_GUIDES or p['id'] == DQC:
+            return 'interaction'
+        if norm(p['headline']) in RELATED_HEADS or norm(p['eyebrow']) == 'related work' or p['id'] in LINKED_LISTS:
+            return 'related'
+        if any(b['type'] in ('item', 'row') for b in blocks):
+            return 'register'
+        prose = [b for b in blocks if b['type'] == 'p']
+        if len(prose) <= 1 and sum(len(b['text']) for b in prose) <= 280:
+            return 'statement'
+        return 'reading'
+
     def chapter(self, p, variant='', closing=False, blocks=None, anchor=None):
         c = self.c
         blocks = finalise(blocks if blocks is not None else p['blocks'])
+        role = self.role(p, blocks, closing)
         kids = []
-        if p['eyebrow'] and norm(p['eyebrow']) not in ('opening', norm(p['headline'])):
+        # a marker that only repeats the page's own name (MAISON FORMATION on
+        # Maison Formation) is wayfinding the hero already gives: not repeated
+        if p['eyebrow'] and norm(p['eyebrow']) not in ('opening', norm(p['headline']), norm(self.title)):
             kids.append(para(esc(p['eyebrow']), c['marker']))
         if p['id'] in PROFILES:
             return self.profile(p, blocks)
-        # About sets each chapter's headline in its statement voice
-        h2cls = 'sr-only' if p.get('hidden_heading') else ('ab-statement' if self.fam == 'ab' else None)
+        # About keeps its statement voice for its propositions and its close
+        h2cls = 'sr-only' if p.get('hidden_heading') else ('ab-statement' if self.fam == 'ab' and role in ('statement', 'close') else None)
         kids.append(heading(esc(p['headline']), cls=h2cls))
         art = ART.get(p['id'])
         if art and art[0] == 'top':
@@ -643,7 +670,8 @@ class Page:
         raw = RAW_ART.get(p['id'])
         if raw and raw[0] == 'end':
             kids.append(raw[1])
-        return group(f"{c['chapter']} {variant}".strip(), kids, tag='section', anchor=anchor or p['id'].lower())
+        role_cls = '' if role == 'close' else f"{c['chapter']}--{role}"
+        return group(' '.join(x for x in (c['chapter'], variant, role_cls) if x), kids, tag='section', anchor=anchor or p['id'].lower())
 
     def profile(self, p, blocks):
         """A person: portrait, role, name, account — the About profile."""
@@ -848,7 +876,11 @@ for canon, b in built.items():
         else:
             eb = norm(p['eyebrow'])
             first_cta = next((l for x in p['blocks'] if x['type'] == 'cta' for l in x['labels']), '')
-            closing = eb == 'let’s talk' or (last and bool(ENQUIRY.match(norm(first_cta))))
+            # the page's close: its LET'S TALK panel, or the last panel inviting
+            # an enquiry before only questions and related routes follow
+            after = rest[k + 1:]
+            tail_only = all(is_faq(x) or norm(x['headline']) in RELATED_HEADS or norm(x['eyebrow']) == 'related work' for x in after)
+            closing = eb == 'let’s talk' or (tail_only and bool(ENQUIRY.match(norm(first_cta))))
             variant = ''
             if closing:
                 variant = CLS[pg.fam]['chapter'] + '--close'

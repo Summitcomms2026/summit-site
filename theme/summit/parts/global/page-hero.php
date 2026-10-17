@@ -21,6 +21,7 @@
  *               defaults to the page's summit_intro field)
  *   tone        'paper' | 'dark' | 'tinted'
  *   actions     action $args for parts/global/action-group.php (optional)
+ *   level       'parent' | 'child' (optional; worked out from the page)
  *
  * @package SummitTheme
  */
@@ -42,8 +43,16 @@ $tone_class = [
 ][ $tone ];
 
 $has_foot = $standfirst || $actions;
+
+// Parent pages open a territory; child pages are editorial measures (The
+// Quiet System 12/13). A section's own page is a parent; its pages and the
+// standalone pages are children. Long headings step down rather than
+// filling four lines.
+$here  = '/' . trim( (string) wp_parse_url( (string) get_permalink( get_queried_object_id() ), PHP_URL_PATH ), '/' );
+$level = $args['level'] ?? ( in_array( $here, array_column( summit_nav( 'primary' ) ?: [], 'path' ), true ) ? 'parent' : 'child' );
+$scale = ' shell-hero--' . ( 'parent' === $level ? 'parent' : 'child' ) . ( mb_strlen( (string) $title ) > 30 ? ' shell-hero--long' : '' );
 ?>
-<header class="shell-hero shell-hero--<?php echo esc_attr( $tone ); ?><?php echo esc_attr( $tone_class ); ?><?php echo $has_foot ? '' : ' shell-hero--title-only'; ?>">
+<header class="shell-hero shell-hero--<?php echo esc_attr( $tone ); ?><?php echo esc_attr( $tone_class . $scale ); ?><?php echo $has_foot ? '' : ' shell-hero--title-only'; ?>">
     <div class="container container--medium">
 
         <?php if ( $eyebrow ) : ?>

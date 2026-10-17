@@ -954,8 +954,11 @@
   text-underline-offset: 0.24em;
 }
 
+/* the introduction sits beneath its heading, at a reading measure */
 .fol-panel__head .fol-panel__intro {
-  flex-basis: 100%;
+  flex: 0 1 100%;
+  max-width: none;
+  margin-right: max(0px, calc(100% - 34em));
 }
 
 /* A choice carried to the enquiry (no authored response) */
@@ -1038,4 +1041,320 @@
   .vp-block__visual {
     margin-top: clamp(32px, 6vw, 56px);
   }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* RECOMPOSITION — Design Pass 08                                         */
+/* Typography and pacing set against the real copy, measured in the       */
+/* browser (scratch/design-pass-08/typography-audit.md). Each chapter     */
+/* carries the role its content plays — statement · reading · register · */
+/* related · interaction · close · faq — and the role, not the parser,    */
+/* decides its scale, its measure and how much room it is given.          */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+/* ── Openings: parent pages open a territory, child pages a measure ──── */
+.shell-hero--parent .shell-hero__title {
+  max-width: 13ch;
+  font-size: clamp(2.75rem, 5.4vw, 4.625rem);   /* 44 → 74 */
+  line-height: 0.97;
+  letter-spacing: -0.03em;
+}
+
+.shell-hero--child .shell-hero__title {
+  max-width: 15ch;
+  font-size: clamp(2.375rem, 4.1vw, 3.5rem);    /* 38 → 56 */
+  line-height: 1;
+}
+
+.shell-hero--child.shell-hero--long .shell-hero__title {
+  max-width: 18ch;
+  font-size: clamp(2.125rem, 3.4vw, 3rem);      /* 34 → 48 */
+  line-height: 1.03;
+}
+
+.shell-hero--child {
+  padding-block: clamp(72px, 10vh, 128px) clamp(56px, 8vh, 96px);
+}
+
+.shell-hero--child .shell-hero__title {
+  margin-top: clamp(40px, 6vh, 72px);
+}
+
+.shell-hero__standfirst {
+  line-height: 1.4;
+}
+
+.shell-hero__intro p {
+  line-height: 1.58;
+}
+
+/* ── Chapter headings: one hero per page; sections speak a step lower ── */
+:is(.sol-chapter, .obs-chapter, .prg-chapter, .res-chapter, .ab-chapter, .ed-chapter) h2 {
+  max-width: 20ch;
+  font-size: clamp(1.75rem, 2.5vw, 2.375rem);   /* 28 → 38 */
+  line-height: 1.08;
+  letter-spacing: -0.018em;
+  text-wrap: balance;
+}
+
+.ab-chapter h2:not(.ab-statement):not(.ab-profile__name) {
+  font-family: var(--font-sans);
+  font-weight: 400;
+}
+
+/* a statement panel: a short proposition given the page's second voice */
+:is(.sol-chapter--statement, .obs-chapter--statement, .prg-chapter--statement, .res-chapter--statement, .ab-chapter--statement, .ed-chapter--statement) h2,
+.ab-chapter--statement h2.ab-statement {
+  max-width: 17ch;
+  font-size: clamp(2.125rem, 3.7vw, 3.25rem);   /* 34 → 52 */
+  line-height: 1.03;
+  letter-spacing: -0.024em;
+}
+
+/* the close: an invitation, not another hero */
+:is(.sol-chapter--close, .obs-chapter--close, .prg-chapter--close, .res-chapter--close, .ab-chapter--close, .ed-chapter--close) h2,
+.ab-chapter--close h2.ab-statement {
+  max-width: 16ch;
+  font-size: clamp(2rem, 3.1vw, 2.75rem);       /* 32 → 44 */
+  line-height: 1.05;
+}
+
+/* onward journeys and questions: quieter still */
+:is(.sol-chapter--related, .obs-chapter--related, .prg-chapter--related, .res-chapter--related, .ab-chapter--related, .ed-chapter--related,
+    .sol-chapter--faq, .obs-chapter--faq, .prg-chapter--faq, .res-chapter--faq, .ab-chapter--faq, .ed-chapter--faq) h2 {
+  max-width: 24ch;
+  font-size: clamp(1.375rem, 1.9vw, 1.75rem);   /* 22 → 28 */
+  line-height: 1.15;
+  letter-spacing: -0.012em;
+}
+
+/* ── Reading: 17px body, 1.58 leading, a 62–68 character measure ──────── */
+:is(.sol-chapter, .obs-chapter, .prg-chapter, .res-chapter, .ab-chapter, .ed-chapter) p {
+  max-width: 33em;
+  line-height: 1.58;
+  text-wrap: pretty;
+}
+
+/* paragraphs of one argument sit close; the family's 24px block gap is
+   kept for the change of beat (a lead, a register, a link) */
+:is(.sol-chapter, .obs-chapter, .prg-chapter, .res-chapter, .ab-chapter, .ed-chapter) p:not([class]) + p:not([class]) {
+  margin-top: 0.9em;
+}
+
+:is(.sol-chapter, .obs-chapter, .prg-chapter, .res-chapter, .ab-chapter, .ed-chapter) p:is(.sol-lead, .obs-lead, .prg-lead, .res-lead, .ab-lead, .ed-lead) {
+  max-width: 30em;
+  font-size: clamp(1.1875rem, 1.45vw, 1.375rem);   /* 19 → 22 */
+  line-height: 1.42;
+}
+
+:is(.sol-chapter, .obs-chapter, .prg-chapter, .res-chapter, .ab-chapter, .ed-chapter) p:is(.sol-lead, .obs-lead, .prg-lead, .res-lead, .ab-lead, .ed-lead) + p:not([class]) {
+  margin-top: 1.3em;
+}
+
+:is(.sol-chapter, .obs-chapter, .prg-chapter, .res-chapter, .ab-chapter, .ed-chapter) p:is(.sol-note, .obs-note, .prg-note, .res-note, .ab-note, .ed-note) {
+  max-width: 38em;
+  line-height: 1.5;
+}
+
+/* a link or invitation after prose: a beat, not a collision */
+:is(.sol-chapter, .obs-chapter, .prg-chapter, .res-chapter, .ab-chapter, .ed-chapter) p:not([class]) + p:is(.sol-link, .obs-link, .prg-link, .res-link, .ab-link, .ed-link, .sol-cta, .obs-cta, .prg-cta, .res-cta, .ab-cta, .ed-cta) {
+  margin-top: 1.9em;
+}
+
+/* registers: titles that read as entries, lines that read as prose */
+:is(.sol-row, .obs-row, .prg-question, .res-finding, .ab-pressure, .ed-row) h3 {
+  font-size: clamp(1.125rem, 1.4vw, 1.3125rem);   /* 18 → 21 */
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+:is(.sol-chapter, .obs-chapter, .prg-chapter, .res-chapter, .ab-chapter, .ed-chapter) :is(.sol-row, .obs-row, .res-finding, .ab-pressure, .ed-row) p {
+  font-size: 1rem;
+  line-height: 1.52;
+}
+
+:is(.sol-chapter, .obs-chapter, .prg-chapter, .res-chapter, .ab-chapter, .ed-chapter) :is(.sol-row, .obs-row, .res-finding, .ab-pressure, .ed-row) p + p {
+  margin-top: 0.45em;
+}
+
+/* the long-form essay keeps its larger size; its leading relaxes less */
+.fol-prose {
+  line-height: 1.64;
+}
+
+/* ── Pacing: room earned by the role, not one padding for every section ─ */
+:is(.sol-chapter, .obs-chapter, .prg-chapter, .res-chapter, .ab-chapter, .ed-chapter):is([class*="-chapter--reading"], [class*="-chapter--register"]) {
+  padding-block: clamp(64px, 7vw, 112px);
+}
+
+:is(.sol-chapter, .obs-chapter, .prg-chapter, .res-chapter, .ab-chapter, .ed-chapter)[class*="-chapter--statement"] {
+  padding-block: clamp(96px, 11vw, 168px);
+}
+
+:is(.sol-chapter, .obs-chapter, .prg-chapter, .res-chapter, .ab-chapter, .ed-chapter)[class*="-chapter--related"] {
+  padding-block: clamp(48px, 5vw, 80px);
+}
+
+:is(.sol-chapter, .obs-chapter, .prg-chapter, .res-chapter, .ab-chapter, .ed-chapter)[class*="-chapter--faq"] {
+  padding-block: clamp(56px, 6vw, 96px);
+}
+
+:is(.sol-chapter, .obs-chapter, .prg-chapter, .res-chapter, .ab-chapter, .ed-chapter)[class*="-chapter--interaction"] {
+  padding-block: clamp(72px, 8vw, 120px);
+}
+
+/* two reading chapters in a row are one argument continuing: less pause */
+:is(.sol-chapter, .obs-chapter, .prg-chapter, .res-chapter, .ab-chapter, .ed-chapter)[class*="-chapter--reading"]:not([class*="--tinted"]) + [class*="-chapter--reading"]:not([class*="--tinted"]) {
+  padding-top: clamp(16px, 2vw, 32px);
+}
+
+/* ── Compositions by role ─────────────────────────────────────────────── */
+@media (min-width: 960px) {
+  /* Solutions — prose reads as a column beneath its heading; a statement
+     takes the full width; registers keep the marginal heading */
+  :is(.sol-chapter--reading, .sol-chapter--interaction, .sol-chapter--faq) > h2,
+  :is(.sol-chapter--reading, .sol-chapter--interaction, .sol-chapter--faq) > .wp-block-group__inner-container > h2 {
+    grid-column: 2;
+    grid-row: auto;
+  }
+
+  :is(.sol-chapter--reading, .sol-chapter--interaction, .sol-chapter--faq) > .sol-kicker {
+    grid-column: 2;
+  }
+
+  .sol-chapter--statement > h2,
+  .sol-chapter--statement > .wp-block-group__inner-container > h2 {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .sol-chapter--statement > h2 + * {
+    margin-top: clamp(32px, 4vw, 56px) !important;
+  }
+}
+
+/* Related work everywhere: a compact horizontal register, three across */
+[class*="-chapter--related"] :is(.sol-rows, .obs-rows, .prg-questions, .res-findings, .ab-pressures, .ed-rows) {
+  border-bottom: 0;
+}
+
+@media (min-width: 900px) {
+  [class*="-chapter--related"] :is(.sol-rows, .obs-rows, .prg-questions, .res-findings, .ab-pressures, .ed-rows) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11.5rem, 1fr));
+    column-gap: clamp(28px, 3vw, 48px);
+  }
+
+  .sol-chapter--related > :is(.sol-rows, .sol-kicker, h2),
+  .obs-chapter--related > .obs-rows,
+  .ab-chapter--related > .ab-pressures,
+  .ed-chapter--related > .ed-rows {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
+  }
+}
+
+[class*="-chapter--related"] :is(.sol-row, .obs-row, .prg-question, .res-finding, .ab-pressure, .ed-row) {
+  display: block;
+  padding-block: var(--space-5) var(--space-6);
+}
+
+[class*="-chapter--related"] :is(.sol-row, .obs-row, .prg-question, .res-finding, .ab-pressure, .ed-row) > * + * {
+  margin-top: var(--space-2) !important;
+}
+
+[class*="-chapter--related"] :is(.sol-row, .obs-row, .prg-question, .res-finding, .ab-pressure, .ed-row) h3 {
+  font-size: 1.0625rem;
+  line-height: 1.3;
+}
+
+/* the close: a single rule above it, the invitation held left */
+[class*="-chapter--close"]:not([class*="--tinted"]):not([class*="--dark"]) {
+  border-top: 1px solid var(--colour-ink-10);
+}
+
+/* Programmes: the serif register is for short lines spoken as questions;
+   entries that run to prose read in the text face, as prose */
+.prg-chapter .prg-question p {
+  font-size: clamp(1.1875rem, 1.6vw, 1.4375rem);   /* 19 → 23 */
+  line-height: 1.3;
+}
+
+.prg-chapter .prg-questions--long .prg-question p,
+[class*="-chapter--related"] .prg-question p {
+  max-width: 34em;
+  font-family: var(--font-text);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+/* Related work is a set of routes, not a sequence: no running numbers */
+[class*="-chapter--related"] :is(.obs-row, .prg-question, .res-finding)::before {
+  content: none !important;
+}
+
+/* About: a beat between a heading and what it introduces */
+:is(.ab-chapter, .ab-chapter > .wp-block-group__inner-container) > h2:not(.sr-only) + * {
+  margin-top: clamp(24px, 2.6vw, 40px);
+}
+
+/* Manifesto: six principles, each a considered sentence, not a list row */
+.ab-pressures--principles {
+  border-bottom: 0;
+}
+
+.ab-pressures--principles .ab-pressure {
+  padding-block: clamp(28px, 3.4vw, 48px);
+}
+
+.ab-chapter .ab-pressures--principles .ab-pressure h3 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.625rem, 2.8vw, 2.375rem);   /* 26 → 38 */
+  line-height: 1.08;
+  letter-spacing: -0.012em;
+}
+
+.ab-chapter .ab-pressures--principles .ab-pressure p {
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--ab-text);
+}
+
+@media (min-width: 768px) {
+  .ab-pressures--principles .ab-pressure {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    align-items: end;
+  }
+}
+
+/* Solutions: a heading set above its column keeps a beat before its text */
+@media (min-width: 960px) {
+  :is(.sol-chapter, .sol-chapter > .wp-block-group__inner-container):is(.sol-chapter--reading, .sol-chapter--interaction, .sol-chapter--faq, .sol-chapter--statement) > h2:first-child + *,
+  :is(.sol-chapter, .sol-chapter > .wp-block-group__inner-container):is(.sol-chapter--reading, .sol-chapter--interaction, .sol-chapter--faq, .sol-chapter--statement) > h2 + * {
+    margin-top: clamp(20px, 2.2vw, 32px);
+  }
+}
+
+/* FAQ: the question reads as a line of the page, not a settings row */
+.summit-faq__item > summary {
+  padding-block: clamp(16px, 1.6vw, 22px);
+  font-size: clamp(1.125rem, 1.5vw, 1.3125rem);   /* 18 → 21 */
+  line-height: 1.32;
+  letter-spacing: -0.008em;
+  text-wrap: balance;
+}
+
+.summit-faq__item > summary::after {
+  top: calc(clamp(16px, 1.6vw, 22px) + 0.5em);
+}
+
+.summit-faq__item > :not(summary) {
+  max-width: 34em;
+  font-size: 1.0625rem;
+  line-height: 1.58;
+}
+
+.summit-faq__item[open] > summary {
+  padding-bottom: var(--space-3);
 }

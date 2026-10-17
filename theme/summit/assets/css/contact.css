@@ -283,3 +283,41 @@
   outline: 1px solid currentColor;
   outline-offset: 4px;
 }
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* THE QUIET SYSTEM — calibration                                         */
+/* Serif is an intervention, not a default: routine headings, registers   */
+/* and navigation speak in the grotesk; the literary voice is kept for    */
+/* the moments that need a different voice.                               */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.ct-form__heading,
+.ct-routes a {
+  font-family: var(--font-sans);
+  letter-spacing: -0.015em;
+}
+
+.ct-form__heading {
+  font-size: var(--type-section);
+}
+
+.ct-routes a {
+  font-size: 1.0625rem;
+}
+
+@media (min-width: 1024px) {
+  .ct-aside {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+/* Fields: the subtle control border of The Quiet System */
+.ct-form__input {
+  border-bottom-color: var(--border-subtle);
+}
+
+.ct-form__textarea {
+  border-color: var(--border-subtle);
+}

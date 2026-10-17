@@ -17,12 +17,12 @@
   /* ── Colour ────────────────────────────────────────────────────────── */
 
   /* Neutrals — the foundation of Summit's restrained palette */
-  --colour-ink:          #1A1A18;   /* Near-black — primary text, dark panels */
+  --colour-ink:          #171719;   /* surface.dark (The Quiet System) — dark panels, primary text */
   --colour-ink-60:       #666660;   /* 60% ink — secondary text, captions */
   --colour-ink-40:       #9A9A95;   /* 40% ink — muted labels, metadata */
   --colour-ink-30:       #B3B3AE;   /* 30% ink — disabled, very quiet UI */
   --colour-ink-10:       #E8E8E5;   /* 10% ink — borders, dividers */
-  --colour-ink-05:       #F4F4F2;   /* 5% ink — surface tints, zebra rows */
+  --colour-ink-05:       #F3F1EE;   /* canvas.light (The Quiet System) — the editorial reading field */
 
   --colour-paper:        #FAFAF8;   /* Warm near-white — primary background */
   --colour-paper-pure:   #FFFFFF;   /* Pure white — card surfaces */
@@ -203,6 +203,30 @@
   --duration-base:   220ms;
   --duration-slow:   360ms;
 
+  /* ── The Quiet System — neutral structure ─────────────────────────────
+   * canvas.dark #101012   immersive stage (dark heroes, menu)
+   * surface.dark #171719  dark sections (= --colour-ink)
+   * text.primary #272529  reading ink for long-form text
+   * border.subtle #CAC9C8 control borders (fields, outlines)
+   * canvas.light #F3F1EE  editorial reading surface (= --colour-ink-05)
+   * Accents (violet #44304F, lilac #8D7495, rose #B9918A, metal #B47F63)
+   * are not interface colours. Colour enters through image and material;
+   * metal marks the one deliberate signal (the empty chair).
+   * -------------------------------------------------------------------- */
+  --canvas-dark:     #101012;
+  --reading-ink:     #272529;
+  --border-subtle:   #CAC9C8;
+  --accent-metal:    #B47F63;
+
+  /* ── Control — one button geometry, measured from the homepage ───────── */
+  --control-height:   40px;
+  --control-pad-y:    9px;
+  --control-pad-x:    20px;
+  --control-font:     0.72rem;
+  --control-weight:   600;
+  --control-tracking: 0.04em;
+  --control-radius:   4px;
+
   /* ── Motion roles ────────────────────────────────────────────────────
    * One logic for every page family. Durations differ by what moves, not
    * by which template it lives in.
@@ -212,12 +236,14 @@
    *   panel     large panel and lens transitions — controlled, editorial
    *   image     image movement and fades — slow, nearly imperceptible
    * -------------------------------------------------------------------- */
-  --motion-ui:       160ms;
-  --motion-register: 120ms;
-  --motion-reveal:   560ms;
+  --motion-ui:       200ms;   /* hover: 180–260 */
+  --motion-nav:      280ms;   /* navigation: 220–350 */
+  --motion-register: 180ms;
+  --motion-reveal:   600ms;   /* text: 450–700, ≤ 12px travel */
+  --motion-travel:   12px;
   --motion-panel:    520ms;
-  --motion-image:    900ms;
-  --motion-stagger:  80ms;
+  --motion-image:    900ms;   /* image: 700–1100 */
+  --motion-stagger:  90ms;
 
   /* ── Fields and tones ─────────────────────────────────────────────────
    * The papers and blacks every page family is built from.
@@ -243,10 +269,15 @@
    *   register   a title in a register, index or ledger row
    *   body-read  running text inside chapters
    * -------------------------------------------------------------------- */
-  --type-statement:  clamp(2.25rem, 4.6vw, 4.25rem);
-  --type-lead:       clamp(1.1875rem, 1.55vw, 1.375rem);
-  --type-register:   clamp(1.375rem, 2vw, 1.75rem);
-  --type-body-read:  1.0625rem;
+  --type-display:    clamp(2.5rem, 4.4vw, 4rem);         /* B — page display: 40 → 64 */
+  --type-statement:  clamp(1.75rem, 3.2vw, 2.875rem);    /* a section's statement: 28 → 46 (homepage vp) */
+  --type-section:    clamp(1.4rem, 2.2vw, 2rem);         /* C — section heading: 22.4 → 32 (homepage) */
+  --type-editorial:  clamp(1.5rem, 2.2vw, 2rem);         /* D — editorial heading: 24 → 32 */
+  --type-lead:       clamp(1.1875rem, 1.55vw, 1.375rem); /* lead: 19 → 22 */
+  --type-register:   clamp(1.25rem, 1.7vw, 1.5rem);      /* register / card title: 20 → 24 */
+  --type-body-read:  1.0625rem;                          /* E — body: 17 */
+  --type-small:      0.875rem;                           /* small: 14 */
+  --type-caption:    0.75rem;                            /* F — caption / metadata: 12 */
 
   /* ── Z-Index ─────────────────────────────────────────────────────────── */
 
@@ -267,6 +298,8 @@
     --duration-base:  0ms;
     --duration-slow:  0ms;
     --motion-ui:       0ms;
+    --motion-nav:      0ms;
+    --motion-travel:   0px;
     --motion-register: 0ms;
     --motion-reveal:   0ms;
     --motion-panel:    0ms;

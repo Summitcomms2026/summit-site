@@ -21,6 +21,10 @@
  *            Travel, The New Luxury Customer
  *   diagram  research-adjacent notation — Luxury and Technology
  *
+ * One subject per plate (The Quiet System): the word, its construction and
+ * a small folio number — no repeated masthead, no category inside the
+ * artwork (it sits beside every card), no gradient.
+ *
  * The plate's word ("key") is art direction, kept here per essay; an
  * essay without an entry falls back to the words before its title's colon,
  * or its first proper names. The plate is decorative (aria-hidden): the
@@ -140,7 +144,6 @@ function summit_editorial_art_key( int $post_id ): array {
 function summit_editorial_art( int $post_id, string $context = 'card' ): string {
     $family = summit_editorial_art_family( $post_id );
     [ $key, $second ] = summit_editorial_art_key( $post_id );
-    $term   = function_exists( 'summit_fol_category' ) ? summit_fol_category( $post_id ) : null;
     $number = summit_editorial_art_number( $post_id );
     $year   = get_the_date( 'Y', $post_id );
     $tone   = in_array( $family, [ 'ledger', 'diagram' ], true ) ? 'paper' : ( $post_id % 3 === 1 ? 'paper' : 'dark' );
@@ -162,16 +165,12 @@ function summit_editorial_art( int $post_id, string $context = 'card' ): string 
     ?>
 <span class="<?php echo esc_attr( $classes ); ?>" aria-hidden="true">
     <svg class="ed-art__geo" viewBox="0 0 100 100" preserveAspectRatio="<?php echo in_array( $family, [ 'object', 'diagram' ], true ) ? 'xMidYMid meet' : 'none'; ?>" focusable="false"><?php echo $geometry; // phpcs:ignore WordPress.Security.EscapeOutput -- static markup ?></svg>
-    <span class="ed-art__folio">
-        <span class="ed-art__mast"><?php esc_html_e( 'The Future of Luxury', 'summit' ); ?></span>
-        <?php if ( $number ) : ?><span class="ed-art__no"><?php echo esc_html( sprintf( 'No. %02d', $number ) ); ?></span><?php endif; ?>
-    </span>
+    <?php if ( $number ) : ?><span class="ed-art__folio"><?php echo esc_html( sprintf( 'No. %02d', $number ) ); ?></span><?php endif; ?>
     <span class="ed-art__key"><?php echo esc_html( $key ); ?></span>
     <?php if ( $second ) : ?><span class="ed-art__second"><?php echo esc_html( $second ); ?></span><?php endif; ?>
     <?php if ( 'ledger' === $family ) : ?>
-    <span class="ed-art__ledger"><span><?php echo esc_html( $year ); ?></span><span><?php echo esc_html( $number ? sprintf( '%02d', $number ) : '' ); ?></span></span>
+    <span class="ed-art__ledger"><span><?php echo esc_html( $year ); ?></span></span>
     <?php endif; ?>
-    <?php if ( $term ) : ?><span class="ed-art__cat"><?php echo esc_html( wp_specialchars_decode( $term->name, ENT_QUOTES ) ); ?></span><?php endif; ?>
 </span>
     <?php
     return trim( (string) ob_get_clean() );

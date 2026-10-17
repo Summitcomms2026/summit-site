@@ -1214,3 +1214,93 @@
     transform: none !important;
   }
 }
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* THE QUIET SYSTEM — calibration                                         */
+/* Serif is an intervention, not a default: routine headings, registers   */
+/* and navigation speak in the grotesk; the literary voice is kept for    */
+/* the moments that need a different voice.                               */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.fol-panel__title,
+.fol-subscribe__title,
+.fol-index__subject {
+  font-family: var(--font-sans);
+  letter-spacing: -0.02em;
+}
+
+.fol-panel__title,
+.fol-subscribe__title {
+  font-size: var(--type-section);
+  line-height: 1.15;
+}
+
+.fol-index__subject {
+  font-size: var(--type-register);
+}
+
+.fol-masthead__title {
+  /* exception: the publication's nameplate */
+  font-size: clamp(3.25rem, 8.6vw, 8.5rem);
+}
+
+.fol-story--lead .fol-story__title,
+.fol-article__title {
+  /* page display, with a lower floor for long editorial headlines */
+  font-size: clamp(2.125rem, 4.4vw, 4rem);
+}
+
+.fol-independence__title {
+  font-size: var(--type-statement);
+}
+
+/* Rules organise; they do not decorate — the Latest column needs no
+   vertical rule, the space between already separates. */
+@media (min-width: 1024px) {
+  .fol-latest__feature {
+    border-right: 0;
+  }
+}
+
+/* Subscribe: the form family's quiet field, not a boxed control */
+.fol-subscribe__row {
+  align-items: flex-end;
+  gap: var(--space-5);
+}
+
+.fol-subscribe__input {
+  min-height: 0;
+  padding: 8px 0 12px;
+  border: 0;
+  border-bottom: 1px solid var(--border-subtle);
+  background: transparent;
+  font-size: 1.125rem;
+}
+
+.fol-subscribe__input:focus-visible {
+  outline: none;
+  border-bottom-color: var(--colour-ink);
+  box-shadow: 0 1px 0 var(--colour-ink);
+}
+
+.fol-subscribe__submit {
+  border-radius: var(--control-radius);
+}
+
+@media (max-width: 479px) {
+  .fol-subscribe__row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .fol-subscribe__input {
+    width: 100%;
+    border-right: 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+}
+
+.fol-prose {
+  color: var(--reading-ink);
+}

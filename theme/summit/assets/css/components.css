@@ -537,10 +537,12 @@
 
 /* Compact button — the homepage hero / header CTA proportion */
 .btn--compact {
-  min-height: 40px;
-  padding: 10px 22px;
-  font-size: 0.72rem;
-  font-weight: 600;
+  min-height: var(--control-height);
+  padding: var(--control-pad-y) var(--control-pad-x);
+  font-size: var(--control-font);
+  font-weight: var(--control-weight);
+  letter-spacing: var(--control-tracking);
+  border-radius: var(--control-radius);
   letter-spacing: 0.04em;
   text-transform: none;
   border-radius: var(--radius-md);
@@ -754,4 +756,30 @@
 
 .site-main p {
   text-wrap: pretty;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* THE CLOSING CTA — the homepage's compact outline, everywhere           */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.cta-footer__btn {
+  min-height: var(--control-height);
+  padding: var(--control-pad-y) var(--control-pad-x);
+  border: 1px solid rgba(250, 250, 248, 0.4);
+  border-radius: var(--control-radius);
+  background: transparent;
+  color: var(--colour-paper);
+  font-family: var(--font-sans);
+  font-size: var(--control-font);
+  font-weight: var(--control-weight);
+  letter-spacing: var(--control-tracking);
+  text-transform: none;
+}
+
+.cta-footer__btn:hover,
+.cta-footer__btn:focus-visible {
+  background: var(--colour-paper);
+  border-color: var(--colour-paper);
+  color: var(--colour-ink);
 }

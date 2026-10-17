@@ -183,10 +183,11 @@
   /* The compact Summit button (components.css .btn--compact) */
   display: inline-flex;
   align-items: center;
-  min-height: 40px;
-  padding: 10px 22px;
+  min-height: var(--control-height);
+  padding: var(--control-pad-y) var(--control-pad-x);
   border: 1px solid var(--ab-rule-strong);
-  border-radius: var(--radius-md);
+  border-radius: var(--control-radius);
+  letter-spacing: var(--control-tracking);
   background: var(--ab-text);
   color: var(--ab-field);
   font-family: var(--font-text);
@@ -211,7 +212,7 @@
 .ab-principle-line {
   max-width: 16ch !important;
   font-family: var(--font-serif) !important;
-  font-size: clamp(2.5rem, 6vw, 6rem) !important;
+  font-size: var(--type-display) !important;
   line-height: 0.98 !important;
   letter-spacing: -0.025em;
   text-wrap: balance;
@@ -447,7 +448,7 @@
 .ab-principle__word {
   margin-top: var(--space-5) !important;
   font-family: var(--font-serif);
-  font-size: clamp(3.5rem, 12.5vw, 12rem);
+  font-size: clamp(3.25rem, 9vw, 8rem);
   font-weight: 400;
   line-height: 0.88;
   letter-spacing: -0.035em;
@@ -498,7 +499,7 @@
     order: -1;
     max-width: 18ch;
     margin-top: var(--space-6);
-    font-size: clamp(2.25rem, 4.4vw, 4.25rem);
+    font-size: var(--type-statement);
     line-height: 1.04;
   }
 
@@ -508,7 +509,7 @@
 
   .ab-body > .ab-chapter--principle:nth-of-type(3n + 4) .ab-principle__word {
     margin-top: clamp(48px, 6vw, 96px) !important;
-    font-size: clamp(3rem, 8vw, 7.5rem);
+    font-size: clamp(2.75rem, 6vw, 5.5rem);
     color: var(--ab-quiet);
   }
 
@@ -612,7 +613,7 @@
 
 .ab-portrait__initials {
   font-family: var(--font-serif);
-  font-size: clamp(4rem, 9vw, 7.5rem);
+  font-size: clamp(3.5rem, 6vw, 5.5rem);
   line-height: 1;
   letter-spacing: 0.04em;
   color: var(--ab-text);
@@ -629,7 +630,7 @@
 .ab-profile__name {
   margin: var(--space-3) 0 var(--space-6) !important;
   font-family: var(--font-serif);
-  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  font-size: clamp(1.75rem, 2.6vw, 2.5rem);
   font-weight: 400;
   line-height: 1.02;
   letter-spacing: -0.015em;
@@ -746,7 +747,7 @@
 
 .ab-next__title {
   font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  font-size: var(--type-statement);
   line-height: 0.98;
   letter-spacing: -0.025em;
 }
@@ -764,7 +765,7 @@
   grid-column: 2;
   grid-row: 1;
   align-self: center;
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-size: 1.5rem;
   transition: transform var(--motion-ui) var(--ease-out);
 }
 
@@ -878,4 +879,49 @@
   max-width: 240px;
   margin: var(--space-6) 0 var(--space-2);
   box-shadow: 0 1px 0 var(--ab-rule), 0 18px 40px -24px rgba(26, 26, 24, 0.45);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* THE QUIET SYSTEM — calibration                                         */
+/* Serif is an intervention, not a default: routine headings, registers   */
+/* and navigation speak in the grotesk; the literary voice is kept for    */
+/* the moments that need a different voice.                               */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.ab-statement,
+.ab-form h3,
+.ab-stage__text h3,
+.ab-pressure h3,
+.ab-work h3,
+.ab-pair__item h3,
+.ab-profile__name,
+.ab-sequence__title,
+.ab-next__title {
+  font-family: var(--font-sans);
+  letter-spacing: -0.02em;
+}
+
+.ab-form h3,
+.ab-stage__text h3,
+.ab-pressure h3,
+.ab-work h3,
+.ab-pair__item h3 {
+  font-size: var(--type-register);
+  line-height: 1.2;
+}
+
+.ab-sequence__title {
+  font-size: var(--type-section);
+}
+
+/* Manifesto: the propositions keep their voice, at controlled scale and
+   without filling the viewport — six thoughts, not six posters. */
+.ab-chapter--principle {
+  min-height: 0;
+  padding-block: clamp(96px, 12vw, 168px);
+}
+
+.ab-chapter .ab-principle__claim {
+  font-size: var(--type-statement);
 }

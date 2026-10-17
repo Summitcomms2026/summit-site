@@ -117,7 +117,7 @@
   max-width: 18ch;
   margin-inline: auto;
   font-family: var(--font-serif);
-  font-size: clamp(2.125rem, 4vw, 3.5rem);      /* 34 → 56 */
+  font-size: var(--type-statement);
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: -0.01em;
@@ -158,7 +158,7 @@
 .res-chapter p.res-statement {
   max-width: 17ch;
   font-family: var(--font-serif);
-  font-size: clamp(2.375rem, 5.2vw, 4.75rem);   /* 38 → 76 */
+  font-size: var(--type-statement);
   line-height: 1.06;
   letter-spacing: -0.012em;
   text-align: center;
@@ -224,8 +224,8 @@
 .res-cta a {
   display: inline-flex;
   align-items: center;
-  min-height: 40px;
-  padding: 10px 22px;
+  min-height: var(--control-height);
+  padding: var(--control-pad-y) var(--control-pad-x);
   border: 1px solid var(--res-text);
   border-radius: var(--radius-md);
   background: var(--res-text);
@@ -273,7 +273,7 @@
 .res-publication h2 {
   max-width: 14ch;
   margin-inline: 0;
-  font-size: clamp(2.5rem, 5.2vw, 4.75rem);
+  font-size: var(--type-statement);
   line-height: 1.02;
   text-align: left;
 }
@@ -545,7 +545,7 @@
 .res-figures strong {
   order: -1;
   font-family: var(--font-serif);
-  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-size: clamp(2.5rem, 4.4vw, 4rem);
   font-weight: 400;
   line-height: 0.9;
   letter-spacing: -0.02em;
@@ -976,4 +976,19 @@
   .res-chapter--close {
     display: none;
   }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* THE QUIET SYSTEM — the one signal                                      */
+/* The empty chair carries the site's single accent: warm metal, the      */
+/* colour of patina. Nowhere else does accent enter the interface.        */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.res-chair__place.is-empty {
+  border-color: var(--accent-metal);
+}
+
+.res-chair__place.is-empty .res-chair__rank {
+  color: var(--accent-metal);
 }

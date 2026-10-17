@@ -150,7 +150,7 @@
 .obs-chapter h2 {
   max-width: 19ch;
   font-family: var(--font-sans);
-  font-size: clamp(2rem, 3.6vw, 3.25rem);       /* 32 → 52 */
+  font-size: var(--type-statement);
   font-weight: 400;
   line-height: 1.06;
   letter-spacing: -0.022em;
@@ -168,7 +168,7 @@
 /* The opening statement carries the page's thesis */
 .obs-chapter h2.obs-statement {
   max-width: 21ch;
-  font-size: var(--type-statement);    /* 36 → 68 */
+  font-size: var(--type-statement);    /* 28 → 46 */
   line-height: 1.02;
   letter-spacing: -0.026em;
 }
@@ -308,7 +308,7 @@
 .obs-register strong {
   order: -1;
   font-family: var(--font-sans);
-  font-size: clamp(3.25rem, 7.4vw, 6.5rem);     /* 52 → 104 */
+  font-size: clamp(2.75rem, 5vw, 4.5rem);
   font-weight: 400;
   line-height: 0.9;
   letter-spacing: -0.035em;
@@ -727,8 +727,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 40px;
-  padding: 10px 22px;
+  min-height: var(--control-height);
+  padding: var(--control-pad-y) var(--control-pad-x);
   border: 1px solid var(--colour-ink);
   border-radius: var(--radius-md);
   background: var(--colour-ink);
@@ -937,7 +937,7 @@
   width: 100%;
   padding: 8px 0 12px;
   border: 0;
-  border-bottom: 1px solid var(--colour-ink-40);
+  border-bottom: 1px solid var(--border-subtle);
   border-radius: 0;
   background: transparent;
   font-family: var(--font-text);
@@ -951,7 +951,7 @@
 .obs-form__textarea {
   min-height: 9.5em;
   padding: 14px 16px;
-  border: 1px solid var(--colour-ink-40);
+  border: 1px solid var(--border-subtle);
   resize: vertical;
 }
 

@@ -8,7 +8,7 @@
  *
  * Governance:
  *   - Motion must feel calm — never flashy or mechanical.
- *   - Default reveal: --motion-reveal (tokens.css), ease-out, 16px lift.
+ *   - Default reveal: --motion-reveal (tokens.css), ease-out, 12px lift (--motion-travel).
  *   - Stagger: N × --motion-stagger.
  *   - Always respect prefers-reduced-motion.
  *
@@ -25,7 +25,7 @@
 
 [data-reveal] {
     opacity:   0;
-    transform: translateY( 1rem );
+    transform: translateY( var(--motion-travel, 12px) );
     transition:
         opacity   var(--motion-reveal) var(--ease-out),
         transform var(--motion-reveal) var(--ease-out);

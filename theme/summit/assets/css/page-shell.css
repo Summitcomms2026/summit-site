@@ -112,7 +112,7 @@
   max-width: 14ch;
   margin: clamp(48px, 8vh, 96px) 0 0;
   font-family: var(--font-sans);
-  font-size: clamp(2.75rem, 7vw, 4rem);      /* 44 at 390, 54 at 768 */
+  font-size: var(--type-display);            /* Level B: 40 → 64 (the homepage hero alone is larger) */
   font-weight: 400;
   line-height: 1;
   letter-spacing: -0.025em;
@@ -154,7 +154,7 @@
 
 @media (min-width: 960px) {
   .shell-hero__title {
-    font-size: clamp(3.5rem, 5.6vw, 5.5rem);  /* 81 at 1440, max 88 */
+    font-size: var(--type-display);
   }
 
   .shell-hero__foot {
@@ -221,8 +221,8 @@
 
 .shell-body__inner h2 {
   margin-top: 2em;
-  font-family: var(--font-serif);
-  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-family: var(--font-sans);
+  font-size: var(--type-section);
   font-weight: 400;
   line-height: 1.15;
   letter-spacing: -0.01em;
@@ -422,4 +422,20 @@
   .cta-footer {
     display: none;
   }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* THE QUIET SYSTEM — fields and reading ink                              */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+/* The dark hero is an immersive stage: canvas.dark, a step deeper than
+   the surface.dark sections that follow it. */
+.shell-hero--dark.section--dark {
+  background-color: var(--canvas-dark);
+}
+
+/* Long-form text reads in text.primary, a breath softer than ink. */
+.shell-body__inner {
+  color: var(--reading-ink);
 }

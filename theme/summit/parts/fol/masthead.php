@@ -11,6 +11,7 @@
  *   rail        array of short labels for the top rail
  *   title       the H1
  *   standfirst  one sentence
+ *   intro       a second, quieter opening paragraph (optional)
  *   actions     action $args for parts/global/action-group.php
  *   size        'cover' (the publication) | 'section' (a subject)
  *
@@ -19,7 +20,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$a = wp_parse_args( $args ?? [], [ 'rail' => [], 'title' => '', 'standfirst' => '', 'actions' => [], 'size' => 'cover' ] );
+$a = wp_parse_args( $args ?? [], [ 'rail' => [], 'title' => '', 'standfirst' => '', 'intro' => '', 'actions' => [], 'size' => 'cover' ] );
 ?>
 <header class="fol-masthead fol-masthead--<?php echo esc_attr( 'section' === $a['size'] ? 'section' : 'cover' ); ?>">
     <div class="fol-wrap">
@@ -35,7 +36,12 @@ $a = wp_parse_args( $args ?? [], [ 'rail' => [], 'title' => '', 'standfirst' => 
 
         <div class="fol-masthead__foot">
             <?php if ( $a['standfirst'] ) : ?>
-            <p class="fol-masthead__standfirst" data-reveal data-reveal-delay="1"><?php echo esc_html( $a['standfirst'] ); ?></p>
+            <div class="fol-masthead__opening" data-reveal data-reveal-delay="1">
+                <p class="fol-masthead__standfirst"><?php echo esc_html( $a['standfirst'] ); ?></p>
+                <?php if ( $a['intro'] ) : ?>
+                <p class="fol-masthead__intro"><?php echo esc_html( $a['intro'] ); ?></p>
+                <?php endif; ?>
+            </div>
             <?php endif; ?>
             <?php if ( $a['actions'] ) : ?>
             <div class="fol-masthead__actions" data-reveal="fade" data-reveal-delay="2">

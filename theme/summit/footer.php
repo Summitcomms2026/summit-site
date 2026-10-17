@@ -6,9 +6,13 @@
  * resolved Summit architecture. Labels and destinations come from the
  * navigation config (inc/navigation-config.php):
  *
- *   brand | primary sections | utility | Let's Talk + Subscribe
+ *   brand | primary sections | utility | Let's Talk + Subscribe + email
  *   ─────────────────────────────────────────────────────────────
- *   copyright                         Privacy · Terms   LinkedIn
+ *   copyright · microcopy             Privacy · Terms   LinkedIn   Back to Top
+ *
+ * Copy: Editorial Handover v1, S11-P029 and S11-P031. The newsletter
+ * (S11-P030) stays a short route to the publication's own subscribe form:
+ * the footer carries no form that asks for consent.
  *
  * Legacy routes (Who We Are, What We Do, Selected Portfolio, Tastemakers,
  * Design Tomorrow) remain live but are no longer surfaced here.
@@ -75,14 +79,17 @@ $footer_subscribe = summit_nav( 'subscribe' );
                     <?php echo esc_html( $footer_subscribe['label'] ); ?>
                 </a>
                 <?php endif; ?>
+
+                <?php $footer_email = summit_contact_channels()[2]; ?>
+                <a href="<?php echo esc_url( $footer_email['href'], [ 'mailto' ] ); ?>" class="site-footer__nav-link"><?php echo esc_html( $footer_email['display'] ); ?></a>
             </div>
 
         </div>
 
         <div class="site-footer__base">
             <p class="site-footer__copyright">
-                &copy; <?php echo esc_html( gmdate( 'Y' ) ); ?> Summit Communication Group. All Rights Reserved.
-                <br>Summit&reg; is a registered trademark of Summit Communication Group.
+                &copy; Summit Communication Group. All rights reserved.
+                <br><?php esc_html_e( 'Privacy and Terms are available without registering.', 'summit' ); ?>
             </p>
             <div class="site-footer__social">
                 <nav aria-label="<?php esc_attr_e( 'Legal', 'summit' ); ?>">
@@ -99,6 +106,7 @@ $footer_subscribe = summit_nav( 'subscribe' );
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="currentColor"/></svg>
                 </a>
                 <?php endforeach; ?>
+                <a href="#top" class="site-footer__legal-link site-footer__top"><?php esc_html_e( 'Back to Top', 'summit' ); ?> <span aria-hidden="true">&uarr;</span></a>
             </div>
         </div>
 

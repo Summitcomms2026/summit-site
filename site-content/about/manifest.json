@@ -7,73 +7,89 @@
       "source": "overview.blocks.html",
       "template": "page-about.php",
       "meta": {
-        "summit_eyebrow": "About",
-        "summit_headline": "Judgement before noise.",
         "summit_tone": "paper",
-        "summit_standfirst": "Summit is a strategic design and intelligence practice working across luxury, culture, product, experience and institutions.",
-        "summit_secondary_label": "Manifesto",
-        "summit_secondary_url": "/about/manifesto"
-      }
+        "summit_eyebrow": "About",
+        "summit_headline": "Built on Judgement",
+        "summit_standfirst": "Summit advises founders, established houses and investors on the decisions behind enduring brands. Our work spans strategy, digital experience, communications, creative production and corporate advisory.",
+        "summit_intro": "Original research into luxury now informs how we examine value, desire, governance and time.",
+        "summit_cta_label": "Explore How We Work",
+        "summit_cta_url": "/about/how-we-work",
+        "summit_secondary_label": "Start a Conversation",
+        "summit_secondary_url": "/lets-talk"
+      },
+      "title": "About"
     },
     {
       "path": "/about/origin-story",
       "source": "origin-story.blocks.html",
       "template": "page-about.php",
       "meta": {
-        "summit_eyebrow": "About / Origin Story",
-        "summit_headline": "The work became the question.",
         "summit_tone": "paper",
-        "summit_standfirst": "How client work kept raising questions that brand strategy could not answer — and how the answers became a book, an annual reading, an observatory and a publication.",
-        "summit_summary": "How client work became a line of inquiry, and the inquiry became an instrument."
-      }
+        "summit_summary": "How client work became a line of inquiry, and the inquiry became an instrument.",
+        "summit_eyebrow": "About / Origin Story",
+        "summit_headline": "From Story to Stewardship",
+        "summit_standfirst": "Summit was founded by Gregory Gray with a belief that good communication begins in understanding rather than noise. Through brand, design, film and strategic communications, that conviction shaped a practice concerned with what organisations mean to the people who matter to them.",
+        "summit_intro": "Today, the questions reach further: what deserves to be built, what should be protected and what will survive the next commercial decision?"
+      },
+      "title": "Origin Story"
     },
     {
       "path": "/about/manifesto",
       "source": "manifesto.blocks.html",
       "template": "page-about.php",
       "meta": {
-        "summit_eyebrow": "About / Manifesto",
-        "summit_headline": "What luxury requires.",
         "summit_tone": "dark",
-        "summit_standfirst": "Six propositions about luxury: stewardship, restraint, authority, memory, governance and judgement.",
-        "summit_summary": "Six propositions about what luxury requires."
-      }
+        "summit_summary": "Six propositions about what luxury requires.",
+        "summit_eyebrow": "About / Manifesto",
+        "summit_headline": "Do the Work That Lasts",
+        "summit_standfirst": "Good judgement is not always the most immediately popular advice. Growth can look convincing before its cost becomes visible. Heritage can be celebrated while the knowledge behind it disappears. Technology can make an operation faster without making it wiser.",
+        "summit_intro": "We believe the work is to see those distinctions clearly — then act."
+      },
+      "title": "Manifesto"
     },
     {
       "path": "/about/why-it-matters",
       "source": "why-it-matters.blocks.html",
       "template": "page-about.php",
       "meta": {
-        "summit_eyebrow": "About / Why It Matters",
-        "summit_headline": "Why judgement matters now.",
         "summit_tone": "paper",
-        "summit_standfirst": "Luxury has never had more reach, more data or more ways to produce. The scarce capability is deciding what should exist.",
-        "summit_summary": "Why the quality of judgement matters more as attention, output and speed become cheap."
-      }
+        "summit_summary": "Why the quality of judgement matters more as attention, output and speed become cheap.",
+        "summit_eyebrow": "About / Why It Matters",
+        "summit_headline": "The Decisions That Stay",
+        "summit_standfirst": "A successful launch can build attention while a product becomes too familiar. A new channel can increase revenue while making control harder to recover. A house can inherit an extraordinary archive yet use almost none of it.",
+        "summit_intro": "The cost is rarely visible on the day the decision is approved. That is why we look beyond the immediate result."
+      },
+      "title": "Why It Matters"
     },
     {
       "path": "/about/partners-people",
       "source": "partners-people.blocks.html",
       "template": "page-about.php",
       "meta": {
-        "summit_eyebrow": "About / Partners & People",
-        "summit_headline": "Senior attention. Specialist depth.",
         "summit_tone": "paper",
-        "summit_standfirst": "Summit is deliberately small at its centre. The people who frame a question stay with it, and specialists join where their expertise changes the outcome.",
-        "summit_summary": "Summit’s leadership, its intellectual collaborators, and how specialists join the work."
-      }
+        "summit_summary": "Summit’s leadership, its intellectual collaborators, and how specialists join the work.",
+        "summit_eyebrow": "About / Partners & People",
+        "summit_headline": "People Behind the Work",
+        "summit_standfirst": "Complex briefs seldom benefit from a large cast introduced before anyone has heard the question. Summit brings together the appropriate strategic, creative and specialist expertise around the work at hand.",
+        "summit_intro": "The people involved, their responsibilities and the way we work together are established at the outset."
+      },
+      "title": "Partners & People"
     },
     {
       "path": "/about/how-we-work",
       "source": "how-we-work.blocks.html",
       "template": "page-about.php",
       "meta": {
-        "summit_eyebrow": "About / How We Work",
-        "summit_headline": "Start with the question.",
         "summit_tone": "paper",
-        "summit_standfirst": "Summit enters through the problem rather than a pre-sold discipline, and the people who frame the question stay with the work.",
-        "summit_summary": "The working principles behind Summit’s engagements, and the difference between bespoke work and Programmes."
-      }
+        "summit_summary": "The working principles behind Summit’s engagements, and the difference between bespoke work and Programmes.",
+        "summit_eyebrow": "About / How We Work",
+        "summit_headline": "First, We Listen",
+        "summit_standfirst": "You may arrive with a decision to make, a brand to reconsider or an opportunity that has not yet been fully defined. We begin by listening to the people responsible for it.",
+        "summit_intro": "Our aim is to understand what matters, what is already known and where a clearer view could change the decision. That conversation should have value whether or not an engagement follows.",
+        "summit_cta_label": "Start a Conversation",
+        "summit_cta_url": "/lets-talk"
+      },
+      "title": "How We Work"
     }
   ]
 }

@@ -8,8 +8,11 @@
       "template": "page-shell.php",
       "meta": {
         "summit_tone": "paper",
-        "summit_standfirst": "For clients in an active engagement with Summit."
-      }
+        "summit_eyebrow": "",
+        "summit_headline": "For Work Already Underway",
+        "summit_standfirst": "Secure access to shared project information is available to clients with an active account."
+      },
+      "title": "Client Access"
     },
     {
       "path": "/careers",
@@ -17,8 +20,13 @@
       "template": "page-shell.php",
       "meta": {
         "summit_tone": "paper",
-        "summit_standfirst": "A senior core, and specialists who join where their expertise changes the work."
-      }
+        "summit_eyebrow": "",
+        "summit_headline": "Work Worth Doing",
+        "summit_standfirst": "Good work depends on people who think carefully, speak plainly and take responsibility for the outcome. We value independent judgement, curiosity and the ability to work across disciplines without mistaking breadth for expertise.",
+        "summit_cta_label": "Explore Opportunities",
+        "summit_cta_url": "#s11-p013"
+      },
+      "title": "Careers"
     },
     {
       "path": "/privacy",
@@ -26,8 +34,14 @@
       "template": "page-shell.php",
       "meta": {
         "summit_tone": "paper",
-        "summit_standfirst": "How this site handles the information you send to Summit."
-      }
+        "summit_eyebrow": "",
+        "summit_headline": "Your Information, Your Choice",
+        "summit_standfirst": "When you contact Summit, subscribe to our research or request a report, you should know what information is requested and why.",
+        "summit_intro": "Our Privacy Policy explains how personal information is handled, who to contact about it and the choices available to you.",
+        "summit_cta_label": "Read the Privacy Policy",
+        "summit_cta_url": "#privacy-policy"
+      },
+      "title": "Privacy"
     },
     {
       "path": "/terms",
@@ -35,8 +49,14 @@
       "template": "page-shell.php",
       "meta": {
         "summit_tone": "paper",
-        "summit_standfirst": "The terms on which this site is offered."
-      }
+        "summit_eyebrow": "",
+        "summit_headline": "Using This Site",
+        "summit_standfirst": "Summit publishes articles, research and information about its work. The material is provided for general information unless we expressly agree otherwise.",
+        "summit_intro": "Our Terms explain the conditions governing use of the website, its material and its interactive features.",
+        "summit_cta_label": "Read the Terms",
+        "summit_cta_url": "#terms-of-use"
+      },
+      "title": "Terms"
     }
   ]
 }

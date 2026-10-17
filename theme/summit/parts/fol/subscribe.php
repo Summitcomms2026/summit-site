@@ -29,8 +29,10 @@ $field    = wp_unique_id( 'fol-subscribe-email-' );
 <section class="fol-panel fol-subscribe" id="<?php echo esc_attr( $sid ); ?>" aria-labelledby="<?php echo esc_attr( $sid ); ?>-heading">
     <div class="fol-wrap fol-subscribe__grid">
         <div class="fol-subscribe__intro" data-reveal>
-            <h2 class="fol-subscribe__title" id="<?php echo esc_attr( $sid ); ?>-heading"><?php esc_html_e( 'Subscribe', 'summit' ); ?></h2>
-            <p class="fol-subscribe__sub"><?php esc_html_e( 'New essays and analysis from The Future of Luxury, by email.', 'summit' ); ?></p>
+            <?php // Copy: S09-P023 (the digest choice waits until a digest exists) ?>
+            <p class="fol-panel__label"><?php esc_html_e( 'Subscribe', 'summit' ); ?></p>
+            <h2 class="fol-subscribe__title" id="<?php echo esc_attr( $sid ); ?>-heading"><?php esc_html_e( 'For the Next Question', 'summit' ); ?></h2>
+            <p class="fol-subscribe__sub"><?php esc_html_e( 'The best luxury stories seldom end where the headlines do. Receive new essays from The Future of Luxury when there is an argument worth making.', 'summit' ); ?></p>
         </div>
 
         <div class="fol-subscribe__action" data-reveal data-reveal-delay="1">

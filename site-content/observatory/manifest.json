@@ -8,10 +8,16 @@
       "template": "page-observatory.php",
       "source": "overview.blocks.html",
       "meta": {
-        "summit_eyebrow": "Summit / A governed research instrument",
         "summit_tone": "dark",
-        "summit_standfirst": "A proprietary, governed research instrument for luxury maisons, CMOs, family offices and investors.",
-        "summit_utilities": "share"
+        "summit_utilities": "share",
+        "summit_eyebrow": "The Observatory",
+        "summit_headline": "Look Beyond the Name",
+        "summit_standfirst": "Luxury is good at telling us what things cost. Less good at explaining why some objects keep their meaning while others slowly lose it.",
+        "summit_intro": "The Observatory examines the objects, decisions and institutions behind enduring luxury. It studies where authority comes from, what protects it and how a maison can compromise it without meaning to.\n\nResearch for those responsible for what happens next.",
+        "summit_cta_label": "Explore the Field",
+        "summit_cta_url": "/the-observatory/field",
+        "summit_secondary_label": "Request a Private Briefing",
+        "summit_secondary_url": "/the-observatory/request-a-private-briefing"
       }
     },
     {
@@ -20,11 +26,14 @@
       "template": "page-observatory.php",
       "source": "for-cmos.blocks.html",
       "meta": {
-        "summit_eyebrow": "The Observatory / For CMOs",
         "summit_tone": "paper",
-        "summit_headline": "What carries the house.",
-        "summit_standfirst": "How the leadership of a maison can read the Observatory: which propositions carry institutional authority, which are carried by it, and what the house must not lose.",
-        "summit_utilities": "share"
+        "summit_utilities": "share",
+        "summit_eyebrow": "The Observatory / For CMOs",
+        "summit_headline": "What Is the House Carrying?",
+        "summit_standfirst": "Every maison inherits decisions. Some have built authority quietly for decades. Others leave a familiar icon doing far too much of the work.",
+        "summit_intro": "The Observatory offers brand leaders a disciplined way to examine the relationship between products, patrimony, storytelling, distribution and long-term desire — before the cost of a decision becomes obvious.",
+        "summit_cta_label": "Discuss a Maison Question",
+        "summit_cta_url": "/the-observatory/request-a-private-briefing?audience=cmo"
       }
     },
     {
@@ -33,11 +42,14 @@
       "template": "page-observatory.php",
       "source": "for-family-offices-investors.blocks.html",
       "meta": {
-        "summit_eyebrow": "The Observatory / For Family Offices & Investors",
         "summit_tone": "tinted",
-        "summit_headline": "Institutional quality, read with discipline.",
-        "summit_standfirst": "For family offices, collectors and their advisers: a structured reading of governance, durability and patrimony — read separately from price, and never as a forecast.",
-        "summit_utilities": "share"
+        "summit_utilities": "share",
+        "summit_eyebrow": "The Observatory / For Family Offices & Investors",
+        "summit_headline": "What Underpins the Price?",
+        "summit_standfirst": "An acquisition can bring a distinguished name, impressive accounts and a collection of assets. The harder question is what makes the institution difficult to replace.",
+        "summit_intro": "The Observatory helps owners, family offices and investment teams examine the provenance, governance, production discipline, institutional memory and narrative authority behind a luxury proposition.",
+        "summit_cta_label": "Discuss an Investment Question",
+        "summit_cta_url": "/the-observatory/request-a-private-briefing?audience=investor"
       }
     },
     {
@@ -46,11 +58,14 @@
       "template": "page-observatory.php",
       "source": "field.blocks.html",
       "meta": {
-        "summit_eyebrow": "The Observatory / The Field",
         "summit_tone": "dark",
-        "summit_headline": "A field around the canon.",
-        "summit_standfirst": "One hundred and four entries across seventeen sectors, read under the same discipline as the Luxury 100.",
-        "summit_utilities": "share"
+        "summit_utilities": "share",
+        "summit_eyebrow": "The Observatory / The Field",
+        "summit_headline": "Beyond the Hundred",
+        "summit_standfirst": "A Canon defines a centre. It cannot describe everything around it.",
+        "summit_intro": "The Observatory studies that wider territory. Its initial governed Field Book recorded 104 entries across seventeen sectors, each handled under stated eligibility and evidential rules. At the recorded stage, two entries still awaited primary-source clarification.\n\nThat distinction between established and unresolved evidence is part of the work, not an inconvenience to conceal.",
+        "summit_cta_label": "Explore How It Works",
+        "summit_cta_url": "/the-observatory/how-it-works"
       }
     },
     {
@@ -59,11 +74,14 @@
       "template": "page-observatory.php",
       "source": "how-it-works.blocks.html",
       "meta": {
-        "summit_eyebrow": "The Observatory / How It Works",
         "summit_tone": "paper",
-        "summit_headline": "How the Observatory reads.",
-        "summit_standfirst": "A governed method: what can be read, how a reading is made and placed, and where the instrument declares its limits.",
-        "summit_utilities": "share, print"
+        "summit_utilities": "share, print",
+        "summit_eyebrow": "The Observatory / How It Works",
+        "summit_headline": "Evidence Before Opinion",
+        "summit_standfirst": "The Observatory grew from a difficult question: can we study the lasting meaning of luxury without confusing fame, price or opinion for evidence?",
+        "summit_intro": "Its research starts by defining what can be examined, tests available material against a consistent framework and records where the method reaches its limit.\n\nThe result is a reading that can be questioned — not a score asked to speak for itself.",
+        "summit_cta_label": "Request a Private Briefing",
+        "summit_cta_url": "/the-observatory/request-a-private-briefing"
       }
     },
     {
@@ -72,12 +90,15 @@
       "template": "page-observatory.php",
       "source": "request-a-private-briefing.blocks.html",
       "meta": {
-        "summit_eyebrow": "The Observatory / Private Briefing",
         "summit_tone": "paper",
-        "summit_headline": "Request a private briefing.",
-        "summit_standfirst": "A private briefing applies the Observatory’s governed framework to a specific maison, sector, holding or strategic question — without altering the public research record.",
         "summit_utilities": "",
-        "summit_form": "briefing"
+        "summit_form": "briefing",
+        "summit_eyebrow": "The Observatory / Private Briefing",
+        "summit_headline": "Where Would Clarity Help?",
+        "summit_standfirst": "A decision you are weighing. A maison you are responsible for. An opportunity you are not yet ready to announce.",
+        "summit_intro": "Tell us enough to begin a conversation. We will listen first, offer a considered perspective on the question and explain whether a closer piece of work might be useful.\n\nOur first aim is clarity — whether or not we go on to work together.",
+        "summit_cta_label": "Request a Conversation",
+        "summit_cta_url": "#s06-p037"
       }
     }
   ]

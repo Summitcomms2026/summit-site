@@ -15,11 +15,14 @@
 	var images  = document.querySelectorAll( '[data-fol-prose] img' );
 	var pending = images.length;
 
-	// Where an essay has lost more than one of its photographs, say so once,
-	// where the first one stood, rather than leaving silent gaps.
+	// Where the lost photographs were the substance of the essay (the
+	// objects reviewed, the works discussed — marked data-fol-absence by
+	// inc/fol-rhythm.php), say so once, where the first one stood.
+	// Elsewhere a lost photograph is omitted silently.
+	var prose = document.querySelector( '[data-fol-prose]' );
 	var acknowledge = function () {
 		var gone = document.querySelectorAll( '[data-fol-withdrawn]' );
-		if ( gone.length < 2 ) {
+		if ( gone.length < 2 || ! prose || 'note' !== prose.getAttribute( 'data-fol-absence' ) ) {
 			return;
 		}
 		var note = document.createElement( 'p' );

@@ -96,6 +96,9 @@ $num = static fn( int $i ): string => sprintf( '%02d', $i );
                             <span class="sx-num" aria-hidden="true"><?php echo esc_html( $num( $i + 1 ) ); ?></span>
                             <span class="sx-sector__label"><?php echo esc_html( $item['label'] ); ?></span>
                             <span class="sx-arrow" aria-hidden="true">&rarr;</span>
+                            <?php if ( $item['image'] ) : // Touch: each industry carries its own image in the row ?>
+                            <span class="sx-sector__thumb" aria-hidden="true"><?php echo $item['image']; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above ?></span>
+                            <?php endif; ?>
                         </a>
                     </li>
                     <?php endforeach; ?>

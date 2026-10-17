@@ -224,6 +224,9 @@
   --accent-metal:    #B47F63;
   --field-violet:    #2B2031;   /* the deep atmospheric field: violet in ink */
   --field-rose:      #EFE6E1;   /* warm paper: rose held in the page */
+  /* A fine material grain, felt rather than seen: for large atmospheric
+     fields only (never on small marks or controls) */
+  --texture-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .075 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
 
   /* ── Control — one button geometry, measured from the homepage ───────── */
   --control-height:   40px;

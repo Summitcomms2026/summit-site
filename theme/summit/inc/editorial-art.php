@@ -144,6 +144,21 @@ function summit_editorial_art_key( int $post_id ): array {
 }
 
 /**
+ * A family's construction, as SVG markup in a 100 × 100 box. Shared by the
+ * plate and by the essay's interlude (inc/fol-rhythm.php).
+ */
+function summit_editorial_art_geometry( string $family ): string {
+    $geometry = [
+        'house'   => '<rect x="4" y="4" width="92" height="92"/><rect x="6.5" y="6.5" width="87" height="87"/><path d="M4 70h92M4 73h92"/>',
+        'ledger'  => '<path d="M0 30h100M0 42h100M0 54h100M0 66h100M0 78h100M70 22v70"/>',
+        'object'  => '<circle cx="50" cy="50" r="40"/><circle cx="50" cy="50" r="31"/><path d="M50 4v8M50 88v8M4 50h8M88 50h8M17.5 17.5l5.7 5.7M76.8 76.8l5.7 5.7M82.5 17.5l-5.7 5.7M23.2 76.8l-5.7 5.7"/>',
+        'culture' => '<path d="M72 0v100M76 0v100"/>',
+        'diagram' => '<path d="M50 8v84M8 50h84M20.3 20.3l59.4 59.4M79.7 20.3 20.3 79.7"/><circle cx="50" cy="50" r="12"/><circle cx="50" cy="50" r="30"/>',
+    ];
+    return $geometry[ $family ] ?? $geometry['culture'];
+}
+
+/**
  * The plate itself.
  *
  * @param int    $post_id The essay.
@@ -164,13 +179,7 @@ function summit_editorial_art( int $post_id, string $context = 'card' ): string 
         $tone = $post_id % 2 ? 'dark' : 'ink';   // deep violet, or ink
     }
 
-    $geometry = [
-        'house'   => '<rect x="4" y="4" width="92" height="92"/><rect x="6.5" y="6.5" width="87" height="87"/><path d="M4 70h92M4 73h92"/>',
-        'ledger'  => '<path d="M0 30h100M0 42h100M0 54h100M0 66h100M0 78h100M70 22v70"/>',
-        'object'  => '<circle cx="50" cy="50" r="40"/><circle cx="50" cy="50" r="31"/><path d="M50 4v8M50 88v8M4 50h8M88 50h8M17.5 17.5l5.7 5.7M76.8 76.8l5.7 5.7M82.5 17.5l-5.7 5.7M23.2 76.8l-5.7 5.7"/>',
-        'culture' => '<path d="M72 0v100M76 0v100"/>',
-        'diagram' => '<path d="M50 8v84M8 50h84M20.3 20.3l59.4 59.4M79.7 20.3 20.3 79.7"/><circle cx="50" cy="50" r="12"/><circle cx="50" cy="50" r="30"/>',
-    ][ $family ];
+    $geometry = summit_editorial_art_geometry( $family );
 
     $long    = mb_strlen( $key ) > 12 ? ' ed-art--long' : '';
     $classes = sprintf( 'ed-art ed-art--%s ed-art--%s ed-art--ctx-%s%s%s', $family, $tone, sanitize_html_class( $context ), $trace ? ' has-trace' : '', $long );

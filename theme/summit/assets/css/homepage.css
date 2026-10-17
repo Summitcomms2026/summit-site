@@ -2372,6 +2372,7 @@
   inset: 0;
   z-index: -1;
   background:
+    var(--texture-grain),
     radial-gradient(ellipse 60% 80% at 82% 12%, rgba(141, 116, 149, 0.26), transparent 64%),
     radial-gradient(ellipse 70% 70% at 0% 100%, rgba(16, 16, 18, 0.55), transparent 70%);
   transition: opacity 0.6s var(--ease-inout);
@@ -2469,5 +2470,113 @@
 @media (min-width: 768px) {
   .sectors-grid--industries.sectors-grid:hover .sectors-grid__item:not(:hover) .sectors-grid__image {
     filter: brightness(0.6) saturate(0.75);
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* AT-REST EXPRESSION (Pass 06) — presence, then attention. Expression is */
+/* part of the resting composition; hover rewards attention, it does not  */
+/* rescue the design. The same at rest on touch.                          */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+/* Solutions: one way in rests in hand (By Need, the Solutions default),
+   as the recorded panel always held one field inverted. Choosing another
+   moves the warmth there. */
+.capability-triptych__pillar:last-child {
+  background-color: #33262A;
+  background-image: radial-gradient(ellipse 80% 70% at 50% 18%, rgba(185, 145, 138, 0.3), transparent 70%);
+}
+
+.capability-triptych__pillar:last-child :is(.capability-triptych__number, .capability-triptych__title, .capability-triptych__desc) {
+  color: var(--colour-paper);
+}
+
+.capability-triptych__pillar:last-child .capability-triptych__icon--off {
+  display: none;
+}
+
+.capability-triptych__pillar:last-child .capability-triptych__icon--on {
+  display: block;
+}
+
+@media (min-width: 768px) and (hover: hover) {
+  .capability-triptych__grid:hover .capability-triptych__pillar:last-child:not(:hover) {
+    background-color: var(--colour-paper-pure);
+    background-image: none;
+  }
+
+  .capability-triptych__grid:hover .capability-triptych__pillar:last-child:not(:hover) .capability-triptych__number {
+    color: var(--colour-ink-40);
+  }
+
+  .capability-triptych__grid:hover .capability-triptych__pillar:last-child:not(:hover) .capability-triptych__title {
+    color: var(--colour-ink);
+  }
+
+  .capability-triptych__grid:hover .capability-triptych__pillar:last-child:not(:hover) .capability-triptych__desc {
+    color: var(--colour-ink-60);
+  }
+
+  .capability-triptych__grid:hover .capability-triptych__pillar:last-child:not(:hover) .capability-triptych__icon--off {
+    display: block;
+  }
+
+  .capability-triptych__grid:hover .capability-triptych__pillar:last-child:not(:hover) .capability-triptych__icon--on {
+    display: none;
+  }
+}
+
+/* Selected Work & Research: each evidence object keeps a permanent,
+   low-level material signature — rose, lilac, metal, ink-and-gold — at
+   a little over half strength. In hand it deepens and the mark sharpens. */
+.sw-card::before {
+  opacity: 0.6;
+}
+
+.sw-card:hover::before,
+.sw-card:focus-visible::before {
+  opacity: 1;
+}
+
+.sw-card__logo img {
+  opacity: 0.5;
+}
+
+.sw-mark {
+  opacity: 0.58;
+}
+
+.sw-card--gold .sw-mark {
+  color: #D9C7A6;
+}
+
+.sw-card:hover .sw-card__logo img,
+.sw-card:focus-visible .sw-card__logo img {
+  opacity: 0.85;
+}
+
+/* Siblings no longer fade to grey when one is in hand: they keep their
+   signature, a step quieter */
+@media (min-width: 768px) {
+  .selected-work__grid:hover .sw-card {
+    opacity: 0.62;
+  }
+}
+
+/* The World of Luxury: a coherent photographic essay at rest. Hover
+   adjusts exposure, not colour. */
+.sectors-grid--industries .sectors-grid__image {
+  filter: brightness(0.88) saturate(1);
+}
+
+.sectors-grid--industries .sectors-grid__item:hover .sectors-grid__image,
+.sectors-grid--industries .sectors-grid__link:focus-visible .sectors-grid__image {
+  filter: brightness(1) saturate(1.05);
+}
+
+@media (min-width: 768px) {
+  .sectors-grid--industries.sectors-grid:hover .sectors-grid__item:not(:hover) .sectors-grid__image {
+    filter: brightness(0.74) saturate(0.95);
   }
 }

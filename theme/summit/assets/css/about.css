@@ -979,3 +979,110 @@
     --ab-field: var(--field-rose);
   }
 }
+
+/* ── Art direction (Pass 06) ──────────────────────────────────────────
+   Origin Story is punctuated by things Summit made — The Characteristics
+   of Luxury, the Touch Me Not title page, The Luxury 100 cover — not by
+   mood imagery. Each object is shown as itself. */
+.ab-chapter .ab-figure--evidence {
+  margin: var(--space-8) 0 var(--space-2);
+  box-shadow: 0 1px 0 var(--ab-rule), 0 24px 48px -32px rgba(26, 26, 24, 0.5);
+}
+
+.ab-chapter .ab-figure--evidence img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ab-chapter .ab-figure--evidence figcaption,
+.ab-chapter .res-art figcaption {
+  margin-top: 12px;
+  font-family: var(--font-text);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--ab-quiet);
+}
+
+.ab-chapter .res-art {
+  width: min(100%, 240px);
+  margin: var(--space-6) 0 var(--space-2);
+  box-shadow: 0 1px 0 var(--ab-rule), 0 18px 40px -24px rgba(26, 26, 24, 0.45);
+}
+
+.ab-chapter .res-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ab-chapter .res-art--cover.res-art--set {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  aspect-ratio: 612 / 792;
+  padding: 12% 10%;
+  border: 1px solid var(--ab-rule);
+  background: var(--colour-paper-pure);
+  text-align: center;
+}
+
+.ab-chapter .res-art__title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  line-height: 1.05;
+}
+
+.ab-chapter .res-art__rule {
+  width: 28px;
+  height: 1px;
+  background: var(--colour-ink-40);
+}
+
+.ab-chapter .res-art__subtitle {
+  font-family: var(--font-serif);
+  font-size: 0.875rem;
+  color: var(--colour-ink-60);
+}
+
+.ab-chapter .res-art__byline {
+  margin-top: auto;
+  font-family: var(--font-text);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--colour-ink-60);
+}
+
+/* Manifesto materiality: the colour fields are atmosphere, not fills.
+   Authority — deep violet with light falling from the upper right and a
+   near-black edge; Memory — pulled from pink toward dust, paper and aged
+   cloth; both carry a fine grain. Judgement stays black. */
+.ab-chapter--violet {
+  background-image:
+    var(--texture-grain),
+    radial-gradient(ellipse 60% 80% at 85% 8%, rgba(141, 116, 149, 0.26), transparent 64%),
+    radial-gradient(ellipse 90% 70% at 0% 100%, rgba(12, 10, 14, 0.6), transparent 70%);
+}
+
+.ab-chapter--rose {
+  --ab-field: #E7DCD2;
+  --ab-plate: #F1EAE3;
+  background-image:
+    var(--texture-grain),
+    radial-gradient(ellipse 70% 90% at 15% 0%, rgba(255, 250, 244, 0.55), transparent 62%),
+    radial-gradient(ellipse 80% 80% at 100% 100%, rgba(122, 92, 80, 0.12), transparent 70%);
+}
+
+.ab-chapter--rose .ab-principle__word {
+  color: #7A5B50;
+}
+
+@media (max-width: 767px) {
+  .ab-chapter--rose {
+    --ab-field: #EEE6DE;
+  }
+}

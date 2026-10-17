@@ -829,3 +829,14 @@
   background-color: #2B2322;
   background-image: radial-gradient(ellipse 60% 90% at 90% 0%, rgba(185, 145, 138, 0.16), transparent 65%);
 }
+
+/* ── Art direction (Pass 06) ──────────────────────────────────────────
+   The umber chapter is the family's one material moment (on the overview
+   and in Maison Formation): umber with warm light falling across a fine
+   grain — institutional, not decorative. */
+.prg-chapter--dark {
+  background-image:
+    var(--texture-grain),
+    radial-gradient(ellipse 60% 90% at 90% 0%, rgba(185, 145, 138, 0.18), transparent 64%),
+    radial-gradient(ellipse 80% 70% at 0% 100%, rgba(14, 10, 9, 0.5), transparent 70%);
+}

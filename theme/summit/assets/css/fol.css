@@ -1322,3 +1322,111 @@
 .fol-story .ed-art__key {
   opacity: 0.84;
 }
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* LONG-FORM RHYTHM (Pass 06) — inc/fol-rhythm.php                        */
+/* Tempo from the essay's own material: more space at the shifts in its   */
+/* argument, one pull quote, one plate fragment mid-argument. The opener's */
+/* colour family echoes only there; body text stays ink on paper.         */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.fol-echo--house   { --fol-echo: #6B5577; }
+.fol-echo--object  { --fol-echo: #A97F77; }
+.fol-echo--ledger  { --fol-echo: var(--accent-metal); }
+.fol-echo--culture { --fol-echo: var(--accent-lilac); }
+.fol-echo--diagram { --fol-echo: var(--accent-lilac); }
+
+/* Sections: a meaningful shift in the argument is given room */
+.fol-prose h2 {
+  margin-top: 3.1em;
+}
+
+.fol-prose h2 + * {
+  margin-top: 0.9em;
+}
+
+/* The pull quote: the essay's one, set apart in the reading column */
+.fol-prose blockquote.fol-pull {
+  position: relative;
+  margin-block: clamp(64px, 8vw, 104px);
+  padding: clamp(28px, 3vw, 36px) 0 0;
+  border-left: 0;
+  font-size: var(--type-editorial);
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.fol-prose blockquote.fol-pull::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 48px;
+  height: 1px;
+  background: var(--fol-echo, var(--colour-ink));
+}
+
+.fol-prose blockquote.fol-pull strong {
+  display: block;
+  margin-top: var(--space-4);
+  font-family: var(--font-text);
+  font-size: var(--text-small);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--fol-quiet);
+}
+
+/* The interlude: a fragment of the opener's plate, mid-argument */
+.fol-prose .fol-interlude {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-block: clamp(72px, 9vw, 120px) 0;
+}
+
+.fol-prose .fol-interlude + h2 {
+  margin-top: clamp(56px, 7vw, 88px);
+}
+
+.fol-interlude__geo {
+  width: 56px;
+  height: 56px;
+  fill: none;
+  stroke: var(--fol-echo, var(--colour-ink-40));
+  stroke-width: 1.2;
+  vector-effect: non-scaling-stroke;
+}
+
+.fol-interlude--ledger .fol-interlude__geo,
+.fol-interlude--culture .fol-interlude__geo {
+  width: 72px;
+  height: 40px;
+}
+
+.fol-interlude__folio {
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--fol-quiet);
+}
+
+/* Recovered evidence (Summit's own originals) reads as published */
+.fol-prose figure img[src*="/assets/img/fol/"] {
+  width: 100%;
+}
+
+@media print {
+  .fol-interlude {
+    display: none;
+  }
+}
+
+/* Where the essay already marks the turn with a rule, the interlude
+   replaces it rather than stacking a second device */
+.fol-prose hr:has(+ .fol-interlude) {
+  display: none;
+}

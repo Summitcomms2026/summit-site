@@ -118,7 +118,7 @@ while ( have_posts() ) :
         </figure>
         <?php endif; ?>
 
-        <div class="fol-article__body fol-prose" data-fol-prose>
+        <div class="fol-article__body fol-prose" data-fol-prose<?php echo in_array( get_post_field( 'post_name', $art_id ), summit_fol_absence_noted(), true ) ? ' data-fol-absence="note"' : ''; ?>>
             <?php the_content(); ?>
         </div>
 

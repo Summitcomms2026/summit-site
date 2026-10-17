@@ -106,6 +106,20 @@ add_shortcode( 'summit_about_sequence', static function () use ( $section, $path
 } );
 
 // A portrait when its file exists; a typographic monogram otherwise.
+// A publication object from the Research family (Origin Story shows the
+// things Summit made): the same part, so an approved file replaces the
+// stand-in everywhere at once.
+if ( ! shortcode_exists( 'summit_research_artwork' ) ) {
+    add_shortcode( 'summit_research_artwork', static function ( $atts ): string {
+        ob_start();
+        get_template_part( 'parts/research/artwork', null, shortcode_atts( [
+            'name' => '', 'kind' => 'cover', 'alt' => '', 'credit' => '',
+            'title' => '', 'subtitle' => '', 'byline' => '', 'line' => '',
+        ], $atts ) );
+        return (string) ob_get_clean();
+    } );
+}
+
 add_shortcode( 'summit_about_portrait', static function ( $atts ): string {
     ob_start();
     get_template_part( 'parts/about/portrait', null, shortcode_atts( [ 'name' => '', 'initials' => '', 'alt' => '' ], $atts ) );

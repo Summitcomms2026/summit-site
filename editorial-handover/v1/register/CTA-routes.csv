@@ -1,0 +1,17 @@
+Source,CTA label,Proposed destination,Route type,Implementation note
+Global hero and most Solutions,Start a Conversation,/lets-talk,general,form anchor; carries originating page
+Home closing panel,Discuss a Brief,/lets-talk,general,more formal alternative already in homepage
+Let’s Talk optional booking,Arrange a Conversation,approved scheduling service (pending),booking,only after live availability and confirmation integration
+About,Start a Conversation,/lets-talk?from=about,general,no forced form category
+Observatory for CMOs,Request a Private Briefing,/observatory/request-a-private-briefing?audience=cmo,private_briefing,include relevant audience context
+Observatory investors,Request a Private Briefing,/observatory/request-a-private-briefing?audience=investor,private_briefing,do not import transaction details
+Maison Formation,Discuss Maison Formation,/lets-talk?interest=maison-formation,general,editable interest label
+Applied AI,Talk Through an AI Brief,/lets-talk?interest=applied-ai,general,do not collect proprietary data up front
+Due Diligence,Discuss an Acquisition Question,/lets-talk?interest=maison-due-diligence,general,no confidential source documents
+Research white paper,Request the Full Paper,paper-specific approved gate,research_download,separate from newsletter permission
+The Future of Luxury,Subscribe,/future-of-luxury/subscribe,newsletter,separate from direct enquiry
+Individual essays,Share on LinkedIn,LinkedIn share endpoint,share,use approved canonical article URL
+Media,Send a Media Enquiry,/media-enquiries,media,dedicated press routing
+Careers,Register Your Interest,/careers,career,only after recruitment data processing is approved
+Client Access,Client Sign In,approved secure portal (pending),client,no mock sign-in or URL until confirmed
+Footer,Email Summit,mailto:hello@summitcommunication.group,email,verified in current public contact page

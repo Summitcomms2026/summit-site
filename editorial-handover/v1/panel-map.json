@@ -1,0 +1,1813 @@
+{
+ "S03-P016": {
+  "status": "internal/config",
+  "route": "/_internal/production-notes",
+  "note": "Production note or configuration; it informs the build and is not shown."
+ },
+ "S03-P017": {
+  "status": "internal/config",
+  "route": "/_internal/production-notes",
+  "note": "Production note or configuration; it informs the build and is not shown."
+ },
+ "S03-P018": {
+  "status": "internal/config",
+  "route": "/_internal/production-notes",
+  "note": "Production note or configuration; it informs the build and is not shown."
+ },
+ "S03-P019": {
+  "status": "internal/config",
+  "route": "/_internal/production-notes",
+  "note": "Production note or configuration; it informs the build and is not shown."
+ },
+ "S04-P019": {
+  "status": "internal/config",
+  "route": "/_internal/production-notes",
+  "note": "Production note or configuration; it informs the build and is not shown."
+ },
+ "S04-P020": {
+  "status": "internal/config",
+  "route": "/_internal/production-notes",
+  "note": "Production note or configuration; it informs the build and is not shown."
+ },
+ "S05-P020": {
+  "status": "internal/config",
+  "route": "/_internal/production-notes",
+  "note": "Production note or configuration; it informs the build and is not shown."
+ },
+ "S05-P021": {
+  "status": "internal/config",
+  "route": "/_internal/production-notes",
+  "note": "Production note or configuration; it informs the build and is not shown."
+ },
+ "S07-P054": {
+  "status": "internal/config",
+  "route": "/_internal/production-notes",
+  "note": "Production note or configuration; it informs the build and is not shown."
+ },
+ "S07-P055": {
+  "status": "internal/config",
+  "route": "/_internal/production-notes",
+  "note": "Production note or configuration; it informs the build and is not shown."
+ },
+ "S07-P056": {
+  "status": "internal/config",
+  "route": "/_internal/production-notes",
+  "note": "Production note or configuration; it informs the build and is not shown."
+ },
+ "S08-P032": {
+  "status": "internal/config",
+  "route": "/_internal/production-notes",
+  "note": "Production note or configuration; it informs the build and is not shown."
+ },
+ "S08-P033": {
+  "status": "internal/config",
+  "route": "/_internal/production-notes",
+  "note": "Production note or configuration; it informs the build and is not shown."
+ },
+ "S08-P034": {
+  "status": "internal/config",
+  "route": "/_internal/production-notes",
+  "note": "Production note or configuration; it informs the build and is not shown."
+ },
+ "S08-P035": {
+  "status": "internal/config",
+  "route": "/_internal/production-notes",
+  "note": "Production note or configuration; it informs the build and is not shown."
+ },
+ "S08-P036": {
+  "status": "internal/config",
+  "route": "/_internal/production-notes",
+  "note": "Production note or configuration; it informs the build and is not shown."
+ },
+ "S08-P037": {
+  "status": "internal/config",
+  "route": "/_internal/production-notes",
+  "note": "Production note or configuration; it informs the build and is not shown."
+ },
+ "S08-P038": {
+  "status": "internal/config",
+  "route": "/_internal/production-notes",
+  "note": "Production note or configuration; it informs the build and is not shown."
+ },
+ "S08-P039": {
+  "status": "internal/config",
+  "route": "/_internal/production-notes",
+  "note": "Production note or configuration; it informs the build and is not shown."
+ },
+ "S08-P040": {
+  "status": "internal/config",
+  "route": "/_internal/production-notes",
+  "note": "Production note or configuration; it informs the build and is not shown."
+ },
+ "S09-P001": {
+  "status": "internal/config",
+  "route": "/_internal/production-notes",
+  "note": "Production note or configuration; it informs the build and is not shown."
+ },
+ "S09-P030": {
+  "status": "internal/config",
+  "route": "/_internal/production-notes",
+  "note": "Production note or configuration; it informs the build and is not shown."
+ },
+ "S09-P031": {
+  "status": "internal/config",
+  "route": "/_internal/production-notes",
+  "note": "Production note or configuration; it informs the build and is not shown."
+ },
+ "S09-P032": {
+  "status": "internal/config",
+  "route": "/_internal/production-notes",
+  "note": "Production note or configuration; it informs the build and is not shown."
+ },
+ "S02-P005": {
+  "status": "rendered (hero)",
+  "route": "/solutions/build-a-maison"
+ },
+ "S02-P006": {
+  "status": "rendered",
+  "route": "/solutions/build-a-maison"
+ },
+ "S02-P007": {
+  "status": "rendered",
+  "route": "/solutions/build-a-maison"
+ },
+ "S02-P008": {
+  "status": "rendered",
+  "route": "/solutions/build-a-maison"
+ },
+ "S02-P009": {
+  "status": "rendered",
+  "route": "/solutions/build-a-maison"
+ },
+ "S02-P010": {
+  "status": "rendered",
+  "route": "/solutions/build-a-maison"
+ },
+ "S03-P001": {
+  "status": "rendered (hero)",
+  "route": "/solutions/reposition-a-maison"
+ },
+ "S03-P002": {
+  "status": "rendered",
+  "route": "/solutions/reposition-a-maison"
+ },
+ "S03-P003": {
+  "status": "rendered",
+  "route": "/solutions/reposition-a-maison"
+ },
+ "S03-P004": {
+  "status": "rendered (editorial version; interaction logic not supplied)",
+  "route": "/solutions/reposition-a-maison",
+  "note": "Options are named (Position / Product / Clients / Story); their responses and tailored links are not supplied."
+ },
+ "S03-P005": {
+  "status": "rendered (closing part); Further Reading held",
+  "route": "/solutions/reposition-a-maison",
+  "note": "The Further Reading part introduces the Porsche essay, which is not published; it waits for it."
+ },
+ "S03-P006": {
+  "status": "rendered (hero)",
+  "route": "/solutions/enhance-desire-without-dilution"
+ },
+ "S03-P007": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/solutions/enhance-desire-without-dilution",
+  "note": "Each item can link to the matching Demand Quality Check concern, but the grid must work without JavaScript."
+ },
+ "S03-P008": {
+  "status": "rendered (interaction)",
+  "route": "/solutions/enhance-desire-without-dilution"
+ },
+ "S03-P009": {
+  "status": "rendered",
+  "route": "/solutions/enhance-desire-without-dilution"
+ },
+ "S03-P010": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/solutions/enhance-desire-without-dilution",
+  "note": "Name, work email and question are enough to begin. Organisation and timing optional."
+ },
+ "S03-P011": {
+  "status": "rendered (hero)",
+  "route": "/solutions/strengthen-an-icon"
+ },
+ "S03-P012": {
+  "status": "rendered (interaction)",
+  "route": "/solutions/strengthen-an-icon"
+ },
+ "S03-P013": {
+  "status": "rendered",
+  "route": "/solutions/strengthen-an-icon"
+ },
+ "S03-P014": {
+  "status": "rendered",
+  "route": "/solutions/strengthen-an-icon"
+ },
+ "S03-P015": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/solutions/strengthen-an-icon",
+  "note": "Prompt: “Which object or signature is under discussion?” Free text, optional. Don’t ask for commercially sensitive material at first contact."
+ },
+ "S04-P001": {
+  "status": "rendered (hero)",
+  "route": "/solutions/activate-patrimony-ip"
+ },
+ "S04-P002": {
+  "status": "rendered",
+  "route": "/solutions/activate-patrimony-ip"
+ },
+ "S04-P003": {
+  "status": "rendered",
+  "route": "/solutions/activate-patrimony-ip"
+ },
+ "S04-P004": {
+  "status": "rendered (interaction)",
+  "route": "/solutions/activate-patrimony-ip"
+ },
+ "S04-P005": {
+  "status": "rendered",
+  "route": "/solutions/activate-patrimony-ip"
+ },
+ "S04-P006": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/solutions/activate-patrimony-ip",
+  "note": "Optional prompt “Which asset or signature is under discussion?” Do not request confidential designs at first contact."
+ },
+ "S04-P007": {
+  "status": "rendered (hero)",
+  "route": "/solutions/transform-the-client-experience"
+ },
+ "S04-P008": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/solutions/transform-the-client-experience",
+  "note": "Columns can expose a short note on click; should remain readable without Javascript."
+ },
+ "S04-P009": {
+  "status": "rendered (interaction)",
+  "route": "/solutions/transform-the-client-experience"
+ },
+ "S04-P010": {
+  "status": "rendered",
+  "route": "/solutions/transform-the-client-experience"
+ },
+ "S04-P011": {
+  "status": "rendered",
+  "route": "/solutions/transform-the-client-experience"
+ },
+ "S04-P012": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/solutions/transform-the-client-experience",
+  "note": "Optional enquiry field “Where does the experience feel weakest?” seeded by chosen stage if used."
+ },
+ "S04-P013": {
+  "status": "rendered (hero)",
+  "route": "/solutions/develop-thought-leadership"
+ },
+ "S04-P014": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/solutions/develop-thought-leadership",
+  "note": "Optional three-question “Find Your Argument” guide; do not add here until the site has an actual submission pathway."
+ },
+ "S04-P015": {
+  "status": "rendered",
+  "route": "/solutions/develop-thought-leadership"
+ },
+ "S04-P016": {
+  "status": "held",
+  "route": "/solutions/develop-thought-leadership",
+  "note": "Beyond the Headlines lists three essays; it names essays that are not yet published (Chanel and Charvet; Porsche and Ferrari; Louis Vuitton in China). It returns when they are live."
+ },
+ "S04-P017": {
+  "status": "rendered",
+  "route": "/solutions/develop-thought-leadership"
+ },
+ "S04-P018": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/solutions/develop-thought-leadership",
+  "note": "Optional prompt “What would you like to change the conversation about?” 300 characters; free-text follows."
+ },
+ "S05-P001": {
+  "status": "rendered (hero)",
+  "route": "/solutions/applied-ai"
+ },
+ "S05-P002": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/solutions/applied-ai",
+  "note": "Each area can expand to show one example question and link to a relevant service. Avoid simulated live AI on this panel."
+ },
+ "S05-P003": {
+  "status": "rendered",
+  "route": "/solutions/applied-ai"
+ },
+ "S05-P004": {
+  "status": "rendered (interaction)",
+  "route": "/solutions/applied-ai"
+ },
+ "S05-P005": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/solutions/applied-ai",
+  "note": "Return to the same scroll position when a user returns; related cards never overlay the principal page CTA."
+ },
+ "S05-P006": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/solutions/applied-ai",
+  "note": "Optional contextual field “What would you like to improve?” Allow a short answer without requiring sensitive information."
+ },
+ "S05-P007": {
+  "status": "rendered (hero)",
+  "route": "/solutions/investment-acquisitions"
+ },
+ "S05-P008": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/solutions/investment-acquisitions",
+  "note": "Optional expandable “Questions for the board” under each subject. No estimated enterprise valuation."
+ },
+ "S05-P009": {
+  "status": "rendered (interaction)",
+  "route": "/solutions/investment-acquisitions"
+ },
+ "S05-P010": {
+  "status": "rendered",
+  "route": "/solutions/investment-acquisitions"
+ },
+ "S05-P011": {
+  "status": "rendered",
+  "route": "/solutions/investment-acquisitions"
+ },
+ "S05-P012": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/solutions/investment-acquisitions",
+  "note": "Optional selector for acquisition / minority investment / succession / strategic partnership. Free-text box kept short."
+ },
+ "S05-P013": {
+  "status": "rendered (hero)",
+  "route": "/solutions/maison-due-diligence"
+ },
+ "S05-P014": {
+  "status": "rendered",
+  "route": "/solutions/maison-due-diligence"
+ },
+ "S05-P015": {
+  "status": "rendered (interaction)",
+  "route": "/solutions/maison-due-diligence"
+ },
+ "S05-P016": {
+  "status": "rendered",
+  "route": "/solutions/maison-due-diligence"
+ },
+ "S05-P017": {
+  "status": "rendered",
+  "route": "/solutions/maison-due-diligence"
+ },
+ "S05-P018": {
+  "status": "rendered",
+  "route": "/solutions/maison-due-diligence"
+ },
+ "S05-P019": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/solutions/maison-due-diligence",
+  "note": "Ask only for name, business email, organisation, broad reason for enquiry and a short message. Do not demand deal papers."
+ },
+ "S06-P001": {
+  "status": "rendered (hero)",
+  "route": "/the-observatory"
+ },
+ "S06-P002": {
+  "status": "rendered",
+  "route": "/the-observatory"
+ },
+ "S06-P003": {
+  "status": "rendered",
+  "route": "/the-observatory"
+ },
+ "S06-P004": {
+  "status": "rendered (FAQ)",
+  "route": "/the-observatory"
+ },
+ "S06-P005": {
+  "status": "merged",
+  "route": "/the-observatory",
+  "note": "Questions joined to the FAQ at S06-P004."
+ },
+ "S06-P006": {
+  "status": "rendered",
+  "route": "/the-observatory"
+ },
+ "S06-P007": {
+  "status": "rendered",
+  "route": "/the-observatory"
+ },
+ "S06-P008": {
+  "status": "rendered (hero)",
+  "route": "/the-observatory/for-cmos"
+ },
+ "S06-P009": {
+  "status": "rendered",
+  "route": "/the-observatory/for-cmos"
+ },
+ "S06-P010": {
+  "status": "rendered",
+  "route": "/the-observatory/for-cmos"
+ },
+ "S06-P011": {
+  "status": "rendered (FAQ)",
+  "route": "/the-observatory/for-cmos"
+ },
+ "S06-P012": {
+  "status": "merged",
+  "route": "/the-observatory/for-cmos",
+  "note": "Questions joined to the FAQ at S06-P011."
+ },
+ "S06-P013": {
+  "status": "rendered",
+  "route": "/the-observatory/for-cmos"
+ },
+ "S06-P014": {
+  "status": "rendered",
+  "route": "/the-observatory/for-cmos"
+ },
+ "S06-P015": {
+  "status": "rendered (hero)",
+  "route": "/the-observatory/for-family-offices-investors"
+ },
+ "S06-P016": {
+  "status": "rendered",
+  "route": "/the-observatory/for-family-offices-investors"
+ },
+ "S06-P017": {
+  "status": "rendered",
+  "route": "/the-observatory/for-family-offices-investors"
+ },
+ "S06-P018": {
+  "status": "rendered (FAQ)",
+  "route": "/the-observatory/for-family-offices-investors"
+ },
+ "S06-P019": {
+  "status": "merged",
+  "route": "/the-observatory/for-family-offices-investors",
+  "note": "Questions joined to the FAQ at S06-P018."
+ },
+ "S06-P020": {
+  "status": "rendered",
+  "route": "/the-observatory/for-family-offices-investors"
+ },
+ "S06-P021": {
+  "status": "rendered",
+  "route": "/the-observatory/for-family-offices-investors"
+ },
+ "S06-P022": {
+  "status": "rendered (hero)",
+  "route": "/the-observatory/field"
+ },
+ "S06-P023": {
+  "status": "rendered (editorial version; interaction logic not supplied)",
+  "route": "/the-observatory/field",
+  "note": "Approved sector summaries for the selector are not supplied."
+ },
+ "S06-P024": {
+  "status": "rendered",
+  "route": "/the-observatory/field"
+ },
+ "S06-P025": {
+  "status": "rendered (FAQ)",
+  "route": "/the-observatory/field"
+ },
+ "S06-P026": {
+  "status": "merged",
+  "route": "/the-observatory/field",
+  "note": "Questions joined to the FAQ at S06-P025."
+ },
+ "S06-P027": {
+  "status": "rendered",
+  "route": "/the-observatory/field"
+ },
+ "S06-P028": {
+  "status": "rendered",
+  "route": "/the-observatory/field"
+ },
+ "S06-P029": {
+  "status": "rendered (hero)",
+  "route": "/the-observatory/how-it-works"
+ },
+ "S06-P030": {
+  "status": "rendered",
+  "route": "/the-observatory/how-it-works"
+ },
+ "S06-P031": {
+  "status": "rendered",
+  "route": "/the-observatory/how-it-works"
+ },
+ "S06-P032": {
+  "status": "rendered (FAQ)",
+  "route": "/the-observatory/how-it-works"
+ },
+ "S06-P033": {
+  "status": "merged",
+  "route": "/the-observatory/how-it-works",
+  "note": "Questions joined to the FAQ at S06-P032."
+ },
+ "S06-P034": {
+  "status": "rendered",
+  "route": "/the-observatory/how-it-works"
+ },
+ "S06-P035": {
+  "status": "rendered",
+  "route": "/the-observatory/how-it-works"
+ },
+ "S06-P036": {
+  "status": "rendered (hero)",
+  "route": "/the-observatory/request-a-private-briefing"
+ },
+ "S06-P037": {
+  "status": "rendered (form)",
+  "route": "/the-observatory/request-a-private-briefing",
+  "note": "Fields are implemented by the form; their labels follow this panel."
+ },
+ "S06-P038": {
+  "status": "rendered",
+  "route": "/the-observatory/request-a-private-briefing"
+ },
+ "S06-P039": {
+  "status": "rendered (FAQ)",
+  "route": "/the-observatory/request-a-private-briefing"
+ },
+ "S06-P040": {
+  "status": "merged",
+  "route": "/the-observatory/request-a-private-briefing",
+  "note": "Questions joined to the FAQ at S06-P039."
+ },
+ "S06-P041": {
+  "status": "rendered",
+  "route": "/the-observatory/request-a-private-briefing"
+ },
+ "S07-P001": {
+  "status": "rendered (hero)",
+  "route": "/programmes"
+ },
+ "S07-P002": {
+  "status": "rendered (editorial version; interaction logic not supplied)",
+  "route": "/programmes",
+  "note": "An issue-to-programme selector is proposed; no mapping is supplied — the six programmes are listed instead."
+ },
+ "S07-P003": {
+  "status": "rendered",
+  "route": "/programmes"
+ },
+ "S07-P004": {
+  "status": "rendered",
+  "route": "/programmes"
+ },
+ "S07-P005": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/programmes",
+  "note": "/lets-talk?programme=undecided. Preselect programme and allow the visitor to change it. No budget requirement."
+ },
+ "S07-P006": {
+  "status": "rendered (hero)",
+  "route": "/programmes/maison-formation"
+ },
+ "S07-P007": {
+  "status": "rendered",
+  "route": "/programmes/maison-formation"
+ },
+ "S07-P008": {
+  "status": "rendered",
+  "route": "/programmes/maison-formation"
+ },
+ "S07-P009": {
+  "status": "rendered",
+  "route": "/programmes/maison-formation"
+ },
+ "S07-P010": {
+  "status": "rendered (FAQ)",
+  "route": "/programmes/maison-formation"
+ },
+ "S07-P011": {
+  "status": "merged",
+  "route": "/programmes/maison-formation",
+  "note": "Questions joined to the FAQ at S07-P010."
+ },
+ "S07-P012": {
+  "status": "rendered",
+  "route": "/programmes/maison-formation"
+ },
+ "S07-P013": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/programmes/maison-formation",
+  "note": "/lets-talk?programme=maison-formation. Preselect programme and allow the visitor to change it. No budget requirement."
+ },
+ "S07-P014": {
+  "status": "rendered (hero)",
+  "route": "/programmes/editorial-influence"
+ },
+ "S07-P015": {
+  "status": "rendered",
+  "route": "/programmes/editorial-influence"
+ },
+ "S07-P016": {
+  "status": "rendered",
+  "route": "/programmes/editorial-influence"
+ },
+ "S07-P017": {
+  "status": "held",
+  "route": "/programmes/editorial-influence",
+  "note": "Proof in the Work cites essays as published work; it names essays that are not yet published (Chanel and Charvet; Porsche and Ferrari; Louis Vuitton in China)."
+ },
+ "S07-P018": {
+  "status": "rendered (FAQ)",
+  "route": "/programmes/editorial-influence"
+ },
+ "S07-P019": {
+  "status": "merged",
+  "route": "/programmes/editorial-influence",
+  "note": "Questions joined to the FAQ at S07-P018."
+ },
+ "S07-P020": {
+  "status": "rendered",
+  "route": "/programmes/editorial-influence"
+ },
+ "S07-P021": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/programmes/editorial-influence",
+  "note": "/lets-talk?programme=editorial-influence. Preselect programme and allow the visitor to change it. No budget requirement."
+ },
+ "S07-P022": {
+  "status": "rendered (hero)",
+  "route": "/programmes/digital-growth"
+ },
+ "S07-P023": {
+  "status": "rendered",
+  "route": "/programmes/digital-growth"
+ },
+ "S07-P024": {
+  "status": "rendered",
+  "route": "/programmes/digital-growth"
+ },
+ "S07-P025": {
+  "status": "rendered",
+  "route": "/programmes/digital-growth"
+ },
+ "S07-P026": {
+  "status": "rendered (FAQ)",
+  "route": "/programmes/digital-growth"
+ },
+ "S07-P027": {
+  "status": "merged",
+  "route": "/programmes/digital-growth",
+  "note": "Questions joined to the FAQ at S07-P026."
+ },
+ "S07-P028": {
+  "status": "rendered",
+  "route": "/programmes/digital-growth"
+ },
+ "S07-P029": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/programmes/digital-growth",
+  "note": "/lets-talk?programme=digital-growth. Preselect programme and allow the visitor to change it. No budget requirement."
+ },
+ "S07-P030": {
+  "status": "rendered (hero)",
+  "route": "/programmes/client-experience"
+ },
+ "S07-P031": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/programmes/client-experience",
+  "note": "Optional “Where Does It Break?” selector from the earlier Solutions pass. Ask visitor to identify a moment, then show context-specific questions."
+ },
+ "S07-P032": {
+  "status": "rendered",
+  "route": "/programmes/client-experience"
+ },
+ "S07-P033": {
+  "status": "rendered (editorial version; interaction logic not supplied)",
+  "route": "/programmes/client-experience",
+  "note": "The two practical prompts for each moment are not supplied."
+ },
+ "S07-P034": {
+  "status": "rendered (FAQ)",
+  "route": "/programmes/client-experience"
+ },
+ "S07-P035": {
+  "status": "merged",
+  "route": "/programmes/client-experience",
+  "note": "Questions joined to the FAQ at S07-P034."
+ },
+ "S07-P036": {
+  "status": "rendered",
+  "route": "/programmes/client-experience"
+ },
+ "S07-P037": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/programmes/client-experience",
+  "note": "/lets-talk?programme=client-experience. Preselect programme and allow the visitor to change it. No budget requirement."
+ },
+ "S07-P038": {
+  "status": "rendered (hero)",
+  "route": "/programmes/agentic-ai"
+ },
+ "S07-P039": {
+  "status": "rendered",
+  "route": "/programmes/agentic-ai"
+ },
+ "S07-P040": {
+  "status": "rendered",
+  "route": "/programmes/agentic-ai"
+ },
+ "S07-P041": {
+  "status": "rendered (editorial version; interaction logic not supplied)",
+  "route": "/programmes/agentic-ai",
+  "note": "“Can This Task Be Delegated?” choices and considerations are not supplied."
+ },
+ "S07-P042": {
+  "status": "rendered (FAQ)",
+  "route": "/programmes/agentic-ai"
+ },
+ "S07-P043": {
+  "status": "merged",
+  "route": "/programmes/agentic-ai",
+  "note": "Questions joined to the FAQ at S07-P042."
+ },
+ "S07-P044": {
+  "status": "rendered",
+  "route": "/programmes/agentic-ai"
+ },
+ "S07-P045": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/programmes/agentic-ai",
+  "note": "/lets-talk?programme=agentic-ai. Preselect programme and allow the visitor to change it. No budget requirement."
+ },
+ "S07-P046": {
+  "status": "rendered (hero)",
+  "route": "/programmes/brand-ip-stewardship"
+ },
+ "S07-P047": {
+  "status": "rendered",
+  "route": "/programmes/brand-ip-stewardship"
+ },
+ "S07-P048": {
+  "status": "rendered",
+  "route": "/programmes/brand-ip-stewardship"
+ },
+ "S07-P049": {
+  "status": "rendered",
+  "route": "/programmes/brand-ip-stewardship"
+ },
+ "S07-P050": {
+  "status": "rendered (FAQ)",
+  "route": "/programmes/brand-ip-stewardship"
+ },
+ "S07-P051": {
+  "status": "merged",
+  "route": "/programmes/brand-ip-stewardship",
+  "note": "Questions joined to the FAQ at S07-P050."
+ },
+ "S07-P052": {
+  "status": "rendered",
+  "route": "/programmes/brand-ip-stewardship"
+ },
+ "S07-P053": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/programmes/brand-ip-stewardship",
+  "note": "/lets-talk?programme=brand-ip-stewardship. Preselect programme and allow the visitor to change it. No budget requirement."
+ },
+ "S08-P001": {
+  "status": "rendered (hero)",
+  "route": "/research"
+ },
+ "S08-P002": {
+  "status": "rendered",
+  "route": "/research"
+ },
+ "S08-P003": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/research",
+  "note": "Optional content-filter pills: Objects, Governance, Maison Formation, Client Experience, Capital, AI. Filter published and approved items only."
+ },
+ "S08-P004": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/research",
+  "note": "Each item must point to a live sitemap destination; suppressed until its destination is ready."
+ },
+ "S08-P005": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/research",
+  "note": "Send to Let’s Talk with topic=research; short non-confidential note only."
+ },
+ "S08-P006": {
+  "status": "rendered (hero)",
+  "route": "/research/touch-me-not"
+ },
+ "S08-P007": {
+  "status": "rendered",
+  "route": "/research/touch-me-not"
+ },
+ "S08-P008": {
+  "status": "rendered",
+  "route": "/research/touch-me-not"
+ },
+ "S08-P009": {
+  "status": "rendered (FAQ)",
+  "route": "/research/touch-me-not"
+ },
+ "S08-P010": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/research/touch-me-not",
+  "note": "Each item must point to a live sitemap destination; suppressed until its destination is ready."
+ },
+ "S08-P011": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/research/touch-me-not",
+  "note": "topic=touch-me-not; no requirement to disclose confidential product plans."
+ },
+ "S08-P012": {
+  "status": "rendered (hero)",
+  "route": "/research/luxury-100"
+ },
+ "S08-P013": {
+  "status": "rendered",
+  "route": "/research/luxury-100"
+ },
+ "S08-P014": {
+  "status": "rendered",
+  "route": "/research/luxury-100"
+ },
+ "S08-P015": {
+  "status": "rendered (FAQ)",
+  "route": "/research/luxury-100"
+ },
+ "S08-P016": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/research/luxury-100",
+  "note": "Each item must point to a live sitemap destination; suppressed until its destination is ready."
+ },
+ "S08-P017": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/research/luxury-100",
+  "note": "topic=luxury-100, optional sector choice."
+ },
+ "S08-P018": {
+  "status": "rendered (hero)",
+  "route": "/research/white-papers"
+ },
+ "S08-P019": {
+  "status": "rendered",
+  "route": "/research/white-papers"
+ },
+ "S08-P020": {
+  "status": "rendered",
+  "route": "/research/white-papers"
+ },
+ "S08-P021": {
+  "status": "held",
+  "route": "/research/white-papers",
+  "note": "Describes a research-paper request form; no approved paper or delivery service exists yet (register: “Await final approved PDFs”)."
+ },
+ "S08-P022 · Are the papers free to read?": {
+  "status": "held (internal note)",
+  "route": "/research/white-papers",
+  "note": "The answer describes a proposed access default, not settled terms."
+ },
+ "S08-P022": {
+  "status": "rendered (FAQ)",
+  "route": "/research/white-papers"
+ },
+ "S08-P023": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/research/white-papers",
+  "note": "Each item must point to a live sitemap destination; suppressed until its destination is ready."
+ },
+ "S08-P024": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/research/white-papers",
+  "note": "topic=white-papers; allow proposed title selection or “another question”."
+ },
+ "S08-P025": {
+  "status": "rendered (hero)",
+  "route": "/research/programme"
+ },
+ "S08-P026": {
+  "status": "rendered",
+  "route": "/research/programme"
+ },
+ "S08-P027": {
+  "status": "rendered",
+  "route": "/research/programme"
+ },
+ "S08-P028": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/research/programme",
+  "note": "Topic, audience role, short non-confidential question and contact email. Research participation checkbox independent from newsletter consent."
+ },
+ "S08-P029": {
+  "status": "rendered (FAQ)",
+  "route": "/research/programme"
+ },
+ "S08-P030": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/research/programme",
+  "note": "Each item must point to a live sitemap destination; suppressed until its destination is ready."
+ },
+ "S08-P031": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/research/programme",
+  "note": "topic=research-programme. Route private institutional projects to Observatory briefing after visitor chooses."
+ },
+ "S10-P001": {
+  "status": "rendered (hero)",
+  "route": "/about"
+ },
+ "S10-P002": {
+  "status": "rendered",
+  "route": "/about"
+ },
+ "S10-P003": {
+  "status": "rendered",
+  "route": "/about"
+ },
+ "S10-P004": {
+  "status": "rendered",
+  "route": "/about"
+ },
+ "S10-P005": {
+  "status": "rendered (FAQ)",
+  "route": "/about"
+ },
+ "S10-P006": {
+  "status": "rendered (hero)",
+  "route": "/about/origin-story"
+ },
+ "S10-P007": {
+  "status": "rendered",
+  "route": "/about/origin-story"
+ },
+ "S10-P008": {
+  "status": "rendered",
+  "route": "/about/origin-story"
+ },
+ "S10-P009": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/about/origin-story",
+  "note": "Optional sector / need links, but avoid reproducing the full Solutions navigation."
+ },
+ "S10-P010": {
+  "status": "rendered",
+  "route": "/about/origin-story"
+ },
+ "S10-P011": {
+  "status": "rendered (FAQ)",
+  "route": "/about/origin-story"
+ },
+ "S10-P012": {
+  "status": "rendered (hero)",
+  "route": "/about/manifesto"
+ },
+ "S10-P013": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/about/manifesto",
+  "note": "Short, accessible expand/collapse notes optional, but the core six statements must remain visible."
+ },
+ "S10-P014": {
+  "status": "rendered",
+  "route": "/about/manifesto"
+ },
+ "S10-P015": {
+  "status": "rendered",
+  "route": "/about/manifesto"
+ },
+ "S10-P016": {
+  "status": "rendered (FAQ)",
+  "route": "/about/manifesto"
+ },
+ "S10-P017": {
+  "status": "rendered (hero)",
+  "route": "/about/why-it-matters"
+ },
+ "S10-P018": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/about/why-it-matters",
+  "note": "Optional expandable examples sourced from public research, not a questionnaire requiring personal data."
+ },
+ "S10-P019": {
+  "status": "rendered",
+  "route": "/about/why-it-matters"
+ },
+ "S10-P020": {
+  "status": "rendered",
+  "route": "/about/why-it-matters"
+ },
+ "S10-P021": {
+  "status": "rendered",
+  "route": "/about/why-it-matters"
+ },
+ "S10-P022": {
+  "status": "rendered (FAQ)",
+  "route": "/about/why-it-matters"
+ },
+ "S10-P023": {
+  "status": "rendered (hero)",
+  "route": "/about/partners-people"
+ },
+ "S10-P024": {
+  "status": "rendered",
+  "route": "/about/partners-people"
+ },
+ "S10-P025": {
+  "status": "rendered",
+  "route": "/about/partners-people"
+ },
+ "S10-P026": {
+  "status": "rendered",
+  "route": "/about/partners-people"
+ },
+ "S10-P027": {
+  "status": "rendered",
+  "route": "/about/partners-people"
+ },
+ "S10-P028": {
+  "status": "rendered (FAQ)",
+  "route": "/about/partners-people"
+ },
+ "S10-P029": {
+  "status": "rendered (hero)",
+  "route": "/about/how-we-work"
+ },
+ "S10-P030": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/about/how-we-work",
+  "note": "Optional hover states only. All content visible without interaction."
+ },
+ "S10-P031": {
+  "status": "rendered",
+  "route": "/about/how-we-work"
+ },
+ "S10-P032": {
+  "status": "rendered (editorial version; interaction logic not supplied)",
+  "route": "/about/how-we-work",
+  "note": "The selector’s routes and enquiry summaries are not supplied."
+ },
+ "S10-P033": {
+  "status": "rendered",
+  "route": "/about/how-we-work"
+ },
+ "S10-P034": {
+  "status": "rendered (FAQ)",
+  "route": "/about/how-we-work"
+ },
+ "S11-P001": {
+  "status": "rendered (hero)",
+  "route": "/lets-talk"
+ },
+ "S11-P002": {
+  "status": "rendered (form)",
+  "route": "/lets-talk",
+  "note": "Fields are implemented by the form; their labels follow this panel."
+ },
+ "S11-P003": {
+  "status": "merged",
+  "route": "/lets-talk",
+  "note": "Set beside the form (S11-P002)."
+ },
+ "S11-P004": {
+  "status": "rendered",
+  "route": "/lets-talk"
+ },
+ "S11-P005": {
+  "status": "rendered",
+  "route": "/lets-talk"
+ },
+ "S11-P006": {
+  "status": "rendered (FAQ)",
+  "route": "/lets-talk"
+ },
+ "S11-P007": {
+  "status": "rendered (hero)",
+  "route": "/client-access"
+ },
+ "S11-P008": {
+  "status": "rendered",
+  "route": "/client-access"
+ },
+ "S11-P009": {
+  "status": "rendered",
+  "route": "/client-access"
+ },
+ "S11-P010 · Can I create an account myself?": {
+  "status": "held (internal note)",
+  "route": "/client-access",
+  "note": "The answer is an implementation instruction about self-registration, not visitor copy."
+ },
+ "S11-P010": {
+  "status": "rendered (FAQ)",
+  "route": "/client-access"
+ },
+ "S11-P011": {
+  "status": "rendered (hero)",
+  "route": "/careers"
+ },
+ "S11-P012": {
+  "status": "rendered",
+  "route": "/careers"
+ },
+ "S11-P013": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/careers",
+  "note": "This is a proposal only. Approve hiring and retention process before accepting CVs. If no recruitment processing exists, route to a published general contact address with explicit employment subject."
+ },
+ "S11-P014": {
+  "status": "rendered",
+  "route": "/careers"
+ },
+ "S11-P015 · How will application details be used?": {
+  "status": "held (internal note)",
+  "route": "/careers",
+  "note": "The answer depends on a recruitment privacy notice that does not exist yet."
+ },
+ "S11-P015": {
+  "status": "rendered (FAQ)",
+  "route": "/careers"
+ },
+ "S11-P016": {
+  "status": "rendered (hero)",
+  "route": "/media-enquiries"
+ },
+ "S11-P017": {
+  "status": "rendered (form)",
+  "route": "/media-enquiries",
+  "note": "Fields are implemented by the form; their labels follow this panel."
+ },
+ "S11-P019": {
+  "status": "merged",
+  "route": "/media-enquiries",
+  "note": "Set beside the form (S11-P017)."
+ },
+ "S11-P018": {
+  "status": "rendered",
+  "route": "/media-enquiries"
+ },
+ "S11-P020": {
+  "status": "rendered (FAQ)",
+  "route": "/media-enquiries"
+ },
+ "S11-P021": {
+  "status": "rendered (hero)",
+  "route": "/privacy"
+ },
+ "S11-P022": {
+  "status": "rendered",
+  "route": "/privacy"
+ },
+ "S11-P023": {
+  "status": "rendered",
+  "route": "/privacy"
+ },
+ "S11-P024 · Do I need to accept analytics cookies to contact Summit?": {
+  "status": "held (internal note)",
+  "route": "/privacy",
+  "note": "The answer is a test instruction for the consent configuration."
+ },
+ "S11-P024 · Can I change a newsletter preference later?": {
+  "status": "held (internal note)",
+  "route": "/privacy",
+  "note": "The answer describes preference controls that must be connected before launch."
+ },
+ "S11-P024 · Where is my information stored?": {
+  "status": "held (internal note)",
+  "route": "/privacy",
+  "note": "The answer says the details cannot yet be supplied; it belongs with the approved Privacy Policy."
+ },
+ "S11-P024": {
+  "status": "rendered (FAQ)",
+  "route": "/privacy"
+ },
+ "S11-P025": {
+  "status": "rendered (hero)",
+  "route": "/terms"
+ },
+ "S11-P026": {
+  "status": "rendered",
+  "route": "/terms"
+ },
+ "S11-P027": {
+  "status": "rendered",
+  "route": "/terms"
+ },
+ "S11-P028 · Can the terms be updated?": {
+  "status": "held (internal note)",
+  "route": "/terms",
+  "note": "The answer describes what the approved Terms should state."
+ },
+ "S11-P028": {
+  "status": "rendered (FAQ)",
+  "route": "/terms"
+ },
+ "S13-P001": {
+  "status": "rendered (hero)",
+  "route": "/solutions/watches-jewellery"
+ },
+ "S13-P002": {
+  "status": "rendered",
+  "route": "/solutions/watches-jewellery"
+ },
+ "S13-P003": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/solutions/watches-jewellery",
+  "note": "Optional two-choice prompt “Develop a new reference / Strengthen an existing icon” which swaps the first proposed discussion question. No scoring."
+ },
+ "S13-P004": {
+  "status": "rendered",
+  "route": "/solutions/watches-jewellery"
+ },
+ "S13-P005": {
+  "status": "rendered",
+  "route": "/solutions/watches-jewellery"
+ },
+ "S13-P006": {
+  "status": "rendered (FAQ)",
+  "route": "/solutions/watches-jewellery"
+ },
+ "S13-P007": {
+  "status": "rendered",
+  "route": "/solutions/watches-jewellery"
+ },
+ "S13-P008": {
+  "status": "rendered (hero)",
+  "route": "/solutions/fashion-accessories"
+ },
+ "S13-P009": {
+  "status": "rendered",
+  "route": "/solutions/fashion-accessories"
+ },
+ "S13-P010": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/solutions/fashion-accessories",
+  "note": "Optional “What is changing?” selector: collection, distribution, creative direction or market. It recommends a relevant page, never a verdict."
+ },
+ "S13-P011": {
+  "status": "held",
+  "route": "/solutions/fashion-accessories",
+  "note": "The research note recommends the Charvet essay and carries a publication-approval condition in its copy."
+ },
+ "S13-P012": {
+  "status": "rendered",
+  "route": "/solutions/fashion-accessories"
+ },
+ "S13-P013": {
+  "status": "rendered (FAQ)",
+  "route": "/solutions/fashion-accessories"
+ },
+ "S13-P014": {
+  "status": "rendered",
+  "route": "/solutions/fashion-accessories"
+ },
+ "S13-P015": {
+  "status": "rendered (hero)",
+  "route": "/solutions/beauty-fragrance"
+ },
+ "S13-P016": {
+  "status": "rendered",
+  "route": "/solutions/beauty-fragrance"
+ },
+ "S13-P017": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/solutions/beauty-fragrance",
+  "note": "Embedded “Desire or Distribution?” two-question prompt links to the existing Demand Quality Check. Keep the link contextual rather than duplicating the tool."
+ },
+ "S13-P018": {
+  "status": "rendered",
+  "route": "/solutions/beauty-fragrance"
+ },
+ "S13-P019": {
+  "status": "rendered",
+  "route": "/solutions/beauty-fragrance"
+ },
+ "S13-P020": {
+  "status": "rendered (FAQ)",
+  "route": "/solutions/beauty-fragrance"
+ },
+ "S13-P021": {
+  "status": "rendered",
+  "route": "/solutions/beauty-fragrance"
+ },
+ "S13-P022": {
+  "status": "rendered (hero)",
+  "route": "/solutions/wine-spirits"
+ },
+ "S13-P023": {
+  "status": "rendered",
+  "route": "/solutions/wine-spirits"
+ },
+ "S13-P024": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/solutions/wine-spirits",
+  "note": "A brief “Which decision matters most?” selector: release, narrative, hospitality or next market, routing to the appropriate service enquiry."
+ },
+ "S13-P025": {
+  "status": "rendered",
+  "route": "/solutions/wine-spirits"
+ },
+ "S13-P026": {
+  "status": "rendered",
+  "route": "/solutions/wine-spirits"
+ },
+ "S13-P027": {
+  "status": "rendered (FAQ)",
+  "route": "/solutions/wine-spirits"
+ },
+ "S13-P028": {
+  "status": "rendered",
+  "route": "/solutions/wine-spirits"
+ },
+ "S13-P029": {
+  "status": "rendered (hero)",
+  "route": "/solutions/automotive"
+ },
+ "S13-P030": {
+  "status": "rendered",
+  "route": "/solutions/automotive"
+ },
+ "S13-P031": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/solutions/automotive",
+  "note": "Optional “What is under review?” choice: iconic model / portfolio shift / ownership journey / launch, directing visitors to appropriate next pages."
+ },
+ "S13-P032": {
+  "status": "held",
+  "route": "/solutions/automotive",
+  "note": "The research note pairs with the Porsche essay and carries a publication-approval condition in its copy."
+ },
+ "S13-P033": {
+  "status": "rendered",
+  "route": "/solutions/automotive"
+ },
+ "S13-P034": {
+  "status": "rendered (FAQ)",
+  "route": "/solutions/automotive"
+ },
+ "S13-P035": {
+  "status": "rendered",
+  "route": "/solutions/automotive"
+ },
+ "S13-P036": {
+  "status": "rendered (hero)",
+  "route": "/solutions/real-estate-hospitality"
+ },
+ "S13-P037": {
+  "status": "rendered",
+  "route": "/solutions/real-estate-hospitality"
+ },
+ "S13-P038": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/solutions/real-estate-hospitality",
+  "note": "A “Where does the promise weaken?” selector: before booking / arrival / stay / after departure, revealing a tailored discussion prompt."
+ },
+ "S13-P039": {
+  "status": "rendered",
+  "route": "/solutions/real-estate-hospitality"
+ },
+ "S13-P040": {
+  "status": "rendered",
+  "route": "/solutions/real-estate-hospitality"
+ },
+ "S13-P041": {
+  "status": "rendered (FAQ)",
+  "route": "/solutions/real-estate-hospitality"
+ },
+ "S13-P042": {
+  "status": "rendered",
+  "route": "/solutions/real-estate-hospitality"
+ },
+ "S13-P043": {
+  "status": "rendered (hero)",
+  "route": "/solutions/art-collectibles"
+ },
+ "S13-P044": {
+  "status": "rendered",
+  "route": "/solutions/art-collectibles"
+ },
+ "S13-P045": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/solutions/art-collectibles",
+  "note": "A compact “What are you considering?” choice: collection / acquisition / public presentation / institution. Results recommend relevant next page, not an appraisal."
+ },
+ "S13-P046": {
+  "status": "rendered",
+  "route": "/solutions/art-collectibles"
+ },
+ "S13-P047": {
+  "status": "rendered",
+  "route": "/solutions/art-collectibles"
+ },
+ "S13-P048": {
+  "status": "rendered (FAQ)",
+  "route": "/solutions/art-collectibles"
+ },
+ "S13-P049": {
+  "status": "rendered",
+  "route": "/solutions/art-collectibles"
+ },
+ "S13-P050": {
+  "status": "rendered (hero)",
+  "route": "/solutions/private-banking-wealth-management"
+ },
+ "S13-P051": {
+  "status": "rendered",
+  "route": "/solutions/private-banking-wealth-management"
+ },
+ "S13-P052": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/solutions/private-banking-wealth-management",
+  "note": "Use an audience selection “Institution / Family office / Adviser” to tailor wording in the conversation CTA; never ask for portfolio values."
+ },
+ "S13-P053": {
+  "status": "rendered",
+  "route": "/solutions/private-banking-wealth-management"
+ },
+ "S13-P054": {
+  "status": "rendered",
+  "route": "/solutions/private-banking-wealth-management"
+ },
+ "S13-P055": {
+  "status": "rendered (FAQ)",
+  "route": "/solutions/private-banking-wealth-management"
+ },
+ "S13-P056": {
+  "status": "rendered",
+  "route": "/solutions/private-banking-wealth-management"
+ },
+ "S13-P057": {
+  "status": "rendered (hero)",
+  "route": "/solutions/strategy-planning"
+ },
+ "S13-P058": {
+  "status": "rendered",
+  "route": "/solutions/strategy-planning"
+ },
+ "S13-P059": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/solutions/strategy-planning",
+  "note": "Interactive “Which decision is open?” short selector: position / growth / product / ownership; route into the right By Need page."
+ },
+ "S13-P060": {
+  "status": "rendered",
+  "route": "/solutions/strategy-planning"
+ },
+ "S13-P061": {
+  "status": "rendered",
+  "route": "/solutions/strategy-planning"
+ },
+ "S13-P062": {
+  "status": "rendered (FAQ)",
+  "route": "/solutions/strategy-planning"
+ },
+ "S13-P063": {
+  "status": "rendered",
+  "route": "/solutions/strategy-planning"
+ },
+ "S13-P064": {
+  "status": "rendered (hero)",
+  "route": "/solutions/brand-marketing"
+ },
+ "S13-P065": {
+  "status": "rendered",
+  "route": "/solutions/brand-marketing"
+ },
+ "S13-P066": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/solutions/brand-marketing",
+  "note": "Optional embedded Demand Quality Check entry point after the discussion of reach and distribution."
+ },
+ "S13-P067": {
+  "status": "rendered",
+  "route": "/solutions/brand-marketing"
+ },
+ "S13-P068": {
+  "status": "rendered",
+  "route": "/solutions/brand-marketing"
+ },
+ "S13-P069": {
+  "status": "rendered (FAQ)",
+  "route": "/solutions/brand-marketing"
+ },
+ "S13-P070": {
+  "status": "rendered",
+  "route": "/solutions/brand-marketing"
+ },
+ "S13-P071": {
+  "status": "rendered (hero)",
+  "route": "/solutions/editorial-influence"
+ },
+ "S13-P072": {
+  "status": "rendered",
+  "route": "/solutions/editorial-influence"
+ },
+ "S13-P073": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/solutions/editorial-influence",
+  "note": "Optional “What should you publish?” prompt by audience: clients / investors / industry / staff. Present suggested format and CTA, not an auto-generated headline."
+ },
+ "S13-P074": {
+  "status": "rendered",
+  "route": "/solutions/editorial-influence"
+ },
+ "S13-P075": {
+  "status": "rendered",
+  "route": "/solutions/editorial-influence"
+ },
+ "S13-P076": {
+  "status": "rendered (FAQ)",
+  "route": "/solutions/editorial-influence"
+ },
+ "S13-P077": {
+  "status": "rendered",
+  "route": "/solutions/editorial-influence"
+ },
+ "S13-P078": {
+  "status": "rendered (hero)",
+  "route": "/solutions/experience-design"
+ },
+ "S13-P079": {
+  "status": "rendered",
+  "route": "/solutions/experience-design"
+ },
+ "S13-P080": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/solutions/experience-design",
+  "note": "Use “Where Does It Break?” as a selector for discovery, appointment, transaction, aftercare; route to a discussion, without collecting customer information."
+ },
+ "S13-P081": {
+  "status": "rendered",
+  "route": "/solutions/experience-design"
+ },
+ "S13-P082": {
+  "status": "rendered",
+  "route": "/solutions/experience-design"
+ },
+ "S13-P083": {
+  "status": "rendered (FAQ)",
+  "route": "/solutions/experience-design"
+ },
+ "S13-P084": {
+  "status": "rendered",
+  "route": "/solutions/experience-design"
+ },
+ "S13-P085": {
+  "status": "rendered (hero)",
+  "route": "/solutions/digital-commerce"
+ },
+ "S13-P086": {
+  "status": "rendered",
+  "route": "/solutions/digital-commerce"
+ },
+ "S13-P087": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/solutions/digital-commerce",
+  "note": "Embed the existing Demand Quality Check with a short one-sentence introduction; route qualified users to relevant Solutions or the Digital Growth programme."
+ },
+ "S13-P088": {
+  "status": "rendered",
+  "route": "/solutions/digital-commerce"
+ },
+ "S13-P089": {
+  "status": "rendered",
+  "route": "/solutions/digital-commerce"
+ },
+ "S13-P090": {
+  "status": "rendered (FAQ)",
+  "route": "/solutions/digital-commerce"
+ },
+ "S13-P091": {
+  "status": "rendered",
+  "route": "/solutions/digital-commerce"
+ },
+ "S13-P092": {
+  "status": "rendered (hero)",
+  "route": "/solutions/product-ip-patrimony"
+ },
+ "S13-P093": {
+  "status": "rendered",
+  "route": "/solutions/product-ip-patrimony"
+ },
+ "S13-P094": {
+  "status": "rendered (editorial version; optional interaction not built)",
+  "route": "/solutions/product-ip-patrimony",
+  "note": "Use “What Needs Protecting?” interactive guide from the earlier pass, framed as question preparation and never an IP opinion."
+ },
+ "S13-P095": {
+  "status": "rendered",
+  "route": "/solutions/product-ip-patrimony"
+ },
+ "S13-P096": {
+  "status": "rendered",
+  "route": "/solutions/product-ip-patrimony"
+ },
+ "S13-P097": {
+  "status": "rendered (FAQ)",
+  "route": "/solutions/product-ip-patrimony"
+ },
+ "S13-P098": {
+  "status": "rendered",
+  "route": "/solutions/product-ip-patrimony"
+ },
+ "S02-P001": {
+  "status": "rendered (hero; lens lines)",
+  "route": "/solutions",
+  "note": "Hero CTAs from the Production Register page CTA map; the copy gives none."
+ },
+ "S02-P002": {
+  "status": "merged (By Need lens intro)",
+  "route": "/solutions#by-need",
+  "note": "“Select a subject” is the lens list itself, not a separate link."
+ },
+ "S02-P003": {
+  "status": "merged (By Need lens: the need summaries)",
+  "route": "/solutions#by-need",
+  "note": "Each entry is its page’s summit_summary, shown on the lens."
+ },
+ "S02-P004": {
+  "status": "merged (By Need lens: the need summaries)",
+  "route": "/solutions#by-need",
+  "note": "Each entry is its page’s summit_summary, shown on the lens."
+ },
+ "S01-P001": {
+  "status": "rendered (front page template)",
+  "route": "/"
+ },
+ "S01-P002": {
+  "status": "rendered (front page template)",
+  "route": "/"
+ },
+ "S01-P003": {
+  "status": "rendered (front page template)",
+  "route": "/"
+ },
+ "S01-P004": {
+  "status": "rendered (front page template)",
+  "route": "/"
+ },
+ "S01-P005": {
+  "status": "rendered (front page template)",
+  "route": "/"
+ },
+ "S01-P006": {
+  "status": "rendered (front page template)",
+  "route": "/"
+ },
+ "S01-P007": {
+  "status": "rendered (front page template)",
+  "route": "/",
+  "note": "Essay titles replaced by the live essays; none of the three is published."
+ },
+ "S01-P008": {
+  "status": "rendered (front page template)",
+  "route": "/"
+ },
+ "S09-P002": {
+  "status": "rendered (archive masthead)",
+  "route": "/the-future-of-luxury",
+  "note": "Headline in the masthead rail beside the nameplate; both paragraphs; both CTAs."
+ },
+ "S09-P003": {
+  "status": "rendered (archive: lead essay label)",
+  "route": "/the-future-of-luxury",
+  "note": "“From the Archive” labels the lead essay; the paragraph is a production instruction."
+ },
+ "S09-P004": {
+  "status": "held",
+  "route": "/the-future-of-luxury",
+  "note": "Describes archive search, sorting or filters, which the archive does not have; it returns with them."
+ },
+ "S09-P005": {
+  "status": "rendered (archive: Latest)",
+  "route": "/the-future-of-luxury#latest",
+  "note": "Heading and both paragraphs; the lead essay carries its own link."
+ },
+ "S09-P006": {
+  "status": "held",
+  "route": "/the-future-of-luxury#latest",
+  "note": "Its subject list does not match the archive’s categories; the index shows the real ones."
+ },
+ "S09-P007": {
+  "status": "held (internal note)",
+  "route": "/the-future-of-luxury#latest",
+  "note": "The answer depends on an approval and notification workflow that does not exist yet."
+ },
+ "S09-P008": {
+  "status": "held (internal note)",
+  "route": "/the-future-of-luxury#latest",
+  "note": "The answer includes an editorial-policy instruction for future contributors."
+ },
+ "S09-P009": {
+  "status": "rendered (archive FAQ)",
+  "route": "/the-future-of-luxury#latest"
+ },
+ "S09-P010": {
+  "status": "held",
+  "route": "/the-future-of-luxury#essays-analysis",
+  "note": "Describes archive search, sorting or filters, which the archive does not have; it returns with them."
+ },
+ "S09-P011": {
+  "status": "internal/config",
+  "route": "/the-future-of-luxury#essays-analysis",
+  "note": "Results specification for a searchable archive."
+ },
+ "S09-P012": {
+  "status": "held",
+  "route": "/the-future-of-luxury#essays-analysis",
+  "note": "Suggested journeys without destinations; they return when each question has its essays."
+ },
+ "S09-P013": {
+  "status": "held",
+  "route": "/the-future-of-luxury#essays-analysis",
+  "note": "Describes archive search, sorting or filters, which the archive does not have; it returns with them."
+ },
+ "S09-P014": {
+  "status": "held",
+  "route": "/the-future-of-luxury#essays-analysis",
+  "note": "Describes archive search, sorting or filters, which the archive does not have; it returns with them."
+ },
+ "S09-P015": {
+  "status": "held (internal note)",
+  "route": "/the-future-of-luxury#essays-analysis",
+  "note": "An editorial-policy instruction."
+ },
+ "S09-P016": {
+  "status": "held",
+  "route": "/the-future-of-luxury#essays-analysis",
+  "note": "Describes archive search, sorting or filters, which the archive does not have; it returns with them."
+ },
+ "S09-P017": {
+  "status": "internal/config",
+  "route": "/the-future-of-luxury/{essay}/",
+  "note": "Masthead specification; single-article.php already sets title, standfirst, author, date, theme and sharing."
+ },
+ "S09-P018": {
+  "status": "internal/config",
+  "route": "/the-future-of-luxury/{essay}/",
+  "note": "Reading-experience specification; the essays are preserved as published."
+ },
+ "S09-P019": {
+  "status": "rendered (essay template: Related Reading, Related Work)",
+  "route": "/the-future-of-luxury/{essay}/",
+  "note": "“Explore [Related Solution]” becomes “Explore Solutions”: no essay-to-solution mapping is supplied."
+ },
+ "S09-P020": {
+  "status": "rendered (archive FAQ)",
+  "route": "/the-future-of-luxury/{essay}/"
+ },
+ "S09-P021": {
+  "status": "rendered (archive FAQ)",
+  "route": "/the-future-of-luxury/{essay}/"
+ },
+ "S09-P022": {
+  "status": "held (internal note)",
+  "route": "/the-future-of-luxury/{essay}/",
+  "note": "The answer is an editorial-standards instruction."
+ },
+ "S09-P023": {
+  "status": "rendered (archive: Subscribe)",
+  "route": "/the-future-of-luxury#subscribe",
+  "note": "The digest choice waits until a digest exists."
+ },
+ "S09-P024": {
+  "status": "held",
+  "route": "/the-future-of-luxury#subscribe",
+  "note": "Describes a confirmation email; the local subscription has no double opt-in yet."
+ },
+ "S09-P025": {
+  "status": "rendered (archive: closing invitation)",
+  "route": "/the-future-of-luxury#subscribe"
+ },
+ "S09-P026": {
+  "status": "rendered (archive FAQ)",
+  "route": "/the-future-of-luxury#subscribe"
+ },
+ "S09-P027": {
+  "status": "held (internal note)",
+  "route": "/the-future-of-luxury#subscribe",
+  "note": "Preference links do not exist yet."
+ },
+ "S09-P028": {
+  "status": "rendered (archive FAQ)",
+  "route": "/the-future-of-luxury#subscribe"
+ },
+ "S09-P029": {
+  "status": "held (internal note)",
+  "route": "/the-future-of-luxury#subscribe",
+  "note": "The answer is a consent-handling instruction."
+ },
+ "S11-P029": {
+  "status": "rendered (footer component)",
+  "route": "footer.php",
+  "note": "Sections, utility and legal links, email and copyright as written; LinkedIn kept from the navigation config."
+ },
+ "S11-P030": {
+  "status": "merged (footer Subscribe route)",
+  "route": "footer.php",
+  "note": "The footer carries no consent form (register: “No forms requiring consent in footer”); the form lives at The Future of Luxury #subscribe."
+ },
+ "S11-P031": {
+  "status": "rendered (footer component)",
+  "route": "footer.php",
+  "note": "Microcopy beside the copyright; Back to Top."
+ }
+}

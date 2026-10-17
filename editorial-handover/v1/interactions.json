@@ -1,0 +1,163 @@
+{
+ "description": "The editorial handover's interactions as built. Every pattern is complete as text without JavaScript (assets/js/editorial.js enhances), keyboard accessible, never scored, and sends nothing until the visitor submits an enquiry. Summaries wait in sessionStorage (30 minutes) for the visitor to edit in Let's Talk.",
+ "patterns": {
+  "faq": {
+   "markup": "core/details in .summit-faq",
+   "panels": [
+    "S06-P004",
+    "S06-P011",
+    "S06-P018",
+    "S06-P025",
+    "S06-P032",
+    "S06-P039",
+    "S07-P010",
+    "S07-P018",
+    "S07-P026",
+    "S07-P034",
+    "S07-P042",
+    "S07-P050",
+    "S08-P009",
+    "S08-P015",
+    "S08-P022",
+    "S08-P029",
+    "S09-P009",
+    "S09-P020",
+    "S09-P021",
+    "S09-P026",
+    "S09-P028",
+    "S10-P005",
+    "S10-P011",
+    "S10-P016",
+    "S10-P022",
+    "S10-P028",
+    "S10-P034",
+    "S11-P006",
+    "S11-P010",
+    "S11-P015",
+    "S11-P020",
+    "S11-P024",
+    "S11-P028",
+    "S13-P006",
+    "S13-P013",
+    "S13-P020",
+    "S13-P027",
+    "S13-P034",
+    "S13-P041",
+    "S13-P048",
+    "S13-P055",
+    "S13-P062",
+    "S13-P069",
+    "S13-P076",
+    "S13-P083",
+    "S13-P090",
+    "S13-P097"
+   ],
+   "behaviour": "native disclosure; one open at a time below 768px"
+  },
+  "choice-guide": {
+   "markup": ".summit-guide--choice",
+   "panels": [
+    "S04-P004",
+    "S04-P009",
+    "S05-P004",
+    "S05-P009"
+   ],
+   "behaviour": "choose one option to see its questions; Let's Talk links on the page carry ?context=<choice>; Clear selection"
+  },
+  "two-state": {
+   "markup": ".summit-guide--toggle",
+   "panels": [
+    "S03-P012"
+   ],
+   "behaviour": "Carrying / Carried: both statements remain readable without JavaScript"
+  },
+  "checklist": {
+   "markup": ".summit-guide--checklist",
+   "panels": [
+    "S05-P015"
+   ],
+   "behaviour": "Reviewed / Partly Reviewed / Not Yet Tested / Unsure per area; returns the questions for every area not Reviewed; no grade"
+  },
+  "demand-quality-check": {
+   "markup": "[summit_demand_quality_check] (inc/editorial.php)",
+   "panels": [
+    "S03-P008"
+   ],
+   "source": "Pass 03 tables 15–16",
+   "behaviour": "five single-choice questions; 'What feels most exposed?' sets Your main consideration; 'Which decision comes next?' sets Before you decide…; Discuss This With Summit carries an editable summary; Copy My Summary; without JavaScript the four considerations and the enquiry link are shown"
+  },
+  "contextual-lets-talk": {
+   "params": {
+    "topic": "the page an enquiry came from (labels in the Let's Talk page's summit_topics)",
+    "programme": "a programme slug, or undecided",
+    "intent": "general | briefing | media | career (preselects 'What brings you here?')",
+    "context": "a choice made on the page",
+    "audience": "cmo | investor (private briefing)"
+   },
+   "behaviour": "the topic is shown in an editable Topic field and recorded with the source route; the Future of Luxury opt-in is separate and unticked"
+  }
+ },
+ "editorial_versions": {
+  "S03-P004": "Options are named (Position / Product / Clients / Story); their responses and tailored links are not supplied.",
+  "S06-P023": "Approved sector summaries for the selector are not supplied.",
+  "S07-P002": "An issue-to-programme selector is proposed; no mapping is supplied — the six programmes are listed instead.",
+  "S07-P033": "The two practical prompts for each moment are not supplied.",
+  "S07-P041": "“Can This Task Be Delegated?” choices and considerations are not supplied.",
+  "S10-P032": "The selector’s routes and enquiry summaries are not supplied."
+ },
+ "optional_not_built": {
+  "S03-P007": "Each item can link to the matching Demand Quality Check concern, but the grid must work without JavaScript.",
+  "S03-P010": "Name, work email and question are enough to begin. Organisation and timing optional.",
+  "S03-P015": "Prompt: “Which object or signature is under discussion?” Free text, optional. Don’t ask for commercially sensitive material at first contact.",
+  "S04-P006": "Optional prompt “Which asset or signature is under discussion?” Do not request confidential designs at first contact.",
+  "S04-P008": "Columns can expose a short note on click; should remain readable without Javascript.",
+  "S04-P012": "Optional enquiry field “Where does the experience feel weakest?” seeded by chosen stage if used.",
+  "S04-P014": "Optional three-question “Find Your Argument” guide; do not add here until the site has an actual submission pathway.",
+  "S04-P018": "Optional prompt “What would you like to change the conversation about?” 300 characters; free-text follows.",
+  "S05-P002": "Each area can expand to show one example question and link to a relevant service. Avoid simulated live AI on this panel.",
+  "S05-P005": "Return to the same scroll position when a user returns; related cards never overlay the principal page CTA.",
+  "S05-P006": "Optional contextual field “What would you like to improve?” Allow a short answer without requiring sensitive information.",
+  "S05-P008": "Optional expandable “Questions for the board” under each subject. No estimated enterprise valuation.",
+  "S05-P012": "Optional selector for acquisition / minority investment / succession / strategic partnership. Free-text box kept short.",
+  "S05-P019": "Ask only for name, business email, organisation, broad reason for enquiry and a short message. Do not demand deal papers.",
+  "S07-P005": "/lets-talk?programme=undecided. Preselect programme and allow the visitor to change it. No budget requirement.",
+  "S07-P013": "/lets-talk?programme=maison-formation. Preselect programme and allow the visitor to change it. No budget requirement.",
+  "S07-P021": "/lets-talk?programme=editorial-influence. Preselect programme and allow the visitor to change it. No budget requirement.",
+  "S07-P029": "/lets-talk?programme=digital-growth. Preselect programme and allow the visitor to change it. No budget requirement.",
+  "S07-P031": "Optional “Where Does It Break?” selector from the earlier Solutions pass. Ask visitor to identify a moment, then show context-specific questions.",
+  "S07-P037": "/lets-talk?programme=client-experience. Preselect programme and allow the visitor to change it. No budget requirement.",
+  "S07-P045": "/lets-talk?programme=agentic-ai. Preselect programme and allow the visitor to change it. No budget requirement.",
+  "S07-P053": "/lets-talk?programme=brand-ip-stewardship. Preselect programme and allow the visitor to change it. No budget requirement.",
+  "S08-P003": "Optional content-filter pills: Objects, Governance, Maison Formation, Client Experience, Capital, AI. Filter published and approved items only.",
+  "S08-P004": "Each item must point to a live sitemap destination; suppressed until its destination is ready.",
+  "S08-P005": "Send to Let’s Talk with topic=research; short non-confidential note only.",
+  "S08-P010": "Each item must point to a live sitemap destination; suppressed until its destination is ready.",
+  "S08-P011": "topic=touch-me-not; no requirement to disclose confidential product plans.",
+  "S08-P016": "Each item must point to a live sitemap destination; suppressed until its destination is ready.",
+  "S08-P017": "topic=luxury-100, optional sector choice.",
+  "S08-P023": "Each item must point to a live sitemap destination; suppressed until its destination is ready.",
+  "S08-P024": "topic=white-papers; allow proposed title selection or “another question”.",
+  "S08-P028": "Topic, audience role, short non-confidential question and contact email. Research participation checkbox independent from newsletter consent.",
+  "S08-P030": "Each item must point to a live sitemap destination; suppressed until its destination is ready.",
+  "S08-P031": "topic=research-programme. Route private institutional projects to Observatory briefing after visitor chooses.",
+  "S10-P009": "Optional sector / need links, but avoid reproducing the full Solutions navigation.",
+  "S10-P013": "Short, accessible expand/collapse notes optional, but the core six statements must remain visible.",
+  "S10-P018": "Optional expandable examples sourced from public research, not a questionnaire requiring personal data.",
+  "S10-P030": "Optional hover states only. All content visible without interaction.",
+  "S11-P013": "This is a proposal only. Approve hiring and retention process before accepting CVs. If no recruitment processing exists, route to a published general contact address with explicit employment subject.",
+  "S13-P003": "Optional two-choice prompt “Develop a new reference / Strengthen an existing icon” which swaps the first proposed discussion question. No scoring.",
+  "S13-P010": "Optional “What is changing?” selector: collection, distribution, creative direction or market. It recommends a relevant page, never a verdict.",
+  "S13-P017": "Embedded “Desire or Distribution?” two-question prompt links to the existing Demand Quality Check. Keep the link contextual rather than duplicating the tool.",
+  "S13-P024": "A brief “Which decision matters most?” selector: release, narrative, hospitality or next market, routing to the appropriate service enquiry.",
+  "S13-P031": "Optional “What is under review?” choice: iconic model / portfolio shift / ownership journey / launch, directing visitors to appropriate next pages.",
+  "S13-P038": "A “Where does the promise weaken?” selector: before booking / arrival / stay / after departure, revealing a tailored discussion prompt.",
+  "S13-P045": "A compact “What are you considering?” choice: collection / acquisition / public presentation / institution. Results recommend relevant next page, not an appraisal.",
+  "S13-P052": "Use an audience selection “Institution / Family office / Adviser” to tailor wording in the conversation CTA; never ask for portfolio values.",
+  "S13-P059": "Interactive “Which decision is open?” short selector: position / growth / product / ownership; route into the right By Need page.",
+  "S13-P066": "Optional embedded Demand Quality Check entry point after the discussion of reach and distribution.",
+  "S13-P073": "Optional “What should you publish?” prompt by audience: clients / investors / industry / staff. Present suggested format and CTA, not an auto-generated headline.",
+  "S13-P080": "Use “Where Does It Break?” as a selector for discovery, appointment, transaction, aftercare; route to a discussion, without collecting customer information.",
+  "S13-P087": "Embed the existing Demand Quality Check with a short one-sentence introduction; route qualified users to relevant Solutions or the Digital Growth programme.",
+  "S13-P094": "Use “What Needs Protecting?” interactive guide from the earlier pass, framed as question preparation and never an IP opinion."
+ }
+}

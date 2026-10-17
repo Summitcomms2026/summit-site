@@ -1,0 +1,15 @@
+Decision,Required action,Owner
+Research figures / Canon & Observatory,"Verify current approved editions, method wording and precise governed counts before publication",Editorial
+Book and 2027 publication,Confirm book and 2027 Luxury 100 release/embargo status,Editorial
+Photos & graphic rights,No third-party luxury brand imagery or logos without required rights,Production
+Partner and team biographies,"Approve names, affiliations and collaboration status before publishing",Leadership
+Australia number,Approved +61 2 9127 9005; tel:+61291279005,Operational
+UK number,Approved +44 20 7011 8509; tel:+442070118509,Operational
+WhatsApp and SMS,"Require confirmed messaging-enabled numbers, ownership and response SLA",Operational
+Form delivery,"Test end-to-end server acknowledgement, notification and retention",Engineering
+Newsletter consent,Optional unchecked consent; separate from report delivery,Legal / Engineering
+White paper delivery,Gate only approved full PDFs; public synopsis remains readable,Editorial / Engineering
+Future of Luxury archive,"143 records; preserve original content, handoff attachments and source URLs; respect HOLD status",Editorial / Engineering
+"Privacy, Terms, Careers",Publish only with legal and operational review,Legal
+Cross-sell destinations,Confirm target routes and remove links to unpublished pages,Editorial / Engineering
+Accessibility / analytics,"Keyboard accordion, contrast, form labels, search URLs; track meaningful conversions without exposing confidential content",Engineering

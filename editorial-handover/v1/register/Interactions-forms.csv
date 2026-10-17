@@ -1,0 +1,841 @@
+Block ID,Page,Panel headline,Interaction notes,CTA notes,Implementation status,Guardrail,Additional notes
+S01-P003,Home,What’s the Brief?,,,Prototype or design concept; verify live integration,No speculative scoring,"ROLE  Help a visitor find the relevant engagement without knowing agency terminology.
+IMAGE  None necessary. This is a navigational panel, not a gallery.
+LAYOUT  Three equal columns on desktop. Lead with By Need visually and in keyboard order; functions and industries remain directly accessible.
+ACTIONS  Each column is a distinct route to its own index. No generic “Discover more” button.
+ICONS  Use a modest directional arrow; avoid sector pictograms or decorative diamonds.
+MOBILE  Three stacked cards or a clearly labelled accordion. Keep all routes visible.
+GUARDRAIL  Retain all 10 Need entries, 6 Function entries and 8 Industry entries in the underlying sitemap; the homepage is only a route."
+S01-P007,Home,Beyond the Headlines,,,Prototype or design concept; verify live integration,No speculative scoring,"ROLE  Invite regular reading and provide contemporary proof of judgement.
+IMAGE  One distinct, rights-cleared editorial image per essay: cloth/construction, automotive form and historic ornament. Avoid unlicensed campaign photographs.
+LAYOUT  Three-column magazine-style article strip, preferably with one featured story stronger than the other two. Use text-first cards if rights are pending.
+ACTIONS  Each headline opens its essay. Read the Essays and Subscribe are separate, plain-text invitations.
+ICONS  Tiny directional arrows only. No social-sharing clutter on the homepage.
+MOBILE  One featured article followed by two compact teasers. All three remain accessible without horizontal scrolling.
+GUARDRAIL  Article headlines must be exact and stories fact-checked again before launch if developments have moved on."
+S02-P001,Solutions,What Needs to Change?,,Each route opens its corresponding index. Label the destination exactly as shown.,Prototype or design concept; verify live integration,No speculative scoring,"PURPOSE  Lead with the business question. Do not make a visitor diagnose which department to hire.
+IMAGE  No image required. The routes need space and instant clarity.
+LAYOUT  Header plus three navigation columns. “By Need” is the default selected route; “By Function” and “By Industry” remain equally discoverable.
+CTA  Each route opens its corresponding index. Label the destination exactly as shown.
+ICONS  No sector pictograms. A discreet directional arrow for linked headings is enough.
+MOBILE  Three clear links, stacked. All options visible without interaction.
+CHECK  Do not describe the ten Needs as programmes: they are client questions which may lead to several disciplines."
+S02-P002,Solutions — By Need,What’s Your Brief?,,Link each title to a distinct page. “Build a Maison” is authored in this pass; the other nine follow in later passes.,Prototype or design concept; verify live integration,No speculative scoring,"PURPOSE  Introduce the list without a second sales pitch.
+IMAGE  None. Lead with the words.
+LAYOUT  Editorial index of ten routes. Two columns at desktop width, one on mobile; full row is clickable.
+CTA  Link each title to a distinct page. “Build a Maison” is authored in this pass; the other nine follow in later passes.
+ICONS  If needed, use small numbers 01–10 rather than illustrations.
+CHECK  The ten titles retain the sitemap wording and order."
+S02-P004,Solutions — By Need,Transform the Client Experience,,Entire entry links to its own page. Do not add ten identical “Discover” buttons.,Prototype or design concept; verify live integration,No speculative scoring,"PURPOSE  Five of the ten client questions from the sitemap. The titles and short introductions belong on the public page.
+LAYOUT  Display all ten entries together as a two-column editorial index on desktop. The split here is for print review only.
+CTA  Entire entry links to its own page. Do not add ten identical “Discover” buttons.
+IMAGE  No photographs on the index itself. Suggested imagery for the destination pages follows.
+PHOTO · Transform the Client Experience  An original spatial or service detail; people only where consent and rights are clear.
+PHOTO · Develop Thought Leadership  Use authored writing, printed pages or a genuinely documented event. No stock speaker-at-podium cliché.
+PHOTO · Applied AI  No robotic faces, glowing circuits or speculative interfaces. A plain typographic treatment is preferable.
+PHOTO · Investment & Acquisitions  Architecture or research material, not generic handshakes or investment charts.
+PHOTO · Maison Due Diligence  Research documents or a rights-cleared study of an object. No invented credit-rating gauges.
+ICONS  No icons. Use a discreet arrow where it helps navigation.
+MOBILE  One accessible stacked list with all ten titles visible."
+S02-P005,Build a Maison,Build a Maison,,Primary: Discuss Maison Formation → Let’s Talk with this topic selected. Secondary: Maison Formation programme.,Prototype or design concept; verify live integration,No speculative scoring,"PURPOSE  Address a founder or owner directly. Establish the distinction between visibility and durable institutional substance.
+IMAGE  One authentic object in the making or a founder-held archive: materials, pattern, tooling or source records. If access is limited, use typography.
+LAYOUT  Large title with a modest secondary statement. Image to the right of a narrow text measure, not behind dense text.
+CTA  Primary: Discuss Maison Formation → Let’s Talk with this topic selected. Secondary: Maison Formation programme.
+ICONS  None.
+MOBILE  Title, statement, copy and CTA together, before any image.
+CHECK  Do not claim that Summit can accelerate history or confer canonical rank on a young brand."
+S02-P006,Build a Maison,What Matters from the Start,,No button in the block. Keep the page’s primary CTA available at the end.,Prototype or design concept; verify live integration,No speculative scoring,"PURPOSE  Make the work legible without pretending that six boxes can manufacture a maison.
+IMAGE  None. This is a clear editorial diagram made of words.
+LAYOUT  Six compact blocks in a 3×2 grid on desktop or 2×3 on tablet; stack on mobile. Keep each definition short.
+CTA  No button in the block. Keep the page’s primary CTA available at the end.
+ICONS  Thin dividers rather than six symbols.
+CHECK  These are an editorial rendering of the six readiness dimensions in The New Asian Maison, pp. 38–39."
+S02-P007,Build a Maison,How to Begin,,"One shared link after both entries → Let’s Talk, with Maison Formation as the subject.",Prototype or design concept; verify live integration,No speculative scoring,"PURPOSE  Give a buyer enough specificity to picture the first engagement.
+IMAGE  No decorative image. An authentic, redacted page from a real diagnostic may be considered later with permission.
+LAYOUT  Two distinct editorial columns with matched structure. On mobile stack the Readiness Map above the Sprint. No tabs needed.
+CTA  One shared link after both entries → Let’s Talk, with Maison Formation as the subject.
+ICONS  None.
+CHECK  Both engagement names and the deliverable logic come from The New Asian Maison, pp. 38–39. Confirm their availability and exact scope before launch."
+S02-P008,Build a Maison,Where Research Helps,,Links to Observatory overview. Keep private briefings available there rather than duplicating the form.,Prototype or design concept; verify live integration,No speculative scoring,"PURPOSE  Connect Summit’s research to the work without overclaiming what a governed research instrument can do.
+IMAGE  Original Observatory pages, selected charts or an authored research photograph. No fake dashboard.
+LAYOUT  Asymmetric two-column feature, text first. Use less visual space than the homepage Observatory feature.
+CTA  Links to Observatory overview. Keep private briefings available there rather than duplicating the form.
+ICONS  None.
+CHECK  The Canon ranks a settled centre; the Observatory reads the wider field. Do not say a new house receives a canonical ranking."
+S02-P009,Build a Maison,Who It’s For,,No additional link; the final enquiry follows.,Prototype or design concept; verify live integration,No speculative scoring,"PURPOSE  Let qualified readers recognise themselves without sector stereotypes.
+IMAGE  None required. Could sit on an understated solid field.
+LAYOUT  One compact paragraph or four short lines. Avoid four elaborate persona cards.
+CTA  No additional link; the final enquiry follows.
+ICONS  None.
+CHECK  Suitability is assessed individually. Do not imply every luxury-sector client requires maison formation."
+S02-P010,Build a Maison,What Are You Building?,,"Let’s Talk contact route with subject “Build a Maison”. Suggested fields: name, organisation, email, brief and optional timing.",Prototype or design concept; verify live integration,No speculative scoring,"PURPOSE  A serious invitation, not an automated “book a discovery call” pitch.
+IMAGE  None.
+LAYOUT  Wide, quiet closing panel with one primary CTA and minimal other navigation.
+CTA  Let’s Talk contact route with subject “Build a Maison”. Suggested fields: name, organisation, email, brief and optional timing.
+ICONS  None.
+MOBILE  Short copy, large tap target. Do not force a calendaring widget.
+CHECK  Avoid promising confidentiality beyond the actual privacy and handling arrangements."
+S03-P002,Reposition a Maison,What No Longer Fits?,,,Prototype or design concept; verify live integration,No speculative scoring,"PURPOSE  Give executives recognisable symptoms; none should imply that change is always required.
+IMAGE  Type only. The distinctions need little help from photography.
+LAYOUT  Four text-led cards in 2×2 columns at desktop. No four-card icon set.
+ACTION  Each card may also select the corresponding choice in the interactive “What Needs Attention?” feature below.
+MOBILE  Stack four short entries with dividers; no carousel."
+S03-P004,Reposition a Maison,What Needs Attention?,,,Prototype or design concept; verify live integration,No speculative scoring,"PURPOSE  A fast, useful self-selection tool rather than a score or compulsory questionnaire.
+LAYOUT  Horizontal four-choice selector. Selecting one shows a 40–60 word response and a tailored CTA; all choices remain visible.
+LOGIC  Position → check price, peers, identity. Product → what carries the house. Clients → customer quality, occasions, rituals. Story → narrative ownership and archive.
+CONVERSION  CTA opens Let’s Talk with selected topic in the enquiry. No personal data collected until the visitor chooses to submit a brief.
+PRIVACY  No claim that this selector provides a diagnosis. Avoid saving answers without consent.
+MOBILE  Four stacked option rows followed by one response. Keyboard focus and screen-reader labels required."
+S03-P006,Enhance Desire Without Dilution,"More Demand, Less Exposure",,Primary goes to Let’s Talk with “Enhance Desire Without Dilution” as the topic; secondary scrolls to the check.,Prototype or design concept; verify live integration,No speculative scoring,"PURPOSE  Commercially direct without asserting that all scale damages luxury.
+IMAGE  One understated photograph expressing a real constraint: appointment book, made-to-order process, restricted production or a controlled workshop detail. Avoid velvet ropes and empty boutiques.
+LAYOUT  Asymmetric 50/50 text and photography. Keep interactive module a short scroll below the opening.
+CTA  Primary goes to Let’s Talk with “Enhance Desire Without Dilution” as the topic; secondary scrolls to the check.
+MOBILE  Opening CTA visible before large image."
+S03-P007,Enhance Desire Without Dilution,Where Growth Changes the House,"Each item can link to the matching Demand Quality Check concern, but the grid must work without JavaScript.",,Prototype or design concept; verify live integration,No speculative scoring,"PURPOSE  Use operational terms senior leaders already recognise. Avoid vague claims about aura being a metric.
+IMAGE  None in the grid.
+LAYOUT  Four compact categories in two columns; a single closing sentence beneath.
+INTERACTION  Each item can link to the matching Demand Quality Check concern, but the grid must work without JavaScript.
+CAUTION  Do not claim these are quantified Observatory scores or thresholds."
+S03-P008,Enhance Desire Without Dilution,What Is Growth Asking You to Give Up?,,“Discuss This With Summit” carries a user-editable summary to Let’s Talk; “Copy My Summary” works without sending data.,Prototype or design concept; verify live integration,No speculative scoring,"PURPOSE  The primary interactive lead tool for this pass. Delivers value before asking for contact details.
+FORMAT  Five single-select questions, short progress indicator, results drawn from selected concerns. No invented numerical score.
+RESULT  Show “Your main consideration” plus “Before you decide”. Result changes with the reported constraint and next decision.
+CTA  “Discuss This With Summit” carries a user-editable summary to Let’s Talk; “Copy My Summary” works without sending data.
+CONSENT  Never automatically email results or add a respondent to a newsletter. Newsletter consent separate and unchecked.
+FALLBACK  Non-JS page includes four pressure-point links and the general contact CTA.
+HANDOVER  Exact questions, options, response mapping and acceptance tests appear in the build specification."
+S03-P010,Enhance Desire Without Dilution,What Does Growth Need to Protect?,"Name, work email and question are enough to begin. Organisation and timing optional.",Source and tool answers prefill only editable enquiry fields. No automatic send and no false urgency.,Prototype or design concept; verify live integration,No speculative scoring,"PURPOSE  Give two routes into the same enquiry: a direct conversation or one carrying the tool summary.
+IMAGE  None. This is the close.
+LAYOUT  Full-width call to action; no newsletter form directly beside it.
+CTA  Source and tool answers prefill only editable enquiry fields. No automatic send and no false urgency.
+FORM  Name, work email and question are enough to begin. Organisation and timing optional."
+S03-P012,Strengthen an Icon,Carrying or Carried?,"Optional two-state explainer, not a scored quiz; click reveals what should be examined and a relevant enquiry CTA.",,Prototype or design concept; verify live integration,No speculative scoring,"PURPOSE  Render the central original-research distinction in plain language; do not expose a false binary risk diagnosis.
+LAYOUT  Two columns with matching short statements. A simple “Carrying / Carried” switch can toggle examples, but both statements remain accessible without scripting.
+IMAGE  No new image: typography allows the distinction to work.
+INTERACTION  Optional two-state explainer, not a scored quiz; click reveals what should be examined and a relevant enquiry CTA.
+CAUTION  Based on Touch Me Not v32, Appendix J. The public copy deliberately makes no unsupported claim about specific third-party objects."
+S03-P014,Strengthen an Icon,Fame Is Not the Same as Authority,,,Prototype or design concept; verify live integration,No speculative scoring,"PURPOSE  Use authored scholarship to support the advisory capability, not as a sales gimmick.
+IMAGE  Use real book material: jacket, archive photographs or Olivia Dhordain artwork only with clear permission and credit.
+LAYOUT  Book-page aesthetic: one large text column and one narrower image or citation strip.
+STATUS  Check rights and promotional wording of the book and 2027 edition before publishing any findings or extracts.
+CAUTION  Do not call the site feature an Observatory audit, score or certified reading."
+S03-P015,Strengthen an Icon,What Is the Icon Carrying?,"Prompt: “Which object or signature is under discussion?” Free text, optional. Don’t ask for commercially sensitive material at first contact.","Let’s Talk with page source and optional object description, editable before sending.",Prototype or design concept; verify live integration,No speculative scoring,"PURPOSE  Convert qualified visitors without making an unverified fixed-price review promise.
+IMAGE  None. A quiet end panel is the stronger finish.
+LAYOUT  Full-width typography, one principal link and a secondary form entry.
+FORM  Prompt: “Which object or signature is under discussion?” Free text, optional. Don’t ask for commercially sensitive material at first contact.
+CTA  Let’s Talk with page source and optional object description, editable before sending."
+S04-P004,Activate Patrimony & IP,What Needs Protecting?,Four-choice selector. Selecting one displays two to three specific questions and replaces the generic enquiry context.,,Prototype or design concept; verify live integration,No speculative scoring,"INTERACTION  Four-choice selector. Selecting one displays two to three specific questions and replaces the generic enquiry context.
+FORMAT  Accessible buttons or two-column cards, one selected state. Immediate inline result. No progress bar or invented score.
+CONVERSION  “Discuss Your Priority” opens editable /lets-talk route with selected concern and prompts, without automatically transmitting answers.
+PRIVACY  No email gate. Responses remain in the browser until the visitor elects to send an enquiry.
+PROTOTYPE  A small standalone working prototype accompanies this pass for the build session."
+S04-P005,Activate Patrimony & IP,Where to Go Next,,,Prototype or design concept; verify live integration,No speculative scoring,"LAYOUT  Three editorial cards desktop; one column on mobile. The third is research rather than another offer.
+IMAGE  Optional one small research cover only where approved. Avoid picture cards for every link.
+CROSS-SELL  Maintain direct paths to /solutions/by-need/strengthen-an-icon, /programmes/brand-ip-stewardship, /research/touch-me-not.
+EVIDENCE  Do not disclose unpublished proprietary scoring or imply formal IP legal advice."
+S04-P006,Activate Patrimony & IP,What Should the House Keep?,Optional prompt “Which asset or signature is under discussion?” Do not request confidential designs at first contact.,,Prototype or design concept; verify live integration,No speculative scoring,"LAYOUT  Full-width quiet ending without image. No newsletter gate between this invitation and the related-work module.
+FORM  Optional prompt “Which asset or signature is under discussion?” Do not request confidential designs at first contact.
+CONVERSION  Retain page source and optional selector topic in enquiry; avoid pre-populating sensitive details beyond user selections."
+S04-P008,Transform the Client Experience,Every Encounter Counts,Columns can expose a short note on click; should remain readable without Javascript.,,Prototype or design concept; verify live integration,No speculative scoring,"SOURCE  Adapted editorial grouping of the eight-stage Luxury Experience Stack in The New Asian Maison, pp. 35–36. Full source stages remain documented for programme work.
+LAYOUT  Three calm columns with a connecting rule, not numbered boxes or a funnel diagram.
+IMAGE  Optional sequence of three owned photographs showing digital, object and aftercare. One coherent shoot is better.
+INTERACTION  Columns can expose a short note on click; should remain readable without Javascript.
+CONVERSION  No CTA inside each stage. Follow with a single question-led selector."
+S04-P009,Transform the Client Experience,Where Does It Break?,"Four-choice experience selector. Display a tailored follow-up question and one relevant cross-link, not a fake assessment.",,Prototype or design concept; verify live integration,No speculative scoring,"INTERACTION  Four-choice experience selector. Display a tailored follow-up question and one relevant cross-link, not a fake assessment.
+FORMAT  Two by two unnumbered choice cards on desktop; compact single-column buttons on mobile.
+CONVERSATION  Pass selected stage into enquiry context. Always allow visitor to edit what is sent.
+ANALYTICS  Only aggregate click events, no response-level tracking without consent.
+CAUTION  Do not introduce a “luxury experience index” or assert proprietary scoring."
+S04-P012,Transform the Client Experience,Where Does the Experience Fall Short?,Optional enquiry field “Where does the experience feel weakest?” seeded by chosen stage if used.,,Prototype or design concept; verify live integration,No speculative scoring,"LAYOUT  Quiet text-only ending. No video autoplay or intrusive sign-up overlay.
+FORM  Optional enquiry field “Where does the experience feel weakest?” seeded by chosen stage if used.
+CONVERSION  Use familiar /lets-talk with contextual topic and editable short brief."
+S04-P014,Develop Thought Leadership,Start With an Argument,Optional three-question “Find Your Argument” guide; do not add here until the site has an actual submission pathway.,,Prototype or design concept; verify live integration,No speculative scoring,"LAYOUT  Three-column editorial structure. Keep column headings familiar and meaningful.
+IMAGE  One understated pull-quote or real marginal note rather than icons.
+INTERACTION  Optional three-question “Find Your Argument” guide; do not add here until the site has an actual submission pathway.
+CONVERSION  A text link after the group may point to Editorial & Influence programme."
+S04-P016,Develop Thought Leadership,Beyond the Headlines,,,Prototype or design concept; verify live integration,No speculative scoring,"SOURCE  Titles drawn from existing Summit manuscripts. Link only when their canonical published URLs have been verified.
+LAYOUT  Three editorial teasers with text and author/date only after publication. No pretence that these are client case studies.
+IMAGE  Distinctive cleared editorial images are welcome; omit imagery if licensed brand images cannot be secured.
+SOCIAL  Each published article gets “Share on LinkedIn” and “Copy link”, attached to that article rather than visitor form data.
+CONVERSION  This panel is an evidence-led onward journey; keep main enquiry for the concluding panel."
+S04-P017,Develop Thought Leadership,Keep the Conversation Going,,,Prototype or design concept; verify live integration,No speculative scoring,"LAYOUT  Two related-work cards plus one compact newsletter panel; do not create a large intrusive subscription gate.
+NEWSLETTER  Email input, separate unchecked consent, privacy link, accessible validation, success message only after actual provider confirmation. No inert “Subscribe” button.
+CROSS-SELL  Routes: /programmes/editorial-influence and /observatory. Subscription follows the existing /future-of-luxury/subscribe route.
+SOCIAL  LinkedIn and Copy link icons belong on individual essays, not on the enquiry panel.
+MOBILE  Stack programme, Observatory then newsletter. No pop-up on entry."
+S04-P018,Develop Thought Leadership,What Is Your Point of View?,Optional prompt “What would you like to change the conversation about?” 300 characters; free-text follows.,,Prototype or design concept; verify live integration,No speculative scoring,"LAYOUT  Text-led closing, quiet and confident. Do not repeat newsletter subscription.
+FORM  Optional prompt “What would you like to change the conversation about?” 300 characters; free-text follows.
+CONVERSION  Prefill topic=thought-leadership while leaving sender, recipients and brief editable."
+S05-P002,Applied AI,Where It Helps,Each area can expand to show one example question and link to a relevant service. Avoid simulated live AI on this panel.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+LAYOUT  Four short text columns on wide screens, two columns on tablet, single column on mobile; headings only, not pictograms.
+INTERACTION  Each area can expand to show one example question and link to a relevant service. Avoid simulated live AI on this panel.
+CROSS-SELL  Client Intelligence → Client Experience; Digital Commerce → Function / Digital Commerce; Editorial → Editorial & Influence.
+PRIVACY  Never suggest feeding confidential customer records into a public model."
+S05-P004,Applied AI,Does It Belong Here?,"Four-choice selector with short, specific follow-up questions. No score, chat theatre or automatic upload.","A concise “Discuss this application” after the result, not a compulsory gated download.",Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+INTERACTION  Four-choice selector with short, specific follow-up questions. No score, chat theatre or automatic upload.
+LEAD  Carry selected area and one edited sentence into Let’s Talk. Save nothing until the visitor explicitly submits.
+FORMAT  Accessible single-select cards; result appears in place. Add “Clear selection”.
+CTA  A concise “Discuss this application” after the result, not a compulsory gated download."
+S05-P005,Applied AI,Related Questions,Return to the same scroll position when a user returns; related cards never overlay the principal page CTA.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+LAYOUT  Three unnumbered cards, desktop; single column on mobile. No generic stock image per card.
+CROSS-SELL  Proposed routes /programmes/agentic-ai; /solutions/by-function/digital-commerce; /solutions/by-need/transform-client-experience.
+BEHAVIOUR  Return to the same scroll position when a user returns; related cards never overlay the principal page CTA."
+S05-P006,Applied AI,Where Could AI Help?,Optional contextual field “What would you like to improve?” Allow a short answer without requiring sensitive information.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+LAYOUT  Quiet full-width ending, no image or newsletter popup.
+FORM  Optional contextual field “What would you like to improve?” Allow a short answer without requiring sensitive information.
+LEAD  Route to /lets-talk?topic=applied-ai; preserve selector context only after consent."
+S05-P008,Investment & Acquisitions,Look Beyond the Accounts,Optional expandable “Questions for the board” under each subject. No estimated enterprise valuation.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+RESEARCH  Touch Me Not distinguishes market price from institutional standing; the Observatory examines governance, scarcity and institutional substance.
+LAYOUT  Four-column editorial reading, or two paired rows on narrower screens.
+INTERACTION  Optional expandable “Questions for the board” under each subject. No estimated enterprise valuation.
+LEGAL  Do not imply IP ownership has been independently checked before engagement."
+S05-P009,Investment & Acquisitions,"Different Decisions, Different Questions",Four-choice selector; replace following question and contextual enquiry topic. No market-valuation calculators without verified inputs.,After selection use “Discuss this opportunity”.,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+INTERACTION  Four-choice selector; replace following question and contextual enquiry topic. No market-valuation calculators without verified inputs.
+LAYOUT  Two-by-two choice grid on desktop, one column mobile. Show one sentence of response only after selection.
+CAPTURE  Store selected situation only upon submission. No demand for names of counterparties or deal documents at this stage.
+CTA  After selection use “Discuss this opportunity”."
+S05-P010,Investment & Acquisitions,From Opportunity to Decision,,Invitation to discuss an opportunity without requesting sensitive documents through the public form.,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+LAYOUT  Editorial text panel with a narrow sidebar defining “Summit’s role” and “Specialist disciplines”.
+BOUNDARY  Do not state transaction execution, underwriting, return forecasts or investment recommendations as existing services without approved scope.
+IMAGE  Optional documented craft or archive transfer moment. No generic boardroom imagery required.
+ENQUIRY  Invitation to discuss an opportunity without requesting sensitive documents through the public form."
+S05-P012,Investment & Acquisitions,What Is Under Consideration?,Optional selector for acquisition / minority investment / succession / strategic partnership. Free-text box kept short.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+FORM  Optional selector for acquisition / minority investment / succession / strategic partnership. Free-text box kept short.
+PRIVACY  Avoid file upload on public first contact; provide a secure route later where necessary.
+CONVERSION  Topic investment-acquisitions; show clear privacy policy and contact details."
+S05-P013,Maison Due Diligence,What Holds the House Together?,,"Direct to Observatory private briefing form, with Due Diligence selected; research overview secondary.",Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+AUDIENCE  Use investor and chairman/owner language, avoiding the language of a mass-market brand audit.
+IMAGE  Archival evidence with an identifiable object: authentic mark, production notebook or close study of construction. Rights-cleared only.
+LAYOUT  Wide textual hero plus a small documentary image; no dashboard aesthetic or rank graphic.
+CTA  Direct to Observatory private briefing form, with Due Diligence selected; research overview secondary."
+S05-P015,Maison Due Diligence,What Have You Tested?,"Interactive five-area checklist: Reviewed / Partly Reviewed / Not Yet Tested / Unsure. Returns questions and priorities, never a numerical grade.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+INTERACTION  Interactive five-area checklist: Reviewed / Partly Reviewed / Not Yet Tested / Unsure. Returns questions and priorities, never a numerical grade.
+PROTOTYPE  Standalone “What Have You Tested?” HTML document accompanies this pass. Suitable as build specification and working demonstration.
+PRIVACY  Runs locally until visitor chooses to contact Summit. No browser storage, analytics or hidden collection in prototype.
+LEAD  CTA “Discuss the open questions” prefills a short editable enquiry context; do not share answers automatically."
+S05-P018,Maison Due Diligence,Related Work,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+LAYOUT  Three cards, first a transaction Solution, second the Observatory’s investor route, third patrimony work.
+CONVERSION  Any selected interactive concerns may accompany a later enquiry only by visitor action.
+CROSS-SELL  Same route family as Investment & Acquisitions, but reorder for the reader already concerned about evidence gaps."
+S05-P019,Maison Due Diligence,What Needs a Closer Look?,"Ask only for name, business email, organisation, broad reason for enquiry and a short message. Do not demand deal papers.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+FORM  Ask only for name, business email, organisation, broad reason for enquiry and a short message. Do not demand deal papers.
+PRIVACY  Provide a confidential follow-up route for supporting documents. Never send a selected user response to Summit without submission.
+LEAD  /the-observatory/request-a-private-briefing?topic=maison-due-diligence or site-wide /lets-talk with matching metadata."
+S05-P020,Production and cross-selling notes,Keep the Next Step Relevant,"Avoid duplicate page links on the same screen. Related Work shows the next sensible choices, not the entire catalogue.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+ARCHITECTURE  No carousel on desktop for three links. Use native links and short abstracts so the value is legible at a glance.
+SOURCE ROUTES  Destination slugs are provisional until agreed in the website build. Visible titles must match the sitemap.
+BEHAVIOUR  Avoid duplicate page links on the same screen. Related Work shows the next sensible choices, not the entire catalogue.
+ICONS  Arrow only; no building / briefcase / robot illustrations."
+S05-P021,Production and cross-selling notes,Conversion Without the Clutter,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+LEAD CAPTURE  Single short enquiry form, preselected subject, editable summary, explicit submit. Clear success only after a working backend confirms it.
+MEASUREMENT  Consent-aware events: view, tool completion, related link, enquiry open, enquiry submitted. Do not conflate opens with submissions.
+ACCESSIBILITY  Keyboard-friendly interaction, visible focus, labels, small-screen stacking and screen-reader feedback for changed results.
+CLAIMS  No AI adoption estimates, proprietary score output or investment-return promises."
+S06-P002,The Observatory,Two Different Readings,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+FORMAT  Paired editorial columns. One contrasting rule between them; avoid fake scorecards or rank badges.
+CROSS-SELL  The Luxury 100 → Research / The Luxury 100. The Observatory → The Field.
+METHOD  Retain separate admission rules. Never describe The Observatory as the 101–1000 ranking."
+S06-P004,The Observatory,How is The Observatory different from The Luxury 100?,"Native keyboard-accessible disclosure. Single open item on mobile, independent state on desktop. No forced animation.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+ACCORDION  Native keyboard-accessible disclosure. Single open item on mobile, independent state on desktop. No forced animation.
+RESEARCH  Touch Me Not, Interlude and Appendix J; Observatory Primer, §§I–IV.
+ENTRY  Use the same questions as the visible accordion labels. Keep answers readable in the document and crawlable in the final HTML."
+S06-P005,The Observatory,Can the research tell us why an icon has weakened?,"Native keyboard-accessible disclosure. Single open item on mobile, independent state on desktop. No forced animation.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+ACCORDION  Native keyboard-accessible disclosure. Single open item on mobile, independent state on desktop. No forced animation.
+RESEARCH  Touch Me Not, Interlude and Appendix J; Observatory Primer, §§I–IV.
+CONVERSION  Link final answer to the private briefing page, not to a gated methodology download."
+S06-P011,For CMOs,Can you examine a maison that is not in The Luxury 100?,"Native keyboard-accessible disclosure. Single open item on mobile, independent state on desktop. No forced animation.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+ACCORDION  Native keyboard-accessible disclosure. Single open item on mobile, independent state on desktop. No forced animation.
+RESEARCH  Touch Me Not Appendix J, §§I–II; Canon Method and Product Rule.
+ENTRY  Use the same questions as the visible accordion labels. Keep answers readable in the document and crawlable in the final HTML."
+S06-P012,For CMOs,What if the problem is growth rather than heritage?,"Native keyboard-accessible disclosure. Single open item on mobile, independent state on desktop. No forced animation.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+ACCORDION  Native keyboard-accessible disclosure. Single open item on mobile, independent state on desktop. No forced animation.
+RESEARCH  Touch Me Not Appendix J, §§I–II; Canon Method and Product Rule.
+CONVERSION  The final accordion links to “Discuss a Maison Question”; do not promise automated scoring."
+S06-P017,For Family Offices & Investors,What an Institutional Reading Adds,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+LAYOUT  Three-column reading. Distinguish this institutional work from an investment appraisal.
+CROSS-SELL  Relevant links to Investment & Acquisitions and Maison Due Diligence.
+PRIVACY  Never invite visitors to attach deal memoranda, valuation models or shareholder records to an unsecured first-contact form."
+S06-P018,For Family Offices & Investors,Is this a form of investment due diligence?,"Native keyboard-accessible disclosure. Single open item on mobile, independent state on desktop. No forced animation.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+ACCORDION  Native keyboard-accessible disclosure. Single open item on mobile, independent state on desktop. No forced animation.
+RESEARCH  Touch Me Not Appendix J, §§III–IV; Observatory Unresolved Edges; IAS 38 §63; WIPO trade-secret guidance.
+ENTRY  Use the same questions as the visible accordion labels. Keep answers readable in the document and crawlable in the final HTML."
+S06-P019,For Family Offices & Investors,How do you assess risk when evidence is incomplete?,"Native keyboard-accessible disclosure. Single open item on mobile, independent state on desktop. No forced animation.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+ACCORDION  Native keyboard-accessible disclosure. Single open item on mobile, independent state on desktop. No forced animation.
+RESEARCH  Touch Me Not Appendix J, §§III–IV; Observatory Unresolved Edges; IAS 38 §63; WIPO trade-secret guidance.
+CONVERSION  Close with the secure-engagement boundary and link to investor-specific enquiry topic."
+S06-P022,The Field,Beyond the Hundred,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+IMAGE  Documentary contact sheet or archive ledgers; genuine visual evidence rather than fictional data visualisation.
+FACT-CHECK  104 entries / 17 sectors / two unresolved from Observatory Field Book 2026, subject to release-stage verification.
+LAYOUT  Large single headline above 50/50 explanatory columns. If using figures, give explicit source year rather than live counters."
+S06-P023,The Field,The Work Is Sector by Sector,"A sector selector using approved sector summaries only, never a live scoring dashboard. Build one category at a time.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+INTERACTION  A sector selector using approved sector summaries only, never a live scoring dashboard. Build one category at a time.
+LAYOUT  Compact text cards in three columns; optional side-panel appears on selection. Ensure all content remains crawlable.
+RESEARCH  Observatory Field Book and Sector Findings; cross-sector finding on governance is interpretive and qualified, not causal proof."
+S06-P025,The Field,Does The Field rank luxury brands?,"Native keyboard-accessible disclosure. Single open item on mobile, independent state on desktop. No forced animation.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+ACCORDION  Native keyboard-accessible disclosure. Single open item on mobile, independent state on desktop. No forced animation.
+RESEARCH  Observatory Primer §§III–V; Field Book; Unresolved Edges.
+ENTRY  Use the same questions as the visible accordion labels. Keep answers readable in the document and crawlable in the final HTML."
+S06-P026,The Field,Is the Outer Field part of the scored Observatory?,"Native keyboard-accessible disclosure. Single open item on mobile, independent state on desktop. No forced animation.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+ACCORDION  Native keyboard-accessible disclosure. Single open item on mobile, independent state on desktop. No forced animation.
+RESEARCH  Observatory Primer §§III–V; Field Book; Unresolved Edges.
+CONVERSION  Route “Ask About a Sector” with optional sector selector and no promised score."
+S06-P032,How It Works — Observatory,Can the method measure aura?,"Native keyboard-accessible disclosure. Single open item on mobile, independent state on desktop. No forced animation.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+ACCORDION  Native keyboard-accessible disclosure. Single open item on mobile, independent state on desktop. No forced animation.
+RESEARCH  Touch Me Not v32; Luxury 100 2027 colophon; Observatory Method and Field Book.
+ENTRY  Use the same questions as the visible accordion labels. Keep answers readable in the document and crawlable in the final HTML."
+S06-P033,How It Works — Observatory,Can we question the findings?,"Native keyboard-accessible disclosure. Single open item on mobile, independent state on desktop. No forced animation.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+ACCORDION  Native keyboard-accessible disclosure. Single open item on mobile, independent state on desktop. No forced animation.
+RESEARCH  Touch Me Not v32; Luxury 100 2027 colophon; Observatory Method and Field Book.
+CONVERSION  Link “Request a Private Briefing” after final answer; do not use “certified” or “scientifically proven” without evidence."
+S06-P036,Request a Private Briefing,Where Would Clarity Help?,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+IMAGE  None required. Confidence from typography, spacing and a simple, human invitation.
+LAYOUT  Text-led opening with restrained form panel alongside on desktop; copy first and form below on mobile.
+TONE  Do not promise a complimentary audit, guaranteed strategic solution or automatic calendar booking."
+S06-P037,Request a Private Briefing,Tell Us What Is on Your Mind,"Only name, email and the question are essential; audience selector helps route responses but should not block submission. | Conditional optional second question based on audience. No hard budget field, no required phone and no file upload.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+FORM  Only name, email and the question are essential; audience selector helps route responses but should not block submission.
+INTERACTION  Conditional optional second question based on audience. No hard budget field, no required phone and no file upload.
+PRIVACY  Separate, unchecked newsletter consent if offered at all. Link to published Privacy terms. No pre-ticked marketing checkbox.
+SUBMISSION  Production form must show actual success only after the server confirms receipt; prototype prepares an email draft, not a submission."
+S06-P039,Request a Private Briefing,Do I need a detailed brief?,"Native keyboard-accessible disclosure. Single open item on mobile, independent state on desktop. No forced animation.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+ACCORDION  Native keyboard-accessible disclosure. Single open item on mobile, independent state on desktop. No forced animation.
+RESEARCH  Enquiry policy and site privacy requirements; WIPO guidance on reasonable steps to protect confidential information.
+ENTRY  Use the same questions as the visible accordion labels. Keep answers readable in the document and crawlable in the final HTML."
+S06-P040,Request a Private Briefing,Should I send confidential information now?,"Native keyboard-accessible disclosure. Single open item on mobile, independent state on desktop. No forced animation.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+ACCORDION  Native keyboard-accessible disclosure. Single open item on mobile, independent state on desktop. No forced animation.
+RESEARCH  Enquiry policy and site privacy requirements; WIPO guidance on reasonable steps to protect confidential information.
+CONVERSION  Place final CTA directly after the fourth answer; no newsletter popup across the submission state."
+S06-P041,Request a Private Briefing,Explore Further,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+LAYOUT  Three narrow relevant links below form, not a distracting carousel.
+ROUTES  /the-observatory/for-cmos; /the-observatory/for-family-offices-and-investors; /the-observatory/how-it-works.
+CONVERSION  Use a soft secondary invitation to subscribe only after form completion and with separate consent."
+S07-P001,Programmes,Work With a Defined Purpose,"“Find Your Starting Point” opens the simple programme selector prototype. Not a diagnostic, quotation engine or qualification gate.","Secondary CTA leads directly to Let’s Talk, with programme undecided allowed.",Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+IMAGE  Real archive or studio work in progress. An editorial view of people engaged in the work; avoid anonymous boardrooms and generic luxury goods.
+LAYOUT  Full-width opening copy with controlled measure and one strong image; no carousel before the programme choices.
+INTERACTION  “Find Your Starting Point” opens the simple programme selector prototype. Not a diagnostic, quotation engine or qualification gate.
+ENQUIRY  Secondary CTA leads directly to Let’s Talk, with programme undecided allowed."
+S07-P002,Programmes,Choose Where to Begin,"Optional “what brings you here?” programme selector, never a forced quiz.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+LAYOUT  Six-item editorial grid in three columns on desktop, two on tablet and one on mobile. Each title opens the corresponding detail page.
+IMAGERY  Use small restrained documentary crops only if rights-cleared; the text should function without any imagery.
+INTERACTION  Optional “what brings you here?” programme selector, never a forced quiz."
+S07-P005,Programmes,What Are You Working Through?,/lets-talk?programme=undecided. Preselect programme and allow the visitor to change it. No budget requirement.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+FORM  /lets-talk?programme=undecided. Preselect programme and allow the visitor to change it. No budget requirement.
+TONE  Listen first. Aim to clarify what deserves attention whether or not Summit is ultimately engaged.
+PRIVACY  Seek a short non-confidential description only; confirm any sensitive material through separate secure arrangements."
+S07-P006,Maison Formation,From Ambition to Institution,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+IMAGE  Founder workshop or material craftsmanship with real authorship. No generic skyscrapers or European-palace shorthand for Asian luxury.
+LAYOUT  55/45 opening with restrained image; keep CTA close to thesis.
+EVIDENCE  The New Asian Maison, p. 38 establishes Maison Formation as Summit’s practice. Avoid promises that time and heritage can be accelerated."
+S07-P008,Maison Formation,Two Ways to Begin,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+LAYOUT  Two equal-width sections separated by a fine rule. Desktop side by side, mobile stacked.
+SOURCE  Both named engagements and example outputs appear in The New Asian Maison, pp. 38–39. Exact scope, cost, schedule and team require confirmation.
+CONVERSION  Offer a preselected “Maison Formation Diagnostic” enquiry route; alternative “I am not sure” remains available."
+S07-P009,Maison Formation,Who Should Be in the Room?,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+PHOTO  A real working discussion or the hands behind a material decision; no executive handshake imagery.
+PARTNER  Luxury IP and patrimony collaboration with Olivia Dhordain of Outboxing-IP is described in the source. Experience specialist Cecilia Ercoli must be described conditionally only.
+PRIVACY  Do not ask for secret product designs or investor decks on the public form."
+S07-P010,Maison Formation,Is this intended only for new luxury brands?,Four accessible accordion questions in total. Buttons use native keyboard behaviour; answers remain available to search engines.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+INTERACTION  Four accessible accordion questions in total. Buttons use native keyboard behaviour; answers remain available to search engines.
+EVIDENCE  The New Asian Maison, pp. 27, 37–39; Touch Me Not, Appendix J.
+PLACEMENT  After the substantive programme description; before related pages and final invitation."
+S07-P011,Maison Formation,How is this different from a rebrand?,Four accessible accordion questions in total. Buttons use native keyboard behaviour; answers remain available to search engines.,"The FAQ should offer “Discuss a Diagnostic” after the last answer, without a gated download.",Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+INTERACTION  Four accessible accordion questions in total. Buttons use native keyboard behaviour; answers remain available to search engines.
+EVIDENCE  The New Asian Maison, pp. 27, 37–39; Touch Me Not, Appendix J.
+ENQUIRY  The FAQ should offer “Discuss a Diagnostic” after the last answer, without a gated download."
+S07-P013,Maison Formation,What Are You Building?,/lets-talk?programme=maison-formation. Preselect programme and allow the visitor to change it. No budget requirement.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+FORM  /lets-talk?programme=maison-formation. Preselect programme and allow the visitor to change it. No budget requirement.
+TONE  Listen first. Aim to clarify what deserves attention whether or not Summit is ultimately engaged.
+PRIVACY  Seek a short non-confidential description only; confirm any sensitive material through separate secure arrangements."
+S07-P016,Editorial & Influence — Programme,What the Work Can Include,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+LAYOUT  Editorial cards with short headings. Mobile stacked. Use one pull quote only if it is published and attributable.
+APPROVAL  The sitemap establishes this programme title. Listed components are proposed commissionable services, not past fixed packages.
+EVIDENCE  Claims and current facts require research, source checking and editorial sign-off."
+S07-P017,Editorial & Influence — Programme,Proof in the Work,"Three editorial teasers open articles. Subscription is quiet and optional, never a gate before an enquiry.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+IMAGE  Three article covers or rights-cleared publisher thumbnails, no celebrity portraits scraped from the web.
+INTERACTION  Three editorial teasers open articles. Subscription is quiet and optional, never a gate before an enquiry.
+CONVERSION  Place share-to-LinkedIn controls on published individual essays, not as decoration on this sales page."
+S07-P018,Editorial & Influence — Programme,Does thought leadership need a controversial opinion?,Four accessible accordion questions in total. Buttons use native keyboard behaviour; answers remain available to search engines.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+INTERACTION  Four accessible accordion questions in total. Buttons use native keyboard behaviour; answers remain available to search engines.
+EVIDENCE  Summit’s Future of Luxury essays; Touch Me Not’s evidence discipline. The offer itself is a proposed engagement model.
+PLACEMENT  After the substantive programme description; before related pages and final invitation."
+S07-P019,Editorial & Influence — Programme,Can you guarantee press coverage or invitations?,Four accessible accordion questions in total. Buttons use native keyboard behaviour; answers remain available to search engines.,Link final accordion to “Discuss an Editorial Brief”; no compulsory newsletter sign-up.,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+INTERACTION  Four accessible accordion questions in total. Buttons use native keyboard behaviour; answers remain available to search engines.
+EVIDENCE  Summit’s Future of Luxury essays; Touch Me Not’s evidence discipline. The offer itself is a proposed engagement model.
+ENQUIRY  Link final accordion to “Discuss an Editorial Brief”; no compulsory newsletter sign-up."
+S07-P021,Editorial & Influence — Programme,What Is Worth Saying?,/lets-talk?programme=editorial-influence. Preselect programme and allow the visitor to change it. No budget requirement.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+FORM  /lets-talk?programme=editorial-influence. Preselect programme and allow the visitor to change it. No budget requirement.
+TONE  Listen first. Aim to clarify what deserves attention whether or not Summit is ultimately engaged.
+PRIVACY  Seek a short non-confidential description only; confirm any sensitive material through separate secure arrangements."
+S07-P022,Digital Growth,"Better Demand, Not Just More",,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+IMAGE  A considered view of a real e-commerce interface, archival product photography or customer journey documentation. Avoid inflated dashboard screenshots.
+LAYOUT  60/40 copy and documentary image; a genuine annotated interface is preferable to lifestyle photography.
+CROSS-SELL  The existing Demand Quality Check prototype can be reused; clarify that it is a reflection tool, not a performance audit."
+S07-P023,Digital Growth,Look at the Whole Journey,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+LAYOUT  Five-step journey presented as a horizontal sequence on wide screens, scrolling cards or stacked text on mobile.
+ICON  No cart icons or growth arrows. Let product and journey words do the work.
+DATA  Any client-data work requires consent, security review and platform-specific scoping."
+S07-P026,Digital Growth,Is this a performance marketing programme?,Four accessible accordion questions in total. Buttons use native keyboard behaviour; answers remain available to search engines.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+INTERACTION  Four accessible accordion questions in total. Buttons use native keyboard behaviour; answers remain available to search engines.
+EVIDENCE  The New Asian Maison, pp. 35–39; Touch Me Not, Appendix J on channel and distribution discipline.
+PLACEMENT  After the substantive programme description; before related pages and final invitation."
+S07-P027,Digital Growth,Will we need to rebuild our website?,Four accessible accordion questions in total. Buttons use native keyboard behaviour; answers remain available to search engines.,Offer route to “Review Our Digital Experience” and related demand-quality self-check.,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+INTERACTION  Four accessible accordion questions in total. Buttons use native keyboard behaviour; answers remain available to search engines.
+EVIDENCE  The New Asian Maison, pp. 35–39; Touch Me Not, Appendix J on channel and distribution discipline.
+ENQUIRY  Offer route to “Review Our Digital Experience” and related demand-quality self-check."
+S07-P029,Digital Growth,Where Is Demand Falling Short?,/lets-talk?programme=digital-growth. Preselect programme and allow the visitor to change it. No budget requirement.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+FORM  /lets-talk?programme=digital-growth. Preselect programme and allow the visitor to change it. No budget requirement.
+TONE  Listen first. Aim to clarify what deserves attention whether or not Summit is ultimately engaged.
+PRIVACY  Seek a short non-confidential description only; confirm any sensitive material through separate secure arrangements."
+S07-P031,Client Experience,Where the Promise Is Tested,"Optional “Where Does It Break?” selector from the earlier Solutions pass. Ask visitor to identify a moment, then show context-specific questions.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+LAYOUT  Five-column experience journey on desktop; mobile uses vertical sequence and a subtle connecting rule.
+INTERACTION  Optional “Where Does It Break?” selector from the earlier Solutions pass. Ask visitor to identify a moment, then show context-specific questions.
+ICON  None. Use clear labels and documentary imagery."
+S07-P033,Client Experience,Begin With One Moment,"In-page choice among “First impression”, “Personal service”, “Purchase” and “Aftercare”. Show two practical prompts; then offer a conversation link.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+INTERACTION  In-page choice among “First impression”, “Personal service”, “Purchase” and “Aftercare”. Show two practical prompts; then offer a conversation link.
+IMAGE  A real service moment, rights-cleared, used sparingly.
+CONVERSION  Avoid requiring a 20-question audit before showing the contact option."
+S07-P034,Client Experience,Does this concern retail only?,Four accessible accordion questions in total. Buttons use native keyboard behaviour; answers remain available to search engines.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+INTERACTION  Four accessible accordion questions in total. Buttons use native keyboard behaviour; answers remain available to search engines.
+EVIDENCE  The New Asian Maison, pp. 35–36; Summit site’s Experience Design and Transform the Client Experience categories.
+PLACEMENT  After the substantive programme description; before related pages and final invitation."
+S07-P035,Client Experience,Will this replace our existing service team or designers?,Four accessible accordion questions in total. Buttons use native keyboard behaviour; answers remain available to search engines.,Close FAQs with a gentle “Discuss One Client Moment” button.,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+INTERACTION  Four accessible accordion questions in total. Buttons use native keyboard behaviour; answers remain available to search engines.
+EVIDENCE  The New Asian Maison, pp. 35–36; Summit site’s Experience Design and Transform the Client Experience categories.
+ENQUIRY  Close FAQs with a gentle “Discuss One Client Moment” button."
+S07-P037,Client Experience,Which Encounter Matters Most?,/lets-talk?programme=client-experience. Preselect programme and allow the visitor to change it. No budget requirement.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+FORM  /lets-talk?programme=client-experience. Preselect programme and allow the visitor to change it. No budget requirement.
+TONE  Listen first. Aim to clarify what deserves attention whether or not Summit is ultimately engaged.
+PRIVACY  Seek a short non-confidential description only; confirm any sensitive material through separate secure arrangements."
+S07-P038,Agentic AI,Automation With Judgement,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+IMAGE  Documented operational workflow, trained professional checking output, physical archive and interface. Never humanoid robots or science-fiction imagery.
+LAYOUT  Text-led hero, compact. Give human oversight visual precedence over software.
+ACCURACY  This is a proposed programme model. Do not claim deployed proprietary agents, autonomous transactions or guaranteed efficiency."
+S07-P039,Agentic AI,Where an Agent May Help,,Direct visitors to describe a task rather than requesting “AI transformation”.,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+LAYOUT  Four example cards; each can expand to show “What the agent does / What a person approves”.
+GUARDRAIL  Never imply an agent is authorised to send private communications, publish or transact without agreed permissions.
+CTA  Direct visitors to describe a task rather than requesting “AI transformation”."
+S07-P041,Agentic AI,Start With One Task,"Simple “Can This Task Be Delegated?” exploration: choose task, data sensitivity and whether outputs require sign-off. Returns considerations, never a compliance grade.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+INTERACTION  Simple “Can This Task Be Delegated?” exploration: choose task, data sensitivity and whether outputs require sign-off. Returns considerations, never a compliance grade.
+COMMERCIAL  Proposed discovery → limited pilot → review sequence, not a pre-sold implementation timetable.
+RELATED  Cross-link to Applied AI (strategy) and Digital Growth (commerce workflows)."
+S07-P042,Agentic AI,What makes this different from ordinary AI software?,Four accessible accordion questions in total. Buttons use native keyboard behaviour; answers remain available to search engines.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+INTERACTION  Four accessible accordion questions in total. Buttons use native keyboard behaviour; answers remain available to search engines.
+EVIDENCE  Programme is proposed. Operating principles reflect the limits of AI discussed in Touch Me Not and general professional practice; no technical certification is claimed.
+PLACEMENT  After the substantive programme description; before related pages and final invitation."
+S07-P043,Agentic AI,Can we use confidential archives or customer information?,Four accessible accordion questions in total. Buttons use native keyboard behaviour; answers remain available to search engines.,Link to a narrow use-case enquiry. Avoid automated recommendation of deployment readiness.,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+INTERACTION  Four accessible accordion questions in total. Buttons use native keyboard behaviour; answers remain available to search engines.
+EVIDENCE  Programme is proposed. Operating principles reflect the limits of AI discussed in Touch Me Not and general professional practice; no technical certification is claimed.
+ENQUIRY  Link to a narrow use-case enquiry. Avoid automated recommendation of deployment readiness."
+S07-P045,Agentic AI,Which Task Deserves Attention?,/lets-talk?programme=agentic-ai. Preselect programme and allow the visitor to change it. No budget requirement.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+FORM  /lets-talk?programme=agentic-ai. Preselect programme and allow the visitor to change it. No budget requirement.
+TONE  Listen first. Aim to clarify what deserves attention whether or not Summit is ultimately engaged.
+PRIVACY  Seek a short non-confidential description only; confirm any sensitive material through separate secure arrangements."
+S07-P047,Brand & IP Stewardship,What Requires Attention,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+LAYOUT  Five-module grid; details expandable on desktop or stacked on mobile.
+SOURCE  Touch Me Not, Appendix J; The New Asian Maison, pp. 37–39; Olivia Dhordain’s IP and patrimony practice.
+CLARITY  Do not suggest all value can or should be registered as IP. Cultural meaning often exceeds formal protection."
+S07-P050,Brand & IP Stewardship,Is this the same as a legal IP audit?,Four accessible accordion questions in total. Buttons use native keyboard behaviour; answers remain available to search engines.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+INTERACTION  Four accessible accordion questions in total. Buttons use native keyboard behaviour; answers remain available to search engines.
+EVIDENCE  Touch Me Not, Appendix J; The New Asian Maison, pp. 7 and 37–39; specialist contribution from Olivia Dhordain as described in source.
+PLACEMENT  After the substantive programme description; before related pages and final invitation."
+S07-P051,Brand & IP Stewardship,When should a growing brand begin protecting its IP?,Four accessible accordion questions in total. Buttons use native keyboard behaviour; answers remain available to search engines.,Place a contextual “Discuss What Needs Protecting” enquiry link below the fourth FAQ.,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+INTERACTION  Four accessible accordion questions in total. Buttons use native keyboard behaviour; answers remain available to search engines.
+EVIDENCE  Touch Me Not, Appendix J; The New Asian Maison, pp. 7 and 37–39; specialist contribution from Olivia Dhordain as described in source.
+ENQUIRY  Place a contextual “Discuss What Needs Protecting” enquiry link below the fourth FAQ."
+S07-P053,Brand & IP Stewardship,What Must Not Be Lost?,/lets-talk?programme=brand-ip-stewardship. Preselect programme and allow the visitor to change it. No budget requirement.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+FORM  /lets-talk?programme=brand-ip-stewardship. Preselect programme and allow the visitor to change it. No budget requirement.
+TONE  Listen first. Aim to clarify what deserves attention whether or not Summit is ultimately engaged.
+PRIVACY  Seek a short non-confidential description only; confirm any sensitive material through separate secure arrangements."
+S07-P054,Production and cross-selling notes,Enquiry Without Pressure,"Preferred fields: name, work email, organisation (optional), area of interest (optional), short message, consent. Keep successful-submission copy separate from mailto draft behaviour.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+FORM  Preferred fields: name, work email, organisation (optional), area of interest (optional), short message, consent. Keep successful-submission copy separate from mailto draft behaviour.
+ANALYTICS  Measure programme detail → conversation view → valid form submission with privacy-compliant analytics; not vanity click totals.
+TESTING  Keyboard navigation, accessible accordion labels and mobile stacking should be part of implementation QA."
+S07-P055,Production and cross-selling notes,Find Your Starting Point,One lightweight selector at /programmes; users choose a challenge and see two relevant links. No personal data required. Prototype provided as a separate HTML file.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+INTERACTION  One lightweight selector at /programmes; users choose a challenge and see two relevant links. No personal data required. Prototype provided as a separate HTML file.
+MOBILE  Single-column choices with large touch targets. Summary and enquiry CTA remain visible after a selection.
+PRIVACY  No background submission; any message preparation must be explicit and editable."
+S07-P056,Production and cross-selling notes,Publication Checks,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES / PRODUCTION
+RELEASE  Maison Formation Diagnostic / Revenue to Rights Sprint are source-defined. Other formats and agentic use cases are draft proposals.
+GOVERNANCE  Public Canon and private advisory work remain editorially independent. State no outside audit unless independently verified.
+IMPLEMENT  Routes are indicative slugs for the website build, not verified live URLs."
+S08-P003,Research,Start With an Answerable Question,"Optional content-filter pills: Objects, Governance, Maison Formation, Client Experience, Capital, AI. Filter published and approved items only.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES  /  PRODUCTION
+INTERACTION  Optional content-filter pills: Objects, Governance, Maison Formation, Client Experience, Capital, AI. Filter published and approved items only.
+LAYOUT  Text-led section with a few real research-page covers; avoid statistical dashboards for material that is principally interpretive."
+S08-P004,Research,Keep Reading,Each item must point to a live sitemap destination; suppressed until its destination is ready.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES  /  PRODUCTION
+LAYOUT  Three links in an editorial row on desktop; stacked on mobile. No generic related-content algorithm.
+BEHAVIOUR  Each item must point to a live sitemap destination; suppressed until its destination is ready.
+CONVERSION  Related reading precedes the final enquiry so the visitor can continue without commitment."
+S08-P005,Research,What Are You Trying to Understand?,Send to Let’s Talk with topic=research; short non-confidential note only.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES  /  PRODUCTION
+FORM  Send to Let’s Talk with topic=research; short non-confidential note only.
+TONE  Clarity whether or not an engagement follows. Never imply a free research report or a guaranteed finding."
+S08-P008,Touch Me Not,Inside the Book,,"Read an Authorised Extract, if approved; otherwise About the Book. Never offer the full manuscript without rights clearance.",Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES  /  PRODUCTION
+LAYOUT  Chapter preview with 3–4 expandable section summaries, followed by a simple contents link. This is not an entire manuscript accordion.
+CTA  Read an Authorised Extract, if approved; otherwise About the Book. Never offer the full manuscript without rights clearance."
+S08-P009,Touch Me Not,Is this a book about luxury brands or luxury objects?,Four native accordion controls. First collapsed on load; accessible to keyboard and screen reader.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES  /  PRODUCTION
+INTERACTION  Four native accordion controls. First collapsed on load; accessible to keyboard and screen reader.
+SOURCES  Touch Me Not v32, main argument and Appendix J. Keep distinctions between observed evidence and interpretation visible."
+S08-P010,Touch Me Not,Keep Reading,Each item must point to a live sitemap destination; suppressed until its destination is ready.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES  /  PRODUCTION
+LAYOUT  Three links in an editorial row on desktop; stacked on mobile. No generic related-content algorithm.
+BEHAVIOUR  Each item must point to a live sitemap destination; suppressed until its destination is ready.
+CONVERSION  Related reading precedes the final enquiry so the visitor can continue without commitment."
+S08-P011,Touch Me Not,Where Does the Argument Meet Your Business?,topic=touch-me-not; no requirement to disclose confidential product plans.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES  /  PRODUCTION
+FORM  topic=touch-me-not; no requirement to disclose confidential product plans.
+COMMERCE  A book-purchase button is separate from the advisory enquiry; never imply purchase is needed to speak with Summit."
+S08-P012,The Luxury 100,Not Everything That Sells Endures,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES  /  PRODUCTION
+IMAGE  Actual approved Luxury 100 cover and source-approved object imagery. Avoid unauthorised brand product photographs.
+LAYOUT  Bold book cover + small-format explanatory summary. No scoreboards or league-table hero.
+ACCURACY  Keep original 100-object Canon distinct from the 2027 edition subtitled “Ninety-nine objects. One empty chair”."
+S08-P014,The Luxury 100,What the Reader Can Examine,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES  /  PRODUCTION
+LAYOUT  Four clean editorial tiles; no ranking widgets without fully checked canon data.
+METHOD  Never let a mini-site calculator infer public Canon rank or Aura. The full published method is the proper reference."
+S08-P015,The Luxury 100,Is this a ranking of the most valuable brands?,"Four accordions, no visual rankings or interactive score calculators.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES  /  PRODUCTION
+SOURCE  2027 edition and Touch Me Not appendices; distinguish the original Canon’s methodology from the annual reading.
+INTERACTION  Four accordions, no visual rankings or interactive score calculators."
+S08-P016,The Luxury 100,Keep Reading,Each item must point to a live sitemap destination; suppressed until its destination is ready.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES  /  PRODUCTION
+LAYOUT  Three links in an editorial row on desktop; stacked on mobile. No generic related-content algorithm.
+BEHAVIOUR  Each item must point to a live sitemap destination; suppressed until its destination is ready.
+CONVERSION  Related reading precedes the final enquiry so the visitor can continue without commitment."
+S08-P017,The Luxury 100,What Is Your House Keeping Alive?,"topic=luxury-100, optional sector choice.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES  /  PRODUCTION
+FORM  topic=luxury-100, optional sector choice.
+ETHICS  Never frame a briefing as an opportunity to influence a public ranking."
+S08-P018,White Papers,Good Research Changes Decisions,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES  /  PRODUCTION
+IMAGE  Actual report covers, original research visualisations or authorised case photography, never fictitious author portraits or stock charts.
+LAYOUT  Short editorial intro above a feature report, followed by a filtered report library.
+ACCESS  Public title, summary, key questions, author, edition/date, methodology note and status. Full approved PDF behind the form."
+S08-P021,White Papers,A Better Way to Request Research,"For approved PDFs: name, email and organisation (optional); research interest (optional). Separate unchecked newsletter checkbox.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES  /  PRODUCTION
+FORM  For approved PDFs: name, email and organisation (optional); research interest (optional). Separate unchecked newsletter checkbox.
+DELIVERY  After successful submission, reveal a secure download and send the link by email. No claim of receipt before backend confirmation.
+PRIVACY  Clear purpose notice and privacy link. No mandatory telephone, budget, corporate email-domain test or pre-ticked marketing consent.
+RECOVERY  If delivery fails, show helpful retry/contact route. Returning readers can use an existing unique access link where appropriate."
+S08-P022,White Papers,Are the papers free to read?,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES  /  PRODUCTION
+LEGAL  Publication-specific rights notice required. Do not assert universal reproduction permission.
+FAQ  Accordions beneath the open preview and outside the form; no gating of basic questions."
+S08-P023,White Papers,Keep Reading,Each item must point to a live sitemap destination; suppressed until its destination is ready.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES  /  PRODUCTION
+LAYOUT  Three links in an editorial row on desktop; stacked on mobile. No generic related-content algorithm.
+BEHAVIOUR  Each item must point to a live sitemap destination; suppressed until its destination is ready.
+CONVERSION  Related reading precedes the final enquiry so the visitor can continue without commitment."
+S08-P024,White Papers,What Would Be Worth Examining?,topic=white-papers; allow proposed title selection or “another question”.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES  /  PRODUCTION
+FORM  topic=white-papers; allow proposed title selection or “another question”.
+CONVERSION  Secondary CTA after successful download, not a compulsory upsell before access."
+S08-P027,Research Programme,How the Work Is Governed,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES  /  PRODUCTION
+SOURCE  Methodological spirit from Touch Me Not and the Observatory Primer. This web summary is a proposed public-facing statement, not a replacement for source methodology.
+FORMAT  Simple four-part horizontal narrative; no ornamental stages or timestamps.
+PRIVACY  If participant interviews are later conducted, create separate consent, anonymisation and research ethics arrangements."
+S08-P028,Research Programme,Take Part or Suggest a Question,"Topic, audience role, short non-confidential question and contact email. Research participation checkbox independent from newsletter consent.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES  /  PRODUCTION
+FORM  Topic, audience role, short non-confidential question and contact email. Research participation checkbox independent from newsletter consent.
+STATUS  Do not promise that every question will be studied or every respondent interviewed.
+IMAGE  No testimonial portraits until actual participants approve their use."
+S08-P029,Research Programme,Can my maison propose a research question?,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES  /  PRODUCTION
+STATUS  Proposed research participation process; operational and legal approval required before publishing invitation.
+ACCESSIBILITY  Use accessible accordion with headings/questions in normal reading order."
+S08-P030,Research Programme,Keep Reading,Each item must point to a live sitemap destination; suppressed until its destination is ready.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES  /  PRODUCTION
+LAYOUT  Three links in an editorial row on desktop; stacked on mobile. No generic related-content algorithm.
+BEHAVIOUR  Each item must point to a live sitemap destination; suppressed until its destination is ready.
+CONVERSION  Related reading precedes the final enquiry so the visitor can continue without commitment."
+S08-P031,Research Programme,What Question Keeps Coming Back?,topic=research-programme. Route private institutional projects to Observatory briefing after visitor chooses.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES  /  PRODUCTION
+FORM  topic=research-programme. Route private institutional projects to Observatory briefing after visitor chooses.
+TONE  No obligation language, but no promise of a free bespoke research finding."
+S08-P032,Production and cross-selling notes,"Public First, Full Paper on Request",,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES  /  PRODUCTION
+LOGIC  One form per report with preselected asset_id. Asset eligibility controls whether Download is live, not a purely visual flag.
+ACCESS  Existing email recipient can return via an appropriate access link; avoid making them fill the form repeatedly.
+SEO  Index public summaries and findings. Do not conceal the only substantive text behind a modal.
+PRIVACY  Store the minimum data; publication consent and communications consent must be separately recorded."
+S08-P033,Production and cross-selling notes,Report Access,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES  /  PRODUCTION
+BACKEND  Confirmation appears only after verified form success. If email confirmation fails but download succeeds, do not claim link was emailed.
+PRIVACY  A clear privacy link beside the button and optional marketing consent; no compulsory telephone or budget.
+ANALYTICS  Track page view, preview engagement, form start, valid submission, verified download, newsletter opt-in and conversation requests separately.
+HANDOFF  Report and consent IDs pass to CRM. Deduplicate without overwriting prior permissions."
+S08-P034,Production and cross-selling notes,Browse Without Losing Your Place,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES  /  PRODUCTION
+LAYOUT  Three columns desktop; two tablet; one mobile. All filter controls have a visible reset state.
+UX  Opening an accordion, modal or gated download should retain selected filters and scroll position on return.
+SHARE  LinkedIn / Copy Link share the public item URL with its summary, never a gated private PDF token."
+S08-P036,Production and cross-selling notes,Accenture,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES  /  PRODUCTION
+TAKEAWAY  Adopt a legible research index and strong public previews. Avoid broad “transformation” language.
+QUALIFICATION  The example is editorial inspiration, not a claim that this organisation uses the same gating or consent model as Summit."
+S08-P040,Production and cross-selling notes,Walpole,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES  /  PRODUCTION
+TAKEAWAY  Present the library as publishing, not lead-generation wallpaper; keep newsletter separate from download.
+QUALIFICATION  The example is editorial inspiration, not a claim that this organisation uses the same gating or consent model as Summit."
+S09-P012,Essays & Analysis,Questions Worth Following,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES
+Interactive chips route to theme filters and preloaded searches, never to invented article pages.
+Keep query language human, avoiding SEO keyword lists.
+With enough entries, add curated reading lists around 6–8 genuine cross-cutting questions."
+S09-P019,Article Detail Template,Related Reading,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES
+Layout: related reading as two cards, then one quieter cross-sell to a relevant Solution or Programme.
+Example: Louis Vuitton legal/cultural dispute → Activate Patrimony & IP and Editorial & Influence.
+Conversation language: “We’ll listen, help make sense of the issue and say candidly whether we can be useful.”
+Keep newsletter lower panel, separate from advisory CTA."
+S09-P022,Article Detail Template,Are opinions and facts treated differently?,,,Prototype or design concept; verify live integration,No speculative scoring,References in original manuscripts need editorial checking at launch.
+S09-P023,Subscribe,For the Next Question,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES
+Plain two-column page. No hero photograph necessary. Keep a recent essay preview nearby to make the proposition tangible.
+One essential field: email. Frequency is optional. Interest preferences may follow in a second step, not a lengthy first form.
+Unchecked, explicit newsletter consent. Separate from private briefing and white-paper access.
+Connect real provider, double opt-in where appropriate, preferences, unsubscribe and privacy notice."
+S09-P024,Subscribe,Check Your Inbox,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES
+This is copy for the live confirmation state only after a successful provider response; do not simulate a subscription success.
+Enable delivered-message and confirmed-subscription analytics separately, subject to consent."
+S09-P025,Subscribe,A Question of Your Own?,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES
+Place below editorial subscription as a separate section, not beside an email field.
+Route to Let’s Talk with an optional topic reference; never transfer newsletter consent as sales consent.
+Avoid exit pop-ups and artificial scarcity."
+S09-P031,Production and cross-selling notes,"Every essay is a permanent editorial page with a canonical address, metadata and its own reading journey.",,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES
+Build requirements: server-rendered article pages and paginated archive, crawlable HTML links, sitemap, canonical URLs, Article structured data, accessible filters, keyboard search and no-index policies for faceted combinations.
+Search can use full text in production; metadata-only matching is sufficient for the prototype.
+Important: do not ship the prototype’s mailto subscription as the production newsletter integration."
+S10-P005,About,Is Summit a creative agency or an adviser?,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   FAQ BEHAVIOUR
+ARCHITECTURE  Each bold question becomes an independent accordion control; its answer expands directly beneath.
+ACCESSIBILITY  Keyboard support, visible focus state, correct expanded/collapsed semantics. No rotating decorative icon beyond a small chevron.
+VISIBILITY  Keep all answers available without providing contact details. Answers may be indexed as ordinary text.
+MOBILE  Full width, adequate tap target and generous line spacing.
+CROSS-SELL  After the FAQ section, show the related pages and the existing Let’s Talk invitation."
+S10-P006,Origin Story,From Story to Stewardship,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   PRODUCTION
+IMAGE  Original portrait or archival evidence from the earlier practice, properly dated and credited. If archival material is not available, use typography alone.
+LAYOUT  Asymmetric 60/40 split, text first on mobile.
+FACT CHECK  Founder identity is supported. Do not invent a foundation year, headquarters chronology or named historic clients."
+S10-P008,Origin Story,An Argument We Could Test,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   PRODUCTION
+LAYOUT  Book artwork on one side, readable text on the other. Keep the intellectual origin distinct from the founding of Summit.
+IMAGE  Original book cover or an artwork by Olivia Dhordain with explicit reproduction permission.
+CROSS-SELL  Direct links to Research / Touch Me Not and The Observatory / Overview.
+PUBLISHING  Check book publication status and approved jacket before displaying any availability claim."
+S10-P009,Origin Story,Built for the Questions Ahead,"Optional sector / need links, but avoid reproducing the full Solutions navigation.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   PRODUCTION
+LAYOUT  Single strong statement followed by a compact related-service link strip.
+INTERACTION  Optional sector / need links, but avoid reproducing the full Solutions navigation.
+SOURCE  The New Asian Maison white paper, pp. 46–47, describes the present practice and collaborator model."
+S10-P011,Origin Story,Did Summit start as a luxury consultancy?,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   FAQ BEHAVIOUR
+ARCHITECTURE  Each bold question becomes an independent accordion control; its answer expands directly beneath.
+ACCESSIBILITY  Keyboard support, visible focus state, correct expanded/collapsed semantics. No rotating decorative icon beyond a small chevron.
+VISIBILITY  Keep all answers available without providing contact details. Answers may be indexed as ordinary text.
+MOBILE  Full width, adequate tap target and generous line spacing.
+CROSS-SELL  After the FAQ section, show the related pages and the existing Let’s Talk invitation."
+S10-P013,Manifesto,Look Closely,"Short, accessible expand/collapse notes optional, but the core six statements must remain visible.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   PRODUCTION
+LAYOUT  Three-by-two plain-text grid on desktop, two columns tablet, single column mobile. No numerical icons.
+IMAGERY  None: six images would turn working principles into moodboard decoration.
+INTERACTION  Short, accessible expand/collapse notes optional, but the core six statements must remain visible."
+S10-P016,Manifesto,Does restraint mean avoiding growth?,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   FAQ BEHAVIOUR
+ARCHITECTURE  Each bold question becomes an independent accordion control; its answer expands directly beneath.
+ACCESSIBILITY  Keyboard support, visible focus state, correct expanded/collapsed semantics. No rotating decorative icon beyond a small chevron.
+VISIBILITY  Keep all answers available without providing contact details. Answers may be indexed as ordinary text.
+MOBILE  Full width, adequate tap target and generous line spacing.
+CROSS-SELL  After the FAQ section, show the related pages and the existing Let’s Talk invitation."
+S10-P018,Why It Matters,Three Questions Worth Asking,"Optional expandable examples sourced from public research, not a questionnaire requiring personal data.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   PRODUCTION
+LAYOUT  Three columns on desktop; simple stacked questions on mobile.
+INTERACTION  Optional expandable examples sourced from public research, not a questionnaire requiring personal data.
+CROSS-SELL  Link each question to Strengthen an Icon, Enhance Desire Without Dilution or Brand & IP Stewardship."
+S10-P022,Why It Matters,Can a growing luxury brand lose authority?,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   FAQ BEHAVIOUR
+ARCHITECTURE  Each bold question becomes an independent accordion control; its answer expands directly beneath.
+ACCESSIBILITY  Keyboard support, visible focus state, correct expanded/collapsed semantics. No rotating decorative icon beyond a small chevron.
+VISIBILITY  Keep all answers available without providing contact details. Answers may be indexed as ordinary text.
+MOBILE  Full width, adequate tap target and generous line spacing.
+CROSS-SELL  After the FAQ section, show the related pages and the existing Let’s Talk invitation."
+S10-P025,Partners & People,Olivia Dhordain,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   PRODUCTION
+ACCURACY  Independent collaborator, not Summit employee. Do not describe as co-founder or permanent partner unless there is formal approval.
+IMAGE  Use approved professional portrait and rights-cleared book artwork where appropriate.
+LEGAL  Clarify that specialist legal advice is provided through appropriately qualified professionals and engagements, not through site text."
+S10-P026,Partners & People,The Right People for the Brief,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   PRODUCTION
+LAYOUT  Small adaptable team section with approved profiles only. Provide room for future additions, but never invent team size, permanent offices or global headcount.
+CONDITIONAL  The white paper identifies Cecilia Ercoli as a potential experience and innovation collaborator. Do not publish her as current team before explicit confirmation.
+SOURCE CHECK  Current legacy website roster needs reconciliation; do not copy names over automatically."
+S10-P028,Partners & People,Who leads an engagement?,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   FAQ BEHAVIOUR
+ARCHITECTURE  Each bold question becomes an independent accordion control; its answer expands directly beneath.
+ACCESSIBILITY  Keyboard support, visible focus state, correct expanded/collapsed semantics. No rotating decorative icon beyond a small chevron.
+VISIBILITY  Keep all answers available without providing contact details. Answers may be indexed as ordinary text.
+MOBILE  Full width, adequate tap target and generous line spacing.
+CROSS-SELL  After the FAQ section, show the related pages and the existing Let’s Talk invitation."
+S10-P029,How We Work — About,"First, We Listen",,"Single clear invitation; form asks what is at stake, not for the budget.",Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   PRODUCTION
+LAYOUT  Open, human, uncluttered hero. Do not present a pipeline diagram before explaining what happens.
+IMAGE  Genuine, small-group working photograph or an unposed interview setting; no anonymous boardroom handshake.
+CTA  Single clear invitation; form asks what is at stake, not for the budget."
+S10-P030,How We Work — About,Listen,Optional hover states only. All content visible without interaction.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   PRODUCTION
+LAYOUT  Five short text steps; not numbered or rendered as a consulting “framework” with arrows everywhere. Desktop two columns with one wider final step, mobile vertical.
+INTERACTION  Optional hover states only. All content visible without interaction.
+PROMISE  No fixed methodology claimed to apply mechanically to every client."
+S10-P032,How We Work — About,What Happens Next,Brief optional selector: “Building / Reconsidering / Protecting / Evaluating / Publishing”. Routes to relevant pages and prepares enquiry summary.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   PRODUCTION
+LAYOUT  Human-scale CTA panel after the process, not a floating pop-up.
+INTERACTION  Brief optional selector: “Building / Reconsidering / Protecting / Evaluating / Publishing”. Routes to relevant pages and prepares enquiry summary.
+PRIVACY  Do not request unpublished valuations, contracts or proprietary research via a public form; discuss secure exchange later.
+NO OVERPROMISE  Conversation ≠ complimentary diagnostic or legal advice."
+S10-P034,How We Work — About,What should we bring to the first conversation?,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   FAQ BEHAVIOUR
+ARCHITECTURE  Each bold question becomes an independent accordion control; its answer expands directly beneath.
+ACCESSIBILITY  Keyboard support, visible focus state, correct expanded/collapsed semantics. No rotating decorative icon beyond a small chevron.
+VISIBILITY  Keep all answers available without providing contact details. Answers may be indexed as ordinary text.
+MOBILE  Full width, adequate tap target and generous line spacing.
+CROSS-SELL  After the FAQ section, show the related pages and the existing Let’s Talk invitation."
+S11-P001,Let's Talk,What’s at Stake for You?,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   PRODUCTION
+IMAGE  Prefer a genuine Summit portrait or a quiet image of working conversation. Neither staged handshakes nor marble-boardroom stock. Typography alone is entirely suitable.
+LAYOUT  Large headline, generous whitespace, restrained body measure. Primary CTA scrolls to the form on this same page.
+INTENT  No claim of a free consultation, guaranteed strategy, promised commercial outcome or response time."
+S11-P002,Let's Talk,Tell Us What’s on Your Mind,"One screen, no staged quiz by default. Three required items only: name, email and a short message. All other information optional. Route selection may be preselected from source CTA but editable.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   PRODUCTION
+FORM  One screen, no staged quiz by default. Three required items only: name, email and a short message. All other information optional. Route selection may be preselected from source CTA but editable.
+CONTEXT  Carry non-sensitive page source and programme or topic selection through a whitelisted parameter. Do not import private text from an article preview, diagnostic or client session.
+MARKETING  Newsletter consent is separate, unchecked, optional. Enquiry submission must never subscribe someone automatically.
+BACKEND  Real Send Enquiry only after secure delivery is connected; show success solely on confirmed response. Accessible validation, spam safeguards and rate limits required.
+MOBILE  One column, visible labels, large touch areas and no sticky panel covering inputs."
+S11-P003,Let's Talk,Prefer Email?,,mailto link; keep visible when form is unavailable. No invented dedicated press or careers address.,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   PRODUCTION
+CONTACT  Address confirmed in Summit’s published website and The New Asian Maison colophon. Verify before launch.
+CTA  mailto link; keep visible when form is unavailable. No invented dedicated press or careers address.
+LAYOUT  Small secondary text panel directly beneath form, not a competing hero."
+S11-P006,Let's Talk,Do I need to know which service to ask for?,"Keyboard support, clear focus, correct expanded state and restrained chevron. Do not use a button merely to decorate.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   FAQ BEHAVIOUR
+LAYOUT  Native, accessible accordion rows; answers remain indexable and readable without submitting a form.
+INTERACTION  Keyboard support, clear focus, correct expanded state and restrained chevron. Do not use a button merely to decorate.
+MOBILE  Full-width tap targets, short question lines and comfortable text measure.
+EDIT  Do not use FAQs to make policy or contractual claims before operations and legal approval.
+CONVERSION  A quiet contextual CTA may follow the complete FAQ section; never interrupt an expanded answer."
+S11-P007,Client Access,For Work Already Underway,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   PRODUCTION
+PRODUCT  Show Sign In only once the real authenticated client platform and URL have been approved. Avoid a mock sign-in form on a marketing page.
+LAYOUT  Single-column text with a narrow login action. Restrained lock icon is acceptable if purposeful.
+SECURITY  Link directly to the approved secure domain; do not collect client credentials in the website CMS."
+S11-P010,Client Access,Who can use Client Access?,"Keyboard support, clear focus, correct expanded state and restrained chevron. Do not use a button merely to decorate.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   FAQ BEHAVIOUR
+LAYOUT  Native, accessible accordion rows; answers remain indexable and readable without submitting a form.
+INTERACTION  Keyboard support, clear focus, correct expanded state and restrained chevron. Do not use a button merely to decorate.
+MOBILE  Full-width tap targets, short question lines and comfortable text measure.
+EDIT  Do not use FAQs to make policy or contractual claims before operations and legal approval.
+CONVERSION  A quiet contextual CTA may follow the complete FAQ section; never interrupt an expanded answer."
+S11-P012,Careers,The People We Value,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   PRODUCTION
+LAYOUT  Three text columns, no icons.
+TRUTH  These are proposed editorial principles, not purported legal employment criteria or a promise of workplace conditions.
+ACCESSIBILITY  Keep role criteria in a standard text format on individual vacancies."
+S11-P013,Careers,Interested in Working With Us?,"This is a proposal only. Approve hiring and retention process before accepting CVs. If no recruitment processing exists, route to a published general contact address with explicit employment subject.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   PRODUCTION
+FORM  This is a proposal only. Approve hiring and retention process before accepting CVs. If no recruitment processing exists, route to a published general contact address with explicit employment subject.
+PRIVACY  Separate candidate data purpose, retention policy and access control. No compulsory CV or sensitive diversity information.
+FILTER  Distinguish permanent posts, independent collaborators and speculative interest. Never imply an open role that does not exist."
+S11-P015,Careers,Are you hiring?,"Keyboard support, clear focus, correct expanded state and restrained chevron. Do not use a button merely to decorate.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   FAQ BEHAVIOUR
+LAYOUT  Native, accessible accordion rows; answers remain indexable and readable without submitting a form.
+INTERACTION  Keyboard support, clear focus, correct expanded state and restrained chevron. Do not use a button merely to decorate.
+MOBILE  Full-width tap targets, short question lines and comfortable text measure.
+EDIT  Do not use FAQs to make policy or contractual claims before operations and legal approval.
+CONVERSION  A quiet contextual CTA may follow the complete FAQ section; never interrupt an expanded answer."
+S11-P016,Media Enquiries,For the Record,,Scroll to a dedicated media form; leave a plain email alternative.,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   PRODUCTION
+IMAGE  Authentic book cover or editorial work desk, used with rights. No invented press appearances, logos or awards.
+CTA  Scroll to a dedicated media form; leave a plain email alternative.
+CLAIMS  Do not promise an interview with named collaborators or a response before a journalist’s deadline."
+S11-P017,Media Enquiries,What Are You Working On?,A dedicated destination preserves press context. Do not route to the commercial sales queue without categorisation.,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   PRODUCTION
+FORM  A dedicated destination preserves press context. Do not route to the commercial sales queue without categorisation.
+UX  Deadline date field optional, timezone text optional, no mandatory telephone.
+EDITORIAL  Research citations, permissions and press enquiries may require different owners and response pathways."
+S11-P020,Media Enquiries,Can Summit comment on a particular luxury maison?,"Keyboard support, clear focus, correct expanded state and restrained chevron. Do not use a button merely to decorate.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   FAQ BEHAVIOUR
+LAYOUT  Native, accessible accordion rows; answers remain indexable and readable without submitting a form.
+INTERACTION  Keyboard support, clear focus, correct expanded state and restrained chevron. Do not use a button merely to decorate.
+MOBILE  Full-width tap targets, short question lines and comfortable text measure.
+EDIT  Do not use FAQs to make policy or contractual claims before operations and legal approval.
+CONVERSION  A quiet contextual CTA may follow the complete FAQ section; never interrupt an expanded answer."
+S11-P021,Privacy,"Your Information, Your Choice",,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   PRODUCTION
+LEGAL  This is introductory web copy only. Do not publish a placeholder as the complete legal policy. A verified policy must cover responsible entity, data uses, processors, retention, transfers and applicable rights for actual operations.
+ARCHITECTURE  Link to full accessible policy, with effective date/version. No forced accordion for a legal text."
+S11-P022,Privacy,Enquiries and Subscriptions Are Different,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   PRODUCTION
+DESIGN  Plain language beneath form; separate unchecked consent for newsletter. Never infer marketing consent from a briefing request or white-paper download.
+VERIFY  Ensure real data flows match this wording before publication; do not state retention or processor details without confirmation."
+S11-P023,Privacy,Questions About Your Information?,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   PRODUCTION
+CONTACT  Specify verified privacy point of contact within approved policy. Do not direct privacy-rights requests to an unmonitored marketing form.
+TRUST  No invented certification badges, blanket claims of compliance or “100% secure” assertions."
+S11-P024,Privacy,Will a contact enquiry add me to the newsletter?,"Keyboard support, clear focus, correct expanded state and restrained chevron. Do not use a button merely to decorate.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   FAQ BEHAVIOUR
+LAYOUT  Native, accessible accordion rows; answers remain indexable and readable without submitting a form.
+INTERACTION  Keyboard support, clear focus, correct expanded state and restrained chevron. Do not use a button merely to decorate.
+MOBILE  Full-width tap targets, short question lines and comfortable text measure.
+EDIT  Do not use FAQs to make policy or contractual claims before operations and legal approval.
+CONVERSION  A quiet contextual CTA may follow the complete FAQ section; never interrupt an expanded answer."
+S11-P027,Terms,Keep the Record Clear,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   PRODUCTION
+ARCHITECTURE  Canon editions and article corrections need clear edition/date metadata; do not silently overwrite substantive interpretations.
+LEGAL  Get counsel to review acceptable use, intellectual property, external links, liability, forms and jurisdiction clauses."
+S11-P028,Terms,May I quote or link to an essay?,"Keyboard support, clear focus, correct expanded state and restrained chevron. Do not use a button merely to decorate.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   FAQ BEHAVIOUR
+LAYOUT  Native, accessible accordion rows; answers remain indexable and readable without submitting a form.
+INTERACTION  Keyboard support, clear focus, correct expanded state and restrained chevron. Do not use a button merely to decorate.
+MOBILE  Full-width tap targets, short question lines and comfortable text measure.
+EDIT  Do not use FAQs to make policy or contractual claims before operations and legal approval.
+CONVERSION  A quiet contextual CTA may follow the complete FAQ section; never interrupt an expanded answer."
+S11-P029,Footer,SUMMIT COMMUNICATION GROUP,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   PRODUCTION
+LAYOUT  Four zones on wide screens: brand/contact; explore; practical links; newsletter/social. Collapse to two then one column. Avoid gigantic menus or repeated full sitemap tree.
+SITEMAP  Exact approved primary and utility names, no numeric prefixes.
+SOCIAL  Verified company LinkedIn: https://www.linkedin.com/company/summitcommunication/ . Use proper label and external destination; no invented Instagram, Facebook or X account.
+ADDRESS  Only display street address/telephone after the current approved corporate contact record is verified for the new website."
+S11-P030,Footer,A Considered View of Luxury,"Separate subscription form from sales enquiry. Confirm real sender, consent capture, data processor, double opt-in where chosen and unsubscribe functioning before launch.",,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   PRODUCTION
+INTERACTION  Separate subscription form from sales enquiry. Confirm real sender, consent capture, data processor, double opt-in where chosen and unsubscribe functioning before launch.
+CONVERSION  No mandatory organisation or telephone. No auto tick from article downloads or contact submissions.
+LAYOUT  Compact right footer area; if visual density grows, use the opening sentence and one email field only."
+S11-P031,Footer,Privacy and Terms are available without registering.,,,Prototype or design concept; verify live integration,No speculative scoring,"CLIFF NOTES   /   PRODUCTION
+ACCESSIBILITY  Keyboard navigable, visible focus, semantic list links, actual headings, and descriptive social aria-label. Back to Top scrolls to page start without trapping focus.
+MOBILE  Email, essential contact and navigation before optional newsletter; avoid a huge sticky footer.
+SEO  Appropriate contextual link structure. Do not index sign-in or thank-you status pages by accident."
+S13-P003,Watches & Jewellery,Where Summit Can Help,Optional two-choice prompt “Develop a new reference / Strengthen an existing icon” which swaps the first proposed discussion question. No scoring.,,Prototype or design concept; verify live integration,No speculative scoring,"CONVERSION + INTERACTIVE
+PRIMARY CTA  Talk About a Watch or Jewellery Brief → /let-s-talk (suggested route, context retained).
+INTERACTION  Optional two-choice prompt “Develop a new reference / Strengthen an existing icon” which swaps the first proposed discussion question. No scoring."
+S13-P006,Watches & Jewellery,Questions We Hear,,,Prototype or design concept; verify live integration,No speculative scoring,"ACCORDION
+Three manually edited questions. Closed by default, keyboard-operable and individually expandable. Keep questions indexable in the delivered HTML, not hidden behind client-side-only data.
+No FAQ schema unless current search-engine eligibility and policy have been verified by the build team."
+S13-P010,Fashion & Accessories,Where Summit Can Help,"Optional “What is changing?” selector: collection, distribution, creative direction or market. It recommends a relevant page, never a verdict.",,Prototype or design concept; verify live integration,No speculative scoring,"CONVERSION + INTERACTIVE
+PRIMARY CTA  Discuss the House’s Next Chapter → /let-s-talk (suggested route, context retained).
+INTERACTION  Optional “What is changing?” selector: collection, distribution, creative direction or market. It recommends a relevant page, never a verdict."
+S13-P013,Fashion & Accessories,Questions We Hear,,,Prototype or design concept; verify live integration,No speculative scoring,"ACCORDION
+Three manually edited questions. Closed by default, keyboard-operable and individually expandable. Keep questions indexable in the delivered HTML, not hidden behind client-side-only data.
+No FAQ schema unless current search-engine eligibility and policy have been verified by the build team."
+S13-P017,Beauty & Fragrance,Where Summit Can Help,Embedded “Desire or Distribution?” two-question prompt links to the existing Demand Quality Check. Keep the link contextual rather than duplicating the tool.,,Prototype or design concept; verify live integration,No speculative scoring,"CONVERSION + INTERACTIVE
+PRIMARY CTA  Talk About Beauty or Fragrance → /let-s-talk (suggested route, context retained).
+INTERACTION  Embedded “Desire or Distribution?” two-question prompt links to the existing Demand Quality Check. Keep the link contextual rather than duplicating the tool."
+S13-P020,Beauty & Fragrance,Questions We Hear,,,Prototype or design concept; verify live integration,No speculative scoring,"ACCORDION
+Three manually edited questions. Closed by default, keyboard-operable and individually expandable. Keep questions indexable in the delivered HTML, not hidden behind client-side-only data.
+No FAQ schema unless current search-engine eligibility and policy have been verified by the build team."
+S13-P024,Wine & Spirits,Where Summit Can Help,"A brief “Which decision matters most?” selector: release, narrative, hospitality or next market, routing to the appropriate service enquiry.",,Prototype or design concept; verify live integration,No speculative scoring,"CONVERSION + INTERACTIVE
+PRIMARY CTA  Discuss a Wine or Spirits Brief → /let-s-talk (suggested route, context retained).
+INTERACTION  A brief “Which decision matters most?” selector: release, narrative, hospitality or next market, routing to the appropriate service enquiry."
+S13-P027,Wine & Spirits,Questions We Hear,,,Prototype or design concept; verify live integration,No speculative scoring,"ACCORDION
+Three manually edited questions. Closed by default, keyboard-operable and individually expandable. Keep questions indexable in the delivered HTML, not hidden behind client-side-only data.
+No FAQ schema unless current search-engine eligibility and policy have been verified by the build team."
+S13-P031,Automotive,Where Summit Can Help,"Optional “What is under review?” choice: iconic model / portfolio shift / ownership journey / launch, directing visitors to appropriate next pages.",,Prototype or design concept; verify live integration,No speculative scoring,"CONVERSION + INTERACTIVE
+PRIMARY CTA  Discuss an Automotive Brief → /let-s-talk (suggested route, context retained).
+INTERACTION  Optional “What is under review?” choice: iconic model / portfolio shift / ownership journey / launch, directing visitors to appropriate next pages."
+S13-P034,Automotive,Questions We Hear,,,Prototype or design concept; verify live integration,No speculative scoring,"ACCORDION
+Three manually edited questions. Closed by default, keyboard-operable and individually expandable. Keep questions indexable in the delivered HTML, not hidden behind client-side-only data.
+No FAQ schema unless current search-engine eligibility and policy have been verified by the build team."
+S13-P038,Real Estate & Hospitality,Where Summit Can Help,"A “Where does the promise weaken?” selector: before booking / arrival / stay / after departure, revealing a tailored discussion prompt.",,Prototype or design concept; verify live integration,No speculative scoring,"CONVERSION + INTERACTIVE
+PRIMARY CTA  Discuss a Property or Hospitality Brief → /let-s-talk (suggested route, context retained).
+INTERACTION  A “Where does the promise weaken?” selector: before booking / arrival / stay / after departure, revealing a tailored discussion prompt."
+S13-P041,Real Estate & Hospitality,Questions We Hear,,,Prototype or design concept; verify live integration,No speculative scoring,"ACCORDION
+Three manually edited questions. Closed by default, keyboard-operable and individually expandable. Keep questions indexable in the delivered HTML, not hidden behind client-side-only data.
+No FAQ schema unless current search-engine eligibility and policy have been verified by the build team."
+S13-P045,Art & Collectibles,Where Summit Can Help,"A compact “What are you considering?” choice: collection / acquisition / public presentation / institution. Results recommend relevant next page, not an appraisal.",,Prototype or design concept; verify live integration,No speculative scoring,"CONVERSION + INTERACTIVE
+PRIMARY CTA  Discuss an Art or Collectibles Brief → /let-s-talk (suggested route, context retained).
+INTERACTION  A compact “What are you considering?” choice: collection / acquisition / public presentation / institution. Results recommend relevant next page, not an appraisal."
+S13-P048,Art & Collectibles,Questions We Hear,,,Prototype or design concept; verify live integration,No speculative scoring,"ACCORDION
+Three manually edited questions. Closed by default, keyboard-operable and individually expandable. Keep questions indexable in the delivered HTML, not hidden behind client-side-only data.
+No FAQ schema unless current search-engine eligibility and policy have been verified by the build team."
+S13-P052,Private Banking & Wealth Management,Where Summit Can Help,Use an audience selection “Institution / Family office / Adviser” to tailor wording in the conversation CTA; never ask for portfolio values.,,Prototype or design concept; verify live integration,No speculative scoring,"CONVERSION + INTERACTIVE
+PRIMARY CTA  Request a Private Conversation → /let-s-talk (suggested route, context retained).
+INTERACTION  Use an audience selection “Institution / Family office / Adviser” to tailor wording in the conversation CTA; never ask for portfolio values."
+S13-P055,Private Banking & Wealth Management,Questions We Hear,,,Prototype or design concept; verify live integration,No speculative scoring,"ACCORDION
+Three manually edited questions. Closed by default, keyboard-operable and individually expandable. Keep questions indexable in the delivered HTML, not hidden behind client-side-only data.
+No FAQ schema unless current search-engine eligibility and policy have been verified by the build team."
+S13-P059,Strategy & Planning,What the Work Involves,Interactive “Which decision is open?” short selector: position / growth / product / ownership; route into the right By Need page.,,Prototype or design concept; verify live integration,No speculative scoring,"CONVERSION + INTERACTIVE
+PRIMARY CTA  Talk Through a Strategic Decision → /let-s-talk (suggested route, context retained).
+INTERACTION  Interactive “Which decision is open?” short selector: position / growth / product / ownership; route into the right By Need page."
+S13-P062,Strategy & Planning,Questions We Hear,,,Prototype or design concept; verify live integration,No speculative scoring,"ACCORDION
+Three manually edited questions. Closed by default, keyboard-operable and individually expandable. Keep questions indexable in the delivered HTML, not hidden behind client-side-only data.
+No FAQ schema unless current search-engine eligibility and policy have been verified by the build team."
+S13-P066,Brand & Marketing,What the Work Involves,Optional embedded Demand Quality Check entry point after the discussion of reach and distribution.,,Prototype or design concept; verify live integration,No speculative scoring,"CONVERSION + INTERACTIVE
+PRIMARY CTA  Discuss Brand & Marketing → /let-s-talk (suggested route, context retained).
+INTERACTION  Optional embedded Demand Quality Check entry point after the discussion of reach and distribution."
+S13-P069,Brand & Marketing,Questions We Hear,,,Prototype or design concept; verify live integration,No speculative scoring,"ACCORDION
+Three manually edited questions. Closed by default, keyboard-operable and individually expandable. Keep questions indexable in the delivered HTML, not hidden behind client-side-only data.
+No FAQ schema unless current search-engine eligibility and policy have been verified by the build team."
+S13-P073,Editorial & Influence — Function,What the Work Involves,"Optional “What should you publish?” prompt by audience: clients / investors / industry / staff. Present suggested format and CTA, not an auto-generated headline.",,Prototype or design concept; verify live integration,No speculative scoring,"CONVERSION + INTERACTIVE
+PRIMARY CTA  Discuss an Editorial Brief → /let-s-talk (suggested route, context retained).
+INTERACTION  Optional “What should you publish?” prompt by audience: clients / investors / industry / staff. Present suggested format and CTA, not an auto-generated headline."
+S13-P076,Editorial & Influence — Function,Questions We Hear,,,Prototype or design concept; verify live integration,No speculative scoring,"ACCORDION
+Three manually edited questions. Closed by default, keyboard-operable and individually expandable. Keep questions indexable in the delivered HTML, not hidden behind client-side-only data.
+No FAQ schema unless current search-engine eligibility and policy have been verified by the build team."
+S13-P080,Experience Design,What the Work Involves,"Use “Where Does It Break?” as a selector for discovery, appointment, transaction, aftercare; route to a discussion, without collecting customer information.",,Prototype or design concept; verify live integration,No speculative scoring,"CONVERSION + INTERACTIVE
+PRIMARY CTA  Discuss an Experience Brief → /let-s-talk (suggested route, context retained).
+INTERACTION  Use “Where Does It Break?” as a selector for discovery, appointment, transaction, aftercare; route to a discussion, without collecting customer information."
+S13-P083,Experience Design,Questions We Hear,,,Prototype or design concept; verify live integration,No speculative scoring,"ACCORDION
+Three manually edited questions. Closed by default, keyboard-operable and individually expandable. Keep questions indexable in the delivered HTML, not hidden behind client-side-only data.
+No FAQ schema unless current search-engine eligibility and policy have been verified by the build team."
+S13-P085,Digital Commerce,Convert Without Cheapening,,,Prototype or design concept; verify live integration,No speculative scoring,"PHOTO + LAYOUT
+IMAGE  Original still-life product presentation paired with elegant checkout or product-detail design crops from approved Summit work; no fake dashboards.
+LAYOUT  Clean editorial hero; practical split showing discovery/product/relationship; small interface mock-up only when real; tool entry plus two onward links."
+S13-P087,Digital Commerce,What the Work Involves,Embed the existing Demand Quality Check with a short one-sentence introduction; route qualified users to relevant Solutions or the Digital Growth programme.,,Prototype or design concept; verify live integration,No speculative scoring,"CONVERSION + INTERACTIVE
+PRIMARY CTA  Discuss Digital Commerce → /let-s-talk (suggested route, context retained).
+INTERACTION  Embed the existing Demand Quality Check with a short one-sentence introduction; route qualified users to relevant Solutions or the Digital Growth programme."
+S13-P090,Digital Commerce,Questions We Hear,,,Prototype or design concept; verify live integration,No speculative scoring,"ACCORDION
+Three manually edited questions. Closed by default, keyboard-operable and individually expandable. Keep questions indexable in the delivered HTML, not hidden behind client-side-only data.
+No FAQ schema unless current search-engine eligibility and policy have been verified by the build team."
+S13-P094,"Product, IP & Patrimony",What the Work Involves,"Use “What Needs Protecting?” interactive guide from the earlier pass, framed as question preparation and never an IP opinion.",,Prototype or design concept; verify live integration,No speculative scoring,"CONVERSION + INTERACTIVE
+PRIMARY CTA  Discuss Product, IP & Patrimony → /let-s-talk (suggested route, context retained).
+INTERACTION  Use “What Needs Protecting?” interactive guide from the earlier pass, framed as question preparation and never an IP opinion."
+S13-P097,"Product, IP & Patrimony",Questions We Hear,,,Prototype or design concept; verify live integration,No speculative scoring,"ACCORDION
+Three manually edited questions. Closed by default, keyboard-operable and individually expandable. Keep questions indexable in the delivered HTML, not hidden behind client-side-only data.
+No FAQ schema unless current search-engine eligibility and policy have been verified by the build team."

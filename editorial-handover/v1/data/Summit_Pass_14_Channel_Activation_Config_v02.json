@@ -1,0 +1,43 @@
+{
+  "site": "Summit Communication Group",
+  "status": "PROTOTYPE - no live website delivery",
+  "confirmed": {
+    "australia_voice": {
+      "label": "Australia",
+      "display": "+61 2 9127 9005",
+      "href": "tel:+61291279005",
+      "voice_only_until_confirmed": true,
+      "authorisation": "User-approved for interim Summit use; also displayed on https://careconcierge.health/contact/"
+    },
+    "email": {
+      "display": "hello@summitcommunication.group",
+      "href": "mailto:hello@summitcommunication.group"
+    },
+    "uk_voice": {
+      "label": "United Kingdom",
+      "display": "+44 20 7011 8509",
+      "href": "tel:+442070118509",
+      "voice_only_until_confirmed": true,
+      "authorisation": "User-approved for interim Summit use; also displayed on https://careconcierge.health/contact/"
+    }
+  },
+  "needs_approval": {
+    "sms_number": null,
+    "whatsapp_business_number": null,
+    "booking_url": null,
+    "form_api_url": null,
+    "privacy_url": null,
+    "newsletter_provider": null,
+    "callback_service_hours": null,
+    "escalation_owner_by_topic": null
+  },
+  "routing_intents": [
+    "general",
+    "callback",
+    "briefing",
+    "research",
+    "media",
+    "careers"
+  ],
+  "notice": "Both telephone numbers are authorised by the user for interim Summit use. Verify live inbound voice routing before deployment. SMS/WhatsApp remain pending carrier and inbox confirmation; do not assume either voice line supports messaging."
+}

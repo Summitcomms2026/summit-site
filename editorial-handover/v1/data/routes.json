@@ -1,0 +1,392 @@
+[
+  {
+    "page": "Home",
+    "proposed_route": "/",
+    "panel_count": 8,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Solutions",
+    "proposed_route": "/solutions",
+    "panel_count": 1,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Solutions — By Need",
+    "proposed_route": "/solutions/by-need",
+    "panel_count": 3,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Build a Maison",
+    "proposed_route": "/solutions/by-need/build-a-maison",
+    "panel_count": 6,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Reposition a Maison",
+    "proposed_route": "/solutions/by-need/reposition-a-maison",
+    "panel_count": 5,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Enhance Desire Without Dilution",
+    "proposed_route": "/solutions/by-need/enhance-desire-without-dilution",
+    "panel_count": 5,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Strengthen an Icon",
+    "proposed_route": "/solutions/by-need/strengthen-an-icon",
+    "panel_count": 5,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Activate Patrimony & IP",
+    "proposed_route": "/solutions/by-need/activate-patrimony-ip",
+    "panel_count": 6,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Transform the Client Experience",
+    "proposed_route": "/solutions/by-need/transform-the-client-experience",
+    "panel_count": 6,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Develop Thought Leadership",
+    "proposed_route": "/solutions/by-need/develop-thought-leadership",
+    "panel_count": 6,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Applied AI",
+    "proposed_route": "/solutions/by-need/applied-ai",
+    "panel_count": 6,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Investment & Acquisitions",
+    "proposed_route": "/solutions/by-need/investment-acquisitions",
+    "panel_count": 6,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Maison Due Diligence",
+    "proposed_route": "/solutions/by-need/maison-due-diligence",
+    "panel_count": 7,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Watches & Jewellery",
+    "proposed_route": "/solutions/by-industry/watches-jewellery",
+    "panel_count": 7,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Fashion & Accessories",
+    "proposed_route": "/solutions/by-industry/fashion-accessories",
+    "panel_count": 7,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Beauty & Fragrance",
+    "proposed_route": "/solutions/by-industry/beauty-fragrance",
+    "panel_count": 7,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Wine & Spirits",
+    "proposed_route": "/solutions/by-industry/wine-spirits",
+    "panel_count": 7,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Automotive",
+    "proposed_route": "/solutions/by-industry/automotive",
+    "panel_count": 7,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Real Estate & Hospitality",
+    "proposed_route": "/solutions/by-industry/real-estate-hospitality",
+    "panel_count": 7,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Art & Collectibles",
+    "proposed_route": "/solutions/by-industry/art-collectibles",
+    "panel_count": 7,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Private Banking & Wealth Management",
+    "proposed_route": "/solutions/by-industry/private-banking-wealth-management",
+    "panel_count": 7,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Strategy & Planning",
+    "proposed_route": "/solutions/by-function/strategy-planning",
+    "panel_count": 7,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Brand & Marketing",
+    "proposed_route": "/solutions/by-function/brand-marketing",
+    "panel_count": 7,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Editorial & Influence — Function",
+    "proposed_route": "/solutions/by-function/editorial-influence",
+    "panel_count": 7,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Experience Design",
+    "proposed_route": "/solutions/by-function/experience-design",
+    "panel_count": 7,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Digital Commerce",
+    "proposed_route": "/solutions/by-function/digital-commerce",
+    "panel_count": 7,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Product, IP & Patrimony",
+    "proposed_route": "/solutions/by-function/product-ip-patrimony",
+    "panel_count": 7,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "The Observatory",
+    "proposed_route": "/observatory",
+    "panel_count": 7,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "For CMOs",
+    "proposed_route": "/observatory/for-cmos",
+    "panel_count": 7,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "For Family Offices & Investors",
+    "proposed_route": "/observatory/for-family-offices-investors",
+    "panel_count": 7,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "The Field",
+    "proposed_route": "/observatory/the-field",
+    "panel_count": 7,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "How It Works — Observatory",
+    "proposed_route": "/observatory/how-it-works",
+    "panel_count": 7,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Request a Private Briefing",
+    "proposed_route": "/observatory/private-briefing",
+    "panel_count": 6,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Programmes",
+    "proposed_route": "/programmes",
+    "panel_count": 5,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Maison Formation",
+    "proposed_route": "/programmes/maison-formation",
+    "panel_count": 8,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Editorial & Influence — Programme",
+    "proposed_route": "/programmes/editorial-influence",
+    "panel_count": 8,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Digital Growth",
+    "proposed_route": "/programmes/digital-growth",
+    "panel_count": 8,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Client Experience",
+    "proposed_route": "/programmes/client-experience",
+    "panel_count": 8,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Agentic AI",
+    "proposed_route": "/programmes/agentic-ai",
+    "panel_count": 8,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Brand & IP Stewardship",
+    "proposed_route": "/programmes/brand-ip-stewardship",
+    "panel_count": 8,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Research",
+    "proposed_route": "/research",
+    "panel_count": 5,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Touch Me Not",
+    "proposed_route": "/research/touch-me-not",
+    "panel_count": 6,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "The Luxury 100",
+    "proposed_route": "/research/the-luxury-100",
+    "panel_count": 6,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "White Papers",
+    "proposed_route": "/research/white-papers",
+    "panel_count": 7,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Research Programme",
+    "proposed_route": "/research/research-programme",
+    "panel_count": 7,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "The Future of Luxury",
+    "proposed_route": "/future-of-luxury",
+    "panel_count": 3,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Latest",
+    "proposed_route": "/future-of-luxury/latest",
+    "panel_count": 5,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Essays & Analysis",
+    "proposed_route": "/future-of-luxury/essays",
+    "panel_count": 7,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Article Detail Template",
+    "proposed_route": "/future-of-luxury/[slug]",
+    "panel_count": 6,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Subscribe",
+    "proposed_route": "/future-of-luxury/subscribe",
+    "panel_count": 7,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "About",
+    "proposed_route": "/about",
+    "panel_count": 5,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Origin Story",
+    "proposed_route": "/about/origin-story",
+    "panel_count": 6,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Manifesto",
+    "proposed_route": "/about/manifesto",
+    "panel_count": 5,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Why It Matters",
+    "proposed_route": "/about/why-it-matters",
+    "panel_count": 6,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Partners & People",
+    "proposed_route": "/about/partners-people",
+    "panel_count": 6,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "How We Work — About",
+    "proposed_route": "/about/how-we-work",
+    "panel_count": 6,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Let's Talk",
+    "proposed_route": "/lets-talk",
+    "panel_count": 6,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Client Access",
+    "proposed_route": "/client-access",
+    "panel_count": 4,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Careers",
+    "proposed_route": "/careers",
+    "panel_count": 5,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Media Enquiries",
+    "proposed_route": "/media-enquiries",
+    "panel_count": 5,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Privacy",
+    "proposed_route": "/privacy",
+    "panel_count": 4,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Terms",
+    "proposed_route": "/terms",
+    "panel_count": 4,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Footer",
+    "proposed_route": "/_components/footer",
+    "panel_count": 3,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Production and cross-selling notes",
+    "proposed_route": "/_internal/production-notes",
+    "panel_count": 24,
+    "status": "draft-route-needs-build-confirmation"
+  },
+  {
+    "page": "Global conversion standards",
+    "proposed_route": "/_internal/conversion-standards",
+    "panel_count": 0,
+    "status": "draft-route-needs-build-confirmation"
+  }
+]

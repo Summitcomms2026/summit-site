@@ -1,0 +1,14 @@
+Field 1,Field 2,Field 3,Field 4
+Event,Trigger,Allowed properties,Privacy rule
+contact_channel_view,When contact selection appears,"page_section, source_page",No phone/email values in event payload
+contact_channel_click,Tap phone / SMS / WhatsApp / email,"channel, page, source",Never include message text or number
+form_start,First field interaction,"form_type, source_page",Avoid full URLs with private query strings
+form_validated,Local validation passes,form_type,Never send field values
+enquiry_submitted,Backend confirms receipt,"form_type, source_page, market",Not when submit button clicked
+callback_requested,Backend confirms callback request,"market, preferred_window_bucket",No exact requested private details
+briefing_requested,Backend confirms briefing,"audience, topic_category",No confidential deal descriptions
+report_access_requested,Backend accepts report access,"report_id, source_page",Consent not implicit
+report_downloaded,Approved PDF actually opened/downloaded,"report_id, channel","Track report ID, not personal details"
+newsletter_confirmed,Subscriber confirms via provider,"source_page, interests_count",No email values
+related_work_opened,Click contextual related destination,"source_page, destination_slug",Maintain fixed approved destinations
+consultation_booked,Booking provider confirms slot,"source_page, market",Do not fire on initial calendar click

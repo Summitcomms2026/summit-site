@@ -1,0 +1,11 @@
+Field 1,Field 2,Field 3,Field 4,Field 5,Field 6,Field 7,Field 8
+Channel,Type,Number / address,Evidence,Link / configuration,Ready to publish,Behaviour / gating,Public source
+Australian phone,Phone,+61 2 9127 9005,User-authorised for Summit; displayed on CareConcierge contact page,tel:+61291279005,Yes,Clickable phone route; replaces former Summit AU number,https://careconcierge.health/contact/
+United Kingdom phone,Phone,+44 20 7011 8509,User-authorised for Summit; displayed on CareConcierge contact page,tel:+442070118509,Yes,Clickable UK telephone route; verify live call handling before launch,https://careconcierge.health/contact/
+Email,Email,hello@summitcommunication.group,Verified on Summit official website,mailto:hello@summitcommunication.group,Yes,Direct email; retain mailto alongside forms,https://summitcommunication.group/
+SMS,Messaging,[SMS-capable Summit number needed],Not verified,[sms link pending],No,Do not assume the AU landline accepts SMS,
+WhatsApp,Messaging,[WhatsApp Business number needed],Not verified,[wa.me link pending],No,"Pre-fill only generic greeting, never confidential page query",
+General form,Form,/lets-talk#enquiry,Proposed frontend,[API endpoint pending],Prototype only,Delivery success requires server acknowledgement,
+Callback,Form,/lets-talk#callback,Proposed frontend,[API endpoint pending],Prototype only,Reply preference/timezone; no invented SLA,
+Scheduling,Booking,[approved calendar URL needed],Not verified,[link pending],No,Offer as secondary path only with confirmed open slots,
+LinkedIn,Social,[official Summit company profile URL verify],Pending exact approval,[link pending],No,"Company page only, not a private founder profile by default",

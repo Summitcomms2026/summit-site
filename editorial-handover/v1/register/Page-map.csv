@@ -1,0 +1,65 @@
+Page,Proposed route,Panels,Opening headline,First block ID,Copy status,Approval needed,Build notes
+Home,/,8,Build What Deserves to Last,S01-P001,Editorial draft,Review photography and claims,See page Markdown / JSON
+Solutions,/solutions,1,What Needs to Change?,S02-P001,Editorial draft,Review photography and claims,See page Markdown / JSON
+Solutions — By Need,/solutions/by-need,3,What’s Your Brief?,S02-P002,Editorial draft,Review photography and claims,See page Markdown / JSON
+Build a Maison,/solutions/by-need/build-a-maison,6,Build a Maison,S02-P005,Editorial draft,Review photography and claims,See page Markdown / JSON
+Reposition a Maison,/solutions/by-need/reposition-a-maison,5,Change Course Without Losing the House,S03-P001,Editorial draft,Review photography and claims,See page Markdown / JSON
+Enhance Desire Without Dilution,/solutions/by-need/enhance-desire-without-dilution,5,"More Demand, Less Exposure",S03-P006,Editorial draft,Review photography and claims,See page Markdown / JSON
+Strengthen an Icon,/solutions/by-need/strengthen-an-icon,5,"Strengthen the Icon, Protect the House",S03-P011,Editorial draft,Review photography and claims,See page Markdown / JSON
+Activate Patrimony & IP,/solutions/by-need/activate-patrimony-ip,6,Make History Useful,S04-P001,Editorial draft,Review photography and claims,See page Markdown / JSON
+Transform the Client Experience,/solutions/by-need/transform-the-client-experience,6,Experience Should Feel Like the House,S04-P007,Editorial draft,Review photography and claims,See page Markdown / JSON
+Develop Thought Leadership,/solutions/by-need/develop-thought-leadership,6,Have Something Worth Saying,S04-P013,Editorial draft,Review photography and claims,See page Markdown / JSON
+Applied AI,/solutions/by-need/applied-ai,6,Give AI the Right Job,S05-P001,Editorial draft,Review photography and claims,See page Markdown / JSON
+Investment & Acquisitions,/solutions/by-need/investment-acquisitions,6,Know What You Are Buying,S05-P007,Editorial draft,Review photography and claims,See page Markdown / JSON
+Maison Due Diligence,/solutions/by-need/maison-due-diligence,7,What Holds the House Together?,S05-P013,Editorial draft,Review photography and claims,See page Markdown / JSON
+Watches & Jewellery,/solutions/by-industry/watches-jewellery,7,Meaning Is Made Over Time,S13-P001,Editorial draft,Review photography and claims,See page Markdown / JSON
+Fashion & Accessories,/solutions/by-industry/fashion-accessories,7,Beyond the Next Collection,S13-P008,Editorial draft,Review photography and claims,See page Markdown / JSON
+Beauty & Fragrance,/solutions/by-industry/beauty-fragrance,7,Known Is Not Always Desired,S13-P015,Editorial draft,Review photography and claims,See page Markdown / JSON
+Wine & Spirits,/solutions/by-industry/wine-spirits,7,Time Is Part of the Proposition,S13-P022,Editorial draft,Review photography and claims,See page Markdown / JSON
+Automotive,/solutions/by-industry/automotive,7,When the Model Carries the Brand,S13-P029,Editorial draft,Review photography and claims,See page Markdown / JSON
+Real Estate & Hospitality,/solutions/by-industry/real-estate-hospitality,7,A Place Must Keep Its Promise,S13-P036,Editorial draft,Review photography and claims,See page Markdown / JSON
+Art & Collectibles,/solutions/by-industry/art-collectibles,7,Provenance Before Prestige,S13-P043,Editorial draft,Review photography and claims,See page Markdown / JSON
+Private Banking & Wealth Management,/solutions/by-industry/private-banking-wealth-management,7,Discretion Is a Practice,S13-P050,Editorial draft,Review photography and claims,See page Markdown / JSON
+Strategy & Planning,/solutions/by-function/strategy-planning,7,Make the Decisions That Matter,S13-P057,Editorial draft,Review photography and claims,See page Markdown / JSON
+Brand & Marketing,/solutions/by-function/brand-marketing,7,Make Desire Worth Keeping,S13-P064,Editorial draft,Review photography and claims,See page Markdown / JSON
+Editorial & Influence — Function,/solutions/by-function/editorial-influence,7,Have a View Worth Defending,S13-P071,Editorial draft,Review photography and claims,See page Markdown / JSON
+Experience Design,/solutions/by-function/experience-design,7,Make Every Encounter Count,S13-P078,Editorial draft,Review photography and claims,See page Markdown / JSON
+Digital Commerce,/solutions/by-function/digital-commerce,7,Convert Without Cheapening,S13-P085,Editorial draft,Review photography and claims,See page Markdown / JSON
+"Product, IP & Patrimony",/solutions/by-function/product-ip-patrimony,7,"What You Make, Own and Keep",S13-P092,Editorial draft,Review photography and claims,See page Markdown / JSON
+The Observatory,/observatory,7,Look Beyond the Name,S06-P001,Editorial draft,Review photography and claims,See page Markdown / JSON
+For CMOs,/observatory/for-cmos,7,What Is the House Carrying?,S06-P008,Editorial draft,Review photography and claims,See page Markdown / JSON
+For Family Offices & Investors,/observatory/for-family-offices-investors,7,What Underpins the Price?,S06-P015,Editorial draft,Review photography and claims,See page Markdown / JSON
+The Field,/observatory/the-field,7,Beyond the Hundred,S06-P022,Editorial draft,Review photography and claims,See page Markdown / JSON
+How It Works — Observatory,/observatory/how-it-works,7,Evidence Before Opinion,S06-P029,Editorial draft,Review photography and claims,See page Markdown / JSON
+Request a Private Briefing,/observatory/private-briefing,6,Where Would Clarity Help?,S06-P036,Editorial draft,Review photography and claims,See page Markdown / JSON
+Programmes,/programmes,5,Work With a Defined Purpose,S07-P001,Editorial draft,Review photography and claims,See page Markdown / JSON
+Maison Formation,/programmes/maison-formation,8,From Ambition to Institution,S07-P006,Editorial draft,Review photography and claims,See page Markdown / JSON
+Editorial & Influence — Programme,/programmes/editorial-influence,8,"Worth Reading, Worth Repeating",S07-P014,Editorial draft,Review photography and claims,See page Markdown / JSON
+Digital Growth,/programmes/digital-growth,8,"Better Demand, Not Just More",S07-P022,Editorial draft,Review photography and claims,See page Markdown / JSON
+Client Experience,/programmes/client-experience,8,Make Every Encounter Count,S07-P030,Editorial draft,Review photography and claims,See page Markdown / JSON
+Agentic AI,/programmes/agentic-ai,8,Automation With Judgement,S07-P038,Editorial draft,Review photography and claims,See page Markdown / JSON
+Brand & IP Stewardship,/programmes/brand-ip-stewardship,8,Protect What Makes It Yours,S07-P046,Editorial draft,Review photography and claims,See page Markdown / JSON
+Research,/research,5,Questions Worth Asking,S08-P001,Editorial draft,Review photography and claims,See page Markdown / JSON
+Touch Me Not,/research/touch-me-not,6,Where Luxury Becomes Meaning,S08-P006,Editorial draft,Review photography and claims,See page Markdown / JSON
+The Luxury 100,/research/the-luxury-100,6,Not Everything That Sells Endures,S08-P012,Editorial draft,Review photography and claims,See page Markdown / JSON
+White Papers,/research/white-papers,7,Good Research Changes Decisions,S08-P018,Editorial draft,Review photography and claims,See page Markdown / JSON
+Research Programme,/research/research-programme,7,Questions Worth Pursuing,S08-P025,Editorial draft,Review photography and claims,See page Markdown / JSON
+The Future of Luxury,/future-of-luxury,3,Beyond the Headlines,S09-P002,Editorial draft,Review photography and claims,See page Markdown / JSON
+Latest,/future-of-luxury/latest,5,What Matters Now,S09-P005,Editorial draft,Review photography and claims,See page Markdown / JSON
+Essays & Analysis,/future-of-luxury/essays,7,Find the Argument,S09-P010,Editorial draft,Review photography and claims,See page Markdown / JSON
+Article Detail Template,/future-of-luxury/[slug],6,The Future of Luxury,S09-P017,Editorial draft,Review photography and claims,See page Markdown / JSON
+Subscribe,/future-of-luxury/subscribe,7,For the Next Question,S09-P023,Editorial draft,Review photography and claims,See page Markdown / JSON
+About,/about,5,Built on Judgement,S10-P001,Editorial draft,Review photography and claims,See page Markdown / JSON
+Origin Story,/about/origin-story,6,From Story to Stewardship,S10-P006,Editorial draft,Review photography and claims,See page Markdown / JSON
+Manifesto,/about/manifesto,5,Do the Work That Lasts,S10-P012,Editorial draft,Review photography and claims,See page Markdown / JSON
+Why It Matters,/about/why-it-matters,6,The Decisions That Stay,S10-P017,Editorial draft,Review photography and claims,See page Markdown / JSON
+Partners & People,/about/partners-people,6,People Behind the Work,S10-P023,Editorial draft,Review photography and claims,See page Markdown / JSON
+How We Work — About,/about/how-we-work,6,"First, We Listen",S10-P029,Editorial draft,Review photography and claims,See page Markdown / JSON
+Let's Talk,/lets-talk,6,What’s at Stake for You?,S11-P001,Editorial draft,Review photography and claims,See page Markdown / JSON
+Client Access,/client-access,4,For Work Already Underway,S11-P007,Editorial draft,Review photography and claims,See page Markdown / JSON
+Careers,/careers,5,Work Worth Doing,S11-P011,Editorial draft,Review photography and claims,See page Markdown / JSON
+Media Enquiries,/media-enquiries,5,For the Record,S11-P016,Editorial draft,Review photography and claims,See page Markdown / JSON
+Privacy,/privacy,4,"Your Information, Your Choice",S11-P021,Editorial draft,Review photography and claims,See page Markdown / JSON
+Terms,/terms,4,Using This Site,S11-P025,Editorial draft,Review photography and claims,See page Markdown / JSON
+Footer,/_components/footer,3,SUMMIT COMMUNICATION GROUP,S11-P029,Editorial draft,Review photography and claims,See page Markdown / JSON
+Production and cross-selling notes,/_internal/production-notes,24,New channel / New product line / Price change / Campaign or collaboration / None yet,S03-P016,Editorial draft,Review photography and claims,See page Markdown / JSON

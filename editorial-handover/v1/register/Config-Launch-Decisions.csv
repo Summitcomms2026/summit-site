@@ -1,0 +1,18 @@
+Field 1,Field 2,Field 3,Field 4,Field 5
+Priority,Decision or dependency,Owner,Status,Launch treatment
+Resolved,Use approved shared UK telephone +44 20 7011 8509,Operations,Confirmed by user,Enable UK click-to-call; test routing before launch
+Blocker,Approve SMS-capable number and inbound handling,Operations,Not confirmed,No published SMS action
+Blocker,Approve WhatsApp Business number and routing,Operations,Not confirmed,No published WhatsApp action
+Blocker,Connect verified forms to monitored secure backend,Development + Operations,Not connected,Do not claim received until 2xx and persisted
+Blocker,Publish legally approved Privacy and Terms,Legal,Unapproved,No placeholder policy pages
+Blocker,Approve released papers/PDF rights and delivery workflow,Research + Legal,Pending,No fictional gated downloads
+Blocker,Approve Observatory field definition and 2027 Canon status,Research editor,Open,Avoid numeric claims until locked
+Blocker,Sign off 143-article public migration subset and rights,Editorial,143 HOLD / review,Do not bulk-publish source master
+High,Approve a human owner for each enquiry route,Leadership + Operations,Open,Define escalation and fallback inbox
+High,Callback hours and service promise,Operations,Open,Show no response-time guarantees before agreed
+High,Implement newsletter consent and unsubscribe,Marketing + Legal,Open,Separate from all enquiry consent
+High,Define event naming / attribution without PII,Analytics,Open,Ensure performance can be measured
+High,Real end-to-end testing of mobile and desktop links,QA,Not run,"Call, SMS, WhatsApp, form, callback, PDF, newsletter"
+High,Agree source path conventions and canonical slugs,Build + Editorial,Proposed only,Preserve SEO and internal links
+Medium,Create image rights and alt text register,Creative + Legal,Open,No unlicensed brand-owned imagery
+Medium,Create governance for related links and dormant URLs,Editorial,Open,Do not recommend unpublished articles

@@ -1,0 +1,387 @@
+[
+ {
+  "path": "/about",
+  "title": "About",
+  "status": "publish",
+  "template": "page-about.php",
+  "words": 195
+ },
+ {
+  "path": "/about/how-we-work",
+  "title": "How We Work",
+  "status": "publish",
+  "template": "page-about.php",
+  "words": 226
+ },
+ {
+  "path": "/about/manifesto",
+  "title": "Manifesto",
+  "status": "publish",
+  "template": "page-about.php",
+  "words": 263
+ },
+ {
+  "path": "/about/origin-story",
+  "title": "Origin Story",
+  "status": "publish",
+  "template": "page-about.php",
+  "words": 468
+ },
+ {
+  "path": "/about/partners-people",
+  "title": "Partners &amp; People",
+  "status": "publish",
+  "template": "page-about.php",
+  "words": 286
+ },
+ {
+  "path": "/about/why-it-matters",
+  "title": "Why It Matters",
+  "status": "publish",
+  "template": "page-about.php",
+  "words": 300
+ },
+ {
+  "path": "/careers",
+  "title": "Careers",
+  "status": "publish",
+  "template": "page-shell.php",
+  "words": 47
+ },
+ {
+  "path": "/client-access",
+  "title": "Client Access",
+  "status": "publish",
+  "template": "page-shell.php",
+  "words": 50
+ },
+ {
+  "path": "/lets-talk",
+  "title": "Let’s Talk",
+  "status": "publish",
+  "template": "page-contact.php",
+  "words": 16
+ },
+ {
+  "path": "/media-enquiries",
+  "title": "Media Enquiries",
+  "status": "publish",
+  "template": "page-contact.php",
+  "words": 17
+ },
+ {
+  "path": "/privacy",
+  "title": "Privacy",
+  "status": "publish",
+  "template": "page-shell.php",
+  "words": 116
+ },
+ {
+  "path": "/programmes",
+  "title": "Programmes",
+  "status": "publish",
+  "template": "page-programmes.php",
+  "words": 134
+ },
+ {
+  "path": "/programmes/agentic-ai",
+  "title": "Agentic AI",
+  "status": "publish",
+  "template": "page-programmes.php",
+  "words": 0
+ },
+ {
+  "path": "/programmes/brand-ip-stewardship",
+  "title": "Brand &amp; IP Stewardship",
+  "status": "publish",
+  "template": "page-programmes.php",
+  "words": 0
+ },
+ {
+  "path": "/programmes/client-experience",
+  "title": "Client Experience",
+  "status": "publish",
+  "template": "page-programmes.php",
+  "words": 0
+ },
+ {
+  "path": "/programmes/digital-growth",
+  "title": "Digital Growth",
+  "status": "publish",
+  "template": "page-programmes.php",
+  "words": 0
+ },
+ {
+  "path": "/programmes/editorial-influence",
+  "title": "Editorial &amp; Influence",
+  "status": "publish",
+  "template": "page-programmes.php",
+  "words": 0
+ },
+ {
+  "path": "/programmes/maison-formation",
+  "title": "Maison Formation",
+  "status": "publish",
+  "template": "page-programmes.php",
+  "words": 549
+ },
+ {
+  "path": "/research",
+  "title": "Research",
+  "status": "publish",
+  "template": "page-research.php",
+  "words": 302
+ },
+ {
+  "path": "/research/luxury-100",
+  "title": "The Luxury 100",
+  "status": "publish",
+  "template": "page-research.php",
+  "words": 488
+ },
+ {
+  "path": "/research/programme",
+  "title": "Research Programme",
+  "status": "publish",
+  "template": "page-research.php",
+  "words": 205
+ },
+ {
+  "path": "/research/touch-me-not",
+  "title": "Touch Me Not",
+  "status": "publish",
+  "template": "page-research.php",
+  "words": 841
+ },
+ {
+  "path": "/research/white-papers",
+  "title": "White Papers",
+  "status": "publish",
+  "template": "page-research.php",
+  "words": 121
+ },
+ {
+  "path": "/solutions",
+  "title": "Solutions",
+  "status": "publish",
+  "template": "page-solutions.php",
+  "words": 185
+ },
+ {
+  "path": "/solutions/activate-patrimony-ip",
+  "title": "Activate Patrimony &amp; IP",
+  "status": "publish",
+  "template": "page-solutions.php",
+  "words": 0
+ },
+ {
+  "path": "/solutions/applied-ai",
+  "title": "Applied AI",
+  "status": "publish",
+  "template": "page-solutions.php",
+  "words": 0
+ },
+ {
+  "path": "/solutions/art-collectibles",
+  "title": "Art &amp; Collectibles",
+  "status": "publish",
+  "template": "page-solutions.php",
+  "words": 0
+ },
+ {
+  "path": "/solutions/automotive",
+  "title": "Automotive",
+  "status": "publish",
+  "template": "page-solutions.php",
+  "words": 0
+ },
+ {
+  "path": "/solutions/beauty-fragrance",
+  "title": "Beauty &amp; Fragrance",
+  "status": "publish",
+  "template": "page-solutions.php",
+  "words": 0
+ },
+ {
+  "path": "/solutions/brand-marketing",
+  "title": "Brand &amp; Marketing",
+  "status": "publish",
+  "template": "page-solutions.php",
+  "words": 0
+ },
+ {
+  "path": "/solutions/build-a-maison",
+  "title": "Build a Maison",
+  "status": "publish",
+  "template": "page-solutions.php",
+  "words": 0
+ },
+ {
+  "path": "/solutions/develop-thought-leadership",
+  "title": "Develop Thought Leadership",
+  "status": "publish",
+  "template": "page-solutions.php",
+  "words": 0
+ },
+ {
+  "path": "/solutions/digital-commerce",
+  "title": "Digital Commerce",
+  "status": "publish",
+  "template": "page-solutions.php",
+  "words": 0
+ },
+ {
+  "path": "/solutions/editorial-influence",
+  "title": "Editorial &amp; Influence",
+  "status": "publish",
+  "template": "page-solutions.php",
+  "words": 0
+ },
+ {
+  "path": "/solutions/enhance-desire-without-dilution",
+  "title": "Enhance Desire Without Dilution",
+  "status": "publish",
+  "template": "page-solutions.php",
+  "words": 0
+ },
+ {
+  "path": "/solutions/experience-design",
+  "title": "Experience Design",
+  "status": "publish",
+  "template": "page-solutions.php",
+  "words": 0
+ },
+ {
+  "path": "/solutions/fashion-accessories",
+  "title": "Fashion &amp; Accessories",
+  "status": "publish",
+  "template": "page-solutions.php",
+  "words": 0
+ },
+ {
+  "path": "/solutions/investment-acquisitions",
+  "title": "Investment &amp; Acquisitions",
+  "status": "publish",
+  "template": "page-solutions.php",
+  "words": 0
+ },
+ {
+  "path": "/solutions/maison-due-diligence",
+  "title": "Maison Due Diligence",
+  "status": "publish",
+  "template": "page-solutions.php",
+  "words": 653
+ },
+ {
+  "path": "/solutions/private-banking-wealth-management",
+  "title": "Private Banking &amp; Wealth Management",
+  "status": "publish",
+  "template": "page-solutions.php",
+  "words": 0
+ },
+ {
+  "path": "/solutions/product-ip-patrimony",
+  "title": "Product, IP &amp; Patrimony",
+  "status": "publish",
+  "template": "page-solutions.php",
+  "words": 0
+ },
+ {
+  "path": "/solutions/real-estate-hospitality",
+  "title": "Real Estate &amp; Hospitality",
+  "status": "publish",
+  "template": "page-solutions.php",
+  "words": 0
+ },
+ {
+  "path": "/solutions/reposition-a-maison",
+  "title": "Reposition a Maison",
+  "status": "publish",
+  "template": "page-solutions.php",
+  "words": 0
+ },
+ {
+  "path": "/solutions/strategy-planning",
+  "title": "Strategy &amp; Planning",
+  "status": "publish",
+  "template": "page-solutions.php",
+  "words": 0
+ },
+ {
+  "path": "/solutions/strengthen-an-icon",
+  "title": "Strengthen an Icon",
+  "status": "publish",
+  "template": "page-solutions.php",
+  "words": 0
+ },
+ {
+  "path": "/solutions/transform-the-client-experience",
+  "title": "Transform the Client Experience",
+  "status": "publish",
+  "template": "page-solutions.php",
+  "words": 0
+ },
+ {
+  "path": "/solutions/watches-jewellery",
+  "title": "Watches &amp; Jewellery",
+  "status": "publish",
+  "template": "page-solutions.php",
+  "words": 0
+ },
+ {
+  "path": "/solutions/wine-spirits",
+  "title": "Wine &amp; Spirits",
+  "status": "publish",
+  "template": "page-solutions.php",
+  "words": 0
+ },
+ {
+  "path": "/terms",
+  "title": "Terms",
+  "status": "publish",
+  "template": "page-shell.php",
+  "words": 34
+ },
+ {
+  "path": "/the-observatory",
+  "title": "The Observatory",
+  "status": "publish",
+  "template": "page-observatory.php",
+  "words": 1022
+ },
+ {
+  "path": "/the-observatory/field",
+  "title": "The Field",
+  "status": "publish",
+  "template": "page-observatory.php",
+  "words": 533
+ },
+ {
+  "path": "/the-observatory/for-cmos",
+  "title": "For CMOs",
+  "status": "publish",
+  "template": "page-observatory.php",
+  "words": 627
+ },
+ {
+  "path": "/the-observatory/for-family-offices-investors",
+  "title": "For Family Offices &amp; Investors",
+  "status": "publish",
+  "template": "page-observatory.php",
+  "words": 548
+ },
+ {
+  "path": "/the-observatory/how-it-works",
+  "title": "How It Works",
+  "status": "publish",
+  "template": "page-observatory.php",
+  "words": 713
+ },
+ {
+  "path": "/the-observatory/request-a-private-briefing",
+  "title": "Request a Private Briefing",
+  "status": "publish",
+  "template": "page-observatory.php",
+  "words": 90
+ }
+]

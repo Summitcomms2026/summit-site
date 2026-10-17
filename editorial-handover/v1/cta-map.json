@@ -1,0 +1,3065 @@
+{
+ "ctas": [
+  {
+   "panel": "S02-P005",
+   "label": "Discuss Maison Formation",
+   "route": "/solutions/build-a-maison",
+   "url": "/lets-talk?topic=build-a-maison",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S02-P005",
+   "label": "Explore the Maison Formation Programme",
+   "route": "/solutions/build-a-maison",
+   "url": "/programmes/maison-formation",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S02-P007",
+   "label": "Discuss Maison Formation",
+   "route": "/solutions/build-a-maison",
+   "url": "/lets-talk?topic=build-a-maison",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S02-P008",
+   "label": "Explore The Observatory",
+   "route": "/solutions/build-a-maison",
+   "url": "/the-observatory",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S02-P010",
+   "label": "Discuss Maison Formation",
+   "route": "/solutions/build-a-maison",
+   "url": "/lets-talk?topic=build-a-maison",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S03-P001",
+   "label": "Discuss Repositioning",
+   "route": "/solutions/reposition-a-maison",
+   "url": "/lets-talk?topic=reposition-a-maison",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S03-P001",
+   "label": "How We Work",
+   "route": "/solutions/reposition-a-maison",
+   "url": "/about/how-we-work",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S03-P003",
+   "label": "Discuss Repositioning",
+   "route": "/solutions/reposition-a-maison",
+   "url": "/lets-talk?topic=reposition-a-maison",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S03-P004",
+   "label": "Discuss This Question",
+   "route": "/solutions/reposition-a-maison",
+   "url": "/lets-talk?topic=reposition-a-maison",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S03-P004",
+   "label": "Or send a short brief",
+   "route": "/solutions/reposition-a-maison",
+   "url": "/lets-talk?topic=reposition-a-maison",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S03-P005",
+   "label": "Discuss Repositioning",
+   "route": "/solutions/reposition-a-maison",
+   "url": "/lets-talk?topic=reposition-a-maison",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S03-P006",
+   "label": "Discuss Demand Quality",
+   "route": "/solutions/enhance-desire-without-dilution",
+   "url": "/lets-talk?topic=demand-quality",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S03-P006",
+   "label": "Try the Demand Quality Check",
+   "route": "/solutions/enhance-desire-without-dilution",
+   "url": "/solutions/enhance-desire-without-dilution#s03-p008",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S03-P008",
+   "label": "Review My Answers",
+   "route": "/solutions/enhance-desire-without-dilution",
+   "url": "(in-page check)",
+   "status": "interaction",
+   "place": "body"
+  },
+  {
+   "panel": "S03-P009",
+   "label": "Explore The Observatory",
+   "route": "/solutions/enhance-desire-without-dilution",
+   "url": "/the-observatory",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S03-P009",
+   "label": "Chanel Bought Charvet Because Hermès Was Right All Along",
+   "route": "/solutions/enhance-desire-without-dilution",
+   "url": null,
+   "status": "pending-essay",
+   "place": "body"
+  },
+  {
+   "panel": "S03-P010",
+   "label": "Discuss Demand Quality",
+   "route": "/solutions/enhance-desire-without-dilution",
+   "url": "/lets-talk?topic=demand-quality",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S03-P010",
+   "label": "Send My Demand Quality Summary",
+   "route": "/solutions/enhance-desire-without-dilution",
+   "url": "/lets-talk?topic=demand-quality",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S03-P011",
+   "label": "Discuss Icon Stewardship",
+   "route": "/solutions/strengthen-an-icon",
+   "url": "/lets-talk?topic=strengthen-an-icon",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S03-P011",
+   "label": "Explore The Luxury 100",
+   "route": "/solutions/strengthen-an-icon",
+   "url": "/research/luxury-100",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S03-P012",
+   "label": "Discuss Your Icon",
+   "route": "/solutions/strengthen-an-icon",
+   "url": "/lets-talk?topic=strengthen-an-icon",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S03-P014",
+   "label": "About Touch Me Not",
+   "route": "/solutions/strengthen-an-icon",
+   "url": "/research/touch-me-not",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S03-P014",
+   "label": "Explore The Observatory",
+   "route": "/solutions/strengthen-an-icon",
+   "url": "/the-observatory",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S03-P015",
+   "label": "Discuss Icon Stewardship",
+   "route": "/solutions/strengthen-an-icon",
+   "url": "/lets-talk?topic=strengthen-an-icon",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S03-P015",
+   "label": "Or send a short brief",
+   "route": "/solutions/strengthen-an-icon",
+   "url": "/lets-talk?topic=strengthen-an-icon",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S04-P001",
+   "label": "Discuss Patrimony & IP",
+   "route": "/solutions/activate-patrimony-ip",
+   "url": "/lets-talk?topic=activate-patrimony-ip",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S04-P001",
+   "label": "Explore Brand & IP Stewardship",
+   "route": "/solutions/activate-patrimony-ip",
+   "url": "/programmes/brand-ip-stewardship",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S04-P003",
+   "label": "Read Chanel Bought Charvet Because Hermès Was Right All Along",
+   "route": "/solutions/activate-patrimony-ip",
+   "url": null,
+   "status": "pending-essay",
+   "place": "body"
+  },
+  {
+   "panel": "S04-P004",
+   "label": "Discuss Your Priority",
+   "route": "/solutions/activate-patrimony-ip",
+   "url": "/lets-talk?topic=activate-patrimony-ip",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S04-P005",
+   "label": "Explore Icon Stewardship",
+   "route": "/solutions/activate-patrimony-ip",
+   "url": "/solutions/strengthen-an-icon",
+   "status": "mapped",
+   "place": "body",
+   "context": "Strengthen an Icon"
+  },
+  {
+   "panel": "S04-P005",
+   "label": "Explore the Programme",
+   "route": "/solutions/activate-patrimony-ip",
+   "url": "/programmes/brand-ip-stewardship",
+   "status": "mapped",
+   "place": "body",
+   "context": "Brand & IP Stewardship"
+  },
+  {
+   "panel": "S04-P005",
+   "label": "Explore the Research",
+   "route": "/solutions/activate-patrimony-ip",
+   "url": "/research/touch-me-not",
+   "status": "mapped",
+   "place": "body",
+   "context": "Touch Me Not"
+  },
+  {
+   "panel": "S04-P006",
+   "label": "Discuss a Brief",
+   "route": "/solutions/activate-patrimony-ip",
+   "url": "/lets-talk?topic=activate-patrimony-ip",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S04-P006",
+   "label": "Or send a short note",
+   "route": "/solutions/activate-patrimony-ip",
+   "url": "/lets-talk?topic=activate-patrimony-ip",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S04-P007",
+   "label": "Discuss Client Experience",
+   "route": "/solutions/transform-the-client-experience",
+   "url": "/lets-talk?topic=transform-the-client-experience",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S04-P007",
+   "label": "Explore Experience Design",
+   "route": "/solutions/transform-the-client-experience",
+   "url": "/solutions/experience-design",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S04-P009",
+   "label": "Discuss the Experience",
+   "route": "/solutions/transform-the-client-experience",
+   "url": "/lets-talk?topic=transform-the-client-experience",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S04-P011",
+   "label": "Explore the Programme",
+   "route": "/solutions/transform-the-client-experience",
+   "url": "/programmes/client-experience",
+   "status": "mapped",
+   "place": "body",
+   "context": "Client Experience"
+  },
+  {
+   "panel": "S04-P011",
+   "label": "Explore Digital Commerce",
+   "route": "/solutions/transform-the-client-experience",
+   "url": "/solutions/digital-commerce",
+   "status": "mapped",
+   "place": "body",
+   "context": "Digital Commerce"
+  },
+  {
+   "panel": "S04-P011",
+   "label": "Explore Demand Quality",
+   "route": "/solutions/transform-the-client-experience",
+   "url": "/solutions/enhance-desire-without-dilution",
+   "status": "mapped",
+   "place": "body",
+   "context": "Enhance Desire Without Dilution"
+  },
+  {
+   "panel": "S04-P012",
+   "label": "Discuss Client Experience",
+   "route": "/solutions/transform-the-client-experience",
+   "url": "/lets-talk?topic=transform-the-client-experience",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S04-P013",
+   "label": "Discuss Thought Leadership",
+   "route": "/solutions/develop-thought-leadership",
+   "url": "/lets-talk?topic=develop-thought-leadership",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S04-P013",
+   "label": "Read The Future of Luxury",
+   "route": "/solutions/develop-thought-leadership",
+   "url": "/the-future-of-luxury",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S04-P017",
+   "label": "Explore the Programme",
+   "route": "/solutions/develop-thought-leadership",
+   "url": "/programmes/editorial-influence",
+   "status": "mapped",
+   "place": "body",
+   "context": "Editorial & Influence"
+  },
+  {
+   "panel": "S04-P017",
+   "label": "Explore The Observatory",
+   "route": "/solutions/develop-thought-leadership",
+   "url": "/the-observatory",
+   "status": "mapped",
+   "place": "body",
+   "context": "The Observatory"
+  },
+  {
+   "panel": "S04-P017",
+   "label": "The Future of Luxury",
+   "route": "/solutions/develop-thought-leadership",
+   "url": "/the-future-of-luxury",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S04-P017",
+   "label": "Subscribe",
+   "route": "/solutions/develop-thought-leadership",
+   "url": "/the-future-of-luxury#subscribe",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S04-P018",
+   "label": "Discuss Thought Leadership",
+   "route": "/solutions/develop-thought-leadership",
+   "url": "/lets-talk?topic=develop-thought-leadership",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S05-P001",
+   "label": "Discuss Applied AI",
+   "route": "/solutions/applied-ai",
+   "url": "/lets-talk?topic=applied-ai",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S05-P001",
+   "label": "Explore Agentic AI",
+   "route": "/solutions/applied-ai",
+   "url": "/programmes/agentic-ai",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S05-P004",
+   "label": "Discuss an AI Application",
+   "route": "/solutions/applied-ai",
+   "url": "/lets-talk?topic=applied-ai",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S05-P005",
+   "label": "Explore the Programme",
+   "route": "/solutions/applied-ai",
+   "url": "/programmes/agentic-ai",
+   "status": "mapped",
+   "place": "body",
+   "context": "Agentic AI"
+  },
+  {
+   "panel": "S05-P005",
+   "label": "Explore Digital Commerce",
+   "route": "/solutions/applied-ai",
+   "url": "/solutions/digital-commerce",
+   "status": "mapped",
+   "place": "body",
+   "context": "Digital Commerce"
+  },
+  {
+   "panel": "S05-P005",
+   "label": "Explore Client Experience",
+   "route": "/solutions/applied-ai",
+   "url": "/solutions/transform-the-client-experience",
+   "status": "mapped",
+   "place": "body",
+   "context": "Transform the Client Experience"
+  },
+  {
+   "panel": "S05-P006",
+   "label": "Discuss Applied AI",
+   "route": "/solutions/applied-ai",
+   "url": "/lets-talk?topic=applied-ai",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S05-P007",
+   "label": "Discuss an Opportunity",
+   "route": "/solutions/investment-acquisitions",
+   "url": "/lets-talk?topic=investment-acquisitions",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S05-P007",
+   "label": "Explore Maison Due Diligence",
+   "route": "/solutions/investment-acquisitions",
+   "url": "/solutions/maison-due-diligence",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S05-P009",
+   "label": "Discuss the Situation",
+   "route": "/solutions/investment-acquisitions",
+   "url": "/lets-talk?topic=investment-acquisitions",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S05-P011",
+   "label": "Explore Due Diligence",
+   "route": "/solutions/investment-acquisitions",
+   "url": "/solutions/maison-due-diligence",
+   "status": "mapped",
+   "place": "body",
+   "context": "Maison Due Diligence"
+  },
+  {
+   "panel": "S05-P011",
+   "label": "Explore The Observatory",
+   "route": "/solutions/investment-acquisitions",
+   "url": "/the-observatory",
+   "status": "mapped",
+   "place": "body",
+   "context": "The Observatory for Family Offices & Investors"
+  },
+  {
+   "panel": "S05-P011",
+   "label": "Explore Patrimony & IP",
+   "route": "/solutions/investment-acquisitions",
+   "url": "/solutions/activate-patrimony-ip",
+   "status": "mapped",
+   "place": "body",
+   "context": "Activate Patrimony & IP"
+  },
+  {
+   "panel": "S05-P012",
+   "label": "Discuss an Opportunity",
+   "route": "/solutions/investment-acquisitions",
+   "url": "/lets-talk?topic=investment-acquisitions",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S05-P013",
+   "label": "Request a Private Briefing",
+   "route": "/solutions/maison-due-diligence",
+   "url": "/the-observatory/request-a-private-briefing",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S05-P013",
+   "label": "Explore The Observatory",
+   "route": "/solutions/maison-due-diligence",
+   "url": "/the-observatory",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S05-P015",
+   "label": "Review the Open Questions",
+   "route": "/solutions/maison-due-diligence",
+   "url": "(in-page checklist)",
+   "status": "interaction",
+   "place": "body"
+  },
+  {
+   "panel": "S05-P016",
+   "label": "Explore How The Observatory Works",
+   "route": "/solutions/maison-due-diligence",
+   "url": "/the-observatory/how-it-works",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S05-P017",
+   "label": "Explore The Observatory",
+   "route": "/solutions/maison-due-diligence",
+   "url": "/the-observatory",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S05-P018",
+   "label": "Explore Investment & Acquisitions",
+   "route": "/solutions/maison-due-diligence",
+   "url": "/solutions/investment-acquisitions",
+   "status": "mapped",
+   "place": "body",
+   "context": "Investment & Acquisitions"
+  },
+  {
+   "panel": "S05-P018",
+   "label": "Explore the Investor Briefing",
+   "route": "/solutions/maison-due-diligence",
+   "url": "/the-observatory/for-family-offices-investors",
+   "status": "mapped",
+   "place": "body",
+   "context": "The Observatory for Family Offices & Investors"
+  },
+  {
+   "panel": "S05-P018",
+   "label": "Explore Patrimony & IP",
+   "route": "/solutions/maison-due-diligence",
+   "url": "/solutions/activate-patrimony-ip",
+   "status": "mapped",
+   "place": "body",
+   "context": "Activate Patrimony & IP"
+  },
+  {
+   "panel": "S05-P019",
+   "label": "Request a Private Briefing",
+   "route": "/solutions/maison-due-diligence",
+   "url": "/the-observatory/request-a-private-briefing",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S06-P001",
+   "label": "Explore the Field",
+   "route": "/the-observatory",
+   "url": "/the-observatory/field",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S06-P001",
+   "label": "Request a Private Briefing",
+   "route": "/the-observatory",
+   "url": "/the-observatory/request-a-private-briefing",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S06-P006",
+   "label": "Explore the CMO Perspective",
+   "route": "/the-observatory",
+   "url": "/the-observatory/for-cmos",
+   "status": "mapped",
+   "place": "body",
+   "context": "For CMOs"
+  },
+  {
+   "panel": "S06-P006",
+   "label": "Explore the Investor Perspective",
+   "route": "/the-observatory",
+   "url": "/the-observatory/for-family-offices-investors",
+   "status": "mapped",
+   "place": "body",
+   "context": "For Family Offices & Investors"
+  },
+  {
+   "panel": "S06-P006",
+   "label": "Explore the Book",
+   "route": "/the-observatory",
+   "url": "/research/touch-me-not",
+   "status": "mapped",
+   "place": "body",
+   "context": "Touch Me Not"
+  },
+  {
+   "panel": "S06-P007",
+   "label": "Request a Private Briefing",
+   "route": "/the-observatory",
+   "url": "/the-observatory/request-a-private-briefing",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S06-P008",
+   "label": "Discuss a Maison Question",
+   "route": "/the-observatory/for-cmos",
+   "url": "/the-observatory/request-a-private-briefing?audience=cmo",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S06-P010",
+   "label": "Explore How It Works",
+   "route": "/the-observatory/for-cmos",
+   "url": "/the-observatory/how-it-works",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S06-P013",
+   "label": "Explore the Solution",
+   "route": "/the-observatory/for-cmos",
+   "url": "/solutions/strengthen-an-icon",
+   "status": "mapped",
+   "place": "body",
+   "context": "Strengthen an Icon"
+  },
+  {
+   "panel": "S06-P013",
+   "label": "Explore Patrimony & IP",
+   "route": "/the-observatory/for-cmos",
+   "url": "/solutions/activate-patrimony-ip",
+   "status": "mapped",
+   "place": "body",
+   "context": "Activate Patrimony & IP"
+  },
+  {
+   "panel": "S06-P013",
+   "label": "Explore the Programme",
+   "route": "/the-observatory/for-cmos",
+   "url": "/programmes/brand-ip-stewardship",
+   "status": "mapped",
+   "place": "body",
+   "context": "Brand & IP Stewardship"
+  },
+  {
+   "panel": "S06-P014",
+   "label": "Request a Private Briefing",
+   "route": "/the-observatory/for-cmos",
+   "url": "/the-observatory/request-a-private-briefing?audience=cmo",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S06-P015",
+   "label": "Discuss an Investment Question",
+   "route": "/the-observatory/for-family-offices-investors",
+   "url": "/the-observatory/request-a-private-briefing?audience=investor",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S06-P017",
+   "label": "Explore Maison Due Diligence",
+   "route": "/the-observatory/for-family-offices-investors",
+   "url": "/solutions/maison-due-diligence",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S06-P020",
+   "label": "Explore Due Diligence",
+   "route": "/the-observatory/for-family-offices-investors",
+   "url": "/solutions/maison-due-diligence",
+   "status": "mapped",
+   "place": "body",
+   "context": "Maison Due Diligence"
+  },
+  {
+   "panel": "S06-P020",
+   "label": "Explore the Solution",
+   "route": "/the-observatory/for-family-offices-investors",
+   "url": "/solutions/investment-acquisitions",
+   "status": "mapped",
+   "place": "body",
+   "context": "Investment & Acquisitions"
+  },
+  {
+   "panel": "S06-P020",
+   "label": "Explore the Research",
+   "route": "/the-observatory/for-family-offices-investors",
+   "url": "/research/luxury-100",
+   "status": "mapped",
+   "place": "body",
+   "context": "The Luxury 100"
+  },
+  {
+   "panel": "S06-P021",
+   "label": "Request a Private Briefing",
+   "route": "/the-observatory/for-family-offices-investors",
+   "url": "/the-observatory/request-a-private-briefing?audience=investor",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S06-P022",
+   "label": "Explore How It Works",
+   "route": "/the-observatory/field",
+   "url": "/the-observatory/how-it-works",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S06-P024",
+   "label": "Read How It Works",
+   "route": "/the-observatory/field",
+   "url": "/the-observatory/how-it-works",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S06-P027",
+   "label": "Explore the Canon",
+   "route": "/the-observatory/field",
+   "url": "/research/luxury-100",
+   "status": "mapped",
+   "place": "body",
+   "context": "The Luxury 100"
+  },
+  {
+   "panel": "S06-P027",
+   "label": "Explore White Papers",
+   "route": "/the-observatory/field",
+   "url": "/research/white-papers",
+   "status": "mapped",
+   "place": "body",
+   "context": "White Papers"
+  },
+  {
+   "panel": "S06-P027",
+   "label": "See the Method",
+   "route": "/the-observatory/field",
+   "url": "/the-observatory/how-it-works",
+   "status": "mapped",
+   "place": "body",
+   "context": "How It Works"
+  },
+  {
+   "panel": "S06-P028",
+   "label": "Ask About a Sector",
+   "route": "/the-observatory/field",
+   "url": "/the-observatory/request-a-private-briefing",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S06-P029",
+   "label": "Request a Private Briefing",
+   "route": "/the-observatory/how-it-works",
+   "url": "/the-observatory/request-a-private-briefing",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S06-P034",
+   "label": "Explore the Field",
+   "route": "/the-observatory/how-it-works",
+   "url": "/the-observatory/field",
+   "status": "mapped",
+   "place": "body",
+   "context": "The Field"
+  },
+  {
+   "panel": "S06-P034",
+   "label": "Explore the Book",
+   "route": "/the-observatory/how-it-works",
+   "url": "/research/touch-me-not",
+   "status": "mapped",
+   "place": "body",
+   "context": "Touch Me Not"
+  },
+  {
+   "panel": "S06-P034",
+   "label": "Explore Due Diligence",
+   "route": "/the-observatory/how-it-works",
+   "url": "/solutions/maison-due-diligence",
+   "status": "mapped",
+   "place": "body",
+   "context": "Maison Due Diligence"
+  },
+  {
+   "panel": "S06-P035",
+   "label": "Request a Private Briefing",
+   "route": "/the-observatory/how-it-works",
+   "url": "/the-observatory/request-a-private-briefing",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S06-P036",
+   "label": "Request a Conversation",
+   "route": "/the-observatory/request-a-private-briefing",
+   "url": "#s06-p037",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S06-P041",
+   "label": "Read the CMO Perspective",
+   "route": "/the-observatory/request-a-private-briefing",
+   "url": "/the-observatory/for-cmos",
+   "status": "mapped",
+   "place": "body",
+   "context": "For CMOs"
+  },
+  {
+   "panel": "S06-P041",
+   "label": "Read the Investor Perspective",
+   "route": "/the-observatory/request-a-private-briefing",
+   "url": "/the-observatory/for-family-offices-investors",
+   "status": "mapped",
+   "place": "body",
+   "context": "For Family Offices & Investors"
+  },
+  {
+   "panel": "S06-P041",
+   "label": "See How It Works",
+   "route": "/the-observatory/request-a-private-briefing",
+   "url": "/the-observatory/how-it-works",
+   "status": "mapped",
+   "place": "body",
+   "context": "How It Works"
+  },
+  {
+   "panel": "S07-P001",
+   "label": "Find Your Starting Point",
+   "route": "/programmes",
+   "url": "/programmes#s07-p002",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S07-P001",
+   "label": "Discuss a Programme",
+   "route": "/programmes",
+   "url": "/lets-talk?programme=undecided",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S07-P002",
+   "label": "Maison Formation",
+   "route": "/programmes",
+   "url": "/programmes/maison-formation",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S07-P002",
+   "label": "Editorial & Influence",
+   "route": "/programmes",
+   "url": "/solutions/editorial-influence",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S07-P002",
+   "label": "Digital Growth",
+   "route": "/programmes",
+   "url": "/programmes/digital-growth",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S07-P002",
+   "label": "Client Experience",
+   "route": "/programmes",
+   "url": "/programmes/client-experience",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S07-P002",
+   "label": "Agentic AI",
+   "route": "/programmes",
+   "url": "/programmes/agentic-ai",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S07-P002",
+   "label": "Brand & IP Stewardship",
+   "route": "/programmes",
+   "url": "/programmes/brand-ip-stewardship",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S07-P003",
+   "label": "Start a Conversation",
+   "route": "/programmes",
+   "url": "/lets-talk?programme=undecided",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S07-P004",
+   "label": "Explore Solutions",
+   "route": "/programmes",
+   "url": "/solutions",
+   "status": "mapped",
+   "place": "body",
+   "context": "Solutions — By Need"
+  },
+  {
+   "panel": "S07-P004",
+   "label": "Explore the Observatory",
+   "route": "/programmes",
+   "url": "/the-observatory",
+   "status": "mapped",
+   "place": "body",
+   "context": "The Observatory"
+  },
+  {
+   "panel": "S07-P004",
+   "label": "How We Work",
+   "route": "/programmes",
+   "url": "/about/how-we-work",
+   "status": "mapped",
+   "place": "body",
+   "context": "How We Work"
+  },
+  {
+   "panel": "S07-P005",
+   "label": "Start a Conversation",
+   "route": "/programmes",
+   "url": "/lets-talk?programme=undecided",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S07-P005",
+   "label": "Explore Solutions",
+   "route": "/programmes",
+   "url": "/solutions",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S07-P006",
+   "label": "Discuss Maison Formation",
+   "route": "/programmes/maison-formation",
+   "url": "/lets-talk?programme=maison-formation",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S07-P006",
+   "label": "Read The New Asian Maison",
+   "route": "/programmes/maison-formation",
+   "url": "/research/white-papers",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S07-P008",
+   "label": "Discuss a Diagnostic",
+   "route": "/programmes/maison-formation",
+   "url": "/lets-talk?programme=maison-formation",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S07-P009",
+   "label": "Request a Conversation",
+   "route": "/programmes/maison-formation",
+   "url": "/lets-talk?programme=maison-formation",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S07-P012",
+   "label": "Explore the Solution",
+   "route": "/programmes/maison-formation",
+   "url": "/solutions/build-a-maison",
+   "status": "mapped",
+   "place": "body",
+   "context": "Build a Maison"
+  },
+  {
+   "panel": "S07-P012",
+   "label": "Explore the Programme",
+   "route": "/programmes/maison-formation",
+   "url": "/programmes/brand-ip-stewardship",
+   "status": "mapped",
+   "place": "body",
+   "context": "Brand & IP Stewardship"
+  },
+  {
+   "panel": "S07-P012",
+   "label": "Read the White Paper",
+   "route": "/programmes/maison-formation",
+   "url": "/research/white-papers",
+   "status": "mapped",
+   "place": "body",
+   "context": "The New Asian Maison"
+  },
+  {
+   "panel": "S07-P013",
+   "label": "Start a Conversation",
+   "route": "/programmes/maison-formation",
+   "url": "/lets-talk?programme=maison-formation",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S07-P013",
+   "label": "Explore the Observatory",
+   "route": "/programmes/maison-formation",
+   "url": "/the-observatory",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S07-P014",
+   "label": "Discuss Editorial & Influence",
+   "route": "/programmes/editorial-influence",
+   "url": "/lets-talk?programme=editorial-influence",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S07-P014",
+   "label": "Read The Future of Luxury",
+   "route": "/programmes/editorial-influence",
+   "url": "/the-future-of-luxury",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S07-P020",
+   "label": "Explore the Solution",
+   "route": "/programmes/editorial-influence",
+   "url": "/solutions/develop-thought-leadership",
+   "status": "mapped",
+   "place": "body",
+   "context": "Develop Thought Leadership"
+  },
+  {
+   "panel": "S07-P020",
+   "label": "Read the Essays",
+   "route": "/programmes/editorial-influence",
+   "url": "/the-future-of-luxury",
+   "status": "mapped",
+   "place": "body",
+   "context": "The Future of Luxury"
+  },
+  {
+   "panel": "S07-P020",
+   "label": "Explore the Programme",
+   "route": "/programmes/editorial-influence",
+   "url": "/programmes/brand-ip-stewardship",
+   "status": "mapped",
+   "place": "body",
+   "context": "Brand & IP Stewardship"
+  },
+  {
+   "panel": "S07-P021",
+   "label": "Start a Conversation",
+   "route": "/programmes/editorial-influence",
+   "url": "/lets-talk?programme=editorial-influence",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S07-P021",
+   "label": "Read The Future of Luxury",
+   "route": "/programmes/editorial-influence",
+   "url": "/the-future-of-luxury",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S07-P022",
+   "label": "Discuss Digital Growth",
+   "route": "/programmes/digital-growth",
+   "url": "/lets-talk?programme=digital-growth",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S07-P022",
+   "label": "Check Demand Quality",
+   "route": "/programmes/digital-growth",
+   "url": "/solutions/enhance-desire-without-dilution#s03-p008",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S07-P025",
+   "label": "Explore Desire Without Dilution",
+   "route": "/programmes/digital-growth",
+   "url": "/solutions/enhance-desire-without-dilution",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S07-P028",
+   "label": "Explore the Solution",
+   "route": "/programmes/digital-growth",
+   "url": "/solutions/enhance-desire-without-dilution",
+   "status": "mapped",
+   "place": "body",
+   "context": "Enhance Desire Without Dilution"
+  },
+  {
+   "panel": "S07-P028",
+   "label": "Explore the Programme",
+   "route": "/programmes/digital-growth",
+   "url": "/programmes/client-experience",
+   "status": "mapped",
+   "place": "body",
+   "context": "Client Experience"
+  },
+  {
+   "panel": "S07-P028",
+   "label": "Explore the Solution",
+   "route": "/programmes/digital-growth",
+   "url": "/solutions/applied-ai",
+   "status": "mapped",
+   "place": "body",
+   "context": "Applied AI"
+  },
+  {
+   "panel": "S07-P029",
+   "label": "Start a Conversation",
+   "route": "/programmes/digital-growth",
+   "url": "/lets-talk?programme=digital-growth",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S07-P029",
+   "label": "Explore the Demand Quality Check",
+   "route": "/programmes/digital-growth",
+   "url": "/solutions/enhance-desire-without-dilution#s03-p008",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S07-P030",
+   "label": "Discuss Client Experience",
+   "route": "/programmes/client-experience",
+   "url": "/lets-talk?programme=client-experience",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S07-P030",
+   "label": "Explore Experience Design",
+   "route": "/programmes/client-experience",
+   "url": "/solutions/experience-design",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S07-P033",
+   "label": "Discuss a Client Journey",
+   "route": "/programmes/client-experience",
+   "url": "/lets-talk?programme=client-experience",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S07-P036",
+   "label": "Explore the Solution",
+   "route": "/programmes/client-experience",
+   "url": "/solutions/transform-the-client-experience",
+   "status": "mapped",
+   "place": "body",
+   "context": "Transform the Client Experience"
+  },
+  {
+   "panel": "S07-P036",
+   "label": "Explore the Programme",
+   "route": "/programmes/client-experience",
+   "url": "/programmes/digital-growth",
+   "status": "mapped",
+   "place": "body",
+   "context": "Digital Growth"
+  },
+  {
+   "panel": "S07-P036",
+   "label": "Explore the Programme",
+   "route": "/programmes/client-experience",
+   "url": "/programmes/maison-formation",
+   "status": "mapped",
+   "place": "body",
+   "context": "Maison Formation"
+  },
+  {
+   "panel": "S07-P037",
+   "label": "Start a Conversation",
+   "route": "/programmes/client-experience",
+   "url": "/lets-talk?programme=client-experience",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S07-P037",
+   "label": "Explore Related Solutions",
+   "route": "/programmes/client-experience",
+   "url": "/solutions",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S07-P038",
+   "label": "Discuss an AI Use Case",
+   "route": "/programmes/agentic-ai",
+   "url": "/lets-talk?programme=agentic-ai",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S07-P038",
+   "label": "Explore Applied AI",
+   "route": "/programmes/agentic-ai",
+   "url": "/solutions/applied-ai",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S07-P041",
+   "label": "Discuss a Use Case",
+   "route": "/programmes/agentic-ai",
+   "url": "/lets-talk?programme=agentic-ai",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S07-P044",
+   "label": "Explore the Solution",
+   "route": "/programmes/agentic-ai",
+   "url": "/solutions/applied-ai",
+   "status": "mapped",
+   "place": "body",
+   "context": "Applied AI"
+  },
+  {
+   "panel": "S07-P044",
+   "label": "Explore the Programme",
+   "route": "/programmes/agentic-ai",
+   "url": "/programmes/digital-growth",
+   "status": "mapped",
+   "place": "body",
+   "context": "Digital Growth"
+  },
+  {
+   "panel": "S07-P044",
+   "label": "Explore the Programme",
+   "route": "/programmes/agentic-ai",
+   "url": "/programmes/brand-ip-stewardship",
+   "status": "mapped",
+   "place": "body",
+   "context": "Brand & IP Stewardship"
+  },
+  {
+   "panel": "S07-P045",
+   "label": "Start a Conversation",
+   "route": "/programmes/agentic-ai",
+   "url": "/lets-talk?programme=agentic-ai",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S07-P045",
+   "label": "Explore Applied AI",
+   "route": "/programmes/agentic-ai",
+   "url": "/solutions/applied-ai",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S07-P046",
+   "label": "Discuss Stewardship",
+   "route": "/programmes/brand-ip-stewardship",
+   "url": "/lets-talk?programme=brand-ip-stewardship",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S07-P046",
+   "label": "Explore Patrimony & IP",
+   "route": "/programmes/brand-ip-stewardship",
+   "url": "/solutions/activate-patrimony-ip",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S07-P049",
+   "label": "Read Touch Me Not",
+   "route": "/programmes/brand-ip-stewardship",
+   "url": "/research/touch-me-not",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S07-P052",
+   "label": "Explore the Solution",
+   "route": "/programmes/brand-ip-stewardship",
+   "url": "/solutions/activate-patrimony-ip",
+   "status": "mapped",
+   "place": "body",
+   "context": "Activate Patrimony & IP"
+  },
+  {
+   "panel": "S07-P052",
+   "label": "Explore the Solution",
+   "route": "/programmes/brand-ip-stewardship",
+   "url": "/solutions/strengthen-an-icon",
+   "status": "mapped",
+   "place": "body",
+   "context": "Strengthen an Icon"
+  },
+  {
+   "panel": "S07-P052",
+   "label": "Explore the Observatory",
+   "route": "/programmes/brand-ip-stewardship",
+   "url": "/the-observatory",
+   "status": "mapped",
+   "place": "body",
+   "context": "The Observatory for CMOs"
+  },
+  {
+   "panel": "S07-P053",
+   "label": "Start a Conversation",
+   "route": "/programmes/brand-ip-stewardship",
+   "url": "/lets-talk?programme=brand-ip-stewardship",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S07-P053",
+   "label": "Read Touch Me Not",
+   "route": "/programmes/brand-ip-stewardship",
+   "url": "/research/touch-me-not",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P001",
+   "label": "Explore the Research",
+   "route": "/research",
+   "url": "in-page section",
+   "status": "self-anchor",
+   "place": "hero"
+  },
+  {
+   "panel": "S08-P001",
+   "label": "Request a Conversation",
+   "route": "/research",
+   "url": "/lets-talk?topic=research",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S08-P004",
+   "label": "The Observatory",
+   "route": "/research",
+   "url": "/the-observatory",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P004",
+   "label": "Programmes",
+   "route": "/research",
+   "url": "/programmes",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P004",
+   "label": "The Future of Luxury",
+   "route": "/research",
+   "url": "/the-future-of-luxury",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P005",
+   "label": "Start a Conversation",
+   "route": "/research",
+   "url": "/lets-talk?topic=research",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P005",
+   "label": "Explore The Observatory",
+   "route": "/research",
+   "url": "/the-observatory",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P006",
+   "label": "About the Book",
+   "route": "/research/touch-me-not",
+   "url": "in-page section",
+   "status": "self-anchor",
+   "place": "hero"
+  },
+  {
+   "panel": "S08-P006",
+   "label": "Explore The Luxury 100",
+   "route": "/research/touch-me-not",
+   "url": "/research/luxury-100",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S08-P008",
+   "label": "View the Contents",
+   "route": "/research/touch-me-not",
+   "url": "in-page section",
+   "status": "self-anchor",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P010",
+   "label": "The Luxury 100",
+   "route": "/research/touch-me-not",
+   "url": "/research/luxury-100",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P010",
+   "label": "The Observatory",
+   "route": "/research/touch-me-not",
+   "url": "/the-observatory",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P010",
+   "label": "Brand & IP Stewardship",
+   "route": "/research/touch-me-not",
+   "url": "/programmes/brand-ip-stewardship",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P011",
+   "label": "Discuss the Research",
+   "route": "/research/touch-me-not",
+   "url": "/lets-talk?topic=touch-me-not",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P011",
+   "label": "Explore The Observatory",
+   "route": "/research/touch-me-not",
+   "url": "/the-observatory",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P012",
+   "label": "Explore the 2027 Edition",
+   "route": "/research/luxury-100",
+   "url": "in-page section",
+   "status": "self-anchor",
+   "place": "hero"
+  },
+  {
+   "panel": "S08-P012",
+   "label": "Read the Method",
+   "route": "/research/luxury-100",
+   "url": "/the-observatory/how-it-works",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S08-P016",
+   "label": "Touch Me Not",
+   "route": "/research/luxury-100",
+   "url": "/research/touch-me-not",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P016",
+   "label": "The Observatory",
+   "route": "/research/luxury-100",
+   "url": "/the-observatory",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P016",
+   "label": "Strengthen an Icon",
+   "route": "/research/luxury-100",
+   "url": "/solutions/strengthen-an-icon",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P017",
+   "label": "Start a Conversation",
+   "route": "/research/luxury-100",
+   "url": "/lets-talk?topic=luxury-100",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P017",
+   "label": "Explore The Observatory",
+   "route": "/research/luxury-100",
+   "url": "/the-observatory",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P018",
+   "label": "Browse the Papers",
+   "route": "/research/white-papers",
+   "url": "in-page section",
+   "status": "self-anchor",
+   "place": "hero"
+  },
+  {
+   "panel": "S08-P018",
+   "label": "Discuss a Research Question",
+   "route": "/research/white-papers",
+   "url": "/lets-talk?topic=white-papers",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S08-P019",
+   "label": "Request the Paper",
+   "route": "/research/white-papers",
+   "url": "/lets-talk?topic=white-papers&context=The%20New%20Asian%20Maison",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P019",
+   "label": "Explore Maison Formation",
+   "route": "/research/white-papers",
+   "url": "/programmes/maison-formation",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P020",
+   "label": "Register Interest",
+   "route": "/research/white-papers",
+   "url": "/lets-talk?topic=white-papers",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P023",
+   "label": "The Future of Luxury",
+   "route": "/research/white-papers",
+   "url": "/the-future-of-luxury",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P023",
+   "label": "Research Programme",
+   "route": "/research/white-papers",
+   "url": "/research/programme",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P023",
+   "label": "Maison Formation",
+   "route": "/research/white-papers",
+   "url": "/programmes/maison-formation",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P024",
+   "label": "Discuss a Research Question",
+   "route": "/research/white-papers",
+   "url": "/lets-talk?topic=white-papers",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P024",
+   "label": "Browse White Papers",
+   "route": "/research/white-papers",
+   "url": "in-page section",
+   "status": "self-anchor",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P025",
+   "label": "See the Research Themes",
+   "route": "/research/programme",
+   "url": "in-page section",
+   "status": "self-anchor",
+   "place": "hero"
+  },
+  {
+   "panel": "S08-P025",
+   "label": "Propose a Question",
+   "route": "/research/programme",
+   "url": "/lets-talk?topic=research-programme",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S08-P028",
+   "label": "Suggest a Question",
+   "route": "/research/programme",
+   "url": "/lets-talk?topic=research-programme",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P028",
+   "label": "Request a Conversation",
+   "route": "/research/programme",
+   "url": "/lets-talk?topic=research-programme",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P030",
+   "label": "The Observatory",
+   "route": "/research/programme",
+   "url": "/the-observatory",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P030",
+   "label": "White Papers",
+   "route": "/research/programme",
+   "url": "/research/white-papers",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P030",
+   "label": "For Family Offices & Investors",
+   "route": "/research/programme",
+   "url": "/the-observatory/for-family-offices-investors",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P031",
+   "label": "Propose a Question",
+   "route": "/research/programme",
+   "url": "/lets-talk?topic=research-programme",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S08-P031",
+   "label": "Request a Private Briefing",
+   "route": "/research/programme",
+   "url": "/the-observatory/request-a-private-briefing",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S10-P001",
+   "label": "Explore How We Work",
+   "route": "/about",
+   "url": "/about/how-we-work",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S10-P001",
+   "label": "Start a Conversation",
+   "route": "/about",
+   "url": "/lets-talk",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S10-P003",
+   "label": "Origin Story",
+   "route": "/about",
+   "url": "/about/origin-story",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S10-P003",
+   "label": "Manifesto",
+   "route": "/about",
+   "url": "/about/manifesto",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S10-P003",
+   "label": "Why It Matters",
+   "route": "/about",
+   "url": "/about/why-it-matters",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S10-P003",
+   "label": "Partners & People",
+   "route": "/about",
+   "url": "/about/partners-people",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S10-P003",
+   "label": "How We Work",
+   "route": "/about",
+   "url": "/about/how-we-work",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S10-P004",
+   "label": "Start a Conversation",
+   "route": "/about",
+   "url": "/lets-talk",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S10-P008",
+   "label": "Read Touch Me Not",
+   "route": "/about/origin-story",
+   "url": "/research/touch-me-not",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S10-P008",
+   "label": "Explore The Observatory",
+   "route": "/about/origin-story",
+   "url": "/the-observatory",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S10-P009",
+   "label": "Explore Solutions",
+   "route": "/about/origin-story",
+   "url": "/solutions",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S10-P010",
+   "label": "Touch Me Not",
+   "route": "/about/origin-story",
+   "url": "/research/touch-me-not",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S10-P010",
+   "label": "The Observatory",
+   "route": "/about/origin-story",
+   "url": "/the-observatory",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S10-P010",
+   "label": "Maison Formation",
+   "route": "/about/origin-story",
+   "url": "/programmes/maison-formation",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S10-P010",
+   "label": "Talk Through Your Next Chapter",
+   "route": "/about/origin-story",
+   "url": "/lets-talk",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S10-P015",
+   "label": "Have a Conversation",
+   "route": "/about/manifesto",
+   "url": "/lets-talk",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S10-P019",
+   "label": "Explore The Observatory",
+   "route": "/about/why-it-matters",
+   "url": "/the-observatory",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S10-P021",
+   "label": "Discuss What Is at Stake",
+   "route": "/about/why-it-matters",
+   "url": "/lets-talk",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S10-P024",
+   "label": "Read The Future of Luxury",
+   "route": "/about/partners-people",
+   "url": "/the-future-of-luxury",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S10-P025",
+   "label": "Explore Brand & IP Stewardship",
+   "route": "/about/partners-people",
+   "url": "/programmes/brand-ip-stewardship",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S10-P027",
+   "label": "Start a Conversation",
+   "route": "/about/partners-people",
+   "url": "/lets-talk",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S10-P029",
+   "label": "Start a Conversation",
+   "route": "/about/how-we-work",
+   "url": "/lets-talk",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S10-P031",
+   "label": "How the Observatory Works",
+   "route": "/about/how-we-work",
+   "url": "/the-observatory/how-it-works",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S10-P032",
+   "label": "Talk It Through",
+   "route": "/about/how-we-work",
+   "url": "/lets-talk",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S10-P033",
+   "label": "Explore Solutions",
+   "route": "/about/how-we-work",
+   "url": "/solutions",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S10-P033",
+   "label": "Our Programmes",
+   "route": "/about/how-we-work",
+   "url": "/programmes",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S10-P033",
+   "label": "Request a Private Briefing",
+   "route": "/about/how-we-work",
+   "url": "/the-observatory/request-a-private-briefing",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S10-P033",
+   "label": "Start a Conversation",
+   "route": "/about/how-we-work",
+   "url": "/lets-talk",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S11-P001",
+   "label": "Start a Conversation",
+   "route": "/lets-talk",
+   "url": "#s11-p002",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S11-P003",
+   "label": "Email Summit",
+   "route": "/lets-talk",
+   "url": "mailto:hello@summitcommunication.group",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S11-P005",
+   "label": "Explore The Observatory",
+   "route": "/lets-talk",
+   "url": "/the-observatory",
+   "status": "mapped",
+   "place": "body",
+   "context": "The Observatory"
+  },
+  {
+   "panel": "S11-P005",
+   "label": "View Programmes",
+   "route": "/lets-talk",
+   "url": "/programmes",
+   "status": "mapped",
+   "place": "body",
+   "context": "Our Programmes"
+  },
+  {
+   "panel": "S11-P005",
+   "label": "Read the Essays",
+   "route": "/lets-talk",
+   "url": "/the-future-of-luxury",
+   "status": "mapped",
+   "place": "body",
+   "context": "The Future of Luxury"
+  },
+  {
+   "panel": "S11-P007",
+   "label": "Client Sign In",
+   "route": "/client-access",
+   "url": null,
+   "status": "not-built",
+   "place": "hero"
+  },
+  {
+   "panel": "S11-P008",
+   "label": "Contact Summit",
+   "route": "/client-access",
+   "url": "/lets-talk?topic=client-access",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S11-P009",
+   "label": "How We Work",
+   "route": "/client-access",
+   "url": "/about/how-we-work",
+   "status": "mapped",
+   "place": "body",
+   "context": "How We Work"
+  },
+  {
+   "panel": "S11-P009",
+   "label": "Let’s Talk",
+   "route": "/client-access",
+   "url": "/lets-talk",
+   "status": "mapped",
+   "place": "body",
+   "context": "Let’s Talk"
+  },
+  {
+   "panel": "S11-P011",
+   "label": "Explore Opportunities",
+   "route": "/careers",
+   "url": "#s11-p013",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S11-P013",
+   "label": "Register Your Interest",
+   "route": "/careers",
+   "url": "/lets-talk?intent=career",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S11-P014",
+   "label": "How We Work",
+   "route": "/careers",
+   "url": "/about/how-we-work",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S11-P014",
+   "label": "Our Research",
+   "route": "/careers",
+   "url": "/research",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S11-P014",
+   "label": "Meet the People",
+   "route": "/careers",
+   "url": "/about/partners-people",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S11-P016",
+   "label": "Send a Media Enquiry",
+   "route": "/media-enquiries",
+   "url": "#s11-p017",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S11-P019",
+   "label": "Email Summit",
+   "route": "/media-enquiries",
+   "url": "mailto:hello@summitcommunication.group",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S11-P018",
+   "label": "The Future of Luxury",
+   "route": "/media-enquiries",
+   "url": "/the-future-of-luxury",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S11-P018",
+   "label": "Touch Me Not",
+   "route": "/media-enquiries",
+   "url": "/research/touch-me-not",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S11-P018",
+   "label": "The Observatory",
+   "route": "/media-enquiries",
+   "url": "/the-observatory",
+   "status": "mapped-title-link",
+   "place": "body"
+  },
+  {
+   "panel": "S11-P018",
+   "label": "Read the Essays",
+   "route": "/media-enquiries",
+   "url": "/the-future-of-luxury",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S11-P018",
+   "label": "Explore Research",
+   "route": "/media-enquiries",
+   "url": "/research",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S11-P021",
+   "label": "Read the Privacy Policy",
+   "route": "/privacy",
+   "url": "#privacy-policy",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S11-P022",
+   "label": "Subscription Preferences",
+   "route": "/privacy",
+   "url": null,
+   "status": "not-built",
+   "place": "body"
+  },
+  {
+   "panel": "S11-P023",
+   "label": "Privacy Enquiry",
+   "route": "/privacy",
+   "url": "/lets-talk?topic=privacy",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S11-P025",
+   "label": "Read the Terms",
+   "route": "/terms",
+   "url": "#terms-of-use",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S11-P026",
+   "label": "Media Enquiries",
+   "route": "/terms",
+   "url": "/media-enquiries",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S11-P027",
+   "label": "Explore Research",
+   "route": "/terms",
+   "url": "/research",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S13-P001",
+   "label": "Talk About a Watch or Jewellery Brief",
+   "route": "/solutions/watches-jewellery",
+   "url": "/lets-talk?topic=watches-jewellery",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S13-P005",
+   "label": "Explore icon stewardship",
+   "route": "/solutions/watches-jewellery",
+   "url": "/solutions/strengthen-an-icon",
+   "status": "mapped",
+   "place": "body",
+   "context": "Strengthen an Icon"
+  },
+  {
+   "panel": "S13-P005",
+   "label": "Explore the programme",
+   "route": "/solutions/watches-jewellery",
+   "url": "/programmes/brand-ip-stewardship",
+   "status": "mapped",
+   "place": "body",
+   "context": "Brand & IP Stewardship"
+  },
+  {
+   "panel": "S13-P005",
+   "label": "Explore the research",
+   "route": "/solutions/watches-jewellery",
+   "url": "/the-observatory/field",
+   "status": "mapped",
+   "place": "body",
+   "context": "The Observatory — The Field"
+  },
+  {
+   "panel": "S13-P007",
+   "label": "Talk About a Watch or Jewellery Brief",
+   "route": "/solutions/watches-jewellery",
+   "url": "/lets-talk?topic=watches-jewellery",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S13-P008",
+   "label": "Discuss the House’s Next Chapter",
+   "route": "/solutions/fashion-accessories",
+   "url": "/lets-talk?topic=fashion-accessories",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S13-P012",
+   "label": "Explore repositioning",
+   "route": "/solutions/fashion-accessories",
+   "url": "/solutions/reposition-a-maison",
+   "status": "mapped",
+   "place": "body",
+   "context": "Reposition a Maison"
+  },
+  {
+   "panel": "S13-P012",
+   "label": "Explore patrimony",
+   "route": "/solutions/fashion-accessories",
+   "url": "/solutions/activate-patrimony-ip",
+   "status": "mapped",
+   "place": "body",
+   "context": "Activate Patrimony & IP"
+  },
+  {
+   "panel": "S13-P012",
+   "label": "Explore the essay",
+   "route": "/solutions/fashion-accessories",
+   "url": null,
+   "status": "pending-essay",
+   "place": "body",
+   "context": "The Future of Luxury"
+  },
+  {
+   "panel": "S13-P014",
+   "label": "Discuss the House’s Next Chapter",
+   "route": "/solutions/fashion-accessories",
+   "url": "/lets-talk?topic=fashion-accessories",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S13-P015",
+   "label": "Talk About Beauty or Fragrance",
+   "route": "/solutions/beauty-fragrance",
+   "url": "/lets-talk?topic=beauty-fragrance",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S13-P019",
+   "label": "Explore demand",
+   "route": "/solutions/beauty-fragrance",
+   "url": "/solutions/enhance-desire-without-dilution",
+   "status": "mapped",
+   "place": "body",
+   "context": "Enhance Desire Without Dilution"
+  },
+  {
+   "panel": "S13-P019",
+   "label": "Explore the programme",
+   "route": "/solutions/beauty-fragrance",
+   "url": "/programmes/digital-growth",
+   "status": "mapped",
+   "place": "body",
+   "context": "Digital Growth"
+  },
+  {
+   "panel": "S13-P019",
+   "label": "Explore the research",
+   "route": "/solutions/beauty-fragrance",
+   "url": "/research/luxury-100",
+   "status": "mapped",
+   "place": "body",
+   "context": "The Luxury 100"
+  },
+  {
+   "panel": "S13-P021",
+   "label": "Talk About Beauty or Fragrance",
+   "route": "/solutions/beauty-fragrance",
+   "url": "/lets-talk?topic=beauty-fragrance",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S13-P022",
+   "label": "Discuss a Wine or Spirits Brief",
+   "route": "/solutions/wine-spirits",
+   "url": "/lets-talk?topic=wine-spirits",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S13-P026",
+   "label": "Explore patrimony",
+   "route": "/solutions/wine-spirits",
+   "url": "/solutions/activate-patrimony-ip",
+   "status": "mapped",
+   "place": "body",
+   "context": "Activate Patrimony & IP"
+  },
+  {
+   "panel": "S13-P026",
+   "label": "Explore the programme",
+   "route": "/solutions/wine-spirits",
+   "url": "/programmes/client-experience",
+   "status": "mapped",
+   "place": "body",
+   "context": "Client Experience"
+  },
+  {
+   "panel": "S13-P026",
+   "label": "Explore the research",
+   "route": "/solutions/wine-spirits",
+   "url": "/research/luxury-100",
+   "status": "mapped",
+   "place": "body",
+   "context": "The Luxury 100"
+  },
+  {
+   "panel": "S13-P028",
+   "label": "Discuss a Wine or Spirits Brief",
+   "route": "/solutions/wine-spirits",
+   "url": "/lets-talk?topic=wine-spirits",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S13-P029",
+   "label": "Discuss an Automotive Brief",
+   "route": "/solutions/automotive",
+   "url": "/lets-talk?topic=automotive",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S13-P033",
+   "label": "Explore repositioning",
+   "route": "/solutions/automotive",
+   "url": "/solutions/reposition-a-maison",
+   "status": "mapped",
+   "place": "body",
+   "context": "Reposition a Maison"
+  },
+  {
+   "panel": "S13-P033",
+   "label": "Explore icon stewardship",
+   "route": "/solutions/automotive",
+   "url": "/solutions/strengthen-an-icon",
+   "status": "mapped",
+   "place": "body",
+   "context": "Strengthen an Icon"
+  },
+  {
+   "panel": "S13-P033",
+   "label": "Read the essay",
+   "route": "/solutions/automotive",
+   "url": null,
+   "status": "pending-essay",
+   "place": "body",
+   "context": "The Future of Luxury"
+  },
+  {
+   "panel": "S13-P035",
+   "label": "Discuss an Automotive Brief",
+   "route": "/solutions/automotive",
+   "url": "/lets-talk?topic=automotive",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S13-P036",
+   "label": "Discuss a Property or Hospitality Brief",
+   "route": "/solutions/real-estate-hospitality",
+   "url": "/lets-talk?topic=real-estate-hospitality",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S13-P040",
+   "label": "Explore experience",
+   "route": "/solutions/real-estate-hospitality",
+   "url": "/solutions/transform-the-client-experience",
+   "status": "mapped",
+   "place": "body",
+   "context": "Transform the Client Experience"
+  },
+  {
+   "panel": "S13-P040",
+   "label": "Explore digital commerce",
+   "route": "/solutions/real-estate-hospitality",
+   "url": "/solutions/digital-commerce",
+   "status": "mapped",
+   "place": "body",
+   "context": "Digital Commerce"
+  },
+  {
+   "panel": "S13-P040",
+   "label": "Explore the programme",
+   "route": "/solutions/real-estate-hospitality",
+   "url": "/programmes/client-experience",
+   "status": "mapped",
+   "place": "body",
+   "context": "Client Experience"
+  },
+  {
+   "panel": "S13-P042",
+   "label": "Discuss a Property or Hospitality Brief",
+   "route": "/solutions/real-estate-hospitality",
+   "url": "/lets-talk?topic=real-estate-hospitality",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S13-P043",
+   "label": "Discuss an Art or Collectibles Brief",
+   "route": "/solutions/art-collectibles",
+   "url": "/lets-talk?topic=art-collectibles",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S13-P047",
+   "label": "Explore due diligence",
+   "route": "/solutions/art-collectibles",
+   "url": "/solutions/maison-due-diligence",
+   "status": "mapped",
+   "place": "body",
+   "context": "Maison Due Diligence"
+  },
+  {
+   "panel": "S13-P047",
+   "label": "Explore the programme",
+   "route": "/solutions/art-collectibles",
+   "url": "/programmes/editorial-influence",
+   "status": "mapped",
+   "place": "body",
+   "context": "Editorial & Influence"
+  },
+  {
+   "panel": "S13-P047",
+   "label": "Explore the book",
+   "route": "/solutions/art-collectibles",
+   "url": "/research/touch-me-not",
+   "status": "mapped",
+   "place": "body",
+   "context": "Touch Me Not"
+  },
+  {
+   "panel": "S13-P049",
+   "label": "Discuss an Art or Collectibles Brief",
+   "route": "/solutions/art-collectibles",
+   "url": "/lets-talk?topic=art-collectibles",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S13-P050",
+   "label": "Request a Private Conversation",
+   "route": "/solutions/private-banking-wealth-management",
+   "url": "/lets-talk?topic=private-banking-wealth-management",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S13-P054",
+   "label": "Explore the briefing",
+   "route": "/solutions/private-banking-wealth-management",
+   "url": "/the-observatory/for-family-offices-investors",
+   "status": "mapped",
+   "place": "body",
+   "context": "The Observatory — For Family Offices & Investors"
+  },
+  {
+   "panel": "S13-P054",
+   "label": "Explore thought leadership",
+   "route": "/solutions/private-banking-wealth-management",
+   "url": "/solutions/develop-thought-leadership",
+   "status": "mapped",
+   "place": "body",
+   "context": "Develop Thought Leadership"
+  },
+  {
+   "panel": "S13-P054",
+   "label": "Explore the programme",
+   "route": "/solutions/private-banking-wealth-management",
+   "url": "/programmes/client-experience",
+   "status": "mapped",
+   "place": "body",
+   "context": "Client Experience"
+  },
+  {
+   "panel": "S13-P056",
+   "label": "Request a Private Conversation",
+   "route": "/solutions/private-banking-wealth-management",
+   "url": "/lets-talk?topic=private-banking-wealth-management",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S13-P057",
+   "label": "Talk Through a Strategic Decision",
+   "route": "/solutions/strategy-planning",
+   "url": "/lets-talk?topic=strategy-planning",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S13-P061",
+   "label": "Explore repositioning",
+   "route": "/solutions/strategy-planning",
+   "url": "/solutions/reposition-a-maison",
+   "status": "mapped",
+   "place": "body",
+   "context": "Reposition a Maison"
+  },
+  {
+   "panel": "S13-P061",
+   "label": "Explore the programme",
+   "route": "/solutions/strategy-planning",
+   "url": "/programmes/maison-formation",
+   "status": "mapped",
+   "place": "body",
+   "context": "Maison Formation"
+  },
+  {
+   "panel": "S13-P061",
+   "label": "Explore the research",
+   "route": "/solutions/strategy-planning",
+   "url": "/the-observatory",
+   "status": "mapped",
+   "place": "body",
+   "context": "The Observatory"
+  },
+  {
+   "panel": "S13-P063",
+   "label": "Talk Through a Strategic Decision",
+   "route": "/solutions/strategy-planning",
+   "url": "/lets-talk?topic=strategy-planning",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S13-P064",
+   "label": "Discuss Brand & Marketing",
+   "route": "/solutions/brand-marketing",
+   "url": "/lets-talk?topic=brand-marketing",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S13-P068",
+   "label": "Explore demand",
+   "route": "/solutions/brand-marketing",
+   "url": "/solutions/enhance-desire-without-dilution",
+   "status": "mapped",
+   "place": "body",
+   "context": "Enhance Desire Without Dilution"
+  },
+  {
+   "panel": "S13-P068",
+   "label": "Explore the programme",
+   "route": "/solutions/brand-marketing",
+   "url": "/programmes/digital-growth",
+   "status": "mapped",
+   "place": "body",
+   "context": "Digital Growth"
+  },
+  {
+   "panel": "S13-P068",
+   "label": "Explore the research",
+   "route": "/solutions/brand-marketing",
+   "url": "/research/luxury-100",
+   "status": "mapped",
+   "place": "body",
+   "context": "The Luxury 100"
+  },
+  {
+   "panel": "S13-P070",
+   "label": "Discuss Brand & Marketing",
+   "route": "/solutions/brand-marketing",
+   "url": "/lets-talk?topic=brand-marketing",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S13-P071",
+   "label": "Discuss an Editorial Brief",
+   "route": "/solutions/editorial-influence",
+   "url": "/lets-talk?topic=editorial-influence",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S13-P075",
+   "label": "Explore the solution",
+   "route": "/solutions/editorial-influence",
+   "url": "/solutions/develop-thought-leadership",
+   "status": "mapped",
+   "place": "body",
+   "context": "Develop Thought Leadership"
+  },
+  {
+   "panel": "S13-P075",
+   "label": "Explore the programme",
+   "route": "/solutions/editorial-influence",
+   "url": "/programmes/editorial-influence",
+   "status": "mapped",
+   "place": "body",
+   "context": "Editorial & Influence"
+  },
+  {
+   "panel": "S13-P075",
+   "label": "Explore the publication",
+   "route": "/solutions/editorial-influence",
+   "url": "/the-future-of-luxury",
+   "status": "mapped",
+   "place": "body",
+   "context": "The Future of Luxury"
+  },
+  {
+   "panel": "S13-P077",
+   "label": "Discuss an Editorial Brief",
+   "route": "/solutions/editorial-influence",
+   "url": "/lets-talk?topic=editorial-influence",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S13-P078",
+   "label": "Discuss an Experience Brief",
+   "route": "/solutions/experience-design",
+   "url": "/lets-talk?topic=experience-design",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S13-P082",
+   "label": "Explore the solution",
+   "route": "/solutions/experience-design",
+   "url": "/solutions/transform-the-client-experience",
+   "status": "mapped",
+   "place": "body",
+   "context": "Transform the Client Experience"
+  },
+  {
+   "panel": "S13-P082",
+   "label": "Explore the programme",
+   "route": "/solutions/experience-design",
+   "url": "/programmes/client-experience",
+   "status": "mapped",
+   "place": "body",
+   "context": "Client Experience"
+  },
+  {
+   "panel": "S13-P082",
+   "label": "Explore the paper",
+   "route": "/solutions/experience-design",
+   "url": "/research/white-papers",
+   "status": "mapped",
+   "place": "body",
+   "context": "The New Asian Maison"
+  },
+  {
+   "panel": "S13-P084",
+   "label": "Discuss an Experience Brief",
+   "route": "/solutions/experience-design",
+   "url": "/lets-talk?topic=experience-design",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S13-P085",
+   "label": "Discuss Digital Commerce",
+   "route": "/solutions/digital-commerce",
+   "url": "/lets-talk?topic=digital-commerce",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S13-P089",
+   "label": "Explore demand",
+   "route": "/solutions/digital-commerce",
+   "url": "/solutions/enhance-desire-without-dilution",
+   "status": "mapped",
+   "place": "body",
+   "context": "Enhance Desire Without Dilution"
+  },
+  {
+   "panel": "S13-P089",
+   "label": "Explore the programme",
+   "route": "/solutions/digital-commerce",
+   "url": "/programmes/digital-growth",
+   "status": "mapped",
+   "place": "body",
+   "context": "Digital Growth"
+  },
+  {
+   "panel": "S13-P089",
+   "label": "Explore experience",
+   "route": "/solutions/digital-commerce",
+   "url": "/solutions/transform-the-client-experience",
+   "status": "mapped",
+   "place": "body",
+   "context": "Transform the Client Experience"
+  },
+  {
+   "panel": "S13-P091",
+   "label": "Discuss Digital Commerce",
+   "route": "/solutions/digital-commerce",
+   "url": "/lets-talk?topic=digital-commerce",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S13-P092",
+   "label": "Discuss Product, IP & Patrimony",
+   "route": "/solutions/product-ip-patrimony",
+   "url": "/lets-talk?topic=product-ip-patrimony",
+   "status": "mapped",
+   "place": "hero"
+  },
+  {
+   "panel": "S13-P096",
+   "label": "Explore patrimony",
+   "route": "/solutions/product-ip-patrimony",
+   "url": "/solutions/activate-patrimony-ip",
+   "status": "mapped",
+   "place": "body",
+   "context": "Activate Patrimony & IP"
+  },
+  {
+   "panel": "S13-P096",
+   "label": "Explore the programme",
+   "route": "/solutions/product-ip-patrimony",
+   "url": "/programmes/brand-ip-stewardship",
+   "status": "mapped",
+   "place": "body",
+   "context": "Brand & IP Stewardship"
+  },
+  {
+   "panel": "S13-P096",
+   "label": "Explore the research",
+   "route": "/solutions/product-ip-patrimony",
+   "url": "/the-observatory",
+   "status": "mapped",
+   "place": "body",
+   "context": "The Observatory"
+  },
+  {
+   "panel": "S13-P098",
+   "label": "Discuss Product, IP & Patrimony",
+   "route": "/solutions/product-ip-patrimony",
+   "url": "/lets-talk?topic=product-ip-patrimony",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
+   "panel": "S02-P001",
+   "label": "Find Your Starting Point",
+   "route": "/solutions",
+   "url": "#by-need",
+   "status": "mapped (Production Register CTA map)",
+   "place": "hero"
+  },
+  {
+   "panel": "S02-P001",
+   "label": "Start a Conversation",
+   "route": "/solutions",
+   "url": "/lets-talk",
+   "status": "mapped (Production Register CTA map)",
+   "place": "hero"
+  },
+  {
+   "panel": "S01-P001",
+   "label": "Explore Solutions",
+   "route": "/",
+   "url": "/solutions",
+   "status": "mapped",
+   "place": "home"
+  },
+  {
+   "panel": "S01-P001",
+   "label": "Discuss a Brief",
+   "route": "/",
+   "url": "/lets-talk",
+   "status": "mapped",
+   "place": "home"
+  },
+  {
+   "panel": "S01-P002",
+   "label": "Why It Matters",
+   "route": "/",
+   "url": "/about/why-it-matters",
+   "status": "mapped",
+   "place": "home"
+  },
+  {
+   "panel": "S01-P003",
+   "label": "Explore Needs",
+   "route": "/",
+   "url": "/solutions#by-need",
+   "status": "mapped",
+   "place": "home"
+  },
+  {
+   "panel": "S01-P003",
+   "label": "Explore Functions",
+   "route": "/",
+   "url": "/solutions#by-function",
+   "status": "mapped",
+   "place": "home"
+  },
+  {
+   "panel": "S01-P003",
+   "label": "Explore Industries",
+   "route": "/",
+   "url": "/solutions#by-industry",
+   "status": "mapped",
+   "place": "home"
+  },
+  {
+   "panel": "S01-P004",
+   "label": "Explore The Observatory",
+   "route": "/",
+   "url": "/the-observatory",
+   "status": "mapped",
+   "place": "home"
+  },
+  {
+   "panel": "S01-P004",
+   "label": "Request a Private Briefing",
+   "route": "/",
+   "url": "/the-observatory/request-a-private-briefing",
+   "status": "mapped",
+   "place": "home"
+  },
+  {
+   "panel": "S01-P005",
+   "label": "Maison Formation",
+   "route": "/",
+   "url": "/programmes/maison-formation",
+   "status": "mapped-title-link",
+   "place": "home"
+  },
+  {
+   "panel": "S01-P005",
+   "label": "Editorial & Influence",
+   "route": "/",
+   "url": "/programmes/editorial-influence",
+   "status": "mapped-title-link",
+   "place": "home"
+  },
+  {
+   "panel": "S01-P005",
+   "label": "Digital Growth",
+   "route": "/",
+   "url": "/programmes/digital-growth",
+   "status": "mapped-title-link",
+   "place": "home"
+  },
+  {
+   "panel": "S01-P005",
+   "label": "Client Experience",
+   "route": "/",
+   "url": "/programmes/client-experience",
+   "status": "mapped-title-link",
+   "place": "home"
+  },
+  {
+   "panel": "S01-P005",
+   "label": "Agentic AI",
+   "route": "/",
+   "url": "/programmes/agentic-ai",
+   "status": "mapped-title-link",
+   "place": "home"
+  },
+  {
+   "panel": "S01-P005",
+   "label": "Brand & IP Stewardship",
+   "route": "/",
+   "url": "/programmes/brand-ip-stewardship",
+   "status": "mapped-title-link",
+   "place": "home"
+  },
+  {
+   "panel": "S01-P005",
+   "label": "Explore Programmes",
+   "route": "/",
+   "url": "/programmes",
+   "status": "mapped",
+   "place": "home"
+  },
+  {
+   "panel": "S01-P006",
+   "label": "Touch Me Not",
+   "route": "/",
+   "url": "/research/touch-me-not",
+   "status": "mapped-title-link",
+   "place": "home"
+  },
+  {
+   "panel": "S01-P006",
+   "label": "The Luxury 100",
+   "route": "/",
+   "url": "/research/luxury-100",
+   "status": "mapped-title-link",
+   "place": "home"
+  },
+  {
+   "panel": "S01-P006",
+   "label": "The Observatory",
+   "route": "/",
+   "url": "/the-observatory",
+   "status": "mapped-title-link",
+   "place": "home"
+  },
+  {
+   "panel": "S01-P006",
+   "label": "Explore Research",
+   "route": "/",
+   "url": "/research",
+   "status": "mapped",
+   "place": "home"
+  },
+  {
+   "panel": "S01-P007",
+   "label": "Read the Essays",
+   "route": "/",
+   "url": "/the-future-of-luxury",
+   "status": "mapped",
+   "place": "home"
+  },
+  {
+   "panel": "S01-P007",
+   "label": "Subscribe",
+   "route": "/",
+   "url": "/the-future-of-luxury#subscribe",
+   "status": "mapped",
+   "place": "home"
+  },
+  {
+   "panel": "S01-P008",
+   "label": "Discuss a Brief",
+   "route": "/",
+   "url": "/lets-talk",
+   "status": "mapped",
+   "place": "home"
+  },
+  {
+   "panel": "S01-P008",
+   "label": "Private Enquiries",
+   "route": "/",
+   "url": "/the-observatory/request-a-private-briefing",
+   "status": "mapped",
+   "place": "home"
+  }
+ ],
+ "topics": {
+  "general": "",
+  "privacy": "Privacy",
+  "client-access": "Client Access",
+  "the-future-of-luxury": "The Future of Luxury",
+  "build-a-maison": "Build a Maison",
+  "reposition-a-maison": "Reposition a Maison",
+  "demand-quality": "Enhance Desire Without Dilution",
+  "strengthen-an-icon": "Strengthen an Icon",
+  "activate-patrimony-ip": "Activate Patrimony & IP",
+  "transform-the-client-experience": "Transform the Client Experience",
+  "develop-thought-leadership": "Develop Thought Leadership",
+  "applied-ai": "Applied AI",
+  "investment-acquisitions": "Investment & Acquisitions",
+  "programme:maison-formation": "Maison Formation",
+  "programme:editorial-influence": "Editorial & Influence",
+  "programme:digital-growth": "Digital Growth",
+  "programme:client-experience": "Client Experience",
+  "programme:agentic-ai": "Agentic AI",
+  "programme:brand-ip-stewardship": "Brand & IP Stewardship",
+  "research": "Research",
+  "touch-me-not": "Touch Me Not",
+  "luxury-100": "The Luxury 100",
+  "white-papers": "White Papers",
+  "research-programme": "Research Programme",
+  "watches-jewellery": "Watches & Jewellery",
+  "fashion-accessories": "Fashion & Accessories",
+  "beauty-fragrance": "Beauty & Fragrance",
+  "wine-spirits": "Wine & Spirits",
+  "automotive": "Automotive",
+  "real-estate-hospitality": "Real Estate & Hospitality",
+  "art-collectibles": "Art & Collectibles",
+  "private-banking-wealth-management": "Private Banking & Wealth Management",
+  "strategy-planning": "Strategy & Planning",
+  "brand-marketing": "Brand & Marketing",
+  "editorial-influence": "Editorial & Influence",
+  "experience-design": "Experience Design",
+  "digital-commerce": "Digital Commerce",
+  "product-ip-patrimony": "Product, IP & Patrimony"
+ },
+ "pending": [
+  {
+   "panel": "S03-P005",
+   "route": "/solutions/reposition-a-maison",
+   "label": "Further Reading — Porsche Called 911. Ferrari Never Forgot It Was Luxury",
+   "status": "pending-essay"
+  },
+  {
+   "panel": "S03-P009",
+   "route": "/solutions/enhance-desire-without-dilution",
+   "label": "Chanel Bought Charvet Because Hermès Was Right All Along",
+   "status": "pending-essay"
+  },
+  {
+   "panel": "S04-P003",
+   "route": "/solutions/activate-patrimony-ip",
+   "label": "Read Chanel Bought Charvet Because Hermès Was Right All Along",
+   "status": "pending-essay"
+  },
+  {
+   "panel": "S11-P007",
+   "route": "/client-access",
+   "label": "Client Sign In",
+   "status": "not-built"
+  },
+  {
+   "panel": "S11-P022",
+   "route": "/privacy",
+   "label": "Subscription Preferences",
+   "status": "not-built"
+  },
+  {
+   "panel": "S13-P012",
+   "route": "/solutions/fashion-accessories",
+   "label": "Explore the essay",
+   "status": "pending-essay"
+  },
+  {
+   "panel": "S13-P033",
+   "route": "/solutions/automotive",
+   "label": "Read the essay",
+   "status": "pending-essay"
+  },
+  {
+   "panel": "S01-P007",
+   "route": "/",
+   "label": "Chanel Bought Charvet Because Hermès Was Right All Along",
+   "status": "pending-essay"
+  },
+  {
+   "panel": "S01-P007",
+   "route": "/",
+   "label": "Porsche Called 911. Ferrari Never Forgot It Was Luxury",
+   "status": "pending-essay"
+  },
+  {
+   "panel": "S01-P007",
+   "route": "/",
+   "label": "Louis Vuitton Won the Lawsuit. China Decided It Was Wrong",
+   "status": "pending-essay"
+  }
+ ]
+}

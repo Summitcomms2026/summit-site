@@ -11,6 +11,8 @@
  *   FAQ          native <details>; on small screens one answer open at a time
  *   Guides       .summit-guide--choice / --toggle: choose one option to see
  *                its questions; the page's Let's Talk links carry the choice
+ *                .summit-guide--context: the choice only travels with the
+ *                enquiry (its responses are not authored)
  *   Checklist    .summit-guide--checklist: Reviewed / Partly Reviewed / Not
  *                Yet Tested / Unsure per area; returns the questions for the
  *                areas not yet reviewed — never a grade
@@ -163,6 +165,45 @@
 		}
 	} );
 
+	/* ── A choice carried to the enquiry ───────────────────────────────── */
+	// .summit-guide--context: the authored options ("Position / Product /
+	// Clients / Story") become buttons; the choice travels with the page's
+	// Let's Talk links. No response is shown — none is authored.
+	document.querySelectorAll( '.summit-guide--context' ).forEach( function ( guide ) {
+		var labels = guide.querySelector( '.summit-guide__labels' );
+		if ( ! labels ) {
+			return;
+		}
+		var title = sectionTitle( guide );
+		var list = document.createElement( 'ul' );
+		list.className = 'summit-guide__choices';
+		list.setAttribute( 'role', 'list' );
+		list.setAttribute( 'aria-label', title );
+		var buttons = text( labels ).split( /\s*\/\s*/ ).map( function ( label ) {
+			var li = document.createElement( 'li' );
+			var b = document.createElement( 'button' );
+			b.type = 'button';
+			b.className = 'summit-guide__choice';
+			b.textContent = label;
+			b.setAttribute( 'aria-pressed', 'false' );
+			li.appendChild( b );
+			list.appendChild( li );
+			return b;
+		} );
+		buttons.forEach( function ( b ) {
+			b.addEventListener( 'click', function () {
+				var on = 'true' !== b.getAttribute( 'aria-pressed' );
+				buttons.forEach( function ( o ) { o.setAttribute( 'aria-pressed', o === b && on ? 'true' : 'false' ); } );
+				setContext( on ? b.textContent : '' );
+				if ( on ) {
+					store.set( title + ' — ' + b.textContent );
+				}
+			} );
+		} );
+		labels.replaceWith( list );
+		guide.classList.add( 'is-enhanced' );
+	} );
+
 	/* ── Checklist ─────────────────────────────────────────────────────── */
 	var STATES = [ 'Reviewed', 'Partly Reviewed', 'Not Yet Tested', 'Unsure' ];
 	document.querySelectorAll( '.summit-guide--checklist' ).forEach( function ( guide, g ) {
@@ -271,8 +312,8 @@
 			e.preventDefault();
 			var a = answers();
 			if ( ! a.exposed ) {
+				// the reading rests on this answer: take the visitor to it
 				var first = form.querySelector( 'input[name="dqc-exposed"]' );
-				progress.textContent = 'Choose what feels most exposed to see a reading.';
 				if ( first ) { first.focus(); }
 				return;
 			}

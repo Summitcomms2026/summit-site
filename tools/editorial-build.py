@@ -380,15 +380,30 @@ RELATED_HEADS = {'worth exploring', 'explore further', 'keep reading', 'continue
 GUIDES = {'S04-P004': 'choice', 'S04-P009': 'choice', 'S05-P004': 'choice', 'S05-P009': 'choice',
           'S03-P012': 'toggle', 'S05-P015': 'checklist'}
 DQC = 'S03-P008'
+# A choice that only carries the visitor's selection into the enquiry: the
+# options are authored, their 40–60 word responses are not (Pass 03). The
+# line promising a response waits for them.
+CONTEXT_GUIDES = {'S03-P004': 'Choose one. A short response appears beneath the choices, followed by a tailored enquiry link.'}
 FORMS = {'S11-P002': 'general', 'S11-P017': 'media', 'S06-P037': 'briefing'}
 ASIDE = {'S11-P003': 'S11-P002', 'S11-P019': 'S11-P017'}           # “Prefer Email?” beside its form
 FORM_SPEC_ONLY = {'S11-P013'}                                         # careers: proposal form not yet approved
 ESSAYS_PENDING = 'it names essays that are not yet published (Chanel and Charvet; Porsche and Ferrari; Louis Vuitton in China)'
+# Panels whose authored proposition stands without the unpublished essays:
+# the essay-specific part waits (held-content.json); the rest is shown as written.
+PARTIAL = {
+    'S04-P016': ('The three essay entries wait for publication; the introduction and the link to the publication are shown.',
+                 lambda bl: [x for x in bl if x['type'] not in ('item',) and not (x['type'] == 'p' and x['text'].startswith('On '))]),
+    'S11-P021': ('Its second paragraph and “Read the Privacy Policy” presuppose an approved Privacy Policy, which does not exist yet; the opening paragraph is shown, and the site’s factual notice follows.',
+                 lambda bl: [x for x in bl if x['type'] == 'p'][:1]),
+    'S11-P025': ('Its second paragraph and “Read the Terms” presuppose approved Terms, which do not exist yet; the opening paragraph is shown, and the site’s factual notice follows.',
+                 lambda bl: [x for x in bl if x['type'] == 'p'][:1]),
+    'S13-P011': ('Its second sentence recommends the unpublished Charvet essay and carries a publication condition; the opening sentence is shown.',
+                 lambda bl: [dict(x, text=x['text'].split('. ')[0] + '.', html=None) for x in bl[:1]]),
+}
 HELD = {
-    'S04-P016': 'Beyond the Headlines lists three essays; ' + ESSAYS_PENDING + '. It returns when they are live.',
     'S07-P017': 'Proof in the Work cites essays as published work; ' + ESSAYS_PENDING + '.',
-    'S13-P011': 'The research note recommends the Charvet essay and carries a publication-approval condition in its copy.',
     'S13-P032': 'The research note pairs with the Porsche essay and carries a publication-approval condition in its copy.',
+    'S11-P023': 'Points to contact details “given in the approved Privacy Policy”, which does not exist yet; the site’s notice gives the current route (Let’s Talk).',
     'S08-P021': 'Describes a research-paper request form; no approved paper or delivery service exists yet (register: “Await final approved PDFs”).',
 }
 HELD_QA = {
@@ -401,7 +416,6 @@ HELD_QA = {
     'Are the papers free to read?': 'The answer describes a proposed access default, not settled terms.',
 }
 INTERACTION_GAPS = {
-    'S03-P004': 'Options are named (Position / Product / Clients / Story); their responses and tailored links are not supplied.',
     'S06-P023': 'Approved sector summaries for the selector are not supplied.',
     'S07-P033': 'The two practical prompts for each moment are not supplied.',
     'S07-P041': '“Can This Task Be Delegated?” choices and considerations are not supplied.',
@@ -421,6 +435,19 @@ ART = {
                         'Olivia Dhordain, ink and gold on paper."]'),
     'S08-P013': ('top', '[summit_research_chair empty="83"]'),
     'S10-P008': ('end', TMN_COVER.replace(' credit="Title page drawing by Olivia Dhordain, ink and gold on paper"', '')),
+}
+# Image blocks the site carried before the handover, restored beside the
+# copy that now carries the same subject (core/image, as WordPress stores them)
+L100_COVER = (
+    '<!-- wp:image {"sizeSlug":"full","linkDestination":"none","className":"res-cover"} -->\n'
+    '<figure class="wp-block-image size-full res-cover"><img src="/wp-content/themes/summit/assets/img/research/luxury-100-2027-cover.jpg" '
+    'alt="Cover of The Luxury 100, 2027: a field of one hundred squares with one left empty, and the line Ninety-nine objects. One empty chair."/></figure>\n'
+    '<!-- /wp:image -->')
+RAW_ART = {
+    'S08-P002': ('end', L100_COVER),
+    'S08-P014': ('top', L100_COVER),
+    'S10-P008': ('end', "<!-- wp:image {\"sizeSlug\":\"full\",\"linkDestination\":\"none\",\"className\":\"ab-figure ab-figure\\u002d\\u002dobject\"} -->\n<figure class=\"wp-block-image size-full ab-figure ab-figure--object\"><img src=\"/wp-content/themes/summit/assets/img/research/luxury-100-2027-cover.jpg\" alt=\"The Luxury 100, 2027 reading: the cover\"/></figure>\n<!-- /wp:image -->"),
+    'S10-P007': ('end', "<!-- wp:image {\"sizeSlug\":\"full\",\"linkDestination\":\"none\",\"className\":\"ab-figure ab-figure\\u002d\\u002devidence\"} -->\n<figure class=\"wp-block-image size-full ab-figure ab-figure--evidence\"><img src=\"/wp-content/themes/summit/assets/img/fol/characteristics/01.jpg\" alt=\"The Characteristics of Luxury: What do we mean by luxury?\"/><figcaption class=\"wp-element-caption\">The Characteristics of Luxury, Summit’s visual conversation on what makes luxury endure.</figcaption></figure>\n<!-- /wp:image -->"),
 }
 PROFILES = {'S10-P024': '[summit_about_portrait name="gregory-gray" initials="GG" alt="Gregory Gray"]',
             'S10-P025': '[summit_about_portrait name="olivia-dhordain" initials="OD" alt="Olivia Dhordain"]'}
@@ -572,6 +599,8 @@ class Page:
         art = ART.get(p['id'])
         if art and art[0] == 'top':
             kids.append(shortcode(art[1]))
+        if RAW_ART.get(p['id'], ('',))[0] == 'top':
+            kids.append(RAW_ART[p['id']][1])
         state = dict(first_p=True, cta_done=False)
         if p['id'] in GUIDES:
             kind = GUIDES[p['id']]
@@ -586,6 +615,13 @@ class Page:
                 post = [b for b in post if b['type'] != 'cta']
             kids.append(group(f'summit-guide summit-guide--{kind}', guide))
             kids += self.sequence(p['id'], post, closing, False, state)
+        elif p['id'] in CONTEXT_GUIDES:
+            held_line = CONTEXT_GUIDES[p['id']]
+            rest = [x for x in blocks if not (x['type'] == 'p' and x['text'].strip() == held_line)]
+            labels = next(x for x in rest if x['type'] == 'item')
+            kids += self.sequence(p['id'], [x for x in rest if x['type'] == 'p'], False, True, state)
+            kids.append(group('summit-guide summit-guide--context', [para(esc(labels['text']), 'summit-guide__labels')]))
+            kids += self.sequence(p['id'], [x for x in rest if x['type'] in ('cta', 'note')], closing, False, state)
         elif p['id'] == DQC:
             pre = [b for b in blocks if b['type'] == 'p'][:1]
             kids += self.sequence(p['id'], pre, False, True, state)
@@ -604,6 +640,9 @@ class Page:
             kids += self.sequence(p['id'], post, closing, False, state)
         if art and art[0] == 'end':
             kids.append(shortcode(art[1]))
+        raw = RAW_ART.get(p['id'])
+        if raw and raw[0] == 'end':
+            kids.append(raw[1])
         return group(f"{c['chapter']} {variant}".strip(), kids, tag='section', anchor=anchor or p['id'].lower())
 
     def profile(self, p, blocks):
@@ -625,7 +664,7 @@ class Page:
         elif norm(eb) in FAQ_EYEBROWS:
             kids.append(heading(esc(eb), cls='ab-statement' if self.fam == 'ab' else None))
         else:
-            kids.append(heading('Questions', cls='sr-only'))
+            kids.append(heading('FAQs', cls='sr-only'))       # the handover's own label for these sections
         items = []
         for p in grp:
             for q, answer in faq_pairs(p):
@@ -736,10 +775,11 @@ for canon, b in built.items():
         man['pages'].append(entry)
     # Hero: the first panel
     hero = P[b['ids'][0]]
-    hb = finalise(hero['blocks'])
+    hb = finalise(PARTIAL[hero['id']][1](hero['blocks']) if hero['id'] in PARTIAL else hero['blocks'])
     meta = {k: v for k, v in entry.get('meta', {}).items() if k in KEEP}
     meta['summit_eyebrow'] = hero_eyebrow(b['route'], canon)
     meta['summit_headline'] = hero['headline']
+    meta['summit_hero_panel'] = hero['id']          # the slot a delivered opening image fills
     paras = [x for x in hb if x['type'] == 'p']
     if paras:
         meta['summit_standfirst'] = paras[0]['text']
@@ -767,7 +807,7 @@ for canon, b in built.items():
     entry['template'] = b['template']
     entry['source'] = f"{b['slug']}.blocks.html"
     entry.setdefault('title', pg.title)
-    account(hero['id'], 'rendered (hero)', canon)
+    account(hero['id'], 'rendered (hero; in part)' if hero['id'] in PARTIAL else 'rendered (hero)', canon, PARTIAL[hero['id']][0] if hero['id'] in PARTIAL else '')
 
     out = []
     rest = [P[i] for i in b['ids'][1:]]
@@ -814,11 +854,16 @@ for canon, b in built.items():
                 variant = CLS[pg.fam]['chapter'] + '--close'
             elif eb in ('research', 'the observatory') or norm(p['headline']) == 'where research helps':
                 variant = CLS[pg.fam]['chapter'] + '--tinted'
-            out.append(pg.chapter(p, variant, closing))
+            out.append(pg.chapter(p, variant, closing, blocks=PARTIAL[p['id']][1](p['blocks']) if p['id'] in PARTIAL else None))
             note = INTERACTION_GAPS.get(p['id'], '')
             status = 'rendered'
+            if p['id'] in PARTIAL:
+                status, note = 'rendered (in part; essay-specific copy held)', PARTIAL[p['id']][0]
             if p['id'] in GUIDES or p['id'] == DQC:
                 status = 'rendered (interaction)'
+            elif p['id'] in CONTEXT_GUIDES:
+                status = 'rendered (interaction: choice carried to the enquiry; responses not authored)'
+                note = 'The four choices carry the selection to Let’s Talk. Held until the 40–60 word responses are authored: “' + CONTEXT_GUIDES[p['id']] + '”'
             elif note:
                 status = 'rendered (editorial version; interaction logic not supplied)'
             elif p.get('interaction'):
@@ -870,7 +915,7 @@ ov_meta = {k: v for k, v in ov['meta'].items() if k in KEEP}
 ov_meta.update(summit_eyebrow='Solutions', summit_headline=h['headline'],
                summit_standfirst=next(b['text'] for b in h['blocks'] if b['type'] == 'p'),
                summit_cta_label='Find Your Starting Point', summit_cta_url='#by-need',
-               summit_secondary_label='Start a Conversation', summit_secondary_url='/lets-talk')
+               summit_secondary_label='Start a Conversation', summit_secondary_url='/lets-talk', summit_hero_panel='S02-P001')
 ov_meta['summit_lenses'] = json.dumps({
     'by-need': dict(line=lines['by need'], title=need['headline'], intro=next(b['text'] for b in need['blocks'] if b['type'] == 'p')),
     'by-function': dict(line=lines['by function']),
@@ -996,6 +1041,64 @@ with open(os.path.join(SC, 'contact', 'manifest.json'), 'w', encoding='utf-8') a
     f.write('\n')
 
 
+# ── Held content: what waits, on what, and what happens next ─────────────
+# status: publication | asset | functionality | legal | product-decision |
+#         superseded | internal-only
+PUB = 'Publish the essay in The Future of Luxury (its URL then resolves automatically on the next build).'
+HELD_REGISTER = [
+    # whole panels
+    ('S07-P017', 'panel', 'publication', 'Chanel/Charvet, Porsche/Ferrari and Louis Vuitton essays published', PUB + ' The panel cites all three as published work.', False),
+    ('S13-P032', 'panel', 'publication', 'Porsche and Ferrari essay published and archive status approved', PUB + ' The copy itself says to link the essay only once approved.', False),
+    ('S08-P021', 'panel', 'asset', 'An approved white paper (PDF) and a way to deliver it', 'Supply the approved paper; then show the panel with a request form that delivers it (register: “Await final approved PDFs”).', False),
+    ('S09-P004', 'panel', 'product-decision', 'Archive search', 'Decide whether the archive needs search at its present size (24 essays); the index by subject serves it now.', False),
+    ('S09-P006', 'panel', 'superseded', 'The archive’s own subject index', 'Its subject list differs from the live categories; reconcile the taxonomy if the editorial list should replace them.', False),
+    ('S09-P007', 'panel', 'functionality', 'New-essay notifications from the mailing provider', 'Connect the mailing provider; then the answer about notifications is true.', False),
+    ('S09-P008', 'panel', 'internal-only', None, 'Editorial policy for guest contributors — keep in the editorial guide.', False),
+    ('S09-P010', 'panel', 'product-decision', 'Archive search', 'As S09-P004.', False),
+    ('S09-P012', 'panel', 'product-decision', 'Curated reading journeys', 'Choose the essays for each of the four questions; then the journeys can link.', False),
+    ('S09-P013', 'panel', 'product-decision', 'Archive search', 'As S09-P004.', False),
+    ('S09-P014', 'panel', 'product-decision', 'Separate theme and sector filters', 'Decide on archive filters; the answer describes them.', False),
+    ('S09-P015', 'panel', 'internal-only', None, 'Editorial correction policy — keep in the editorial guide.', False),
+    ('S09-P016', 'panel', 'product-decision', 'Archive search', 'As S09-P004.', False),
+    ('S09-P022', 'panel', 'internal-only', None, 'Editorial standards instruction — keep in the editorial guide.', False),
+    ('S09-P024', 'panel', 'functionality', 'A confirmation email (double opt-in) from the mailing provider', 'Connect the provider’s confirmation flow; then show this as the subscribe success state.', False),
+    ('S09-P027', 'panel', 'functionality', 'Preference and unsubscribe links in each edition', 'Connect the provider’s preference centre.', False),
+    ('S09-P029', 'panel', 'internal-only', None, 'Consent-handling instruction — keep with the privacy configuration.', False),
+    # single answers within a rendered FAQ
+    ('S11-P023', 'panel', 'legal', 'The approved Privacy Policy', 'Publish with the approved policy; its CTA (Privacy Enquiry) then joins it.', False),
+    ('S11-P021', 'part: second paragraph and “Read the Privacy Policy”', 'legal', 'The approved Privacy Policy', 'Restore both when the policy is published on this page.', False),
+    ('S11-P025', 'part: second paragraph and “Read the Terms”', 'legal', 'The approved Terms', 'Restore both when the Terms are published on this page.', False),
+    ('S08-P022', 'answer: Are the papers free to read?', 'product-decision', 'A decision on paper access terms', 'Settle the access terms; the answer currently describes a proposed default.', False),
+    ('S11-P010', 'answer: Can I create an account myself?', 'functionality', 'A client environment and its onboarding', 'Answer once Client Access exists.', False),
+    ('S11-P015', 'answer: How will application details be used?', 'legal', 'A recruitment privacy notice', 'Publish with the approved notice.', False),
+    ('S11-P024', 'answer: Do I need to accept analytics cookies to contact Summit?', 'legal', 'The production consent configuration', 'Answer once the cookie and consent set-up is final and tested.', False),
+    ('S11-P024', 'answer: Can I change a newsletter preference later?', 'functionality', 'Provider preference controls', 'As S09-P027.', False),
+    ('S11-P024', 'answer: Where is my information stored?', 'legal', 'The approved Privacy Policy', 'Publish with the approved policy.', False),
+    ('S11-P028', 'answer: Can the terms be updated?', 'legal', 'The approved Terms', 'Publish with the approved Terms.', False),
+    # parts of rendered panels
+    ('S01-P007', 'part: three named essays', 'publication', 'The three essays published', 'Home shows the live essays meanwhile; restore the named three when published.', False),
+    ('S03-P005', 'part: Further Reading (Porsche essay)', 'publication', 'Porsche and Ferrari essay published', PUB + ' The page’s closing invitation is shown.', False),
+    ('S03-P009', 'part: CTA to the Charvet essay', 'publication', 'Chanel/Charvet essay published', PUB, False),
+    ('S04-P003', 'part: CTA to the Charvet essay', 'publication', 'Chanel/Charvet essay published', PUB, False),
+    ('S04-P016', 'part: three essay entries', 'publication', 'The three essays published', PUB + ' The introduction and link to the publication are shown.', False),
+    ('S13-P011', 'part: second sentence (Charvet essay)', 'publication', 'Chanel/Charvet essay published and archive approval', PUB, False),
+    ('S13-P012', 'part: related essay entry', 'publication', 'Chanel/Charvet essay published', PUB, False),
+    ('S13-P033', 'part: related essay entry', 'publication', 'Porsche and Ferrari essay published', PUB, False),
+    ('S03-P004', 'part: “A short response appears…” line', 'functionality', 'Four authored 40–60 word responses', 'Author the responses (interactions.json); then the line and the responses appear together.', False),
+    ('S11-P007', 'part: Client Sign In', 'functionality', 'An authenticated client environment', 'Link the CTA when a real sign-in exists; no inert button meanwhile.', False),
+    ('S11-P022', 'part: Subscription Preferences', 'functionality', 'Provider preference centre', 'As S09-P027.', False),
+    ('S09-P023', 'part: digest choice', 'functionality', 'A monthly digest from the provider', 'Offer the choice once a digest exists.', False),
+]
+held_out = []
+for pid, scope, status, dependency, action, coherence in HELD_REGISTER:
+    assert pid in P, pid
+    held_out.append(dict(panel=pid, scope=scope, route=canonical(P[pid]['path']), headline=P[pid]['headline'],
+                         reason=((panel_map.get(pid + ' · ' + scope[8:]) if scope.startswith('answer: ') else panel_map.get(pid) if scope == 'panel' else None)
+                                 or {}).get('note', '') or 'Depends on: ' + (dependency or 'editorial guidance only') + '.',
+                         status=status, dependency=dependency,
+                         future_action=action, affects_page_coherence=coherence))
+assert {h['panel'] for h in held_out if h['scope'] == 'panel'} == {k for k, v in panel_map.items() if v['status'].startswith('held') and ' · ' not in k}, 'held register out of step with the panel map'
+
 def dump(name, data):
     with open(os.path.join(HV, name), 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=1, ensure_ascii=False)
@@ -1005,6 +1108,9 @@ def dump(name, data):
 dump('route-map.json', route_map)
 dump('panel-map.json', panel_map)
 dump('cta-map.json', dict(ctas=cta_log, topics=TOPICS, pending=pending))
+dump('held-content.json', dict(
+    description='Everything the site deliberately does not show yet, why, and what activates it. Statuses: publication, asset, functionality, legal, product-decision, superseded, internal-only.',
+    counts=dict(Counter(h['status'] for h in held_out)), held=held_out))
 
 print('pages built:', len(built))
 print('panels:', Counter(v['status'].split(' (')[0].split(';')[0] for k, v in panel_map.items() if ' · ' not in k), 'of', len(panels))

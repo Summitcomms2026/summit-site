@@ -10,6 +10,7 @@
         "summit_tone": "paper",
         "summit_eyebrow": "",
         "summit_headline": "For Work Already Underway",
+        "summit_hero_panel": "S11-P007",
         "summit_standfirst": "Secure access to shared project information is available to clients with an active account."
       },
       "title": "Client Access"
@@ -22,6 +23,7 @@
         "summit_tone": "paper",
         "summit_eyebrow": "",
         "summit_headline": "Work Worth Doing",
+        "summit_hero_panel": "S11-P011",
         "summit_standfirst": "Good work depends on people who think carefully, speak plainly and take responsibility for the outcome. We value independent judgement, curiosity and the ability to work across disciplines without mistaking breadth for expertise.",
         "summit_cta_label": "Explore Opportunities",
         "summit_cta_url": "#s11-p013"
@@ -36,10 +38,8 @@
         "summit_tone": "paper",
         "summit_eyebrow": "",
         "summit_headline": "Your Information, Your Choice",
-        "summit_standfirst": "When you contact Summit, subscribe to our research or request a report, you should know what information is requested and why.",
-        "summit_intro": "Our Privacy Policy explains how personal information is handled, who to contact about it and the choices available to you.",
-        "summit_cta_label": "Read the Privacy Policy",
-        "summit_cta_url": "#privacy-policy"
+        "summit_hero_panel": "S11-P021",
+        "summit_standfirst": "When you contact Summit, subscribe to our research or request a report, you should know what information is requested and why."
       },
       "title": "Privacy"
     },
@@ -51,10 +51,8 @@
         "summit_tone": "paper",
         "summit_eyebrow": "",
         "summit_headline": "Using This Site",
-        "summit_standfirst": "Summit publishes articles, research and information about its work. The material is provided for general information unless we expressly agree otherwise.",
-        "summit_intro": "Our Terms explain the conditions governing use of the website, its material and its interactive features.",
-        "summit_cta_label": "Read the Terms",
-        "summit_cta_url": "#terms-of-use"
+        "summit_hero_panel": "S11-P025",
+        "summit_standfirst": "Summit publishes articles, research and information about its work. The material is provided for general information unless we expressly agree otherwise."
       },
       "title": "Terms"
     }

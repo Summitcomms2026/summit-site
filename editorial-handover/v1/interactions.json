@@ -95,15 +95,14 @@
     "audience": "cmo | investor (private briefing)"
    },
    "behaviour": "the topic is shown in an editable Topic field and recorded with the source route; the Future of Luxury opt-in is separate and unticked"
+  },
+  "context-choice": {
+   "markup": ".summit-guide--context",
+   "panels": [
+    "S03-P004"
+   ],
+   "behaviour": "the authored options become buttons; the choice travels with the page's Let's Talk links (?context=); no response is shown because none is authored"
   }
- },
- "editorial_versions": {
-  "S03-P004": "Options are named (Position / Product / Clients / Story); their responses and tailored links are not supplied.",
-  "S06-P023": "Approved sector summaries for the selector are not supplied.",
-  "S07-P002": "An issue-to-programme selector is proposed; no mapping is supplied — the six programmes are listed instead.",
-  "S07-P033": "The two practical prompts for each moment are not supplied.",
-  "S07-P041": "“Can This Task Be Delegated?” choices and considerations are not supplied.",
-  "S10-P032": "The selector’s routes and enquiry summaries are not supplied."
  },
  "optional_not_built": {
   "S03-P007": "Each item can link to the matching Demand Quality Check concern, but the grid must work without JavaScript.",
@@ -159,5 +158,70 @@
   "S13-P080": "Use “Where Does It Break?” as a selector for discovery, appointment, transaction, aftercare; route to a discussion, without collecting customer information.",
   "S13-P087": "Embed the existing Demand Quality Check with a short one-sentence introduction; route qualified users to relevant Solutions or the Digital Growth programme.",
   "S13-P094": "Use “What Needs Protecting?” interactive guide from the earlier pass, framed as question preparation and never an IP opinion."
+ },
+ "review_2026_10_18": {
+  "method": "Each checked against the Editorial Master, its source pass (tables and cliff notes), the Production Register's Interactions sheet and the structured JSON/CSV. The programme-selector prototype named in Pass 07 ('Prototype provided as a separate HTML file') is not in the handover pack.",
+  "classes": {
+   "A": "fully specified: implemented",
+   "B": "partially specified: choices exist, response copy does not; readable as editorial content",
+   "C": "concept only: production guidance, left non-interactive"
+  },
+  "panels": {
+   "S03-P004": {
+    "class": "B",
+    "route": "/solutions/reposition-a-maison",
+    "outcome": "partly implemented: the four authored choices carry the selection into the enquiry (specified: 'CTA opens Let's Talk with selected topic'); no response is shown",
+    "authored": [
+     "Position / Product / Clients / Story",
+     "Discuss This Question",
+     "Or send a short brief"
+    ],
+    "missing": "Four public responses of 40–60 words (one per choice) and, if wanted, a tailored CTA label per choice. The production LOGIC line (Position → check price, peers, identity …) is guidance, not public copy.",
+    "held_line": "Choose one. A short response appears beneath the choices, followed by a tailored enquiry link."
+   },
+   "S06-P023": {
+    "class": "C",
+    "route": "/the-observatory/field",
+    "outcome": "text only (the three dimensions as written)",
+    "missing": "Approved sector summaries — one per sector, drawn from the Observatory Field Book and Sector Findings — and the list of sectors to offer. These are research outputs to be approved, not website copy."
+   },
+   "S07-P002": {
+    "class": "C",
+    "route": "/programmes",
+    "outcome": "text only: the six programmes as linked entries; the hero's 'Find Your Starting Point' leads to them",
+    "missing": "The selector's challenges and the challenge → programme + Solution mapping, or the prototype HTML file. The selector's own panel (S07-P055) is routed by the handover to internal production notes."
+   },
+   "S07-P033": {
+    "class": "B",
+    "route": "/programmes/client-experience",
+    "outcome": "text only",
+    "authored": [
+     "First impression",
+     "Personal service",
+     "Purchase",
+     "Aftercare"
+    ],
+    "missing": "Two practical prompts for each of the four moments (eight prompts) and the conversation link label. The four moment names exist only in the production note."
+   },
+   "S07-P041": {
+    "class": "C",
+    "route": "/programmes/agentic-ai",
+    "outcome": "text only",
+    "missing": "The task list, the data-sensitivity and sign-off options, and the considerations returned for each combination."
+   },
+   "S10-P032": {
+    "class": "B",
+    "route": "/about/how-we-work",
+    "outcome": "text only",
+    "authored": [
+     "Building",
+     "Reconsidering",
+     "Protecting",
+     "Evaluating",
+     "Publishing"
+    ],
+    "missing": "The destination page for each choice and the wording of the enquiry summary it prepares. The five choice names exist only in the production note."
+   }
+  }
  }
 }

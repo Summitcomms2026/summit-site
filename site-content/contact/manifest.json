@@ -11,6 +11,7 @@
         "summit_form": "general",
         "summit_eyebrow": "Let’s Talk",
         "summit_headline": "What’s at Stake for You?",
+        "summit_hero_panel": "S11-P001",
         "summit_standfirst": "You may be considering a new maison, reviewing an established business or facing a decision that deserves a second perspective.",
         "summit_intro": "Tell us what’s on your mind. We’ll listen, ask useful questions and help clarify what matters. A worthwhile conversation should leave you with a clearer view, whether or not we go on to work together.",
         "summit_cta_label": "Start a Conversation",
@@ -28,6 +29,7 @@
         "summit_form": "media",
         "summit_eyebrow": "Media Enquiries",
         "summit_headline": "For the Record",
+        "summit_hero_panel": "S11-P016",
         "summit_standfirst": "For comment, interviews, research enquiries, permissions or speaking requests, contact Summit with the subject and timing. We will consider the request and respond where we can contribute usefully.",
         "summit_cta_label": "Send a Media Enquiry",
         "summit_cta_url": "#s11-p017"

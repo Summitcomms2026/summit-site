@@ -117,7 +117,7 @@ get_header();
     ?>
     <section class="fol-panel fol-questions" aria-labelledby="fol-questions-heading">
         <div class="fol-wrap">
-            <h2 class="sr-only" id="fol-questions-heading"><?php esc_html_e( 'Questions', 'summit' ); ?></h2>
+            <h2 class="sr-only" id="fol-questions-heading"><?php esc_html_e( 'FAQs', 'summit' ); ?></h2>
             <div class="summit-faq">
                 <?php foreach ( $fol_questions as $q => $a ) : ?>
                 <details class="summit-faq__item"><summary><?php echo esc_html( $q ); ?></summary><p><?php echo esc_html( $a ); ?></p></details>

@@ -1,0 +1,4 @@
+{
+ "description": "Final photographs delivered for the site, by panel ID. Each master lives in media/ as <panel>-<page>-<role>.jpg; tools/visual-assets-apply.php imports it and places it. Empty until photography arrives.",
+ "assets": {}
+}

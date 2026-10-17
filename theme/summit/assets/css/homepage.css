@@ -2811,7 +2811,9 @@
 /* The copy's own headline case (“Discuss a Brief”, “Read the Essays”):
    the labels are already set as written. */
 .site-main--home .btn,
-.site-main--home .home-article__cta {
+.site-main--home .home-article__cta,
+.site-main--home .capability-triptych__link,
+.site-main--home .cta-footer__btn {
   text-transform: none;
 }
 

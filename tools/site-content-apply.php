@@ -100,7 +100,9 @@ foreach ( $sections as $section ) {
     $src      = "$root/$section";
     $manifest = json_decode( (string) @file_get_contents( "$src/manifest.json" ), true );
     if ( empty( $manifest['pages'] ) ) {
-        fwrite( STDERR, "skip $section: manifest missing or empty\n" );
+        if ( ! isset( $manifest['assets'] ) ) {      // visual-assets/ has its own tool
+            fwrite( STDERR, "skip $section: manifest missing or empty\n" );
+        }
         continue;
     }
     echo "\n[$section]\n";

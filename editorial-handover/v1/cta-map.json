@@ -351,6 +351,14 @@
    "place": "hero"
   },
   {
+   "panel": "S04-P016",
+   "label": "More from The Future of Luxury",
+   "route": "/solutions/develop-thought-leadership",
+   "url": "/the-future-of-luxury",
+   "status": "mapped",
+   "place": "body"
+  },
+  {
    "panel": "S04-P017",
    "label": "Explore the Programme",
    "route": "/solutions/develop-thought-leadership",
@@ -2110,36 +2118,12 @@
    "place": "body"
   },
   {
-   "panel": "S11-P021",
-   "label": "Read the Privacy Policy",
-   "route": "/privacy",
-   "url": "#privacy-policy",
-   "status": "mapped",
-   "place": "hero"
-  },
-  {
    "panel": "S11-P022",
    "label": "Subscription Preferences",
    "route": "/privacy",
    "url": null,
    "status": "not-built",
    "place": "body"
-  },
-  {
-   "panel": "S11-P023",
-   "label": "Privacy Enquiry",
-   "route": "/privacy",
-   "url": "/lets-talk?topic=privacy",
-   "status": "mapped",
-   "place": "body"
-  },
-  {
-   "panel": "S11-P025",
-   "label": "Read the Terms",
-   "route": "/terms",
-   "url": "#terms-of-use",
-   "status": "mapped",
-   "place": "hero"
   },
   {
    "panel": "S11-P026",

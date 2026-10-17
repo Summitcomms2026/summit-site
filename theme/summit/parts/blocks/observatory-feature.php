@@ -69,6 +69,10 @@ $figures = [
                 <?php endif; ?>
             </div>
 
+            <?php $obs_visual = summit_panel_visual( 'S01-P004', 'home-obs__visual' ); ?>
+            <?php if ( $obs_visual ) : // a delivered research image takes the instrument's place ?>
+            <div class="home-obs__field home-obs__field--image" data-reveal="fade" data-reveal-delay="1"><?php echo $obs_visual; // phpcs:ignore WordPress.Security.EscapeOutput ?></div>
+            <?php else : ?>
             <div class="home-obs__field" data-reveal="fade" data-reveal-delay="1">
                 <svg class="home-obs__instrument" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
                     <circle cx="100" cy="100" r="96"/><circle cx="100" cy="100" r="66"/><circle cx="100" cy="100" r="34"/>
@@ -80,6 +84,7 @@ $figures = [
                     <?php endforeach; ?>
                 </ul>
             </div>
+            <?php endif; ?>
         </div>
 
     </div>

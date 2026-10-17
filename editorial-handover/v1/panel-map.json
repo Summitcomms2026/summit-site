@@ -156,9 +156,9 @@
   "route": "/solutions/reposition-a-maison"
  },
  "S03-P004": {
-  "status": "rendered (editorial version; interaction logic not supplied)",
+  "status": "rendered (interaction: choice carried to the enquiry; responses not authored)",
   "route": "/solutions/reposition-a-maison",
-  "note": "Options are named (Position / Product / Clients / Story); their responses and tailored links are not supplied."
+  "note": "The four choices carry the selection to Let’s Talk. Held until the 40–60 word responses are authored: “Choose one. A short response appears beneath the choices, followed by a tailored enquiry link.”"
  },
  "S03-P005": {
   "status": "rendered (closing part); Further Reading held",
@@ -273,9 +273,9 @@
   "route": "/solutions/develop-thought-leadership"
  },
  "S04-P016": {
-  "status": "held",
+  "status": "rendered (editorial version; interaction logic not supplied)",
   "route": "/solutions/develop-thought-leadership",
-  "note": "Beyond the Headlines lists three essays; it names essays that are not yet published (Chanel and Charvet; Porsche and Ferrari; Louis Vuitton in China). It returns when they are live."
+  "note": "The three essay entries wait for publication; the introduction and the link to the publication are shown."
  },
  "S04-P017": {
   "status": "rendered",
@@ -1149,16 +1149,18 @@
   "route": "/media-enquiries"
  },
  "S11-P021": {
-  "status": "rendered (hero)",
-  "route": "/privacy"
+  "status": "rendered (hero; in part)",
+  "route": "/privacy",
+  "note": "Its second paragraph and “Read the Privacy Policy” presuppose an approved Privacy Policy, which does not exist yet; the opening paragraph is shown, and the site’s factual notice follows."
  },
  "S11-P022": {
   "status": "rendered",
   "route": "/privacy"
  },
  "S11-P023": {
-  "status": "rendered",
-  "route": "/privacy"
+  "status": "held",
+  "route": "/privacy",
+  "note": "Points to contact details “given in the approved Privacy Policy”, which does not exist yet; the site’s notice gives the current route (Let’s Talk)."
  },
  "S11-P024 · Do I need to accept analytics cookies to contact Summit?": {
   "status": "held (internal note)",
@@ -1180,8 +1182,9 @@
   "route": "/privacy"
  },
  "S11-P025": {
-  "status": "rendered (hero)",
-  "route": "/terms"
+  "status": "rendered (hero; in part)",
+  "route": "/terms",
+  "note": "Its second paragraph and “Read the Terms” presuppose approved Terms, which do not exist yet; the opening paragraph is shown, and the site’s factual notice follows."
  },
  "S11-P026": {
   "status": "rendered",
@@ -1243,9 +1246,9 @@
   "note": "Optional “What is changing?” selector: collection, distribution, creative direction or market. It recommends a relevant page, never a verdict."
  },
  "S13-P011": {
-  "status": "held",
+  "status": "rendered (editorial version; interaction logic not supplied)",
   "route": "/solutions/fashion-accessories",
-  "note": "The research note recommends the Charvet essay and carries a publication-approval condition in its copy."
+  "note": "Its second sentence recommends the unpublished Charvet essay and carries a publication condition; the opening sentence is shown."
  },
  "S13-P012": {
   "status": "rendered",

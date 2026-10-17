@@ -957,3 +957,85 @@
 .fol-panel__head .fol-panel__intro {
   flex-basis: 100%;
 }
+
+/* A choice carried to the enquiry (no authored response) */
+.summit-guide__labels {
+  font-family: var(--font-sans);
+  font-size: var(--type-register);
+  line-height: 1.3;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* DELIVERED PHOTOGRAPHY — the panel-ID slots (empty until registered)    */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+.summit-hero-visual {
+  margin: 0;
+  height: clamp(280px, 46vw, 620px);
+  overflow: hidden;
+  background: var(--field-dark, var(--colour-ink));
+}
+
+.summit-hero-visual img,
+.summit-panel-visual img,
+.vp-block__visual img,
+.home-obs__visual img,
+.home-programmes__visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.summit-panel-visual {
+  margin: clamp(24px, 3vw, 40px) 0 !important;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+}
+
+.summit-visual__credit {
+  margin-top: var(--space-2);
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  color: var(--colour-ink-60);
+}
+
+.vp-block__visual,
+.home-obs__visual {
+  margin: 0;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+
+.home-programmes__visual {
+  margin: 0 0 clamp(32px, 3.5vw, 56px);
+  aspect-ratio: 21 / 9;
+  overflow: hidden;
+}
+
+.sw-card__cover {
+  margin: 0;
+  height: 100%;
+}
+
+.sw-card__cover img {
+  width: auto;
+  max-height: 100%;
+  margin-inline: auto;
+}
+
+@media (min-width: 960px) {
+  .vp-block--with-visual > .container {
+    display: grid;
+    grid-template-columns: minmax(0, 45fr) minmax(0, 55fr);
+    gap: clamp(40px, 5vw, 96px);
+    align-items: center;
+  }
+}
+
+@media (max-width: 959px) {
+  .vp-block__visual {
+    margin-top: clamp(32px, 6vw, 56px);
+  }
+}

@@ -40,9 +40,10 @@ the_post(); // consume the front-page post for ACF context
     <?php get_template_part( 'parts/blocks/hero' ); ?>
 
     <!-- ── 2. From Brand to Maison (S01-P002) ─────────────────────────────── -->
-    <?php $vp = summit_home_panel( 'S01-P002' ); ?>
-    <section class="vp-block" aria-labelledby="home-vp-heading">
+    <?php $vp = summit_home_panel( 'S01-P002' ); $vp_visual = summit_panel_visual( 'S01-P002', 'vp-block__visual' ); ?>
+    <section class="vp-block<?php echo $vp_visual ? ' vp-block--with-visual' : ''; ?>" aria-labelledby="home-vp-heading">
         <div class="container container--wide">
+            <?php if ( $vp_visual ) : ?><div class="vp-block__text"><?php endif; ?>
             <?php if ( ! empty( $vp['eyebrow'] ) ) : ?>
             <p class="home-eyebrow vp-block__eyebrow" data-reveal="fade"><?php echo esc_html( $vp['eyebrow'] ); ?></p>
             <?php endif; ?>
@@ -53,6 +54,7 @@ the_post(); // consume the front-page post for ACF context
             <?php foreach ( $vp['ctas'] ?? [] as $cta ) : ?>
             <p class="vp-block__link" data-reveal="fade"><a href="<?php echo esc_url( summit_meta_url( $cta['url'] ) ); ?>"><?php echo esc_html( $cta['label'] ); ?> <span aria-hidden="true">&rarr;</span></a></p>
             <?php endforeach; ?>
+            <?php if ( $vp_visual ) : ?></div><?php echo $vp_visual; // phpcs:ignore WordPress.Security.EscapeOutput ?><?php endif; ?>
         </div>
     </section>
 

@@ -80,7 +80,10 @@ if ( empty( $cards ) ) {
                 <?php endif; ?>
 
                 <figure class="sw-card__logo" aria-hidden="true">
-                    <?php if ( 'l100' === ( $card['mark'] ?? '' ) ) : ?>
+                    <?php $cover = summit_panel_visual( 'S01-P006-' . ( $i + 1 ), 'sw-card__cover', 'medium_large' ); ?>
+                    <?php if ( $cover ) : // the publication's own cover, once delivered ?>
+                    <?php echo $cover; // phpcs:ignore WordPress.Security.EscapeOutput ?>
+                    <?php elseif ( 'l100' === ( $card['mark'] ?? '' ) ) : ?>
                     <span class="sw-mark sw-mark--l100">
                         <svg viewBox="0 0 99 99" focusable="false"><?php
                         for ( $p = 0; $p < 100; $p++ ) {

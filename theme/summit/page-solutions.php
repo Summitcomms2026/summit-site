@@ -187,7 +187,7 @@ get_header();
         // overview's industry field uses) opens on it as a band, before its
         // chapters: the image keeps its place now the page has its copy.
         $visual = $meta( 'summit_visual' );
-        if ( $visual && ! $is_index ) :
+        if ( $visual && ! $is_index && ! summit_hero_visual() ) : // a delivered opening image (page-hero) takes its place
             // A theme image may have a wide companion (<name>-wide.jpg) for the band.
             $wide = is_numeric( $visual ) ? '' : preg_replace( '/\.jpg$/', '-wide.jpg', $visual );
             if ( $wide && ! is_readable( ABSPATH . ltrim( (string) wp_parse_url( $wide, PHP_URL_PATH ), '/' ) ) ) {

@@ -1,0 +1,51 @@
+{
+ "description": "Summit's public contact and social channels as the site uses them (Editorial Handover v1 channel configuration, Pass 14 v02, and the Production Register's Config-Channels sheet).",
+ "channels": [
+  {
+   "channel": "Australian telephone",
+   "value": "+61 2 9127 9005",
+   "href": "tel:+61291279005",
+   "status": "published",
+   "where": "Let's Talk and Media Enquiries direct routes; header bar; menu"
+  },
+  {
+   "channel": "United Kingdom telephone",
+   "value": "+44 20 7011 8509",
+   "href": "tel:+442070118509",
+   "status": "published",
+   "where": "Let's Talk and Media Enquiries direct routes",
+   "note": "Register: verify live call handling before launch."
+  },
+  {
+   "channel": "Email",
+   "value": "hello@summitcommunication.group",
+   "href": "mailto:hello@summitcommunication.group",
+   "status": "published",
+   "where": "Direct routes, Prefer Email? panels, footer"
+  },
+  {
+   "channel": "SMS",
+   "status": "not offered",
+   "note": "No SMS-capable number confirmed."
+  },
+  {
+   "channel": "WhatsApp",
+   "status": "not offered",
+   "note": "No WhatsApp Business number confirmed; the earlier site's WhatsApp number is no longer shown."
+  },
+  {
+   "channel": "LinkedIn (company page)",
+   "status": "hidden — unverified",
+   "candidates": [
+    "https://www.linkedin.com/company/summitcommunication/ (Pass 11 footer production notes: 'Verified')",
+    "https://www.linkedin.com/company/summitcomms/ (earlier site configuration)"
+   ],
+   "note": "The later Pass 14 channel configuration marks the URL 'pending exact approval'. Confirm the one URL, then add it to the 'social' entry in theme/summit/inc/navigation-config.php."
+  },
+  {
+   "channel": "Scheduling",
+   "status": "not offered",
+   "note": "No approved calendar URL."
+  }
+ ]
+}

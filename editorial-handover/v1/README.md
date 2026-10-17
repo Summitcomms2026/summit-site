@@ -19,7 +19,11 @@ architecture decides where it lives.
 | `route-map.json` | Every handover route → canonical site route, type, template and action |
 | `panel-map.json` | What became of all 410 panels: rendered, merged, held (with reason), internal/config |
 | `cta-map.json` | Every CTA, its destination and status; the topics Let's Talk names; what waits on publication |
-| `interactions.json` | The interaction patterns as built, and where the handover's logic is not supplied |
+| `interactions.json` | The interaction patterns as built; the A/B/C review of the six partly specified interactions and what each still needs |
+| `held-content.json` | Everything deliberately not shown yet — panels, single answers and parts of panels — with its status (publication, asset, functionality, legal, product-decision, superseded, internal-only), dependency and next action |
+| `channels.json` | Contact and social channels as published, hidden or not offered (LinkedIn hidden until one URL is confirmed) |
+| `visual-asset-manifest.csv` / `.json` | The photography register from the site's side: one row per register panel (224), with asset type, status, priority, slot and file name — `tools/visual-asset-manifest.py` |
+| `PHOTOGRAPHY.md` | From a delivered file to the page: naming, web master, registration (`site-content/visual-assets/`), `tools/visual-assets-apply.php` |
 
 ## What stays outside
 

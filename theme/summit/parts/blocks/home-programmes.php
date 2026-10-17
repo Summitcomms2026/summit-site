@@ -37,6 +37,8 @@ $cta = $panel['ctas'][0] ?? null;
             <?php endif; ?>
         </header>
 
+        <?php echo summit_panel_visual( 'S01-P005', 'home-programmes__visual' ); // phpcs:ignore WordPress.Security.EscapeOutput -- one overarching photograph, if any ?>
+
         <ul class="home-programmes__list" role="list">
             <?php foreach ( $panel['rows'] as $i => $row ) : ?>
             <li class="home-programmes__item" data-reveal data-reveal-delay="<?php echo (int) min( 6, $i + 1 ); ?>">

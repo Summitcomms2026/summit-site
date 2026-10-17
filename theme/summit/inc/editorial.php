@@ -190,3 +190,74 @@ function summit_home_panel( string $id ): array {
     }
     return $panels[ $id ] ?? [];
 }
+
+/*
+ * ── Delivered photography: the panel-ID slots ───────────────────────────
+ * Final images are registered by key — a panel ID, or a panel ID with a
+ * number where one panel takes several (S01-P006-1) — in the option
+ * summit_panel_visuals, written by tools/visual-assets-apply.php from
+ * site-content/visual-assets/manifest.json:
+ *
+ *   key => [ 'id' => attachment ID, 'alt' => …, 'credit' => …, 'focus' => '50% 40%' ]
+ *
+ * Nothing is registered until photography arrives; every slot then renders
+ * nothing and the composition stays typographic. No placeholders.
+ *
+ *   hero     the page's opening panel (summit_hero_panel) → a band beneath
+ *            the hero (parts/global/page-hero.php)
+ *   panel    a chapter's panel → a figure after its headline (the_content)
+ *   home     the homepage parts ask for their own panels
+ * See editorial-handover/v1/PHOTOGRAPHY.md.
+ */
+function summit_panel_visuals(): array {
+    static $visuals = null;
+    if ( null === $visuals ) {
+        $visuals = (array) get_option( 'summit_panel_visuals', [] );
+    }
+    return $visuals;
+}
+
+/** A registered visual as a figure, or '' when none is registered. */
+function summit_panel_visual( string $key, string $class = 'summit-panel-visual', string $size = 'large', bool $eager = false ): string {
+    $asset = summit_panel_visuals()[ $key ] ?? null;
+    if ( ! $asset || empty( $asset['id'] ) ) {
+        return '';
+    }
+    $attrs = [ 'alt' => (string) ( $asset['alt'] ?? '' ), 'loading' => $eager ? 'eager' : 'lazy', 'decoding' => 'async' ];
+    if ( ! empty( $asset['focus'] ) && preg_match( '/^\d{1,3}% \d{1,3}%$/', $asset['focus'] ) ) {
+        $attrs['style'] = 'object-position: ' . $asset['focus'];
+    }
+    $img = wp_get_attachment_image( (int) $asset['id'], $size, false, $attrs );
+    if ( ! $img ) {
+        return '';
+    }
+    $credit = ! empty( $asset['credit'] ) ? '<figcaption class="summit-visual__credit">' . esc_html( $asset['credit'] ) . '</figcaption>' : '';
+    return '<figure class="' . esc_attr( $class ) . '" data-summit-asset="' . esc_attr( $key ) . '">' . $img . $credit . '</figure>';
+}
+
+/** The current page's opening image, beneath its hero. */
+function summit_hero_visual(): string {
+    $key = is_page() ? (string) get_post_meta( get_queried_object_id(), 'summit_hero_panel', true ) : '';
+    return $key ? summit_panel_visual( $key, 'summit-hero-visual', 'full', true ) : '';
+}
+
+// A chapter's image: after its headline, inside its own section
+add_filter( 'the_content', static function ( string $html ): string {
+    $visuals = summit_panel_visuals();
+    if ( ! $visuals || false === strpos( $html, 'id="s' ) ) {
+        return $html;
+    }
+    return (string) preg_replace_callback(
+        '#<section\b[^>]*\bid="(s\d{2}-p\d{3})"[^>]*>.*?</section>#s',
+        static function ( array $m ): string {
+            $figure = summit_panel_visual( strtoupper( $m[1] ) );
+            // A panel that already carries its artwork, portrait or cover is
+            // updated by replacing that file, never by adding a second image.
+            if ( ! $figure || preg_match( '/\b(res-art|res-cover|res-chair|ab-portrait|ab-figure)\b/', $m[0] ) ) {
+                return $m[0];
+            }
+            return (string) preg_replace( '#</h2>#', '</h2>' . $figure, $m[0], 1 );
+        },
+        $html
+    );
+}, 13 );

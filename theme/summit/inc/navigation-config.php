@@ -197,13 +197,13 @@ function summit_nav_config(): array {
             [ 'label' => 'Terms',   'path' => '/terms' ],
         ],
 
-        'social' => [
-            [
-                'label'    => 'LinkedIn',
-                'url'      => 'https://www.linkedin.com/company/summitcomms/',
-                'external' => true,
-            ],
-        ],
+        // No public social link until Summit's company LinkedIn URL is
+        // confirmed: the handover's channel configuration marks it "pending
+        // exact approval", and its sources disagree (/company/summitcommunication/
+        // in the Pass 11 footer notes; /company/summitcomms/ in the earlier
+        // site). Add the confirmed entry here — label, url, 'external' => true —
+        // and the footer shows it. See editorial-handover/v1/channels.json.
+        'social' => [],
 
         'subscribe' => [
             'label' => 'Subscribe',

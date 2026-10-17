@@ -85,3 +85,4 @@ $has_foot = $standfirst || $actions;
 
     </div>
 </header>
+<?php echo summit_hero_visual(); // phpcs:ignore WordPress.Security.EscapeOutput -- built from escaped parts (inc/editorial.php) ?>

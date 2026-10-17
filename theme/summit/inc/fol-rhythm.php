@@ -23,6 +23,7 @@
  *   Recovery     where a lost image was essential evidence and Summit
  *                holds the original, the essay shows the original
  *                (summit_fol_recovered_images()).
+ *   Outline      an essay with H3 sections and no H2 is shown one level up
  *   Absence      the note acknowledging lost photographs is shown only
  *                where they were the substance of the essay
  *                (summit_fol_absence_noted()); elsewhere they are omitted
@@ -97,6 +98,13 @@ add_filter( 'the_content', static function ( string $html ): string {
     }
     $post_id = get_the_ID();
     $slug    = (string) get_post_field( 'post_name', $post_id );
+
+    // Outline: an essay whose top-level sections were set as H3 with no H2
+    // (the title is the page's H1) is shown one level up, so the outline has
+    // no gap. The wording and the stored content are unchanged.
+    if ( false === stripos( $html, '<h2' ) && false !== stripos( $html, '<h3' ) ) {
+        $html = preg_replace( [ '#<(/?)h4([\s>])#i', '#<(/?)h3([\s>])#i' ], [ '<$1h3$2', '<$1h2$2' ], $html );
+    }
 
     // Recovery: the original of an essential image, in its own frame.
     $recovered = summit_fol_recovered_images()[ $slug ] ?? [];

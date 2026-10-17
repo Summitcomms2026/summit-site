@@ -1,0 +1,229 @@
+{
+  "description": "Future of Luxury media: the canonical web masters (media/) and the editorial decision for each published essay. WordPress is the runtime media system: a master is restored into the essay's featured image by tools/fol-media-restore.php, and WordPress generates its sizes. An essay published with its plate is either an editorial choice (a native photograph exists but the plate is stronger) or has no native source. The plate also appears automatically whenever a featured file is missing. Runtime art direction (opener, homepage, focus) lives in theme/summit/inc/editorial-art.php summit_fol_photo_direction(); the restore tool reports any difference from this file.",
+  "surfaces": {
+    "opener": "photo for grade A, plate for grade B and for plate essays",
+    "archive_and_related": "photo where one is restored, otherwise plate",
+    "homepage": "as archive, unless the essay sets home: plate",
+    "mega_menu": "plate, always"
+  },
+  "master_spec": "JPEG, sRGB, at most 2400 px wide, never upscaled, native colour (saturation held only where noted in the inventory), no metadata",
+  "essays": [
+    {
+      "slug": "from-hill-of-grace-to-argyle-pink-diamonds-why-australias-luxury-houses-need-a-harder-shell",
+      "title": "From Hill of Grace to Argyle pink diamonds: Why Australia’s luxury houses need a harder shell.",
+      "visual": "plate",
+      "plate": "editorial choice",
+      "note": "Framed works in a corridor, unclear subject. The essay also has no featured attachment."
+    },
+    {
+      "slug": "ralph-lauren-the-art-of-selling-through-chaos",
+      "title": "Ralph Lauren: The Art of Selling through Chaos.",
+      "visual": "plate",
+      "plate": "no native source"
+    },
+    {
+      "slug": "what-aupen-tells-us-about-the-next-wave-of-asian-luxury",
+      "title": "What Aupen tells us about the next wave of Asian luxury.",
+      "visual": "plate",
+      "plate": "no native source"
+    },
+    {
+      "slug": "the-creative-director-delusion",
+      "title": "The Creative Director Delusion: The Truth Behind Luxury’s Game of Musical Chairs.",
+      "visual": "photo",
+      "grade": "A",
+      "master": "the-creative-director-delusion.jpg",
+      "opener": "photo",
+      "focus": "25% 35%",
+      "focus_mobile": "20% 35%",
+      "provenance": "editorial"
+    },
+    {
+      "slug": "gen-z-wont-buy-your-myth",
+      "title": "Gen Z won’t buy your myth unless they can wear it, verify it, resell it.",
+      "visual": "photo",
+      "grade": "A",
+      "master": "gen-z-wont-buy-your-myth.jpg",
+      "opener": "photo",
+      "focus": "55% 55%",
+      "focus_mobile": "55% 60%",
+      "provenance": "editorial"
+    },
+    {
+      "slug": "the-luxurification-of-sport",
+      "title": "The Luxurification of Sport: How Televised Sport Became Luxury’s Most Powerful Global Platform.",
+      "visual": "photo",
+      "grade": "A",
+      "master": "the-luxurification-of-sport.jpg",
+      "opener": "photo",
+      "focus": "68% 35%",
+      "focus_mobile": "72% 35%",
+      "provenance": "press"
+    },
+    {
+      "slug": "hospitality-is-eating-luxurys-lunch",
+      "title": "Hospitality Is Eating Luxury’s Lunch and Leaving the Receipt on the Pillow.",
+      "visual": "photo",
+      "grade": "B",
+      "master": "hospitality-is-eating-luxurys-lunch.jpg",
+      "opener": "plate",
+      "focus": "55% 60%",
+      "focus_mobile": "62% 60%",
+      "provenance": "stock"
+    },
+    {
+      "slug": "the-characteristics-of-luxury-a-visual-conversation",
+      "title": "The Characteristics of Luxury: A Visual Conversation",
+      "visual": "photo",
+      "grade": "A",
+      "master": "the-characteristics-of-luxury-a-visual-conversation.jpg",
+      "opener": "photo",
+      "focus": "70% 50%",
+      "focus_mobile": "72% 50%",
+      "provenance": "summit"
+    },
+    {
+      "slug": "brabus-how-black-bold-and-bespoke-turned-excess-into-haute-couture",
+      "title": "BRABUS: How Black, Bold and Bespoke Turned Excess into Haute Couture.",
+      "visual": "plate",
+      "plate": "editorial choice",
+      "note": "A promotional poster with type ('One Second Wow'): PR filler. The BRABUS plate is stronger."
+    },
+    {
+      "slug": "luxurys-new-advantage-is-invisible",
+      "title": "Luxury’s New Advantage Is Invisible: Owned Data, Human Taste and Fan Desire.",
+      "visual": "photo",
+      "grade": "A",
+      "master": "luxurys-new-advantage-is-invisible.jpg",
+      "opener": "photo",
+      "focus": "30% 45%",
+      "focus_mobile": "24% 45%",
+      "provenance": "editorial"
+    },
+    {
+      "slug": "prada-make-versace-dangerous-again",
+      "title": "Prada: Make Versace Dangerous Again.",
+      "visual": "plate",
+      "plate": "editorial choice",
+      "note": "The Medusa logo on gold: brand mark, not journalism."
+    },
+    {
+      "slug": "the-house-that-stumbled-inside-guccis-crisis",
+      "title": "The House That Stumbled: Inside Gucci’s Crisis and the Battle for Its Future.",
+      "visual": "photo",
+      "grade": "B",
+      "master": "the-house-that-stumbled-inside-guccis-crisis.jpg",
+      "opener": "plate",
+      "focus": "50% 55%",
+      "provenance": "editorial"
+    },
+    {
+      "slug": "the-future-of-culture-artificial-intelligence-arms-race",
+      "title": "The Future Of Culture: The Artificial Intelligence Arms Race Reshaping Power Wealth.",
+      "visual": "photo",
+      "grade": "B",
+      "master": "the-future-of-culture-artificial-intelligence-arms-race.jpg",
+      "opener": "plate",
+      "focus": "50% 45%",
+      "provenance": "stock"
+    },
+    {
+      "slug": "the-longevity-turn-when-time-becomes-exclusive-luxury",
+      "title": "The Longevity Turn: When Time Becomes The Most Exclusive Luxury.",
+      "visual": "plate",
+      "plate": "editorial choice",
+      "note": "A generic stock elderly couple."
+    },
+    {
+      "slug": "saudi-arabias-tourism-ecosystem-next-frontier",
+      "title": "Saudi Arabia’s Tourism Ecosystem: The Next Frontier for Global Hospitality.",
+      "visual": "plate",
+      "plate": "editorial choice",
+      "note": "A tower render (\"Trump\") on the coast: developer marketing, politically loaded."
+    },
+    {
+      "slug": "watches-and-wonders-time-desire-and-horology",
+      "title": "Watches and Wonders: Time, Desire and the Infinite Theatre of Horology.",
+      "visual": "plate",
+      "plate": "editorial choice",
+      "note": "A manufacturer render of three watches on a gradient sky: stale PR. The Horology plate is stronger."
+    },
+    {
+      "slug": "the-future-of-luxury-a-masterclass-in-reinvention",
+      "title": "The Future of Luxury: A Masterclass in Reinvention by Marlene Dietrich.",
+      "visual": "photo",
+      "grade": "B",
+      "master": "the-future-of-luxury-a-masterclass-in-reinvention.jpg",
+      "opener": "plate",
+      "focus": "52% 35%",
+      "provenance": "studio"
+    },
+    {
+      "slug": "from-limited-edition-to-one-only-personalisation-in-luxury",
+      "title": "From Limited Edition to One & Only: How Personalisation Is Defining Luxury for Ultra-Wealthy Clients.",
+      "visual": "plate",
+      "plate": "editorial choice",
+      "note": "A rendered Paris skyline with an aircraft in cloud: stale and generic. The lilac plate is the stronger editorial choice."
+    },
+    {
+      "slug": "apples-vision-pro-launch-metaverse-potential-for-brands",
+      "title": "Apple’s Vision Pro Launch: The Metaverse’s Potential for Brands and Game Developers.",
+      "visual": "photo",
+      "grade": "B",
+      "master": "apples-vision-pro-launch-metaverse-potential-for-brands.jpg",
+      "opener": "plate",
+      "focus": "42% 35%",
+      "provenance": "press"
+    },
+    {
+      "slug": "can-sothebys-bet-big-on-debt-and-survive",
+      "title": "Can Sotheby’s Bet Big on Debt and Survive?",
+      "visual": "plate",
+      "plate": "editorial choice",
+      "note": "A near-black gallery, 51 KB, heavily compressed. The ledger plate (metal) says more."
+    },
+    {
+      "slug": "brave-new-world-decoupling-art-sales",
+      "title": "Brave New World: Decoupling Art Sales from Experience For a Transformation Inspired by the Music Business.",
+      "visual": "photo",
+      "grade": "B",
+      "master": "brave-new-world-decoupling-art-sales.jpg",
+      "opener": "plate",
+      "focus": "45% 40%",
+      "provenance": "stock"
+    },
+    {
+      "slug": "the-art-experience-how-museums-can-embrace-screen-culture",
+      "title": "The Art Experience: How Museums Can Embrace Screen Culture and Reinvent with Passion, Invention and Fantasy.",
+      "visual": "photo",
+      "grade": "A",
+      "master": "the-art-experience-how-museums-can-embrace-screen-culture.jpg",
+      "opener": "photo",
+      "focus": "50% 50%",
+      "focus_mobile": "48% 50%",
+      "provenance": "editorial"
+    },
+    {
+      "slug": "aston-martins-new-vanquish-something-to-do-with-desire",
+      "title": "Aston Martin’s New Vanquish: Something to Do with Desire.",
+      "visual": "photo",
+      "grade": "A",
+      "master": "aston-martins-new-vanquish-something-to-do-with-desire.jpg",
+      "opener": "photo",
+      "focus": "55% 55%",
+      "focus_mobile": "58% 55%",
+      "provenance": "press"
+    },
+    {
+      "slug": "dslcollection-chinese-contemporary-art-enters-digital-era",
+      "title": "DSLcollection Of Chinese Contemporary Art Enters The Digital Era.",
+      "visual": "photo",
+      "grade": "B",
+      "master": "dslcollection-chinese-contemporary-art-enters-digital-era.jpg",
+      "opener": "plate",
+      "home": "plate",
+      "focus": "50% 25%",
+      "provenance": "press"
+    }
+  ]
+}

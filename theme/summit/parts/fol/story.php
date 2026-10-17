@@ -41,7 +41,7 @@ $category = ( $args['category'] ?? true ) ? summit_fol_category( $id ) : null;
 $author   = summit_fol_author( $id );
 $minutes  = summit_fol_read_time( $id );
 $stand    = 'item' === $variant ? '' : summit_fol_standfirst( $id );
-$image    = 'item' === $variant ? '' : summit_fol_visual( $id, 'lead' === $variant ? 'large' : 'medium_large', [ 'sizes' => 'lead' === $variant ? '(min-width: 1024px) 55vw, 100vw' : '(min-width: 1024px) 40vw, 100vw' ] );
+$image    = 'item' === $variant ? '' : summit_fol_visual( $id, 'lead' === $variant ? 'large' : 'medium_large', [ 'sizes' => 'lead' === $variant ? '(min-width: 1024px) 55vw, 100vw' : '(min-width: 1024px) 40vw, 100vw', 'loading' => 'lead' === $variant ? 'eager' : 'lazy' ] );
 $heading  = 'h' . $level;
 
 $classes = 'fol-story fol-story--' . $variant . ( $image ? ' has-image' : ' is-set' );

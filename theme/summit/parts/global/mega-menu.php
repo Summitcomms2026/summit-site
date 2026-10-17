@@ -215,7 +215,10 @@ $current_attr = static function ( string $path, bool $exact = false ): string {
             $pub_date  = get_the_date( 'j M Y', $menu_article->ID );
             $pub_iso   = get_the_date( 'c', $menu_article->ID );
             $thumb_id  = (int) get_post_thumbnail_id( $menu_article->ID );
-            $thumb_url = $thumb_id && summit_attachment_file_exists( $thumb_id ) ? get_the_post_thumbnail_url( $menu_article->ID, 'medium' ) : '';
+            // The menu is navigation: its rail always shows the essay's plate,
+            // stripped back, even where the essay has a photograph (tested:
+            // photographs at 120 × 90 read as noise in the navigation).
+            $thumb_url = '';
 
             if ( ! $read_time ) {
                 $read_time = summit_estimated_read_time( $menu_article->ID );

@@ -200,12 +200,83 @@ function summit_editorial_art( int $post_id, string $context = 'card' ): string 
 }
 
 /**
- * An essay's visual: its photograph when the file exists, else its plate.
+ * Photography direction (Pass 06): for each essay whose native photograph
+ * is shown, where its subject sits (desktop and phone focus) and whether
+ * the photograph is strong enough to open the essay. An essay not listed
+ * here, or whose photograph file is absent, is published with its plate —
+ * the plate is a sovereign choice, never an error state.
+ *
+ *   opener   'photo' — the photograph is the essay's hero (A sources);
+ *            'plate' — the photograph serves cards and the archive, the
+ *            plate opens the essay (B sources)
+ *   home     'plate' — the homepage carousel shows the plate instead (the
+ *            carousel's rhythm: three photographs in a row read as one)
+ *   focus    object-position for crops; focus_m the same on phones
+ *
+ * Selection and provenance: scratch/art-direction-pass-06/native-article-images/
+ */
+function summit_fol_photo_direction(): array {
+    return [
+        'aston-martins-new-vanquish-something-to-do-with-desire'    => [ 'opener' => 'photo', 'focus' => '55% 55%', 'focus_m' => '58% 55%' ],
+        'gen-z-wont-buy-your-myth'                                  => [ 'opener' => 'photo', 'focus' => '55% 55%', 'focus_m' => '55% 60%' ],
+        'luxurys-new-advantage-is-invisible'                        => [ 'opener' => 'photo', 'focus' => '30% 45%', 'focus_m' => '24% 45%' ],
+        'the-art-experience-how-museums-can-embrace-screen-culture' => [ 'opener' => 'photo', 'focus' => '50% 50%', 'focus_m' => '48% 50%' ],
+        'the-characteristics-of-luxury-a-visual-conversation'       => [ 'opener' => 'photo', 'focus' => '70% 50%', 'focus_m' => '72% 50%' ],
+        'the-creative-director-delusion'                            => [ 'opener' => 'photo', 'focus' => '25% 35%', 'focus_m' => '20% 35%' ],
+        'the-luxurification-of-sport'                               => [ 'opener' => 'photo', 'focus' => '68% 35%', 'focus_m' => '72% 35%' ],
+        'hospitality-is-eating-luxurys-lunch'                       => [ 'opener' => 'plate', 'focus' => '55% 60%', 'focus_m' => '62% 60%' ],
+        'dslcollection-chinese-contemporary-art-enters-digital-era' => [ 'opener' => 'plate', 'home' => 'plate', 'focus' => '50% 25%', 'focus_m' => '50% 25%' ],
+        'apples-vision-pro-launch-metaverse-potential-for-brands'   => [ 'opener' => 'plate', 'focus' => '42% 35%', 'focus_m' => '42% 35%' ],
+        'brave-new-world-decoupling-art-sales'                      => [ 'opener' => 'plate', 'focus' => '45% 40%', 'focus_m' => '45% 40%' ],
+        'the-future-of-luxury-a-masterclass-in-reinvention'         => [ 'opener' => 'plate', 'focus' => '52% 35%', 'focus_m' => '52% 35%' ],
+        'the-house-that-stumbled-inside-guccis-crisis'              => [ 'opener' => 'plate', 'focus' => '50% 55%', 'focus_m' => '50% 55%' ],
+        'the-future-of-culture-artificial-intelligence-arms-race'   => [ 'opener' => 'plate', 'focus' => '50% 45%', 'focus_m' => '50% 45%' ],
+    ];
+}
+
+/**
+ * An essay's photography direction, by post ID.
+ */
+function summit_fol_photo( int $post_id ): array {
+    return summit_fol_photo_direction()[ (string) get_post_field( 'post_name', $post_id ) ] ?? [];
+}
+
+/**
+ * An essay's visual: its photograph when the file exists (and, for the
+ * opener, when the photograph is strong enough to lead), else its plate.
  */
 function summit_fol_visual( int $post_id, string $size = 'large', array $attr = [], string $context = 'card' ): string {
+    if ( 'hero' === $context && 'plate' === ( summit_fol_photo( $post_id )['opener'] ?? 'photo' ) ) {
+        return summit_editorial_art( $post_id, $context );
+    }
     $image = function_exists( 'summit_fol_image' ) ? summit_fol_image( $post_id, $size, $attr ) : '';
     return $image ?: summit_editorial_art( $post_id, $context );
 }
+
+/**
+ * Crops follow the subject: an essay photograph carries its focus, on every
+ * surface that shows it (archive, homepage, opener, related reading).
+ */
+add_filter( 'wp_get_attachment_image_attributes', static function ( array $attr, $attachment ): array {
+    static $by_thumb = null;
+    if ( null === $by_thumb ) {
+        $by_thumb = [];
+        foreach ( get_posts( [ 'post_type' => 'article', 'post_status' => 'publish', 'posts_per_page' => -1, 'fields' => 'ids', 'no_found_rows' => true ] ) as $id ) {
+            $t = (int) get_post_thumbnail_id( $id );
+            if ( $t ) {
+                $by_thumb[ $t ] = $id;
+            }
+        }
+    }
+    $post_id = $by_thumb[ (int) ( $attachment->ID ?? 0 ) ] ?? 0;
+    $dir     = $post_id ? summit_fol_photo( $post_id ) : [];
+    if ( $dir ) {
+        $style         = sprintf( '--fol-focus: %s; --fol-focus-m: %s;', $dir['focus'], $dir['focus_m'] ?? $dir['focus'] );
+        $attr['style'] = trim( ( $attr['style'] ?? '' ) . ' ' . $style );
+        $attr['class'] = trim( ( $attr['class'] ?? '' ) . ' fol-photo' );
+    }
+    return $attr;
+}, 10, 2 );
 
 add_action( 'wp_enqueue_scripts', static function (): void {
     wp_enqueue_style( 'summit-editorial-art', get_template_directory_uri() . '/assets/css/editorial-art.css', [ 'summit-components' ], wp_get_theme()->get( 'Version' ) );

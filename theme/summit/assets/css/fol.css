@@ -1430,3 +1430,54 @@
 .fol-prose hr:has(+ .fol-interlude) {
   display: none;
 }
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* NATIVE PHOTOGRAPHY (Pass 06) — photographic essays beside authored    */
+/* graphic essays. Crops follow each photograph's subject; the photograph */
+/* keeps its own colour (the journalism's, not the interface's).          */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+img.fol-photo {
+  object-position: var(--fol-focus, 50% 50%);
+}
+
+@media (max-width: 599px) {
+  img.fol-photo {
+    object-position: var(--fol-focus-m, var(--fol-focus, 50% 50%));
+  }
+}
+
+/* The opener: the photograph is the subject, strongly cropped */
+.fol-article__image--photo img {
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+}
+
+@media (max-width: 599px) {
+  .fol-article__image--photo img {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* ...and the plate's language stays as notation */
+.fol-article__notation {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  font-family: var(--font-text);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--fol-quiet);
+}
+
+.fol-article__notation svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: var(--fol-echo, currentColor);
+  stroke-width: 1.2;
+  vector-effect: non-scaling-stroke;
+}

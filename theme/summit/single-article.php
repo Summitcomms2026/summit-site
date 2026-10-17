@@ -10,8 +10,10 @@
  *                 standfirst, byline (author · date · reading time) and
  *                 the page's tools (Share — with Copy Link, Email and
  *                 LinkedIn — and Print, from the shared action system)
- *   2. Image      the featured image when its file exists, otherwise the
- *                 essay's editorial plate (inc/editorial-art.php)
+ *   2. Image      the featured image when its file exists and is strong
+ *                 enough to lead (summit_fol_photo_direction()), with the
+ *                 plate's family and folio as a small notation; otherwise
+ *                 the essay's editorial plate (inc/editorial-art.php)
  *   3. Body       the_content, in the reading measure; inline images are
  *                 revealed when they load and withdrawn if they cannot
  *                 (assets/js/fol.js), so a dead remote image leaves no frame
@@ -112,9 +114,21 @@ while ( have_posts() ) :
             </div>
         </header>
 
-        <?php if ( $image ) : ?>
-        <figure class="fol-article__image" data-reveal="fade">
+        <?php if ( $image ) :
+            // A photograph opens the essay as its subject; the plate's language
+            // stays beside it as a small editorial notation (family, folio).
+            $is_photo = false === strpos( $image, 'ed-art' );
+            $notation = '';
+            if ( $is_photo && function_exists( 'summit_editorial_art_geometry' ) ) {
+                $family   = summit_editorial_art_family( $art_id );
+                $number   = summit_editorial_art_number( $art_id );
+                $notation = '<figcaption class="fol-article__notation" aria-hidden="true"><svg viewBox="0 0 100 100" focusable="false">' . summit_editorial_art_geometry( $family ) . '</svg>'
+                    . ( $number ? '<span>' . esc_html( sprintf( 'No. %02d', $number ) ) . '</span>' : '' ) . '</figcaption>';
+            }
+        ?>
+        <figure class="fol-article__image<?php echo $is_photo ? ' fol-article__image--photo' : ''; ?>" data-reveal="fade">
             <?php echo $image; // phpcs:ignore WordPress.Security.EscapeOutput -- wp_get_attachment_image ?>
+            <?php echo $notation; // phpcs:ignore WordPress.Security.EscapeOutput -- static markup, escaped above ?>
         </figure>
         <?php endif; ?>
 

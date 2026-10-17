@@ -103,7 +103,12 @@ $section_headline = get_field( 'home_article_headline' ) ?: 'The Future of Luxur
                     $standfirst = get_field( 'art_standfirst', $art_id );
                     $art_url    = get_permalink( $art_id );
                     $has_image  = has_post_thumbnail( $art_id );
-                    $image_html = $has_image ? get_the_post_thumbnail( $art_id, 'large' ) : '';
+                    $image_html = $has_image ? get_the_post_thumbnail( $art_id, 'large', [ 'loading' => 'lazy' ] ) : '';
+                    // Art direction: an essay may keep its plate in the carousel
+                    if ( function_exists( 'summit_fol_photo' ) && 'plate' === ( summit_fol_photo( $art_id )['home'] ?? '' ) ) {
+                        $has_image  = true;
+                        $image_html = summit_editorial_art( $art_id );
+                    }
                 }
 
                 $display_title = mb_strlen( $art_title ) > 40

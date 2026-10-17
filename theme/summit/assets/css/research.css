@@ -992,3 +992,15 @@
 .res-chair__place.is-empty .res-chair__rank {
   color: var(--accent-metal);
 }
+
+/* ── Composition and silence (Pass 04) ────────────────────────────────
+   Research stays the quietest family: the chapter head keeps its
+   organising hairline but at the quiet weight, and the folio recedes
+   to the same tone as its label. */
+.res-chapter p.res-head {
+  border-bottom-color: var(--res-rule);
+}
+
+.res-chapter p.res-head::after {
+  color: var(--res-quiet);
+}

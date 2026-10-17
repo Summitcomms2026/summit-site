@@ -40,7 +40,6 @@ foreach ( array_values( $solutions['groups'] ?? [] ) as $i => $group ) {
         'count'   => count( $group['children'] ?? [] ),
     ];
 }
-$programmes = summit_nav( 'primary' )['programmes'] ?? null;
 ?>
 
 <section class="capability-triptych section--tinted section--padded" aria-labelledby="capabilities-heading">
@@ -87,13 +86,6 @@ $programmes = summit_nav( 'primary' )['programmes'] ?? null;
             <?php endforeach; ?>
 
         </div>
-
-        <?php if ( $programmes ) : ?>
-        <p class="capability-triptych__also" data-reveal="fade">
-            <?php esc_html_e( 'Questions that recur have a defined form.', 'summit' ); ?>
-            <a href="<?php echo esc_url( summit_nav_url( $programmes ) ); ?>"><?php echo esc_html( $programmes['label'] ); ?> <span aria-hidden="true">&rarr;</span></a>
-        </p>
-        <?php endif; ?>
 
     </div>
 </section>

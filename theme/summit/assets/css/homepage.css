@@ -1920,28 +1920,6 @@
 
 
 /* ── Solutions panel: the line to Programmes ──────────────────────────── */
-.capability-triptych__also {
-  margin-top: clamp(32px, 4vw, 48px);
-  font-family: var(--font-text);
-  font-size: 0.9375rem;
-  color: var(--colour-ink-60);
-}
-
-.capability-triptych__also a {
-  margin-left: 0.4em;
-  color: var(--colour-ink);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.24em;
-  text-decoration-color: var(--colour-ink-30);
-}
-
-.capability-triptych__also a:hover,
-.capability-triptych__also a:focus-visible {
-  text-decoration-color: currentColor;
-}
-
-
 /* ── Selected Work & Research: Summit's own marks ─────────────────────── */
 .sw-mark {
   display: flex;
@@ -2252,4 +2230,110 @@
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: none;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════ */
+/* COMPOSITION AND SILENCE (Pass 04) — the replaced panels inherit the    */
+/* spatial behaviour of the recorded homepage: modest titles, compact     */
+/* actions, evidence sitting in a large field.                            */
+/* ══════════════════════════════════════════════════════════════════════ */
+
+/* Selected Work & Research: four marks of evidence in a dark field, not
+   four cards. The tiles are barely there; the marks rest quiet and the
+   one in hand gains clarity. */
+.sw-card {
+  background: rgba(250, 250, 248, 0.022);
+}
+
+.sw-card__logo img {
+  opacity: 0.38;
+}
+
+.sw-mark {
+  opacity: 0.42;
+}
+
+.sw-mark--l100 svg {
+  width: 56px;
+  height: 56px;
+}
+
+/* Small but not faint: the revealed detail reads at a legible tone */
+.sw-card__category {
+  color: rgba(250, 250, 248, 0.58);
+}
+
+.sw-card__desc {
+  color: rgba(250, 250, 248, 0.66);
+}
+
+/* The Observatory: statement, then figures sitting in space — no ruled
+   grid, no boxes. Numbers are evidence; they need room, not containers. */
+.home-obs {
+  border-top: 0;
+}
+
+.home-obs__figures {
+  row-gap: clamp(36px, 4vw, 56px);
+  border-top: 0;
+}
+
+.home-obs__figures li,
+.home-obs__figures li:nth-child(even) {
+  padding: 0;
+  border: 0;
+}
+
+.home-obs__figures li:nth-child(even) {
+  padding-left: clamp(24px, 3vw, 48px);
+}
+
+.home-obs__figures span {
+  color: var(--colour-ink-60);
+}
+
+.home-obs__instrument {
+  stroke: rgba(26, 26, 24, 0.07);
+}
+
+/* The World of Luxury: material atmosphere, not an image catalogue.
+   Landscape tiles hold the field lower; imagery rests darker and gains
+   clarity, not scale, when it is chosen. */
+.sectors-grid--industries .sectors-grid__item {
+  aspect-ratio: 3 / 2;
+}
+
+.sectors-grid--industries .sectors-grid__image {
+  transform: none;
+  filter: brightness(0.66) saturate(0.85);
+  transition: filter var(--motion-image, 900ms) var(--ease-out);
+}
+
+.sectors-grid--industries .sectors-grid__item:hover .sectors-grid__image,
+.sectors-grid--industries .sectors-grid__link:focus-visible .sectors-grid__image {
+  transform: none;
+  filter: brightness(0.92) saturate(1);
+}
+
+@media (min-width: 768px) {
+  .sectors-grid--industries.sectors-grid:hover .sectors-grid__item {
+    opacity: 1;
+  }
+
+  .sectors-grid--industries.sectors-grid:hover .sectors-grid__item:not(:hover) .sectors-grid__image {
+    filter: brightness(0.5) saturate(0.7);
+  }
+}
+
+@media (max-width: 599px) {
+  .sectors-grid--industries .sectors-grid__item {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sectors-grid--industries .sectors-grid__image {
+    transition: none;
+  }
 }

@@ -11,11 +11,22 @@
  *   'body'     string  CTA body copy
  *   'label'    string  Button label
  *   'url'      string  Button URL
+ *   'always'   bool    Render even where the page closes with its own
+ *                      invitation (see below)
+ *
+ * One invitation per page: where a page's own content already closes with
+ * its invitation (a sol-, prg-, obs- or ab-cta paragraph), the shared
+ * closing panel is not repeated beneath it.
  *
  * @package SummitTheme
  */
 
 defined( 'ABSPATH' ) || exit;
+
+if ( empty( $args['always'] ) && is_singular() && ! is_front_page()
+    && preg_match( '/class="(?:sol|prg|obs|ab)-cta"/', (string) get_post_field( 'post_content', get_queried_object_id() ) ) ) {
+    return;
+}
 
 // Defaults: Summit's global proposition and the canonical CTA (from the
 // navigation config). Templates may still pass their own overrides.

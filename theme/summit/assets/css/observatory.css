@@ -1234,3 +1234,18 @@
     display: none;
   }
 }
+
+/* ── Composition and silence (Pass 04) ────────────────────────────────
+   Evidence, not a dashboard: the field's figures sit in space under one
+   organising hairline, without cell dividers. */
+.obs-chapter ul.obs-register {
+  row-gap: clamp(32px, 4vw, 48px);
+  column-gap: clamp(24px, 3vw, 48px);
+}
+
+.obs-register li,
+.obs-register li:nth-child(even),
+.obs-register li:first-child {
+  padding: clamp(24px, 2.6vw, 36px) 0 0;
+  border: 0;
+}

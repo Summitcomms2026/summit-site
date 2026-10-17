@@ -783,3 +783,12 @@
   border-color: var(--colour-paper);
   color: var(--colour-ink);
 }
+
+/* ── Closing panel: authority by space, not by a larger button (Pass 04) */
+.cta-footer:not(.cta-footer--image) {
+  padding-block: clamp(120px, 14vw, 208px);
+}
+
+.cta-footer:not(.cta-footer--image) .cta-footer__body {
+  margin-bottom: clamp(40px, 4vw, 56px);
+}

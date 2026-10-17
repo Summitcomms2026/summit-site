@@ -925,3 +925,16 @@
 .ab-chapter .ab-principle__claim {
   font-size: var(--type-statement);
 }
+
+/* ── Composition and silence (Pass 04) ────────────────────────────────
+   The chapter marker is a marker (12px), not reading text: a paragraph
+   rule had raised it to 17px. Each Manifesto proposition is given a
+   deeper silence before the next is considered. */
+.ab-chapter p.ab-marker {
+  font-size: var(--text-micro);
+  line-height: 1.3;
+}
+
+.ab-chapter--principle {
+  padding-block: clamp(120px, 14vw, 216px);
+}

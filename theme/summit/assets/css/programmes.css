@@ -770,3 +770,49 @@
     display: none;
   }
 }
+
+/* ── Composition and silence (Pass 04) ────────────────────────────────
+   The register is an index, not a product list: names lead, the related
+   Solutions are quiet text until they are reached for, and the held field
+   is an open field beside the list rather than a dark box inside the page.
+   The one overall action is the hero's "Discuss a Programme"; programme
+   pages keep their own single invitation. */
+.prg-register__body {
+  margin-top: clamp(32px, 4vw, 56px);
+}
+
+.prg-entry__draws a {
+  color: var(--prg-quiet);
+  text-decoration-color: transparent;
+  transition: color var(--motion-ui, 200ms) var(--ease-out), text-decoration-color var(--motion-ui, 200ms) var(--ease-out);
+}
+
+.prg-entry__draws a:hover,
+.prg-entry__draws a:focus-visible {
+  color: var(--prg-text);
+  text-decoration-color: currentColor;
+}
+
+@media (min-width: 1024px) {
+  .prg-register.is-enhanced .prg-held {
+    min-height: 320px;
+    padding: 28px 0 0;
+    border-top: 1px solid var(--colour-ink);
+    background: none;
+    color: var(--colour-ink);
+  }
+
+  .prg-held__label {
+    color: var(--colour-ink-60);
+  }
+
+  .prg-held__name {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .prg-held__moment {
+    padding-top: clamp(48px, 5vw, 72px);
+    color: var(--colour-ink);
+  }
+}

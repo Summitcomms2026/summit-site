@@ -321,3 +321,28 @@
 .ct-form__textarea {
   border-color: var(--border-subtle);
 }
+
+/* ── Composition and silence (Pass 04) ────────────────────────────────
+   The form breathes: longer intervals between fields, the question field
+   carrying the composition, a compact submit (the homepage control, not
+   a block), and the aside organised by quiet hairlines. */
+.ct-form__field {
+  margin-bottom: clamp(36px, 3.6vw, 48px);
+}
+
+.ct-form__textarea {
+  border-color: var(--border-subtle);
+}
+
+.ct-form__actions {
+  margin-top: clamp(40px, 4vw, 56px);
+}
+
+.ct-form .dt-form__submit {
+  min-width: 0;
+}
+
+.ct-routes,
+.ct-direct {
+  border-top-color: var(--border-subtle);
+}

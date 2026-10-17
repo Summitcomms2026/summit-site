@@ -1560,25 +1560,23 @@
     white-space: nowrap;
 }
 
+/* The footer's conversation is a link, not a second button: the closing
+   panel above already carries the invitation. */
 .site-footer .site-footer__cta {
-    background: transparent;
+    display: inline-block;
     color: var(--colour-paper);
-    border: 1px solid rgba(250, 250, 248, 0.4);
-    border-radius: var(--radius-md);
-    min-height: 38px;
-    padding: 9px 20px;
-    font-family: var(--font-sans);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: capitalize;
-    text-decoration: none;
+    font-family: var(--font-text);
+    font-size: var(--text-small);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.3em;
+    text-decoration-color: rgba(250, 250, 248, 0.35);
+    transition: text-decoration-color var(--motion-ui, 200ms) var(--ease-out);
 }
 
-.site-footer .site-footer__cta:hover {
-    background: var(--colour-paper);
-    color: var(--colour-ink);
-    border-color: var(--colour-paper);
+.site-footer .site-footer__cta:hover,
+.site-footer .site-footer__cta:focus-visible {
+    text-decoration-color: currentColor;
 }
 
 .site-footer__podcast-link {

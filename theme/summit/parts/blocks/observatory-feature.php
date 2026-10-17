@@ -8,7 +8,8 @@
  * as a governed instrument — its statement, its field figures, and the way
  * to a private briefing — beside The Luxury 100 it reads around. In the
  * homepage's own grammar: header row with outlined button, then a two-
- * column layout. The figures mirror the Observatory overview's field
+ * column layout: statement, figures in space (no boxes, no ruled grid),
+ * one compact action and one editorial link. The figures mirror the Observatory overview's field
  * ledger (site-content/observatory/overview.blocks.html); update both.
  *
  * @package SummitTheme
@@ -48,7 +49,6 @@ $figures = [
                 <p class="home-obs__body" data-reveal data-reveal-delay="1"><?php esc_html_e( 'The Observatory reads the houses, objects and institutions around The Luxury 100 against the same five pillars, with its confidence declared. It classifies; it does not rank.', 'summit' ); ?></p>
                 <p class="home-obs__links" data-reveal="fade" data-reveal-delay="2">
                     <a href="<?php echo esc_url( summit_nav_url( $section ) ); ?>"><?php echo esc_html( $section['label'] ); ?> <span aria-hidden="true">&rarr;</span></a>
-                    <a href="<?php echo esc_url( home_url( '/research/luxury-100' ) ); ?>"><?php esc_html_e( 'The Luxury 100', 'summit' ); ?> <span aria-hidden="true">&rarr;</span></a>
                 </p>
             </div>
 

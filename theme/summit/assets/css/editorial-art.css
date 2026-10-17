@@ -5,8 +5,8 @@
  * The authored plate an essay is published with when it has no photograph
  * (inc/editorial-art.php). One composition fills whatever frame it is
  * placed in and adapts by its own width (container queries): the mega
- * menu's 120 px thumbnail shows only the word; cards add the folio and
- * category; the essay opener adds the second line at full scale.
+ * menu's 120 px thumbnail shows only the word; cards add the folio;
+ * the essay opener adds the second line at full scale.
  *
  * Families: house · ledger · object · culture · diagram.
  * Tones: dark (the ink field) · paper (the plate paper — the paper object).

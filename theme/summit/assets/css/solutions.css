@@ -1677,3 +1677,27 @@
   object-fit: cover;
   object-position: 50% 45%;
 }
+
+/* ── Composition and silence (Pass 04) ────────────────────────────────
+   At rest Three Ways In reads as an editorial composition, not a tab bar:
+   the kicker and the title carry each way in, with no index numbers; the
+   need field holds one subject (its line), without repeating the number
+   the list already shows. */
+.sx-lens {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.sx-lens__num {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .sx-statement__num {
+    display: none;
+  }
+
+  .sx-ways.is-enhanced .sx-statement {
+    border-top-width: 1px;
+    padding-top: clamp(28px, 3vw, 40px);
+  }
+}

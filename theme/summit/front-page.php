@@ -172,10 +172,7 @@ the_post(); // consume the front-page post for ACF context
                         <?php echo wp_strip_all_tags( $sectors_body ); ?>
                     </p>
                 </div>
-                <a href="<?php echo esc_url( summit_nav_url( summit_nav( 'cta' ) ) ); ?>"
-                   class="sectors-grid-section__cta" data-reveal="fade" data-reveal-delay="1">
-                    Let’s Talk
-                </a>
+                <?php // No button here: the closing invitation follows directly below. ?>
             </header>
 
             <ul class="sectors-grid sectors-grid--industries" role="list">
